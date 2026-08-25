@@ -3,7 +3,9 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
+import stat
 import sys
 from pathlib import Path, PurePosixPath
 from urllib.parse import unquote
@@ -50,11 +52,31 @@ def normalized_sha256(data: bytes) -> str:
     return sha256(text.encode("utf-8"))
 
 
-def is_link_like(path: Path) -> bool:
-    if path.is_symlink():
-        return True
+def is_windows_reparse_point(path: Path) -> bool:
+    if os.name != "nt":
+        return False
     is_junction = getattr(path, "is_junction", None)
-    return bool(is_junction and is_junction())
+    if is_junction is not None:
+        try:
+            if is_junction():
+                return True
+        except OSError:
+            return True
+    try:
+        metadata = os.lstat(path)
+    except FileNotFoundError:
+        return False
+    except OSError:
+        return True
+    attributes = getattr(metadata, "st_file_attributes", None)
+    reparse_flag = getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", None)
+    if not isinstance(attributes, int) or not isinstance(reparse_flag, int):
+        return True
+    return bool(attributes & reparse_flag)
+
+
+def is_link_like(path: Path) -> bool:
+    return path.is_symlink() or is_windows_reparse_point(path)
 
 
 def has_link_like_component(path: Path) -> bool:
@@ -101,17 +123,32 @@ def validate_rewrite_source(
 
 def files_on_disk(failures: list[str]) -> set[str]:
     result = set()
-    for path in ROOT.rglob("*"):
-        relative = path.relative_to(ROOT)
-        if any(part in EXCLUDED_PARTS for part in relative.parts):
+    pending = [ROOT]
+    while pending:
+        directory = pending.pop()
+        try:
+            with os.scandir(directory) as iterator:
+                entries = sorted(iterator, key=lambda entry: entry.name)
+        except OSError as error:
+            relative = directory.relative_to(ROOT).as_posix() or "."
+            failures.append(f"{relative}: directory is unreadable: {error}")
             continue
-        if has_link_like_component(path):
-            failures.append(f"{relative.as_posix()}: symlink or junction path is not allowed")
-            result.add(relative.as_posix())
-            continue
-        if not path.is_file():
-            continue
-        result.add(relative.as_posix())
+        for entry in entries:
+            path = Path(entry.path)
+            relative = path.relative_to(ROOT)
+            if any(part in EXCLUDED_PARTS for part in relative.parts):
+                continue
+            if has_link_like_component(path):
+                failures.append(f"{relative.as_posix()}: symlink or junction path is not allowed")
+                result.add(relative.as_posix())
+                continue
+            try:
+                if entry.is_dir(follow_symlinks=False):
+                    pending.append(path)
+                elif entry.is_file(follow_symlinks=False):
+                    result.add(relative.as_posix())
+            except OSError as error:
+                failures.append(f"{relative.as_posix()}: path is unreadable: {error}")
     return result
 
 

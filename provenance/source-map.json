@@ -167,8 +167,8 @@
           "source_path": "docs/skills/work-charter/VERIFICATION.md"
         }
       ],
-      "target_normalized_sha256": "515651f48be4b46e78dc1f749612b738ff6b7411c13a80f75b81c1052dec27b3",
-      "target_sha256": "515651f48be4b46e78dc1f749612b738ff6b7411c13a80f75b81c1052dec27b3",
+      "target_normalized_sha256": "ebb81decabd7f5e3f77bf380dbb85f0d817ccd3d6899b1b2d517c2f38a241a69",
+      "target_sha256": "ebb81decabd7f5e3f77bf380dbb85f0d817ccd3d6899b1b2d517c2f38a241a69",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -650,8 +650,8 @@
           "source_path": "evals/check-fixtures.ps1"
         }
       ],
-      "target_normalized_sha256": "ae399eb6995edb5dc9e7e9566b60abde97b1fd4247d7809983bcfa29491b6560",
-      "target_sha256": "ae399eb6995edb5dc9e7e9566b60abde97b1fd4247d7809983bcfa29491b6560",
+      "target_normalized_sha256": "2e1a4471d6be9f6444e3a81154d62c7d6360cf96d6dcf6f562670387aed94016",
+      "target_sha256": "2e1a4471d6be9f6444e3a81154d62c7d6360cf96d6dcf6f562670387aed94016",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {

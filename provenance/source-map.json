@@ -1,0 +1,710 @@
+{
+  "entries": [
+    {
+      "destination": ".gitattributes",
+      "kind": "standalone-normalized-text-rewrite",
+      "note": "Standalone LF checkout policy protects exact Git-blob equivalence across platforms",
+      "sources": [
+        {
+          "source_blob": "c5366d63a139eb9458c2cca313a7759dd6f64770",
+          "source_normalized_sha256": "f1fe95c2b78b2ec3ae0b2192aa619700391d4719d6a3a9078576cd9aed2942b4",
+          "source_path": ".gitignore"
+        },
+        {
+          "source_blob": "27bd3764c71465bb5efaf849cc79f68fbb200924",
+          "source_normalized_sha256": "0cadb2d0b0b94223edb7cb4504ae210c5cf0723197966178e62ed33035151fc6",
+          "source_path": "docs/PROVENANCE.md"
+        }
+      ],
+      "target_normalized_sha256": "d60f352d0db1404c70afb4bb8b2ca3fd1c610572aa40720e8a0b7baa7885418c",
+      "target_sha256": "d60f352d0db1404c70afb4bb8b2ca3fd1c610572aa40720e8a0b7baa7885418c",
+      "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
+    },
+    {
+      "destination": ".gitignore",
+      "kind": "exact-git-blob",
+      "source_blob": "c5366d63a139eb9458c2cca313a7759dd6f64770",
+      "source_path": ".gitignore",
+      "source_sha256": "f1fe95c2b78b2ec3ae0b2192aa619700391d4719d6a3a9078576cd9aed2942b4",
+      "target_sha256": "f1fe95c2b78b2ec3ae0b2192aa619700391d4719d6a3a9078576cd9aed2942b4"
+    },
+    {
+      "destination": "AGENTS.md",
+      "kind": "standalone-normalized-text-rewrite",
+      "note": "Standalone single-product development instructions",
+      "sources": [
+        {
+          "source_blob": "c1d7ce2cd6fa9be8027fd6ab0120ea9ebcab08c3",
+          "source_normalized_sha256": "04160e49e779de415459cf46561c9544bb4121fb7e00bb6aa96e87b7bb7386cf",
+          "source_path": "AGENTS.md"
+        }
+      ],
+      "target_normalized_sha256": "1f20444714e2217dc90b155d9a729cf15949c760864aacb10fef4a442fc5eda8",
+      "target_sha256": "1f20444714e2217dc90b155d9a729cf15949c760864aacb10fef4a442fc5eda8",
+      "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
+    },
+    {
+      "destination": "LICENSE",
+      "kind": "exact-git-blob",
+      "source_blob": "8dcfbf5c796ecf4dddf5dff2a1ce9fb891966414",
+      "source_path": "LICENSE",
+      "source_sha256": "42a9bc89d4a9211a97ed82563b70a6a0b6160d7d709b0f83f0a659c9c570a647",
+      "target_sha256": "42a9bc89d4a9211a97ed82563b70a6a0b6160d7d709b0f83f0a659c9c570a647"
+    },
+    {
+      "destination": "PROVENANCE.md",
+      "kind": "standalone-normalized-text-rewrite",
+      "note": "Standalone provenance and publication boundary",
+      "sources": [
+        {
+          "source_blob": "27bd3764c71465bb5efaf849cc79f68fbb200924",
+          "source_normalized_sha256": "0cadb2d0b0b94223edb7cb4504ae210c5cf0723197966178e62ed33035151fc6",
+          "source_path": "docs/PROVENANCE.md"
+        }
+      ],
+      "target_normalized_sha256": "e3c23024ef7242b449e4feadaf90809311dcbe82953cfba82503002f79b8ccdd",
+      "target_sha256": "e3c23024ef7242b449e4feadaf90809311dcbe82953cfba82503002f79b8ccdd",
+      "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
+    },
+    {
+      "destination": "README.md",
+      "kind": "standalone-normalized-text-rewrite",
+      "note": "Standalone English repository entry",
+      "sources": [
+        {
+          "source_blob": "1793b7809bc87af8069bd1db730213964eea8f91",
+          "source_normalized_sha256": "93b32a04846e39d45fb6e46fc801d03c2ce4470e3f3cc1fb5675bd5f2e04de19",
+          "source_path": "docs/skills/work-charter/README.md"
+        }
+      ],
+      "target_normalized_sha256": "347b058041fc8c9a86cc5a12c7a800caea013e2e4933890effd039cae20841c2",
+      "target_sha256": "347b058041fc8c9a86cc5a12c7a800caea013e2e4933890effd039cae20841c2",
+      "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
+    },
+    {
+      "destination": "README.zh-CN.md",
+      "kind": "standalone-normalized-text-rewrite",
+      "note": "Standalone Chinese repository entry",
+      "sources": [
+        {
+          "source_blob": "6a573225d7100b97203eaf5f29cf1623c513a30a",
+          "source_normalized_sha256": "e2d5d120473b0cb91bbbae0cfc7a47882ae869642907369955425de31335809f",
+          "source_path": "docs/skills/work-charter/README.zh-CN.md"
+        }
+      ],
+      "target_normalized_sha256": "92176e5cf9157e1d34593b335ab1b7db36cf86648227ed1ad80f447d14efe8c1",
+      "target_sha256": "92176e5cf9157e1d34593b335ab1b7db36cf86648227ed1ad80f447d14efe8c1",
+      "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
+    },
+    {
+      "destination": "docs/skills/work-charter/DESIGN.md",
+      "kind": "standalone-normalized-text-rewrite",
+      "note": "Standalone design summary; historical monorepo decisions omitted",
+      "sources": [
+        {
+          "source_blob": "7b17382ffffd20aebf2005ee9eccc3008ce78afd",
+          "source_normalized_sha256": "2eb5cead437215e6c99d4a32273014df33aa1e9bc4d85897bfa4cf9fc5ed5012",
+          "source_path": "docs/skills/work-charter/DESIGN.md"
+        }
+      ],
+      "target_normalized_sha256": "b78411cfca48859af95eab08ad66cb27afa50fd30175d79f3066fede4fa5543f",
+      "target_sha256": "b78411cfca48859af95eab08ad66cb27afa50fd30175d79f3066fede4fa5543f",
+      "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
+    },
+    {
+      "destination": "docs/skills/work-charter/README.md",
+      "kind": "standalone-normalized-text-rewrite",
+      "note": "Standalone product guide",
+      "sources": [
+        {
+          "source_blob": "1793b7809bc87af8069bd1db730213964eea8f91",
+          "source_normalized_sha256": "93b32a04846e39d45fb6e46fc801d03c2ce4470e3f3cc1fb5675bd5f2e04de19",
+          "source_path": "docs/skills/work-charter/README.md"
+        }
+      ],
+      "target_normalized_sha256": "bd59e6e8b17c1805a25db80ac0492e2b986fc25a013ae17b1e572f60f155c5fd",
+      "target_sha256": "bd59e6e8b17c1805a25db80ac0492e2b986fc25a013ae17b1e572f60f155c5fd",
+      "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
+    },
+    {
+      "destination": "docs/skills/work-charter/README.zh-CN.md",
+      "kind": "standalone-normalized-text-rewrite",
+      "note": "Standalone product guide mirror",
+      "sources": [
+        {
+          "source_blob": "6a573225d7100b97203eaf5f29cf1623c513a30a",
+          "source_normalized_sha256": "e2d5d120473b0cb91bbbae0cfc7a47882ae869642907369955425de31335809f",
+          "source_path": "docs/skills/work-charter/README.zh-CN.md"
+        }
+      ],
+      "target_normalized_sha256": "8a8c3e2c5b595f8af8b91802f395ecb3a2e2f973f6c937190e585697d590cdb8",
+      "target_sha256": "8a8c3e2c5b595f8af8b91802f395ecb3a2e2f973f6c937190e585697d590cdb8",
+      "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
+    },
+    {
+      "destination": "docs/skills/work-charter/STATE.md",
+      "kind": "standalone-normalized-text-rewrite",
+      "note": "Migration-forward current state; monorepo writer history omitted",
+      "sources": [
+        {
+          "source_blob": "a6219210eb15fe662c6e0403aba02c713d87523e",
+          "source_normalized_sha256": "5d6bfc7acbc28bbae52b7bb81646cd48f69764c5ddbcabba8c8170dbbda4bd67",
+          "source_path": "docs/skills/work-charter/STATE.md"
+        }
+      ],
+      "target_normalized_sha256": "b214d73f0b9c9c89beb5c97b56544997e857bf6a73d8f5a4d7f75904653b0f92",
+      "target_sha256": "b214d73f0b9c9c89beb5c97b56544997e857bf6a73d8f5a4d7f75904653b0f92",
+      "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
+    },
+    {
+      "destination": "docs/skills/work-charter/VERIFICATION.md",
+      "kind": "standalone-normalized-text-rewrite",
+      "note": "Standalone evidence summary and limits",
+      "sources": [
+        {
+          "source_blob": "ee22aed220bd2668df2ebf9fac99c81417ffee3c",
+          "source_normalized_sha256": "9329d7d7e5f4dd621e9776fa8eafb3cfb26558e5cc15128aae636d7a8372ca02",
+          "source_path": "docs/skills/work-charter/VERIFICATION.md"
+        }
+      ],
+      "target_normalized_sha256": "515651f48be4b46e78dc1f749612b738ff6b7411c13a80f75b81c1052dec27b3",
+      "target_sha256": "515651f48be4b46e78dc1f749612b738ff6b7411c13a80f75b81c1052dec27b3",
+      "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
+    },
+    {
+      "destination": "evals/README.md",
+      "kind": "standalone-normalized-text-rewrite",
+      "note": "Product-specific evaluation index",
+      "sources": [
+        {
+          "source_blob": "cf7c1e6d85142ff3758b366fcea25508be412ceb",
+          "source_normalized_sha256": "02a1521ae371897ab929ff41558c0f30c0a0b14d575ad185bdae5f49ac4697d3",
+          "source_path": "evals/README.md"
+        }
+      ],
+      "target_normalized_sha256": "af39a7a2fdab14609db0759acb9693f75f86462aafbe3962658e06466b3ca552",
+      "target_sha256": "af39a7a2fdab14609db0759acb9693f75f86462aafbe3962658e06466b3ca552",
+      "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
+    },
+    {
+      "destination": "evals/cases/cold-resume.md",
+      "kind": "exact-git-blob",
+      "source_blob": "ddb0f4282f410f8efe4eb13fb9ccc9356c9dabb1",
+      "source_path": "evals/cases/cold-resume.md",
+      "source_sha256": "61f0c79edd66c6516565f2879a39ccab26bbb6140c84616d171c0d3f1130213a",
+      "target_sha256": "61f0c79edd66c6516565f2879a39ccab26bbb6140c84616d171c0d3f1130213a"
+    },
+    {
+      "destination": "evals/cases/small-task-stays-flat.md",
+      "kind": "exact-git-blob",
+      "source_blob": "35a06702b2ba305b1b78b07ae615114125de3148",
+      "source_path": "evals/cases/small-task-stays-flat.md",
+      "source_sha256": "8d3be186f2c8552720f09a73d57fee45b94eccd191d06dd62d68c32c13b053da",
+      "target_sha256": "8d3be186f2c8552720f09a73d57fee45b94eccd191d06dd62d68c32c13b053da"
+    },
+    {
+      "destination": "evals/cases/work-charter-entry.md",
+      "kind": "exact-git-blob",
+      "source_blob": "a70ce574ecc8be87680dcfd5200507acd7bd5dd4",
+      "source_path": "evals/cases/work-charter-entry.md",
+      "source_sha256": "42339a1d96df3d7b2c3b9f0f44c284380e112ba944cb3b5d385b46e53312e69e",
+      "target_sha256": "42339a1d96df3d7b2c3b9f0f44c284380e112ba944cb3b5d385b46e53312e69e"
+    },
+    {
+      "destination": "evals/cases/work-charter-midstream.md",
+      "kind": "exact-git-blob",
+      "source_blob": "8f93096c3dd68a0b42a468179715a4c54b8fb930",
+      "source_path": "evals/cases/work-charter-midstream.md",
+      "source_sha256": "5abe50eaaf5450678a638cdd471e694763f8ecb7103c570d864ad16e28520bfc",
+      "target_sha256": "5abe50eaaf5450678a638cdd471e694763f8ecb7103c570d864ad16e28520bfc"
+    },
+    {
+      "destination": "evals/cases/work-charter-planner-executor.md",
+      "kind": "exact-git-blob",
+      "source_blob": "87813972085d33f35dc83d86119e741c7e1d8b45",
+      "source_path": "evals/cases/work-charter-planner-executor.md",
+      "source_sha256": "91fba4f86c0e748b286e7ae1b1a269693e356d689a1c6d9b3b3c011602f8e803",
+      "target_sha256": "91fba4f86c0e748b286e7ae1b1a269693e356d689a1c6d9b3b3c011602f8e803"
+    },
+    {
+      "destination": "evals/cases/work-charter-recovery-integrity.md",
+      "kind": "exact-git-blob",
+      "source_blob": "544901651452db5de7c4d84c445def637d5fdebd",
+      "source_path": "evals/cases/work-charter-recovery-integrity.md",
+      "source_sha256": "af506b508d25839ec79443c512bb98cfebe83385677341ed0c714500987edc31",
+      "target_sha256": "af506b508d25839ec79443c512bb98cfebe83385677341ed0c714500987edc31"
+    },
+    {
+      "destination": "evals/cases/work-charter-selection.md",
+      "kind": "exact-git-blob",
+      "source_blob": "5f3c443cfea8aa1a27e21d7f5cc68bd86407e31a",
+      "source_path": "evals/cases/work-charter-selection.md",
+      "source_sha256": "26cb500878a57b7fd8bf5755739698d91eed4e5bc6cc4f58e6c1db8a9e142b0f",
+      "target_sha256": "26cb500878a57b7fd8bf5755739698d91eed4e5bc6cc4f58e6c1db8a9e142b0f"
+    },
+    {
+      "destination": "evals/cases/work-charter-standard.md",
+      "kind": "exact-git-blob",
+      "source_blob": "42a73e9d6e63f15c22fc5e95b3675afedbbd1dd0",
+      "source_path": "evals/cases/work-charter-standard.md",
+      "source_sha256": "bc368cd2aa4c98a51c698538b30c34641ed360b6cd1133cccac096ec21e429a6",
+      "target_sha256": "bc368cd2aa4c98a51c698538b30c34641ed360b6cd1133cccac096ec21e429a6"
+    },
+    {
+      "destination": "evals/fixtures/cold-resume/AGENTS.md",
+      "kind": "exact-git-blob",
+      "source_blob": "03ce17eeb91141069104352edb23c52d13e753df",
+      "source_path": "evals/fixtures/cold-resume/AGENTS.md",
+      "source_sha256": "373286a6e78e83d642dd472d628f5db4f3ac094ade3992c9fb6ad7a8e410fdc2",
+      "target_sha256": "373286a6e78e83d642dd472d628f5db4f3ac094ade3992c9fb6ad7a8e410fdc2"
+    },
+    {
+      "destination": "evals/fixtures/cold-resume/README.md",
+      "kind": "exact-git-blob",
+      "source_blob": "75c6a3f01ed1b9c8fc764d68697f94c7476403f3",
+      "source_path": "evals/fixtures/cold-resume/README.md",
+      "source_sha256": "e0e541cae4eee030dadddf9ee2e9ac18f867d5dab43773398fbdca1d02005432",
+      "target_sha256": "e0e541cae4eee030dadddf9ee2e9ac18f867d5dab43773398fbdca1d02005432"
+    },
+    {
+      "destination": "evals/fixtures/cold-resume/docs/AUTHORITY.md",
+      "kind": "exact-git-blob",
+      "source_blob": "d496b830bec6166c98e5aa4e64cc4bb993047406",
+      "source_path": "evals/fixtures/cold-resume/docs/AUTHORITY.md",
+      "source_sha256": "7802f8dfc4addb7baeaca76f4b34a23632adc418f20c404b8cf18b6b1d85f893",
+      "target_sha256": "7802f8dfc4addb7baeaca76f4b34a23632adc418f20c404b8cf18b6b1d85f893"
+    },
+    {
+      "destination": "evals/fixtures/cold-resume/docs/CHECKS.md",
+      "kind": "exact-git-blob",
+      "source_blob": "93e9421caaab0d91fc4bee02be6ab64bbbd1a420",
+      "source_path": "evals/fixtures/cold-resume/docs/CHECKS.md",
+      "source_sha256": "189d9bc4cd91550d54602ef7c92803d8cda89c020a49eb8d3a98d3f13f70344a",
+      "target_sha256": "189d9bc4cd91550d54602ef7c92803d8cda89c020a49eb8d3a98d3f13f70344a"
+    },
+    {
+      "destination": "evals/fixtures/cold-resume/docs/CONTINUE.md",
+      "kind": "exact-git-blob",
+      "source_blob": "60baba6edf7ed4512877fa24ff5733b69180fa9b",
+      "source_path": "evals/fixtures/cold-resume/docs/CONTINUE.md",
+      "source_sha256": "6308444b21cd3a1fc321cd3fe0ebeb2ee75fa0d9b456c3537435986ae3d9b06c",
+      "target_sha256": "6308444b21cd3a1fc321cd3fe0ebeb2ee75fa0d9b456c3537435986ae3d9b06c"
+    },
+    {
+      "destination": "evals/fixtures/cold-resume/docs/MAP.md",
+      "kind": "exact-git-blob",
+      "source_blob": "1cdb8e650aee73e0e699ec8f749316740280fdbd",
+      "source_path": "evals/fixtures/cold-resume/docs/MAP.md",
+      "source_sha256": "42fda563e7bf3cba4f26bb1df891226f8d770ee61083d0351ecaf66a288c8500",
+      "target_sha256": "42fda563e7bf3cba4f26bb1df891226f8d770ee61083d0351ecaf66a288c8500"
+    },
+    {
+      "destination": "evals/fixtures/cold-resume/docs/NOW.md",
+      "kind": "exact-git-blob",
+      "source_blob": "ce4fe4159d148081c4db3e64058deeca1ff91879",
+      "source_path": "evals/fixtures/cold-resume/docs/NOW.md",
+      "source_sha256": "61659eb21bd165df932d6ccd6d34e1995f67f7086b79f6eaf1b958108969203a",
+      "target_sha256": "61659eb21bd165df932d6ccd6d34e1995f67f7086b79f6eaf1b958108969203a"
+    },
+    {
+      "destination": "evals/fixtures/cold-resume/docs/PHASE.md",
+      "kind": "exact-git-blob",
+      "source_blob": "a1362a6f9d8c4ab1688f572b45554b32ab6f6691",
+      "source_path": "evals/fixtures/cold-resume/docs/PHASE.md",
+      "source_sha256": "b47d3a22f2ecb6de44b2c22670195388aeb9bb62623786bda113abfc97a8b472",
+      "target_sha256": "b47d3a22f2ecb6de44b2c22670195388aeb9bb62623786bda113abfc97a8b472"
+    },
+    {
+      "destination": "evals/fixtures/cold-resume/src/__init__.py",
+      "kind": "exact-git-blob",
+      "source_blob": "559e079300d2b88fa02ded771ab7500d4d08343a",
+      "source_path": "evals/fixtures/cold-resume/src/__init__.py",
+      "source_sha256": "f5d6192f2cb37dd729d77e38eb6372aa05c2aa705a373c0c29fc1ef93ee189aa",
+      "target_sha256": "f5d6192f2cb37dd729d77e38eb6372aa05c2aa705a373c0c29fc1ef93ee189aa"
+    },
+    {
+      "destination": "evals/fixtures/cold-resume/src/retry_policy.py",
+      "kind": "exact-git-blob",
+      "source_blob": "77d700f9d5f10574144502d2469753636a56fe8c",
+      "source_path": "evals/fixtures/cold-resume/src/retry_policy.py",
+      "source_sha256": "cc962b6ecfeeb1a37917c743c3224099d16a210e874dfaac951114a491db6c67",
+      "target_sha256": "cc962b6ecfeeb1a37917c743c3224099d16a210e874dfaac951114a491db6c67"
+    },
+    {
+      "destination": "evals/fixtures/cold-resume/src/worker.py",
+      "kind": "exact-git-blob",
+      "source_blob": "1ce9724d9209869aea197a0f93d1fba32242f5ef",
+      "source_path": "evals/fixtures/cold-resume/src/worker.py",
+      "source_sha256": "0b78078d4b26f6ae39a43623ea00d955310382f9dcfac125e1113cdde7705144",
+      "target_sha256": "0b78078d4b26f6ae39a43623ea00d955310382f9dcfac125e1113cdde7705144"
+    },
+    {
+      "destination": "evals/fixtures/cold-resume/tests/test_worker.py",
+      "kind": "exact-git-blob",
+      "source_blob": "d443c9c2ddd1ceae9495796e0aa0032e45367aed",
+      "source_path": "evals/fixtures/cold-resume/tests/test_worker.py",
+      "source_sha256": "23a3819e2b271b21618433fb3d61a687bb7c73877f763cae4dcb5a70424cfeea",
+      "target_sha256": "23a3819e2b271b21618433fb3d61a687bb7c73877f763cae4dcb5a70424cfeea"
+    },
+    {
+      "destination": "evals/fixtures/small-task-stays-flat/AGENTS.md",
+      "kind": "exact-git-blob",
+      "source_blob": "db7f480d12446c86af8e2c4ac64ea529c9b778fe",
+      "source_path": "evals/fixtures/small-task-stays-flat/AGENTS.md",
+      "source_sha256": "bf7d6ff5f05411350f82ed8145c469bc3824b8d62939fdf81a967114b2e587e0",
+      "target_sha256": "bf7d6ff5f05411350f82ed8145c469bc3824b8d62939fdf81a967114b2e587e0"
+    },
+    {
+      "destination": "evals/fixtures/small-task-stays-flat/README.md",
+      "kind": "exact-git-blob",
+      "source_blob": "de05aa02d2c214a100f7ed36498180d8ab864cdb",
+      "source_path": "evals/fixtures/small-task-stays-flat/README.md",
+      "source_sha256": "acef3fe24f0627286880891a7b0f827c4a38f7798547f39974d5bf6bf371b1b5",
+      "target_sha256": "acef3fe24f0627286880891a7b0f827c4a38f7798547f39974d5bf6bf371b1b5"
+    },
+    {
+      "destination": "evals/fixtures/small-task-stays-flat/src/__init__.py",
+      "kind": "exact-git-blob",
+      "source_blob": "d58e5499f088fb774daf7a118a7dacd9ba1fed8e",
+      "source_path": "evals/fixtures/small-task-stays-flat/src/__init__.py",
+      "source_sha256": "6a6bec509c4fc50419697c863163d4055f830e0318df0a9937ce6e89b1c81b04",
+      "target_sha256": "6a6bec509c4fc50419697c863163d4055f830e0318df0a9937ce6e89b1c81b04"
+    },
+    {
+      "destination": "evals/fixtures/small-task-stays-flat/src/range_utils.py",
+      "kind": "exact-git-blob",
+      "source_blob": "a12d5cf484713a44fd698d31b645eeb16488c555",
+      "source_path": "evals/fixtures/small-task-stays-flat/src/range_utils.py",
+      "source_sha256": "0d3f2767fe3d8211833863881f6b5f92d4971d58a33475b7cc2da300571fce32",
+      "target_sha256": "0d3f2767fe3d8211833863881f6b5f92d4971d58a33475b7cc2da300571fce32"
+    },
+    {
+      "destination": "evals/fixtures/small-task-stays-flat/tests/test_range_utils.py",
+      "kind": "exact-git-blob",
+      "source_blob": "a8d0f7f7b29e3e609f7d1ab50b218f6cbb0391de",
+      "source_path": "evals/fixtures/small-task-stays-flat/tests/test_range_utils.py",
+      "source_sha256": "954995aef4ee62186165a6acbe559446f3777ceba52f7f7e21a3b3a7024faf8d",
+      "target_sha256": "954995aef4ee62186165a6acbe559446f3777ceba52f7f7e21a3b3a7024faf8d"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-entry/existing-owner/AGENTS.md",
+      "kind": "exact-git-blob",
+      "source_blob": "64de4b03dbb634e9b6af284409de0ac911e44c3b",
+      "source_path": "evals/fixtures/work-charter-entry/existing-owner/AGENTS.md",
+      "source_sha256": "0497bc8f04256e6207b9ea97b3306f5e9c3d4bda88a211ea11a7ef8503578cb5",
+      "target_sha256": "0497bc8f04256e6207b9ea97b3306f5e9c3d4bda88a211ea11a7ef8503578cb5"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-entry/existing-owner/PROJECT.md",
+      "kind": "exact-git-blob",
+      "source_blob": "ff03b8b30779378d63d4e26dcb5f205f469dfb73",
+      "source_path": "evals/fixtures/work-charter-entry/existing-owner/PROJECT.md",
+      "source_sha256": "cbf955a3b2aa282cd3af7cdd1028bbdc8b50e2e13fdb89f7b99525d05acde17f",
+      "target_sha256": "cbf955a3b2aa282cd3af7cdd1028bbdc8b50e2e13fdb89f7b99525d05acde17f"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-entry/existing-owner/README.md",
+      "kind": "exact-git-blob",
+      "source_blob": "e9a537404862ecb0e0f9ce06dc0ee0f084e7b815",
+      "source_path": "evals/fixtures/work-charter-entry/existing-owner/README.md",
+      "source_sha256": "e358bc08af9027c77bab8d725a477d4f51e94fe56e6fdc750d76757409d32772",
+      "target_sha256": "e358bc08af9027c77bab8d725a477d4f51e94fe56e6fdc750d76757409d32772"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-entry/no-owner/AGENTS.md",
+      "kind": "exact-git-blob",
+      "source_blob": "03b8a14c2ab110ac4270ab93d194d568ae9edeb7",
+      "source_path": "evals/fixtures/work-charter-entry/no-owner/AGENTS.md",
+      "source_sha256": "cde6b7391fd79844bd818b726d7206c174dd702f8d409045d4736fdfefcb3e14",
+      "target_sha256": "cde6b7391fd79844bd818b726d7206c174dd702f8d409045d4736fdfefcb3e14"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-entry/no-owner/README.md",
+      "kind": "exact-git-blob",
+      "source_blob": "9ed8aa23a19566b5ea5d3db5e84447fe15930943",
+      "source_path": "evals/fixtures/work-charter-entry/no-owner/README.md",
+      "source_sha256": "068458a8c2b8137aae01430c80d08bc6e2ff6f33978b7b2a70b3e003c6c12e85",
+      "target_sha256": "068458a8c2b8137aae01430c80d08bc6e2ff6f33978b7b2a70b3e003c6c12e85"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-loop/AGENTS.md",
+      "kind": "exact-git-blob",
+      "source_blob": "d423961287ffdc47897efb3097d0bd50b0ab64ad",
+      "source_path": "evals/fixtures/work-charter-loop/AGENTS.md",
+      "source_sha256": "ef457e5006b82199192ef78f324d55a4ecfcd0758a0455b545d7d3ef75c6bd4b",
+      "target_sha256": "ef457e5006b82199192ef78f324d55a4ecfcd0758a0455b545d7d3ef75c6bd4b"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-loop/EVIDENCE.md",
+      "kind": "exact-git-blob",
+      "source_blob": "c791bd2eeb0ab8c257e41427aef24750e1717cdd",
+      "source_path": "evals/fixtures/work-charter-loop/EVIDENCE.md",
+      "source_sha256": "faf7e031a7e47bb78d7dbaf194d969fc81a31801c84471111e674bd7eee28b66",
+      "target_sha256": "faf7e031a7e47bb78d7dbaf194d969fc81a31801c84471111e674bd7eee28b66"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-loop/README.md",
+      "kind": "exact-git-blob",
+      "source_blob": "a4ceac282b7d248579c47770a0c768db69176583",
+      "source_path": "evals/fixtures/work-charter-loop/README.md",
+      "source_sha256": "c22d5ad1675d6f7a4381806adf97d6bf175a3318a665a661d55bc061eeaaeaf0",
+      "target_sha256": "c22d5ad1675d6f7a4381806adf97d6bf175a3318a665a661d55bc061eeaaeaf0"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-loop/STATUS.md",
+      "kind": "exact-git-blob",
+      "source_blob": "c30f16fbe54d9abac26feed566d1fa458c5cf0c6",
+      "source_path": "evals/fixtures/work-charter-loop/STATUS.md",
+      "source_sha256": "84d8f5deabda75d8d9c97d33d16fb11956fd2f5b795a27836c8bc899c7857ff2",
+      "target_sha256": "84d8f5deabda75d8d9c97d33d16fb11956fd2f5b795a27836c8bc899c7857ff2"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-loop/WORK.md",
+      "kind": "exact-git-blob",
+      "source_blob": "330a4a934f8b34d77074341354f59c2602922881",
+      "source_path": "evals/fixtures/work-charter-loop/WORK.md",
+      "source_sha256": "cbba220848205e5417e1e085773c6846e3fcd9786598fab5382a9f62f469e802",
+      "target_sha256": "cbba220848205e5417e1e085773c6846e3fcd9786598fab5382a9f62f469e802"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-loop/src/__init__.py",
+      "kind": "exact-git-blob",
+      "source_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "source_path": "evals/fixtures/work-charter-loop/src/__init__.py",
+      "source_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "target_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-loop/src/batches.py",
+      "kind": "exact-git-blob",
+      "source_blob": "05aee526436d7f1e6ff306916217ff8a39d470a6",
+      "source_path": "evals/fixtures/work-charter-loop/src/batches.py",
+      "source_sha256": "36a56ee9a05a58b4c9b42a58e1f2705240559ca788bae4d639d2b02203319c18",
+      "target_sha256": "36a56ee9a05a58b4c9b42a58e1f2705240559ca788bae4d639d2b02203319c18"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-loop/tests/test_batches.py",
+      "kind": "exact-git-blob",
+      "source_blob": "4481c50c14117abd2bea3adbb030963ab3db2c8a",
+      "source_path": "evals/fixtures/work-charter-loop/tests/test_batches.py",
+      "source_sha256": "795390f830a84f954a3ce233f453fa82177116dca7db8f264a1726e38138224a",
+      "target_sha256": "795390f830a84f954a3ce233f453fa82177116dca7db8f264a1726e38138224a"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-recovery-integrity/AGENTS.md",
+      "kind": "exact-git-blob",
+      "source_blob": "38d51c49293aec8291e7ebeeb0342a384ec41d5e",
+      "source_path": "evals/fixtures/work-charter-recovery-integrity/AGENTS.md",
+      "source_sha256": "86ba802c265431cdfa6f66eefa274b400c65b52a20e71966c4e0084c1f7e1b83",
+      "target_sha256": "86ba802c265431cdfa6f66eefa274b400c65b52a20e71966c4e0084c1f7e1b83"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-recovery-integrity/assessment-recording/SNAPSHOT.md",
+      "kind": "exact-git-blob",
+      "source_blob": "6587465d1127ce28a057758a52d66bf673b6027f",
+      "source_path": "evals/fixtures/work-charter-recovery-integrity/assessment-recording/SNAPSHOT.md",
+      "source_sha256": "2bc381728e51e39270b034958ed8822d1ba998dffceddb69826c6bf52478813f",
+      "target_sha256": "2bc381728e51e39270b034958ed8822d1ba998dffceddb69826c6bf52478813f"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-recovery-integrity/authority-ordering/SNAPSHOT.md",
+      "kind": "exact-git-blob",
+      "source_blob": "3ec493efc27f83641c34289c83bfc820acd542e2",
+      "source_path": "evals/fixtures/work-charter-recovery-integrity/authority-ordering/SNAPSHOT.md",
+      "source_sha256": "4cd5107bfcf79e298086f93d370b0ff5ffd49cdc78cf3035e5b8267ccc933008",
+      "target_sha256": "4cd5107bfcf79e298086f93d370b0ff5ffd49cdc78cf3035e5b8267ccc933008"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-recovery-integrity/charter-revision/SNAPSHOT.md",
+      "kind": "exact-git-blob",
+      "source_blob": "acec1dedaac290a7fea591e2051cc687ffef2793",
+      "source_path": "evals/fixtures/work-charter-recovery-integrity/charter-revision/SNAPSHOT.md",
+      "source_sha256": "093653d8695e5877d49392aac32c851f3bf021079d87ef4fa32ec8c03e161221",
+      "target_sha256": "093653d8695e5877d49392aac32c851f3bf021079d87ef4fa32ec8c03e161221"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-recovery-integrity/delivery-and-writer/SNAPSHOT.md",
+      "kind": "exact-git-blob",
+      "source_blob": "124d75b31710fa0df4717c18a8355d1baf29bd0e",
+      "source_path": "evals/fixtures/work-charter-recovery-integrity/delivery-and-writer/SNAPSHOT.md",
+      "source_sha256": "a7e49009cbb16c0e6ad3c337d9606bcb14b5621a44c8b68ad46ac02af150eced",
+      "target_sha256": "a7e49009cbb16c0e6ad3c337d9606bcb14b5621a44c8b68ad46ac02af150eced"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-recovery-integrity/evidence-drift/.gitignore",
+      "kind": "exact-git-blob",
+      "source_blob": "db5f417333bdd8f5138cf7bc970fb5cda36920ee",
+      "source_path": "evals/fixtures/work-charter-recovery-integrity/evidence-drift/.gitignore",
+      "source_sha256": "81fd7d9738ad0aa826fddbb81d0228a2677d5240f981e9b0218a237894a04143",
+      "target_sha256": "81fd7d9738ad0aa826fddbb81d0228a2677d5240f981e9b0218a237894a04143"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-recovery-integrity/evidence-drift/SNAPSHOT.md",
+      "kind": "exact-git-blob",
+      "source_blob": "0fc5b31108db84328b2707ae15bd7700758c0bb8",
+      "source_path": "evals/fixtures/work-charter-recovery-integrity/evidence-drift/SNAPSHOT.md",
+      "source_sha256": "988b00078bb88747429d02e769a562367d15cdd6d4b6fad41d4a1b3830108e5e",
+      "target_sha256": "988b00078bb88747429d02e769a562367d15cdd6d4b6fad41d4a1b3830108e5e"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-recovery-integrity/evidence-drift/qualification-result.txt",
+      "kind": "exact-git-blob",
+      "source_blob": "9f66a7b64ef624fb1b81d4bb0458517ac3352934",
+      "source_path": "evals/fixtures/work-charter-recovery-integrity/evidence-drift/qualification-result.txt",
+      "source_sha256": "55d9c432c27d7112fa588c404fd2783663efbc171aee4b3912e6ba1e39bbe8a3",
+      "target_sha256": "55d9c432c27d7112fa588c404fd2783663efbc171aee4b3912e6ba1e39bbe8a3"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-recovery-integrity/multi-worktree-carrier/SNAPSHOT.md",
+      "kind": "exact-git-blob",
+      "source_blob": "f6e64ab39293f1c923826b62bad477d3566335c2",
+      "source_path": "evals/fixtures/work-charter-recovery-integrity/multi-worktree-carrier/SNAPSHOT.md",
+      "source_sha256": "40351bf98d931837d8253f1368019df1810cf769dcc7924c65b1c6d6b3fee535",
+      "target_sha256": "40351bf98d931837d8253f1368019df1810cf769dcc7924c65b1c6d6b3fee535"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-standard/AGENTS.md",
+      "kind": "exact-git-blob",
+      "source_blob": "6c594317cb3f2253e617849d4cddba3546e68b11",
+      "source_path": "evals/fixtures/work-charter-standard/AGENTS.md",
+      "source_sha256": "c95dfe57eae60219d339484dffcc307a61da00bd7f3be22a531bc02a6072d5c1",
+      "target_sha256": "c95dfe57eae60219d339484dffcc307a61da00bd7f3be22a531bc02a6072d5c1"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-standard/EVIDENCE.md",
+      "kind": "exact-git-blob",
+      "source_blob": "cff5409e5462a8d42d5dad6e2cf61cea5ad4edab",
+      "source_path": "evals/fixtures/work-charter-standard/EVIDENCE.md",
+      "source_sha256": "69e311b7a41ed0ff353709f03c88111af84840d6207a5dce8ca1f765e07761a9",
+      "target_sha256": "69e311b7a41ed0ff353709f03c88111af84840d6207a5dce8ca1f765e07761a9"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-standard/PROJECT.md",
+      "kind": "exact-git-blob",
+      "source_blob": "009d5e68225d590415f599356dec51b8867c89f3",
+      "source_path": "evals/fixtures/work-charter-standard/PROJECT.md",
+      "source_sha256": "6ae6d4164eceee1b71190b890355b80ee63e3d2bb31ad59abe4fe2e0c2136463",
+      "target_sha256": "6ae6d4164eceee1b71190b890355b80ee63e3d2bb31ad59abe4fe2e0c2136463"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-standard/README.md",
+      "kind": "exact-git-blob",
+      "source_blob": "8b1a67f8d077548346e078e8e5f8c4e2d3d4b842",
+      "source_path": "evals/fixtures/work-charter-standard/README.md",
+      "source_sha256": "8638afcc11e2cb3f1bd264964334a2a3a2ca261e33b4a9932e991c21a18d6243",
+      "target_sha256": "8638afcc11e2cb3f1bd264964334a2a3a2ca261e33b4a9932e991c21a18d6243"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-standard/STATUS.md",
+      "kind": "exact-git-blob",
+      "source_blob": "e462bd248a3748b5f9197d0bd8bddedb6896f034",
+      "source_path": "evals/fixtures/work-charter-standard/STATUS.md",
+      "source_sha256": "972207179a79584a6f7df7834b90e0d216d8baf22dabf074c1d761df1896f40e",
+      "target_sha256": "972207179a79584a6f7df7834b90e0d216d8baf22dabf074c1d761df1896f40e"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-standard/src/__init__.py",
+      "kind": "exact-git-blob",
+      "source_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "source_path": "evals/fixtures/work-charter-standard/src/__init__.py",
+      "source_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "target_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-standard/src/event_tally.py",
+      "kind": "exact-git-blob",
+      "source_blob": "50929b17d77c19db66ce9e0fa2c841527c3fe4ae",
+      "source_path": "evals/fixtures/work-charter-standard/src/event_tally.py",
+      "source_sha256": "7f9c3bf8f8f29355ae97f0a7b539c343dbe36605e7749f99d8f1576620161a66",
+      "target_sha256": "7f9c3bf8f8f29355ae97f0a7b539c343dbe36605e7749f99d8f1576620161a66"
+    },
+    {
+      "destination": "evals/fixtures/work-charter-standard/tests/test_event_tally.py",
+      "kind": "exact-git-blob",
+      "source_blob": "5644dc267513287938786464a9008453f023e09e",
+      "source_path": "evals/fixtures/work-charter-standard/tests/test_event_tally.py",
+      "source_sha256": "89879e10c39981f70e9522f53797682452e0d7f11050c6ef7b4ad8e8dbab6af0",
+      "target_sha256": "89879e10c39981f70e9522f53797682452e0d7f11050c6ef7b4ad8e8dbab6af0"
+    },
+    {
+      "destination": "evals/setup-cold-resume.ps1",
+      "kind": "exact-git-blob",
+      "source_blob": "93cdcdd4db0005ddb2d03658758d0241adf1eca6",
+      "source_path": "evals/setup-cold-resume.ps1",
+      "source_sha256": "803520c3a7c313e3a8b89cd81873d7d17aa28274e1e65c9795131ceabb4a68b2",
+      "target_sha256": "803520c3a7c313e3a8b89cd81873d7d17aa28274e1e65c9795131ceabb4a68b2"
+    },
+    {
+      "destination": "scripts/check_repository.py",
+      "kind": "standalone-normalized-text-rewrite",
+      "note": "Standalone slice of repository and fixture validation",
+      "sources": [
+        {
+          "source_blob": "ca5c47ff58c0e32cce14fcaf5fb1a43e68c0380a",
+          "source_normalized_sha256": "3b0743e04bf39d797538538cf981935974cdaecadcdf383faf4477d92c207771",
+          "source_path": "scripts/check_repository.py"
+        },
+        {
+          "source_blob": "ca098a700a32fde9db7fdfed76d8a28a24d4a33c",
+          "source_normalized_sha256": "f2eabda7058daea2f80ce4072f54c3300530ab0ee9ed6d6dd2f439677635155b",
+          "source_path": "evals/check-fixtures.ps1"
+        }
+      ],
+      "target_normalized_sha256": "449362f1eb8347b63523c850e70326fd3db981241a6ae8cbfc3d13820b812891",
+      "target_sha256": "449362f1eb8347b63523c850e70326fd3db981241a6ae8cbfc3d13820b812891",
+      "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
+    },
+    {
+      "destination": "skills/work-charter/SKILL.md",
+      "kind": "exact-git-blob",
+      "source_blob": "88cea94d218e5816ac05175da7ae9794c5e4be60",
+      "source_path": "skills/work-charter/SKILL.md",
+      "source_sha256": "c750d51940456b110bc7ed4b7d490690f42ca8ee9b555c23c8fe3d4d056b4dba",
+      "target_sha256": "c750d51940456b110bc7ed4b7d490690f42ca8ee9b555c23c8fe3d4d056b4dba"
+    },
+    {
+      "destination": "skills/work-charter/agents/openai.yaml",
+      "kind": "exact-git-blob",
+      "source_blob": "046913c91bce30b6af0eeb599d5b76701cfc6210",
+      "source_path": "skills/work-charter/agents/openai.yaml",
+      "source_sha256": "f0032475e213d75ed17eb41c3424007ebc46c0ddb6739138c9908185beefdad6",
+      "target_sha256": "f0032475e213d75ed17eb41c3424007ebc46c0ddb6739138c9908185beefdad6"
+    },
+    {
+      "destination": "skills/work-charter/assets/work-charter.md",
+      "kind": "exact-git-blob",
+      "source_blob": "25a23db1dd9487f1bf2bd9d48653efa0e48a3b4e",
+      "source_path": "skills/work-charter/assets/work-charter.md",
+      "source_sha256": "ca2ec792c0b0bf978e79a7e51cb5afd9b675e79b0daf7d0dc81917f77bfc7fa1",
+      "target_sha256": "ca2ec792c0b0bf978e79a7e51cb5afd9b675e79b0daf7d0dc81917f77bfc7fa1"
+    },
+    {
+      "destination": "skills/work-charter/references/coordination-and-recovery.md",
+      "kind": "exact-git-blob",
+      "source_blob": "85e9e4db2b833c54cebc63ca2c85610f870831bc",
+      "source_path": "skills/work-charter/references/coordination-and-recovery.md",
+      "source_sha256": "5565ef7d2db47847c570ae0ea0a0a307bc64c0ed8b61261d85177f4ef2da1f88",
+      "target_sha256": "5565ef7d2db47847c570ae0ea0a0a307bc64c0ed8b61261d85177f4ef2da1f88"
+    },
+    {
+      "destination": "skills/work-charter/references/standard-ope.md",
+      "kind": "exact-git-blob",
+      "source_blob": "0c13da3ef50ed768a33946f7dcf6a93584618edd",
+      "source_path": "skills/work-charter/references/standard-ope.md",
+      "source_sha256": "10a4d5b9c9239ac2f79544155e09ea230d99e6ca80049cd01ea624f16a72fd67",
+      "target_sha256": "10a4d5b9c9239ac2f79544155e09ea230d99e6ca80049cd01ea624f16a72fd67"
+    }
+  ],
+  "manifest_provenance": [
+    {
+      "source_blob": "27bd3764c71465bb5efaf849cc79f68fbb200924",
+      "source_normalized_sha256": "0cadb2d0b0b94223edb7cb4504ae210c5cf0723197966178e62ed33035151fc6",
+      "source_path": "docs/PROVENANCE.md"
+    }
+  ],
+  "materialization": "direct git object extraction by exact commit:path; no clone or archive",
+  "product": "work-charter",
+  "schema": "standalone-skill-provenance/v1",
+  "source_commit": "80910a8b2375a11be897e9660c4b00a06d00dd13",
+  "source_tree": "2ec2574116a9b2c4e8ec9a1bb4cb2636cb6279af"
+}

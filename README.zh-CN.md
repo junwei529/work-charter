@@ -8,9 +8,10 @@
 
 首个独立版本为 `v0.3.0`。当前本地候选由
 [`release/v0.3.0-candidate.json`](release/v0.3.0-candidate.json) 描述，未来公开身份为
-`junwei529/work-charter`。在 exact candidate 获得验收、且后续公开发布证据产生前，
-`LOCAL_RELEASE_READY` 为 `PENDING_PLANNER_ACCEPTANCE`，`PUBLIC_RELEASE` 保持
-`UNKNOWN`。
+`junwei529/work-charter`。Exact candidate C 已获验收，并由
+[`release/v0.3.0-local-release-receipt.json`](release/v0.3.0-local-release-receipt.json)
+绑定，因此 `LOCAL_RELEASE_READY` 为 `VERIFIED`；`PUBLIC_RELEASE` 仍为 `UNKNOWN`。
+不可变 candidate descriptor 保留 C 中原始的 `PENDING_PLANNER_ACCEPTANCE` 快照，不重写 C。
 
 ## 仓库内容
 

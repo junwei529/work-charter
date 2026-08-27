@@ -20,6 +20,10 @@ The independent `v0.3.0` candidate does not change those package bytes. Release
 metadata, deterministic SOURCE qualification, and lifecycle tooling are
 repository-owned surfaces outside the installable package.
 
+Candidate C remains immutable. A separate local-release receipt binds its exact
+commit, candidate tree, package tree, and independent Planner acceptance without
+recording the receipt commit inside itself.
+
 ## Evaluation surface
 
 - `evals/cases/cold-resume.md`

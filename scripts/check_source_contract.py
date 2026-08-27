@@ -9,6 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "skills" / "work-charter"
 CANDIDATE = ROOT / "release" / "v0.3.0-candidate.json"
+RECEIPT = ROOT / "release" / "v0.3.0-local-release-receipt.json"
 EXPECTED_FILES = {
     "SKILL.md",
     "agents/openai.yaml",
@@ -201,12 +202,56 @@ def main():
         and candidate.get("package", {}).get("tree") == actual_package_tree
     )
 
+    receipt_error = None
+    receipt = {}
+    try:
+        parsed_receipt = json.loads(RECEIPT.read_text(encoding="utf-8"))
+        if not isinstance(parsed_receipt, dict):
+            raise ValueError("local release receipt must be an object")
+        for field in ("candidate", "planner_acceptance", "evidence_states", "source_forward_behavior"):
+            if not isinstance(parsed_receipt.get(field), dict):
+                raise ValueError(f"local release receipt field {field!r} must be an object")
+        receipt = parsed_receipt
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
+        receipt = {}
+        receipt_error = str(error)
+    checks["receipt.identity_and_readiness"] = (
+        receipt.get("schema") == "work-charter-local-release-receipt/v1"
+        and receipt.get("product") == "work-charter"
+        and receipt.get("version") == "0.3.0"
+        and receipt.get("candidate", {}).get("commit")
+        == "732e7efa6211d9aedeb133282ef28ce03f9bdfef"
+        and receipt.get("candidate", {}).get("descriptor")
+        == "release/v0.3.0-candidate.json"
+        and receipt.get("candidate", {}).get("tree")
+        == "cc09ec16f85b05ed2287afd68ac6051dd800d287"
+        and receipt.get("candidate", {}).get("package_tree") == actual_package_tree
+        and receipt.get("planner_acceptance", {}).get("checkpoint")
+        == "B1-WC-CANDIDATE-C-01"
+        and receipt.get("planner_acceptance", {}).get("verdict") == "ACCEPTED"
+        and receipt.get("evidence_states", {}).get("local_release_ready") == "VERIFIED"
+        and receipt.get("evidence_states", {}).get("public_release") == "UNKNOWN"
+        and receipt.get("evidence_states", {}).get("stable_installed_copy") == "UNKNOWN"
+        and receipt.get("evidence_states", {}).get("persistent_lifecycle") == "UNKNOWN"
+        and receipt.get("evidence_states", {}).get("broad_product_efficacy") == "UNKNOWN"
+        and receipt.get("human_release_notes_review") == "PENDING"
+        and receipt.get("source_forward_behavior", {}).get("evidence_id") == "Q06"
+        and receipt.get("source_forward_behavior", {}).get("model") == "gpt-5.6-sol"
+        and receipt.get("source_forward_behavior", {}).get("reasoning_effort") == "high"
+        and receipt.get("source_forward_behavior", {}).get("result") == "ACCEPTED"
+        and receipt.get("source_forward_behavior", {}).get("scope")
+        == "fresh projectless read-only no-tool exact-SOURCE"
+        and receipt.get("source_forward_behavior", {}).get("package_tree") == actual_package_tree
+    )
+
     failures = [name for name, passed in checks.items() if not passed]
     if package_scan_error:
         failures.append(f"package.scan: {package_scan_error}")
     failures.extend(package_read_failures)
     if candidate_error:
         failures.append(f"candidate.unreadable: {candidate_error}")
+    if receipt_error:
+        failures.append(f"receipt.unreadable: {receipt_error}")
     result = {
         "checks": checks,
         "failures": failures,

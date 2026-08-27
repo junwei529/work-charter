@@ -1,0 +1,31 @@
+{
+  "candidate": {
+    "commit": "732e7efa6211d9aedeb133282ef28ce03f9bdfef",
+    "descriptor": "release/v0.3.0-candidate.json",
+    "package_tree": "0ac3cbb0f1fa8fa51d8f832c8127eabc9863ec9e",
+    "tree": "cc09ec16f85b05ed2287afd68ac6051dd800d287"
+  },
+  "evidence_states": {
+    "broad_product_efficacy": "UNKNOWN",
+    "local_release_ready": "VERIFIED",
+    "persistent_lifecycle": "UNKNOWN",
+    "public_release": "UNKNOWN",
+    "stable_installed_copy": "UNKNOWN"
+  },
+  "human_release_notes_review": "PENDING",
+  "planner_acceptance": {
+    "checkpoint": "B1-WC-CANDIDATE-C-01",
+    "verdict": "ACCEPTED"
+  },
+  "product": "work-charter",
+  "schema": "work-charter-local-release-receipt/v1",
+  "source_forward_behavior": {
+    "evidence_id": "Q06",
+    "model": "gpt-5.6-sol",
+    "package_tree": "0ac3cbb0f1fa8fa51d8f832c8127eabc9863ec9e",
+    "reasoning_effort": "high",
+    "result": "ACCEPTED",
+    "scope": "fresh projectless read-only no-tool exact-SOURCE"
+  },
+  "version": "0.3.0"
+}

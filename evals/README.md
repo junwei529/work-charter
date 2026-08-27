@@ -34,6 +34,11 @@ this evaluation surface; it does not execute a model or claim adherence.
 Case execution that invokes a model, installs a Skill, or uses an external
 provider remains a separately authorized evidence action.
 
+Accepted Q06 is bounded fresh exact-SOURCE forward-behavior evidence from a
+projectless, read-only, no-tool `gpt-5.6-sol/high` run. It does not establish
+installed-copy behavior, publication, stable installation, cross-Harness
+behavior, or broad efficacy.
+
 Lifecycle receipt checks cover unreceipted, malformed or mismatched-receipt,
 wrong-tree, modified, aliased, and drifted destinations. They do not establish
 cryptographic ownership against a same-privilege local receipt forger.

@@ -10,9 +10,11 @@ byte from source commit `80910a8b2375a11be897e9660c4b00a06d00dd13`.
 
 The first independent version is `v0.3.0`. The current local candidate is
 described by [`release/v0.3.0-candidate.json`](release/v0.3.0-candidate.json);
-its public identity is `junwei529/work-charter`. Until the exact candidate is
-accepted and later public-release evidence exists, `LOCAL_RELEASE_READY` is
-`PENDING_PLANNER_ACCEPTANCE` and `PUBLIC_RELEASE` remains `UNKNOWN`.
+its public identity is `junwei529/work-charter`. Exact candidate C was accepted
+and is bound by [`release/v0.3.0-local-release-receipt.json`](release/v0.3.0-local-release-receipt.json),
+so `LOCAL_RELEASE_READY` is `VERIFIED`. `PUBLIC_RELEASE` remains `UNKNOWN`.
+The immutable candidate descriptor retains its original
+`PENDING_PLANNER_ACCEPTANCE` snapshot rather than rewriting C.
 
 ## Repository contents
 

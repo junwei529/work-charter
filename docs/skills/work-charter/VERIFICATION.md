@@ -114,13 +114,22 @@ install or remove a persistent Skill copy. Receipt checks establish integrity
 and routing consistency, not cryptographic ownership against a same-privilege
 local actor capable of forging the complete receipt.
 
+The local-release receipt binds accepted candidate C
+`732e7efa6211d9aedeb133282ef28ce03f9bdfef`, candidate tree
+`cc09ec16f85b05ed2287afd68ac6051dd800d287`, and unchanged package tree
+`0ac3cbb0f1fa8fa51d8f832c8127eabc9863ec9e`. The SOURCE checker verifies that
+binding and the `LOCAL_RELEASE_READY=VERIFIED` transition. Accepted Q06 provides
+fresh projectless, read-only, no-tool, exact-SOURCE forward-behavior evidence
+with `gpt-5.6-sol/high`; it does not prove installed-copy behavior,
+publication, stable installation, cross-Harness behavior, or broad efficacy.
+
 ## Evidence limits
 
 The retained cases are deterministic contract fixtures; they do not create
 fresh model, efficacy, release, or installed-copy evidence. SOURCE qualification
 proves clause coverage only. A local clean candidate commit and native review
-can establish a `LOCAL_RELEASE_READY` candidate after independent Planner
-acceptance; they do not authorize or prove publication, persistent installation,
+establish the accepted `LOCAL_RELEASE_READY=VERIFIED` receipt; they do not
+authorize or prove publication, persistent installation,
 a remote, tag, GitHub Release, stable installed-copy behavior, or broad product
 efficacy.
 

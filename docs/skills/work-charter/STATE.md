@@ -11,12 +11,15 @@ case or fixture is an exact Git blob from `80910a8b2375a11be897e9660c4b00a06d00d
 - Version: `v0.3.0`
 - Public identity: `junwei529/work-charter`
 - Candidate descriptor: [`../../../release/v0.3.0-candidate.json`](../../../release/v0.3.0-candidate.json)
-- Candidate state: `LOCAL_RELEASE_READY=PENDING_PLANNER_ACCEPTANCE`
+- Candidate state: `LOCAL_RELEASE_READY=VERIFIED`
+- Accepted candidate C: `732e7efa6211d9aedeb133282ef28ce03f9bdfef`
+- Acceptance receipt: [`../../../release/v0.3.0-local-release-receipt.json`](../../../release/v0.3.0-local-release-receipt.json)
 - Release notes: [`../../../CHANGELOG.md`](../../../CHANGELOG.md), human review pending
 
 The immutable candidate identity is the clean commit containing the descriptor.
-The descriptor deliberately does not contain its own commit hash. A later,
-narrow acceptance receipt may bind the exact accepted candidate commit without
+The descriptor deliberately does not contain its own commit hash and retains
+its original pending snapshot. The separate receipt binds exact C, its tree,
+the unchanged package tree, and the independent Planner acceptance without
 rewriting that candidate.
 
 ## Repository ownership
@@ -38,7 +41,7 @@ create fresh model, efficacy, release, or installed-copy evidence.
 Evidence states remain separate:
 
 - SOURCE identity and deterministic SOURCE contract: locally verifiable.
-- `LOCAL_RELEASE_READY`: pending independent Planner acceptance of exact candidate C.
+- `LOCAL_RELEASE_READY`: `VERIFIED` by the exact-C acceptance receipt.
 - `PUBLIC_RELEASE`: `UNKNOWN`.
 - `STABLE_INSTALLED_COPY`: `UNKNOWN`.
 - Broad product efficacy and untested selection/loading/negative contexts: `UNKNOWN`.
@@ -50,9 +53,9 @@ against a same-privilege local actor able to forge the complete receipt.
 
 ## Next gate
 
-After exact candidate C is accepted, a separate receipt commit may record that
-verdict and transition local readiness. Any remote, installation, tag, Release,
-publication, persistent lifecycle effect, or model behavior evaluation still
+The next release gate is the separately authorized immutable public source and
+publication route. Any remote, installation, tag, Release, publication,
+persistent lifecycle effect, or installed-copy behavior evaluation still
 requires its own authority and fresh evidence. Ordinary local changes must
 preserve the provenance record or explicitly supersede the mapped baseline.
 

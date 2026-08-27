@@ -47,7 +47,7 @@
       "destination": "CHANGELOG.md",
       "kind": "repository-native",
       "note": "Independent v0.3.0 candidate release notes",
-      "target_sha256": "3830d66f2b197d3f1e0ebe55b711f241c88fcccd8996e15e8790efe920694ccb"
+      "target_sha256": "c130ac55b08920a1c9e6616eaf556725fad3b3d97bd65ad3a67951b66dc530e9"
     },
     {
       "destination": "LICENSE",
@@ -68,8 +68,8 @@
           "source_path": "docs/PROVENANCE.md"
         }
       ],
-      "target_normalized_sha256": "7073a006f188bc5fe8a758292e115695e66dcf0c846cc9f67de6b915c0819eec",
-      "target_sha256": "7073a006f188bc5fe8a758292e115695e66dcf0c846cc9f67de6b915c0819eec",
+      "target_normalized_sha256": "a2a2a53f74324d0b96a23afc9cda91265f095c2280d534aa7dbd36d36d5b298e",
+      "target_sha256": "a2a2a53f74324d0b96a23afc9cda91265f095c2280d534aa7dbd36d36d5b298e",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -83,8 +83,8 @@
           "source_path": "docs/skills/work-charter/README.md"
         }
       ],
-      "target_normalized_sha256": "21188a6d392be72114fd0b90ec59aa163505792317af62be2409530bacbeeb2a",
-      "target_sha256": "21188a6d392be72114fd0b90ec59aa163505792317af62be2409530bacbeeb2a",
+      "target_normalized_sha256": "0ee531ea5d254bce2c8490f835b26602ae46b735a7a2ea7bacf962aad1d4ef2e",
+      "target_sha256": "0ee531ea5d254bce2c8490f835b26602ae46b735a7a2ea7bacf962aad1d4ef2e",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -98,8 +98,8 @@
           "source_path": "docs/skills/work-charter/README.zh-CN.md"
         }
       ],
-      "target_normalized_sha256": "f41fcf25e6f78955d3377858cd4f1ebbd9c94cd8bd0f3e129bcf51d1f97363eb",
-      "target_sha256": "f41fcf25e6f78955d3377858cd4f1ebbd9c94cd8bd0f3e129bcf51d1f97363eb",
+      "target_normalized_sha256": "e92228645c44515910bbad65b4929b64faf3f4f7d49517eab4e137911321fe50",
+      "target_sha256": "e92228645c44515910bbad65b4929b64faf3f4f7d49517eab4e137911321fe50",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -113,8 +113,8 @@
           "source_path": "docs/skills/work-charter/DESIGN.md"
         }
       ],
-      "target_normalized_sha256": "f69ede4296160f5bbf6dbf66b9224a9f687e4b3f2498aedd4b5bcd8546b1f797",
-      "target_sha256": "f69ede4296160f5bbf6dbf66b9224a9f687e4b3f2498aedd4b5bcd8546b1f797",
+      "target_normalized_sha256": "ac2868f8b12b41b57e9f1e862644b130f442482acf66aa239dca47af4da8d5b2",
+      "target_sha256": "ac2868f8b12b41b57e9f1e862644b130f442482acf66aa239dca47af4da8d5b2",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -158,8 +158,8 @@
           "source_path": "docs/skills/work-charter/STATE.md"
         }
       ],
-      "target_normalized_sha256": "ba7e768a85a1a70f95bb646ee8367c4eb84be5c58d16fbd8482386b6033aab60",
-      "target_sha256": "ba7e768a85a1a70f95bb646ee8367c4eb84be5c58d16fbd8482386b6033aab60",
+      "target_normalized_sha256": "30a31a881d7bc1f07b1d4a229326ac51fb2dc38b82b8c5db45cd5a5784416545",
+      "target_sha256": "30a31a881d7bc1f07b1d4a229326ac51fb2dc38b82b8c5db45cd5a5784416545",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -173,8 +173,8 @@
           "source_path": "docs/skills/work-charter/VERIFICATION.md"
         }
       ],
-      "target_normalized_sha256": "a7bfd210f9a3dbdd58bf2c7488d1922a95043fd1e040b84f2a101b85b014ca42",
-      "target_sha256": "a7bfd210f9a3dbdd58bf2c7488d1922a95043fd1e040b84f2a101b85b014ca42",
+      "target_normalized_sha256": "cec5594d345b5be974d8eca14f825d8fcfeccb93f60238ca98e5fe8023a9ff59",
+      "target_sha256": "cec5594d345b5be974d8eca14f825d8fcfeccb93f60238ca98e5fe8023a9ff59",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -188,8 +188,8 @@
           "source_path": "evals/README.md"
         }
       ],
-      "target_normalized_sha256": "91530e4d8133942ffa8743bc8c024f17f26b7ecbb4c5c54d60cf8002ad348f46",
-      "target_sha256": "91530e4d8133942ffa8743bc8c024f17f26b7ecbb4c5c54d60cf8002ad348f46",
+      "target_normalized_sha256": "ead4872c4cbb1b90cb293a63406fcd53400d3f26c292990fa65ff22658c6512b",
+      "target_sha256": "ead4872c4cbb1b90cb293a63406fcd53400d3f26c292990fa65ff22658c6512b",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -647,6 +647,12 @@
       "target_sha256": "dea0efa49065aed580e82b88822ac119fe29afeefd4b8398c97649c981a4a8c7"
     },
     {
+      "destination": "release/v0.3.0-local-release-receipt.json",
+      "kind": "repository-native",
+      "note": "Planner acceptance and local-release-readiness receipt for exact candidate C",
+      "target_sha256": "80656d5664a15e1886750ec1e3e39b54de5a190cbc19c1e5ff98a70fcbfc1ee7"
+    },
+    {
       "destination": "scripts/check_repository.py",
       "kind": "standalone-normalized-text-rewrite",
       "note": "Standalone slice of repository and fixture validation",
@@ -662,15 +668,15 @@
           "source_path": "evals/check-fixtures.ps1"
         }
       ],
-      "target_normalized_sha256": "e879e90d3eff6514ae863bc64c8ac063241ce29f82e060ba8284dcab3a36d9fe",
-      "target_sha256": "e879e90d3eff6514ae863bc64c8ac063241ce29f82e060ba8284dcab3a36d9fe",
+      "target_normalized_sha256": "b1d2bc7aef2d1228d497e649eb59789ff5268eb8ec6602c59ab29b6b7a68e864",
+      "target_sha256": "b1d2bc7aef2d1228d497e649eb59789ff5268eb8ec6602c59ab29b6b7a68e864",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
       "destination": "scripts/check_source_contract.py",
       "kind": "repository-native",
       "note": "Deterministic product-specific SOURCE contract qualification",
-      "target_sha256": "0bc32491d02e971ffaeb5651bb30b7cc8dd70bfbde10a9bb2c9db871dddc2aaa"
+      "target_sha256": "0955c95280bb34427be06714f39ab9a94b32974db710c3f7b9acd4af07a80eb4"
     },
     {
       "destination": "scripts/manage_install.py",

@@ -2,7 +2,7 @@
 
 ## v0.3.0 candidate
 
-Status: `LOCAL_RELEASE_READY=PENDING_PLANNER_ACCEPTANCE`
+Status: `LOCAL_RELEASE_READY=VERIFIED`; human release-note review remains `PENDING`
 
 Human review: pending before public release.
 

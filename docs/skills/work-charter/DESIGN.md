@@ -16,6 +16,10 @@ selection and entry behavior; directly linked references and assets own detailed
 guidance and templates. The repository checker fails if any package byte or
 expected path differs from the recorded baseline mapping.
 
+The independent `v0.3.0` candidate does not change those package bytes. Release
+metadata, deterministic SOURCE qualification, and lifecycle tooling are
+repository-owned surfaces outside the installable package.
+
 ## Evaluation surface
 
 - `evals/cases/cold-resume.md`
@@ -37,3 +41,15 @@ authorized evidence classes.
 - Verification uses only repository-local files and standard host tools.
 - Source provenance is explicit in [`../../../provenance/source-map.json`](../../../provenance/source-map.json).
 - Historical monorepo state is not a runtime dependency or acceptance condition.
+- Install lifecycle operations use an explicit immutable source checkout and a
+  receipt. The tool refuses unreceipted, malformed or mismatched-receipt,
+  wrong-tree, modified, aliased, and drifted destinations. The receipt provides
+  integrity and routing evidence, not cryptographic ownership proof against a
+  same-privilege local actor capable of forging the complete receipt.
+- SOURCE contract qualification checks instruction coverage only. Model
+  adherence, installed-copy behavior, publication, and broad efficacy require
+  separate evidence.
+
+## Cross-version trust distribution
+
+The lifecycle CLI carries the accepted v0.3.0 package tree as a built-in trust anchor. Future update and rollback operations remain executable without trusting the candidate descriptor itself: the operator supplies the target package-tree identity from separately reviewed immutable release notes through `--trusted-target-package-tree`; `--trusted-current-package-tree` supplies an independently retained current identity when it is not built into the selected tool. Deriving either value from the candidate source would collapse the trust boundary and is not an accepted route.

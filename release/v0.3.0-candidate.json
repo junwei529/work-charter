@@ -1,0 +1,31 @@
+{
+  "candidate_state": "PENDING_PLANNER_ACCEPTANCE",
+  "evidence_states": {
+    "broad_product_efficacy": "UNKNOWN",
+    "local_release_ready": "PENDING_PLANNER_ACCEPTANCE",
+    "public_release": "UNKNOWN",
+    "source_contract": "REQUIRES_FRESH_DETERMINISTIC_CHECK",
+    "stable_installed_copy": "UNKNOWN"
+  },
+  "human_release_notes_review": "PENDING",
+  "lineage": {
+    "migration_repository_baseline": "de7c7362e6cdb6a9e878c1ed7006e1752159cb73",
+    "source_commit": "80910a8b2375a11be897e9660c4b00a06d00dd13"
+  },
+  "package": {
+    "file_count": 5,
+    "path": "skills/work-charter",
+    "tree": "0ac3cbb0f1fa8fa51d8f832c8127eabc9863ec9e"
+  },
+  "product": "work-charter",
+  "public_identity": "junwei529/work-charter",
+  "release_notes": "CHANGELOG.md",
+  "schema": "work-charter-local-release-candidate/v1",
+  "verification": [
+    "python -B scripts/check_source_contract.py --json",
+    "python -B scripts/manage_install.py self-test --source .",
+    "python -B scripts/check_repository.py --json",
+    "python -B scripts/check_repository.py --adversarial"
+  ],
+  "version": "0.3.0"
+}

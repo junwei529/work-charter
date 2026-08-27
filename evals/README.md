@@ -27,5 +27,13 @@ importing another Skill or the former monorepo evaluation envelope.
 ## Deterministic verification
 
 Run `python -B scripts/check_repository.py --json` from the repository root.
+Run `python -B scripts/check_source_contract.py --json` for candidate SOURCE
+clause coverage. The latter validates the package source against the material
+selection/activation, authority, recovery, and Standard O/P/E boundaries in
+this evaluation surface; it does not execute a model or claim adherence.
 Case execution that invokes a model, installs a Skill, or uses an external
 provider remains a separately authorized evidence action.
+
+Lifecycle receipt checks cover unreceipted, malformed or mismatched-receipt,
+wrong-tree, modified, aliased, and drifted destinations. They do not establish
+cryptographic ownership against a same-privilege local receipt forger.

@@ -4,9 +4,15 @@
 
 Bounds consequential Codex work by outcome, authority, evidence, recovery, and proportional coordination.
 
-This repository is the independent local product repository for `work-charter`. Its
+This repository is the independent product repository for `work-charter`. Its
 installable package is [`skills/work-charter/`](skills/work-charter/), preserved byte for
 byte from source commit `80910a8b2375a11be897e9660c4b00a06d00dd13`.
+
+The first independent version is `v0.3.0`. The current local candidate is
+described by [`release/v0.3.0-candidate.json`](release/v0.3.0-candidate.json);
+its public identity is `junwei529/work-charter`. Until the exact candidate is
+accepted and later public-release evidence exists, `LOCAL_RELEASE_READY` is
+`PENDING_PLANNER_ACCEPTANCE` and `PUBLIC_RELEASE` remains `UNKNOWN`.
 
 ## Repository contents
 
@@ -14,15 +20,46 @@ byte from source commit `80910a8b2375a11be897e9660c4b00a06d00dd13`.
 - Product design and state: [`docs/skills/work-charter/`](docs/skills/work-charter/)
 - Evaluation cases and fixtures: [`evals/`](evals/README.md)
 - Standalone verification: [`scripts/check_repository.py`](scripts/check_repository.py)
+- SOURCE contract qualification: [`scripts/check_source_contract.py`](scripts/check_source_contract.py)
+- Install lifecycle tool: [`scripts/manage_install.py`](scripts/manage_install.py)
 - Source mapping: [`PROVENANCE.md`](PROVENANCE.md) and
   [`provenance/source-map.json`](provenance/source-map.json)
+- Release notes: [`CHANGELOG.md`](CHANGELOG.md)
 
 ## Verify
 
 ```powershell
 python -B scripts/check_repository.py --json
+python -B scripts/check_source_contract.py --json
+python -B scripts/manage_install.py self-test --source .
 ```
 
-The repository has no implicit dependency on another Skill repository. Remote,
-installation, tag, release, publication, and historical-continuity claims are
-outside this migration snapshot.
+The SOURCE check proves that the candidate instructions contain the required
+selection, activation, authority, recovery, and Standard O/P/E boundaries. It
+does not prove model compliance, installed-copy behavior, or broad efficacy.
+
+## Future immutable-source lifecycle
+
+Use an exact immutable checkout of `junwei529/work-charter` as `--source` and
+an explicit destination. Commands are dry-run plans unless `--apply` is added:
+
+```powershell
+python -B scripts/manage_install.py status --destination <skill-destination> [--trusted-current-package-tree <git-tree-sha1>]
+python -B scripts/manage_install.py install --source . --destination <skill-destination> --expected-version 0.3.0
+python -B scripts/manage_install.py update --source <new-immutable-checkout> --destination <skill-destination> --expected-version <new-version>
+python -B scripts/manage_install.py rollback --source <old-immutable-checkout> --destination <skill-destination> --expected-version <old-version>
+python -B scripts/manage_install.py uninstall --destination <skill-destination> [--trusted-current-package-tree <git-tree-sha1>]
+```
+
+The tool refuses destinations that are unreceipted, have a malformed or
+mismatched receipt, use the wrong package tree, are locally modified or aliased,
+or otherwise drift from the receipt. The receipt is an integrity and routing
+record, not cryptographic ownership proof: a same-privilege local actor capable
+of forging the complete receipt is outside this mechanism's protection.
+Persistent installation, update, rollback, uninstall, publication, tag, GitHub
+Release, and stable installed-copy proof remain separately authorized future
+effects.
+
+### Future update and rollback trust
+
+The bundled trust map authorizes the v0.3.0 package tree only. A later immutable release must publish its human-reviewed package-tree identity independently of the candidate checkout. Supply that external trust anchor with `--trusted-target-package-tree <git-tree-sha1>` when updating or rolling back to a version not bundled in this tool. If the currently installed version is also absent from the bundled map, supply its independently retained identity with `--trusted-current-package-tree <git-tree-sha1>` for update, rollback, status, and uninstall. Never copy either trust value from the source tree being installed; public release evidence remains `UNKNOWN` until the publication tranche establishes that immutable source and its reviewed release notes.

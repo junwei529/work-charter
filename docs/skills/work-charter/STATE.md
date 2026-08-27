@@ -6,6 +6,19 @@ Canonical editable source is the 5-file package under
 [`skills/work-charter/`](../../../skills/work-charter/). Every package file and retained
 case or fixture is an exact Git blob from `80910a8b2375a11be897e9660c4b00a06d00dd13`.
 
+## Independent candidate
+
+- Version: `v0.3.0`
+- Public identity: `junwei529/work-charter`
+- Candidate descriptor: [`../../../release/v0.3.0-candidate.json`](../../../release/v0.3.0-candidate.json)
+- Candidate state: `LOCAL_RELEASE_READY=PENDING_PLANNER_ACCEPTANCE`
+- Release notes: [`../../../CHANGELOG.md`](../../../CHANGELOG.md), human review pending
+
+The immutable candidate identity is the clean commit containing the descriptor.
+The descriptor deliberately does not contain its own commit hash. A later,
+narrow acceptance receipt may bind the exact accepted candidate commit without
+rewriting that candidate.
+
 ## Repository ownership
 
 This repository owns its Git history, documentation, checks, and future version,
@@ -16,13 +29,32 @@ on another Skill repository and begins with no configured remote.
 
 The migration proves current package byte identity, mapped case and fixture byte
 identity, local link and publication-safety checks, and repository-local
-verification. The retained cases are deterministic contract fixtures; they do not create fresh product, efficacy, release, or installed-copy evidence.
+verification. Deterministic SOURCE qualification additionally proves that the
+candidate instruction text contains required selection/activation, authority
+non-expansion, coordination/recovery, and Standard O/P/E clauses. It does not
+prove model adherence. The retained cases remain contract fixtures; they do not
+create fresh model, efficacy, release, or installed-copy evidence.
+
+Evidence states remain separate:
+
+- SOURCE identity and deterministic SOURCE contract: locally verifiable.
+- `LOCAL_RELEASE_READY`: pending independent Planner acceptance of exact candidate C.
+- `PUBLIC_RELEASE`: `UNKNOWN`.
+- `STABLE_INSTALLED_COPY`: `UNKNOWN`.
+- Broad product efficacy and untested selection/loading/negative contexts: `UNKNOWN`.
+
+Lifecycle receipt validation is bounded to integrity and routing checks. It
+refuses unreceipted, malformed or mismatched-receipt, wrong-tree, modified,
+aliased, and drifted destinations, but does not prove cryptographic ownership
+against a same-privilege local actor able to forge the complete receipt.
 
 ## Next gate
 
-Any remote, installation, tag, release, publication, or behavior-evaluation
-action requires its own authority and fresh evidence. Ordinary local changes
-must preserve the provenance record or explicitly supersede the mapped baseline.
+After exact candidate C is accepted, a separate receipt commit may record that
+verdict and transition local readiness. Any remote, installation, tag, Release,
+publication, persistent lifecycle effect, or model behavior evaluation still
+requires its own authority and fresh evidence. Ordinary local changes must
+preserve the provenance record or explicitly supersede the mapped baseline.
 
 ## Recovery entry
 

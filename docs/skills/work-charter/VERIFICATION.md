@@ -14,7 +14,7 @@ python -B scripts/check_repository.py --json
 ```
 
 This verifies exact Git-blob identity for package/case/fixture/license inputs,
-the adapted-file hashes and source mappings, expected package and evaluation
+the adapted/native-file hashes and source mappings, expected package and evaluation
 shape, UTF-8/BOM and Markdown-link boundaries, and publication safety.
 The default standalone route preserves a checker-pinned source-identity map;
 it does not assume the former source repository is present.
@@ -38,7 +38,7 @@ python -B scripts/check_repository.py --adversarial
 This builds every disposable repository strictly from staged Git-index blobs;
 working-tree, ignored, untracked, cache, and link-target bytes are not copied.
 The admitted publication-classifier input domain is the UTF-8 text of mapped
-repository files plus every string value consumed from the v1 provenance
+repository files plus every string value consumed from the v2 provenance
 manifest. Manifest paths remain strict POSIX repository-relative paths. Within
 that domain, the locator grammar is limited to direct absolute Windows drive
 profiles, direct/device UNC locators, and `file:` URIs that resolve to those
@@ -90,10 +90,40 @@ disposable symlink or used the deterministic index-link-mode branch.
 
 ## Focused check
 
-The repository checker covers the retained deterministic cases and fixtures.
+Run the deterministic SOURCE contract check:
+
+```powershell
+python -B scripts/check_source_contract.py --json
+```
+
+It verifies the exact 5-file package shape and the instruction clauses needed
+for direct and indirect selection/activation, authority non-expansion,
+coordination/recovery, and Standard O/P/E. It is static source evidence, not a
+model run or loaded-copy proof.
+
+Run the install lifecycle self-test:
+
+```powershell
+python -B scripts/manage_install.py self-test --source .
+```
+
+The self-test uses disposable temporary directories to exercise install,
+status, update, rollback, unreceipted/mismatched/wrong-tree/modified/aliased/
+drifted-destination refusal, uninstall, and recovery behavior. It does not
+install or remove a persistent Skill copy. Receipt checks establish integrity
+and routing consistency, not cryptographic ownership against a same-privilege
+local actor capable of forging the complete receipt.
 
 ## Evidence limits
 
-The retained cases are deterministic contract fixtures; they do not create fresh product, efficacy, release, or installed-copy evidence. A local clean commit and native review prove only this
-standalone migration checkpoint; they do not authorize or prove publication,
-installation, a remote, tag, Release, or broad product efficacy.
+The retained cases are deterministic contract fixtures; they do not create
+fresh model, efficacy, release, or installed-copy evidence. SOURCE qualification
+proves clause coverage only. A local clean candidate commit and native review
+can establish a `LOCAL_RELEASE_READY` candidate after independent Planner
+acceptance; they do not authorize or prove publication, persistent installation,
+a remote, tag, GitHub Release, stable installed-copy behavior, or broad product
+efficacy.
+
+## Future-version lifecycle boundary
+
+The lifecycle command accepts `--trusted-target-package-tree` and `--trusted-current-package-tree` for versions outside its built-in trust map. These values are explicit external trust inputs, not candidate-derived metadata. B1 verifies the local mechanism; immutable publication and the human-reviewed release-note carrier remain B2 evidence and are `UNKNOWN` here. If recovery-archive cleanup fails after a successful uninstall, the command reports `ABSENT`, retains and identifies the archive, and returns a warning instead of misreporting the completed uninstall as failed.

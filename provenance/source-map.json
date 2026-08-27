@@ -44,6 +44,12 @@
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
+      "destination": "CHANGELOG.md",
+      "kind": "repository-native",
+      "note": "Independent v0.3.0 candidate release notes",
+      "target_sha256": "3830d66f2b197d3f1e0ebe55b711f241c88fcccd8996e15e8790efe920694ccb"
+    },
+    {
       "destination": "LICENSE",
       "kind": "exact-git-blob",
       "source_blob": "8dcfbf5c796ecf4dddf5dff2a1ce9fb891966414",
@@ -62,8 +68,8 @@
           "source_path": "docs/PROVENANCE.md"
         }
       ],
-      "target_normalized_sha256": "e3c23024ef7242b449e4feadaf90809311dcbe82953cfba82503002f79b8ccdd",
-      "target_sha256": "e3c23024ef7242b449e4feadaf90809311dcbe82953cfba82503002f79b8ccdd",
+      "target_normalized_sha256": "7073a006f188bc5fe8a758292e115695e66dcf0c846cc9f67de6b915c0819eec",
+      "target_sha256": "7073a006f188bc5fe8a758292e115695e66dcf0c846cc9f67de6b915c0819eec",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -77,8 +83,8 @@
           "source_path": "docs/skills/work-charter/README.md"
         }
       ],
-      "target_normalized_sha256": "347b058041fc8c9a86cc5a12c7a800caea013e2e4933890effd039cae20841c2",
-      "target_sha256": "347b058041fc8c9a86cc5a12c7a800caea013e2e4933890effd039cae20841c2",
+      "target_normalized_sha256": "21188a6d392be72114fd0b90ec59aa163505792317af62be2409530bacbeeb2a",
+      "target_sha256": "21188a6d392be72114fd0b90ec59aa163505792317af62be2409530bacbeeb2a",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -92,8 +98,8 @@
           "source_path": "docs/skills/work-charter/README.zh-CN.md"
         }
       ],
-      "target_normalized_sha256": "92176e5cf9157e1d34593b335ab1b7db36cf86648227ed1ad80f447d14efe8c1",
-      "target_sha256": "92176e5cf9157e1d34593b335ab1b7db36cf86648227ed1ad80f447d14efe8c1",
+      "target_normalized_sha256": "f41fcf25e6f78955d3377858cd4f1ebbd9c94cd8bd0f3e129bcf51d1f97363eb",
+      "target_sha256": "f41fcf25e6f78955d3377858cd4f1ebbd9c94cd8bd0f3e129bcf51d1f97363eb",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -107,8 +113,8 @@
           "source_path": "docs/skills/work-charter/DESIGN.md"
         }
       ],
-      "target_normalized_sha256": "b78411cfca48859af95eab08ad66cb27afa50fd30175d79f3066fede4fa5543f",
-      "target_sha256": "b78411cfca48859af95eab08ad66cb27afa50fd30175d79f3066fede4fa5543f",
+      "target_normalized_sha256": "f69ede4296160f5bbf6dbf66b9224a9f687e4b3f2498aedd4b5bcd8546b1f797",
+      "target_sha256": "f69ede4296160f5bbf6dbf66b9224a9f687e4b3f2498aedd4b5bcd8546b1f797",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -152,8 +158,8 @@
           "source_path": "docs/skills/work-charter/STATE.md"
         }
       ],
-      "target_normalized_sha256": "b214d73f0b9c9c89beb5c97b56544997e857bf6a73d8f5a4d7f75904653b0f92",
-      "target_sha256": "b214d73f0b9c9c89beb5c97b56544997e857bf6a73d8f5a4d7f75904653b0f92",
+      "target_normalized_sha256": "ba7e768a85a1a70f95bb646ee8367c4eb84be5c58d16fbd8482386b6033aab60",
+      "target_sha256": "ba7e768a85a1a70f95bb646ee8367c4eb84be5c58d16fbd8482386b6033aab60",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -167,8 +173,8 @@
           "source_path": "docs/skills/work-charter/VERIFICATION.md"
         }
       ],
-      "target_normalized_sha256": "ebb81decabd7f5e3f77bf380dbb85f0d817ccd3d6899b1b2d517c2f38a241a69",
-      "target_sha256": "ebb81decabd7f5e3f77bf380dbb85f0d817ccd3d6899b1b2d517c2f38a241a69",
+      "target_normalized_sha256": "a7bfd210f9a3dbdd58bf2c7488d1922a95043fd1e040b84f2a101b85b014ca42",
+      "target_sha256": "a7bfd210f9a3dbdd58bf2c7488d1922a95043fd1e040b84f2a101b85b014ca42",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -182,8 +188,8 @@
           "source_path": "evals/README.md"
         }
       ],
-      "target_normalized_sha256": "af39a7a2fdab14609db0759acb9693f75f86462aafbe3962658e06466b3ca552",
-      "target_sha256": "af39a7a2fdab14609db0759acb9693f75f86462aafbe3962658e06466b3ca552",
+      "target_normalized_sha256": "91530e4d8133942ffa8743bc8c024f17f26b7ecbb4c5c54d60cf8002ad348f46",
+      "target_sha256": "91530e4d8133942ffa8743bc8c024f17f26b7ecbb4c5c54d60cf8002ad348f46",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -635,6 +641,12 @@
       "target_sha256": "803520c3a7c313e3a8b89cd81873d7d17aa28274e1e65c9795131ceabb4a68b2"
     },
     {
+      "destination": "release/v0.3.0-candidate.json",
+      "kind": "repository-native",
+      "note": "Independent local release candidate descriptor",
+      "target_sha256": "dea0efa49065aed580e82b88822ac119fe29afeefd4b8398c97649c981a4a8c7"
+    },
+    {
       "destination": "scripts/check_repository.py",
       "kind": "standalone-normalized-text-rewrite",
       "note": "Standalone slice of repository and fixture validation",
@@ -650,9 +662,21 @@
           "source_path": "evals/check-fixtures.ps1"
         }
       ],
-      "target_normalized_sha256": "2e1a4471d6be9f6444e3a81154d62c7d6360cf96d6dcf6f562670387aed94016",
-      "target_sha256": "2e1a4471d6be9f6444e3a81154d62c7d6360cf96d6dcf6f562670387aed94016",
+      "target_normalized_sha256": "e879e90d3eff6514ae863bc64c8ac063241ce29f82e060ba8284dcab3a36d9fe",
+      "target_sha256": "e879e90d3eff6514ae863bc64c8ac063241ce29f82e060ba8284dcab3a36d9fe",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
+    },
+    {
+      "destination": "scripts/check_source_contract.py",
+      "kind": "repository-native",
+      "note": "Deterministic product-specific SOURCE contract qualification",
+      "target_sha256": "0bc32491d02e971ffaeb5651bb30b7cc8dd70bfbde10a9bb2c9db871dddc2aaa"
+    },
+    {
+      "destination": "scripts/manage_install.py",
+      "kind": "repository-native",
+      "note": "Origin-aware product-specific install lifecycle tool",
+      "target_sha256": "ebc8657b57006e0145c9c2f3954b0cc1906c66c7b44e8890a6186419bed182f6"
     },
     {
       "destination": "skills/work-charter/SKILL.md",
@@ -704,7 +728,7 @@
   ],
   "materialization": "direct git object extraction by exact commit:path; no clone or archive",
   "product": "work-charter",
-  "schema": "standalone-skill-provenance/v1",
+  "schema": "standalone-skill-provenance/v2",
   "source_commit": "80910a8b2375a11be897e9660c4b00a06d00dd13",
   "source_tree": "2ec2574116a9b2c4e8ec9a1bb4cb2636cb6279af"
 }

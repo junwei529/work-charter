@@ -18,14 +18,18 @@ mapping, or source working-tree byte was used.
   evaluation index, checker, and this provenance summary were rewritten as
   UTF-8 without BOM with LF newlines. The manifest records every source path,
   source blob, source normalized-text SHA-256, and target SHA-256.
+- `repository-native`: independently authored release metadata and lifecycle or
+  qualification tooling added after the migration baseline. These files have
+  no predecessor source blob; the manifest records their destination and exact
+  target SHA-256.
 
-The installable package behavior is unchanged. Historical monorepo operational
-detail and cross-product release state were omitted because full historical
-continuity is not an acceptance requirement and would create a false standalone
-dependency.
+The installable package behavior remains unchanged in the `v0.3.0` candidate.
+Historical monorepo operational detail and cross-product release state were
+omitted because full historical continuity is not an acceptance requirement
+and would create a false standalone dependency.
 
 ## Publication boundary
 
 Tracked content contains no private task, host, checkout, account, or destination
-locator. This local migration makes no remote, installation, tag, Release,
-publication, stable-copy, or efficacy claim.
+locator. The local candidate makes no remote, installation, tag, Release,
+publication, stable-copy, model-compliance, or broad-efficacy claim.

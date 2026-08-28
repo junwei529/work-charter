@@ -144,6 +144,12 @@ coordination/recovery and Standard O/P/E references. The recovery locator stays
 controller-side. This evidence does not prove cross-version update/rollback,
 cross-Harness behavior, untested contexts, or broad efficacy.
 
+Planner acceptance `B2-WC-PUBLIC-EVIDENCE-F-01` verifies the exact post-release
+evidence subject F `4ba904808fe86e270ebd405db1866d41d1cc032e` and tree
+`03307594f66dfb92e262b73546fc4ec0ddb6d720`. The successor acceptance record
+does not alter P, tag `v0.3.0`, the GitHub Release, package bytes, installed
+copy, retained recovery copy, or the evidence limitations above.
+
 ## Evidence limits
 
 The retained cases are deterministic contract fixtures; they do not create

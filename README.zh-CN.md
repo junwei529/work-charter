@@ -26,7 +26,8 @@ receipt 必须绑定该 commit；annotated tag 与 GitHub Release 已在显式�
 它绑定公开对象、有界的同版本 persistent lifecycle 效果、两个历史 projectless
 见证，以及一个全新的 sole-discovery loaded-copy 见证。保留的 predecessor 字节已移到
 所有 Skill discovery root 之外，因此 managed user installation 是 catalog 中唯一可见的
-`work-charter`。Planner 验收仍为 pending；跨版本 lifecycle、cross-Harness、未测试上下文
+`work-charter`。Planner 验收 `B2-WC-PUBLIC-EVIDENCE-F-01` 已验证 exact subject F
+`4ba904808fe86e270ebd405db1866d41d1cc032e`；跨版本 lifecycle、cross-Harness、未测试上下文
 与广泛效能仍为 `UNKNOWN`。
 
 ## 仓库内容

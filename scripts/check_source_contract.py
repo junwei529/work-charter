@@ -303,6 +303,7 @@ def main():
             "evidence_states",
             "github_release",
             "installed_copy_behavior",
+            "planner_acceptance",
             "persistent_lifecycle",
             "public_source",
             "tag",
@@ -325,8 +326,14 @@ def main():
         public_evidence.get("schema") == "work-charter-public-release-evidence/v1"
         and public_evidence.get("product") == "work-charter"
         and public_evidence.get("version") == "0.3.0"
-        and public_evidence.get("evidence_state") == "PENDING_PLANNER_ACCEPTANCE"
-        and public_evidence.get("planner_acceptance") == "PENDING"
+        and public_evidence.get("evidence_state") == "VERIFIED"
+        and public_evidence.get("planner_acceptance")
+        == {
+            "evidence_id": "B2-WC-PUBLIC-EVIDENCE-F-01",
+            "subject_commit": "4ba904808fe86e270ebd405db1866d41d1cc032e",
+            "subject_tree": "03307594f66dfb92e262b73546fc4ec0ddb6d720",
+            "verdict": "ACCEPTED",
+        }
         and public_evidence.get("public_source", {}).get("commit")
         == "b655c1aa42acc8c68b70e87c4c228445c5182d8b"
         and public_evidence.get("public_source", {}).get("tree")

@@ -32,7 +32,8 @@ It binds the public objects, bounded same-version persistent lifecycle effects,
 the two historical projectless witnesses, and a fresh sole-discovery loaded-copy
 witness. The retained predecessor bytes are preserved outside every Skill
 discovery root, so the managed user installation is the only catalog-visible
-`work-charter`. Planner acceptance remains pending; cross-version lifecycle
+`work-charter`. Planner acceptance `B2-WC-PUBLIC-EVIDENCE-F-01` verifies exact
+subject F `4ba904808fe86e270ebd405db1866d41d1cc032e`; cross-version lifecycle
 behavior, cross-Harness behavior, untested contexts, and broad efficacy remain
 `UNKNOWN`.
 

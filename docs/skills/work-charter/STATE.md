@@ -22,7 +22,7 @@ case or fixture is an exact Git blob from `80910a8b2375a11be897e9660c4b00a06d00d
 - Immutable public commit P: `b655c1aa42acc8c68b70e87c4c228445c5182d8b`
 - Annotated tag: `v0.3.0`, fixed at P
 - Public release state: `VERIFIED`
-- Post-release evidence subject: [`../../../release/v0.3.0-public-release-evidence.json`](../../../release/v0.3.0-public-release-evidence.json), Planner acceptance pending
+- Post-release evidence subject: [`../../../release/v0.3.0-public-release-evidence.json`](../../../release/v0.3.0-public-release-evidence.json), accepted as `B2-WC-PUBLIC-EVIDENCE-F-01` for exact F `4ba904808fe86e270ebd405db1866d41d1cc032e`
 
 The immutable candidate identity is the clean commit containing the descriptor.
 The descriptor deliberately does not contain its own commit hash and retains
@@ -72,11 +72,12 @@ against a same-privilege local actor able to forge the complete receipt.
 
 ## Next gate
 
-The next gate is independent Planner acceptance of the exact post-release
-evidence subject. A later acceptance record may transition that pending snapshot
-without moving tag `v0.3.0` or rewriting P. Cross-version work, another Release,
-or broader efficacy remains separately authorized. Ordinary local changes must
-preserve the provenance record or explicitly supersede the mapped baseline.
+The exact post-release evidence subject F and its tree are independently
+accepted under `B2-WC-PUBLIC-EVIDENCE-F-01`; public Release and sole-discovery
+stable installed-copy evidence are durably `VERIFIED` without moving tag
+`v0.3.0` or rewriting P. Cross-version work, another Release, or broader
+efficacy remains separately authorized. Ordinary local changes must preserve
+the provenance record or explicitly supersede the mapped baseline.
 
 ## Recovery entry
 

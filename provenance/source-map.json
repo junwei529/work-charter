@@ -68,8 +68,8 @@
           "source_path": "docs/PROVENANCE.md"
         }
       ],
-      "target_normalized_sha256": "b0975082551bba8ccd0a789b9a03c70c90146d953d8dda8655fbc8d63318cd1f",
-      "target_sha256": "b0975082551bba8ccd0a789b9a03c70c90146d953d8dda8655fbc8d63318cd1f",
+      "target_normalized_sha256": "8f09c0b197e0a2c950b51d0d46436223cb0e5e6ca2f39201611a88370d1df8a1",
+      "target_sha256": "8f09c0b197e0a2c950b51d0d46436223cb0e5e6ca2f39201611a88370d1df8a1",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -83,8 +83,8 @@
           "source_path": "docs/skills/work-charter/README.md"
         }
       ],
-      "target_normalized_sha256": "8634acd3288422a057beafff0e229878028e378c04a59f6c382d7044726e3060",
-      "target_sha256": "8634acd3288422a057beafff0e229878028e378c04a59f6c382d7044726e3060",
+      "target_normalized_sha256": "2425fbd2563c13df245f58d2c1dd24d04457045b89ce1d9534a3a45d554817ac",
+      "target_sha256": "2425fbd2563c13df245f58d2c1dd24d04457045b89ce1d9534a3a45d554817ac",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -98,8 +98,8 @@
           "source_path": "docs/skills/work-charter/README.zh-CN.md"
         }
       ],
-      "target_normalized_sha256": "8bec214b60e869bff2327ed18fafc3f960c29b10f12a2cb7592b21b0b9e39486",
-      "target_sha256": "8bec214b60e869bff2327ed18fafc3f960c29b10f12a2cb7592b21b0b9e39486",
+      "target_normalized_sha256": "868947de32b66f1b559349f1b81c9ceaaba38e5439521ddebdb480c10c49d690",
+      "target_sha256": "868947de32b66f1b559349f1b81c9ceaaba38e5439521ddebdb480c10c49d690",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -158,8 +158,8 @@
           "source_path": "docs/skills/work-charter/STATE.md"
         }
       ],
-      "target_normalized_sha256": "b48f2ccfc98778af4f934e30ea8c6004551efbb65791099ec1cb4ab0b178e017",
-      "target_sha256": "b48f2ccfc98778af4f934e30ea8c6004551efbb65791099ec1cb4ab0b178e017",
+      "target_normalized_sha256": "719be872a9540b6f18dbeba9a26db366ade72e63c333e2a4a29007fdd7baff42",
+      "target_sha256": "719be872a9540b6f18dbeba9a26db366ade72e63c333e2a4a29007fdd7baff42",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -173,8 +173,8 @@
           "source_path": "docs/skills/work-charter/VERIFICATION.md"
         }
       ],
-      "target_normalized_sha256": "925ef992182b65bb035fbc1d62a90af4563c64f1388cd8a6a371febbfca52c74",
-      "target_sha256": "925ef992182b65bb035fbc1d62a90af4563c64f1388cd8a6a371febbfca52c74",
+      "target_normalized_sha256": "1fbb9c77c9459bd782b730afcc6e5bf0963b8766c268a7b2813cde78a26d59e3",
+      "target_sha256": "1fbb9c77c9459bd782b730afcc6e5bf0963b8766c268a7b2813cde78a26d59e3",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -662,7 +662,7 @@
       "destination": "release/v0.3.0-public-release-evidence.json",
       "kind": "repository-native",
       "note": "Post-release public-object, lifecycle, and installed-copy evidence subject",
-      "target_sha256": "d484c3cef69d274498b749d7e8da04e52663e8194cdf8ac7ca30a327dd3ce6ab"
+      "target_sha256": "3b6387e7bcf5f9d39750d4a6b6c86eacfb7a6031bf1117ec870e6dd2c87ee31c"
     },
     {
       "destination": "scripts/check_repository.py",
@@ -680,15 +680,15 @@
           "source_path": "evals/check-fixtures.ps1"
         }
       ],
-      "target_normalized_sha256": "7aac9935ac47738219b2cdd1ce4b94be9b42c1c086d70925fc4eeeea479083f6",
-      "target_sha256": "7aac9935ac47738219b2cdd1ce4b94be9b42c1c086d70925fc4eeeea479083f6",
+      "target_normalized_sha256": "a2dc351ac519be1526408d90c595a7214ccd9f039cab9443681a2d10760cf5c5",
+      "target_sha256": "a2dc351ac519be1526408d90c595a7214ccd9f039cab9443681a2d10760cf5c5",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
       "destination": "scripts/check_source_contract.py",
       "kind": "repository-native",
       "note": "Deterministic product-specific SOURCE contract qualification",
-      "target_sha256": "0e4d62b74d1e375cd418589b3f21fc6934ced8d3a9913f6d54fd19d95ed2ac74"
+      "target_sha256": "211b5db30ac82d6e541a48e4d542bcf6bbfdce87cf762792fc3ad1b5e390d04c"
     },
     {
       "destination": "scripts/manage_install.py",

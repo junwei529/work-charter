@@ -39,4 +39,7 @@ restoration effects plus fresh installed-copy behavior witnesses. The corrected
 installed-state evidence preserves predecessor bytes outside every Skill
 discovery root and binds one catalog-visible managed `work-charter`; its private
 recovery locator remains controller-side. It makes no cross-version,
-cross-Harness, untested-context, or broad-efficacy claim.
+cross-Harness, untested-context, or broad-efficacy claim. Planner acceptance
+`B2-WC-PUBLIC-EVIDENCE-F-01` verifies exact evidence subject F
+`4ba904808fe86e270ebd405db1866d41d1cc032e` with tree
+`03307594f66dfb92e262b73546fc4ec0ddb6d720`.

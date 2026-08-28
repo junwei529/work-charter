@@ -14,10 +14,15 @@ case or fixture is an exact Git blob from `80910a8b2375a11be897e9660c4b00a06d00d
 - Candidate state: `LOCAL_RELEASE_READY=VERIFIED`
 - Accepted candidate C: `732e7efa6211d9aedeb133282ef28ce03f9bdfef`
 - Acceptance receipt: [`../../../release/v0.3.0-local-release-receipt.json`](../../../release/v0.3.0-local-release-receipt.json)
-- Release notes: [`../../../CHANGELOG.md`](../../../CHANGELOG.md), human review pending
+- Release-note body: human review approved; immutable P's
+  [`../../../CHANGELOG.md`](../../../CHANGELOG.md) carrier retains its pre-effect
+  `PENDING` snapshot
 - Public repository: `https://github.com/junwei529/work-charter`
 - Public-source candidate: [`../../../release/v0.3.0-public-release-candidate.json`](../../../release/v0.3.0-public-release-candidate.json)
-- Public release state: `PENDING_HUMAN_APPROVAL`
+- Immutable public commit P: `b655c1aa42acc8c68b70e87c4c228445c5182d8b`
+- Annotated tag: `v0.3.0`, fixed at P
+- Public release state: `VERIFIED`
+- Post-release evidence subject: [`../../../release/v0.3.0-public-release-evidence.json`](../../../release/v0.3.0-public-release-evidence.json), Planner acceptance pending
 
 The immutable candidate identity is the clean commit containing the descriptor.
 The descriptor deliberately does not contain its own commit hash and retains
@@ -45,14 +50,16 @@ Evidence states remain separate:
 
 - SOURCE identity and deterministic SOURCE contract: locally verifiable.
 - `LOCAL_RELEASE_READY`: `VERIFIED` by the exact-C acceptance receipt.
-- `PUBLIC_RELEASE`: `UNKNOWN`.
-- `STABLE_INSTALLED_COPY`: `UNKNOWN`.
+- `PUBLIC_RELEASE`: `VERIFIED` for exact P, annotated tag, and public Release.
+- Persistent same-version install/update/rollback/uninstall/restoration: `VERIFIED`.
+- `STABLE_INSTALLED_COPY`: `VERIFIED` for the current Codex user installation.
+- Fresh installed-copy behavior: `VERIFIED` for two projectless read-only witnesses.
 - Broad product efficacy and untested selection/loading/negative contexts: `UNKNOWN`.
 
-The public-source candidate preserves this evidence partition. Its own snapshot
-does not prove an exact public ref, annotated tag, GitHub Release, persistent
-installation, loaded installed-copy behavior, or broad efficacy. Those facts
-require later effect-bound evidence.
+The immutable public-source candidate preserves its pre-effect snapshot. The
+separate post-release evidence subject binds the later public and installed-copy
+facts without rewriting P. Cross-version update/rollback, cross-Harness
+behavior, untested contexts, and broad efficacy remain `UNKNOWN`.
 
 Lifecycle receipt validation is bounded to integrity and routing checks. It
 refuses unreceipted, malformed or mismatched-receipt, wrong-tree, modified,
@@ -61,11 +68,11 @@ against a same-privilege local actor able to forge the complete receipt.
 
 ## Next gate
 
-The next release gate is exact publication of immutable candidate P followed by
-explicit human approval of the release title and body. Tag and GitHub Release
-creation, persistent lifecycle effects, and installed-copy behavior evaluation
-must remain bound to their separately verified effects. Ordinary local changes
-must preserve the provenance record or explicitly supersede the mapped baseline.
+The next gate is independent Planner acceptance of the exact post-release
+evidence subject. A later acceptance record may transition that pending snapshot
+without moving tag `v0.3.0` or rewriting P. Cross-version work, another Release,
+or broader efficacy remains separately authorized. Ordinary local changes must
+preserve the provenance record or explicitly supersede the mapped baseline.
 
 ## Recovery entry
 

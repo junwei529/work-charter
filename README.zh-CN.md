@@ -10,14 +10,22 @@
 [`release/v0.3.0-candidate.json`](release/v0.3.0-candidate.json) 描述，未来公开身份为
 `junwei529/work-charter`。Exact candidate C 已获验收，并由
 [`release/v0.3.0-local-release-receipt.json`](release/v0.3.0-local-release-receipt.json)
-绑定，因此 `LOCAL_RELEASE_READY` 为 `VERIFIED`；`PUBLIC_RELEASE` 仍为 `UNKNOWN`。
+绑定，因此 `LOCAL_RELEASE_READY` 为 `VERIFIED`。不可变公开提交
+`b655c1aa42acc8c68b70e87c4c228445c5182d8b`、annotated tag `v0.3.0` 与公开
+GitHub Release 的 `PUBLIC_RELEASE` 已为 `VERIFIED`。
 不可变 candidate descriptor 保留 C 中原始的 `PENDING_PLANNER_ACCEPTANCE` 快照，不重写 C。
 
 不可变 public-source candidate 由
 [`release/v0.3.0-public-release-candidate.json`](release/v0.3.0-public-release-candidate.json)
 描述。它保持 package 字节不变，并记录预期 public repository、default branch、tag 与
 human release-note gate，但不在自身记录其 commit hash。Exact public ref 与后续 release
-receipt 必须绑定该 commit；annotated tag 与 GitHub Release 仍等待显式人工批准。
+receipt 必须绑定该 commit；annotated tag 与 GitHub Release 已在显式人工批准后创建。
+
+发布后证据主体记录于
+[`release/v0.3.0-public-release-evidence.json`](release/v0.3.0-public-release-evidence.json)。
+它绑定公开对象、有界的同版本 persistent lifecycle 效果，以及两个全新 projectless
+installed-copy 行为见证；Planner 验收仍为 pending。跨版本 lifecycle、cross-Harness、
+未测试上下文与广泛效能仍为 `UNKNOWN`。
 
 ## 仓库内容
 
@@ -57,10 +65,10 @@ python -B scripts/manage_install.py uninstall --destination <skill-destination> 
 
 工具拒绝无 receipt、receipt 畸形或不匹配、package tree 错误、本地已修改、路径别名或
 其他 drift 的 destination。receipt 是完整性与路由记录，不是加密所有权证明；能够以
-同等本地权限伪造完整 receipt 的 actor 不在该机制的保护范围内。持久安装、更新、
-回滚、卸载、发布、tag、GitHub Release 与 stable installed-copy proof 仍是需要单独
-授权和取证的未来效果。
+同等本地权限伪造完整 receipt 的 actor 不在该机制的保护范围内。v0.3.0 经单独授权的
+同版本 persistent lifecycle、发布、tag、GitHub Release 与 stable installed-copy 证据
+已按上文记录为 VERIFIED；后续版本及跨版本 lifecycle 效果仍需单独授权和取证。
 
 ### 后续更新与回滚的信任输入
 
-工具内置的信任映射只授权 v0.3.0 package tree。后续不可变 Release 必须在候选 checkout 之外独立发布经人工复核的 package-tree 身份。更新或回滚到工具未内置的版本时，使用 `--trusted-target-package-tree <git-tree-sha1>` 提供该外部信任锚；若当前已安装版本也不在内置映射中，再对 update、rollback、status 和 uninstall 使用 `--trusted-current-package-tree <git-tree-sha1>` 提供此前独立保留的身份。不得从待安装 source tree 自身复制这两个信任值；在 B2 建立不可变公开来源及人工复核 release notes 前，公开 Release 证据仍为 `UNKNOWN`。
+工具内置的信任映射只授权 v0.3.0 package tree。后续不可变 Release 必须在候选 checkout 之外独立发布经人工复核的 package-tree 身份。更新或回滚到工具未内置的版本时，使用 `--trusted-target-package-tree <git-tree-sha1>` 提供该外部信任锚；若当前已安装版本也不在内置映射中，再对 update、rollback、status 和 uninstall 使用 `--trusted-current-package-tree <git-tree-sha1>` 提供此前独立保留的身份。不得从待安装 source tree 自身复制这两个信任值；后续版本的公开 Release 与跨版本 lifecycle 证据在分别建立前仍为 `UNKNOWN`。

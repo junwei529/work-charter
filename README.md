@@ -12,7 +12,9 @@ The first independent version is `v0.3.0`. The current local candidate is
 described by [`release/v0.3.0-candidate.json`](release/v0.3.0-candidate.json);
 its public identity is `junwei529/work-charter`. Exact candidate C was accepted
 and is bound by [`release/v0.3.0-local-release-receipt.json`](release/v0.3.0-local-release-receipt.json),
-so `LOCAL_RELEASE_READY` is `VERIFIED`. `PUBLIC_RELEASE` remains `UNKNOWN`.
+so `LOCAL_RELEASE_READY` is `VERIFIED`. `PUBLIC_RELEASE` is `VERIFIED` for
+immutable public commit `b655c1aa42acc8c68b70e87c4c228445c5182d8b`, annotated
+tag `v0.3.0`, and the public GitHub Release.
 The immutable candidate descriptor retains its original
 `PENDING_PLANNER_ACCEPTANCE` snapshot rather than rewriting C.
 
@@ -21,7 +23,15 @@ The immutable public-source candidate is described by
 It preserves the package bytes and records the intended public repository,
 default branch, tag, and human release-note gate without containing its own
 commit hash. An exact public ref and later release receipt must bind that commit;
-the annotated tag and GitHub Release remain pending explicit human approval.
+the annotated tag and GitHub Release were later created after explicit human
+approval.
+
+The post-release evidence subject is recorded in
+[`release/v0.3.0-public-release-evidence.json`](release/v0.3.0-public-release-evidence.json).
+It binds the public objects, bounded same-version persistent lifecycle effects,
+and two fresh projectless installed-copy behavior witnesses. Its Planner
+acceptance remains pending; cross-version lifecycle behavior, cross-Harness
+behavior, untested contexts, and broad efficacy remain `UNKNOWN`.
 
 ## Repository contents
 
@@ -65,10 +75,11 @@ mismatched receipt, use the wrong package tree, are locally modified or aliased,
 or otherwise drift from the receipt. The receipt is an integrity and routing
 record, not cryptographic ownership proof: a same-privilege local actor capable
 of forging the complete receipt is outside this mechanism's protection.
-Persistent installation, update, rollback, uninstall, publication, tag, GitHub
-Release, and stable installed-copy proof remain separately authorized future
-effects.
+For v0.3.0, the separately authorized persistent same-version lifecycle,
+publication, tag, GitHub Release, and stable installed-copy evidence are
+verified as recorded above. Future-version and cross-version lifecycle effects
+still require separate authorization and evidence.
 
 ### Future update and rollback trust
 
-The bundled trust map authorizes the v0.3.0 package tree only. A later immutable release must publish its human-reviewed package-tree identity independently of the candidate checkout. Supply that external trust anchor with `--trusted-target-package-tree <git-tree-sha1>` when updating or rolling back to a version not bundled in this tool. If the currently installed version is also absent from the bundled map, supply its independently retained identity with `--trusted-current-package-tree <git-tree-sha1>` for update, rollback, status, and uninstall. Never copy either trust value from the source tree being installed; public release evidence remains `UNKNOWN` until the publication tranche establishes that immutable source and its reviewed release notes.
+The bundled trust map authorizes the v0.3.0 package tree only. A later immutable release must publish its human-reviewed package-tree identity independently of the candidate checkout. Supply that external trust anchor with `--trusted-target-package-tree <git-tree-sha1>` when updating or rolling back to a version not bundled in this tool. If the currently installed version is also absent from the bundled map, supply its independently retained identity with `--trusted-current-package-tree <git-tree-sha1>` for update, rollback, status, and uninstall. Never copy either trust value from the source tree being installed; future-version public release and cross-version lifecycle evidence remain `UNKNOWN` until separately established.

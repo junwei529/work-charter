@@ -30,8 +30,10 @@ and would create a false standalone dependency.
 
 ## Publication boundary
 
-Tracked content contains no private task, host, checkout, account, or destination
-locator. The accepted local candidate, receipt, and public-source candidate make
-no installation, tag, GitHub Release, stable-copy, cross-Harness,
-model-compliance, or broad-efficacy claim. Public ref, tag, and Release evidence
-must be recorded after their exact effects are independently verified.
+Tracked content contains no private task, host, checkout, account, destination,
+or retained-quarantine locator. Immutable public commit
+`b655c1aa42acc8c68b70e87c4c228445c5182d8b`, annotated tag `v0.3.0`, and the
+public GitHub Release are independently verified. The post-release evidence
+subject records bounded same-version install, update, rollback, uninstall, and
+restoration effects plus fresh installed-copy behavior witnesses. It makes no
+cross-version, cross-Harness, untested-context, or broad-efficacy claim.

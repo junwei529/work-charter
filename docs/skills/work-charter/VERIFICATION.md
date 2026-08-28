@@ -131,6 +131,16 @@ SOURCE checker verifies that local descriptor contract. It does not prove the
 public ref, tag, GitHub Release, or any persistent installation effect; those
 require live public-object and installed-copy evidence tied to exact P.
 
+The post-release evidence subject
+[`../../../release/v0.3.0-public-release-evidence.json`](../../../release/v0.3.0-public-release-evidence.json)
+binds exact public commit P, the annotated tag object and peeled commit, exact
+human-approved Release title/body hash, bounded same-version persistent
+lifecycle effects, final managed package identity, and two fresh projectless
+installed-copy behavior witnesses. The witnesses loaded the restored installed
+Skill body and its coordination/recovery and Standard O/P/E references. This
+evidence does not prove cross-version update/rollback, cross-Harness behavior,
+untested contexts, or broad efficacy.
+
 ## Evidence limits
 
 The retained cases are deterministic contract fixtures; they do not create
@@ -143,4 +153,4 @@ efficacy.
 
 ## Future-version lifecycle boundary
 
-The lifecycle command accepts `--trusted-target-package-tree` and `--trusted-current-package-tree` for versions outside its built-in trust map. These values are explicit external trust inputs, not candidate-derived metadata. B1 verifies the local mechanism; immutable publication and the human-reviewed release-note carrier remain B2 evidence and are `UNKNOWN` here. If recovery-archive cleanup fails after a successful uninstall, the command reports `ABSENT`, retains and identifies the archive, and returns a warning instead of misreporting the completed uninstall as failed.
+The lifecycle command accepts `--trusted-target-package-tree` and `--trusted-current-package-tree` for versions outside its built-in trust map. These values are explicit external trust inputs, not candidate-derived metadata. B2 verifies same-version effects from exact public `v0.3.0`; cross-version behavior remains `UNKNOWN`. If recovery-archive cleanup fails after a successful uninstall, the command reports `ABSENT`, retains and identifies the archive, and returns a warning instead of misreporting the completed uninstall as failed.

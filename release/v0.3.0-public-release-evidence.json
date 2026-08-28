@@ -1,0 +1,82 @@
+{
+  "evidence_state": "PENDING_PLANNER_ACCEPTANCE",
+  "evidence_states": {
+    "broad_product_efficacy": "UNKNOWN",
+    "cross_harness_behavior": "UNKNOWN",
+    "cross_version_lifecycle": "UNKNOWN",
+    "immutable_public_source": "VERIFIED",
+    "installed_copy_behavior": "VERIFIED",
+    "local_release_ready": "VERIFIED",
+    "persistent_same_version_lifecycle": "VERIFIED",
+    "public_release": "VERIFIED",
+    "stable_installed_copy": "VERIFIED",
+    "untested_contexts": "UNKNOWN"
+  },
+  "github_release": {
+    "body_normalized_lf_sha256": "4a02c5cce79f3aaee545eca1c7f0a2330563618782a7126946dfdf786b0bb7d8",
+    "draft": false,
+    "id": 378244052,
+    "prerelease": false,
+    "published_at": "2026-08-28T03:26:19Z",
+    "title": "Work Charter v0.3.0",
+    "url": "https://github.com/junwei529/work-charter/releases/tag/v0.3.0"
+  },
+  "installed_copy_behavior": {
+    "evidence": [
+      {
+        "evidence_id": "B2-WC-LOAD-01",
+        "result": "ACCEPTED",
+        "scope": "fresh projectless read-only loaded-copy behavior"
+      },
+      {
+        "evidence_id": "B2-WC-RESTORE-01",
+        "result": "ACCEPTED",
+        "scope": "fresh projectless read-only restored-copy recovery behavior"
+      }
+    ],
+    "package_file_sha256": {
+      "SKILL.md": "c750d51940456b110bc7ed4b7d490690f42ca8ee9b555c23c8fe3d4d056b4dba",
+      "agents/openai.yaml": "f0032475e213d75ed17eb41c3424007ebc46c0ddb6739138c9908185beefdad6",
+      "assets/work-charter.md": "ca2ec792c0b0bf978e79a7e51cb5afd9b675e79b0daf7d0dc81917f77bfc7fa1",
+      "references/coordination-and-recovery.md": "5565ef7d2db47847c570ae0ea0a0a307bc64c0ed8b61261d85177f4ef2da1f88",
+      "references/standard-ope.md": "10a4d5b9c9239ac2f79544155e09ea230d99e6ca80049cd01ea624f16a72fd67"
+    },
+    "package_tree": "0ac3cbb0f1fa8fa51d8f832c8127eabc9863ec9e"
+  },
+  "persistent_lifecycle": {
+    "cross_version_update_rollback": "UNKNOWN",
+    "final_package_sha256": "7b67ea1f7073fa66ac91c36f3e39c735b54c04174e2fa3672068f8fa8948a5b2",
+    "final_package_tree": "0ac3cbb0f1fa8fa51d8f832c8127eabc9863ec9e",
+    "final_state": "MANAGED",
+    "foreign_copy_refusal": "VERIFIED",
+    "foreign_copy_retained": true,
+    "operations": [
+      "install",
+      "same-version update",
+      "same-version rollback",
+      "origin-aware uninstall",
+      "public-source restoration"
+    ],
+    "source_identity": "junwei529/work-charter",
+    "source_ref": "v0.3.0",
+    "version": "0.3.0"
+  },
+  "planner_acceptance": "PENDING",
+  "product": "work-charter",
+  "public_source": {
+    "commit": "b655c1aa42acc8c68b70e87c4c228445c5182d8b",
+    "package_sha256": "d445a3cd99c6d8f2ea2d9eee3be7c24781732617fedf08d4e9fd1b3d43ff88d1",
+    "package_tree": "0ac3cbb0f1fa8fa51d8f832c8127eabc9863ec9e",
+    "repository": "junwei529/work-charter",
+    "tree": "0b5166b402d98df041589d378a739a5fa9757ba5"
+  },
+  "schema": "work-charter-public-release-evidence/v1",
+  "tag": {
+    "annotation": "Work Charter v0.3.0",
+    "name": "v0.3.0",
+    "object": "81675840fe586e4f8960404210b1985d70ae4940",
+    "peeled_commit": "b655c1aa42acc8c68b70e87c4c228445c5182d8b",
+    "type": "annotated"
+  },
+  "version": "0.3.0"
+}

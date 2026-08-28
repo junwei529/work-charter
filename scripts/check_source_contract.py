@@ -11,6 +11,7 @@ PACKAGE = ROOT / "skills" / "work-charter"
 CANDIDATE = ROOT / "release" / "v0.3.0-candidate.json"
 RECEIPT = ROOT / "release" / "v0.3.0-local-release-receipt.json"
 PUBLIC_RELEASE_CANDIDATE = ROOT / "release" / "v0.3.0-public-release-candidate.json"
+PUBLIC_RELEASE_EVIDENCE = ROOT / "release" / "v0.3.0-public-release-evidence.json"
 EXPECTED_FILES = {
     "SKILL.md",
     "agents/openai.yaml",
@@ -291,6 +292,116 @@ def main():
         and public_candidate.get("public_repository", {}).get("visibility") == "public"
     )
 
+    public_evidence_error = None
+    public_evidence = {}
+    try:
+        parsed_public_evidence = json.loads(PUBLIC_RELEASE_EVIDENCE.read_text(encoding="utf-8"))
+        if not isinstance(parsed_public_evidence, dict):
+            raise ValueError("public release evidence must be an object")
+        for field in (
+            "evidence_states",
+            "github_release",
+            "installed_copy_behavior",
+            "persistent_lifecycle",
+            "public_source",
+            "tag",
+        ):
+            if not isinstance(parsed_public_evidence.get(field), dict):
+                raise ValueError(f"public release evidence field {field!r} must be an object")
+        if not isinstance(parsed_public_evidence["installed_copy_behavior"].get("evidence"), list):
+            raise ValueError("public release evidence witnesses must be a list")
+        if not isinstance(
+            parsed_public_evidence["installed_copy_behavior"].get("package_file_sha256"), dict
+        ):
+            raise ValueError("public release evidence package hashes must be an object")
+        if not isinstance(parsed_public_evidence["persistent_lifecycle"].get("operations"), list):
+            raise ValueError("public release evidence lifecycle operations must be a list")
+        public_evidence = parsed_public_evidence
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
+        public_evidence = {}
+        public_evidence_error = str(error)
+    checks["public_release_evidence.identity"] = (
+        public_evidence.get("schema") == "work-charter-public-release-evidence/v1"
+        and public_evidence.get("product") == "work-charter"
+        and public_evidence.get("version") == "0.3.0"
+        and public_evidence.get("evidence_state") == "PENDING_PLANNER_ACCEPTANCE"
+        and public_evidence.get("planner_acceptance") == "PENDING"
+        and public_evidence.get("public_source", {}).get("commit")
+        == "b655c1aa42acc8c68b70e87c4c228445c5182d8b"
+        and public_evidence.get("public_source", {}).get("tree")
+        == "0b5166b402d98df041589d378a739a5fa9757ba5"
+        and public_evidence.get("public_source", {}).get("package_tree") == actual_package_tree
+        and public_evidence.get("public_source", {}).get("package_sha256")
+        == (package_digest(actual_files) if actual_files == EXPECTED_FILES else None)
+        and public_evidence.get("public_source", {}).get("repository")
+        == "junwei529/work-charter"
+        and public_evidence.get("tag", {}).get("name") == "v0.3.0"
+        and public_evidence.get("tag", {}).get("type") == "annotated"
+        and public_evidence.get("tag", {}).get("annotation") == "Work Charter v0.3.0"
+        and public_evidence.get("tag", {}).get("object")
+        == "81675840fe586e4f8960404210b1985d70ae4940"
+        and public_evidence.get("tag", {}).get("peeled_commit")
+        == "b655c1aa42acc8c68b70e87c4c228445c5182d8b"
+        and public_evidence.get("github_release", {}).get("id") == 378244052
+        and public_evidence.get("github_release", {}).get("title") == "Work Charter v0.3.0"
+        and public_evidence.get("github_release", {}).get("url")
+        == "https://github.com/junwei529/work-charter/releases/tag/v0.3.0"
+        and public_evidence.get("github_release", {}).get("draft") is False
+        and public_evidence.get("github_release", {}).get("prerelease") is False
+        and public_evidence.get("github_release", {}).get("body_normalized_lf_sha256")
+        == "4a02c5cce79f3aaee545eca1c7f0a2330563618782a7126946dfdf786b0bb7d8"
+        and public_evidence.get("persistent_lifecycle", {}).get("final_state") == "MANAGED"
+        and public_evidence.get("persistent_lifecycle", {}).get("source_identity")
+        == "junwei529/work-charter"
+        and public_evidence.get("persistent_lifecycle", {}).get("source_ref") == "v0.3.0"
+        and public_evidence.get("persistent_lifecycle", {}).get("version") == "0.3.0"
+        and public_evidence.get("persistent_lifecycle", {}).get("foreign_copy_refusal")
+        == "VERIFIED"
+        and public_evidence.get("persistent_lifecycle", {}).get("foreign_copy_retained") is True
+        and public_evidence.get("persistent_lifecycle", {}).get("operations")
+        == [
+            "install",
+            "same-version update",
+            "same-version rollback",
+            "origin-aware uninstall",
+            "public-source restoration",
+        ]
+        and public_evidence.get("persistent_lifecycle", {}).get("final_package_sha256")
+        == "7b67ea1f7073fa66ac91c36f3e39c735b54c04174e2fa3672068f8fa8948a5b2"
+        and public_evidence.get("persistent_lifecycle", {}).get("final_package_tree")
+        == actual_package_tree
+        and public_evidence.get("installed_copy_behavior", {}).get("package_tree")
+        == actual_package_tree
+        and public_evidence.get("installed_copy_behavior", {}).get("evidence")
+        == [
+            {
+                "evidence_id": "B2-WC-LOAD-01",
+                "result": "ACCEPTED",
+                "scope": "fresh projectless read-only loaded-copy behavior",
+            },
+            {
+                "evidence_id": "B2-WC-RESTORE-01",
+                "result": "ACCEPTED",
+                "scope": "fresh projectless read-only restored-copy recovery behavior",
+            },
+        ]
+        and public_evidence.get("installed_copy_behavior", {}).get("package_file_sha256")
+        == {
+            "SKILL.md": "c750d51940456b110bc7ed4b7d490690f42ca8ee9b555c23c8fe3d4d056b4dba",
+            "agents/openai.yaml": "f0032475e213d75ed17eb41c3424007ebc46c0ddb6739138c9908185beefdad6",
+            "assets/work-charter.md": "ca2ec792c0b0bf978e79a7e51cb5afd9b675e79b0daf7d0dc81917f77bfc7fa1",
+            "references/coordination-and-recovery.md": "5565ef7d2db47847c570ae0ea0a0a307bc64c0ed8b61261d85177f4ef2da1f88",
+            "references/standard-ope.md": "10a4d5b9c9239ac2f79544155e09ea230d99e6ca80049cd01ea624f16a72fd67",
+        }
+        and public_evidence.get("evidence_states", {}).get("public_release") == "VERIFIED"
+        and public_evidence.get("evidence_states", {}).get("stable_installed_copy")
+        == "VERIFIED"
+        and public_evidence.get("evidence_states", {}).get("cross_version_lifecycle")
+        == "UNKNOWN"
+        and public_evidence.get("evidence_states", {}).get("broad_product_efficacy")
+        == "UNKNOWN"
+    )
+
     failures = [name for name, passed in checks.items() if not passed]
     if package_scan_error:
         failures.append(f"package.scan: {package_scan_error}")
@@ -301,6 +412,8 @@ def main():
         failures.append(f"receipt.unreadable: {receipt_error}")
     if public_candidate_error:
         failures.append(f"public_release_candidate.unreadable: {public_candidate_error}")
+    if public_evidence_error:
+        failures.append(f"public_release_evidence.unreadable: {public_evidence_error}")
     result = {
         "checks": checks,
         "failures": failures,

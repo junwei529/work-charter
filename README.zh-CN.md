@@ -13,6 +13,12 @@
 绑定，因此 `LOCAL_RELEASE_READY` 为 `VERIFIED`；`PUBLIC_RELEASE` 仍为 `UNKNOWN`。
 不可变 candidate descriptor 保留 C 中原始的 `PENDING_PLANNER_ACCEPTANCE` 快照，不重写 C。
 
+不可变 public-source candidate 由
+[`release/v0.3.0-public-release-candidate.json`](release/v0.3.0-public-release-candidate.json)
+描述。它保持 package 字节不变，并记录预期 public repository、default branch、tag 与
+human release-note gate，但不在自身记录其 commit hash。Exact public ref 与后续 release
+receipt 必须绑定该 commit；annotated tag 与 GitHub Release 仍等待显式人工批准。
+
 ## 仓库内容
 
 - 产品包：[`skills/work-charter/`](skills/work-charter/)

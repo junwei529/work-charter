@@ -1,0 +1,31 @@
+{
+  "human_release_notes_review": "PENDING",
+  "lineage": {
+    "local_release_receipt": "release/v0.3.0-local-release-receipt.json",
+    "local_release_receipt_commit": "193be0edcb95dac5b3ddfc95a935d06165ffa446"
+  },
+  "package": {
+    "path": "skills/work-charter",
+    "sha256": "d445a3cd99c6d8f2ea2d9eee3be7c24781732617fedf08d4e9fd1b3d43ff88d1",
+    "tree": "0ac3cbb0f1fa8fa51d8f832c8127eabc9863ec9e"
+  },
+  "product": "work-charter",
+  "public_release_state": "PENDING_HUMAN_APPROVAL",
+  "public_repository": {
+    "default_branch": "main",
+    "full_name": "junwei529/work-charter",
+    "url": "https://github.com/junwei529/work-charter",
+    "visibility": "public"
+  },
+  "release_notes": "CHANGELOG.md",
+  "release_notes_sha256": "e37631f77e9dd9a450e618c56967017e49a7c05618baa0b7a2cb838ccd01f12b",
+  "release_title": "Work Charter v0.3.0",
+  "schema": "work-charter-public-release-candidate/v1",
+  "tag": "v0.3.0",
+  "tag_type": "annotated",
+  "github_release": {
+    "draft": false,
+    "prerelease": false
+  },
+  "version": "0.3.0"
+}

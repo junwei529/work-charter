@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "skills" / "work-charter"
 CANDIDATE = ROOT / "release" / "v0.3.0-candidate.json"
 RECEIPT = ROOT / "release" / "v0.3.0-local-release-receipt.json"
+PUBLIC_RELEASE_CANDIDATE = ROOT / "release" / "v0.3.0-public-release-candidate.json"
 EXPECTED_FILES = {
     "SKILL.md",
     "agents/openai.yaml",
@@ -244,6 +245,52 @@ def main():
         and receipt.get("source_forward_behavior", {}).get("package_tree") == actual_package_tree
     )
 
+    public_candidate_error = None
+    public_candidate = {}
+    release_notes_sha256 = None
+    try:
+        parsed_public_candidate = json.loads(PUBLIC_RELEASE_CANDIDATE.read_text(encoding="utf-8"))
+        if not isinstance(parsed_public_candidate, dict):
+            raise ValueError("public release candidate must be an object")
+        for field in ("github_release", "lineage", "package", "public_repository"):
+            if not isinstance(parsed_public_candidate.get(field), dict):
+                raise ValueError(f"public release candidate field {field!r} must be an object")
+        release_notes_sha256 = hashlib.sha256((ROOT / "CHANGELOG.md").read_bytes()).hexdigest()
+        public_candidate = parsed_public_candidate
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
+        public_candidate = {}
+        public_candidate_error = str(error)
+    checks["public_release_candidate.identity"] = (
+        public_candidate.get("schema") == "work-charter-public-release-candidate/v1"
+        and "commit" not in public_candidate
+        and public_candidate.get("product") == "work-charter"
+        and public_candidate.get("version") == "0.3.0"
+        and public_candidate.get("public_release_state") == "PENDING_HUMAN_APPROVAL"
+        and public_candidate.get("human_release_notes_review") == "PENDING"
+        and public_candidate.get("release_title") == "Work Charter v0.3.0"
+        and public_candidate.get("release_notes") == "CHANGELOG.md"
+        and public_candidate.get("release_notes_sha256")
+        == release_notes_sha256
+        and public_candidate.get("tag") == "v0.3.0"
+        and public_candidate.get("tag_type") == "annotated"
+        and public_candidate.get("github_release")
+        == {"draft": False, "prerelease": False}
+        and public_candidate.get("lineage", {}).get("local_release_receipt")
+        == "release/v0.3.0-local-release-receipt.json"
+        and public_candidate.get("lineage", {}).get("local_release_receipt_commit")
+        == "193be0edcb95dac5b3ddfc95a935d06165ffa446"
+        and public_candidate.get("package", {}).get("path") == "skills/work-charter"
+        and public_candidate.get("package", {}).get("tree") == actual_package_tree
+        and public_candidate.get("package", {}).get("sha256")
+        == (package_digest(actual_files) if actual_files == EXPECTED_FILES else None)
+        and public_candidate.get("public_repository", {}).get("full_name")
+        == "junwei529/work-charter"
+        and public_candidate.get("public_repository", {}).get("url")
+        == "https://github.com/junwei529/work-charter"
+        and public_candidate.get("public_repository", {}).get("default_branch") == "main"
+        and public_candidate.get("public_repository", {}).get("visibility") == "public"
+    )
+
     failures = [name for name, passed in checks.items() if not passed]
     if package_scan_error:
         failures.append(f"package.scan: {package_scan_error}")
@@ -252,6 +299,8 @@ def main():
         failures.append(f"candidate.unreadable: {candidate_error}")
     if receipt_error:
         failures.append(f"receipt.unreadable: {receipt_error}")
+    if public_candidate_error:
+        failures.append(f"public_release_candidate.unreadable: {public_candidate_error}")
     result = {
         "checks": checks,
         "failures": failures,

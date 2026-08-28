@@ -16,6 +16,13 @@ so `LOCAL_RELEASE_READY` is `VERIFIED`. `PUBLIC_RELEASE` remains `UNKNOWN`.
 The immutable candidate descriptor retains its original
 `PENDING_PLANNER_ACCEPTANCE` snapshot rather than rewriting C.
 
+The immutable public-source candidate is described by
+[`release/v0.3.0-public-release-candidate.json`](release/v0.3.0-public-release-candidate.json).
+It preserves the package bytes and records the intended public repository,
+default branch, tag, and human release-note gate without containing its own
+commit hash. An exact public ref and later release receipt must bind that commit;
+the annotated tag and GitHub Release remain pending explicit human approval.
+
 ## Repository contents
 
 - Product package: [`skills/work-charter/`](skills/work-charter/)

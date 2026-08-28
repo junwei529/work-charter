@@ -31,5 +31,7 @@ and would create a false standalone dependency.
 ## Publication boundary
 
 Tracked content contains no private task, host, checkout, account, or destination
-locator. The accepted local candidate and receipt make no remote, installation, tag, Release,
-publication, stable-copy, model-compliance, or broad-efficacy claim.
+locator. The accepted local candidate, receipt, and public-source candidate make
+no installation, tag, GitHub Release, stable-copy, cross-Harness,
+model-compliance, or broad-efficacy claim. Public ref, tag, and Release evidence
+must be recorded after their exact effects are independently verified.

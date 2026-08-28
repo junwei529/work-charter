@@ -123,6 +123,14 @@ fresh projectless, read-only, no-tool, exact-SOURCE forward-behavior evidence
 with `gpt-5.6-sol/high`; it does not prove installed-copy behavior,
 publication, stable installation, cross-Harness behavior, or broad efficacy.
 
+The public-source descriptor
+[`../../../release/v0.3.0-public-release-candidate.json`](../../../release/v0.3.0-public-release-candidate.json)
+records the exact repository identity, default branch, intended annotated tag,
+release-note owner, B1 receipt lineage, and unchanged package identity. The
+SOURCE checker verifies that local descriptor contract. It does not prove the
+public ref, tag, GitHub Release, or any persistent installation effect; those
+require live public-object and installed-copy evidence tied to exact P.
+
 ## Evidence limits
 
 The retained cases are deterministic contract fixtures; they do not create

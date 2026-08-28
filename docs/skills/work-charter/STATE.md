@@ -15,6 +15,9 @@ case or fixture is an exact Git blob from `80910a8b2375a11be897e9660c4b00a06d00d
 - Accepted candidate C: `732e7efa6211d9aedeb133282ef28ce03f9bdfef`
 - Acceptance receipt: [`../../../release/v0.3.0-local-release-receipt.json`](../../../release/v0.3.0-local-release-receipt.json)
 - Release notes: [`../../../CHANGELOG.md`](../../../CHANGELOG.md), human review pending
+- Public repository: `https://github.com/junwei529/work-charter`
+- Public-source candidate: [`../../../release/v0.3.0-public-release-candidate.json`](../../../release/v0.3.0-public-release-candidate.json)
+- Public release state: `PENDING_HUMAN_APPROVAL`
 
 The immutable candidate identity is the clean commit containing the descriptor.
 The descriptor deliberately does not contain its own commit hash and retains
@@ -46,6 +49,11 @@ Evidence states remain separate:
 - `STABLE_INSTALLED_COPY`: `UNKNOWN`.
 - Broad product efficacy and untested selection/loading/negative contexts: `UNKNOWN`.
 
+The public-source candidate preserves this evidence partition. Its own snapshot
+does not prove an exact public ref, annotated tag, GitHub Release, persistent
+installation, loaded installed-copy behavior, or broad efficacy. Those facts
+require later effect-bound evidence.
+
 Lifecycle receipt validation is bounded to integrity and routing checks. It
 refuses unreceipted, malformed or mismatched-receipt, wrong-tree, modified,
 aliased, and drifted destinations, but does not prove cryptographic ownership
@@ -53,11 +61,11 @@ against a same-privilege local actor able to forge the complete receipt.
 
 ## Next gate
 
-The next release gate is the separately authorized immutable public source and
-publication route. Any remote, installation, tag, Release, publication,
-persistent lifecycle effect, or installed-copy behavior evaluation still
-requires its own authority and fresh evidence. Ordinary local changes must
-preserve the provenance record or explicitly supersede the mapped baseline.
+The next release gate is exact publication of immutable candidate P followed by
+explicit human approval of the release title and body. Tag and GitHub Release
+creation, persistent lifecycle effects, and installed-copy behavior evaluation
+must remain bound to their separately verified effects. Ordinary local changes
+must preserve the provenance record or explicitly supersede the mapped baseline.
 
 ## Recovery entry
 

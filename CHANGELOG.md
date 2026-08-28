@@ -1,22 +1,29 @@
 # Changelog
 
-## v0.3.0 candidate
+## Work Charter v0.3.0
 
-Status: `LOCAL_RELEASE_READY=VERIFIED`; human release-note review remains `PENDING`
+Human release-note review: `PENDING`
 
-Human review: pending before public release.
+First independent release of Work Charter, a Codex Skill for bounding
+consequential work by outcome, authority, evidence, recovery, and proportional
+coordination.
 
-- Establishes `junwei529/work-charter` as the approved future public identity.
+### Highlights
+
+- Publishes the independently versioned `junwei529/work-charter` repository.
 - Preserves the installable 5-file Work Charter package byte for byte from the
   recorded migration source.
-- Adds deterministic SOURCE contract qualification for selection/activation,
-  authority non-expansion, coordination/recovery, and Standard O/P/E clauses.
-- Adds an explicit-destination lifecycle tool with dry-run by default and
-  disposable install/update/rollback/uninstall self-tests. Receipt validation
-  provides integrity and routing checks, not cryptographic ownership proof
-  against a same-privilege local actor capable of forging the complete receipt.
-- Separates local candidate readiness from public Release, stable installed-copy
-  behavior, model adherence, and broad efficacy.
+- Includes deterministic SOURCE qualification for selection and activation,
+  authority non-expansion, coordination and recovery, and Standard O/P/E.
+- Includes an explicit-destination lifecycle tool with dry-run defaults and
+  disposable install, update, rollback, uninstall, and recovery checks.
 
-No remote, tag, Release, publication, or persistent installation effect is part
-of this candidate.
+### Evidence boundaries
+
+- Local release readiness is verified for the accepted immutable candidate.
+- The release does not by itself prove stable installed-copy behavior,
+  cross-Harness behavior, untested selection or loading contexts, persistent
+  lifecycle effects, or broad product efficacy.
+- Lifecycle receipts provide integrity and routing evidence, not cryptographic
+  ownership against a same-privilege local actor able to forge a complete
+  receipt.

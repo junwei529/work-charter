@@ -24,6 +24,12 @@ Candidate C remains immutable. A separate local-release receipt binds its exact
 commit, candidate tree, package tree, and independent Planner acceptance without
 recording the receipt commit inside itself.
 
+The public release uses the same non-circular pattern. A distinct immutable
+public-source candidate commit P carries final repository content and the
+human-reviewable release notes without embedding P's commit hash. Later public
+ref and release evidence may bind exact P while the annotated `v0.3.0` tag stays
+fixed at P.
+
 ## Evaluation surface
 
 - `evals/cases/cold-resume.md`

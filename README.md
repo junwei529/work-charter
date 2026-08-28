@@ -29,9 +29,12 @@ approval.
 The post-release evidence subject is recorded in
 [`release/v0.3.0-public-release-evidence.json`](release/v0.3.0-public-release-evidence.json).
 It binds the public objects, bounded same-version persistent lifecycle effects,
-and two fresh projectless installed-copy behavior witnesses. Its Planner
-acceptance remains pending; cross-version lifecycle behavior, cross-Harness
-behavior, untested contexts, and broad efficacy remain `UNKNOWN`.
+the two historical projectless witnesses, and a fresh sole-discovery loaded-copy
+witness. The retained predecessor bytes are preserved outside every Skill
+discovery root, so the managed user installation is the only catalog-visible
+`work-charter`. Planner acceptance remains pending; cross-version lifecycle
+behavior, cross-Harness behavior, untested contexts, and broad efficacy remain
+`UNKNOWN`.
 
 ## Repository contents
 

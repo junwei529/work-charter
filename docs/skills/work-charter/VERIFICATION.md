@@ -136,10 +136,13 @@ The post-release evidence subject
 binds exact public commit P, the annotated tag object and peeled commit, exact
 human-approved Release title/body hash, bounded same-version persistent
 lifecycle effects, final managed package identity, and two fresh projectless
-installed-copy behavior witnesses. The witnesses loaded the restored installed
-Skill body and its coordination/recovery and Standard O/P/E references. This
-evidence does not prove cross-version update/rollback, cross-Harness behavior,
-untested contexts, or broad efficacy.
+installed-copy behavior witnesses. Those two remain historical evidence. After
+the retained predecessor was preserved outside every Skill discovery root,
+`B2-WC-SOLE-LOAD-02` freshly observed exactly one catalog-visible managed copy,
+verified its receipt and five file hashes, and loaded the Skill body plus its
+coordination/recovery and Standard O/P/E references. The recovery locator stays
+controller-side. This evidence does not prove cross-version update/rollback,
+cross-Harness behavior, untested contexts, or broad efficacy.
 
 ## Evidence limits
 

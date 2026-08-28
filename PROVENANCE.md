@@ -35,5 +35,8 @@ or retained-quarantine locator. Immutable public commit
 `b655c1aa42acc8c68b70e87c4c228445c5182d8b`, annotated tag `v0.3.0`, and the
 public GitHub Release are independently verified. The post-release evidence
 subject records bounded same-version install, update, rollback, uninstall, and
-restoration effects plus fresh installed-copy behavior witnesses. It makes no
-cross-version, cross-Harness, untested-context, or broad-efficacy claim.
+restoration effects plus fresh installed-copy behavior witnesses. The corrected
+installed-state evidence preserves predecessor bytes outside every Skill
+discovery root and binds one catalog-visible managed `work-charter`; its private
+recovery locator remains controller-side. It makes no cross-version,
+cross-Harness, untested-context, or broad-efficacy claim.

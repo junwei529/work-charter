@@ -299,6 +299,7 @@ def main():
         if not isinstance(parsed_public_evidence, dict):
             raise ValueError("public release evidence must be an object")
         for field in (
+            "discovery_correction",
             "evidence_states",
             "github_release",
             "installed_copy_behavior",
@@ -358,6 +359,12 @@ def main():
         and public_evidence.get("persistent_lifecycle", {}).get("foreign_copy_refusal")
         == "VERIFIED"
         and public_evidence.get("persistent_lifecycle", {}).get("foreign_copy_retained") is True
+        and public_evidence.get("persistent_lifecycle", {}).get("foreign_copy_discovery_state")
+        == "PRESERVED_OUTSIDE_SKILL_DISCOVERY_ROOT"
+        and public_evidence.get("persistent_lifecycle", {}).get(
+            "managed_uninstall_target_is_sole_discoverable_copy"
+        )
+        is True
         and public_evidence.get("persistent_lifecycle", {}).get("operations")
         == [
             "install",
@@ -384,7 +391,26 @@ def main():
                 "result": "ACCEPTED",
                 "scope": "fresh projectless read-only restored-copy recovery behavior",
             },
+            {
+                "evidence_id": "B2-WC-SOLE-LOAD-02",
+                "result": "ACCEPTED",
+                "scope": "fresh projectless sole-discovery loaded-copy behavior",
+            },
         ]
+        and public_evidence.get("discovery_correction", {}).get("prior_discovery_ambiguity")
+        == "CORRECTED"
+        and public_evidence.get("discovery_correction", {}).get("retained_copy")
+        == "PRESERVED_OUTSIDE_SKILL_DISCOVERY_ROOT"
+        and public_evidence.get("discovery_correction", {}).get("recovery_locator")
+        == "CONTROLLER_SIDE_ONLY"
+        and public_evidence.get("discovery_correction", {}).get("current_same_name_catalog_count")
+        == 1
+        and public_evidence.get("discovery_correction", {}).get("current_witness")
+        == "B2-WC-SOLE-LOAD-02"
+        and public_evidence.get("discovery_correction", {}).get("historical_evidence_preserved")
+        == ["B2-WC-LOAD-01", "B2-WC-RESTORE-01"]
+        and public_evidence.get("discovery_correction", {}).get("supersedes_evidence_commit")
+        == "651d9decd9bb3b9532fa41eb55b2ceeffe19ccc0"
         and public_evidence.get("installed_copy_behavior", {}).get("package_file_sha256")
         == {
             "SKILL.md": "c750d51940456b110bc7ed4b7d490690f42ca8ee9b555c23c8fe3d4d056b4dba",
@@ -395,6 +421,8 @@ def main():
         }
         and public_evidence.get("evidence_states", {}).get("public_release") == "VERIFIED"
         and public_evidence.get("evidence_states", {}).get("stable_installed_copy")
+        == "VERIFIED"
+        and public_evidence.get("evidence_states", {}).get("sole_installed_copy_discovery")
         == "VERIFIED"
         and public_evidence.get("evidence_states", {}).get("cross_version_lifecycle")
         == "UNKNOWN"

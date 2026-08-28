@@ -53,13 +53,17 @@ Evidence states remain separate:
 - `PUBLIC_RELEASE`: `VERIFIED` for exact P, annotated tag, and public Release.
 - Persistent same-version install/update/rollback/uninstall/restoration: `VERIFIED`.
 - `STABLE_INSTALLED_COPY`: `VERIFIED` for the current Codex user installation.
-- Fresh installed-copy behavior: `VERIFIED` for two projectless read-only witnesses.
+- Fresh installed-copy behavior: `VERIFIED` for the retained historical witnesses
+  plus `B2-WC-SOLE-LOAD-02`, which observed exactly one catalog-visible managed
+  `work-charter`.
+- Retained predecessor bytes: preserved outside every Skill discovery root; the
+  exact recovery locator is controller-side only.
 - Broad product efficacy and untested selection/loading/negative contexts: `UNKNOWN`.
 
 The immutable public-source candidate preserves its pre-effect snapshot. The
-separate post-release evidence subject binds the later public and installed-copy
-facts without rewriting P. Cross-version update/rollback, cross-Harness
-behavior, untested contexts, and broad efficacy remain `UNKNOWN`.
+separate post-release evidence subject binds the later public and corrected
+installed-copy facts without rewriting P. Cross-version update/rollback,
+cross-Harness behavior, untested contexts, and broad efficacy remain `UNKNOWN`.
 
 Lifecycle receipt validation is bounded to integrity and routing checks. It
 refuses unreceipted, malformed or mismatched-receipt, wrong-tree, modified,

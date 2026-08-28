@@ -1,4 +1,16 @@
 {
+  "discovery_correction": {
+    "current_same_name_catalog_count": 1,
+    "current_witness": "B2-WC-SOLE-LOAD-02",
+    "historical_evidence_preserved": [
+      "B2-WC-LOAD-01",
+      "B2-WC-RESTORE-01"
+    ],
+    "prior_discovery_ambiguity": "CORRECTED",
+    "recovery_locator": "CONTROLLER_SIDE_ONLY",
+    "retained_copy": "PRESERVED_OUTSIDE_SKILL_DISCOVERY_ROOT",
+    "supersedes_evidence_commit": "651d9decd9bb3b9532fa41eb55b2ceeffe19ccc0"
+  },
   "evidence_state": "PENDING_PLANNER_ACCEPTANCE",
   "evidence_states": {
     "broad_product_efficacy": "UNKNOWN",
@@ -9,6 +21,7 @@
     "local_release_ready": "VERIFIED",
     "persistent_same_version_lifecycle": "VERIFIED",
     "public_release": "VERIFIED",
+    "sole_installed_copy_discovery": "VERIFIED",
     "stable_installed_copy": "VERIFIED",
     "untested_contexts": "UNKNOWN"
   },
@@ -32,6 +45,11 @@
         "evidence_id": "B2-WC-RESTORE-01",
         "result": "ACCEPTED",
         "scope": "fresh projectless read-only restored-copy recovery behavior"
+      },
+      {
+        "evidence_id": "B2-WC-SOLE-LOAD-02",
+        "result": "ACCEPTED",
+        "scope": "fresh projectless sole-discovery loaded-copy behavior"
       }
     ],
     "package_file_sha256": {
@@ -48,8 +66,10 @@
     "final_package_sha256": "7b67ea1f7073fa66ac91c36f3e39c735b54c04174e2fa3672068f8fa8948a5b2",
     "final_package_tree": "0ac3cbb0f1fa8fa51d8f832c8127eabc9863ec9e",
     "final_state": "MANAGED",
+    "foreign_copy_discovery_state": "PRESERVED_OUTSIDE_SKILL_DISCOVERY_ROOT",
     "foreign_copy_refusal": "VERIFIED",
     "foreign_copy_retained": true,
+    "managed_uninstall_target_is_sole_discoverable_copy": true,
     "operations": [
       "install",
       "same-version update",

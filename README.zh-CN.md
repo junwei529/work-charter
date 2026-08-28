@@ -23,9 +23,11 @@ receipt 必须绑定该 commit；annotated tag 与 GitHub Release 已在显式�
 
 发布后证据主体记录于
 [`release/v0.3.0-public-release-evidence.json`](release/v0.3.0-public-release-evidence.json)。
-它绑定公开对象、有界的同版本 persistent lifecycle 效果，以及两个全新 projectless
-installed-copy 行为见证；Planner 验收仍为 pending。跨版本 lifecycle、cross-Harness、
-未测试上下文与广泛效能仍为 `UNKNOWN`。
+它绑定公开对象、有界的同版本 persistent lifecycle 效果、两个历史 projectless
+见证，以及一个全新的 sole-discovery loaded-copy 见证。保留的 predecessor 字节已移到
+所有 Skill discovery root 之外，因此 managed user installation 是 catalog 中唯一可见的
+`work-charter`。Planner 验收仍为 pending；跨版本 lifecycle、cross-Harness、未测试上下文
+与广泛效能仍为 `UNKNOWN`。
 
 ## 仓库内容
 

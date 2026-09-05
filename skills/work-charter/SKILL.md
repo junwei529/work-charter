@@ -278,6 +278,14 @@ finding and disposition history.
 Give each material user decision one semantic owner. Other roles may relay the
 exact question or answer and its authority anchor, but must not mirror the
 question, reinterpret the answer, or consume the same approval again.
+Reuse a still-valid authorization when the governed action, subject, and risk
+boundary are unchanged. When the execution environment requires the task that
+will perform an operation to obtain permission directly, that action task must
+present the complete operation-local question and receive the answer itself;
+an upper-role relay or status report cannot substitute for that direct gate.
+Contract, scope, and higher-risk changes remain with their existing semantic
+owner. A read-only Reviewer or evidence collector never solicits write
+authority.
 
 Before another session relies on a material decision or assessment, verify its
 authoritative revision and required durable recording. Stop when contract,

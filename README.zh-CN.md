@@ -7,24 +7,22 @@
 `80910a8b2375a11be897e9660c4b00a06d00dd13` 物化；当前 repository-native
 版本所修改的文件在 source map 中明确分类，不再描述为未改变的迁移 blob。
 
-当前 SOURCE 候选为 `v0.4.0`，由
-[`release/v0.4.0-candidate.json`](release/v0.4.0-candidate.json) 描述。它加入
-可移植的 L0-L4 独立 Reviewer 语义，分开 Executor verification、Reviewer
-技术 findings 与 Planner/Orchestrator acceptance，要求修复后优先由同一 Reviewer
-复审并保留累计历史，并明确 evidence-first `UNKNOWN`、context-switch recovery、
-callback 去重和 graph 证据限制。descriptor 保留不可变的 pre-review 快照；已接受
-source candidate、五轮独立 review、已审 lifecycle-controller baseline，以及本次 v0.3-to-v0.4
-update attempt 另由
+当前 SOURCE 候选为 `v0.4.1`，由
+[`release/v0.4.1-candidate.json`](release/v0.4.1-candidate.json) 描述。它保留 v0.4.0
+的 L0-L4 review、evidence、recovery 与 callback 语义，补充 operation-local 直接权限问题
+的 ownership，并修正 Windows DACL 恢复，同时不把 P、AI、AR、ACE 顺序或路径成员关系
+降格为非语义差异。descriptor 是待审的 pre-review 快照；目前没有 v0.4.1 receipt 或
+installed-copy claim。
+
+不可变 v0.4.0 receipt 在其 checkpoint 绑定已接受候选、五个 review 结果与失败的
+v0.3-to-v0.4 update：
 [`release/v0.4.0-local-release-receipt.json`](release/v0.4.0-local-release-receipt.json)
-绑定，但该 update 未被接受：exact bytes 与 receipt 通过了 elevated postflight，default
-sandbox reader 却无法读取 promotion 后的副本。source-candidate acceptance 仍为
-`VERIFIED`；`LOCAL_RELEASE_READY` 与 managed installation 在有界 ACL handoff 修正完成
-review、验收和应用前保持 blocked。R4 返回 `NO_FINDINGS`，但 Planner acceptance 发现
-review 中的 parent-reset 路径不能保全既有 explicit 或 protected DACL policy，因而打开
-`WC-INSTALL-ACCESS-P01`。R5 随后打开 P2 `WC-INSTALL-ACCESS-R5-F01`：命令成功后没有
-回读 target DACL；当前实现已修正，仍待 R6 与 Planner acceptance。stable loaded-copy、
-natural adherence、cross-Harness、公开发布与广泛效能按记录保持失败、`UNKNOWN` 或需
-分别授权。
+记录。之后的第六个结果 R6 未发现 source 问题，Planner 验收了先前修正，并以
+`df674c773de6f915627af541f0eb37221da9adef` 提交。之后获授权的 actual repair preflight
+发现 `icacls /restore` 只改变 automatic-inheritance 控制状态（`D:P`→`D:PAI`，
+`D:`→`D:AI`），因此在 target mutation 前停止。`WC-INSTALL-POSTFLIGHT-F01` 仍为 open，
+v0.4.1 需要新的独立 review 与 Planner acceptance。stable loaded-copy、natural
+adherence、cross-Harness、公开发布与广泛效能继续按记录保持失败、`UNKNOWN` 或需分别授权。
 
 ## 历史 v0.3.0 证据
 
@@ -103,32 +101,32 @@ discovery root 之外自动创建唯一、经验证且同卷的目录，在结�
 安装或发布操作所需的显式路径。两种模式下，stage、backup、tombstone 与 recovery archive
 都只位于外部的单次事务目录中。若旧 destination 移入 backup 的第一步失败，原 destination
 保持不动；若之后的替换失败，工具会恢复并验证原 managed copy，否则报告保留下来的
-recovery 路径。待审 Windows 修正会先移除每个随机 per-operation transaction 目录的
+recovery 路径。v0.4.1 Windows 修正会先移除每个随机 per-operation transaction 目录的
 继承，并仅向 Owner Rights、SYSTEM 与 Administrators 授权。全新 install 继承
 destination parent 的既有 DACL；update、rollback 或 uninstall mutation 前，工具把现有
-完整 DACL tree 保存到私有 transaction 中，先向私有副本回放，再用同一有界 `/save`
-表示回读；不能完成或不匹配就会在 destination mutation 前 fail closed。比较忽略记录枚举
-顺序和换行序列化，但要求 managed path 集合一致，并逐路径精确匹配 DACL SDDL，包括
-继承/保护 flags 和 ACE 的顺序与内容。promotion 或恢复后的 target 回放旧策略后也必须通过
-相同回读，才能报告成功；实际恢复不匹配会进入既有 recovery，恢复仍不完整时，原 snapshot
-保留在受保护 transaction 中。backup 与 tombstone 只继承私有 transaction DACL。其他平台
-保持原有 platform-default 行为。Windows 完整 lifecycle self-test 需要具备
-`icacls /restore` 与 `/save` 能力的 token；能力不足时会在 destination mutation 前被拒绝。
+完整 DACL tree 保存到私有 transaction 中，再逐路径回放到私有副本。快照中已含 AI 的
+记录使用单记录 `icacls /restore`；不含 AI 的记录使用携带 DACL 及必要 protected-DACL
+information 的 `SetFileSecurityW`，避免把目录策略传播给子项。按浅到深应用后，再用同一
+有界 `/save` 表示回读。比较忽略记录枚举顺序和换行序列化，但要求 managed path 集合一致，
+并逐路径精确匹配 DACL SDDL，包括 P、AI、AR 与 ACE 顺序/内容。不受支持的控制状态或任何
+不匹配都会在 destination mutation 前 fail closed。promotion 或恢复后的 target 回放旧策略后
+也必须通过相同回读，才能报告成功；恢复仍不完整时，原 snapshot 保留在受保护 transaction
+中。backup 与 tombstone 只继承私有 transaction DACL；其他平台保持原有行为。
 
 该 install 示例特意绑定 package tree 已进入内置信任映射的 v0.3.0 不可变 checkout。
-不要把当前 working checkout 代入这条历史命令。当前 v0.4.0 package 后续已完成 review、
+不要把当前 working checkout 代入这条历史命令。v0.4.0 package 已完成 review、
 验收与 candidate 外部 trust 绑定，并按 local-release receipt 的显式路线写入；但 promotion
-后的目录保留了 transaction ACL，default reader access 失败。working source 已包含有界
-Windows DACL-preservation 与 post-restore readback 修正，仍须完成 R6 独立 review 与
-Planner acceptance 后才能修复 installed copy。v0.4 package tree 没有加入工具的历史
-内置映射，因此后续 status 或 mutation 仍须提供独立保留的 v0.4 trust identity。
+后的目录保留了 transaction ACL，default reader access 失败。已提交的 v0.4.0 修正又因
+`/restore` 改变 AI 而在后续 actual-policy preflight 失败。v0.4.1 候选替换恢复路径，并收紧
+权限问题路由；任何新 repair attempt 前仍需完成新的独立 review 与 Planner acceptance。
+两个 v0.4 package tree 均未加入历史内置信任映射，后续 status 或 mutation 仍须提供独立
+保留的 trust identity。
 
-该 exact 失败 v0.4.0 副本的拟议修复只改变 ACL，不把丢弃任意既有策略变成通用 update
-合同。完成 source review、Planner acceptance 与 local commit 后，先核对独立受信的
-v0.4.0 content/receipt、记录中的私有 current DACL，以及独立验证的 destination-parent
-reader policy；随后保存并预演可回滚 DACL snapshot，再只把该 exact target 重置为 parent
-inheritance，失败则回放 snapshot。postflight 必须由默认身份完成 status、直接读取、hash
-与 ACL 检查。该路线尚未执行。
+该 exact 失败 v0.4.0 副本的修复仍只改变 ACL，不把丢弃任意既有策略变成通用 update
+合同。首次获授权尝试已在上述控制状态 preflight 停止，未改变 target。新的尝试需要通过
+review 与验收的 v0.4.1 source 以及单独 execution authority，并重新核对受信 v0.4.0
+content/receipt、current/parent DACL 与 rollback snapshot。postflight 仍须由默认身份完成
+status、直接读取、hash 与 ACL 检查。
 
 工具拒绝无 receipt、receipt 畸形或不匹配、package tree 错误、本地已修改、路径别名或
 其他 drift 的 destination。receipt 是完整性与路由记录，不是加密所有权证明；能够以

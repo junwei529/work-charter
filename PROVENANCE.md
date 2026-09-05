@@ -10,7 +10,7 @@ The migration baseline files were read directly from the Git object database as
 `80910a8b2375a11be897e9660c4b00a06d00dd13:<source-path>`; no clone, archive, installed copy, cache, discovery
 mapping, or source working-tree byte was used.
 
-The current `v0.4.0` update changes selected package, evaluation,
+The current `v0.4.1` update changes selected package, evaluation,
 documentation, release-metadata, and checker files. Each changed destination is
 classified as `repository-native` and bound to its current target SHA-256 in
 the manifest. Unchanged destinations retain their prior exact-blob or
@@ -30,11 +30,11 @@ a false byte-identity claim for new work.
   no predecessor source blob; the manifest records their destination and exact
   target SHA-256.
 
-The historical `v0.3.0` package behavior and evidence remain bound to their
-recorded identities. The current `v0.4.0` candidate intentionally changes
-package behavior. Its immutable candidate, reviewed lifecycle-controller
-baseline, five completed independent-review rounds, Planner source/tool
-acceptances, and the later installation attempt are bound by the separate
+The historical v0.3.0 and v0.4.0 behavior and evidence remain bound to their
+recorded identities. The immutable v0.4.0 candidate, reviewed lifecycle-
+controller baseline, five receipt-bound independent-review rounds, Planner
+source/tool acceptances, and the later installation attempt are bound by the
+separate
 [`release/v0.4.0-local-release-receipt.json`](release/v0.4.0-local-release-receipt.json).
 That attempt wrote exact v0.4.0 bytes and passed elevated receipt/file
 postflight, but the promoted directory retained the private transaction ACL and
@@ -43,8 +43,12 @@ completed review results. R4 returned `NO_FINDINGS`, but the Planner did not
 accept its input because `WC-INSTALL-ACCESS-P01` showed that parent reset did
 not preserve existing explicit or protected DACL policy. R5 then opened P2
 `WC-INSTALL-ACCESS-R5-F01` because `/restore` success was not followed by a
-target DACL readback. That correction is implemented but remains pending R6
-and Planner acceptance under P01. Overall
+target DACL readback. R6 later returned `NO_FINDINGS`, Planner accepted the
+source correction, and commit `df674c773de6f915627af541f0eb37221da9adef`
+recorded it. An authorized actual-policy preflight then showed that whole-tree
+`/restore` changed only AI control state and stopped before target mutation.
+The new v0.4.1 candidate corrects that mechanism and operation-local permission
+routing, but remains pending fresh review and Planner acceptance. Overall
 local-release readiness and managed
 installation are blocked; stable loaded-copy behavior, natural adherence,
 cross-Harness behavior, public release, and broad efficacy remain failed,
@@ -70,13 +74,16 @@ cross-Harness, untested-context, or broad-efficacy claim. Planner acceptance
 `03307594f66dfb92e262b73546fc4ec0ddb6d720`.
 
 Those publication and installed-copy claims apply only to v0.3.0. The
-`v0.4.0` descriptor remains the immutable pre-review SOURCE candidate identity,
+`v0.4.0` descriptor remains an immutable pre-review SOURCE candidate identity,
 not a receipt, public ref, tag, or Release claim. Its separate local-release
 receipt records the accepted candidate and reviewed lifecycle-controller
 identities plus the update's exact content, elevated postflight, and open
 default-reader access failure. It contains no private destination or
 transaction locator and makes no accepted-installation, stable loaded-copy,
 natural-adherence, cross-Harness, public-release, or broad-efficacy claim.
+The v0.4.1 descriptor is a separate pending source identity derived from
+committed v0.4.0 source. It has no receipt, installation, publication, or
+acceptance claim.
 
 The repository-native lifecycle controller now confines every transient stage,
 backup, tombstone, and recovery archive to a validated external task-scoped
@@ -94,16 +101,19 @@ correction explicitly protects every random per-operation transaction directory
 for Owner Rights, SYSTEM, and Administrators before staging. On Windows it
 captures the complete existing DACL tree inside that private directory and
 proves the snapshot can be restored to and semantically read back from a private
-replica before any update/rollback/uninstall mutation. New and recovered targets
-then receive the saved policy and pass the same readback before success is
-reported, while moved backup/tombstone trees inherit the private transaction
-DACL; only a genuinely new install inherits the destination parent's policy.
-The bounded comparison ignores record order and newline serialization but
-requires identical managed-path membership and exact per-path DACL SDDL,
-including protection/inheritance flags and ACE order/content. An unavailable
-restore/readback capability or mismatch fails before destination mutation in
-preflight; a later mismatch enters existing recovery and retains the original
-snapshot if recovery remains incomplete. Other platforms retain their prior
-platform-default permission behavior. This source correction and any repair of
-the actual installed copy remain pending review, acceptance, and separate
-execution authority.
+replica before any update/rollback/uninstall mutation. AI-bearing records are
+restored one at a time through `/restore`; records without AI use
+`SetFileSecurityW` with DACL and any required protected-DACL information, whose
+directory operation does not propagate policy to children. Shallow-to-deep
+application is followed by exact readback. New and recovered targets receive
+the same saved policy and pass the same check before success is reported, while
+moved backup/tombstone trees inherit the private transaction DACL; only a new
+install inherits the destination parent's policy. The bounded comparison
+ignores record order and newline serialization but requires identical managed-
+path membership and exact per-path DACL SDDL, including P, AI, AR and ACE
+order/content. An unavailable capability, unsupported control state, or
+mismatch fails before destination mutation in preflight; a later mismatch
+enters existing recovery and retains the original snapshot if recovery remains
+incomplete. Other platforms retain prior behavior. This source correction and
+any repair of the actual installed copy remain pending review, acceptance, and
+separate execution authority.

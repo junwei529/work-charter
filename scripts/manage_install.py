@@ -28,7 +28,7 @@ EXPECTED_DIRECTORIES = {
 TRUSTED_PACKAGE_TREES = {
     "0.3.0": "0ac3cbb0f1fa8fa51d8f832c8127eabc9863ec9e",
 }
-SELF_TEST_SOURCE_VERSION = "0.4.0"
+SELF_TEST_SOURCE_VERSION = "0.4.1"
 
 
 class LifecycleError(RuntimeError):
@@ -528,6 +528,13 @@ def capture_permission_snapshot(path, snapshot):
 
 
 def windows_dacl_snapshot_records(snapshot):
+    return {
+        key: descriptor
+        for key, (_relative, descriptor) in windows_dacl_snapshot_entries(snapshot).items()
+    }
+
+
+def windows_dacl_snapshot_entries(snapshot):
     snapshot = Path(snapshot)
     try:
         raw = snapshot.read_bytes()
@@ -562,7 +569,7 @@ def windows_dacl_snapshot_records(snapshot):
         key = "\\".join(part.casefold() for part in relative.parts)
         if key in records:
             raise LifecycleError("Windows DACL snapshot contains duplicate paths")
-        records[key] = descriptor
+        records[key] = (relative, descriptor)
     return records
 
 
@@ -571,15 +578,124 @@ def assert_windows_dacl_snapshot_match(expected_snapshot, observed_snapshot):
     observed = windows_dacl_snapshot_records(observed_snapshot)
     if expected.keys() != observed.keys():
         raise LifecycleError("Windows restored DACL path set mismatch")
-    if any(expected[path] != observed[path] for path in expected):
-        raise LifecycleError("Windows restored DACL descriptor mismatch")
+    for path in expected:
+        if expected[path] == observed[path]:
+            continue
+        expected_flags = sorted(windows_dacl_control_flags(expected[path]))
+        observed_flags = sorted(windows_dacl_control_flags(observed[path]))
+        if expected_flags != observed_flags:
+            raise LifecycleError(
+                "Windows restored DACL descriptor mismatch "
+                f"at {path}: control flags {expected_flags!r} != {observed_flags!r}"
+            )
+        raise LifecycleError(f"Windows restored DACL descriptor mismatch at {path}")
+
+
+def windows_dacl_control_flags(descriptor):
+    control_text = descriptor[2 : descriptor.find("(")]
+    if "(" not in descriptor:
+        control_text = descriptor[2:]
+    flags = []
+    while control_text:
+        for flag in ("NO_ACCESS_CONTROL", "AR", "AI", "P"):
+            if control_text.startswith(flag):
+                flags.append(flag)
+                control_text = control_text[len(flag) :]
+                break
+        else:
+            raise LifecycleError("Windows DACL snapshot contains invalid control flags")
+    return frozenset(flags)
+
+
+def set_windows_dacl(path, descriptor):
+    if os.name != "nt":
+        raise LifecycleError("Windows DACL restore is unavailable on this platform")
+    import ctypes
+    from ctypes import wintypes
+
+    convert = ctypes.WinDLL(
+        "advapi32", use_last_error=True
+    ).ConvertStringSecurityDescriptorToSecurityDescriptorW
+    convert.argtypes = [
+        wintypes.LPCWSTR,
+        wintypes.DWORD,
+        ctypes.POINTER(ctypes.c_void_p),
+        ctypes.POINTER(wintypes.DWORD),
+    ]
+    convert.restype = wintypes.BOOL
+    set_file_security = ctypes.WinDLL("advapi32", use_last_error=True).SetFileSecurityW
+    set_file_security.argtypes = [wintypes.LPCWSTR, wintypes.DWORD, ctypes.c_void_p]
+    set_file_security.restype = wintypes.BOOL
+    local_free = ctypes.WinDLL("kernel32", use_last_error=True).LocalFree
+    local_free.argtypes = [ctypes.c_void_p]
+    local_free.restype = ctypes.c_void_p
+
+    security_descriptor = ctypes.c_void_p()
+    if not convert(descriptor, 1, ctypes.byref(security_descriptor), None):
+        error = ctypes.get_last_error()
+        raise LifecycleError(
+            f"Windows DACL descriptor conversion failed with error {error}"
+        )
+    try:
+        flags = windows_dacl_control_flags(descriptor)
+        security_information = 0x00000004
+        if "P" in flags:
+            security_information |= 0x80000000
+        if not set_file_security(str(path), security_information, security_descriptor):
+            error = ctypes.get_last_error()
+            raise LifecycleError(
+                f"Windows DACL native restore failed with error {error}"
+            )
+    finally:
+        local_free(security_descriptor)
+
+
+def restore_windows_dacl_with_ai(path, descriptor, snapshot):
+    record = Path(snapshot).with_name(f".wcr-{uuid.uuid4().hex}.acl")
+    try:
+        record.write_bytes(
+            f"{Path(path).name}\r\n{descriptor}\r\n\r\n".encode("utf-16-le")
+        )
+        run_windows_acl(
+            Path(path).parent,
+            ["/restore", str(record), "/Q"],
+            "DACL automatic-inheritance restore",
+        )
+    finally:
+        remove_permission_snapshot(record)
+
+
+def restore_windows_dacl_records(path, snapshot):
+    path = resolved(path)
+    entries = windows_dacl_snapshot_entries(snapshot)
+    root_key = path.name.casefold()
+    if root_key not in entries:
+        raise LifecycleError("Windows DACL snapshot does not contain the managed root")
+    ordered = sorted(
+        entries.values(), key=lambda entry: (len(entry[0].parts), str(entry[0]))
+    )
+    targets = []
+    for relative, descriptor in ordered:
+        if relative.parts[0].casefold() != root_key:
+            raise LifecycleError("Windows DACL snapshot path escapes the managed root")
+        target = resolved(path.parent.joinpath(*relative.parts))
+        if target != path and path not in target.parents:
+            raise LifecycleError("Windows DACL snapshot path escapes the managed root")
+        if not target.exists() or is_link_like(target):
+            raise LifecycleError("Windows DACL restore target is missing or link-like")
+        targets.append((target, descriptor))
+    for target, descriptor in targets:
+        if "AI" in windows_dacl_control_flags(descriptor):
+            restore_windows_dacl_with_ai(target, descriptor, snapshot)
+        else:
+            set_windows_dacl(target, descriptor)
 
 
 def restore_permission_snapshot(
     path,
     snapshot,
     expected_digest,
-    acl_runner=run_windows_acl,
+    descriptor_writer=restore_windows_dacl_records,
     snapshotter=capture_permission_snapshot,
 ):
     if os.name != "nt":
@@ -591,11 +707,7 @@ def restore_permission_snapshot(
     except OSError as error:
         raise LifecycleError("Windows DACL snapshot is unreadable") from error
     windows_dacl_snapshot_records(snapshot)
-    acl_runner(
-        Path(path).parent,
-        ["/restore", str(snapshot), "/Q"],
-        "DACL restore",
-    )
+    descriptor_writer(path, snapshot)
     observed_snapshot = snapshot.with_name(f".wcv-{uuid.uuid4().hex}.acl")
     try:
         observed_digest = snapshotter(path, observed_snapshot)
@@ -1153,17 +1265,17 @@ def self_test(source=None):
         else:
             raise AssertionError("non-object candidate descriptor was not refused")
         source_a = resolved(source) if source is not None else ROOT
-        source_b = create_test_source(root, "0.4.1", "b")
-        source_c = create_test_source(root, "0.4.2", "c")
+        source_b = create_test_source(root, "0.4.2", "b")
+        source_c = create_test_source(root, "0.4.3", "c")
         source_bad = create_test_source(root, "0.4.9", "bad")
         source_forged = create_test_source(root / "forged-source-root", "0.3.0", "forged")
         tree_a = candidate_metadata(source_a, SELF_TEST_SOURCE_VERSION)["package"]["tree"]
-        tree_b = candidate_metadata(source_b, "0.4.1")["package"]["tree"]
-        tree_c = candidate_metadata(source_c, "0.4.2")["package"]["tree"]
+        tree_b = candidate_metadata(source_b, "0.4.2")["package"]["tree"]
+        tree_c = candidate_metadata(source_c, "0.4.3")["package"]["tree"]
         tree_bad = candidate_metadata(source_bad, "0.4.9")["package"]["tree"]
         tree_forged = candidate_metadata(source_forged, "0.3.0")["package"]["tree"]
         assert SELF_TEST_SOURCE_VERSION not in TRUSTED_PACKAGE_TREES
-        assert "0.4.1" not in TRUSTED_PACKAGE_TREES
+        assert "0.4.2" not in TRUSTED_PACKAGE_TREES
         (source_bad / "skills" / "work-charter" / "SKILL.md").write_text(
             "tampered after descriptor\n",
             encoding="utf-8",
@@ -1225,7 +1337,7 @@ def self_test(source=None):
                 "update",
                 source_b,
                 legacy_destination,
-                "0.4.1",
+                "0.4.2",
                 True,
                 trusted_current_tree=tree_a,
                 trusted_target_tree=tree_b,
@@ -1308,6 +1420,29 @@ def self_test(source=None):
             original_dacl = saved_dacl(destination, "dacl-before-update.acl")
             baseline_snapshot = root / "dacl-before-update.acl"
             baseline_records = windows_dacl_snapshot_records(baseline_snapshot)
+            baseline_descriptors = tuple(baseline_records.values())
+            assert any("P" in windows_dacl_control_flags(value) for value in baseline_descriptors)
+            no_ai_records = []
+            for relative, value in baseline_records.items():
+                if "AI" in windows_dacl_control_flags(value):
+                    value = value.replace("AI", "", 1)
+                no_ai_records.append((relative, value))
+            no_ai_snapshot = root / "dacl-without-ai.acl"
+            write_dacl_records(no_ai_snapshot, no_ai_records)
+            no_ai_digest = sha256(no_ai_snapshot)
+            assert (
+                restore_permission_snapshot(destination, no_ai_snapshot, no_ai_digest)
+                == "PRESERVED_FROM_SNAPSHOT"
+            )
+            no_ai_readback = root / "dacl-without-ai-readback.acl"
+            capture_permission_snapshot(destination, no_ai_readback)
+            assert_windows_dacl_snapshot_match(no_ai_snapshot, no_ai_readback)
+            assert (
+                restore_permission_snapshot(
+                    destination, baseline_snapshot, sha256(baseline_snapshot)
+                )
+                == "PRESERVED_FROM_SNAPSHOT"
+            )
             reordered_snapshot = root / "dacl-reordered-lf.acl"
             write_dacl_records(
                 reordered_snapshot,
@@ -1346,6 +1481,40 @@ def self_test(source=None):
                 assert "descriptor mismatch" in str(error)
             else:
                 raise AssertionError("changed DACL descriptor was not refused")
+            for control_flag in ("P", "AI", "AR"):
+                control_records = list(baseline_records.items())
+                control_descriptor = control_records[0][1]
+                control_flags = windows_dacl_control_flags(control_descriptor)
+                if control_flag in control_flags:
+                    changed_control = control_descriptor.replace(control_flag, "", 1)
+                else:
+                    changed_control = "D:" + control_flag + control_descriptor[2:]
+                control_records[0] = (control_records[0][0], changed_control)
+                changed_control_snapshot = root / f"dacl-changed-{control_flag}.acl"
+                write_dacl_records(changed_control_snapshot, control_records)
+                try:
+                    assert_windows_dacl_snapshot_match(
+                        baseline_snapshot, changed_control_snapshot
+                    )
+                except LifecycleError as error:
+                    assert "descriptor mismatch" in str(error)
+                else:
+                    raise AssertionError(
+                        f"changed DACL {control_flag} flag was not refused"
+                    )
+            escaped_snapshot = root / "dacl-escaped-path.acl"
+            escaped_records = list(baseline_records.items())
+            escaped_records[-1] = (
+                "sibling\\outside",
+                escaped_records[-1][1],
+            )
+            write_dacl_records(escaped_snapshot, escaped_records)
+            try:
+                restore_windows_dacl_records(destination, escaped_snapshot)
+            except LifecycleError as error:
+                assert "escapes the managed root" in str(error)
+            else:
+                raise AssertionError("escaped DACL snapshot path was not refused")
         update_moves = []
 
         def record_update_move(source_path, target_path):
@@ -1357,7 +1526,7 @@ def self_test(source=None):
             "update",
             source_b,
             destination,
-            "0.4.1",
+            "0.4.2",
             True,
             trusted_current_tree=tree_a,
             trusted_target_tree=tree_b,
@@ -1365,7 +1534,7 @@ def self_test(source=None):
             path_replacer=record_update_move,
         )
         assert_permission_handoff(update_result)
-        assert current_state(destination, tree_b)["version"] == "0.4.1"
+        assert current_state(destination, tree_b)["version"] == "0.4.2"
         assert len(update_moves) == 2
         assert update_moves[0][0] == destination
         assert update_transaction_root in update_moves[0][1].parents
@@ -1419,7 +1588,7 @@ def self_test(source=None):
                 "update",
                 source_b,
                 destination,
-                "0.4.1",
+                "0.4.2",
                 True,
                 trusted_current_tree=tree_a,
                 trusted_target_tree=tree_b,
@@ -1466,7 +1635,7 @@ def self_test(source=None):
                 "update",
                 source_b,
                 destination,
-                "0.4.1",
+                "0.4.2",
                 True,
                 trusted_current_tree=tree_a,
                 trusted_target_tree=tree_b,
@@ -1497,7 +1666,7 @@ def self_test(source=None):
                 "update",
                 source_b,
                 destination,
-                "0.4.1",
+                "0.4.2",
                 True,
                 trusted_current_tree=tree_a,
                 trusted_target_tree=tree_b,
@@ -1517,7 +1686,7 @@ def self_test(source=None):
             baseline_snapshot = root / "dacl-before-update.acl"
             baseline_digest = sha256(baseline_snapshot)
 
-            def noop_acl_restore(_path, _arguments, _label):
+            def noop_dacl_restore(_path, _snapshot):
                 return None
 
             def missing_dacl_readback(_path, observed_snapshot):
@@ -1530,7 +1699,7 @@ def self_test(source=None):
                     destination,
                     baseline_snapshot,
                     baseline_digest,
-                    acl_runner=noop_acl_restore,
+                    descriptor_writer=noop_dacl_restore,
                     snapshotter=missing_dacl_readback,
                 )
             except LifecycleError as error:
@@ -1548,7 +1717,7 @@ def self_test(source=None):
                     target,
                     snapshot,
                     digest,
-                    acl_runner=noop_acl_restore,
+                    descriptor_writer=noop_dacl_restore,
                 )
 
             def verify_false_success_preflight(path, transaction, snapshot, digest):
@@ -1569,7 +1738,7 @@ def self_test(source=None):
                     "update",
                     source_b,
                     destination,
-                    "0.4.1",
+                    "0.4.2",
                     True,
                     trusted_current_tree=tree_a,
                     trusted_target_tree=tree_b,
@@ -1594,8 +1763,8 @@ def self_test(source=None):
                 readback_restore_calls.append(Path(target))
                 if len(readback_restore_calls) == 1:
 
-                    def restore_and_corrupt(path, arguments, label):
-                        run_windows_acl(path, arguments, label)
+                    def restore_and_corrupt(path, snapshot):
+                        restore_windows_dacl_records(path, snapshot)
                         run_windows_acl(
                             target,
                             ["/grant:r", "*S-1-1-0:(OI)(CI)(R)", "/Q"],
@@ -1606,7 +1775,7 @@ def self_test(source=None):
                         target,
                         snapshot,
                         digest,
-                        acl_runner=restore_and_corrupt,
+                        descriptor_writer=restore_and_corrupt,
                     )
                 return restore_permission_snapshot(target, snapshot, digest)
 
@@ -1615,7 +1784,7 @@ def self_test(source=None):
                     "update",
                     source_b,
                     destination,
-                    "0.4.1",
+                    "0.4.2",
                     True,
                     trusted_current_tree=tree_a,
                     trusted_target_tree=tree_b,
@@ -1642,8 +1811,8 @@ def self_test(source=None):
             def restore_then_always_corrupt(target, snapshot, digest):
                 retained_restore_calls.append(Path(target))
 
-                def restore_and_corrupt(path, arguments, label):
-                    run_windows_acl(path, arguments, label)
+                def restore_and_corrupt(path, snapshot):
+                    restore_windows_dacl_records(path, snapshot)
                     run_windows_acl(
                         target,
                         ["/grant:r", "*S-1-1-0:(OI)(CI)(R)", "/Q"],
@@ -1654,7 +1823,7 @@ def self_test(source=None):
                     target,
                     snapshot,
                     digest,
-                    acl_runner=restore_and_corrupt,
+                    descriptor_writer=restore_and_corrupt,
                 )
 
             try:
@@ -1662,7 +1831,7 @@ def self_test(source=None):
                     "update",
                     source_b,
                     destination,
-                    "0.4.1",
+                    "0.4.2",
                     True,
                     trusted_current_tree=tree_a,
                     trusted_target_tree=tree_b,
@@ -1712,7 +1881,7 @@ def self_test(source=None):
                 "update",
                 source_b,
                 destination,
-                "0.4.1",
+                "0.4.2",
                 True,
                 trusted_current_tree=tree_a,
                 trusted_target_tree=tree_b,
@@ -1731,7 +1900,7 @@ def self_test(source=None):
                 "update",
                 source_b,
                 destination,
-                "0.4.1",
+                "0.4.2",
                 True,
                 trusted_current_tree=tree_a,
                 trusted_target_tree=tree_b,
@@ -1753,7 +1922,7 @@ def self_test(source=None):
                 "update",
                 source_b,
                 destination,
-                "0.4.1",
+                "0.4.2",
                 True,
                 trusted_current_tree=tree_a,
                 trusted_target_tree=tree_b,
@@ -1779,7 +1948,7 @@ def self_test(source=None):
                 "update",
                 source_b,
                 destination,
-                "0.4.1",
+                "0.4.2",
                 True,
                 trusted_current_tree=tree_a,
                 trusted_target_tree=tree_b,
@@ -1803,7 +1972,7 @@ def self_test(source=None):
                     "update",
                     source_b,
                     destination,
-                    "0.4.1",
+                    "0.4.2",
                     True,
                     trusted_current_tree=tree_a,
                     trusted_target_tree=tree_b,
@@ -1840,7 +2009,7 @@ def self_test(source=None):
                     "update",
                     source_b,
                     destination,
-                    "0.4.1",
+                    "0.4.2",
                     True,
                     trusted_current_tree=tree_a,
                     trusted_target_tree=tree_b,
@@ -1868,7 +2037,7 @@ def self_test(source=None):
                 "update",
                 source_b,
                 destination,
-                "0.4.1",
+                "0.4.2",
                 True,
                 trusted_current_tree=tree_a,
                 trusted_target_tree=tree_b,
@@ -1897,7 +2066,7 @@ def self_test(source=None):
                 "update",
                 source_b,
                 destination,
-                "0.4.1",
+                "0.4.2",
                 True,
                 trusted_current_tree=tree_a,
                 trusted_target_tree=tree_b,
@@ -1920,7 +2089,7 @@ def self_test(source=None):
             "update",
             source_c,
             destination,
-            "0.4.2",
+            "0.4.3",
             True,
             backup_remover=fail_backup_cleanup,
             trusted_current_tree=tree_a,
@@ -1928,7 +2097,7 @@ def self_test(source=None):
             transaction_root=cleanup_transaction_root,
         )
         assert cleanup_result["result"] == "MANAGED_WITH_BACKUP"
-        assert current_state(destination, tree_c)["version"] == "0.4.2"
+        assert current_state(destination, tree_c)["version"] == "0.4.3"
         backup_path = Path(cleanup_result["backup_path"])
         assert backup_path.exists()
         assert cleanup_transaction_root in backup_path.parents
@@ -2024,7 +2193,7 @@ def self_test(source=None):
         "scope": (
             "disposable legacy-apply-compatibility/external-transaction "
             "install/update/rollback/failure-recovery/"
-            "Windows-DACL-snapshot-preservation-and-semantic-readback/"
+            "Windows-DACL-control-aware-path-restore-and-semantic-readback/"
             "private-backup-tombstone/path-volume-guards/drift/receipt-integrity/"
             "unreceipted/wrong-tree/uninstall"
         ),
@@ -2049,6 +2218,18 @@ def self_test(source=None):
             "PASS" if os.name == "nt" else "NOT_APPLICABLE"
         ),
         "windows_dacl_snapshot_normalization": (
+            "PASS" if os.name == "nt" else "NOT_APPLICABLE"
+        ),
+        "windows_dacl_ai_control_preservation": (
+            "PASS" if os.name == "nt" else "NOT_APPLICABLE"
+        ),
+        "windows_dacl_no_ai_control_preservation": (
+            "PASS" if os.name == "nt" else "NOT_APPLICABLE"
+        ),
+        "windows_dacl_control_flag_drift_refusal": (
+            "PASS" if os.name == "nt" else "NOT_APPLICABLE"
+        ),
+        "windows_dacl_snapshot_path_escape_refusal": (
             "PASS" if os.name == "nt" else "NOT_APPLICABLE"
         ),
         "windows_restrictive_dacl_preservation": (

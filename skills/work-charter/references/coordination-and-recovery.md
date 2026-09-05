@@ -314,6 +314,27 @@ only when authority or reliable context changes, and preserve the predecessor
 locator. A materially changed question supersedes the old revision and returns
 to the user once through the new owner.
 
+Reuse valid authorization across role, task, Session, or Harness carriers only
+while the authorized action, subject, actor class, effect, and material risk
+boundary remain unchanged. A carrier change does not invalidate authority, but
+neither does an upstream approval bypass a direct permission gate imposed by
+the environment that will perform the operation. When that environment
+requires direct consent, the action or permission-gate task becomes the
+semantic owner of the operation-local permission question: it presents the
+complete actor, target, action, effect, recovery, and exclusion boundary to the
+user and receives the answer directly before acting. An upper role may supply
+the governing contract and authority anchor, but its relay, delegation, status
+report, or interpretation is not the required direct answer.
+
+This operation-local ownership does not transfer higher-level decisions. Any
+change to contract, scope, acceptance, workspace, external effect, cost, or
+material risk still returns to the corresponding Planner, Orchestrator, or
+user-owned decision locator. Reporting that permission is blocked does not
+transfer the question, and receiving operation-local permission does not grant
+a replan. A read-only Reviewer or evidence collector reports the need and
+evidence boundary; it never asks for or receives write, mutation, installation,
+publication, or other execution authority.
+
 Only a completed independent `CORRECTION_REQUIRED` assessment against a stable
 checkpoint consumes a Work Charter correction round. Qualification, preflight,
 transport, or same-scope Executor repair does not by itself consume one. Do not

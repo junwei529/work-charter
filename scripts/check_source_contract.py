@@ -8,8 +8,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "skills" / "work-charter"
-CURRENT_CANDIDATE = ROOT / "release" / "v0.4.0-candidate.json"
-CURRENT_RECEIPT = ROOT / "release" / "v0.4.0-local-release-receipt.json"
+CURRENT_CANDIDATE = ROOT / "release" / "v0.4.1-candidate.json"
+V040_CANDIDATE = ROOT / "release" / "v0.4.0-candidate.json"
+V040_RECEIPT = ROOT / "release" / "v0.4.0-local-release-receipt.json"
 HISTORICAL_CANDIDATE = ROOT / "release" / "v0.3.0-candidate.json"
 RECEIPT = ROOT / "release" / "v0.3.0-local-release-receipt.json"
 PUBLIC_RELEASE_CANDIDATE = ROOT / "release" / "v0.3.0-public-release-candidate.json"
@@ -21,6 +22,13 @@ V030_INSTALLED_PACKAGE_SHA256 = "7b67ea1f7073fa66ac91c36f3e39c735b54c04174e2fa36
 V040_PACKAGE_TREE = "fd5ceb5cb0fbef4a1974b40b4da05800433d5511"
 V040_PACKAGE_SHA256 = "8ae542b9566415dfadd16108435735dc01406443dc84ee542fcf091ccec19076"
 V040_INSTALLED_PACKAGE_SHA256 = "814fc88c4dae4a823461dc7339b8a83542258919e8374f2b1c280fb9d77157c8"
+V040_PACKAGE_FILE_SHA256 = {
+    "SKILL.md": "be3cf6ff88d2d2ae72209119c83bf9f27e2ff4d5afa917fc44aac30ca87eb6f5",
+    "agents/openai.yaml": "f0032475e213d75ed17eb41c3424007ebc46c0ddb6739138c9908185beefdad6",
+    "assets/work-charter.md": "821e907a9db2888e164e2bb0793fed949206455b496fb71581b610641985234d",
+    "references/coordination-and-recovery.md": "a12a76e5c784e2ef1f54b1cbc5c8096ac64fabeccc947ff46cb97cc6969eda98",
+    "references/standard-ope.md": "62c3da90b662fc4e489abfc32873a5ab92966a6326dd0b16c58285f0933fe48f",
+}
 V030_PACKAGE_FILE_SHA256 = {
     "SKILL.md": "c750d51940456b110bc7ed4b7d490690f42ca8ee9b555c23c8fe3d4d056b4dba",
     "agents/openai.yaml": "f0032475e213d75ed17eb41c3424007ebc46c0ddb6739138c9908185beefdad6",
@@ -44,13 +52,6 @@ def package_digest(files):
         records.append([relative, hashlib.sha256(raw).hexdigest()])
     encoded = json.dumps(records, separators=(",", ":"), ensure_ascii=True).encode("ascii")
     return hashlib.sha256(encoded).hexdigest()
-
-
-def package_file_hashes(files):
-    return {
-        relative: hashlib.sha256((PACKAGE / relative).read_bytes()).hexdigest()
-        for relative in sorted(files)
-    }
 
 
 def git_object_hash(kind, data):
@@ -169,6 +170,34 @@ def main():
                 "Activation or read approval does not authorize adoption, writes, roles, Git, or side effects.",
             ],
         ),
+        "authority.direct_operation_permission_gate": (
+            contains_all(
+                skill,
+                [
+                    "Reuse a still-valid authorization",
+                    "that action task must present the complete operation-local question and receive the answer itself",
+                    "A read-only Reviewer or evidence collector never solicits write authority.",
+                ],
+            )
+            and contains_all(
+                recovery,
+                [
+                    "Reuse valid authorization across role, task, Session, or Harness carriers",
+                    "the action or permission-gate task becomes the semantic owner of the operation-local permission question",
+                    "its relay, delegation, status report, or interpretation is not the required direct answer",
+                    "does not transfer higher-level decisions",
+                ],
+            )
+            and contains_all(
+                standard,
+                [
+                    "the execution environment requires the action task to obtain operation-local permission directly",
+                    "a Planner relay or status report is not a substitute",
+                    "This does not transfer contract or scope ownership",
+                    "The Reviewer reports technical unknowns and findings rather than asking for write authority.",
+                ],
+            )
+        ),
         "recovery.fixed_route_precedence": contains_all(
             recovery,
             [
@@ -254,13 +283,10 @@ def main():
     except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
         current_candidate_error = str(error)
     current_package_sha256 = package_digest(actual_files) if actual_files == EXPECTED_FILES else None
-    current_package_file_hashes = (
-        package_file_hashes(actual_files) if actual_files == EXPECTED_FILES else None
-    )
-    checks["candidate.v040_identity"] = (
+    checks["candidate.v041_identity"] = (
         current_candidate.get("schema") == "work-charter-local-release-candidate/v1"
         and current_candidate.get("product") == "work-charter"
-        and current_candidate.get("version") == "0.4.0"
+        and current_candidate.get("version") == "0.4.1"
         and current_candidate.get("public_identity") == "junwei529/work-charter"
         and current_candidate.get("candidate_state") == "PENDING_INDEPENDENT_REVIEW"
         and current_candidate.get("package", {}).get("file_count") == 5
@@ -273,7 +299,42 @@ def main():
         == "PENDING_REVIEW_AND_PLANNER_ACCEPTANCE"
         and current_candidate.get("evidence_states", {}).get("public_release") == "UNKNOWN"
         and current_candidate.get("evidence_states", {}).get("stable_installed_copy") == "UNKNOWN"
+        and current_candidate.get("evidence_states", {}).get("cross_version_lifecycle")
+        == "REQUIRES_FRESH_QUALIFICATION"
+        and current_candidate.get("lineage")
+        == {
+            "historical_package_tree": V040_PACKAGE_TREE,
+            "previous_candidate": "release/v0.4.0-candidate.json",
+            "previous_local_release_receipt": "release/v0.4.0-local-release-receipt.json",
+            "source_commit": "df674c773de6f915627af541f0eb37221da9adef",
+        }
         and current_candidate.get("human_release_notes_review") == "PENDING"
+    )
+
+    v040_candidate_error = None
+    v040_candidate = {}
+    try:
+        v040_candidate = json.loads(V040_CANDIDATE.read_text(encoding="utf-8"))
+        if not isinstance(v040_candidate, dict) or not isinstance(
+            v040_candidate.get("package"), dict
+        ):
+            raise ValueError("v0.4.0 candidate descriptor must be an object with an object package")
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
+        v040_candidate_error = str(error)
+    checks["candidate.v040_historical_identity"] = (
+        v040_candidate.get("schema") == "work-charter-local-release-candidate/v1"
+        and v040_candidate.get("product") == "work-charter"
+        and v040_candidate.get("version") == "0.4.0"
+        and v040_candidate.get("public_identity") == "junwei529/work-charter"
+        and v040_candidate.get("candidate_state") == "PENDING_INDEPENDENT_REVIEW"
+        and v040_candidate.get("package")
+        == {
+            "file_count": 5,
+            "path": "skills/work-charter",
+            "sha256": V040_PACKAGE_SHA256,
+            "tree": V040_PACKAGE_TREE,
+        }
+        and v040_candidate.get("human_release_notes_review") == "PENDING"
     )
 
     historical_candidate_error = None
@@ -342,7 +403,7 @@ def main():
     current_receipt_error = None
     current_receipt = {}
     try:
-        parsed_current_receipt = json.loads(CURRENT_RECEIPT.read_text(encoding="utf-8"))
+        parsed_current_receipt = json.loads(V040_RECEIPT.read_text(encoding="utf-8"))
         if not isinstance(parsed_current_receipt, dict):
             raise ValueError("current local release receipt must be an object")
         for field in (
@@ -453,10 +514,9 @@ def main():
         and current_receipt.get("installation", {}).get("package_sha256")
         == V040_INSTALLED_PACKAGE_SHA256
         and current_receipt.get("installation", {}).get("package_tree")
-        == actual_package_tree
         == V040_PACKAGE_TREE
         and current_receipt.get("installation", {}).get("files")
-        == current_package_file_hashes
+        == V040_PACKAGE_FILE_SHA256
         and current_receipt.get("installation", {}).get("destination_class")
         == "managed Codex user Skill installation"
         and current_receipt.get("installation", {}).get("transaction")
@@ -736,7 +796,9 @@ def main():
         failures.append(f"package.scan: {package_scan_error}")
     failures.extend(package_read_failures)
     if current_candidate_error:
-        failures.append(f"candidate.v040_unreadable: {current_candidate_error}")
+        failures.append(f"candidate.v041_unreadable: {current_candidate_error}")
+    if v040_candidate_error:
+        failures.append(f"candidate.v040_unreadable: {v040_candidate_error}")
     if historical_candidate_error:
         failures.append(f"candidate.v030_unreadable: {historical_candidate_error}")
     if receipt_error:

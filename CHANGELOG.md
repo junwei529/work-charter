@@ -1,5 +1,47 @@
 # Changelog
 
+## Work Charter v0.4.1
+
+Descriptor snapshot: `PENDING_INDEPENDENT_REVIEW`
+
+Local release state: `PENDING_REVIEW_AND_PLANNER_ACCEPTANCE`
+
+Human release-note review: `PENDING`
+
+### Highlights
+
+- Replaces the v0.4.0 whole-tree `icacls /restore` path after an authorized
+  actual-policy preflight proved that it added AI while preserving paths and
+  ACE text. The preflight stopped before target mutation, so the installed
+  v0.4.0 access finding remains open.
+- Restores saved Windows DACLs path by path. Records already carrying AI use a
+  single-record `/restore`; records without AI use `SetFileSecurityW`, whose
+  directory setter does not propagate policy to children. Every path is still
+  read back through `/save` and must exactly retain P, AI, AR, ACE type, flags,
+  SID, rights, and order. Unsupported states fail before a target move.
+- Adds focused Windows proof for both AI-bearing and deliberately no-AI DACL
+  round trips, path escape refusal, control-flag drift, missing paths, ACE
+  ordering, promotion recovery, and protected snapshot retention.
+- Reuses valid authorization across carrier tasks while requiring an action or
+  permission-gate task to ask and receive any environment-mandated direct
+  operation permission itself. Upstream relay does not replace that gate;
+  higher-level contract ownership remains unchanged, and read-only reviewers
+  do not solicit write authority.
+- Introduces a new five-file candidate derived from committed v0.4.0 source
+  `df674c773de6f915627af541f0eb37221da9adef`. It creates no v0.4.1 receipt,
+  installation, publication, or acceptance claim.
+
+### Evidence boundaries
+
+- The v0.4.0 R6 no-finding result and Planner source acceptance remain
+  historical facts. The later actual-policy preflight is new counterevidence
+  that requires this v0.4.1 source checkpoint and fresh review.
+- `WC-INSTALL-POSTFLIGHT-F01` remains open. The actual installed copy, its
+  parent ACL, and all retained v0.4.0 repair snapshots are unchanged.
+- v0.4.1 deterministic checks and disposable Windows proof are source
+  qualification only. They do not authorize a new actual repair, commit,
+  installation, release, or cleanup.
+
 ## Work Charter v0.4.0
 
 Descriptor snapshot: `PENDING_INDEPENDENT_REVIEW` (retained without rewriting)
@@ -33,9 +75,9 @@ Human release-note review: `PENDING`
 
 - The immutable local descriptor binds the accepted five-file SOURCE candidate;
   a separate non-circular receipt binds the later review and acceptance facts.
-- Deterministic verification, five independent technical-review rounds, and
-  Planner source/tool acceptance are `VERIFIED` for the exact recorded
-  identities.
+- The immutable receipt binds five independent technical-review rounds and
+  Planner source/tool acceptance for its exact recorded identities. R6 later
+  returned `NO_FINDINGS`, and Planner accepted the source correction.
 - One explicit-root v0.3.0-to-v0.4.0 attempt wrote exact bytes and passed
   elevated receipt/five-file postflight, but the promoted directory retained
   the private transaction ACL and failed default-reader access. Managed
@@ -44,16 +86,18 @@ Human release-note review: `PENDING`
   `WC-INSTALL-ACCESS-P01`: unconditional parent reset did not preserve a managed
   target's explicit or protected DACL policy.
 - R5 opened P2 `WC-INSTALL-ACCESS-R5-F01`: `/restore` process success alone did
-  not prove the target DACL was restored. The correction is implemented but
-  remains open pending R6 and Planner acceptance under the parent P01 finding.
+  not prove the target DACL was restored. The readback correction later passed
+  R6 and Planner acceptance and was committed as
+  `df674c773de6f915627af541f0eb37221da9adef`.
 - The revised bounded Windows correction protects each random transaction and
   its recovery material, snapshots the complete existing DACL tree and proves
   it can be restored and semantically read back before update/rollback/uninstall
   mutation, preserves and rechecks that policy on the new or recovered target,
   and uses parent inheritance only for a genuinely new install. Record order
   and newline form are non-semantic; path membership and exact DACL SDDL,
-  including flags and ACE order/content, must match. It is pending R6 and
-  Planner acceptance; the actual installed copy has not been repaired.
+  including flags and ACE order/content, must match. A later actual-policy
+  preflight exposed the AI transition recorded under v0.4.1 and made no target
+  mutation; the actual installed copy remains unrepaired.
 - Stable loaded-copy behavior, natural adherence, other cross-version
   lifecycle effects, cross-Harness behavior, public source, tag, Release, and
   broad efficacy remain failed, `UNKNOWN`, or separately authorized as

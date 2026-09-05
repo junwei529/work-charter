@@ -7,7 +7,7 @@ independent review, and proportional coordination. The canonical installable sou
 [`skills/work-charter/`](../../../skills/work-charter/). Package instructions, references,
 assets, and metadata originated from `80910a8b2375a11be897e9660c4b00a06d00dd13`.
 The source map preserves exact historical origin while classifying changed
-`v0.4.0` files as repository-native rather than exact migration blobs.
+`v0.4.1` files as repository-native rather than exact migration blobs.
 
 The repository owns one Skill product. Cross-Skill composition is optional and
 cannot grant authority or create a hard dependency.
@@ -34,23 +34,28 @@ current Notice per route; terminal returns require no acknowledgement. Context
 switches preserve contract, authority, role/writer, finding, stop, and evidence
 history unless a material identity changes.
 
-The current `v0.4.0` candidate changes the package semantics and selected
-evaluation/documentation surfaces. Its descriptor remains the immutable
-pre-review snapshot. A separate receipt binds the accepted candidate, reviewed
-lifecycle-controller baseline, cumulative independent-review dispositions,
-Planner source/tool acceptances, external trust identity, and the later update
-attempt and five completed independent review results. That attempt wrote exact
-bytes and passed elevated content postflight,
-but its final directory retained the private transaction ACL and failed
-default-reader access. Overall installation and local-release readiness are
-therefore blocked. R4 returned `NO_FINDINGS`, but Planner acceptance opened P2
-`WC-INSTALL-ACCESS-P01`: recursive parent reset did not preserve an existing
-explicit or protected DACL. R5 then opened P2
-`WC-INSTALL-ACCESS-R5-F01`: process-level restore success was not followed by a
-target DACL readback. The readback correction is implemented pending R6 and
-Planner acceptance under P01. Publication and stable behavior remain separate
-evidence or authority gates. Historical `v0.3.0` release metadata and lifecycle
-evidence remain immutable evidence for that version only.
+Authorization remains bound to its action, subject, actor class, effect, and
+risk rather than to a carrier task. A still-valid authorization may therefore
+be reused, but an environment-mandated direct operation permission is owned by
+the action task that will perform it and cannot be satisfied by an upstream
+relay or status report. This operation-local gate does not transfer Phase or
+project contract ownership. Read-only Reviewers and evidence collectors do not
+solicit write authority.
+
+The current `v0.4.1` candidate changes operation-local permission routing and
+Windows DACL restoration. Its descriptor is a new pending pre-review snapshot,
+not a receipt. The immutable v0.4.0 candidate and receipt remain the historical
+owners of the accepted candidate, reviewed lifecycle-controller baseline, five
+recorded independent-review results, Planner source/tool acceptances, external
+trust identity, and failed update attempt. R6 later returned `NO_FINDINGS`, the
+Planner accepted that source correction, and commit
+`df674c773de6f915627af541f0eb37221da9adef` recorded it. An authorized repair
+preflight then proved that whole-tree `icacls /restore` changed automatic-
+inheritance control state while preserving paths and ACE text, and stopped
+before target mutation. The installed v0.4.0 access finding therefore remains
+open. v0.4.1 requires fresh review and Planner acceptance; it creates no
+installation, publication, or stable-behavior claim. Historical v0.3.0 release
+metadata and lifecycle evidence remain immutable evidence for that version.
 
 Historical v0.3.0 candidate C remains immutable. Its separate local-release
 receipt binds the exact commit, candidate tree, package tree, and independent
@@ -77,7 +82,7 @@ fixed at P.
 - `evals/cases/work-charter-standard.md`
 
 Unchanged cases and fixtures retain exact source-blob provenance; files revised
-for `v0.4.0` are repository-native and individually hashed. Together they define
+for `v0.4.1` are repository-native and individually hashed. Together they define
 deterministic inputs and expected boundaries. The accepted candidate and the
 attempted update have separate review, acceptance, postflight, and access
 evidence; exact installed bytes do not override a failed default-reader check.
@@ -108,17 +113,21 @@ remain separately authorized evidence classes.
   Rights, SYSTEM, and Administrators. A genuinely new install inherits the
   destination parent's existing DACL. Before update, rollback, or uninstall
   mutation, the controller saves the complete existing DACL tree inside the
-  private transaction, restores that snapshot to a private replica, and reads
-  the replica back before destination mutation. Enumeration order and newline
-  serialization are ignored; managed-path membership and exact per-path DACL
-  SDDL—including inheritance/protection flags and ACE order/content—must match.
-  Missing restore/readback capability or a mismatch therefore fails before any
-  target move. The promoted or recovered target receives the saved policy and
-  passes the same readback before success is reported; moved backup and
-  tombstone trees inherit the protected transaction DACL. A later mismatch
-  enters the same recovery path, which retains the original snapshot when
-  recovery is incomplete. Other platforms retain the existing platform-default
-  permission behavior. The receipt
+  private transaction and restores it path by path to a private replica.
+  AI-bearing snapshot records use a one-record `icacls /restore`; records
+  without AI use `SetFileSecurityW` with DACL and, when required, protected-DACL
+  information. The latter setter is used for its documented non-propagating
+  directory behavior. Records are applied shallow-to-deep and then read back
+  through the same bounded `/save` representation. Enumeration order and
+  newline serialization are ignored; managed-path membership and exact
+  per-path DACL SDDL—including P, AI, AR and ACE order/content—must match.
+  Missing capability, an unsupported control state, or any mismatch therefore
+  fails before a target move. The promoted or recovered target receives the
+  saved policy and passes the same readback before success is reported; moved
+  backup and tombstone trees inherit the protected transaction DACL. A later
+  mismatch enters the same recovery path, which retains the original snapshot
+  when recovery is incomplete. Other platforms retain the existing platform-
+  default permission behavior. The receipt
   provides integrity and routing evidence, not cryptographic ownership proof
   against a same-privilege local actor capable of forging the complete receipt.
 - SOURCE contract qualification checks instruction coverage only. Model

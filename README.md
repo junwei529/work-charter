@@ -11,29 +11,27 @@ materialized from source commit `80910a8b2375a11be897e9660c4b00a06d00dd13`;
 files changed for the current repository-native version are identified in the
 source map rather than represented as unchanged migration blobs.
 
-The current source candidate is `v0.4.0`, described by
-[`release/v0.4.0-candidate.json`](release/v0.4.0-candidate.json). It adds
-portable L0-L4 independent Reviewer semantics, separates Reviewer technical
-findings from Executor verification and Planner/Orchestrator acceptance,
-preserves the same Reviewer and cumulative findings across repair re-review,
-defines evidence-first `UNKNOWN` handling and context-switch recovery, and
-limits callback and graph claims. The descriptor remains the immutable
-pre-review snapshot. The accepted source candidate, five completed independent
-review rounds, reviewed lifecycle-controller baseline, and attempted v0.3-to-v0.4 update
-are bound separately by
-[`release/v0.4.0-local-release-receipt.json`](release/v0.4.0-local-release-receipt.json),
-but the update is not accepted: its exact bytes and receipt passed elevated
-postflight while the default sandbox reader could not read the promoted copy.
-Source-candidate acceptance remains `VERIFIED`; `LOCAL_RELEASE_READY` and the
-managed installation are blocked pending review, acceptance, and application
-of the bounded ACL correction. R4 returned `NO_FINDINGS`, but Planner acceptance
-opened `WC-INSTALL-ACCESS-P01` because the reviewed parent-reset route did not
-preserve an existing explicit or protected DACL policy. R5 then opened P2
-`WC-INSTALL-ACCESS-R5-F01` because command success was not followed by a target
-DACL readback; the implementation below is fixed pending R6 and Planner
-acceptance. Stable loaded-copy behavior, natural adherence, cross-Harness
-behavior, public release, and broad efficacy remain failed, `UNKNOWN`, or
-separately authorized as recorded.
+The current source candidate is `v0.4.1`, described by
+[`release/v0.4.1-candidate.json`](release/v0.4.1-candidate.json). It retains the
+portable L0-L4 review, evidence, recovery, and callback semantics of v0.4.0,
+clarifies direct operation-local permission ownership, and corrects Windows
+DACL restoration without treating P, AI, AR, ACE order, or path membership as
+non-semantic. The descriptor is a pending pre-review snapshot; there is no
+v0.4.1 receipt or installed-copy claim.
+
+The immutable v0.4.0 receipt binds its accepted candidate, five review results,
+and the failed v0.3-to-v0.4 update at that checkpoint:
+[`release/v0.4.0-local-release-receipt.json`](release/v0.4.0-local-release-receipt.json).
+The later sixth result, R6, found no source issue and Planner accepted the prior
+correction, which was
+committed as `df674c773de6f915627af541f0eb37221da9adef`. A later authorized repair
+preflight against the actual v0.4.0 policy showed that `icacls /restore`
+changed only automatic-inheritance control state (`D:P` to `D:PAI` and `D:` to
+`D:AI`), so it stopped before target mutation. `WC-INSTALL-POSTFLIGHT-F01`
+therefore remains open, and v0.4.1 requires fresh review and Planner acceptance.
+Stable loaded-copy behavior, natural adherence, cross-Harness behavior, public
+release, and broad efficacy remain failed, `UNKNOWN`, or separately authorized
+as recorded.
 
 ## Historical v0.3.0 evidence
 
@@ -124,46 +122,46 @@ modes, stage, backup, tombstone, and recovery-archive material stays under the
 external per-operation transaction directory. A failure to move the old
 destination to backup leaves that destination untouched; a later replacement
 failure restores and verifies the old managed copy or reports the preserved
-recovery path. The pending Windows correction first removes inheritance from
+recovery path. The v0.4.1 Windows correction first removes inheritance from
 each random per-operation transaction directory and grants access only to Owner
 Rights, SYSTEM, and Administrators. A new install inherits the destination
 parent's existing DACL. Before update, rollback, or uninstall mutation, the tool
-saves the complete existing DACL tree inside the private transaction, restores
-it to a private replica as a capability preflight, reads the replica back with
-the same bounded `/save` representation, and fails closed if that cannot
-complete or match. The comparison ignores record enumeration order and newline
-serialization, but requires the same managed path set and exact DACL SDDL for
-each path, including inheritance/protection flags and ACE order/content. The
-saved policy is then applied to the promoted or recovered target and read back
-under the same rule before success is reported; backup and tombstone trees
-inherit the private transaction DACL. A preflight mismatch occurs before any
-target move. A later mismatch enters existing recovery, and the original
-snapshot remains in the protected transaction when recovery is incomplete.
-Other platforms retain their prior platform-default permission behavior. On
-Windows, the full lifecycle self-test must run with a token capable of
-`icacls /restore` and `/save`; an incapable token is rejected before destination
-mutation.
+saves the complete existing DACL tree inside the private transaction and
+restores it path by path to a private replica. Records whose snapshot already
+contains AI use a one-record `icacls /restore`; records without AI use
+`SetFileSecurityW` with DACL and, when required, protected-DACL information so
+the setter does not propagate a directory policy to children. Shallow-to-deep
+application is followed by the same bounded `/save` readback. The comparison
+ignores record enumeration order and newline serialization, but requires the
+same managed path set and exact DACL SDDL for each path, including P, AI, AR,
+and ACE order/content. Unsupported control states or any mismatch fail before a
+target move. The saved policy is then applied to the promoted or recovered
+target and read back under the same rule before success is reported; backup and
+tombstone trees inherit the private transaction DACL. A later mismatch enters
+existing recovery, and the original snapshot remains in the protected
+transaction when recovery is incomplete. Other platforms retain their prior
+platform-default permission behavior.
 
 The install example is deliberately bound to an immutable v0.3.0 checkout,
 whose package tree is already in the bundled trust map. Do not substitute this
-working checkout into that historical command. The current v0.4.0 package was
-subsequently reviewed, accepted, externally trust-bound, and written through
+working checkout into that historical command. The v0.4.0 package was reviewed,
+accepted, externally trust-bound, and written through
 the explicit route recorded in its local-release receipt, but the promoted
 directory retained the transaction ACL and failed default-reader access. The
-working source contains a bounded Windows DACL-preservation and post-restore
-readback correction that still requires R6 independent review and Planner
-acceptance before it may repair the installed copy. The v0.4 package tree is
-not added to the tool's historical built-in map, so later status or mutation
-must continue to receive the independently retained v0.4 trust identity.
+committed v0.4.0 correction still failed its later actual-policy preflight
+because `/restore` changed AI. The v0.4.1 candidate replaces that restore path
+and also tightens permission-question routing; it requires fresh independent
+review and Planner acceptance before any new repair attempt. Neither v0.4
+package tree is added to the tool's historical built-in map, so later status or
+mutation must continue to receive the independently retained trust identity.
 
-The proposed repair for that exact failed v0.4.0 copy is ACL-only, not a generic
-update that discards arbitrary policy. After source review, Planner acceptance,
-and local commit, it first verifies the independently trusted v0.4.0 content and
-receipt, the recorded private current DACL, and the separately verified
-destination-parent reader policy. It then saves and preflights a rollback DACL
-snapshot before resetting only that exact target to parent inheritance; any
-failure restores the snapshot. Default-identity status, direct reads, hashes,
-and ACL inspection are required postflight. This route is not yet executed.
+The repair for that exact failed v0.4.0 copy remains ACL-only, not a generic
+update that discards arbitrary policy. Its first authorized attempt stopped
+before target mutation at the control-state preflight described above. A new
+attempt requires reviewed and accepted v0.4.1 source plus separate execution
+authority, then re-verifies the trusted v0.4.0 content/receipt, current and
+parent DACLs, and rollback snapshot. Default-identity status, direct reads,
+hashes, and ACL inspection remain required postflight.
 
 The tool refuses destinations that are unreceipted, have a malformed or
 mismatched receipt, use the wrong package tree, are locally modified or aliased,

@@ -51,14 +51,17 @@ Reviewer findings are technical evidence, while Planner and Orchestrator
 assessments are role verdicts rather than extra user confirmation gates. The
 Orchestrator owns questions about project
 direction, cross-phase risk, the next phase, or a Mandate. The Planner owns
-questions about the active Phase contract, permissions, workspace, acceptance,
-or residual risk. The Executor reports a blocker to the Planner rather than
-asking the same governance question. The Reviewer reports technical unknowns
-and findings to the Planner rather than asking or answering governance
-questions. A separately governed specialist owns only its operation-local
-question; if the answer would change the Phase contract, it routes the question
-to the Planner. Non-owners relay an exact question or answer once and never
-mirror it.
+questions about the active Phase contract, workspace, acceptance, and residual
+risk. The Executor reports a permission blocker to the Planner unless the
+execution environment requires the action task to obtain operation-local
+permission directly. In that case the action task presents the complete
+permission question and receives the answer itself; a Planner relay or status
+report is not a substitute. This does not transfer contract or scope ownership,
+and a changed Phase boundary still returns to the Planner. The Reviewer reports
+technical unknowns and findings rather than asking for write authority. A
+separately governed specialist likewise owns only a directly required
+operation-local permission question. Non-owners relay an exact question or
+answer once and never mirror it.
 
 ## Operating Path
 

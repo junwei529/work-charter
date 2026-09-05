@@ -10,6 +10,6 @@ proportional coordination 约束有后果的 Codex 工作。
 记录证据和限制。
 
 package 起源于源提交 `80910a8b2375a11be897e9660c4b00a06d00dd13`。当前
-`v0.4.0` SOURCE 候选在明确的 repository-native provenance 下修改 package、评测与
-文档。独立 review 与 Planner 验收仍待完成；历史 `v0.3.0` installed-copy 与 release
-证据保持原样，不被重标为当前候选的证据。
+`v0.4.1` SOURCE 候选在明确的 repository-native provenance 下修改 package 权限路由、
+Windows DACL 恢复及其有界评测/文档面。独立 review 与 Planner 验收仍待完成；历史
+v0.4.0 与 v0.3.0 证据保持原样，不被重标为当前候选的证据。

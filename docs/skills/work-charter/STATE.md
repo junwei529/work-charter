@@ -102,6 +102,16 @@ Lifecycle receipt validation is bounded to integrity and routing checks. It
 refuses unreceipted, malformed or mismatched-receipt, wrong-tree, modified,
 aliased, and drifted destinations, but does not prove cryptographic ownership
 against a same-privilege local actor able to forge the complete receipt.
+Repository-side lifecycle mutations now use a validated external, same-volume
+task transaction root outside all declared Skill discovery roots. Planned
+product operations supply it explicitly; legacy apply calls retain their prior
+shape through a visibly marked `AUTO_COMPATIBILITY` root with the same guards.
+The disposable self-test covers all four legacy apply forms, explicit-path
+install/update/rollback/uninstall, pre-mutation path and volume refusal,
+preservation when the initial backup move fails, and verified restoration after
+a later replacement failure. This controller-only correction leaves the
+five-file v0.4.0 candidate package and all historical v0.3.0 objects unchanged;
+its independent technical review is still pending.
 
 ## Next gate
 

@@ -5,6 +5,7 @@ import json
 import os
 import shutil
 import stat
+import subprocess
 import tempfile
 import uuid
 from pathlib import Path
@@ -52,11 +53,34 @@ def is_link_like(path):
     return bool(attributes & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0))
 
 
+def assert_no_link_like_components(path, label):
+    path = Path(path)
+    for component in (path, *path.parents):
+        try:
+            metadata = component.lstat()
+        except FileNotFoundError:
+            continue
+        except OSError as error:
+            raise LifecycleError(f"{label} path component is unreadable: {component}: {error}") from error
+        if stat.S_ISLNK(metadata.st_mode) or bool(
+            getattr(metadata, "st_file_attributes", 0)
+            & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0)
+        ):
+            raise LifecycleError(
+                f"{label} or ancestor is a symbolic link, junction, or reparse point"
+            )
+
+
+def canonical_path_text(path):
+    return os.path.normcase(os.path.normpath(os.fspath(path)))
+
+
 def assert_safe_destination(destination, source=None):
     unresolved = Path(destination).expanduser().absolute()
-    if any(is_link_like(path) for path in (unresolved, *unresolved.parents)):
-        raise LifecycleError("destination or ancestor is a symbolic link, junction, or reparse point")
+    assert_no_link_like_components(unresolved, "destination")
     destination = unresolved.resolve(strict=False)
+    if canonical_path_text(unresolved) != canonical_path_text(destination):
+        raise LifecycleError("destination must use its exact canonical path, not an alias")
     if destination == Path(destination.anchor) or destination == Path.home().resolve():
         raise LifecycleError("destination must not be a filesystem root or home directory")
     if source is not None:
@@ -64,6 +88,163 @@ def assert_safe_destination(destination, source=None):
         if destination == source or source in destination.parents or destination in source.parents:
             raise LifecycleError("destination and source repository must not contain each other")
     return destination
+
+
+def paths_overlap(left, right):
+    return left == right or left in right.parents or right in left.parents
+
+
+def nearest_existing_path(path):
+    candidate = Path(path)
+    while True:
+        try:
+            candidate.lstat()
+            return candidate
+        except FileNotFoundError:
+            parent = candidate.parent
+            if parent == candidate:
+                raise LifecycleError(f"no existing ancestor for path: {path}")
+            candidate = parent
+        except OSError as error:
+            raise LifecycleError(f"path component is unreadable: {candidate}: {error}") from error
+
+
+def volume_identity(path):
+    existing = nearest_existing_path(path)
+    try:
+        metadata = existing.stat()
+    except OSError as error:
+        raise LifecycleError(f"cannot determine filesystem volume for {path}: {error}") from error
+    canonical = existing.resolve(strict=True)
+    return metadata.st_dev, canonical_path_text(Path(canonical.anchor))
+
+
+def assert_safe_transaction_root(
+    transaction_root,
+    destination,
+    source=None,
+    discovery_roots=(),
+    volume_identity_getter=None,
+    require_existing=True,
+):
+    if transaction_root is None:
+        raise LifecycleError("transaction root is required")
+    declared = Path(transaction_root).expanduser()
+    if not declared.is_absolute():
+        raise LifecycleError("transaction root must be an absolute path")
+    unresolved = declared.absolute()
+    assert_no_link_like_components(unresolved, "transaction root")
+    try:
+        root = unresolved.resolve(strict=require_existing)
+    except (FileNotFoundError, OSError) as error:
+        raise LifecycleError(f"transaction root must be an existing directory: {error}") from error
+    if require_existing and not root.is_dir():
+        raise LifecycleError("transaction root must be an existing directory")
+    if not require_existing and root.exists():
+        raise LifecycleError("automatic transaction root must not already exist")
+    if canonical_path_text(unresolved) != canonical_path_text(root):
+        raise LifecycleError("transaction root must use its exact canonical path, not an alias")
+    if root == Path(root.anchor) or root == Path.home().resolve():
+        raise LifecycleError("transaction root must not be a filesystem root or home directory")
+
+    protected = [("destination", destination), ("destination discovery root", destination.parent)]
+    if source is not None:
+        protected.extend(
+            [
+                ("source repository", source),
+                ("source Skill discovery root", source / "skills"),
+            ]
+        )
+    for index, discovery_root in enumerate(discovery_roots):
+        declared_discovery_root = Path(discovery_root).expanduser()
+        if not declared_discovery_root.is_absolute():
+            raise LifecycleError(f"additional discovery root {index + 1} must be an absolute path")
+        unresolved_discovery_root = declared_discovery_root.absolute()
+        assert_no_link_like_components(
+            unresolved_discovery_root,
+            f"additional discovery root {index + 1}",
+        )
+        protected.append(
+            (
+                f"additional Skill discovery root {index + 1}",
+                unresolved_discovery_root.resolve(strict=False),
+            )
+        )
+    for label, protected_path in protected:
+        protected_path = Path(protected_path).resolve(strict=False)
+        if paths_overlap(root, protected_path):
+            raise LifecycleError(f"transaction root must be outside {label}: {protected_path}")
+
+    identify_volume = volume_identity_getter or volume_identity
+    if identify_volume(root) != identify_volume(destination):
+        raise LifecycleError("transaction root and destination must be on the same filesystem volume")
+    return root
+
+
+def create_automatic_transaction_root(
+    destination,
+    source=None,
+    discovery_roots=(),
+    volume_identity_getter=None,
+):
+    container = nearest_existing_path(destination.parent.parent).resolve(strict=True)
+    if not container.is_dir():
+        raise LifecycleError("automatic transaction root has no existing directory parent")
+    candidate = container / f".work-charter-auto-transaction-{uuid.uuid4().hex}"
+    root = assert_safe_transaction_root(
+        candidate,
+        destination,
+        source,
+        discovery_roots,
+        volume_identity_getter,
+        require_existing=False,
+    )
+    try:
+        root.mkdir(mode=0o700)
+        return assert_safe_transaction_root(
+            root,
+            destination,
+            source,
+            discovery_roots,
+            volume_identity_getter,
+        )
+    except Exception:
+        try:
+            root.rmdir()
+        except OSError:
+            pass
+        raise
+
+
+def create_transaction_directory(transaction_root):
+    transaction = transaction_root / f".work-charter-transaction-{uuid.uuid4().hex}"
+    transaction.mkdir(mode=0o700)
+    assert_no_link_like_components(transaction, "transaction directory")
+    return transaction
+
+
+def remove_empty_transaction_directory(transaction):
+    try:
+        transaction.rmdir()
+    except FileNotFoundError:
+        pass
+    except OSError:
+        # A preserved recovery artifact or concurrent unexpected entry makes the
+        # transaction path part of the caller-visible recovery surface.
+        return False
+    return True
+
+
+def remove_completed_transaction(transaction, transaction_root, remove_root):
+    if not remove_empty_transaction_directory(transaction):
+        return False
+    if remove_root and not remove_empty_transaction_directory(transaction_root):
+        return False
+    return True
+
+
+def transaction_recovery_path(transaction, transaction_root):
+    return transaction if transaction.exists() else transaction_root
 
 
 def candidate_metadata(source, expected_version):
@@ -233,9 +414,9 @@ def write_receipt(destination, metadata, files, receipt_destination=None):
     (destination / RECEIPT_NAME).write_text(text, encoding="utf-8", newline="\n")
 
 
-def stage_source(package, files, destination, metadata):
-    stage = destination.parent / f".{destination.name}.stage-{uuid.uuid4().hex}"
-    stage.mkdir(parents=False)
+def stage_source(package, files, destination, metadata, transaction):
+    stage = transaction / "stage"
+    stage.mkdir()
     try:
         for relative in sorted(files):
             target = stage / relative
@@ -259,6 +440,10 @@ def synchronize(
     backup_remover=shutil.rmtree,
     trusted_current_tree=None,
     trusted_target_tree=None,
+    transaction_root=None,
+    discovery_roots=(),
+    path_replacer=os.replace,
+    volume_identity_getter=None,
 ):
     source = resolved(source)
     destination = assert_safe_destination(destination, source)
@@ -280,26 +465,108 @@ def synchronize(
         "version": metadata.get("version"),
         "package_tree": tree,
     }
+    validated_transaction_root = None
+    remove_transaction_root = False
+    if transaction_root is not None:
+        validated_transaction_root = assert_safe_transaction_root(
+            transaction_root,
+            destination,
+            source,
+            discovery_roots,
+            volume_identity_getter,
+        )
+        plan["transaction_root"] = str(validated_transaction_root)
+        plan["transaction_root_mode"] = "EXPLICIT"
     if not apply:
         return plan
+    if validated_transaction_root is None:
+        validated_transaction_root = create_automatic_transaction_root(
+            destination,
+            source,
+            discovery_roots,
+            volume_identity_getter,
+        )
+        remove_transaction_root = True
+        plan["transaction_root"] = str(validated_transaction_root)
+        plan["transaction_root_mode"] = "AUTO_COMPATIBILITY"
+        plan["compatibility_warning"] = (
+            "automatic safe transaction root used for legacy apply call; "
+            "planned product mutation must pass --transaction-root explicitly"
+        )
     destination.parent.mkdir(parents=True, exist_ok=True)
-    stage, metadata, files = stage_source(package, files, destination, metadata)
-    backup = destination.parent / f".{destination.name}.backup-{uuid.uuid4().hex}"
-    moved_old = False
     try:
-        if destination.exists():
-            os.replace(destination, backup)
+        transaction = create_transaction_directory(validated_transaction_root)
+    except Exception:
+        if remove_transaction_root:
+            remove_empty_transaction_directory(validated_transaction_root)
+        raise
+    try:
+        stage, metadata, files = stage_source(
+            package,
+            files,
+            destination,
+            metadata,
+            transaction,
+        )
+    except Exception:
+        if not remove_completed_transaction(
+            transaction,
+            validated_transaction_root,
+            remove_transaction_root,
+        ):
+            raise LifecycleError(
+                "staging failed; transaction cleanup failed; preserved at "
+                f"{transaction_recovery_path(transaction, validated_transaction_root)}"
+            )
+        raise
+    backup = transaction / "backup"
+    moved_old = False
+    installed_new = False
+    try:
+        if action in {"update", "rollback"}:
+            path_replacer(destination, backup)
             moved_old = True
-        os.replace(stage, destination)
+        elif destination.exists():
+            raise LifecycleError("install destination appeared after preflight")
+        path_replacer(stage, destination)
+        installed_new = True
         if current_state(destination, tree).get("state") != "MANAGED":
             raise LifecycleError("installed destination failed receipt verification")
-    except Exception:
-        if destination.exists():
-            shutil.rmtree(destination, ignore_errors=True)
-        if moved_old and backup.exists():
-            os.replace(backup, destination)
+    except Exception as operation_error:
+        recovery_errors = []
+        if installed_new and destination.exists():
+            try:
+                shutil.rmtree(destination)
+            except OSError as error:
+                recovery_errors.append(f"new destination cleanup failed: {error}")
+        if moved_old:
+            if destination.exists():
+                recovery_errors.append("old destination restore blocked because destination still exists")
+            elif not backup.exists():
+                recovery_errors.append("old destination backup is missing")
+            else:
+                try:
+                    path_replacer(backup, destination)
+                    if current_state(destination, state.get("package_tree")).get("state") != "MANAGED":
+                        raise LifecycleError("restored destination failed receipt verification")
+                except Exception as error:
+                    recovery_errors.append(f"old destination restore failed: {error}")
         if stage.exists():
             shutil.rmtree(stage, ignore_errors=True)
+        if recovery_errors:
+            raise LifecycleError(
+                f"{action} failed; automatic recovery is incomplete; transaction preserved at "
+                f"{transaction}: {'; '.join(recovery_errors)}"
+            ) from operation_error
+        if not remove_completed_transaction(
+            transaction,
+            validated_transaction_root,
+            remove_transaction_root,
+        ):
+            raise LifecycleError(
+                f"{action} failed; transaction cleanup failed; preserved at "
+                f"{transaction_recovery_path(transaction, validated_transaction_root)}"
+            ) from operation_error
         raise
     if moved_old:
         try:
@@ -309,7 +576,17 @@ def synchronize(
             plan["cleanup_error"] = str(error)
             plan["package_sha256"] = package_digest(files)
             plan["result"] = "MANAGED_WITH_BACKUP"
+            plan["transaction_path"] = str(transaction)
             return plan
+    if not remove_completed_transaction(
+        transaction,
+        validated_transaction_root,
+        remove_transaction_root,
+    ):
+        plan["transaction_path"] = str(
+            transaction_recovery_path(transaction, validated_transaction_root)
+        )
+        plan["warning"] = "managed destination is valid; transaction directory cleanup failed"
     plan["package_sha256"] = package_digest(files)
     plan["result"] = "MANAGED"
     return plan
@@ -320,6 +597,10 @@ def uninstall(
     apply,
     trusted_tree=None,
     tombstone_remover=shutil.rmtree,
+    transaction_root=None,
+    discovery_roots=(),
+    path_replacer=os.replace,
+    volume_identity_getter=None,
 ):
     destination = assert_safe_destination(destination)
     state = current_state(destination, trusted_tree)
@@ -337,16 +618,74 @@ def uninstall(
         "effect": "APPLY" if apply else "DRY_RUN",
     }
     if not apply:
+        if transaction_root is not None:
+            result["transaction_root"] = str(
+                assert_safe_transaction_root(
+                    transaction_root,
+                    destination,
+                    discovery_roots=discovery_roots,
+                    volume_identity_getter=volume_identity_getter,
+                )
+            )
+            result["transaction_root_mode"] = "EXPLICIT"
         return result
-    tombstone = destination.parent / f".{destination.name}.remove-{uuid.uuid4().hex}"
-    recovery_base = destination.parent / f".{destination.name}.uninstall-recovery-{uuid.uuid4().hex}"
-    recovery_archive = Path(
-        shutil.make_archive(str(recovery_base), "zip", root_dir=destination)
-    )
+    remove_transaction_root = transaction_root is None
+    if remove_transaction_root:
+        validated_transaction_root = create_automatic_transaction_root(
+            destination,
+            discovery_roots=discovery_roots,
+            volume_identity_getter=volume_identity_getter,
+        )
+        result["transaction_root_mode"] = "AUTO_COMPATIBILITY"
+        result["compatibility_warning"] = (
+            "automatic safe transaction root used for legacy apply call; "
+            "planned product uninstall must pass --transaction-root explicitly"
+        )
+    else:
+        validated_transaction_root = assert_safe_transaction_root(
+            transaction_root,
+            destination,
+            discovery_roots=discovery_roots,
+            volume_identity_getter=volume_identity_getter,
+        )
+        result["transaction_root_mode"] = "EXPLICIT"
+    result["transaction_root"] = str(validated_transaction_root)
     try:
-        os.replace(destination, tombstone)
+        transaction = create_transaction_directory(validated_transaction_root)
+    except Exception:
+        if remove_transaction_root:
+            remove_empty_transaction_directory(validated_transaction_root)
+        raise
+    tombstone = transaction / "tombstone"
+    recovery_base = transaction / "uninstall-recovery"
+    try:
+        recovery_archive = Path(
+            shutil.make_archive(str(recovery_base), "zip", root_dir=destination)
+        )
+    except Exception:
+        if not remove_completed_transaction(
+            transaction,
+            validated_transaction_root,
+            remove_transaction_root,
+        ):
+            raise LifecycleError(
+                "recovery archive creation failed; transaction preserved at "
+                f"{transaction_recovery_path(transaction, validated_transaction_root)}"
+            )
+        raise
+    try:
+        path_replacer(destination, tombstone)
     except Exception:
         recovery_archive.unlink(missing_ok=True)
+        if not remove_completed_transaction(
+            transaction,
+            validated_transaction_root,
+            remove_transaction_root,
+        ):
+            raise LifecycleError(
+                "uninstall move failed; transaction cleanup failed; preserved at "
+                f"{transaction_recovery_path(transaction, validated_transaction_root)}"
+            )
         raise
     try:
         tombstone_remover(tombstone)
@@ -359,19 +698,31 @@ def uninstall(
         except Exception as restore_error:
             raise LifecycleError(
                 "uninstall cleanup failed; recovery archive preserved at "
-                f"{recovery_archive}; automatic restore failed: {restore_error}"
+                f"{recovery_archive}; transaction preserved at {transaction}; "
+                f"automatic restore failed: {restore_error}"
             ) from error
         raise LifecycleError(
             "uninstall cleanup failed; managed destination was restored; "
-            f"recovery archive preserved at {recovery_archive}; partial tombstone at {tombstone}"
+            f"transaction preserved at {transaction}; recovery archive at {recovery_archive}; "
+            f"partial tombstone at {tombstone}"
         ) from error
     try:
         recovery_archive.unlink()
     except OSError as error:
         result["result"] = "ABSENT"
         result["recovery_archive"] = str(recovery_archive)
+        result["transaction_path"] = str(transaction)
         result["warning"] = f"uninstall completed; recovery archive cleanup failed: {error}"
         return result
+    if not remove_completed_transaction(
+        transaction,
+        validated_transaction_root,
+        remove_transaction_root,
+    ):
+        result["transaction_path"] = str(
+            transaction_recovery_path(transaction, validated_transaction_root)
+        )
+        result["warning"] = "uninstall completed; transaction directory cleanup failed"
     result["result"] = "ABSENT"
     return result
 
@@ -409,7 +760,15 @@ def self_test(source=None):
             metadata["package"]["tree"],
         )
     with tempfile.TemporaryDirectory(prefix="work-charter-lifecycle-") as temporary:
-        root = Path(temporary)
+        root = Path(temporary).resolve(strict=True)
+        transaction_parent = root / "external-transactions"
+        transaction_parent.mkdir()
+
+        def new_transaction_root(name):
+            path = transaction_parent / name
+            path.mkdir()
+            return path
+
         malformed_source = root / "malformed-source"
         malformed_candidate = malformed_source / "release" / "v0.3.0-candidate.json"
         malformed_candidate.parent.mkdir(parents=True)
@@ -458,20 +817,86 @@ def self_test(source=None):
                 "0.3.0",
                 True,
                 trusted_target_tree=tree_forged,
+                transaction_root=new_transaction_root("forged-source"),
             )
         except LifecycleError:
             pass
         else:
             raise AssertionError("forged source candidate was not refused")
+
+        legacy_container = root / "legacy-calls"
+        legacy_container.mkdir()
+        legacy_destination = legacy_container / "skills" / "work-charter"
+
+        def assert_automatic_compatibility(result):
+            assert result["transaction_root_mode"] == "AUTO_COMPATIBILITY"
+            assert "compatibility_warning" in result
+            automatic_root = Path(result["transaction_root"])
+            assert legacy_destination.parent not in automatic_root.parents
+            assert not automatic_root.exists()
+
+        assert_automatic_compatibility(
+            synchronize(
+                "install",
+                source_a,
+                legacy_destination,
+                SELF_TEST_SOURCE_VERSION,
+                True,
+                trusted_target_tree=tree_a,
+            )
+        )
+        assert_automatic_compatibility(
+            synchronize(
+                "update",
+                source_b,
+                legacy_destination,
+                "0.4.1",
+                True,
+                trusted_current_tree=tree_a,
+                trusted_target_tree=tree_b,
+            )
+        )
+        assert_automatic_compatibility(
+            synchronize(
+                "rollback",
+                source_a,
+                legacy_destination,
+                SELF_TEST_SOURCE_VERSION,
+                True,
+                trusted_current_tree=tree_b,
+                trusted_target_tree=tree_a,
+            )
+        )
+        assert_automatic_compatibility(
+            uninstall(
+                legacy_destination,
+                True,
+                trusted_tree=tree_a,
+            )
+        )
+        assert current_state(legacy_destination)["state"] == "ABSENT"
+
         destination = root / "managed" / "work-charter"
-        synchronize(
+        dry_run = synchronize(
+            "install",
+            source_a,
+            destination,
+            SELF_TEST_SOURCE_VERSION,
+            False,
+            trusted_target_tree=tree_a,
+        )
+        assert dry_run["effect"] == "DRY_RUN"
+        assert "transaction_root" not in dry_run
+        install_result = synchronize(
             "install",
             source_a,
             destination,
             SELF_TEST_SOURCE_VERSION,
             True,
             trusted_target_tree=tree_a,
+            transaction_root=new_transaction_root("install"),
         )
+        assert install_result["transaction_root"].endswith("install")
         assert current_state(destination, tree_a)["version"] == SELF_TEST_SOURCE_VERSION
         assert current_state(destination, tree_b)["state"] == "FOREIGN_COPY"
         receipt_path = destination / RECEIPT_NAME
@@ -479,6 +904,13 @@ def self_test(source=None):
         receipt_path.write_text('{"destination": null}\n', encoding="utf-8", newline="\n")
         assert current_state(destination, tree_a)["state"] == "DRIFTED"
         receipt_path.write_text(valid_receipt, encoding="utf-8", newline="\n")
+        update_moves = []
+
+        def record_update_move(source_path, target_path):
+            update_moves.append((Path(source_path), Path(target_path)))
+            os.replace(source_path, target_path)
+
+        update_transaction_root = new_transaction_root("update")
         synchronize(
             "update",
             source_b,
@@ -487,8 +919,23 @@ def self_test(source=None):
             True,
             trusted_current_tree=tree_a,
             trusted_target_tree=tree_b,
+            transaction_root=update_transaction_root,
+            path_replacer=record_update_move,
         )
         assert current_state(destination, tree_b)["version"] == "0.4.1"
+        assert len(update_moves) == 2
+        assert update_moves[0][0] == destination
+        assert update_transaction_root in update_moves[0][1].parents
+        assert update_transaction_root in update_moves[1][0].parents
+        assert update_moves[1][1] == destination
+
+        rollback_moves = []
+
+        def record_rollback_move(source_path, target_path):
+            rollback_moves.append((Path(source_path), Path(target_path)))
+            os.replace(source_path, target_path)
+
+        rollback_transaction_root = new_transaction_root("rollback")
         synchronize(
             "rollback",
             source_a,
@@ -497,8 +944,13 @@ def self_test(source=None):
             True,
             trusted_current_tree=tree_b,
             trusted_target_tree=tree_a,
+            transaction_root=rollback_transaction_root,
+            path_replacer=record_rollback_move,
         )
         assert current_state(destination, tree_a)["version"] == SELF_TEST_SOURCE_VERSION
+        assert len(rollback_moves) == 2
+        assert rollback_transaction_root in rollback_moves[0][1].parents
+        assert rollback_transaction_root in rollback_moves[1][0].parents
 
         changed = destination / "SKILL.md"
         original = changed.read_text(encoding="utf-8")
@@ -516,9 +968,216 @@ def self_test(source=None):
         assert current_state(destination, tree_a)["state"] == "DRIFTED"
         unexpected_directory.rmdir()
 
+        missing_root = transaction_parent / "missing"
+        try:
+            synchronize(
+                "update",
+                source_b,
+                destination,
+                "0.4.1",
+                True,
+                trusted_current_tree=tree_a,
+                trusted_target_tree=tree_b,
+                transaction_root=missing_root,
+            )
+        except LifecycleError as error:
+            assert "existing directory" in str(error)
+        else:
+            raise AssertionError("missing transaction root was not refused")
+        assert current_state(destination, tree_a)["state"] == "MANAGED"
+
+        inside_discovery_root = destination.parent / "transactions"
+        inside_discovery_root.mkdir()
+        try:
+            synchronize(
+                "update",
+                source_b,
+                destination,
+                "0.4.1",
+                True,
+                trusted_current_tree=tree_a,
+                trusted_target_tree=tree_b,
+                transaction_root=inside_discovery_root,
+            )
+        except LifecycleError as error:
+            assert "destination discovery root" in str(error)
+        else:
+            raise AssertionError("transaction root inside a Skill discovery root was not refused")
+        assert current_state(destination, tree_a)["state"] == "MANAGED"
+        inside_discovery_root.rmdir()
+
+        additional_discovery_root = root / "additional-skill-root"
+        additional_discovery_root.mkdir()
+        declared_inside_root = additional_discovery_root / "transactions"
+        declared_inside_root.mkdir()
+        try:
+            synchronize(
+                "update",
+                source_b,
+                destination,
+                "0.4.1",
+                True,
+                trusted_current_tree=tree_a,
+                trusted_target_tree=tree_b,
+                transaction_root=declared_inside_root,
+                discovery_roots=(additional_discovery_root,),
+            )
+        except LifecycleError as error:
+            assert "additional Skill discovery root" in str(error)
+        else:
+            raise AssertionError("transaction root inside a declared discovery root was not refused")
+        assert current_state(destination, tree_a)["state"] == "MANAGED"
+        declared_inside_root.rmdir()
+
+        cross_volume_root = new_transaction_root("cross-volume")
+
+        def simulated_volume_identity(path):
+            if resolved(path) == cross_volume_root.resolve():
+                return "simulated-other-volume"
+            return "simulated-destination-volume"
+
+        try:
+            synchronize(
+                "update",
+                source_b,
+                destination,
+                "0.4.1",
+                True,
+                trusted_current_tree=tree_a,
+                trusted_target_tree=tree_b,
+                transaction_root=cross_volume_root,
+                volume_identity_getter=simulated_volume_identity,
+            )
+        except LifecycleError as error:
+            assert "same filesystem volume" in str(error)
+        else:
+            raise AssertionError("cross-volume transaction root was not refused")
+        assert current_state(destination, tree_a)["state"] == "MANAGED"
+        assert not any(cross_volume_root.iterdir())
+
+        alias_check = "NOT_APPLICABLE"
+        raw_temporary = Path(temporary)
+        if canonical_path_text(raw_temporary) != canonical_path_text(root):
+            alias_root = new_transaction_root("aliased-root")
+            aliased_spelling = raw_temporary / "external-transactions" / alias_root.name
+            try:
+                synchronize(
+                    "update",
+                    source_b,
+                    destination,
+                    "0.4.1",
+                    True,
+                    trusted_current_tree=tree_a,
+                    trusted_target_tree=tree_b,
+                    transaction_root=aliased_spelling,
+                )
+            except LifecycleError as error:
+                assert "exact canonical path" in str(error)
+                alias_check = "PASS"
+            else:
+                raise AssertionError("aliased transaction root was not refused")
+            assert current_state(destination, tree_a)["state"] == "MANAGED"
+
+        link_check = "UNAVAILABLE"
+        link_target = new_transaction_root("link-target")
+        link_path = root / "transaction-root-link"
+        link_created = False
+        try:
+            link_path.symlink_to(link_target, target_is_directory=True)
+        except OSError:
+            if os.name == "nt":
+                completed = subprocess.run(
+                    ["cmd.exe", "/d", "/c", "mklink", "/J", str(link_path), str(link_target)],
+                    stdin=subprocess.DEVNULL,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    check=False,
+                )
+                link_created = completed.returncode == 0 and is_link_like(link_path)
+        else:
+            link_created = True
+        if link_created:
+            try:
+                synchronize(
+                    "update",
+                    source_b,
+                    destination,
+                    "0.4.1",
+                    True,
+                    trusted_current_tree=tree_a,
+                    trusted_target_tree=tree_b,
+                    transaction_root=link_path,
+                )
+            except LifecycleError as error:
+                assert "symbolic link, junction, or reparse point" in str(error)
+                link_check = "PASS"
+            else:
+                raise AssertionError("link-like transaction root was not refused")
+            finally:
+                if link_path.is_symlink():
+                    link_path.unlink(missing_ok=True)
+                elif link_path.exists():
+                    link_path.rmdir()
+        assert current_state(destination, tree_a)["state"] == "MANAGED"
+
+        backup_move_failure_root = new_transaction_root("backup-move-failure")
+
+        def fail_backup_move(_source_path, _target_path):
+            raise OSError("simulated old-destination backup move failure")
+
+        try:
+            synchronize(
+                "update",
+                source_b,
+                destination,
+                "0.4.1",
+                True,
+                trusted_current_tree=tree_a,
+                trusted_target_tree=tree_b,
+                transaction_root=backup_move_failure_root,
+                path_replacer=fail_backup_move,
+            )
+        except OSError as error:
+            assert "backup move failure" in str(error)
+        else:
+            raise AssertionError("old-destination backup move failure was not surfaced")
+        assert current_state(destination, tree_a)["state"] == "MANAGED"
+        assert not any(backup_move_failure_root.iterdir())
+
+        later_failure_root = new_transaction_root("later-failure")
+        replace_calls = 0
+
+        def fail_new_destination_move(source_path, target_path):
+            nonlocal replace_calls
+            replace_calls += 1
+            if replace_calls == 2:
+                raise OSError("simulated staged-package move failure")
+            os.replace(source_path, target_path)
+
+        try:
+            synchronize(
+                "update",
+                source_b,
+                destination,
+                "0.4.1",
+                True,
+                trusted_current_tree=tree_a,
+                trusted_target_tree=tree_b,
+                transaction_root=later_failure_root,
+                path_replacer=fail_new_destination_move,
+            )
+        except OSError as error:
+            assert "staged-package move failure" in str(error)
+        else:
+            raise AssertionError("staged-package move failure was not surfaced")
+        assert replace_calls == 3
+        assert current_state(destination, tree_a)["state"] == "MANAGED"
+        assert not any(later_failure_root.iterdir())
+
         def fail_backup_cleanup(_path):
             raise OSError("simulated backup cleanup failure")
 
+        cleanup_transaction_root = new_transaction_root("backup-cleanup-failure")
         cleanup_result = synchronize(
             "update",
             source_c,
@@ -528,12 +1187,14 @@ def self_test(source=None):
             backup_remover=fail_backup_cleanup,
             trusted_current_tree=tree_a,
             trusted_target_tree=tree_c,
+            transaction_root=cleanup_transaction_root,
         )
         assert cleanup_result["result"] == "MANAGED_WITH_BACKUP"
         assert current_state(destination, tree_c)["version"] == "0.4.2"
         backup_path = Path(cleanup_result["backup_path"])
         assert backup_path.exists()
-        shutil.rmtree(backup_path)
+        assert cleanup_transaction_root in backup_path.parents
+        shutil.rmtree(Path(cleanup_result["transaction_path"]))
 
         unreceipted = root / "unreceipted" / "work-charter"
         unreceipted.mkdir(parents=True)
@@ -582,26 +1243,42 @@ def self_test(source=None):
             (path / "SKILL.md").unlink()
             raise OSError("simulated partial uninstall cleanup failure")
 
+        uninstall_recovery_root = new_transaction_root("uninstall-recovery")
         try:
             uninstall(
                 destination,
                 True,
                 trusted_tree=tree_c,
                 tombstone_remover=fail_partial_uninstall,
+                transaction_root=uninstall_recovery_root,
             )
-        except LifecycleError:
-            pass
+        except LifecycleError as error:
+            assert str(uninstall_recovery_root) in str(error)
         else:
             raise AssertionError("partial uninstall cleanup failure was not surfaced")
         assert current_state(destination, tree_c)["state"] == "MANAGED"
+        recovery_transactions = list(uninstall_recovery_root.iterdir())
+        assert len(recovery_transactions) == 1
+        retained_transaction = recovery_transactions[0]
+        assert (retained_transaction / "uninstall-recovery.zip").is_file()
+        assert (retained_transaction / "tombstone").is_dir()
+        assert destination.parent not in retained_transaction.parents
+        shutil.rmtree(retained_transaction)
 
-        uninstall(destination, True, trusted_tree=tree_c)
+        uninstall(
+            destination,
+            True,
+            trusted_tree=tree_c,
+            transaction_root=new_transaction_root("uninstall"),
+        )
         assert current_state(destination)["state"] == "ABSENT"
     return {
         "result": "PASS",
-        "scope": "disposable tree-binding/install/update/rollback/drift/receipt-integrity/unreceipted/wrong-tree/cleanup-recovery/uninstall",
+        "scope": "disposable legacy-apply-compatibility/external-transaction install/update/rollback/failure-recovery/path-volume-guards/drift/receipt-integrity/unreceipted/wrong-tree/uninstall",
         "persistent_effect": False,
         "source_package_tree": candidate_tree,
+        "transaction_alias_test": alias_check,
+        "transaction_reparse_test": link_check,
     }
 
 
@@ -615,6 +1292,8 @@ def main():
         command.add_argument("--expected-version", required=True)
         command.add_argument("--trusted-current-package-tree")
         command.add_argument("--trusted-target-package-tree")
+        command.add_argument("--transaction-root")
+        command.add_argument("--discovery-root", action="append", default=[])
         command.add_argument("--apply", action="store_true")
     status_parser = subparsers.add_parser("status")
     status_parser.add_argument("--destination", required=True)
@@ -622,6 +1301,8 @@ def main():
     uninstall_parser = subparsers.add_parser("uninstall")
     uninstall_parser.add_argument("--destination", required=True)
     uninstall_parser.add_argument("--trusted-current-package-tree")
+    uninstall_parser.add_argument("--transaction-root")
+    uninstall_parser.add_argument("--discovery-root", action="append", default=[])
     uninstall_parser.add_argument("--apply", action="store_true")
     self_test_parser = subparsers.add_parser("self-test")
     self_test_parser.add_argument("--source", required=False)
@@ -637,6 +1318,8 @@ def main():
                 args.apply,
                 trusted_current_tree=args.trusted_current_package_tree,
                 trusted_target_tree=args.trusted_target_package_tree,
+                transaction_root=args.transaction_root,
+                discovery_roots=args.discovery_root,
             )
         elif args.action == "status":
             result = current_state(
@@ -649,6 +1332,8 @@ def main():
                 args.destination,
                 args.apply,
                 trusted_tree=args.trusted_current_package_tree,
+                transaction_root=args.transaction_root,
+                discovery_roots=args.discovery_root,
             )
         else:
             result = self_test(args.source)

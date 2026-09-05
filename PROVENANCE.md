@@ -57,3 +57,14 @@ cross-Harness, untested-context, or broad-efficacy claim. Planner acceptance
 Those publication and installed-copy claims apply only to v0.3.0. The
 `v0.4.0` descriptor is a local SOURCE candidate identity, not a receipt,
 installation record, public ref, tag, or Release claim.
+
+The repository-native lifecycle controller now confines every transient stage,
+backup, tombstone, and recovery archive to a validated external task-scoped
+transaction directory. Mutating operations fail closed before destination
+changes when that directory is missing, aliased, link-like, inside or above a
+declared Skill discovery root, or on a different filesystem volume. Existing
+apply calls without an explicit root remain compatible through a visibly
+reported, uniquely created automatic root subject to the same guards; planned
+product operations still use an explicit operator-selected root. This controller
+correction does not change the five-file installable package or any historical
+v0.3.0 object.

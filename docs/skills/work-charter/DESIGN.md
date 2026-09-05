@@ -74,10 +74,21 @@ classes.
 - Source provenance is explicit in [`../../../provenance/source-map.json`](../../../provenance/source-map.json).
 - Historical monorepo state is not a runtime dependency or acceptance condition.
 - Install lifecycle operations use an explicit immutable source checkout and a
-  receipt. The tool refuses unreceipted, malformed or mismatched-receipt,
-  wrong-tree, modified, aliased, and drifted destinations. The receipt provides
-  integrity and routing evidence, not cryptographic ownership proof against a
-  same-privilege local actor capable of forging the complete receipt.
+  receipt. Planned product mutations use an existing absolute external
+  transaction root on the destination volume and outside the destination,
+  source, and every declared Skill discovery root. Legacy apply calls without
+  that argument remain compatible through a visibly reported, unique automatic
+  root that satisfies the same path and volume guards and is removed after a
+  clean result; it is not the accepted route for a planned install or release.
+  Per-operation stage, backup, tombstone, and recovery material remains under
+  the validated root; missing, aliased, link-like, overlapping, or cross-volume
+  explicit routes fail before destination mutation. The
+  tool refuses unreceipted, malformed or mismatched-receipt, wrong-tree,
+  modified, aliased, and drifted destinations. A failed initial backup move
+  never deletes the old destination; failures after that move restore and
+  verify the old managed copy or retain an explicit recovery path. The receipt
+  provides integrity and routing evidence, not cryptographic ownership proof
+  against a same-privilege local actor capable of forging the complete receipt.
 - SOURCE contract qualification checks instruction coverage only. Model
   adherence, installed-copy behavior, publication, and broad efficacy require
   separate evidence.

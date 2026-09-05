@@ -61,25 +61,25 @@
       "destination": "PROVENANCE.md",
       "kind": "repository-native",
       "note": "Work Charter v0.4.0 repository documentation or release notes",
-      "target_sha256": "4b1a781f0bdf485e9f0ce206bb9f9b5259cfb2b845c5bcccab80518f824a65c9"
+      "target_sha256": "062f38888473bf18e9e9f9753ae9f5c4873ce5d6255e5cffd76a0bbbfedd654c"
     },
     {
       "destination": "README.md",
       "kind": "repository-native",
       "note": "Work Charter v0.4.0 repository documentation or release notes",
-      "target_sha256": "a6dd73f6c37f0c6ebf8476262835cb69079adb1c682e7d9e47cb3487c42b289a"
+      "target_sha256": "7e0472de95e5defc956dd38ab4b7ba707aab6ec363122871e0e5e3bc2028ceac"
     },
     {
       "destination": "README.zh-CN.md",
       "kind": "repository-native",
       "note": "Work Charter v0.4.0 repository documentation or release notes",
-      "target_sha256": "c0c84b04d6662d46a19fef1d3a64c36e33e086897bf868bc697b1c88bc324b66"
+      "target_sha256": "bb09847d3489069c81117632e21240024e37645c0c1841069b122ac35c18c35c"
     },
     {
       "destination": "docs/skills/work-charter/DESIGN.md",
       "kind": "repository-native",
       "note": "Work Charter v0.4.0 repository documentation or release notes",
-      "target_sha256": "7593462c449cb88703791c0afbb94b6b0210e0a570900fcffb25ea1ca32966bc"
+      "target_sha256": "c91de79ada5155a0892e403aa6ea2cbe91e7b4c91549cbdec540e60c3037656a"
     },
     {
       "destination": "docs/skills/work-charter/README.md",
@@ -97,13 +97,13 @@
       "destination": "docs/skills/work-charter/STATE.md",
       "kind": "repository-native",
       "note": "Work Charter v0.4.0 repository documentation or release notes",
-      "target_sha256": "1efd03864ba19ded17a3ed0b9521d10ffcdace2d8534b6893a6fb9b822e3fd4d"
+      "target_sha256": "94e3d2926d8a10ab530de5de34b7951f4b2e668cd4b88ea6f5e34a1ecafe8eec"
     },
     {
       "destination": "docs/skills/work-charter/VERIFICATION.md",
       "kind": "repository-native",
       "note": "Work Charter v0.4.0 repository documentation or release notes",
-      "target_sha256": "4afc64b5136ad466d2809e6f6fa055ec985a5d14a5885729138d459e4cf89ebe"
+      "target_sha256": "9b920ac8989c83de8d1252a437d8ec0a65faac8fa6aea3fb9a30d24a92aafe93"
     },
     {
       "destination": "evals/README.md",
@@ -583,8 +583,8 @@
           "source_path": "evals/check-fixtures.ps1"
         }
       ],
-      "target_normalized_sha256": "c33327cdc641a31e9c6803c6ea87736a8f2da21c4eadc480eba11d28f6c5dee9",
-      "target_sha256": "c33327cdc641a31e9c6803c6ea87736a8f2da21c4eadc480eba11d28f6c5dee9",
+      "target_normalized_sha256": "a0a10d9efe05d1d1f7a0c39608c4bd41c5c8c1b5bfdfe976d42c2e736f18bb67",
+      "target_sha256": "a0a10d9efe05d1d1f7a0c39608c4bd41c5c8c1b5bfdfe976d42c2e736f18bb67",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -597,7 +597,7 @@
       "destination": "scripts/manage_install.py",
       "kind": "repository-native",
       "note": "Origin-aware product-specific install lifecycle tool",
-      "target_sha256": "7798bd010878b10dad5e5a4a028b1487c454bcdc57a931d49ec8d9969d915d87"
+      "target_sha256": "631e9a3fe0d992b9c3d7a9398a1337711974befe182331cea7552cb30f943fd9"
     },
     {
       "destination": "skills/work-charter/SKILL.md",

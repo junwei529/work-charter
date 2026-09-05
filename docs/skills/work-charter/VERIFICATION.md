@@ -122,10 +122,18 @@ python -B scripts/manage_install.py self-test --source .
 
 The self-test uses disposable temporary directories to exercise install,
 status, update, rollback, unreceipted/mismatched/wrong-tree/modified/aliased/
-drifted-destination refusal, uninstall, and recovery behavior. It does not
-install or remove a persistent Skill copy. Receipt checks establish integrity
-and routing consistency, not cryptographic ownership against a same-privilege
-local actor capable of forging the complete receipt.
+drifted-destination refusal, uninstall, and recovery behavior. Mutating cases
+exercise the legacy install/update/rollback/uninstall apply shape through
+reported automatic external roots, then exercise the explicit external
+same-volume route. They verify update/rollback routing, missing/overlapping/
+declared-discovery-root/alias/reparse/cross-volume refusal before destination
+mutation, old-copy preservation when the first backup move fails, and verified
+restoration when a later stage move fails. The reparse case is reported as
+`UNAVAILABLE` when the host cannot create a disposable directory symlink or
+junction; the deterministic production guard remains present. The self-test
+does not install or remove a persistent Skill copy. Receipt checks establish
+integrity and routing consistency, not cryptographic ownership against a
+same-privilege local actor capable of forging the complete receipt.
 
 The historical v0.3.0 local-release receipt binds accepted candidate C
 `732e7efa6211d9aedeb133282ef28ce03f9bdfef`, candidate tree
@@ -177,4 +185,4 @@ behavior, or broad product efficacy.
 
 ## Future-version lifecycle boundary
 
-The lifecycle command accepts `--trusted-target-package-tree` and `--trusted-current-package-tree` for versions outside its built-in trust map. These values are explicit external trust inputs, not candidate-derived metadata. B2 verifies same-version effects from exact public `v0.3.0`; cross-version behavior remains `UNKNOWN`. If recovery-archive cleanup fails after a successful uninstall, the command reports `ABSENT`, retains and identifies the archive, and returns a warning instead of misreporting the completed uninstall as failed.
+The lifecycle command accepts `--trusted-target-package-tree` and `--trusted-current-package-tree` for versions outside its built-in trust map. These values are explicit external trust inputs, not candidate-derived metadata. B2 verifies same-version effects from exact public `v0.3.0`; cross-version behavior remains `UNKNOWN`. Dry runs and legacy apply calls retain their existing call shape. A legacy apply call without `--transaction-root` reports `AUTO_COMPATIBILITY` and uses a unique external same-volume root with the same overlap and reparse guards. Planned product installation, update, rollback, and uninstall commands supply `--transaction-root` explicitly; the operator repeats `--discovery-root` for active roots beyond the automatically protected destination parent and source `skills` directory. If recovery-archive cleanup fails after a successful uninstall, the command reports `ABSENT`, retains and identifies the archive and transaction path, and returns a warning instead of misreporting the completed uninstall as failed.

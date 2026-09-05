@@ -90,6 +90,26 @@ python -B scripts/manage_install.py rollback --source <old-immutable-checkout> -
 python -B scripts/manage_install.py uninstall --destination <skill-destination> [--trusted-current-package-tree <git-tree-sha1>]
 ```
 
+For any planned product mutation, first create an absolute task-scoped
+transaction directory on the same filesystem volume as the destination,
+outside every Skill discovery root, then add
+`--apply --transaction-root <external-task-directory>`. The tool automatically
+protects the destination parent and the source checkout's `skills` directory;
+repeat `--discovery-root <absolute-path>` for every additional active Skill
+discovery root. It rejects missing, relative, aliased, link-like, overlapping,
+or cross-volume explicit paths before changing the destination.
+
+Existing `--apply` calls that omit `--transaction-root` remain behaviorally
+compatible: the tool creates a unique validated same-volume directory outside
+the destination discovery root, reports `AUTO_COMPATIBILITY`, and removes that
+directory after a clean result. This fallback does not authorize or replace the
+explicit path required by a planned installation or release operation. In both
+modes, stage, backup, tombstone, and recovery-archive material stays under the
+external per-operation transaction directory. A failure to move the old
+destination to backup leaves that destination untouched; a later replacement
+failure restores and verifies the old managed copy or reports the preserved
+recovery path.
+
 The install example is deliberately bound to an immutable v0.3.0 checkout,
 whose package tree is already in the bundled trust map. Do not substitute this
 working v0.4.0 candidate checkout: v0.4.0 still requires independent review,

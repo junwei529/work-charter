@@ -78,6 +78,21 @@ python -B scripts/manage_install.py rollback --source <old-immutable-checkout> -
 python -B scripts/manage_install.py uninstall --destination <skill-destination> [--trusted-current-package-tree <git-tree-sha1>]
 ```
 
+任何计划中的产品状态修改，都应先在 destination 同一 filesystem volume 上创建一个绝对、
+task-scoped 且位于所有 Skill discovery root 之外的 transaction 目录，然后附加
+`--apply --transaction-root <external-task-directory>`。工具会自动保护 destination 的
+父目录以及 source checkout 的 `skills` 目录；对其他活动 Skill discovery root，逐个重复
+提供 `--discovery-root <absolute-path>`。工具会在修改 destination 之前拒绝不存在、相对、
+别名化、link-like、相互包含或跨卷的显式 transaction 路径。
+
+既有省略 `--transaction-root` 的 `--apply` 调用继续保持行为兼容：工具会在 destination
+discovery root 之外自动创建唯一、经验证且同卷的目录，在结果中标记
+`AUTO_COMPATIBILITY`，并在正常完成后删除该目录。此兼容 fallback 不授权、也不替代计划中
+安装或发布操作所需的显式路径。两种模式下，stage、backup、tombstone 与 recovery archive
+都只位于外部的单次事务目录中。若旧 destination 移入 backup 的第一步失败，原 destination
+保持不动；若之后的替换失败，工具会恢复并验证原 managed copy，否则报告保留下来的
+recovery 路径。
+
 该 install 示例特意绑定 package tree 已进入内置信任映射的 v0.3.0 不可变 checkout。
 不要用当前 v0.4.0 候选 checkout 替换它：v0.4.0 仍需独立 review、Planner 验收，以及在
 candidate 外部发布的受信 package-tree 身份，之后才能使用后续版本的 trust route 安装。

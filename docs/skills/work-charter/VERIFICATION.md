@@ -1,11 +1,13 @@
 # Work Charter Verification
 
-## Accepted migration baseline
+## Historical migration baseline and current candidate
 
 - Source commit: `80910a8b2375a11be897e9660c4b00a06d00dd13`
 - Package path: `skills/work-charter/`
 - Package files: 5
 - Provenance manifest: [`../../../provenance/source-map.json`](../../../provenance/source-map.json)
+- Current candidate: [`../../../release/v0.4.0-candidate.json`](../../../release/v0.4.0-candidate.json)
+- Current candidate state: `PENDING_INDEPENDENT_REVIEW`
 
 ## Repository check
 
@@ -13,9 +15,10 @@
 python -B scripts/check_repository.py --json
 ```
 
-This verifies exact Git-blob identity for package/case/fixture/license inputs,
-the adapted/native-file hashes and source mappings, expected package and evaluation
-shape, UTF-8/BOM and Markdown-link boundaries, and publication safety.
+This verifies exact Git-blob identity for unchanged mapped inputs, current
+hashes and honest provenance classification for revised/native files, expected
+package and evaluation shape, UTF-8/BOM and Markdown-link boundaries, and
+publication safety.
 The default standalone route preserves a checker-pinned source-identity map;
 it does not assume the former source repository is present.
 
@@ -37,6 +40,11 @@ python -B scripts/check_repository.py --adversarial
 
 This builds every disposable repository strictly from staged Git-index blobs;
 working-tree, ignored, untracked, cache, and link-target bytes are not copied.
+Before treating its result as evidence for a candidate, stage the complete
+intended candidate—including new files—and verify that
+`git diff --cached --name-status` matches the declared review input. Unstaged
+or untracked changes are outside the matrix snapshot, so a passing command run
+against an old index proves only that older indexed input.
 The admitted publication-classifier input domain is the UTF-8 text of mapped
 repository files plus every string value consumed from the v2 provenance
 manifest. Manifest paths remain strict POSIX repository-relative paths. Within
@@ -96,10 +104,15 @@ Run the deterministic SOURCE contract check:
 python -B scripts/check_source_contract.py --json
 ```
 
-It verifies the exact 5-file package shape and the instruction clauses needed
-for direct and indirect selection/activation, authority non-expansion,
-coordination/recovery, and Standard O/P/E. It is static source evidence, not a
-model run or loaded-copy proof.
+It verifies the exact 5-file package shape, the `v0.4.0` candidate binding, and
+the instruction clauses needed for direct and indirect selection/activation,
+authority non-expansion, context recovery, independent review/acceptance
+separation, same-Reviewer repair re-review, callback deduplication,
+evidence-first `UNKNOWN` handling, graph limitations, and Standard O/P/E/R. It
+also verifies the immutable `v0.3.0` release objects against fixed historical
+package and release-note identities rather than comparing them with current
+bytes. It is static source evidence, not a model run, independent review,
+Planner acceptance, or loaded-copy proof.
 
 Run the install lifecycle self-test:
 
@@ -114,20 +127,22 @@ install or remove a persistent Skill copy. Receipt checks establish integrity
 and routing consistency, not cryptographic ownership against a same-privilege
 local actor capable of forging the complete receipt.
 
-The local-release receipt binds accepted candidate C
+The historical v0.3.0 local-release receipt binds accepted candidate C
 `732e7efa6211d9aedeb133282ef28ce03f9bdfef`, candidate tree
-`cc09ec16f85b05ed2287afd68ac6051dd800d287`, and unchanged package tree
+`cc09ec16f85b05ed2287afd68ac6051dd800d287`, and historical package tree
 `0ac3cbb0f1fa8fa51d8f832c8127eabc9863ec9e`. The SOURCE checker verifies that
-binding and the `LOCAL_RELEASE_READY=VERIFIED` transition. Accepted Q06 provides
+fixed binding and the historical `LOCAL_RELEASE_READY=VERIFIED` transition.
+Accepted Q06 provides
 fresh projectless, read-only, no-tool, exact-SOURCE forward-behavior evidence
 with `gpt-5.6-sol/high`; it does not prove installed-copy behavior,
 publication, stable installation, cross-Harness behavior, or broad efficacy.
 
-The public-source descriptor
+The historical v0.3.0 public-source descriptor
 [`../../../release/v0.3.0-public-release-candidate.json`](../../../release/v0.3.0-public-release-candidate.json)
 records the exact repository identity, default branch, intended annotated tag,
-release-note owner, B1 receipt lineage, and unchanged package identity. The
-SOURCE checker verifies that local descriptor contract. It does not prove the
+release-note owner, B1 receipt lineage, and historical package identity. The
+SOURCE checker verifies that descriptor against its recorded release-note and
+package identities. It does not prove the
 public ref, tag, GitHub Release, or any persistent installation effect; those
 require live public-object and installed-copy evidence tied to exact P.
 
@@ -139,7 +154,7 @@ lifecycle effects, final managed package identity, and two fresh projectless
 installed-copy behavior witnesses. Those two remain historical evidence. After
 the retained predecessor was preserved outside every Skill discovery root,
 `B2-WC-SOLE-LOAD-02` freshly observed exactly one catalog-visible managed copy,
-verified its receipt and five file hashes, and loaded the Skill body plus its
+verified its receipt and five historical file hashes, and loaded the Skill body plus its
 coordination/recovery and Standard O/P/E references. The recovery locator stays
 controller-side. This evidence does not prove cross-version update/rollback,
 cross-Harness behavior, untested contexts, or broad efficacy.
@@ -154,11 +169,11 @@ copy, retained recovery copy, or the evidence limitations above.
 
 The retained cases are deterministic contract fixtures; they do not create
 fresh model, efficacy, release, or installed-copy evidence. SOURCE qualification
-proves clause coverage only. A local clean candidate commit and native review
-establish the accepted `LOCAL_RELEASE_READY=VERIFIED` receipt; they do not
-authorize or prove publication, persistent installation,
-a remote, tag, GitHub Release, stable installed-copy behavior, or broad product
-efficacy.
+proves clause coverage only. For v0.4.0, deterministic checks, independent
+technical review, and Planner acceptance are distinct pending gates; no receipt
+exists yet. Historical v0.3.0 acceptance does not authorize or prove v0.4.0
+installation, publication, cross-version lifecycle, stable installed-copy
+behavior, or broad product efficacy.
 
 ## Future-version lifecycle boundary
 

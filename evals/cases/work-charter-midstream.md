@@ -48,7 +48,7 @@ work owner. It contains no standing policy or role-delivery authorization.
 
 ## Failure Signals
 
-- Silently activates Planner/Executor or Standard O/P/E.
+- Silently activates Planner/Executor/Reviewer or Standard O/P/E/R.
 - States or implies before confirmation that Work Charter is selected, loaded,
   invoked, active, adopted, or in force, including a caveated statement that
   the state is Harness-only or not user-authorized.

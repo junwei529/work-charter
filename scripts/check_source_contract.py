@@ -8,10 +8,22 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "skills" / "work-charter"
-CANDIDATE = ROOT / "release" / "v0.3.0-candidate.json"
+CURRENT_CANDIDATE = ROOT / "release" / "v0.4.0-candidate.json"
+HISTORICAL_CANDIDATE = ROOT / "release" / "v0.3.0-candidate.json"
 RECEIPT = ROOT / "release" / "v0.3.0-local-release-receipt.json"
 PUBLIC_RELEASE_CANDIDATE = ROOT / "release" / "v0.3.0-public-release-candidate.json"
 PUBLIC_RELEASE_EVIDENCE = ROOT / "release" / "v0.3.0-public-release-evidence.json"
+V030_PACKAGE_TREE = "0ac3cbb0f1fa8fa51d8f832c8127eabc9863ec9e"
+V030_PACKAGE_SHA256 = "d445a3cd99c6d8f2ea2d9eee3be7c24781732617fedf08d4e9fd1b3d43ff88d1"
+V030_RELEASE_NOTES_SHA256 = "e37631f77e9dd9a450e618c56967017e49a7c05618baa0b7a2cb838ccd01f12b"
+V030_INSTALLED_PACKAGE_SHA256 = "7b67ea1f7073fa66ac91c36f3e39c735b54c04174e2fa3672068f8fa8948a5b2"
+V030_PACKAGE_FILE_SHA256 = {
+    "SKILL.md": "c750d51940456b110bc7ed4b7d490690f42ca8ee9b555c23c8fe3d4d056b4dba",
+    "agents/openai.yaml": "f0032475e213d75ed17eb41c3424007ebc46c0ddb6739138c9908185beefdad6",
+    "assets/work-charter.md": "ca2ec792c0b0bf978e79a7e51cb5afd9b675e79b0daf7d0dc81917f77bfc7fa1",
+    "references/coordination-and-recovery.md": "5565ef7d2db47847c570ae0ea0a0a307bc64c0ed8b61261d85177f4ef2da1f88",
+    "references/standard-ope.md": "10a4d5b9c9239ac2f79544155e09ea230d99e6ca80049cd01ea624f16a72fd67",
+}
 EXPECTED_FILES = {
     "SKILL.md",
     "agents/openai.yaml",
@@ -158,9 +170,39 @@ def main():
         "recovery.writer_and_evidence_binding": contains_all(
             recovery,
             [
-                "Keep at most one Planner, one Executor, one active execution lane, and one repository writer.",
+                "Keep at most one Planner, one Executor, one Reviewer for the active package, one active execution lane, and one repository writer.",
                 "Bind material evidence to its mutable subject, revision, and invalidation condition.",
                 "silence is never acceptance",
+            ],
+        ),
+        "review.levels_and_responsibility_separation": contains_all(
+            skill,
+            [
+                "a separate review gate can still apply without activating or escalating Work Charter",
+                "a bounded independent Reviewer may inspect a stable checkpoint",
+                "Planner/Executor/Reviewer separation",
+                "The implementer verifies the work it changed.",
+                "An independent Reviewer inspects the stable change",
+                "The designated assessor decides whether the outcome and evidence satisfy the contract",
+            ],
+        ),
+        "review.same_reviewer_and_input_limits": contains_all(
+            skill,
+            [
+                "Prefer the same reliable Reviewer for repair rechecks within one work package",
+                "retain cumulative findings and coverage",
+                "Give review the actual change, baseline, necessary surrounding source, tests, documentation consumers, material untracked inputs",
+                "A read-only Reviewer does not silently build or refresh such an index.",
+                "Hash, graph, diff size, or a clean status cannot replace semantic inspection.",
+            ],
+        ),
+        "review.unknown_context_and_callback_boundaries": contains_all(
+            skill,
+            [
+                "When a result is `UNKNOWN`",
+                "A context switch can be a summary or compaction inside one run, a deliberate rotation to a fresh context, or a new or successor session.",
+                "Send at most one current Result Notice for one checkpoint.",
+                "A corrected or otherwise changed input creates a new checkpoint and one new Notice",
             ],
         ),
         "standard.role_separation_and_hierarchy": contains_all(
@@ -170,38 +212,75 @@ def main():
                 "Planner -> Phase Definition",
                 "Planner -> Executor execution tranche or work package",
                 "Executor -> internal steps or slices",
-                "Keep one active lane, one repository writer, at most one Planner, and at most one Executor.",
+                "Planner -> Reviewer stable review checkpoint",
+                "Reviewer -> Planner findings and coverage limits",
+                "Keep one active lane, one repository writer, at most one Planner, at most one Executor, and one reliable Reviewer for the active package.",
             ],
         ),
         "standard.callback_and_recording_boundary": contains_all(
             standard,
             [
-                "returns one Result Notice to the Planner, stops polling",
+                "returns one review-ready Result Notice to the Planner for a named stable checkpoint",
+                "freezes the review input and exclusions, and routes it to the Reviewer",
+                "the same reliable Reviewer re-reviews the affected and cumulative material surface",
                 "returns exactly one checkpoint-bound",
                 "the next authorized governance writer records and verifies the verdict",
+                "send at most one current Notice per checkpoint and one returned disposition",
             ],
         ),
     }
 
-    candidate_error = None
-    candidate = {}
+    current_candidate_error = None
+    current_candidate = {}
     actual_package_tree = None
     try:
-        candidate = json.loads(CANDIDATE.read_text(encoding="utf-8"))
-        if not isinstance(candidate, dict) or not isinstance(candidate.get("package"), dict):
-            raise ValueError("candidate descriptor must be an object with an object package")
+        current_candidate = json.loads(CURRENT_CANDIDATE.read_text(encoding="utf-8"))
+        if not isinstance(current_candidate, dict) or not isinstance(
+            current_candidate.get("package"), dict
+        ):
+            raise ValueError("current candidate descriptor must be an object with an object package")
         actual_package_tree = git_tree_hash(PACKAGE)
     except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
-        candidate_error = str(error)
-    checks["candidate.identity"] = (
-        candidate.get("schema") == "work-charter-local-release-candidate/v1"
-        and candidate.get("product") == "work-charter"
-        and candidate.get("version") == "0.3.0"
-        and candidate.get("public_identity") == "junwei529/work-charter"
-        and candidate.get("candidate_state") == "PENDING_PLANNER_ACCEPTANCE"
-        and candidate.get("package", {}).get("file_count") == 5
-        and candidate.get("package", {}).get("path") == "skills/work-charter"
-        and candidate.get("package", {}).get("tree") == actual_package_tree
+        current_candidate_error = str(error)
+    current_package_sha256 = package_digest(actual_files) if actual_files == EXPECTED_FILES else None
+    checks["candidate.v040_identity"] = (
+        current_candidate.get("schema") == "work-charter-local-release-candidate/v1"
+        and current_candidate.get("product") == "work-charter"
+        and current_candidate.get("version") == "0.4.0"
+        and current_candidate.get("public_identity") == "junwei529/work-charter"
+        and current_candidate.get("candidate_state") == "PENDING_INDEPENDENT_REVIEW"
+        and current_candidate.get("package", {}).get("file_count") == 5
+        and current_candidate.get("package", {}).get("path") == "skills/work-charter"
+        and current_candidate.get("package", {}).get("tree") == actual_package_tree
+        and current_candidate.get("package", {}).get("sha256") == current_package_sha256
+        and current_candidate.get("evidence_states", {}).get("independent_review") == "PENDING"
+        and current_candidate.get("evidence_states", {}).get("planner_acceptance") == "PENDING"
+        and current_candidate.get("evidence_states", {}).get("local_release_ready")
+        == "PENDING_REVIEW_AND_PLANNER_ACCEPTANCE"
+        and current_candidate.get("evidence_states", {}).get("public_release") == "UNKNOWN"
+        and current_candidate.get("evidence_states", {}).get("stable_installed_copy") == "UNKNOWN"
+        and current_candidate.get("human_release_notes_review") == "PENDING"
+    )
+
+    historical_candidate_error = None
+    historical_candidate = {}
+    try:
+        historical_candidate = json.loads(HISTORICAL_CANDIDATE.read_text(encoding="utf-8"))
+        if not isinstance(historical_candidate, dict) or not isinstance(
+            historical_candidate.get("package"), dict
+        ):
+            raise ValueError("historical candidate descriptor must be an object with an object package")
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
+        historical_candidate_error = str(error)
+    checks["candidate.v030_historical_identity"] = (
+        historical_candidate.get("schema") == "work-charter-local-release-candidate/v1"
+        and historical_candidate.get("product") == "work-charter"
+        and historical_candidate.get("version") == "0.3.0"
+        and historical_candidate.get("public_identity") == "junwei529/work-charter"
+        and historical_candidate.get("candidate_state") == "PENDING_PLANNER_ACCEPTANCE"
+        and historical_candidate.get("package", {}).get("file_count") == 5
+        and historical_candidate.get("package", {}).get("path") == "skills/work-charter"
+        and historical_candidate.get("package", {}).get("tree") == V030_PACKAGE_TREE
     )
 
     receipt_error = None
@@ -227,7 +306,7 @@ def main():
         == "release/v0.3.0-candidate.json"
         and receipt.get("candidate", {}).get("tree")
         == "cc09ec16f85b05ed2287afd68ac6051dd800d287"
-        and receipt.get("candidate", {}).get("package_tree") == actual_package_tree
+        and receipt.get("candidate", {}).get("package_tree") == V030_PACKAGE_TREE
         and receipt.get("planner_acceptance", {}).get("checkpoint")
         == "B1-WC-CANDIDATE-C-01"
         and receipt.get("planner_acceptance", {}).get("verdict") == "ACCEPTED"
@@ -243,12 +322,11 @@ def main():
         and receipt.get("source_forward_behavior", {}).get("result") == "ACCEPTED"
         and receipt.get("source_forward_behavior", {}).get("scope")
         == "fresh projectless read-only no-tool exact-SOURCE"
-        and receipt.get("source_forward_behavior", {}).get("package_tree") == actual_package_tree
+        and receipt.get("source_forward_behavior", {}).get("package_tree") == V030_PACKAGE_TREE
     )
 
     public_candidate_error = None
     public_candidate = {}
-    release_notes_sha256 = None
     try:
         parsed_public_candidate = json.loads(PUBLIC_RELEASE_CANDIDATE.read_text(encoding="utf-8"))
         if not isinstance(parsed_public_candidate, dict):
@@ -256,7 +334,6 @@ def main():
         for field in ("github_release", "lineage", "package", "public_repository"):
             if not isinstance(parsed_public_candidate.get(field), dict):
                 raise ValueError(f"public release candidate field {field!r} must be an object")
-        release_notes_sha256 = hashlib.sha256((ROOT / "CHANGELOG.md").read_bytes()).hexdigest()
         public_candidate = parsed_public_candidate
     except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
         public_candidate = {}
@@ -271,7 +348,7 @@ def main():
         and public_candidate.get("release_title") == "Work Charter v0.3.0"
         and public_candidate.get("release_notes") == "CHANGELOG.md"
         and public_candidate.get("release_notes_sha256")
-        == release_notes_sha256
+        == V030_RELEASE_NOTES_SHA256
         and public_candidate.get("tag") == "v0.3.0"
         and public_candidate.get("tag_type") == "annotated"
         and public_candidate.get("github_release")
@@ -281,9 +358,9 @@ def main():
         and public_candidate.get("lineage", {}).get("local_release_receipt_commit")
         == "193be0edcb95dac5b3ddfc95a935d06165ffa446"
         and public_candidate.get("package", {}).get("path") == "skills/work-charter"
-        and public_candidate.get("package", {}).get("tree") == actual_package_tree
+        and public_candidate.get("package", {}).get("tree") == V030_PACKAGE_TREE
         and public_candidate.get("package", {}).get("sha256")
-        == (package_digest(actual_files) if actual_files == EXPECTED_FILES else None)
+        == V030_PACKAGE_SHA256
         and public_candidate.get("public_repository", {}).get("full_name")
         == "junwei529/work-charter"
         and public_candidate.get("public_repository", {}).get("url")
@@ -338,9 +415,9 @@ def main():
         == "b655c1aa42acc8c68b70e87c4c228445c5182d8b"
         and public_evidence.get("public_source", {}).get("tree")
         == "0b5166b402d98df041589d378a739a5fa9757ba5"
-        and public_evidence.get("public_source", {}).get("package_tree") == actual_package_tree
+        and public_evidence.get("public_source", {}).get("package_tree") == V030_PACKAGE_TREE
         and public_evidence.get("public_source", {}).get("package_sha256")
-        == (package_digest(actual_files) if actual_files == EXPECTED_FILES else None)
+        == V030_PACKAGE_SHA256
         and public_evidence.get("public_source", {}).get("repository")
         == "junwei529/work-charter"
         and public_evidence.get("tag", {}).get("name") == "v0.3.0"
@@ -381,11 +458,11 @@ def main():
             "public-source restoration",
         ]
         and public_evidence.get("persistent_lifecycle", {}).get("final_package_sha256")
-        == "7b67ea1f7073fa66ac91c36f3e39c735b54c04174e2fa3672068f8fa8948a5b2"
+        == V030_INSTALLED_PACKAGE_SHA256
         and public_evidence.get("persistent_lifecycle", {}).get("final_package_tree")
-        == actual_package_tree
+        == V030_PACKAGE_TREE
         and public_evidence.get("installed_copy_behavior", {}).get("package_tree")
-        == actual_package_tree
+        == V030_PACKAGE_TREE
         and public_evidence.get("installed_copy_behavior", {}).get("evidence")
         == [
             {
@@ -419,13 +496,7 @@ def main():
         and public_evidence.get("discovery_correction", {}).get("supersedes_evidence_commit")
         == "651d9decd9bb3b9532fa41eb55b2ceeffe19ccc0"
         and public_evidence.get("installed_copy_behavior", {}).get("package_file_sha256")
-        == {
-            "SKILL.md": "c750d51940456b110bc7ed4b7d490690f42ca8ee9b555c23c8fe3d4d056b4dba",
-            "agents/openai.yaml": "f0032475e213d75ed17eb41c3424007ebc46c0ddb6739138c9908185beefdad6",
-            "assets/work-charter.md": "ca2ec792c0b0bf978e79a7e51cb5afd9b675e79b0daf7d0dc81917f77bfc7fa1",
-            "references/coordination-and-recovery.md": "5565ef7d2db47847c570ae0ea0a0a307bc64c0ed8b61261d85177f4ef2da1f88",
-            "references/standard-ope.md": "10a4d5b9c9239ac2f79544155e09ea230d99e6ca80049cd01ea624f16a72fd67",
-        }
+        == V030_PACKAGE_FILE_SHA256
         and public_evidence.get("evidence_states", {}).get("public_release") == "VERIFIED"
         and public_evidence.get("evidence_states", {}).get("stable_installed_copy")
         == "VERIFIED"
@@ -441,8 +512,10 @@ def main():
     if package_scan_error:
         failures.append(f"package.scan: {package_scan_error}")
     failures.extend(package_read_failures)
-    if candidate_error:
-        failures.append(f"candidate.unreadable: {candidate_error}")
+    if current_candidate_error:
+        failures.append(f"candidate.v040_unreadable: {current_candidate_error}")
+    if historical_candidate_error:
+        failures.append(f"candidate.v030_unreadable: {historical_candidate_error}")
     if receipt_error:
         failures.append(f"receipt.unreadable: {receipt_error}")
     if public_candidate_error:
@@ -452,7 +525,7 @@ def main():
     result = {
         "checks": checks,
         "failures": failures,
-        "package_sha256": package_digest(actual_files) if actual_files == EXPECTED_FILES else None,
+        "package_sha256": current_package_sha256,
         "proof_class": "deterministic-source-contract",
         "result": "PASS" if not failures else "FAIL",
         "scope_limits": [

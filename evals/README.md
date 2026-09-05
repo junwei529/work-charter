@@ -1,7 +1,9 @@
 # Work Charter Evaluations
 
-These retained cases and fixtures are exact Git blobs from source commit
-`80910a8b2375a11be897e9660c4b00a06d00dd13`. They define the repository-local evaluation surface without
+These cases and fixtures originated from source commit
+`80910a8b2375a11be897e9660c4b00a06d00dd13`. Files revised for `v0.4.0` are
+repository-native and hash-bound in the source map; unchanged fixtures remain
+exact Git blobs. They define the repository-local evaluation surface without
 importing another Skill or the former monorepo evaluation envelope.
 
 ## Cases
@@ -29,8 +31,10 @@ importing another Skill or the former monorepo evaluation envelope.
 Run `python -B scripts/check_repository.py --json` from the repository root.
 Run `python -B scripts/check_source_contract.py --json` for candidate SOURCE
 clause coverage. The latter validates the package source against the material
-selection/activation, authority, recovery, and Standard O/P/E boundaries in
-this evaluation surface; it does not execute a model or claim adherence.
+selection/activation, authority, recovery, independent-review/acceptance,
+same-Reviewer re-review, callback deduplication, graph limits, context-switch,
+and Standard O/P/E/R boundaries in this evaluation surface; it does not
+execute a model or claim adherence.
 Case execution that invokes a model, installs a Skill, or uses an external
 provider remains a separately authorized evidence action.
 

@@ -46,11 +46,13 @@ Use the shortest route:
 - previously adopted workstream: known locator, applicability, live
   workspace/writer, named evidence, then recommendation.
 
-`L1` keeps one agent and its logical Charter locator in the reliable current
-task. It promises no cold recovery. `L2` adds one discoverable durable anchor
-for bounded cold re-entry; if no trustworthy anchor is available, do not claim
-`L2` readiness. Update durable state only at material checkpoints, not after
-every message.
+`L1` keeps one primary owner and its logical Charter locator in the reliable
+current task. It promises no cold recovery. `L2` adds one discoverable durable
+anchor for bounded cold re-entry; if no trustworthy anchor is available, do
+not claim `L2` readiness. Either level may use one bounded read-only Reviewer
+without creating Planner/Executor separation. The primary owner remains the
+writer, dispositions findings, verifies repairs, and delivers the result.
+Update durable state only at material checkpoints, not after every message.
 
 Prefer an existing project canonical owner that is discoverable, stable to
 address, uniquely authoritative, comparable by revision/freshness, and
@@ -84,11 +86,11 @@ findings.
   adopted.
 
 With multiple worktrees, `L3` and `L4` require one explicit control location
-that every required role can read at the same revision. Do not copy an
-authoritative file into every worktree. If common readability, writer
-ownership, or finality cannot be proved, stop safely. Any commit, integration,
-or synchronization needed to expose the carrier remains separately
-authorized.
+that the Planner, Executor, Reviewer, and—at `L4`—Orchestrator can read at the
+same revision. Do not copy an authoritative file into every worktree. If
+common readability, writer ownership, review independence, or finality cannot
+be proved, stop safely. Any commit, integration, or synchronization needed to
+expose the carrier remains separately authorized.
 
 ## Re-entry Routes
 
@@ -126,6 +128,25 @@ Charter. Always return to the user for a material contract, permission,
 responsibility, carrier, writer/workspace route, side-effect, exhausted stop
 condition, one-shot authority, or budget change.
 
+## Context-Switch Recovery
+
+Distinguish a summary or compaction inside one run, a deliberate rotation to a
+fresh context, and creation of a new or successor Session. A product label or
+enabled setting does not prove which mechanism occurred or that every fallback
+path was disabled. None of these mechanisms creates a new work subject or
+resets approvals, findings, correction history, permissions, stop conditions,
+or consumed evidence when the material contract and checkpoint are unchanged.
+
+Before a foreseeable switch, preserve the smallest sufficient checkpoint in
+the existing authoritative carrier: Charter locator and revision, role and
+writer, workspace, reviewed input, open findings, evidence and invalidation
+condition, last returned disposition, and next authorized action. After the
+switch, reload the current contract and checkpoint, compare them with live
+workspace and writer state, then retrieve only missing evidence. Memory or a
+conversation summary may locate evidence but cannot replace current authority,
+raw terminal proof, or durable state. If role, ruleset, input, or workspace
+identity is incomparable, stop safely and use the applicable re-entry route.
+
 ## Contract And Proposal Changes
 
 Keep four layers explicit when a Charter or Phase proposal is being formed or
@@ -158,18 +179,25 @@ external effect, workspace, or integration policy, stop and route the
 material decision through the existing owner. Do not use proposal flexibility
 to weaken a guardrail or expand authority.
 
-## Planner And Executor (`L3`)
+## Planner, Executor, And Reviewer (`L3`)
 
 Use `L3` only after approval when independent contract ownership or assessment
 materially protects implementation. The Planner owns the active Charter,
-clarification, correction direction, and independent assessment and remains
-read-only while assessing. The Executor owns only authorized implementation,
-verification, evidence, and implementation documentation.
+clarification, review routing, correction direction, and target acceptance and
+remains read-only while assessing. The Executor owns only authorized
+implementation, verification, evidence, and implementation documentation. The
+Reviewer independently inspects a stable checkpoint and its necessary semantic
+context, reports actionable findings and coverage limits, and never modifies
+the reviewed target.
 
-Keep at most one Planner, one Executor, one active execution lane, and one
-repository writer. Reuse reliable role sessions; do not create roles for
-implementation slices, documentation sync, verification reruns, or ordinary
-repairs.
+Keep at most one Planner, one Executor, one Reviewer for the active package,
+one active execution lane, and one repository writer. Reuse reliable role
+sessions; do not create roles for implementation slices, documentation sync,
+verification reruns, or ordinary repairs. Prefer the same reliable Reviewer
+for re-review after repair. Replace it only when its context is unreliable,
+the input, permission, or workspace changes materially, independence is
+breached, or an explicit blind review is required. Replacement retains the
+cumulative findings, authority, and evidence-consumption history.
 
 For a warm handoff, include only receiving role and writer/authority boundary,
 changed facts and evidence pointers, bounded action, active stop condition,
@@ -179,6 +207,28 @@ Writer ownership is advisory. Before handoff, confirm the prior writer stopped
 and capture the dirty boundary. Concurrent or unexplained changes pause
 writing, require a delta inventory and one-writer restoration, and invalidate
 affected evidence until rechecked.
+
+The normal review path is:
+
+1. the Executor verifies its work and sends one review-ready Result Notice to
+   the Planner for a named stable checkpoint;
+2. the Planner confirms contract scope, freezes the review input, and routes
+   that checkpoint to the Reviewer;
+3. the Reviewer returns findings, inspected coverage, exclusions, and
+   unresolved `UNKNOWN` facts to the Planner without writing the target;
+4. the Planner returns one checkpoint-bound disposition to the Executor;
+5. when correction is required, the Executor repairs and verifies a new
+   checkpoint, and the same Reviewer re-reviews the affected and cumulative
+   material surface; and
+6. only after review convergence does the Planner decide target acceptance.
+
+Give the Reviewer the actual change and baseline, necessary surrounding
+source, tests, documentation consumers, material untracked inputs, and explicit
+generated or cached exclusions. A code or impact graph may guide inspection
+only when its repository, baseline, checkpoint, freshness, changed paths, and
+limitations are known. A read-only Reviewer does not silently build or refresh
+an index. Hashes, graphs, diff size, clean status, tests, and implementation
+reports are evidence; none replaces semantic review or acceptance.
 
 ## Authority, Delivery, Correction, And Evidence
 
@@ -197,10 +247,12 @@ delivery uncertainty distinct in reports. When an action-bearing delivery is
 uncertain, do not activate a competing writer or route.
 
 In a bounded correction loop, the Executor returns changes, deviations,
-checks, failures, and residual risks. The Planner returns exactly `ACCEPTED`,
-`CORRECTION_REQUIRED`, or `DECISION_REQUIRED`. Bind correction history to the
-same logical Charter subject and material contract/acceptance revision, and
-bind each verdict to the stable checkpoint it assessed. Task, Session, root,
+checks, failures, and residual risks. The Reviewer returns technical findings
+and coverage limits to the Planner. The Planner returns exactly `ACCEPTED`,
+`CORRECTION_REQUIRED`, or `DECISION_REQUIRED` to the Executor and owns the
+acceptance decision. Bind review and correction history to the same logical
+Charter subject and material contract/acceptance revision, and bind each
+finding and verdict to the stable checkpoint it assessed. Task, Session, root,
 branch, worktree, delivery epoch, attempt name, or internal slice is a carrier
 or observation; changing one does not reset approvals, completed corrections,
 consumed evidence opportunities, or open findings. An authorized material
@@ -237,6 +289,21 @@ ping-pong. A disposition sent to the wrong route, omitted, duplicated, or
 bound to a stale checkpoint is not convergence. Until the one current
 disposition is delivered, the lower role is semantically awaiting verdict even
 when its runtime status is idle; silence is never acceptance.
+
+Send at most one current Result Notice per route for one checkpoint. Do not
+resend an unchanged checkpoint, mirror a finding or verdict, poll another role,
+or require an acknowledgement to keep the loop alive. A correction or other
+material input change creates a new checkpoint and one new Notice while the
+prior Notice, findings, and disposition remain part of cumulative history.
+
+When a finding or result is `UNKNOWN`, the Planner or primary owner first
+examines the raw terminal result and nearby counterexamples already inside its
+authorized read scope. Ask the Reviewer to clarify its existing evidence when
+that does not broaden scope or mutate state. Escalate only when resolving the
+unknown requires broader authority or would materially change contract,
+permission, acceptance, cost, risk, or another user-owned boundary. Never
+rerun consequential, scarce, one-shot, or unauthorized evidence merely to
+replace a missing terminal result.
 
 Assign each material user question one semantic owner at a stable decision
 locator and revision. A non-owner may forward that exact question or relay the

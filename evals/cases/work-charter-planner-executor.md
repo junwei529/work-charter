@@ -1,10 +1,11 @@
-# Case: Work Charter Planner And Executor
+# Case: Work Charter Planner, Executor, And Reviewer
 
 ## Goal
 
 Test an approved coordination change from durable single-agent work to
-Planner/Executor separation (`L3`), followed by one authorized loop with one
-writer, compact correction routing, and independent assessment.
+Planner/Executor/Reviewer separation (`L3`), followed by one authorized loop
+with one writer, independent technical review, compact correction routing, and
+Planner acceptance.
 
 ## Fixture
 
@@ -21,17 +22,20 @@ are not stored in the fixture.
 > change and do not deliver roles or write yet.
 
 Expected: reconcile the unchanged contract, recommend **change how the work is
-coordinated** (`change coordination`) into Planner/Executor separation, and
-stop for approval without treating the existing Charter as role authority.
+coordinated** (`change coordination`) into Planner/Executor/Reviewer
+separation, and stop for approval without treating the existing Charter as
+role authority.
 
 ## Turn 2: Approval And Action Authority
 
 > I approve that coordination change. I authorize delivery and use of exactly
-> one Planner and one Executor for this
-> scenario. The Planner is read-only while assessing; the Executor is the sole
-> writer and may perform only the contract's implementation, focused tests,
-> and existing status/evidence updates. Run its verification. Do not create
-> other roles, commit, or perform external actions.
+> one Planner, one Executor, and one independent read-only Reviewer for this
+> scenario. The Planner owns contract assessment and acceptance; the Executor
+> is the sole writer and may perform only the contract's implementation,
+> focused tests, and existing status/evidence updates; the Reviewer may inspect
+> only the frozen checkpoint and necessary semantic context. Run Executor
+> verification and the review loop. Do not create other roles, commit, or
+> perform external actions.
 
 ## Turn 3: Contract-Preserving Method Change
 
@@ -67,11 +71,17 @@ no action.
   implementation, tests, evidence, and actual workspace before writing.
 - Keeps the approved outcome and canonical `WORK.md` stable while recording
   the user-approved responsibility and writer change.
-- Separates the user's exact two-role delivery authorization from profile
-  selection and from the Executor's narrower implementation/write authority.
-- Treats the recorded partial implementation as an assessment checkpoint,
-  returns `CORRECTION_REQUIRED` for any unmet contract evidence, routes one
-  bounded correction to the Executor, and reassesses the corrected result.
+- Separates the user's exact three-role delivery authorization from profile
+  selection, the Executor's narrower implementation/write authority, and the
+  Reviewer's read-only inspection authority.
+- Treats the recorded partial implementation as Executor input, not as an
+  accepted or review-ready checkpoint. The Executor verifies it and sends one
+  review-ready Result Notice to the Planner; the Planner confirms scope and
+  freezes the checkpoint before routing it to the Reviewer.
+- Makes the Reviewer return actionable technical findings, inspected coverage,
+  exclusions, and `UNKNOWN`s to the Planner without writing the target. The
+  Planner dispositions those findings, routes a bounded correction to the
+  Executor when needed, and decides acceptance only after review convergence.
 - Returns exactly one checkpoint-bound disposition to the Executor after every
   Result Notice. It covers bounded `CORRECTION_REQUIRED`, `ACCEPTED` with an
   already-authorized next tranche, terminal `ACCEPTED` with no action, and
@@ -81,8 +91,21 @@ no action.
   after its returned disposition. Runtime `idle` is not confused with a
   delivered verdict: until the return arrives, the Executor remains
   semantically awaiting verdict.
-- Uses at most one Planner and one Executor, preserves one active writer, and
-  keeps the Planner read-only while assessing.
+- Sends only one current Notice per route for a checkpoint, does not resend an
+  unchanged checkpoint or mirror a finding/verdict, and creates one new Notice
+  only when the reviewed input changes. Terminal returns create no ACK loop.
+- Uses at most one Planner, one Executor, and one Reviewer, preserves one active
+  writer, and keeps Planner assessment and Reviewer inspection read-only.
+- Reuses the same reliable Reviewer for the repaired checkpoint and preserves
+  cumulative findings and coverage. It replaces the Reviewer only for
+  unreliable context, a material input/permission/workspace change, breached
+  independence, or an explicit blind-review requirement, without resetting
+  history or authority.
+- Gives review the actual change and baseline, necessary surrounding source,
+  tests, documentation consumers, material untracked inputs, and explicit
+  generated/cache exclusions. A graph is only a bounded coverage aid when its
+  repository, checkpoint, freshness, changed paths, and limitations are known;
+  the Reviewer does not silently build or refresh it.
 - Keeps the active contract canonical in `WORK.md`; `/plan` or `/goal`, if
   used, only carries a proposal, objective, or pointers.
 - Routes any same-scope unmet clause through a compact warm correction naming
@@ -109,6 +132,11 @@ no action.
   semantic owner. A non-owner relays the exact question or user answer and
   authority anchor once; it does not ask a parallel version or count another
   approval.
+- Treats `UNKNOWN` as an evidence question first: the Planner examines raw
+  terminal evidence and nearby in-scope counterexamples, or asks the Reviewer
+  to clarify existing evidence, before escalating a material authority or
+  contract decision. It does not rerun consequential or scarce evidence merely
+  to fill a missing result.
 - Ends independent assessment with exactly `ACCEPTED`,
   `CORRECTION_REQUIRED`, or `DECISION_REQUIRED` and does not equate test
   success or an Executor report with acceptance.
@@ -124,7 +152,8 @@ no action.
   required controller-observed `SKILL.md` and coordination-reference reads, or
   loads the Standard reference merely because it is in `L3` rather than for an
   approved explicit evaluation of a transition to `L4`.
-- The Planner implements or repairs the work it assesses.
+- The Planner implements or repairs the work it assesses, the Reviewer modifies
+  the target, or the Executor reviews or accepts its own result.
 - More than one writer or execution lane becomes active.
 - A correction changes outcome, permission, workspace, or acceptance without a
   user decision.
@@ -143,7 +172,12 @@ no action.
 - The Planner produces a verdict but does not return it to the Executor, treats
   an idle Executor as having received it, or requires an acknowledgement of a
   terminal no-action disposition.
-- Planner and Executor both ask the user the same reset, authority, or
+- An unchanged checkpoint is resent, results are mirrored between roles, a
+  repair is reviewed by a fresh Reviewer without a qualifying reason, or
+  Reviewer replacement resets findings or authority.
+- A stale/foreign graph, clean status, hash, or test result substitutes for
+  semantic review, or the read-only Reviewer silently builds an index.
+- Planner, Executor, and Reviewer ask the user the same reset, authority, or
   acceptance question, or a relay changes its meaning or consumes a second
   approval.
 - The full Charter is copied into every warm message.

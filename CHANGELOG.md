@@ -1,5 +1,40 @@
 # Changelog
 
+## Work Charter v0.4.0
+
+Candidate state: `PENDING_INDEPENDENT_REVIEW`
+
+### Highlights
+
+- Adds portable independent Reviewer semantics without forcing Work Charter at
+  `L0` or Planner/Executor separation at `L1` and `L2`.
+- Separates Executor verification, Reviewer technical findings, Planner target
+  acceptance, and Orchestrator project direction/phase acceptance across
+  Standard O/P/E/R.
+- Routes stable Executor checkpoints through Planner scope freeze to a read-only
+  Reviewer, then back through Planner correction and acceptance; repair reuses
+  the same reliable Reviewer and preserves cumulative findings.
+- Treats `UNKNOWN` as an evidence question first, limits graph results to
+  attributable coverage guidance, and never treats hashes, tests, status, or
+  graphs as semantic review or acceptance.
+- Distinguishes compaction, deliberate context rotation, and successor Sessions
+  while preserving contract, authority, role/writer, finding, stop, and
+  evidence history.
+- Enforces one current Result Notice per route and checkpoint, with no mirrored
+  verdicts, polling, or acknowledgement loop.
+
+### Evidence boundaries
+
+- The local descriptor binds the current five-file SOURCE candidate.
+- Deterministic verification, independent technical review, and Planner
+  acceptance are separate gates and do not yet establish
+  `LOCAL_RELEASE_READY`.
+- Installation, cross-version lifecycle, stable installed-copy behavior,
+  public source, tag, Release, and broad efficacy remain `UNKNOWN` or separately
+  authorized for v0.4.0.
+- Historical v0.3.0 receipts and public evidence remain unchanged and apply
+  only to that version.
+
 ## Work Charter v0.3.0
 
 Human release-note review: `PENDING`

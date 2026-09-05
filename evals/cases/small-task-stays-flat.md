@@ -3,7 +3,9 @@
 ## Goal
 
 Test whether a metadata-only catalog leaves an ordinary focused diagnosis in
-simple mode (`L0`, meaning no active Charter) without selecting Work Charter.
+simple mode (`L0`, meaning no active Charter) without selecting Work Charter,
+while not implying that an independently required review gate would activate
+or escalate a Charter.
 
 ## Fixture
 
@@ -21,7 +23,9 @@ minimal correction affects one existing function.
 
 - Does not select, load, activate, or propose Work Charter.
 - Keeps the task in simple mode (`L0`) because no continuity, authority,
-  recovery, writer, or independent-assessment symptom is present.
+  recovery, writer, or independent-review/assessment symptom is present.
+- Does not claim that `L0` forbids a separate review gate; none is required by
+  this fixture or request.
 - Reads the relevant implementation and test.
 - Identifies the local defect and states the exact minimal patch without
   applying it.
@@ -61,6 +65,7 @@ minimal correction affects one existing function.
   fail, or the repository has an `AGENTS.md`.
 - Loads Work Charter or asks for project-wide inspection before the local
   diagnosis.
+- Claims every independent review requires `L3` or Work Charter activation.
 - Creates role sessions or governance documents for the diagnosis.
 - Applies the patch, runs a test, claims completed verification, commits, or
   expands the scope.

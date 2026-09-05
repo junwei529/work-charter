@@ -3,9 +3,9 @@
 ## Goal
 
 Test re-entry routing and convergence across known contract revision, normal
-resume, and fail-closed carrier, evidence, delivery, writer, and dirty-state
-variants without adding a receipt state machine or claiming deterministic
-enforcement.
+resume, context switches, and fail-closed carrier, evidence, delivery, writer,
+and dirty-state variants without adding a receipt state machine or claiming
+deterministic enforcement.
 
 ## Fixture
 
@@ -57,7 +57,7 @@ In the additional fresh context:
 - Treats "only this snapshot and its named materialized result" as the exact
   project/evidence read limit, not as a prohibition on the required
   Work Charter package reads.
-- Does not load the Standard O/P/E reference, inspect another variant, or infer
+- Does not load the Standard O/P/E/R reference, inspect another variant, or infer
   any project/action authority from loading the package.
 
 ### Explicit Package-Loading Denial — Separate Harness Preload From Activation
@@ -125,6 +125,9 @@ not retry the one-shot event or represent the successor as a blank history.
   applicable evidence authority or contract decision exists.
 - Keeps Work Charter correction, delivery/transport, and native-review counts
   independent.
+- Treats any remaining `UNKNOWN` as an evidence question first: examines the
+  authorized raw result and nearby in-scope counterexamples before escalating,
+  without rerunning the one-shot event or broadening the read scope.
 
 ### Delivery And Writer Degradation — Stop Safely
 
@@ -139,6 +142,9 @@ not retry the one-shot event or represent the successor as a blank history.
   but do not ask the same question, reinterpret it, or count another approval.
 - Requires no acknowledgement for a terminal no-action disposition and does
   not turn the rule into a receipt file or message state machine.
+- Sends no duplicate Notice for the unchanged checkpoint, mirrors no produced
+  verdict, and preserves the existing Notice/disposition history if delivery
+  later recovers.
 - Treats the unexplained workspace delta and unconfirmed outgoing writer as a
   writer conflict.
 - Pauses writing, requests a delta inventory and one-writer reassignment, and
@@ -154,6 +160,18 @@ not retry the one-shot event or represent the successor as a blank history.
 The Planner/Executor case separately owns the fourth route, **change how the
 work is coordinated** (`change coordination`), followed by an approved `L3`
 loop.
+
+### Context-Switch Integrity
+
+- Distinguishes same-run compaction, deliberate context rotation, and a new or
+  successor Session instead of inferring the mechanism from a product label or
+  setting.
+- Preserves the same work subject, approvals, role/writer boundary, findings,
+  correction history, stops, and consumed evidence across the switch when the
+  contract and checkpoint match.
+- Uses a summary or memory only to locate the authoritative checkpoint; it
+  reloads the current contract, checkpoint, and necessary raw evidence before
+  action and stops if those identities are incomparable.
 
 ## Failure Signals
 
@@ -174,6 +192,9 @@ loop.
   role polls for the missing callback.
 - More than one role asks the same review-budget or governance question, a
   relay changes the answer, or terminal no-action delivery requires an ACK.
+- Compaction, deliberate rotation, a successor Session, or a renamed task is
+  treated as a fresh authority/evidence history, or an unchanged checkpoint is
+  resent merely to obtain an ACK.
 - Divergent worktree copies are treated as one coherent carrier.
 - A direct invocation asks for separate permission to load Work Charter's own
   `SKILL.md` or the branch-required coordination/recovery reference.

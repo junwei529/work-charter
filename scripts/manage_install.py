@@ -27,6 +27,7 @@ EXPECTED_DIRECTORIES = {
 TRUSTED_PACKAGE_TREES = {
     "0.3.0": "0ac3cbb0f1fa8fa51d8f832c8127eabc9863ec9e",
 }
+SELF_TEST_SOURCE_VERSION = "0.4.0"
 
 
 class LifecycleError(RuntimeError):
@@ -402,7 +403,7 @@ def create_test_source(root, version, marker):
 def self_test(source=None):
     candidate_tree = None
     if source is not None:
-        metadata = candidate_metadata(source, "0.3.0")
+        metadata = candidate_metadata(source, SELF_TEST_SOURCE_VERSION)
         _package, _files, candidate_tree = package_files(
             source,
             metadata["package"]["tree"],
@@ -420,17 +421,17 @@ def self_test(source=None):
         else:
             raise AssertionError("non-object candidate descriptor was not refused")
         source_a = resolved(source) if source is not None else ROOT
-        source_b = create_test_source(root, "0.3.1", "b")
-        source_c = create_test_source(root, "0.3.2", "c")
-        source_bad = create_test_source(root, "0.3.9", "bad")
+        source_b = create_test_source(root, "0.4.1", "b")
+        source_c = create_test_source(root, "0.4.2", "c")
+        source_bad = create_test_source(root, "0.4.9", "bad")
         source_forged = create_test_source(root / "forged-source-root", "0.3.0", "forged")
-        tree_a = candidate_metadata(source_a, "0.3.0")["package"]["tree"]
-        tree_b = candidate_metadata(source_b, "0.3.1")["package"]["tree"]
-        tree_c = candidate_metadata(source_c, "0.3.2")["package"]["tree"]
-        tree_bad = candidate_metadata(source_bad, "0.3.9")["package"]["tree"]
+        tree_a = candidate_metadata(source_a, SELF_TEST_SOURCE_VERSION)["package"]["tree"]
+        tree_b = candidate_metadata(source_b, "0.4.1")["package"]["tree"]
+        tree_c = candidate_metadata(source_c, "0.4.2")["package"]["tree"]
+        tree_bad = candidate_metadata(source_bad, "0.4.9")["package"]["tree"]
         tree_forged = candidate_metadata(source_forged, "0.3.0")["package"]["tree"]
-        assert TRUSTED_PACKAGE_TREES["0.3.0"] == tree_a
-        assert "0.3.1" not in TRUSTED_PACKAGE_TREES
+        assert SELF_TEST_SOURCE_VERSION not in TRUSTED_PACKAGE_TREES
+        assert "0.4.1" not in TRUSTED_PACKAGE_TREES
         (source_bad / "skills" / "work-charter" / "SKILL.md").write_text(
             "tampered after descriptor\n",
             encoding="utf-8",
@@ -441,7 +442,7 @@ def self_test(source=None):
                 "install",
                 source_bad,
                 root / "bad-install",
-                "0.3.9",
+                "0.4.9",
                 False,
                 trusted_target_tree=tree_bad,
             )
@@ -467,12 +468,12 @@ def self_test(source=None):
             "install",
             source_a,
             destination,
-            "0.3.0",
+            SELF_TEST_SOURCE_VERSION,
             True,
             trusted_target_tree=tree_a,
         )
-        assert current_state(destination, tree_a)["version"] == "0.3.0"
-        assert current_state(destination, tree_b)["version"] == "0.3.0"
+        assert current_state(destination, tree_a)["version"] == SELF_TEST_SOURCE_VERSION
+        assert current_state(destination, tree_b)["state"] == "FOREIGN_COPY"
         receipt_path = destination / RECEIPT_NAME
         valid_receipt = receipt_path.read_text(encoding="utf-8")
         receipt_path.write_text('{"destination": null}\n', encoding="utf-8", newline="\n")
@@ -482,22 +483,22 @@ def self_test(source=None):
             "update",
             source_b,
             destination,
-            "0.3.1",
+            "0.4.1",
             True,
             trusted_current_tree=tree_a,
             trusted_target_tree=tree_b,
         )
-        assert current_state(destination, tree_b)["version"] == "0.3.1"
+        assert current_state(destination, tree_b)["version"] == "0.4.1"
         synchronize(
             "rollback",
             source_a,
             destination,
-            "0.3.0",
+            SELF_TEST_SOURCE_VERSION,
             True,
             trusted_current_tree=tree_b,
             trusted_target_tree=tree_a,
         )
-        assert current_state(destination, tree_a)["version"] == "0.3.0"
+        assert current_state(destination, tree_a)["version"] == SELF_TEST_SOURCE_VERSION
 
         changed = destination / "SKILL.md"
         original = changed.read_text(encoding="utf-8")
@@ -522,14 +523,14 @@ def self_test(source=None):
             "update",
             source_c,
             destination,
-            "0.3.2",
+            "0.4.2",
             True,
             backup_remover=fail_backup_cleanup,
             trusted_current_tree=tree_a,
             trusted_target_tree=tree_c,
         )
         assert cleanup_result["result"] == "MANAGED_WITH_BACKUP"
-        assert current_state(destination, tree_c)["version"] == "0.3.2"
+        assert current_state(destination, tree_c)["version"] == "0.4.2"
         backup_path = Path(cleanup_result["backup_path"])
         assert backup_path.exists()
         shutil.rmtree(backup_path)

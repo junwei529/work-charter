@@ -3,7 +3,10 @@
 - Contract state: `approved`
 - Run disposition: `active`
 - Canonical owner: this file
-- Writer: current implementation session
+- Planner: contract, review routing, correction, and acceptance owner
+- Executor: current implementation session and sole writer
+- Reviewer: one independent read-only technical Reviewer for each stable
+  checkpoint, preferably reused after repair
 
 ## Outcome
 
@@ -24,8 +27,10 @@ external effects are not authorized by this contract.
 
 ## Acceptance Evidence
 
-The focused unit suite covers full batches, a final partial batch, empty input,
-invalid size, and input preservation. Independent assessment is required.
+The Executor runs the focused unit suite covering full batches, a final partial
+batch, empty input, invalid size, and input preservation. An independent
+Reviewer inspects the stable change and reports findings and coverage to the
+Planner. Planner acceptance is required after review convergence.
 
 ## Stop And Recovery
 

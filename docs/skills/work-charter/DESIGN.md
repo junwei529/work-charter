@@ -2,25 +2,45 @@
 
 ## Product boundary
 
-Bounds consequential Codex work by outcome, authority, evidence, recovery, and proportional coordination. The canonical installable source is
+Bounds consequential Codex work by outcome, authority, evidence, recovery,
+independent review, and proportional coordination. The canonical installable source is
 [`skills/work-charter/`](../../../skills/work-charter/). Package instructions, references,
-assets, and metadata preserve the exact source blobs from `80910a8b2375a11be897e9660c4b00a06d00dd13`.
+assets, and metadata originated from `80910a8b2375a11be897e9660c4b00a06d00dd13`.
+The source map preserves exact historical origin while classifying changed
+`v0.4.0` files as repository-native rather than exact migration blobs.
 
 The repository owns one Skill product. Cross-Skill composition is optional and
 cannot grant authority or create a hard dependency.
 
 ## Package contract
 
-The package contains exactly 5 files. `SKILL.md` owns
-selection and entry behavior; directly linked references and assets own detailed
-guidance and templates. The repository checker fails if any package byte or
-expected path differs from the recorded baseline mapping.
+The package contains exactly 5 files. `SKILL.md` owns selection, entry, and the
+portable verification/review/acceptance split; directly linked references and
+assets own detailed coordination, recovery, Standard O/P/E/R, and template
+guidance. The repository checker fails if any package byte or expected path
+differs from its current recorded mapping.
 
-The independent `v0.3.0` candidate does not change those package bytes. Release
-metadata, deterministic SOURCE qualification, and lifecycle tooling are
-repository-owned surfaces outside the installable package.
+`L0` remains no active Charter even when an external review gate applies.
+`L1` and `L2` retain one primary owner and may add one bounded read-only
+Reviewer. `L3` separates Planner target acceptance, Executor implementation and
+verification, and Reviewer technical inspection. `L4` adds Orchestrator project
+direction and phase acceptance without duplicating technical review.
 
-Candidate C remains immutable. A separate local-release receipt binds its exact
+Review is bound to an actual stable checkpoint, baseline, necessary semantic
+context, tests, documentation consumers, material untracked inputs, and stated
+graph/generated-artifact limits. Repair normally returns to the same reliable
+Reviewer, with cumulative findings preserved. One checkpoint has at most one
+current Notice per route; terminal returns require no acknowledgement. Context
+switches preserve contract, authority, role/writer, finding, stop, and evidence
+history unless a material identity changes.
+
+The current `v0.4.0` candidate changes the package semantics and selected
+evaluation/documentation surfaces. Its deterministic SOURCE qualification,
+independent technical review, Planner acceptance, installation, and publication
+are separate evidence or authority gates. Historical `v0.3.0` release metadata
+and lifecycle evidence remain immutable evidence for that version only.
+
+Historical v0.3.0 candidate C remains immutable. A separate local-release receipt binds its exact
 commit, candidate tree, package tree, and independent Planner acceptance without
 recording the receipt commit inside itself.
 
@@ -41,9 +61,11 @@ fixed at P.
 - `evals/cases/work-charter-selection.md`
 - `evals/cases/work-charter-standard.md`
 
-Cases and fixtures are exact source blobs. They define deterministic inputs and
-expected boundaries; model runs, installation, and release remain separately
-authorized evidence classes.
+Unchanged cases and fixtures retain exact source-blob provenance; files revised
+for `v0.4.0` are repository-native and individually hashed. Together they define
+deterministic inputs and expected boundaries; model runs, independent review,
+acceptance, installation, and release remain separately authorized evidence
+classes.
 
 ## Standalone constraints
 

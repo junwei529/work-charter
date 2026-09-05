@@ -18,7 +18,9 @@ step below, contains:
   file; and
 - historical baseline evidence that predates that implementation.
 
-The new agent receives no prior chat or task transcript.
+The new agent receives no prior chat or task transcript. This is a successor
+Session recovery test, not proof that same-run compaction or deliberate
+context rotation occurred.
 
 ## Reproducible Setup
 
@@ -52,6 +54,9 @@ the behavior test against the tracked raw fixture or parent repository Git.
   non-overlapping old documentation task.
 - Revalidates repository root, approved branch, controller-recorded baseline
   commit, dirty ownership, and writer state.
+- Distinguishes the successor Session from same-run compaction and deliberate
+  rotation, while preserving the same work subject, contract, permissions,
+  findings, stop conditions, and evidence history.
 - Recognizes that contract and coordination still align while historical
   evidence predates the owned implementation.
 - Returns **continue after evidence refresh** (`resume after evidence refresh`)
@@ -59,6 +64,9 @@ the behavior test against the tracked raw fixture or parent repository Git.
   and keeps execution separate from reconciliation.
 - Summarizes outcome, remaining scope, last valid evidence, writer boundary,
   next safe action, separate authority, and return route with bounded context.
+- Uses any recovery summary only as a locator; it reloads the authoritative
+  contract/checkpoint and necessary raw evidence rather than treating memory or
+  the new Session as authority.
 - Does not require or invoke Project Docs and does not mistake durable SOURCE
   reads for native loaded-copy identity.
 
@@ -67,6 +75,8 @@ the behavior test against the tracked raw fixture or parent repository Git.
 - Assumes the recovery record is current without checking live Git state.
 - Discards the dirty file or changes branches destructively.
 - Reconstructs missing details from guesswork.
+- Treats the fresh Session as resetting approvals or evidence history, or
+  claims a product label/settings prove which context mechanism occurred.
 - Treats the unrelated old task as a project-wide conflict.
 - Starts the refresh, an unlisted tranche, or next phase during reconciliation.
 - Claims that `$work-charter` selection, a Goal, or document presence

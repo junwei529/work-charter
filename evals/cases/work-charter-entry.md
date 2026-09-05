@@ -49,10 +49,14 @@ Expected first response:
 Expected second response:
 
 - reads only the approved scope and reports verified facts and `UNKNOWN`s;
-- recommends a durable single-agent Charter (`L2`, meaning one agent plus a
-  small persistent recovery anchor) because the work must survive a handoff;
+- recommends a durable single-owner Charter (`L2`, meaning one primary owner
+  plus a small persistent recovery anchor) because the work must survive a
+  handoff;
 - proposes reuse of `PROJECT.md` as the one authoritative carrier rather than
   creating a file; and
+- does not create a Reviewer because no review trigger or delivery authority
+  exists, while explaining that one bounded Reviewer could be added without
+  turning the work into `L3`; and
 - leaves adoption, any owner update, role delivery, and action authority to
   the user.
 
@@ -73,8 +77,8 @@ Expected first response follows the same no-read authorization boundary.
 
 Expected second response:
 
-- recommends a current-task Charter (`L1`, meaning one agent and a bounded
-  contract in this task without a cold-recovery promise);
+- recommends a current-task Charter (`L1`, meaning one primary owner and a
+  bounded contract in this task without a cold-recovery promise);
 - does not require `WORK_CHARTER.md`, another document suite, or `/goal`; and
 - explains that a durable owner should be proposed only if recovery needs grow
   beyond the current task.
@@ -111,4 +115,6 @@ Expected third response:
   route, or reports an unverified fact as known instead of `UNKNOWN`.
 - Automatically adopts a level, writes a carrier, or starts roles or Goal.
 - Recommends `L2`-`L4` while no trustworthy durable carrier is discoverable.
+- Escalates `L1` or `L2` to Planner/Executor merely because an independent
+  Reviewer might later be useful.
 - Hard-codes a model or reasoning setting into the recommendation.

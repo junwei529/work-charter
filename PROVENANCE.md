@@ -6,13 +6,20 @@ This standalone repository was materialized from named Git tree entries at
 exact source commit `80910a8b2375a11be897e9660c4b00a06d00dd13`. The source commit tree is recorded in
 [`provenance/source-map.json`](provenance/source-map.json).
 
-Exact files were read directly from the Git object database as
+The migration baseline files were read directly from the Git object database as
 `80910a8b2375a11be897e9660c4b00a06d00dd13:<source-path>`; no clone, archive, installed copy, cache, discovery
 mapping, or source working-tree byte was used.
 
+The current `v0.4.0` update changes selected package, evaluation,
+documentation, release-metadata, and checker files. Each changed destination is
+classified as `repository-native` and bound to its current target SHA-256 in
+the manifest. Unchanged destinations retain their prior exact-blob or
+normalized-rewrite provenance. This preserves historical origin without making
+a false byte-identity claim for new work.
+
 ## Transformation classes
 
-- `exact-git-blob`: package, selected cases, fixtures, license, ignore rules,
+- `exact-git-blob`: unchanged selected cases, fixtures, license, ignore rules,
   and applicable focused scripts are byte-identical to their named source blob.
 - `standalone-normalized-text-rewrite`: repository instructions, product docs,
   evaluation index, checker, and this provenance summary were rewritten as
@@ -23,10 +30,13 @@ mapping, or source working-tree byte was used.
   no predecessor source blob; the manifest records their destination and exact
   target SHA-256.
 
-The installable package behavior remains unchanged in the `v0.3.0` candidate.
-Historical monorepo operational detail and cross-product release state were
-omitted because full historical continuity is not an acceptance requirement
-and would create a false standalone dependency.
+The historical `v0.3.0` package behavior and evidence remain bound to their
+recorded identities. The current `v0.4.0` candidate intentionally changes
+package behavior; its independent review, Planner acceptance, installation,
+and release remain pending. Historical monorepo operational detail and
+cross-product release state remain omitted because full historical continuity
+is not an acceptance requirement and would create a false standalone
+dependency.
 
 ## Publication boundary
 
@@ -43,3 +53,7 @@ cross-Harness, untested-context, or broad-efficacy claim. Planner acceptance
 `B2-WC-PUBLIC-EVIDENCE-F-01` verifies exact evidence subject F
 `4ba904808fe86e270ebd405db1866d41d1cc032e` with tree
 `03307594f66dfb92e262b73546fc4ec0ddb6d720`.
+
+Those publication and installed-copy claims apply only to v0.3.0. The
+`v0.4.0` descriptor is a local SOURCE candidate identity, not a receipt,
+installation record, public ref, tag, or Release claim.

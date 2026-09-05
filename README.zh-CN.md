@@ -3,11 +3,22 @@
 [English](README.md)
 
 本仓库是 `work-charter` 的独立产品仓库。可安装包位于
-[`skills/work-charter/`](skills/work-charter/)，其字节与源提交
-`80910a8b2375a11be897e9660c4b00a06d00dd13` 完全一致。
+[`skills/work-charter/`](skills/work-charter/)。它最初由源提交
+`80910a8b2375a11be897e9660c4b00a06d00dd13` 物化；当前 repository-native
+版本所修改的文件在 source map 中明确分类，不再描述为未改变的迁移 blob。
 
-首个独立版本为 `v0.3.0`。当前本地候选由
-[`release/v0.3.0-candidate.json`](release/v0.3.0-candidate.json) 描述，未来公开身份为
+当前 SOURCE 候选为 `v0.4.0`，由
+[`release/v0.4.0-candidate.json`](release/v0.4.0-candidate.json) 描述。它加入
+可移植的 L0-L4 独立 Reviewer 语义，分开 Executor verification、Reviewer
+技术 findings 与 Planner/Orchestrator acceptance，要求修复后优先由同一 Reviewer
+复审并保留累计历史，并明确 evidence-first `UNKNOWN`、context-switch recovery、
+callback 去重和 graph 证据限制。独立 review、Planner 验收、安装与公开发布仍为
+待完成且分别授权的门槛。
+
+## 历史 v0.3.0 证据
+
+首个独立版本为 `v0.3.0`。其历史本地候选由
+[`release/v0.3.0-candidate.json`](release/v0.3.0-candidate.json) 描述，公开身份为
 `junwei529/work-charter`。Exact candidate C 已获验收，并由
 [`release/v0.3.0-local-release-receipt.json`](release/v0.3.0-local-release-receipt.json)
 绑定，因此 `LOCAL_RELEASE_READY` 为 `VERIFIED`。不可变公开提交
@@ -50,8 +61,9 @@ python -B scripts/check_source_contract.py --json
 python -B scripts/manage_install.py self-test --source .
 ```
 
-SOURCE 检查证明候选指令包含所需的 selection、activation、authority、recovery 与
-Standard O/P/E 边界；它不证明模型遵循、installed-copy 行为或广泛产品效能。
+SOURCE 检查证明当前候选指令包含所需的 selection、activation、authority、recovery、
+independent-review 与 Standard O/P/E/R 边界，同时固定验证历史 v0.3 身份；它不证明
+模型遵循、installed-copy 行为、验收、发布或广泛产品效能。
 
 ## 未来 immutable-source 生命周期
 
@@ -60,11 +72,15 @@ destination。未添加 `--apply` 时，以下命令只输出 dry-run plan：
 
 ```powershell
 python -B scripts/manage_install.py status --destination <skill-destination> [--trusted-current-package-tree <git-tree-sha1>]
-python -B scripts/manage_install.py install --source . --destination <skill-destination> --expected-version 0.3.0
+python -B scripts/manage_install.py install --source <v0.3.0-immutable-checkout> --destination <skill-destination> --expected-version 0.3.0
 python -B scripts/manage_install.py update --source <new-immutable-checkout> --destination <skill-destination> --expected-version <new-version>
 python -B scripts/manage_install.py rollback --source <old-immutable-checkout> --destination <skill-destination> --expected-version <old-version>
 python -B scripts/manage_install.py uninstall --destination <skill-destination> [--trusted-current-package-tree <git-tree-sha1>]
 ```
+
+该 install 示例特意绑定 package tree 已进入内置信任映射的 v0.3.0 不可变 checkout。
+不要用当前 v0.4.0 候选 checkout 替换它：v0.4.0 仍需独立 review、Planner 验收，以及在
+candidate 外部发布的受信 package-tree 身份，之后才能使用后续版本的 trust route 安装。
 
 工具拒绝无 receipt、receipt 畸形或不匹配、package tree 错误、本地已修改、路径别名或
 其他 drift 的 destination。receipt 是完整性与路由记录，不是加密所有权证明；能够以

@@ -2,13 +2,27 @@
 
 [简体中文](README.zh-CN.md)
 
-Bounds consequential Codex work by outcome, authority, evidence, recovery, and proportional coordination.
+Bounds consequential Codex work by outcome, authority, evidence, recovery,
+independent review, and proportional coordination.
 
 This repository is the independent product repository for `work-charter`. Its
-installable package is [`skills/work-charter/`](skills/work-charter/), preserved byte for
-byte from source commit `80910a8b2375a11be897e9660c4b00a06d00dd13`.
+installable package is [`skills/work-charter/`](skills/work-charter/). It was
+materialized from source commit `80910a8b2375a11be897e9660c4b00a06d00dd13`;
+files changed for the current repository-native version are identified in the
+source map rather than represented as unchanged migration blobs.
 
-The first independent version is `v0.3.0`. The current local candidate is
+The current source candidate is `v0.4.0`, described by
+[`release/v0.4.0-candidate.json`](release/v0.4.0-candidate.json). It adds
+portable L0-L4 independent Reviewer semantics, separates Reviewer technical
+findings from Executor verification and Planner/Orchestrator acceptance,
+preserves the same Reviewer and cumulative findings across repair re-review,
+defines evidence-first `UNKNOWN` handling and context-switch recovery, and
+limits callback and graph claims. Independent review, Planner acceptance,
+installation, and public release remain pending and separately authorized.
+
+## Historical v0.3.0 evidence
+
+The first independent version is `v0.3.0`. Its historical local candidate is
 described by [`release/v0.3.0-candidate.json`](release/v0.3.0-candidate.json);
 its public identity is `junwei529/work-charter`. Exact candidate C was accepted
 and is bound by [`release/v0.3.0-local-release-receipt.json`](release/v0.3.0-local-release-receipt.json),
@@ -57,9 +71,11 @@ python -B scripts/check_source_contract.py --json
 python -B scripts/manage_install.py self-test --source .
 ```
 
-The SOURCE check proves that the candidate instructions contain the required
-selection, activation, authority, recovery, and Standard O/P/E boundaries. It
-does not prove model compliance, installed-copy behavior, or broad efficacy.
+The SOURCE check proves that the current candidate instructions contain the
+required selection, activation, authority, recovery, independent-review, and
+Standard O/P/E/R boundaries while preserving fixed historical v0.3 identities.
+It does not prove model compliance, installed-copy behavior, acceptance,
+publication, or broad efficacy.
 
 ## Future immutable-source lifecycle
 
@@ -68,11 +84,17 @@ an explicit destination. Commands are dry-run plans unless `--apply` is added:
 
 ```powershell
 python -B scripts/manage_install.py status --destination <skill-destination> [--trusted-current-package-tree <git-tree-sha1>]
-python -B scripts/manage_install.py install --source . --destination <skill-destination> --expected-version 0.3.0
+python -B scripts/manage_install.py install --source <v0.3.0-immutable-checkout> --destination <skill-destination> --expected-version 0.3.0
 python -B scripts/manage_install.py update --source <new-immutable-checkout> --destination <skill-destination> --expected-version <new-version>
 python -B scripts/manage_install.py rollback --source <old-immutable-checkout> --destination <skill-destination> --expected-version <old-version>
 python -B scripts/manage_install.py uninstall --destination <skill-destination> [--trusted-current-package-tree <git-tree-sha1>]
 ```
+
+The install example is deliberately bound to an immutable v0.3.0 checkout,
+whose package tree is already in the bundled trust map. Do not substitute this
+working v0.4.0 candidate checkout: v0.4.0 still requires independent review,
+Planner acceptance, and a trusted package-tree identity published outside the
+candidate before installation can use the later-version trust route.
 
 The tool refuses destinations that are unreceipted, have a malformed or
 mismatched receipt, use the wrong package tree, are locally modified or aliased,

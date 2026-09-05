@@ -1,6 +1,6 @@
 ---
 name: work-charter
-description: Bound consequential Codex work by outcome, authority, evidence, recovery, and proportional coordination. Use for `$work-charter`, direct intent, or clear continuity, writer, stale-evidence, recovery, authorization, or assessment symptoms. Indirect matches are metadata-sufficient proposals; body loading is optional and grants no authority. Begin `Work Charter appears applicable because ...`; explain why, propose activation plus the smallest read, and ask confirmation. Before confirmation, claim no selected/loaded/invoked/active/adopted state and prescribe no pause/writer/evidence/handoff/resume workflow. Direct intent or confirmation plus body permits activation. Preserve unexposed identity as `UNKNOWN`; inspect only approved scope. Initial adoption and first Standard policy need approval. Exclude small tasks, one failure/correction, size/duration-only, docs/shell-only, and non-Codex adaptation. Activation never authorizes roles, writes, rules, worktrees, Git, installation, or external effects.
+description: Bound consequential Codex work by outcome, authority, evidence, recovery, independent review, and proportional coordination. Use for `$work-charter`, direct intent, or clear continuity, writer, stale-evidence, recovery, authorization, review, or assessment symptoms. Indirect matches are metadata-sufficient proposals; body loading is optional and grants no authority. Begin `Work Charter appears applicable because ...`; explain why, propose activation plus the smallest read, and ask confirmation. Before confirmation, claim no selected/loaded/invoked/active/adopted state and prescribe no pause/writer/evidence/handoff/resume workflow. Direct intent or confirmation plus body permits activation. Preserve unexposed identity as `UNKNOWN`; inspect only approved scope. Initial adoption and first Standard policy need approval. Exclude small tasks, one failure/correction, size/duration-only, docs/shell-only, and non-Codex adaptation. Activation never authorizes roles, writes, rules, worktrees, Git, installation, or external effects.
 ---
 
 # Work Charter
@@ -74,15 +74,18 @@ approval does not authorize adoption, writes, roles, Git, or side effects.
 Explain the recommendation and its cost, then leave the choice to the user.
 Use plain language first; the level codes are internal shorthand:
 
-- ordinary flat task (`L0`): no active Charter;
-- current-task Charter (`L1`): one agent and a bounded contract in the current
-  task, without a cold-recovery promise;
-- durable single-agent Charter (`L2`): one agent plus one small persistent
-  recovery anchor;
-- Planner/Executor separation (`L3`): durable recovery plus an independent
-  Planner/assessor and sole-writer Executor; or
-- Standard O/P/E (`L4`): `L3` plus Orchestrator responsibility, an applicable
-  standing policy, and multi-phase governance.
+- ordinary flat task (`L0`): no active Charter; a separate review gate can
+  still apply without activating or escalating Work Charter;
+- current-task Charter (`L1`): one primary owner and a bounded contract in the
+  current task, without a cold-recovery promise; a bounded independent
+  Reviewer may inspect a stable checkpoint;
+- durable single-owner Charter (`L2`): one primary owner plus one small
+  persistent recovery anchor and the same optional review boundary;
+- Planner/Executor/Reviewer separation (`L3`): durable recovery plus an
+  independent Planner/assessor, sole-writer Executor, and read-only technical
+  Reviewer; or
+- Standard O/P/E/R (`L4`): `L3` plus Orchestrator responsibility, an
+  applicable standing policy, and multi-phase governance.
 
 Do not infer a level from model name, task length, file count, branch count, or
 elapsed time. Inspect only environment capabilities the Harness exposes within
@@ -135,13 +138,58 @@ durable non-goal. Read
 [Coordination And Recovery](references/coordination-and-recovery.md) for the
 material-change and convergence boundary.
 
+## Separate Verification, Technical Review, And Acceptance
+
+Keep three different responsibilities visible. The implementer verifies the
+work it changed. An independent Reviewer inspects the stable change and its
+necessary semantic context for defects, returns actionable findings plus
+coverage limits, and does not modify the reviewed target. The designated
+assessor decides whether the outcome and evidence satisfy the contract; tests,
+Reviewer output, and an implementation report remain evidence rather than
+acceptance by themselves.
+
+Use an independent Reviewer when the user requests one, an applicable project
+or delivery gate requires one, or a stable material change affects a protected
+security, permission, data-loss, public-interface, core-decision, or similarly
+consequential boundary. A bounded review at `L0` does not activate Work Charter,
+and a temporary Reviewer at `L1` or `L2` does not create a Planner/Executor
+workflow. Without a separate Planner, the primary owner dispositions findings,
+repairs and verifies the work, and delivers it, but does not call its own
+decision independent acceptance.
+
+At `L3` and `L4`, the Executor implements and verifies, the Reviewer performs
+read-only technical review, and the Planner owns target acceptance and the
+same-scope correction loop. The Orchestrator at `L4` owns project direction and
+phase acceptance without repeating technical review. Prefer the same reliable
+Reviewer for repair rechecks within one work package, retain cumulative
+findings and coverage, and replace that Reviewer only when context becomes
+unreliable, the input, permission, or workspace changes materially, review
+independence is breached, or an explicit blind review is required. Replacement
+does not reset history, authority, or consumed evidence.
+
+Give review the actual change, baseline, necessary surrounding source, tests,
+documentation consumers, material untracked inputs, and explicitly excluded
+generated or cached artifacts. Existing code or impact-graph results may guide
+coverage only when their repository, baseline, checkpoint, freshness, changed
+paths, and limitations are known. A read-only Reviewer does not silently build
+or refresh such an index. Hash, graph, diff size, or a clean status cannot
+replace semantic inspection.
+
+When a result is `UNKNOWN`, the assessor or primary owner first checks the raw
+terminal evidence and nearby counterexamples that are already inside its
+authorized read scope. Escalate only when the missing fact requires broader
+authority or would materially change the contract, permission, acceptance,
+cost, or another user-owned boundary. Never rerun a command merely to replace
+a missing terminal result when that rerun is separately consequential,
+scarce, one-shot, or unauthorized.
+
 ## Reconcile Before Continuing
 
 For first adoption, re-entry, interruption, a material baseline change,
 suspected overlap, or any `L3`/`L4` role applying Work Charter responsibilities,
 read [Coordination And Recovery](references/coordination-and-recovery.md). Each
 fresh `L4` role must also read
-[Standard O/P/E](references/standard-ope.md) before applying any `L4`
+[Standard O/P/E/R](references/standard-ope.md) before applying any `L4`
 responsibility, including implementation. Each fresh role that claims to apply
 Work Charter must first load the full Skill, then complete its own conditional
 reference reads; a handoff summary is not loaded-copy proof. Leave the Standard
@@ -184,13 +232,33 @@ normalized-text identities, and requalify only the conditions affected by the
 change. Do not treat a renamed task, refreshed summary, or manual reread as a
 ruleset reload.
 
+## Recover After A Context Switch
+
+A context switch can be a summary or compaction inside one run, a deliberate
+rotation to a fresh context, or a new or successor session. Treat those as
+different mechanisms, but preserve the same work subject, role, contract,
+writer boundary, findings, permissions, and evidence history whenever their
+material identity remains unchanged. A product label or enabled setting does
+not prove which mechanism occurred or that every fallback path was disabled.
+
+Before a foreseeable switch, persist the smallest current checkpoint in the
+existing authoritative carrier: contract and revision, role and writer,
+workspace, reviewed input, open findings, evidence and invalidation condition,
+returned disposition, and next authorized action. After the switch, reload the
+current contract and that checkpoint, reconcile them with live state, and read
+only the missing evidence needed to continue. Do not replay the whole prior
+conversation, use memory as a substitute for authority, or treat a fresh
+container as a reset of approvals, corrections, stops, or consumed evidence.
+
 ## Assess And Stop
 
-Create a separate assessment only when the Charter requires independent
-assessment. Record its scope, owner, evidence pointers, material residual
-risks, return route, and exactly one verdict: `ACCEPTED`,
-`CORRECTION_REQUIRED`, or `DECISION_REQUIRED`. Passing tests, Goal completion,
-a commit, role delivery, or an Executor report is evidence, not acceptance.
+Create a separate technical review or assessment only when its governing gate
+requires it. Keep the Reviewer and assessor distinct unless the contract
+explicitly combines them without weakening independence. Record assessment
+scope, owner, evidence pointers, material residual risks, return route, and
+exactly one verdict: `ACCEPTED`, `CORRECTION_REQUIRED`, or
+`DECISION_REQUIRED`. Passing tests, Reviewer output, Goal completion, a commit,
+role delivery, or an Executor report is evidence, not acceptance.
 
 Every Result Notice receives exactly one checkpoint-bound disposition back
 through its declared return route. Name the notice recipient as part of that
@@ -200,6 +268,12 @@ allowed returns include terminal `ACCEPTED` with no next action and
 `DECISION_REQUIRED`. A missing, wrong, duplicate, or stale return remains
 awaiting verdict, not accepted. A terminal disposition grants no new action
 and requires no acknowledgement.
+
+Send at most one current Result Notice for one checkpoint. Do not resend the
+same checkpoint, mirror a verdict, poll the other role, or require an
+acknowledgement merely to keep the loop alive. A corrected or otherwise changed
+input creates a new checkpoint and one new Notice while retaining the prior
+finding and disposition history.
 
 Give each material user decision one semantic owner. Other roles may relay the
 exact question or answer and its authority anchor, but must not mirror the

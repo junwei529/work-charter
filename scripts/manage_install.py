@@ -8,7 +8,7 @@ import stat
 import subprocess
 import tempfile
 import uuid
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 
 
 RECEIPT_NAME = ".work-charter-install.json"
@@ -190,7 +190,7 @@ def create_automatic_transaction_root(
     container = nearest_existing_path(destination.parent.parent).resolve(strict=True)
     if not container.is_dir():
         raise LifecycleError("automatic transaction root has no existing directory parent")
-    candidate = container / f".work-charter-auto-transaction-{uuid.uuid4().hex}"
+    candidate = container / f".wca-{uuid.uuid4().hex}"
     root = assert_safe_transaction_root(
         candidate,
         destination,
@@ -216,11 +216,73 @@ def create_automatic_transaction_root(
         raise
 
 
+def windows_acl_tool():
+    system_root = os.environ.get("SystemRoot")
+    if not system_root:
+        raise LifecycleError("cannot locate the Windows system directory for ACL handoff")
+    system_root_path = Path(system_root)
+    if not system_root_path.is_absolute():
+        raise LifecycleError("Windows system directory for ACL handoff is not absolute")
+    executable = system_root_path / "System32" / "icacls.exe"
+    if not executable.is_file():
+        raise LifecycleError("cannot locate the Windows ACL tool")
+    return executable
+
+
+def run_windows_acl(path, arguments, operation):
+    try:
+        completed = subprocess.run(
+            [str(windows_acl_tool()), str(path), *arguments],
+            stdin=subprocess.DEVNULL,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=False,
+            timeout=30,
+        )
+    except (OSError, subprocess.SubprocessError) as error:
+        raise LifecycleError(f"Windows ACL {operation} could not complete") from error
+    if completed.returncode != 0:
+        raise LifecycleError(
+            f"Windows ACL {operation} failed with tool exit code {completed.returncode}"
+        )
+
+
+def harden_transaction_permissions(transaction):
+    if os.name != "nt":
+        return "PLATFORM_DEFAULT"
+    run_windows_acl(transaction, ["/inheritance:r", "/Q"], "transaction isolation")
+    run_windows_acl(
+        transaction,
+        [
+            "/grant:r",
+            "*S-1-3-4:(OI)(CI)(F)",
+            "*S-1-5-18:(OI)(CI)(F)",
+            "*S-1-5-32-544:(OI)(CI)(F)",
+            "/Q",
+        ],
+        "transaction isolation",
+    )
+    return "PRIVATE_OWNER_SYSTEM_ADMINISTRATORS"
+
+
 def create_transaction_directory(transaction_root):
-    transaction = transaction_root / f".work-charter-transaction-{uuid.uuid4().hex}"
+    transaction = transaction_root / f".wct-{uuid.uuid4().hex}"
     transaction.mkdir(mode=0o700)
-    assert_no_link_like_components(transaction, "transaction directory")
-    return transaction
+    try:
+        permission_result = harden_transaction_permissions(transaction)
+        if permission_result not in {
+            "PRIVATE_OWNER_SYSTEM_ADMINISTRATORS",
+            "PLATFORM_DEFAULT",
+        }:
+            raise LifecycleError("transaction permission isolation returned an invalid result")
+        assert_no_link_like_components(transaction, "transaction directory")
+        return transaction
+    except Exception:
+        try:
+            transaction.rmdir()
+        except OSError:
+            pass
+        raise
 
 
 def remove_empty_transaction_directory(transaction):
@@ -245,6 +307,14 @@ def remove_completed_transaction(transaction, transaction_root, remove_root):
 
 def transaction_recovery_path(transaction, transaction_root):
     return transaction if transaction.exists() else transaction_root
+
+
+def remove_permission_snapshot(snapshot):
+    try:
+        Path(snapshot).unlink(missing_ok=True)
+    except OSError:
+        return False
+    return True
 
 
 def candidate_metadata(source, expected_version):
@@ -431,6 +501,150 @@ def stage_source(package, files, destination, metadata, transaction):
         raise
 
 
+def reconcile_inherited_permissions(path):
+    if os.name != "nt":
+        return "PLATFORM_DEFAULT"
+    run_windows_acl(path, ["/reset", "/T", "/Q"], "parent-inheritance handoff")
+    return "INHERITED_FROM_PARENT"
+
+
+def capture_permission_snapshot(path, snapshot):
+    if os.name != "nt":
+        return None
+    snapshot = Path(snapshot)
+    if snapshot.exists():
+        raise LifecycleError("permission snapshot path already exists")
+    run_windows_acl(
+        path,
+        ["/save", str(snapshot), "/T", "/Q"],
+        "DACL snapshot",
+    )
+    try:
+        if not snapshot.is_file() or snapshot.stat().st_size == 0:
+            raise LifecycleError("Windows DACL snapshot is missing or empty")
+        return sha256(snapshot)
+    except OSError as error:
+        raise LifecycleError("Windows DACL snapshot is unreadable") from error
+
+
+def windows_dacl_snapshot_records(snapshot):
+    snapshot = Path(snapshot)
+    try:
+        raw = snapshot.read_bytes()
+    except OSError as error:
+        raise LifecycleError("Windows DACL snapshot is unreadable") from error
+    try:
+        if raw.startswith((b"\xff\xfe", b"\xfe\xff")):
+            text = raw.decode("utf-16")
+        else:
+            text = raw.decode("utf-16-le")
+    except UnicodeError as error:
+        raise LifecycleError("Windows DACL snapshot encoding is invalid") from error
+    lines = text.splitlines()
+    while lines and not lines[-1]:
+        lines.pop()
+    if not lines or len(lines) % 2:
+        raise LifecycleError("Windows DACL snapshot record structure is invalid")
+    records = {}
+    for index in range(0, len(lines), 2):
+        relative_text = lines[index].strip()
+        descriptor = lines[index + 1].strip()
+        relative = PureWindowsPath(relative_text)
+        if (
+            not relative_text
+            or relative.is_absolute()
+            or relative.drive
+            or any(part in {"", ".", ".."} for part in relative.parts)
+        ):
+            raise LifecycleError("Windows DACL snapshot contains an unsafe path")
+        if not descriptor.startswith("D:"):
+            raise LifecycleError("Windows DACL snapshot contains an invalid descriptor")
+        key = "\\".join(part.casefold() for part in relative.parts)
+        if key in records:
+            raise LifecycleError("Windows DACL snapshot contains duplicate paths")
+        records[key] = descriptor
+    return records
+
+
+def assert_windows_dacl_snapshot_match(expected_snapshot, observed_snapshot):
+    expected = windows_dacl_snapshot_records(expected_snapshot)
+    observed = windows_dacl_snapshot_records(observed_snapshot)
+    if expected.keys() != observed.keys():
+        raise LifecycleError("Windows restored DACL path set mismatch")
+    if any(expected[path] != observed[path] for path in expected):
+        raise LifecycleError("Windows restored DACL descriptor mismatch")
+
+
+def restore_permission_snapshot(
+    path,
+    snapshot,
+    expected_digest,
+    acl_runner=run_windows_acl,
+    snapshotter=capture_permission_snapshot,
+):
+    if os.name != "nt":
+        return "PLATFORM_DEFAULT"
+    snapshot = Path(snapshot)
+    try:
+        if not snapshot.is_file() or sha256(snapshot) != expected_digest:
+            raise LifecycleError("Windows DACL snapshot identity mismatch")
+    except OSError as error:
+        raise LifecycleError("Windows DACL snapshot is unreadable") from error
+    windows_dacl_snapshot_records(snapshot)
+    acl_runner(
+        Path(path).parent,
+        ["/restore", str(snapshot), "/Q"],
+        "DACL restore",
+    )
+    observed_snapshot = snapshot.with_name(f".wcv-{uuid.uuid4().hex}.acl")
+    try:
+        observed_digest = snapshotter(path, observed_snapshot)
+        if not observed_digest or sha256(observed_snapshot) != observed_digest:
+            raise LifecycleError("Windows restored DACL readback identity mismatch")
+        if sha256(snapshot) != expected_digest:
+            raise LifecycleError("Windows DACL snapshot changed during restore")
+        assert_windows_dacl_snapshot_match(snapshot, observed_snapshot)
+    except OSError as error:
+        raise LifecycleError("Windows restored DACL readback is unreadable") from error
+    finally:
+        remove_permission_snapshot(observed_snapshot)
+    return "PRESERVED_FROM_SNAPSHOT"
+
+
+def preflight_permission_restore(
+    path,
+    transaction,
+    snapshot,
+    expected_digest,
+    permission_restorer=restore_permission_snapshot,
+):
+    if os.name != "nt":
+        return "PLATFORM_DEFAULT"
+    probe_parent = Path(transaction) / "p"
+    probe = probe_parent / Path(path).name
+    if probe_parent.exists():
+        raise LifecycleError("Windows DACL restore preflight path is unavailable")
+    try:
+        probe_parent.mkdir()
+        shutil.copytree(path, probe, copy_function=shutil.copyfile)
+        result = permission_restorer(probe, snapshot, expected_digest)
+        if result != "PRESERVED_FROM_SNAPSHOT":
+            raise LifecycleError("Windows DACL restore preflight returned an invalid result")
+    except Exception as error:
+        try:
+            shutil.rmtree(probe_parent)
+        except OSError:
+            pass
+        raise LifecycleError(
+            "Windows DACL restore preflight failed before destination mutation"
+        ) from error
+    try:
+        shutil.rmtree(probe_parent)
+    except OSError as error:
+        raise LifecycleError("Windows DACL restore preflight cleanup failed") from error
+    return "VERIFIED_BEFORE_MUTATION"
+
+
 def synchronize(
     action,
     source,
@@ -444,6 +658,10 @@ def synchronize(
     discovery_roots=(),
     path_replacer=os.replace,
     volume_identity_getter=None,
+    permission_reconciler=reconcile_inherited_permissions,
+    permission_snapshotter=capture_permission_snapshot,
+    permission_restorer=restore_permission_snapshot,
+    permission_restore_preflight=preflight_permission_restore,
 ):
     source = resolved(source)
     destination = assert_safe_destination(destination, source)
@@ -520,16 +738,62 @@ def synchronize(
             )
         raise
     backup = transaction / "backup"
+    permission_snapshot = transaction / "previous-dacl.acl"
+    permission_snapshot_digest = None
     moved_old = False
     installed_new = False
     try:
         if action in {"update", "rollback"}:
+            permission_snapshot_digest = permission_snapshotter(
+                destination,
+                permission_snapshot,
+            )
+            if os.name == "nt" and not permission_snapshot_digest:
+                raise LifecycleError("Windows DACL snapshot was not created")
+            preflight_result = permission_restore_preflight(
+                destination,
+                transaction,
+                permission_snapshot,
+                permission_snapshot_digest,
+            )
+            if preflight_result not in {
+                "VERIFIED_BEFORE_MUTATION",
+                "PLATFORM_DEFAULT",
+            }:
+                raise LifecycleError("DACL restore preflight returned an invalid result")
             path_replacer(destination, backup)
             moved_old = True
+            backup_permission_result = permission_reconciler(backup)
+            if backup_permission_result not in {
+                "INHERITED_FROM_PARENT",
+                "PLATFORM_DEFAULT",
+            }:
+                raise LifecycleError("backup permission handoff returned an invalid result")
         elif destination.exists():
             raise LifecycleError("install destination appeared after preflight")
         path_replacer(stage, destination)
         installed_new = True
+        if permission_snapshot_digest is None:
+            permission_result = permission_reconciler(destination)
+            if permission_result not in {
+                "INHERITED_FROM_PARENT",
+                "PLATFORM_DEFAULT",
+            }:
+                raise LifecycleError("destination permission handoff returned an invalid result")
+            plan["destination_permissions"] = (
+                "INHERITED_FROM_DESTINATION_PARENT"
+                if permission_result == "INHERITED_FROM_PARENT"
+                else permission_result
+            )
+        else:
+            permission_result = permission_restorer(
+                destination,
+                permission_snapshot,
+                permission_snapshot_digest,
+            )
+            if permission_result != "PRESERVED_FROM_SNAPSHOT":
+                raise LifecycleError("destination DACL restore returned an invalid result")
+            plan["destination_permissions"] = "PRESERVED_FROM_PREVIOUS_DESTINATION"
         if current_state(destination, tree).get("state") != "MANAGED":
             raise LifecycleError("installed destination failed receipt verification")
     except Exception as operation_error:
@@ -547,6 +811,25 @@ def synchronize(
             else:
                 try:
                     path_replacer(backup, destination)
+                    if permission_snapshot_digest is None:
+                        restored_permission_result = permission_reconciler(destination)
+                        if restored_permission_result not in {
+                            "INHERITED_FROM_PARENT",
+                            "PLATFORM_DEFAULT",
+                        }:
+                            raise LifecycleError(
+                                "restored destination permission handoff returned an invalid result"
+                            )
+                    else:
+                        restored_permission_result = permission_restorer(
+                            destination,
+                            permission_snapshot,
+                            permission_snapshot_digest,
+                        )
+                        if restored_permission_result != "PRESERVED_FROM_SNAPSHOT":
+                            raise LifecycleError(
+                                "restored destination DACL restore returned an invalid result"
+                            )
                     if current_state(destination, state.get("package_tree")).get("state") != "MANAGED":
                         raise LifecycleError("restored destination failed receipt verification")
                 except Exception as error:
@@ -558,6 +841,7 @@ def synchronize(
                 f"{action} failed; automatic recovery is incomplete; transaction preserved at "
                 f"{transaction}: {'; '.join(recovery_errors)}"
             ) from operation_error
+        remove_permission_snapshot(permission_snapshot)
         if not remove_completed_transaction(
             transaction,
             validated_transaction_root,
@@ -578,6 +862,7 @@ def synchronize(
             plan["result"] = "MANAGED_WITH_BACKUP"
             plan["transaction_path"] = str(transaction)
             return plan
+    remove_permission_snapshot(permission_snapshot)
     if not remove_completed_transaction(
         transaction,
         validated_transaction_root,
@@ -601,6 +886,10 @@ def uninstall(
     discovery_roots=(),
     path_replacer=os.replace,
     volume_identity_getter=None,
+    permission_reconciler=reconcile_inherited_permissions,
+    permission_snapshotter=capture_permission_snapshot,
+    permission_restorer=restore_permission_snapshot,
+    permission_restore_preflight=preflight_permission_restore,
 ):
     destination = assert_safe_destination(destination)
     state = current_state(destination, trusted_tree)
@@ -658,11 +947,43 @@ def uninstall(
         raise
     tombstone = transaction / "tombstone"
     recovery_base = transaction / "uninstall-recovery"
+    permission_snapshot = transaction / "previous-dacl.acl"
+    try:
+        permission_snapshot_digest = permission_snapshotter(
+            destination,
+            permission_snapshot,
+        )
+        if os.name == "nt" and not permission_snapshot_digest:
+            raise LifecycleError("Windows DACL snapshot was not created")
+        preflight_result = permission_restore_preflight(
+            destination,
+            transaction,
+            permission_snapshot,
+            permission_snapshot_digest,
+        )
+        if preflight_result not in {
+            "VERIFIED_BEFORE_MUTATION",
+            "PLATFORM_DEFAULT",
+        }:
+            raise LifecycleError("DACL restore preflight returned an invalid result")
+    except Exception:
+        remove_permission_snapshot(permission_snapshot)
+        if not remove_completed_transaction(
+            transaction,
+            validated_transaction_root,
+            remove_transaction_root,
+        ):
+            raise LifecycleError(
+                "DACL snapshot failed; transaction cleanup failed; preserved at "
+                f"{transaction_recovery_path(transaction, validated_transaction_root)}"
+            )
+        raise
     try:
         recovery_archive = Path(
             shutil.make_archive(str(recovery_base), "zip", root_dir=destination)
         )
     except Exception:
+        remove_permission_snapshot(permission_snapshot)
         if not remove_completed_transaction(
             transaction,
             validated_transaction_root,
@@ -677,6 +998,7 @@ def uninstall(
         path_replacer(destination, tombstone)
     except Exception:
         recovery_archive.unlink(missing_ok=True)
+        remove_permission_snapshot(permission_snapshot)
         if not remove_completed_transaction(
             transaction,
             validated_transaction_root,
@@ -688,11 +1010,36 @@ def uninstall(
             )
         raise
     try:
+        tombstone_permission_result = permission_reconciler(tombstone)
+        if tombstone_permission_result not in {
+            "INHERITED_FROM_PARENT",
+            "PLATFORM_DEFAULT",
+        }:
+            raise LifecycleError("tombstone permission handoff returned an invalid result")
         tombstone_remover(tombstone)
     except Exception as error:
         try:
             destination.mkdir()
             shutil.unpack_archive(recovery_archive, destination, "zip")
+            if permission_snapshot_digest is None:
+                restored_permission_result = permission_reconciler(destination)
+                if restored_permission_result not in {
+                    "INHERITED_FROM_PARENT",
+                    "PLATFORM_DEFAULT",
+                }:
+                    raise LifecycleError(
+                        "restored destination permission handoff returned an invalid result"
+                    )
+            else:
+                restored_permission_result = permission_restorer(
+                    destination,
+                    permission_snapshot,
+                    permission_snapshot_digest,
+                )
+                if restored_permission_result != "PRESERVED_FROM_SNAPSHOT":
+                    raise LifecycleError(
+                        "restored destination DACL restore returned an invalid result"
+                    )
             if current_state(destination, trusted_tree).get("state") != "MANAGED":
                 raise LifecycleError("restored destination failed receipt verification")
         except Exception as restore_error:
@@ -714,6 +1061,7 @@ def uninstall(
         result["transaction_path"] = str(transaction)
         result["warning"] = f"uninstall completed; recovery archive cleanup failed: {error}"
         return result
+    remove_permission_snapshot(permission_snapshot)
     if not remove_completed_transaction(
         transaction,
         validated_transaction_root,
@@ -768,6 +1116,31 @@ def self_test(source=None):
             path = transaction_parent / name
             path.mkdir()
             return path
+
+        def assert_permission_handoff(result):
+            if os.name != "nt":
+                expected = "PLATFORM_DEFAULT"
+            elif result["action"] == "install":
+                expected = "INHERITED_FROM_DESTINATION_PARENT"
+            else:
+                expected = "PRESERVED_FROM_PREVIOUS_DESTINATION"
+            assert result["destination_permissions"] == expected
+
+        def saved_dacl(path, name):
+            if os.name != "nt":
+                return None
+            snapshot = root / name
+            digest = capture_permission_snapshot(path, snapshot)
+            assert digest == sha256(snapshot)
+            return snapshot.read_bytes()
+
+        def write_dacl_records(path, records, newline="\n"):
+            lines = []
+            for relative, descriptor in records:
+                lines.extend((relative, descriptor))
+            Path(path).write_bytes(
+                (newline.join(lines) + newline * 2).encode("utf-16-le")
+            )
 
         malformed_source = root / "malformed-source"
         malformed_candidate = malformed_source / "release" / "v0.3.0-candidate.json"
@@ -831,6 +1204,8 @@ def self_test(source=None):
         def assert_automatic_compatibility(result):
             assert result["transaction_root_mode"] == "AUTO_COMPATIBILITY"
             assert "compatibility_warning" in result
+            if result.get("action") != "uninstall":
+                assert_permission_handoff(result)
             automatic_root = Path(result["transaction_root"])
             assert legacy_destination.parent not in automatic_root.parents
             assert not automatic_root.exists()
@@ -897,6 +1272,7 @@ def self_test(source=None):
             transaction_root=new_transaction_root("install"),
         )
         assert install_result["transaction_root"].endswith("install")
+        assert_permission_handoff(install_result)
         assert current_state(destination, tree_a)["version"] == SELF_TEST_SOURCE_VERSION
         assert current_state(destination, tree_b)["state"] == "FOREIGN_COPY"
         receipt_path = destination / RECEIPT_NAME
@@ -904,6 +1280,72 @@ def self_test(source=None):
         receipt_path.write_text('{"destination": null}\n', encoding="utf-8", newline="\n")
         assert current_state(destination, tree_a)["state"] == "DRIFTED"
         receipt_path.write_text(valid_receipt, encoding="utf-8", newline="\n")
+        original_dacl = None
+        if os.name == "nt":
+            run_windows_acl(
+                destination.parent,
+                ["/grant:r", "*S-1-1-0:(OI)(CI)(RX)", "/Q"],
+                "self-test broader parent policy",
+            )
+            harden_transaction_permissions(destination)
+            restricted_file = destination / "agents" / "openai.yaml"
+            run_windows_acl(
+                restricted_file,
+                ["/inheritance:r", "/Q"],
+                "self-test restrictive file policy",
+            )
+            run_windows_acl(
+                restricted_file,
+                [
+                    "/grant:r",
+                    "*S-1-3-4:(R)",
+                    "*S-1-5-18:(F)",
+                    "*S-1-5-32-544:(F)",
+                    "/Q",
+                ],
+                "self-test restrictive file policy",
+            )
+            original_dacl = saved_dacl(destination, "dacl-before-update.acl")
+            baseline_snapshot = root / "dacl-before-update.acl"
+            baseline_records = windows_dacl_snapshot_records(baseline_snapshot)
+            reordered_snapshot = root / "dacl-reordered-lf.acl"
+            write_dacl_records(
+                reordered_snapshot,
+                reversed(tuple(baseline_records.items())),
+            )
+            assert_windows_dacl_snapshot_match(baseline_snapshot, reordered_snapshot)
+            missing_snapshot = root / "dacl-missing-record.acl"
+            write_dacl_records(missing_snapshot, tuple(baseline_records.items())[1:])
+            try:
+                assert_windows_dacl_snapshot_match(baseline_snapshot, missing_snapshot)
+            except LifecycleError as error:
+                assert "path set mismatch" in str(error)
+            else:
+                raise AssertionError("missing DACL readback record was not refused")
+            changed_records = list(baseline_records.items())
+            descriptor = changed_records[0][1]
+            first_ace_start = descriptor.index("(")
+            first_ace_end = descriptor.index(")", first_ace_start) + 1
+            second_ace_start = descriptor.index("(", first_ace_end)
+            second_ace_end = descriptor.index(")", second_ace_start) + 1
+            reordered_aces = (
+                descriptor[:first_ace_start]
+                + descriptor[second_ace_start:second_ace_end]
+                + descriptor[first_ace_start:first_ace_end]
+                + descriptor[second_ace_end:]
+            )
+            changed_records[0] = (
+                changed_records[0][0],
+                reordered_aces,
+            )
+            changed_snapshot = root / "dacl-changed-descriptor.acl"
+            write_dacl_records(changed_snapshot, changed_records, newline="\r\n")
+            try:
+                assert_windows_dacl_snapshot_match(baseline_snapshot, changed_snapshot)
+            except LifecycleError as error:
+                assert "descriptor mismatch" in str(error)
+            else:
+                raise AssertionError("changed DACL descriptor was not refused")
         update_moves = []
 
         def record_update_move(source_path, target_path):
@@ -911,7 +1353,7 @@ def self_test(source=None):
             os.replace(source_path, target_path)
 
         update_transaction_root = new_transaction_root("update")
-        synchronize(
+        update_result = synchronize(
             "update",
             source_b,
             destination,
@@ -922,12 +1364,15 @@ def self_test(source=None):
             transaction_root=update_transaction_root,
             path_replacer=record_update_move,
         )
+        assert_permission_handoff(update_result)
         assert current_state(destination, tree_b)["version"] == "0.4.1"
         assert len(update_moves) == 2
         assert update_moves[0][0] == destination
         assert update_transaction_root in update_moves[0][1].parents
         assert update_transaction_root in update_moves[1][0].parents
         assert update_moves[1][1] == destination
+        if os.name == "nt":
+            assert saved_dacl(destination, "dacl-after-update.acl") == original_dacl
 
         rollback_moves = []
 
@@ -936,7 +1381,7 @@ def self_test(source=None):
             os.replace(source_path, target_path)
 
         rollback_transaction_root = new_transaction_root("rollback")
-        synchronize(
+        rollback_result = synchronize(
             "rollback",
             source_a,
             destination,
@@ -947,10 +1392,303 @@ def self_test(source=None):
             transaction_root=rollback_transaction_root,
             path_replacer=record_rollback_move,
         )
+        assert_permission_handoff(rollback_result)
         assert current_state(destination, tree_a)["version"] == SELF_TEST_SOURCE_VERSION
         assert len(rollback_moves) == 2
         assert rollback_transaction_root in rollback_moves[0][1].parents
         assert rollback_transaction_root in rollback_moves[1][0].parents
+        if os.name == "nt":
+            assert saved_dacl(destination, "dacl-after-rollback.acl") == original_dacl
+
+        permission_failure_root = new_transaction_root("permission-handoff-failure")
+        permission_failure_calls = []
+
+        def fail_permission_handoff(target, snapshot=None, digest=None):
+            permission_failure_calls.append(Path(target))
+            if os.name == "nt":
+                result = restore_permission_snapshot(target, snapshot, digest)
+                if len(permission_failure_calls) == 1:
+                    raise OSError("simulated destination permission handoff failure")
+                return result
+            if len(permission_failure_calls) == 2:
+                raise OSError("simulated destination permission handoff failure")
+            return "PLATFORM_DEFAULT"
+
+        try:
+            synchronize(
+                "update",
+                source_b,
+                destination,
+                "0.4.1",
+                True,
+                trusted_current_tree=tree_a,
+                trusted_target_tree=tree_b,
+                transaction_root=permission_failure_root,
+                permission_reconciler=(
+                    reconcile_inherited_permissions
+                    if os.name == "nt"
+                    else fail_permission_handoff
+                ),
+                permission_restorer=(
+                    fail_permission_handoff
+                    if os.name == "nt"
+                    else restore_permission_snapshot
+                ),
+            )
+        except OSError as error:
+            assert "permission handoff failure" in str(error)
+        else:
+            raise AssertionError("destination permission handoff failure was not surfaced")
+        assert len(permission_failure_calls) == (2 if os.name == "nt" else 3)
+        if os.name == "nt":
+            assert permission_failure_calls == [destination, destination]
+        else:
+            assert permission_failure_calls[0].name == "backup"
+            assert permission_failure_calls[0].parent.parent == permission_failure_root
+            assert permission_failure_calls[1:] == [destination, destination]
+        assert current_state(destination, tree_a)["state"] == "MANAGED"
+        assert not any(permission_failure_root.iterdir())
+        if os.name == "nt":
+            assert saved_dacl(destination, "dacl-after-failed-update.acl") == original_dacl
+
+        snapshot_failure_root = new_transaction_root("dacl-snapshot-failure")
+        snapshot_failure_moves = []
+
+        def fail_dacl_snapshot(_path, _snapshot):
+            raise OSError("simulated pre-mutation DACL snapshot failure")
+
+        def record_snapshot_failure_move(source_path, target_path):
+            snapshot_failure_moves.append((Path(source_path), Path(target_path)))
+            os.replace(source_path, target_path)
+
+        try:
+            synchronize(
+                "update",
+                source_b,
+                destination,
+                "0.4.1",
+                True,
+                trusted_current_tree=tree_a,
+                trusted_target_tree=tree_b,
+                transaction_root=snapshot_failure_root,
+                path_replacer=record_snapshot_failure_move,
+                permission_snapshotter=fail_dacl_snapshot,
+            )
+        except OSError as error:
+            assert "pre-mutation DACL snapshot failure" in str(error)
+        else:
+            raise AssertionError("pre-mutation DACL snapshot failure was not surfaced")
+        assert snapshot_failure_moves == []
+        assert current_state(destination, tree_a)["state"] == "MANAGED"
+        assert not any(snapshot_failure_root.iterdir())
+
+        preflight_failure_root = new_transaction_root("dacl-restore-preflight-failure")
+        preflight_failure_moves = []
+
+        def fail_dacl_restore_preflight(_path, _transaction, _snapshot, _digest):
+            raise OSError("simulated pre-mutation DACL restore preflight failure")
+
+        def record_preflight_failure_move(source_path, target_path):
+            preflight_failure_moves.append((Path(source_path), Path(target_path)))
+            os.replace(source_path, target_path)
+
+        try:
+            synchronize(
+                "update",
+                source_b,
+                destination,
+                "0.4.1",
+                True,
+                trusted_current_tree=tree_a,
+                trusted_target_tree=tree_b,
+                transaction_root=preflight_failure_root,
+                path_replacer=record_preflight_failure_move,
+                permission_restore_preflight=fail_dacl_restore_preflight,
+            )
+        except OSError as error:
+            assert "restore preflight failure" in str(error)
+        else:
+            raise AssertionError("pre-mutation DACL restore preflight failure was not surfaced")
+        assert preflight_failure_moves == []
+        assert current_state(destination, tree_a)["state"] == "MANAGED"
+        assert not any(preflight_failure_root.iterdir())
+
+        if os.name == "nt":
+            baseline_snapshot = root / "dacl-before-update.acl"
+            baseline_digest = sha256(baseline_snapshot)
+
+            def noop_acl_restore(_path, _arguments, _label):
+                return None
+
+            def missing_dacl_readback(_path, observed_snapshot):
+                records = tuple(windows_dacl_snapshot_records(baseline_snapshot).items())
+                write_dacl_records(observed_snapshot, records[:-1])
+                return sha256(observed_snapshot)
+
+            try:
+                restore_permission_snapshot(
+                    destination,
+                    baseline_snapshot,
+                    baseline_digest,
+                    acl_runner=noop_acl_restore,
+                    snapshotter=missing_dacl_readback,
+                )
+            except LifecycleError as error:
+                assert "path set mismatch" in str(error)
+            else:
+                raise AssertionError("missing restored DACL readback was not refused")
+
+            readback_preflight_root = new_transaction_root(
+                "dacl-readback-preflight-mismatch"
+            )
+            readback_preflight_moves = []
+
+            def false_success_restorer(target, snapshot, digest):
+                return restore_permission_snapshot(
+                    target,
+                    snapshot,
+                    digest,
+                    acl_runner=noop_acl_restore,
+                )
+
+            def verify_false_success_preflight(path, transaction, snapshot, digest):
+                return preflight_permission_restore(
+                    path,
+                    transaction,
+                    snapshot,
+                    digest,
+                    permission_restorer=false_success_restorer,
+                )
+
+            def record_readback_preflight_move(source_path, target_path):
+                readback_preflight_moves.append((Path(source_path), Path(target_path)))
+                os.replace(source_path, target_path)
+
+            try:
+                synchronize(
+                    "update",
+                    source_b,
+                    destination,
+                    "0.4.1",
+                    True,
+                    trusted_current_tree=tree_a,
+                    trusted_target_tree=tree_b,
+                    transaction_root=readback_preflight_root,
+                    path_replacer=record_readback_preflight_move,
+                    permission_restore_preflight=verify_false_success_preflight,
+                )
+            except LifecycleError as error:
+                assert "restore preflight failed before destination mutation" in str(error)
+            else:
+                raise AssertionError("false-success DACL preflight was not refused")
+            assert readback_preflight_moves == []
+            assert current_state(destination, tree_a)["state"] == "MANAGED"
+            assert not any(readback_preflight_root.iterdir())
+
+            readback_recovery_root = new_transaction_root(
+                "dacl-readback-mismatch-recovery"
+            )
+            readback_restore_calls = []
+
+            def restore_then_corrupt_once(target, snapshot, digest):
+                readback_restore_calls.append(Path(target))
+                if len(readback_restore_calls) == 1:
+
+                    def restore_and_corrupt(path, arguments, label):
+                        run_windows_acl(path, arguments, label)
+                        run_windows_acl(
+                            target,
+                            ["/grant:r", "*S-1-1-0:(OI)(CI)(R)", "/Q"],
+                            "self-test post-restore DACL mismatch",
+                        )
+
+                    return restore_permission_snapshot(
+                        target,
+                        snapshot,
+                        digest,
+                        acl_runner=restore_and_corrupt,
+                    )
+                return restore_permission_snapshot(target, snapshot, digest)
+
+            try:
+                synchronize(
+                    "update",
+                    source_b,
+                    destination,
+                    "0.4.1",
+                    True,
+                    trusted_current_tree=tree_a,
+                    trusted_target_tree=tree_b,
+                    transaction_root=readback_recovery_root,
+                    permission_restorer=restore_then_corrupt_once,
+                )
+            except LifecycleError as error:
+                assert "DACL descriptor mismatch" in str(error)
+            else:
+                raise AssertionError("post-restore DACL mismatch was reported successful")
+            assert readback_restore_calls == [destination, destination]
+            assert current_state(destination, tree_a)["state"] == "MANAGED"
+            assert not any(readback_recovery_root.iterdir())
+            assert (
+                saved_dacl(destination, "dacl-after-readback-recovery.acl")
+                == original_dacl
+            )
+
+            retained_mismatch_root = new_transaction_root(
+                "dacl-readback-mismatch-retention"
+            )
+            retained_restore_calls = []
+
+            def restore_then_always_corrupt(target, snapshot, digest):
+                retained_restore_calls.append(Path(target))
+
+                def restore_and_corrupt(path, arguments, label):
+                    run_windows_acl(path, arguments, label)
+                    run_windows_acl(
+                        target,
+                        ["/grant:r", "*S-1-1-0:(OI)(CI)(R)", "/Q"],
+                        "self-test persistent post-restore DACL mismatch",
+                    )
+
+                return restore_permission_snapshot(
+                    target,
+                    snapshot,
+                    digest,
+                    acl_runner=restore_and_corrupt,
+                )
+
+            try:
+                synchronize(
+                    "update",
+                    source_b,
+                    destination,
+                    "0.4.1",
+                    True,
+                    trusted_current_tree=tree_a,
+                    trusted_target_tree=tree_b,
+                    transaction_root=retained_mismatch_root,
+                    permission_restorer=restore_then_always_corrupt,
+                )
+            except LifecycleError as error:
+                assert "automatic recovery is incomplete" in str(error)
+                assert "DACL descriptor mismatch" in str(error)
+            else:
+                raise AssertionError("persistent DACL mismatch was reported successful")
+            assert retained_restore_calls == [destination, destination]
+            retained_transactions = tuple(retained_mismatch_root.iterdir())
+            assert len(retained_transactions) == 1
+            retained_transaction = retained_transactions[0]
+            retained_snapshot = retained_transaction / "previous-dacl.acl"
+            assert retained_snapshot.is_file()
+            assert sha256(retained_snapshot) == baseline_digest
+            restore_permission_snapshot(destination, retained_snapshot, baseline_digest)
+            assert current_state(destination, tree_a)["state"] == "MANAGED"
+            assert (
+                saved_dacl(destination, "dacl-after-retained-recovery.acl")
+                == original_dacl
+            )
+            shutil.rmtree(retained_transaction)
+            assert not any(retained_mismatch_root.iterdir())
 
         changed = destination / "SKILL.md"
         original = changed.read_text(encoding="utf-8")
@@ -1243,6 +1981,10 @@ def self_test(source=None):
             (path / "SKILL.md").unlink()
             raise OSError("simulated partial uninstall cleanup failure")
 
+        dacl_before_uninstall_recovery = saved_dacl(
+            destination,
+            "dacl-before-uninstall-recovery.acl",
+        )
         uninstall_recovery_root = new_transaction_root("uninstall-recovery")
         try:
             uninstall(
@@ -1257,6 +1999,11 @@ def self_test(source=None):
         else:
             raise AssertionError("partial uninstall cleanup failure was not surfaced")
         assert current_state(destination, tree_c)["state"] == "MANAGED"
+        if os.name == "nt":
+            assert (
+                saved_dacl(destination, "dacl-after-uninstall-recovery.acl")
+                == dacl_before_uninstall_recovery
+            )
         recovery_transactions = list(uninstall_recovery_root.iterdir())
         assert len(recovery_transactions) == 1
         retained_transaction = recovery_transactions[0]
@@ -1274,9 +2021,39 @@ def self_test(source=None):
         assert current_state(destination)["state"] == "ABSENT"
     return {
         "result": "PASS",
-        "scope": "disposable legacy-apply-compatibility/external-transaction install/update/rollback/failure-recovery/path-volume-guards/drift/receipt-integrity/unreceipted/wrong-tree/uninstall",
+        "scope": (
+            "disposable legacy-apply-compatibility/external-transaction "
+            "install/update/rollback/failure-recovery/"
+            "Windows-DACL-snapshot-preservation-and-semantic-readback/"
+            "private-backup-tombstone/path-volume-guards/drift/receipt-integrity/"
+            "unreceipted/wrong-tree/uninstall"
+        ),
         "persistent_effect": False,
         "source_package_tree": candidate_tree,
+        "destination_permission_handoff": (
+            "PRESERVED_OR_INHERITED_BY_ACTION" if os.name == "nt" else "PLATFORM_DEFAULT"
+        ),
+        "permission_handoff_failure_recovery": "PASS",
+        "pre_mutation_dacl_snapshot_failure": "PASS",
+        "pre_mutation_dacl_restore_preflight_failure": "PASS",
+        "pre_mutation_dacl_readback_mismatch": (
+            "PASS" if os.name == "nt" else "NOT_APPLICABLE"
+        ),
+        "post_restore_dacl_readback_mismatch_recovery": (
+            "PASS" if os.name == "nt" else "NOT_APPLICABLE"
+        ),
+        "incomplete_recovery_snapshot_retention": (
+            "PASS" if os.name == "nt" else "NOT_APPLICABLE"
+        ),
+        "missing_dacl_readback_record": (
+            "PASS" if os.name == "nt" else "NOT_APPLICABLE"
+        ),
+        "windows_dacl_snapshot_normalization": (
+            "PASS" if os.name == "nt" else "NOT_APPLICABLE"
+        ),
+        "windows_restrictive_dacl_preservation": (
+            "PASS" if os.name == "nt" else "NOT_APPLICABLE"
+        ),
         "transaction_alias_test": alias_check,
         "transaction_reparse_test": link_check,
     }

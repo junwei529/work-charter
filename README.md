@@ -17,8 +17,23 @@ portable L0-L4 independent Reviewer semantics, separates Reviewer technical
 findings from Executor verification and Planner/Orchestrator acceptance,
 preserves the same Reviewer and cumulative findings across repair re-review,
 defines evidence-first `UNKNOWN` handling and context-switch recovery, and
-limits callback and graph claims. Independent review, Planner acceptance,
-installation, and public release remain pending and separately authorized.
+limits callback and graph claims. The descriptor remains the immutable
+pre-review snapshot. The accepted source candidate, five completed independent
+review rounds, reviewed lifecycle-controller baseline, and attempted v0.3-to-v0.4 update
+are bound separately by
+[`release/v0.4.0-local-release-receipt.json`](release/v0.4.0-local-release-receipt.json),
+but the update is not accepted: its exact bytes and receipt passed elevated
+postflight while the default sandbox reader could not read the promoted copy.
+Source-candidate acceptance remains `VERIFIED`; `LOCAL_RELEASE_READY` and the
+managed installation are blocked pending review, acceptance, and application
+of the bounded ACL correction. R4 returned `NO_FINDINGS`, but Planner acceptance
+opened `WC-INSTALL-ACCESS-P01` because the reviewed parent-reset route did not
+preserve an existing explicit or protected DACL policy. R5 then opened P2
+`WC-INSTALL-ACCESS-R5-F01` because command success was not followed by a target
+DACL readback; the implementation below is fixed pending R6 and Planner
+acceptance. Stable loaded-copy behavior, natural adherence, cross-Harness
+behavior, public release, and broad efficacy remain failed, `UNKNOWN`, or
+separately authorized as recorded.
 
 ## Historical v0.3.0 evidence
 
@@ -73,9 +88,10 @@ python -B scripts/manage_install.py self-test --source .
 
 The SOURCE check proves that the current candidate instructions contain the
 required selection, activation, authority, recovery, independent-review, and
-Standard O/P/E/R boundaries while preserving fixed historical v0.3 identities.
-It does not prove model compliance, installed-copy behavior, acceptance,
-publication, or broad efficacy.
+Standard O/P/E/R boundaries while preserving fixed historical v0.3 identities
+and validating the exact v0.4 attempt receipt, open access finding, and pending
+source correction. It does not execute a model, re-read the live installed
+copy, accept that correction, prove publication, or establish broad efficacy.
 
 ## Future immutable-source lifecycle
 
@@ -108,13 +124,46 @@ modes, stage, backup, tombstone, and recovery-archive material stays under the
 external per-operation transaction directory. A failure to move the old
 destination to backup leaves that destination untouched; a later replacement
 failure restores and verifies the old managed copy or reports the preserved
-recovery path.
+recovery path. The pending Windows correction first removes inheritance from
+each random per-operation transaction directory and grants access only to Owner
+Rights, SYSTEM, and Administrators. A new install inherits the destination
+parent's existing DACL. Before update, rollback, or uninstall mutation, the tool
+saves the complete existing DACL tree inside the private transaction, restores
+it to a private replica as a capability preflight, reads the replica back with
+the same bounded `/save` representation, and fails closed if that cannot
+complete or match. The comparison ignores record enumeration order and newline
+serialization, but requires the same managed path set and exact DACL SDDL for
+each path, including inheritance/protection flags and ACE order/content. The
+saved policy is then applied to the promoted or recovered target and read back
+under the same rule before success is reported; backup and tombstone trees
+inherit the private transaction DACL. A preflight mismatch occurs before any
+target move. A later mismatch enters existing recovery, and the original
+snapshot remains in the protected transaction when recovery is incomplete.
+Other platforms retain their prior platform-default permission behavior. On
+Windows, the full lifecycle self-test must run with a token capable of
+`icacls /restore` and `/save`; an incapable token is rejected before destination
+mutation.
 
 The install example is deliberately bound to an immutable v0.3.0 checkout,
 whose package tree is already in the bundled trust map. Do not substitute this
-working v0.4.0 candidate checkout: v0.4.0 still requires independent review,
-Planner acceptance, and a trusted package-tree identity published outside the
-candidate before installation can use the later-version trust route.
+working checkout into that historical command. The current v0.4.0 package was
+subsequently reviewed, accepted, externally trust-bound, and written through
+the explicit route recorded in its local-release receipt, but the promoted
+directory retained the transaction ACL and failed default-reader access. The
+working source contains a bounded Windows DACL-preservation and post-restore
+readback correction that still requires R6 independent review and Planner
+acceptance before it may repair the installed copy. The v0.4 package tree is
+not added to the tool's historical built-in map, so later status or mutation
+must continue to receive the independently retained v0.4 trust identity.
+
+The proposed repair for that exact failed v0.4.0 copy is ACL-only, not a generic
+update that discards arbitrary policy. After source review, Planner acceptance,
+and local commit, it first verifies the independently trusted v0.4.0 content and
+receipt, the recorded private current DACL, and the separately verified
+destination-parent reader policy. It then saves and preflights a rollback DACL
+snapshot before resetting only that exact target to parent inheritance; any
+failure restores the snapshot. Default-identity status, direct reads, hashes,
+and ACL inspection are required postflight. This route is not yet executed.
 
 The tool refuses destinations that are unreceipted, have a malformed or
 mismatched receipt, use the wrong package tree, are locally modified or aliased,
@@ -123,8 +172,11 @@ record, not cryptographic ownership proof: a same-privilege local actor capable
 of forging the complete receipt is outside this mechanism's protection.
 For v0.3.0, the separately authorized persistent same-version lifecycle,
 publication, tag, GitHub Release, and stable installed-copy evidence are
-verified as recorded above. Future-version and cross-version lifecycle effects
-still require separate authorization and evidence.
+verified as recorded above. For v0.4.0, only the written bytes and elevated
+receipt/file postflight from the v0.3-to-v0.4 attempt are verified; default
+reader access failed, so the overall transition is not accepted. Other
+cross-version transitions and stable loaded behavior still require separate
+evidence.
 
 ### Future update and rollback trust
 

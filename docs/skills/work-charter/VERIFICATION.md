@@ -1,13 +1,20 @@
 # Work Charter Verification
 
-## Historical migration baseline and current candidate
+## Historical migration baseline and current local release
 
 - Source commit: `80910a8b2375a11be897e9660c4b00a06d00dd13`
 - Package path: `skills/work-charter/`
 - Package files: 5
 - Provenance manifest: [`../../../provenance/source-map.json`](../../../provenance/source-map.json)
 - Current candidate: [`../../../release/v0.4.0-candidate.json`](../../../release/v0.4.0-candidate.json)
-- Current candidate state: `PENDING_INDEPENDENT_REVIEW`
+- Candidate descriptor state: `PENDING_INDEPENDENT_REVIEW`, retained as an
+  immutable pre-review snapshot
+- Accepted candidate commit: `30057490be21d869751854a51e9fafdfb535f206`
+- Current local-release receipt:
+  [`../../../release/v0.4.0-local-release-receipt.json`](../../../release/v0.4.0-local-release-receipt.json)
+- Source-candidate acceptance: `VERIFIED`
+- Current local-release state:
+  `BLOCKED_BY_INSTALLED_COPY_ACCESS_REGRESSION`
 
 ## Repository check
 
@@ -104,21 +111,33 @@ Run the deterministic SOURCE contract check:
 python -B scripts/check_source_contract.py --json
 ```
 
-It verifies the exact 5-file package shape, the `v0.4.0` candidate binding, and
-the instruction clauses needed for direct and indirect selection/activation,
+It verifies the exact 5-file package shape, the `v0.4.0` candidate binding, the
+separate exact local-release receipt, and the instruction clauses needed for
+direct and indirect selection/activation,
 authority non-expansion, context recovery, independent review/acceptance
 separation, same-Reviewer repair re-review, callback deduplication,
 evidence-first `UNKNOWN` handling, graph limitations, and Standard O/P/E/R. It
 also verifies the immutable `v0.3.0` release objects against fixed historical
 package and release-note identities rather than comparing them with current
-bytes. It is static source evidence, not a model run, independent review,
-Planner acceptance, or loaded-copy proof.
+bytes. Receipt qualification binds five completed review results, source/tool
+acceptance, exact written content, elevated postflight, the open default-reader
+and policy-preservation findings, the R5 readback finding, and the pending R6
+correction. The checker does not re-read the live installed copy or accept that
+correction. It is static source evidence, not a
+fresh model run, review, acceptance, publication proof, or stable loaded-copy
+proof.
 
 Run the install lifecycle self-test:
 
 ```powershell
 python -B scripts/manage_install.py self-test --source .
 ```
+
+On Windows, run the complete self-test with a token capable of
+`icacls /restore` and `/save`. The production lifecycle performs the same
+restore-and-readback preflight against a private replica and fails before
+destination mutation when the token cannot preserve and verify the existing
+DACL tree.
 
 The self-test uses disposable temporary directories to exercise install,
 status, update, rollback, unreceipted/mismatched/wrong-tree/modified/aliased/
@@ -128,7 +147,23 @@ reported automatic external roots, then exercise the explicit external
 same-volume route. They verify update/rollback routing, missing/overlapping/
 declared-discovery-root/alias/reparse/cross-volume refusal before destination
 mutation, old-copy preservation when the first backup move fails, and verified
-restoration when a later stage move fails. The reparse case is reported as
+restoration when a later stage move fails. On Windows they additionally verify
+that each random per-operation transaction directory is protected before
+staging, a new install inherits the destination-parent DACL, and a parent-wide
+reader policy does not replace a narrower protected managed-target policy.
+Raw `/save` snapshots of the root, package directories, all five files, and the
+receipt must match after normal update, rollback, injected post-handoff failure
+recovery, and partial-uninstall recovery. Injected snapshot and restore-preflight
+failures must each produce zero move calls. A second focused path simulates a
+successful `/restore` that changes nothing: semantic readback mismatch during
+preflight must also produce zero move calls. Missing readback records must fail;
+record reordering and LF/CRLF differences must compare equal; changed DACL SDDL
+must not. An injected mismatch after promotion must not report success and must
+verify the recovered old target. If both promotion and recovery readbacks
+mismatch, the operation must report incomplete recovery and retain the original
+snapshot inside the protected transaction. Moved backup and tombstone trees
+inherit the protected transaction DACL. Other platforms report
+`PLATFORM_DEFAULT` and preserve the prior permission behavior. The reparse case is reported as
 `UNAVAILABLE` when the host cannot create a disposable directory symlink or
 junction; the deterministic production guard remains present. The self-test
 does not install or remove a persistent Skill copy. Receipt checks establish
@@ -173,16 +208,97 @@ evidence subject F `4ba904808fe86e270ebd405db1866d41d1cc032e` and tree
 does not alter P, tag `v0.3.0`, the GitHub Release, package bytes, installed
 copy, retained recovery copy, or the evidence limitations above.
 
+The v0.4.0 local-release receipt binds accepted candidate commit
+`30057490be21d869751854a51e9fafdfb535f206`, candidate tree
+`a746f2eb4dc54db71f6ebd627da5f184929c9428`, package tree
+`fd5ceb5cb0fbef4a1974b40b4da05800433d5511`, and the reviewed lifecycle
+controller commit `08f72b404b1e127d6c461ac337a4e570c2c6800c`. It records five completed
+independent-review results, both historical source finding dispositions, Planner source and
+tool acceptance, the candidate-external trust-record digest, and one
+explicit-root update attempt from v0.3.0 to v0.4.0. Elevated postflight matched
+the installed receipt and all five package files, observed no residual
+transaction entry, and removed the empty task transaction root. A subsequent
+default-sandbox status and direct file read both failed with access denied. The
+receipt records this as open runtime finding `WC-INSTALL-POSTFLIGHT-F01`,
+separate from the five completed review results and two historical source
+findings. R4 `WC-INSTALL-ACCESS-R4-RESULT-01` returned `NO_FINDINGS`, but Planner
+acceptance opened P2 `WC-INSTALL-ACCESS-P01` because parent reset did not retain
+explicit or protected DACL policy. R5
+`WC-INSTALL-ACCESS-R5-RESULT-01` then opened P2
+`WC-INSTALL-ACCESS-R5-F01` because `/restore` process success was not followed
+by a target DACL readback. The receipt records the readback implementation as
+fixed pending R6/Planner acceptance under P01 and confirms that no actual
+installed-copy repair has been performed. The receipt deliberately omits
+private path and task identifiers. This evidence verifies exact written content
+and elevated postflight, not an accepted installation or transition.
+
+A same-host disposable Windows probe exercised the superseded R4 correction without
+touching the actual installed copy. Its outer transaction parent deliberately
+carried the existing default-reader `ReadAndExecute` policy; the installer
+itself removed inheritance from the random per-operation transaction directory
+and restricted it to Owner Rights, SYSTEM, and Administrators before an
+elevated process promoted the exact five files. The default sandbox identity
+then read all five files and the receipt and obtained `MANAGED` status. After an injected
+post-handoff failure, the old v0.4.0 target was restored, re-inherited the
+destination-parent policy, and remained readable. A separate simulated backup
+cleanup failure left the new target readable while exact-path access to the
+retained backup was denied; ACL inspection showed the outer transaction parent
+was reader-accessible, the random transaction directory had protected private
+rules, the retained backup inherited only those rules, and the target inherited
+the destination parent's reader access. The disposable tree was then removed.
+That evidence proved installed-copy readability and recovery-material privacy,
+but it did not test a narrower pre-existing target policy and therefore did not
+close `WC-INSTALL-ACCESS-P01`. It remains historical R4 input only. This host evidence is
+bounded to Windows/Python 3.12.10 and does not accept the correction or repair
+the actual installation.
+
+A later same-host R5 disposable probe directly targeted
+`WC-INSTALL-ACCESS-P01`. Its destination parent carried the existing sandbox
+reader `ReadAndExecute` rule, while the managed target root was protected for
+Owner Rights, SYSTEM, and Administrators and one package file further limited
+Owner Rights to read. The complete root/directory/five-file/receipt DACL
+snapshot had SHA-256
+`1e8fbde6f8b9d6402f0d2307b653b4904c738558e6a8e3b43a3e8c6367b97daf`.
+Normal update reported `PRESERVED_FROM_PREVIOUS_DESTINATION`; its DACL snapshot
+matched byte-for-byte. An injected failure after the promoted-target DACL
+restore caused two restore calls, returned the prior managed version, and again
+matched the baseline snapshot. Partial-uninstall recovery also returned the
+managed version with an exact DACL match. The default sandbox reader was denied
+receipt access after every phase, proving the wider parent policy did not
+replace the narrower target policy. ACL inspection also confirmed the retained
+recovery snapshot and partial tombstone remained behind a protected random
+transaction directory. Cleanup of the exact disposable root was rejected by
+the permission boundary, so that private task-scoped residue remains outside
+all Skill discovery roots; the helper was removed. This evidence does not
+close P01, satisfy the later R5 readback finding, or repair the actual
+installation. The R5 finding does not invalidate these observed exact matches;
+it requires the production lifecycle to perform that check on every restore.
+
+The proposed repair of the exact failed v0.4.0 installed copy is ACL-only. It
+requires completed source review, Planner acceptance, and local commit; exact
+trusted v0.4.0 content and receipt; a current DACL matching the recorded private
+transaction policy; and a separately verified destination-parent reader DACL.
+The operator then saves the current DACL inside a protected external transaction
+and proves restore capability before resetting only that exact target to parent
+inheritance. Any failure restores and verifies the snapshot. Default-identity
+status, all five file and receipt reads, hashes, and ACL inspection form the
+postflight. This route remains proposed and unexecuted.
+
 ## Evidence limits
 
 The retained cases are deterministic contract fixtures; they do not create
 fresh model, efficacy, release, or installed-copy evidence. SOURCE qualification
-proves clause coverage only. For v0.4.0, deterministic checks, independent
-technical review, and Planner acceptance are distinct pending gates; no receipt
-exists yet. Historical v0.3.0 acceptance does not authorize or prove v0.4.0
-installation, publication, cross-version lifecycle, stable installed-copy
-behavior, or broad product efficacy.
+proves clause coverage only. For v0.4.0, the accepted source candidate,
+historical independent review, and Planner source/tool acceptance remain
+distinct completed evidence. The update attempt has exact content and elevated
+postflight evidence but failed default-reader access, so managed installation
+and `LOCAL_RELEASE_READY` remain blocked. The pending source correction and its
+disposable proof do not replace R6 review, Planner acceptance, actual
+installed-copy repair, or post-repair evidence. The receipt does not prove
+publication, stable installed-copy behavior, natural adherence, other
+cross-version lifecycle effects, cross-Harness behavior, or broad product
+efficacy.
 
 ## Future-version lifecycle boundary
 
-The lifecycle command accepts `--trusted-target-package-tree` and `--trusted-current-package-tree` for versions outside its built-in trust map. These values are explicit external trust inputs, not candidate-derived metadata. B2 verifies same-version effects from exact public `v0.3.0`; cross-version behavior remains `UNKNOWN`. Dry runs and legacy apply calls retain their existing call shape. A legacy apply call without `--transaction-root` reports `AUTO_COMPATIBILITY` and uses a unique external same-volume root with the same overlap and reparse guards. Planned product installation, update, rollback, and uninstall commands supply `--transaction-root` explicitly; the operator repeats `--discovery-root` for active roots beyond the automatically protected destination parent and source `skills` directory. If recovery-archive cleanup fails after a successful uninstall, the command reports `ABSENT`, retains and identifies the archive and transaction path, and returns a warning instead of misreporting the completed uninstall as failed.
+The lifecycle command accepts `--trusted-target-package-tree` and `--trusted-current-package-tree` for versions outside its built-in trust map. These values are explicit external trust inputs, not candidate-derived metadata. B2 verifies same-version effects from exact public `v0.3.0`; the v0.4.0 receipt additionally verifies only the content and elevated postflight of the failed-access update attempt. Other cross-version behavior remains `UNKNOWN`. Dry runs and legacy apply calls retain their existing call shape. A legacy apply call without `--transaction-root` reports `AUTO_COMPATIBILITY` and uses a unique external same-volume root with the same overlap and reparse guards. Planned product installation, update, rollback, and uninstall commands supply `--transaction-root` explicitly; the operator repeats `--discovery-root` for active roots beyond the automatically protected destination parent and source `skills` directory. If recovery-archive cleanup fails after a successful uninstall, the command reports `ABSENT`, retains and identifies the archive and transaction path, and returns a warning instead of misreporting the completed uninstall as failed.

@@ -47,7 +47,7 @@
       "destination": "CHANGELOG.md",
       "kind": "repository-native",
       "note": "Work Charter v0.4.0 repository documentation or release notes",
-      "target_sha256": "9dc8dc87b6b8c9444ddd672847e9d3845194eb98e39f0a38fe5b669d1c4e2e3c"
+      "target_sha256": "bef6e957563a013ee1cfef5295fa56ccf2b9c3b3eb8a052ce0e7d362cf8bda17"
     },
     {
       "destination": "LICENSE",
@@ -61,25 +61,25 @@
       "destination": "PROVENANCE.md",
       "kind": "repository-native",
       "note": "Work Charter v0.4.0 repository documentation or release notes",
-      "target_sha256": "062f38888473bf18e9e9f9753ae9f5c4873ce5d6255e5cffd76a0bbbfedd654c"
+      "target_sha256": "2814469faa5edf719fca8a627199789e442c08a8a84c445426b5784f5a6273cc"
     },
     {
       "destination": "README.md",
       "kind": "repository-native",
       "note": "Work Charter v0.4.0 repository documentation or release notes",
-      "target_sha256": "7e0472de95e5defc956dd38ab4b7ba707aab6ec363122871e0e5e3bc2028ceac"
+      "target_sha256": "2522d954579d2d59891d98c293f9c895473d31ca81ee43f8d1bf1cc89334c13d"
     },
     {
       "destination": "README.zh-CN.md",
       "kind": "repository-native",
       "note": "Work Charter v0.4.0 repository documentation or release notes",
-      "target_sha256": "bb09847d3489069c81117632e21240024e37645c0c1841069b122ac35c18c35c"
+      "target_sha256": "7974059a35f7d9d4e63f48ff454cb6f66fb4ade6228a09c48dbb1d5139b45328"
     },
     {
       "destination": "docs/skills/work-charter/DESIGN.md",
       "kind": "repository-native",
       "note": "Work Charter v0.4.0 repository documentation or release notes",
-      "target_sha256": "c91de79ada5155a0892e403aa6ea2cbe91e7b4c91549cbdec540e60c3037656a"
+      "target_sha256": "7fcb3acadf5973289998aa48d16825a9383f29f775decd0f80088e69aad725e2"
     },
     {
       "destination": "docs/skills/work-charter/README.md",
@@ -97,13 +97,13 @@
       "destination": "docs/skills/work-charter/STATE.md",
       "kind": "repository-native",
       "note": "Work Charter v0.4.0 repository documentation or release notes",
-      "target_sha256": "94e3d2926d8a10ab530de5de34b7951f4b2e668cd4b88ea6f5e34a1ecafe8eec"
+      "target_sha256": "5ce01402f16ef53af6a408bf41891fbc6d7ef806c79db748c9a1aafeaec7d266"
     },
     {
       "destination": "docs/skills/work-charter/VERIFICATION.md",
       "kind": "repository-native",
       "note": "Work Charter v0.4.0 repository documentation or release notes",
-      "target_sha256": "9b920ac8989c83de8d1252a437d8ec0a65faac8fa6aea3fb9a30d24a92aafe93"
+      "target_sha256": "59d3eace817b153c70dab06af750da8cfa3c0510aa6e9988bd4881dd6a447add"
     },
     {
       "destination": "evals/README.md",
@@ -568,6 +568,12 @@
       "target_sha256": "9f7443ab21ae9b4b7c1e5e31f331e3a667cbe333a49472d8adafd0fdef1b8693"
     },
     {
+      "destination": "release/v0.4.0-local-release-receipt.json",
+      "kind": "repository-native",
+      "note": "Accepted candidate, review, installer, trust, and exact managed update evidence",
+      "target_sha256": "da29ba93eceb0bfacee86ff0f5364ce6902d864e1e2b6bdc5f6bdc56e0a7e45b"
+    },
+    {
       "destination": "scripts/check_repository.py",
       "kind": "standalone-normalized-text-rewrite",
       "note": "Standalone slice of repository and fixture validation",
@@ -583,21 +589,21 @@
           "source_path": "evals/check-fixtures.ps1"
         }
       ],
-      "target_normalized_sha256": "a0a10d9efe05d1d1f7a0c39608c4bd41c5c8c1b5bfdfe976d42c2e736f18bb67",
-      "target_sha256": "a0a10d9efe05d1d1f7a0c39608c4bd41c5c8c1b5bfdfe976d42c2e736f18bb67",
+      "target_normalized_sha256": "71a9aa254af0fa177d16906c6f2ad1f811de2917ba524d4609da7d44b99ccbdc",
+      "target_sha256": "71a9aa254af0fa177d16906c6f2ad1f811de2917ba524d4609da7d44b99ccbdc",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
       "destination": "scripts/check_source_contract.py",
       "kind": "repository-native",
       "note": "Work Charter v0.4.0 SOURCE contract checker",
-      "target_sha256": "185a8fe8f1de2f585ac80de9b3b0503b0599f6ea6b5a73d49178cd9f201c31e0"
+      "target_sha256": "5680bc111a2414269d1245b6e234478af01c1e1922f010bbd0601f19fee9b361"
     },
     {
       "destination": "scripts/manage_install.py",
       "kind": "repository-native",
       "note": "Origin-aware product-specific install lifecycle tool",
-      "target_sha256": "631e9a3fe0d992b9c3d7a9398a1337711974befe182331cea7552cb30f943fd9"
+      "target_sha256": "71c29abc070105522c08a48261e99758d4243cc57810df40e7c8a8eca99bde61"
     },
     {
       "destination": "skills/work-charter/SKILL.md",

@@ -1,0 +1,146 @@
+{
+  "candidate": {
+    "commit": "30057490be21d869751854a51e9fafdfb535f206",
+    "descriptor": "release/v0.4.0-candidate.json",
+    "package_sha256": "8ae542b9566415dfadd16108435735dc01406443dc84ee542fcf091ccec19076",
+    "package_tree": "fd5ceb5cb0fbef4a1974b40b4da05800433d5511",
+    "tree": "a746f2eb4dc54db71f6ebd627da5f184929c9428"
+  },
+  "evidence_states": {
+    "broad_product_efficacy": "UNKNOWN",
+    "cross_harness_behavior": "UNKNOWN",
+    "cross_version_lifecycle": "CONTENT_AND_ELEVATED_POSTFLIGHT_VERIFIED_WITH_ACCESS_REGRESSION_OPEN",
+    "local_release_ready": "BLOCKED_BY_INSTALLED_COPY_ACCESS_REGRESSION",
+    "managed_installation": "NOT_ACCEPTED_DEFAULT_READER_ACCESS_FAILED",
+    "natural_adherence": "UNKNOWN",
+    "public_release": "UNKNOWN",
+    "source_candidate_acceptance": "VERIFIED",
+    "stable_installed_copy": "FAILED_DEFAULT_READER_ACCESS"
+  },
+  "human_release_notes_review": "PENDING",
+  "independent_review": {
+    "completed_rounds": 5,
+    "final_result": "CORRECTION_REQUIRED",
+    "final_round": "WC-INSTALL-ACCESS-R5-RESULT-01",
+    "findings": [
+      {
+        "disposition": "FALSE_POSITIVE_CLOSED",
+        "id": "WC-SOURCE-R1-F01",
+        "severity": "P1"
+      },
+      {
+        "disposition": "FIXED_CLOSED",
+        "id": "WC-SOURCE-R1-F02",
+        "severity": "P2"
+      },
+      {
+        "disposition": "FIXED_PENDING_R6_REVIEW_AND_PLANNER_ACCEPTANCE",
+        "id": "WC-INSTALL-ACCESS-R5-F01",
+        "parent_finding": "WC-INSTALL-ACCESS-P01",
+        "severity": "P2"
+      }
+    ],
+    "model": "gpt-5.6-terra",
+    "reasoning_effort": "high"
+  },
+  "installation": {
+    "action": "update",
+    "default_reader": "ACCESS_DENIED",
+    "destination_class": "managed Codex user Skill installation",
+    "files": {
+      "SKILL.md": "be3cf6ff88d2d2ae72209119c83bf9f27e2ff4d5afa917fc44aac30ca87eb6f5",
+      "agents/openai.yaml": "f0032475e213d75ed17eb41c3424007ebc46c0ddb6739138c9908185beefdad6",
+      "assets/work-charter.md": "821e907a9db2888e164e2bb0793fed949206455b496fb71581b610641985234d",
+      "references/coordination-and-recovery.md": "a12a76e5c784e2ef1f54b1cbc5c8096ac64fabeccc947ff46cb97cc6969eda98",
+      "references/standard-ope.md": "62c3da90b662fc4e489abfc32873a5ab92966a6326dd0b16c58285f0933fe48f"
+    },
+    "from_version": "0.3.0",
+    "overall_acceptance": "NOT_ACCEPTED",
+    "package_sha256": "814fc88c4dae4a823461dc7339b8a83542258919e8374f2b1c280fb9d77157c8",
+    "package_tree": "fd5ceb5cb0fbef4a1974b40b4da05800433d5511",
+    "postflight_scope": "ELEVATED_CONTENT_AND_RECEIPT_ONLY",
+    "receipt_raw_sha256": "c562b4ecc71c0b1d96b4f1b6d7465e7057479cbca3aade7a738fc7121b9be338",
+    "receipt_schema": "work-charter-install-receipt/v1",
+    "result": "CONTENT_VERIFIED_DEFAULT_READER_FAILED",
+    "transaction": {
+      "cleanup": "REMOVED_EMPTY_TASK_ROOT",
+      "disposition": "EXTERNAL_CANONICAL_NON_REPARSE_SAME_VOLUME",
+      "mode": "EXPLICIT"
+    }
+  },
+  "installer": {
+    "commit": "08f72b404b1e127d6c461ac337a4e570c2c6800c",
+    "tree": "899f7ec700516a2feb3121e7062dbd5bdab37065"
+  },
+  "planner_acceptance": {
+    "access_correction": {
+      "checkpoint": "WC-INSTALL-ACCESS-REVIEW-READY-01",
+      "finding": "WC-INSTALL-ACCESS-P01",
+      "verdict": "CORRECTION_REQUIRED"
+    },
+    "dacl_readback_correction": {
+      "checkpoint": "WC-INSTALL-ACCESS-R5-RESULT-01",
+      "finding": "WC-INSTALL-ACCESS-R5-F01",
+      "verdict": "CORRECTION_REQUIRED"
+    },
+    "postflight": {
+      "checkpoint": "WC-SOURCE-INSTALL-AND-RECORDS-READY-01",
+      "finding": "WC-INSTALL-POSTFLIGHT-F01",
+      "verdict": "CORRECTION_REQUIRED"
+    },
+    "source": {
+      "checkpoint": "SOURCE_CANDIDATE_03",
+      "verdict": "ACCEPTED"
+    },
+    "tool": {
+      "checkpoint": "WC-INSTALL-ACCEPTANCE-02",
+      "verdict": "ACCEPTED"
+    }
+  },
+  "pending_source_correction": {
+    "actual_installed_copy_repair": "NOT_PERFORMED",
+    "actual_repair_route": {
+      "effect": "ACL_ONLY_RESET_TO_VERIFIED_DESTINATION_PARENT_WITH_ROLLBACK_SNAPSHOT",
+      "preconditions": [
+        "REVIEWED_SOURCE_AND_PLANNER_ACCEPTANCE_AND_LOCAL_COMMIT_COMPLETE",
+        "INSTALLED_V040_CONTENT_AND_RECEIPT_MATCH_INDEPENDENT_TRUST",
+        "CURRENT_DACL_MATCHES_RECORDED_PRIVATE_TRANSACTION_POLICY",
+        "DESTINATION_PARENT_DACL_MATCHES_SEPARATELY_VERIFIED_READER_POLICY"
+      ],
+      "state": "PROPOSED_NOT_EXECUTED"
+    },
+    "non_windows_behavior": "UNCHANGED_PLATFORM_DEFAULT",
+    "state": "PENDING_R6_INDEPENDENT_REVIEW_AND_PLANNER_ACCEPTANCE",
+    "windows_mechanism": "PRIVATE_TRANSACTION_RECOVERY_MATERIAL_AND_PREMUTATION_DACL_SNAPSHOT_WITH_POSTRESTORE_SEMANTIC_READBACK_INSTALL_PARENT_INHERITANCE_AND_UPDATE_ROLLBACK_UNINSTALL_RECOVERY_POLICY_PRESERVATION"
+  },
+  "policy_preservation_finding": {
+    "discovered_by": "PLANNER_AFTER_R4_NO_FINDINGS",
+    "id": "WC-INSTALL-ACCESS-P01",
+    "issue": "PARENT_RESET_DID_NOT_PRESERVE_EXISTING_EXPLICIT_OR_PROTECTED_DACL_POLICY",
+    "review_history": "R4_NO_FINDINGS_RETAINED_WITHOUT_PLANNER_ACCEPTANCE",
+    "severity": "P2",
+    "status": "OPEN"
+  },
+  "restore_verification_finding": {
+    "discovered_by": "WC-INSTALL-ACCESS-R5-RESULT-01",
+    "id": "WC-INSTALL-ACCESS-R5-F01",
+    "issue": "RESTORE_SUCCESS_WAS_NOT_FOLLOWED_BY_TARGET_DACL_READBACK_COMPARISON",
+    "parent_finding": "WC-INSTALL-ACCESS-P01",
+    "severity": "P2",
+    "status": "FIXED_PENDING_R6_REVIEW_AND_PLANNER_ACCEPTANCE"
+  },
+  "product": "work-charter",
+  "runtime_finding": {
+    "discovered_by": "PLANNER_POSTFLIGHT",
+    "id": "WC-INSTALL-POSTFLIGHT-F01",
+    "issue": "PROMOTED_DESTINATION_RETAINED_PRIVATE_TRANSACTION_ACL_AND_DEFAULT_READER_ACCESS_WAS_DENIED",
+    "review_history": "SEPARATE_FROM_FIVE_COMPLETED_REVIEW_RESULTS_AND_TWO_HISTORICAL_SOURCE_FINDINGS",
+    "status": "OPEN"
+  },
+  "schema": "work-charter-local-release-receipt/v1",
+  "trust": {
+    "record_sha256": "06ec69d391a33ac0e5c3cd0d4ee02d3b29b6c8d45f61f3907927496366845db8",
+    "target_package_tree": "fd5ceb5cb0fbef4a1974b40b4da05800433d5511"
+  },
+  "version": "0.4.0"
+}

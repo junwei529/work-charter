@@ -2,7 +2,13 @@
 
 ## Work Charter v0.4.0
 
-Candidate state: `PENDING_INDEPENDENT_REVIEW`
+Descriptor snapshot: `PENDING_INDEPENDENT_REVIEW` (retained without rewriting)
+
+Source-candidate acceptance: `VERIFIED`
+
+Local release state: `BLOCKED_BY_INSTALLED_COPY_ACCESS_REGRESSION`
+
+Human release-note review: `PENDING`
 
 ### Highlights
 
@@ -25,13 +31,33 @@ Candidate state: `PENDING_INDEPENDENT_REVIEW`
 
 ### Evidence boundaries
 
-- The local descriptor binds the current five-file SOURCE candidate.
-- Deterministic verification, independent technical review, and Planner
-  acceptance are separate gates and do not yet establish
-  `LOCAL_RELEASE_READY`.
-- Installation, cross-version lifecycle, stable installed-copy behavior,
-  public source, tag, Release, and broad efficacy remain `UNKNOWN` or separately
-  authorized for v0.4.0.
+- The immutable local descriptor binds the accepted five-file SOURCE candidate;
+  a separate non-circular receipt binds the later review and acceptance facts.
+- Deterministic verification, five independent technical-review rounds, and
+  Planner source/tool acceptance are `VERIFIED` for the exact recorded
+  identities.
+- One explicit-root v0.3.0-to-v0.4.0 attempt wrote exact bytes and passed
+  elevated receipt/five-file postflight, but the promoted directory retained
+  the private transaction ACL and failed default-reader access. Managed
+  installation and `LOCAL_RELEASE_READY` are not accepted.
+- R4 returned `NO_FINDINGS`, but Planner acceptance found open P2
+  `WC-INSTALL-ACCESS-P01`: unconditional parent reset did not preserve a managed
+  target's explicit or protected DACL policy.
+- R5 opened P2 `WC-INSTALL-ACCESS-R5-F01`: `/restore` process success alone did
+  not prove the target DACL was restored. The correction is implemented but
+  remains open pending R6 and Planner acceptance under the parent P01 finding.
+- The revised bounded Windows correction protects each random transaction and
+  its recovery material, snapshots the complete existing DACL tree and proves
+  it can be restored and semantically read back before update/rollback/uninstall
+  mutation, preserves and rechecks that policy on the new or recovered target,
+  and uses parent inheritance only for a genuinely new install. Record order
+  and newline form are non-semantic; path membership and exact DACL SDDL,
+  including flags and ACE order/content, must match. It is pending R6 and
+  Planner acceptance; the actual installed copy has not been repaired.
+- Stable loaded-copy behavior, natural adherence, other cross-version
+  lifecycle effects, cross-Harness behavior, public source, tag, Release, and
+  broad efficacy remain failed, `UNKNOWN`, or separately authorized as
+  recorded for v0.4.0.
 - Historical v0.3.0 receipts and public evidence remain unchanged and apply
   only to that version.
 

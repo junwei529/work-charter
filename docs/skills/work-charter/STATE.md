@@ -13,14 +13,31 @@ retains its exact or normalized migration provenance.
 
 - Version: `v0.4.0`
 - Candidate descriptor: [`../../../release/v0.4.0-candidate.json`](../../../release/v0.4.0-candidate.json)
-- Candidate state: `PENDING_INDEPENDENT_REVIEW`
+- Descriptor snapshot: `PENDING_INDEPENDENT_REVIEW`, retained without rewriting
+- Accepted immutable candidate: `30057490be21d869751854a51e9fafdfb535f206`
+- Local-release receipt: [`../../../release/v0.4.0-local-release-receipt.json`](../../../release/v0.4.0-local-release-receipt.json)
 - Deterministic SOURCE, repository, adversarial, and lifecycle self-test
-  evidence: `PASS` at the current review-ready checkpoint; any mapped source or
-  checker change invalidates it
-- Independent technical Reviewer verdict: pending
-- Planner acceptance and `LOCAL_RELEASE_READY`: pending
-- Installation, cross-version lifecycle, stable installed copy, and public
-  release: `UNKNOWN` and separately authorized
+  evidence: `PASS` for the accepted inputs, with Windows lifecycle cases run
+  under a DACL-restore-capable token; any relevant source or checker change
+  invalidates the corresponding evidence
+- Independent technical review: five completed results; two historical source
+  findings closed; R4 `NO_FINDINGS`; R5 P2
+  `WC-INSTALL-ACCESS-R5-F01` fixed pending R6 and Planner acceptance
+- Planner source and reviewed-installer baseline acceptance: `VERIFIED`
+- v0.3.0-to-v0.4.0 written bytes and elevated receipt/file postflight:
+  `VERIFIED`
+- Default sandbox reader access after promotion: `FAILED`
+- Managed installation acceptance and `LOCAL_RELEASE_READY`:
+  `BLOCKED_BY_INSTALLED_COPY_ACCESS_REGRESSION`
+- Current source DACL-preservation/readback correction: pending R6 independent
+  review and Planner acceptance; actual installed-copy repair not performed
+- `WC-INSTALL-ACCESS-P01`: P2 / `OPEN`; parent reset did not preserve a managed
+  target's explicit or protected DACL policy
+- `WC-INSTALL-ACCESS-R5-F01`: P2 /
+  `FIXED_PENDING_R6_REVIEW_AND_PLANNER_ACCEPTANCE`;
+  `/restore` success lacked a target DACL readback; remains under P01
+- Stable loaded-copy behavior, natural adherence, cross-Harness behavior,
+  public release, and broad efficacy: failed or `UNKNOWN` as recorded
 
 The source update introduces portable independent Reviewer semantics across
 L0-L4, explicit Executor verification / Reviewer findings / Planner or
@@ -28,8 +45,12 @@ Orchestrator acceptance boundaries, same-Reviewer repair re-review, cumulative
 finding preservation, evidence-first `UNKNOWN` handling, context-switch
 recovery, callback deduplication, and graph-evidence limits. The candidate
 descriptor binds the current five-file package and retains its pre-review
-evidence snapshot; it is not an acceptance receipt and does not authorize
-installation or publication.
+evidence snapshot; it is not rewritten into an acceptance receipt. The
+separate local-release receipt binds the accepted candidate commit, reviewed
+installer baseline commit, cumulative static-review dispositions,
+candidate-external trust identity, exact content/elevated postflight, and the
+later open default-reader access finding without claiming installation
+acceptance, publication, or natural adherence.
 
 ## Historical v0.3.0 release
 
@@ -76,10 +97,15 @@ installed-copy evidence.
 Evidence states remain separate:
 
 - Current SOURCE identity and deterministic SOURCE contract: locally `PASS` at
-  the current review-ready checkpoint, with re-verification required after any
-  mapped source or checker change.
+  the accepted checkpoint, with re-verification required after any relevant
+  source or checker change.
+- Current v0.4.0 source-candidate acceptance: `VERIFIED` for the immutable
+  candidate and reviewed installer baseline.
+- Current v0.4.0 attempt: exact content and elevated receipt/five-file
+  postflight are `VERIFIED`, but default-reader access is `FAILED`; managed
+  installation and `LOCAL_RELEASE_READY` are not accepted.
 - Historical v0.3.0 `LOCAL_RELEASE_READY`: `VERIFIED` by the exact-C acceptance
-  receipt; current v0.4.0 readiness is pending review and Planner acceptance.
+  receipt.
 - Historical v0.3.0 `PUBLIC_RELEASE`: `VERIFIED` for exact P, annotated tag,
   and public Release.
 - Historical v0.3.0 same-version install/update/rollback/uninstall/restoration:
@@ -95,8 +121,10 @@ Evidence states remain separate:
 
 The immutable public-source candidate preserves its pre-effect snapshot. The
 separate post-release evidence subject binds the later public and corrected
-installed-copy facts without rewriting P. Cross-version update/rollback,
-cross-Harness behavior, untested contexts, and broad efficacy remain `UNKNOWN`.
+installed-copy facts without rewriting P. The attempted v0.3.0-to-v0.4.0
+update verifies only its written content and elevated postflight, not an
+accepted transition. Other cross-version transitions, cross-Harness behavior,
+untested contexts, and broad efficacy remain `UNKNOWN`.
 
 Lifecycle receipt validation is bounded to integrity and routing checks. It
 refuses unreceipted, malformed or mismatched-receipt, wrong-tree, modified,
@@ -109,20 +137,36 @@ shape through a visibly marked `AUTO_COMPATIBILITY` root with the same guards.
 The disposable self-test covers all four legacy apply forms, explicit-path
 install/update/rollback/uninstall, pre-mutation path and volume refusal,
 preservation when the initial backup move fails, and verified restoration after
-a later replacement failure. This controller-only correction leaves the
-five-file v0.4.0 candidate package and all historical v0.3.0 objects unchanged;
-its independent technical review is still pending.
+a later replacement failure. The current Windows-specific correction also
+protects every random per-operation transaction directory for Owner Rights,
+SYSTEM, and Administrators. New installs inherit the destination-parent DACL;
+update/rollback/uninstall save the complete prior DACL tree and prove restore
+capability on a private replica before mutation. The replica and every promoted
+or recovered target are read back with the same bounded `/save` representation;
+record order and newline form are ignored, while path membership and exact DACL
+SDDL—including inheritance/protection flags and ACE order/content—must match.
+A preflight mismatch produces zero target moves. A later mismatch enters
+existing recovery and retains the original protected snapshot when recovery is
+incomplete. Moved backup/tombstone trees inherit the private transaction DACL;
+other platforms retain prior behavior. This source correction leaves the
+five-file v0.4.0 candidate package and all historical v0.3.0 objects unchanged
+and is pending independent review and acceptance.
 
 ## Next gate
 
-Keep the v0.4.0 source frozen, obtain one independent read-only technical review
-of the exact checkpoint, disposition any findings through the
-Planner/Executor loop with focused re-verification, and obtain Planner
-acceptance. Until then no v0.4.0 receipt, installation, public source, tag, or
-Release may be claimed. The exact historical v0.3.0 post-release evidence subject F remains
-accepted under `B2-WC-PUBLIC-EVIDENCE-F-01` without moving its tag or rewriting
-P. Cross-version work, another Release, or broader efficacy remains separately
-authorized.
+The DACL-preservation/readback correction and corrected attempt record follow
+the same R6 independent review, Planner acceptance, and local commit gate as other
+evidence-bearing changes. Only after those gates may the exact current
+installed copy be repaired through the separately authorized exact ACL-only
+route. That route first verifies the trusted v0.4.0 content/receipt, recorded
+private current DACL, and independently verified destination-parent reader
+policy; it saves and preflights a rollback snapshot before resetting only that
+target to parent inheritance. Default-reader status/read/hash/ACL postflight is
+required. Fresh loaded-copy or natural-adherence
+evidence, any global migration, public source, tag, Release, other cross-version
+transition, or broader efficacy claim remains a separate gate. The exact historical v0.3.0
+post-release evidence subject F remains accepted under
+`B2-WC-PUBLIC-EVIDENCE-F-01` without moving its tag or rewriting P.
 
 ## Recovery entry
 

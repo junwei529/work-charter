@@ -9,6 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "skills" / "work-charter"
 CURRENT_CANDIDATE = ROOT / "release" / "v0.4.0-candidate.json"
+CURRENT_RECEIPT = ROOT / "release" / "v0.4.0-local-release-receipt.json"
 HISTORICAL_CANDIDATE = ROOT / "release" / "v0.3.0-candidate.json"
 RECEIPT = ROOT / "release" / "v0.3.0-local-release-receipt.json"
 PUBLIC_RELEASE_CANDIDATE = ROOT / "release" / "v0.3.0-public-release-candidate.json"
@@ -17,6 +18,9 @@ V030_PACKAGE_TREE = "0ac3cbb0f1fa8fa51d8f832c8127eabc9863ec9e"
 V030_PACKAGE_SHA256 = "d445a3cd99c6d8f2ea2d9eee3be7c24781732617fedf08d4e9fd1b3d43ff88d1"
 V030_RELEASE_NOTES_SHA256 = "e37631f77e9dd9a450e618c56967017e49a7c05618baa0b7a2cb838ccd01f12b"
 V030_INSTALLED_PACKAGE_SHA256 = "7b67ea1f7073fa66ac91c36f3e39c735b54c04174e2fa3672068f8fa8948a5b2"
+V040_PACKAGE_TREE = "fd5ceb5cb0fbef4a1974b40b4da05800433d5511"
+V040_PACKAGE_SHA256 = "8ae542b9566415dfadd16108435735dc01406443dc84ee542fcf091ccec19076"
+V040_INSTALLED_PACKAGE_SHA256 = "814fc88c4dae4a823461dc7339b8a83542258919e8374f2b1c280fb9d77157c8"
 V030_PACKAGE_FILE_SHA256 = {
     "SKILL.md": "c750d51940456b110bc7ed4b7d490690f42ca8ee9b555c23c8fe3d4d056b4dba",
     "agents/openai.yaml": "f0032475e213d75ed17eb41c3424007ebc46c0ddb6739138c9908185beefdad6",
@@ -40,6 +44,13 @@ def package_digest(files):
         records.append([relative, hashlib.sha256(raw).hexdigest()])
     encoded = json.dumps(records, separators=(",", ":"), ensure_ascii=True).encode("ascii")
     return hashlib.sha256(encoded).hexdigest()
+
+
+def package_file_hashes(files):
+    return {
+        relative: hashlib.sha256((PACKAGE / relative).read_bytes()).hexdigest()
+        for relative in sorted(files)
+    }
 
 
 def git_object_hash(kind, data):
@@ -243,6 +254,9 @@ def main():
     except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
         current_candidate_error = str(error)
     current_package_sha256 = package_digest(actual_files) if actual_files == EXPECTED_FILES else None
+    current_package_file_hashes = (
+        package_file_hashes(actual_files) if actual_files == EXPECTED_FILES else None
+    )
     checks["candidate.v040_identity"] = (
         current_candidate.get("schema") == "work-charter-local-release-candidate/v1"
         and current_candidate.get("product") == "work-charter"
@@ -323,6 +337,215 @@ def main():
         and receipt.get("source_forward_behavior", {}).get("scope")
         == "fresh projectless read-only no-tool exact-SOURCE"
         and receipt.get("source_forward_behavior", {}).get("package_tree") == V030_PACKAGE_TREE
+    )
+
+    current_receipt_error = None
+    current_receipt = {}
+    try:
+        parsed_current_receipt = json.loads(CURRENT_RECEIPT.read_text(encoding="utf-8"))
+        if not isinstance(parsed_current_receipt, dict):
+            raise ValueError("current local release receipt must be an object")
+        for field in (
+            "candidate",
+            "evidence_states",
+            "independent_review",
+            "installation",
+            "installer",
+            "pending_source_correction",
+            "policy_preservation_finding",
+            "planner_acceptance",
+            "restore_verification_finding",
+            "runtime_finding",
+            "trust",
+        ):
+            if not isinstance(parsed_current_receipt.get(field), dict):
+                raise ValueError(f"current local release receipt field {field!r} must be an object")
+        if not isinstance(parsed_current_receipt["independent_review"].get("findings"), list):
+            raise ValueError("current local release receipt findings must be a list")
+        if not isinstance(parsed_current_receipt["installation"].get("transaction"), dict):
+            raise ValueError("current local release receipt transaction must be an object")
+        if not isinstance(
+            parsed_current_receipt["pending_source_correction"].get("actual_repair_route"),
+            dict,
+        ):
+            raise ValueError("current local release receipt repair route must be an object")
+        current_receipt = parsed_current_receipt
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
+        current_receipt = {}
+        current_receipt_error = str(error)
+    checks["receipt.v040_identity_and_readiness"] = (
+        current_receipt.get("schema") == "work-charter-local-release-receipt/v1"
+        and current_receipt.get("product") == "work-charter"
+        and current_receipt.get("version") == "0.4.0"
+        and current_receipt.get("candidate")
+        == {
+            "commit": "30057490be21d869751854a51e9fafdfb535f206",
+            "descriptor": "release/v0.4.0-candidate.json",
+            "package_sha256": V040_PACKAGE_SHA256,
+            "package_tree": V040_PACKAGE_TREE,
+            "tree": "a746f2eb4dc54db71f6ebd627da5f184929c9428",
+        }
+        and current_receipt.get("installer")
+        == {
+            "commit": "08f72b404b1e127d6c461ac337a4e570c2c6800c",
+            "tree": "899f7ec700516a2feb3121e7062dbd5bdab37065",
+        }
+        and current_receipt.get("planner_acceptance")
+        == {
+            "access_correction": {
+                "checkpoint": "WC-INSTALL-ACCESS-REVIEW-READY-01",
+                "finding": "WC-INSTALL-ACCESS-P01",
+                "verdict": "CORRECTION_REQUIRED",
+            },
+            "dacl_readback_correction": {
+                "checkpoint": "WC-INSTALL-ACCESS-R5-RESULT-01",
+                "finding": "WC-INSTALL-ACCESS-R5-F01",
+                "verdict": "CORRECTION_REQUIRED",
+            },
+            "postflight": {
+                "checkpoint": "WC-SOURCE-INSTALL-AND-RECORDS-READY-01",
+                "finding": "WC-INSTALL-POSTFLIGHT-F01",
+                "verdict": "CORRECTION_REQUIRED",
+            },
+            "source": {"checkpoint": "SOURCE_CANDIDATE_03", "verdict": "ACCEPTED"},
+            "tool": {"checkpoint": "WC-INSTALL-ACCEPTANCE-02", "verdict": "ACCEPTED"},
+        }
+        and current_receipt.get("independent_review")
+        == {
+            "completed_rounds": 5,
+            "final_result": "CORRECTION_REQUIRED",
+            "final_round": "WC-INSTALL-ACCESS-R5-RESULT-01",
+            "findings": [
+                {
+                    "disposition": "FALSE_POSITIVE_CLOSED",
+                    "id": "WC-SOURCE-R1-F01",
+                    "severity": "P1",
+                },
+                {
+                    "disposition": "FIXED_CLOSED",
+                    "id": "WC-SOURCE-R1-F02",
+                    "severity": "P2",
+                },
+                {
+                    "disposition": "FIXED_PENDING_R6_REVIEW_AND_PLANNER_ACCEPTANCE",
+                    "id": "WC-INSTALL-ACCESS-R5-F01",
+                    "parent_finding": "WC-INSTALL-ACCESS-P01",
+                    "severity": "P2",
+                },
+            ],
+            "model": "gpt-5.6-terra",
+            "reasoning_effort": "high",
+        }
+        and current_receipt.get("installation", {}).get("action") == "update"
+        and current_receipt.get("installation", {}).get("from_version") == "0.3.0"
+        and current_receipt.get("installation", {}).get("result")
+        == "CONTENT_VERIFIED_DEFAULT_READER_FAILED"
+        and current_receipt.get("installation", {}).get("overall_acceptance")
+        == "NOT_ACCEPTED"
+        and current_receipt.get("installation", {}).get("default_reader")
+        == "ACCESS_DENIED"
+        and current_receipt.get("installation", {}).get("postflight_scope")
+        == "ELEVATED_CONTENT_AND_RECEIPT_ONLY"
+        and current_receipt.get("installation", {}).get("receipt_schema")
+        == "work-charter-install-receipt/v1"
+        and current_receipt.get("installation", {}).get("receipt_raw_sha256")
+        == "c562b4ecc71c0b1d96b4f1b6d7465e7057479cbca3aade7a738fc7121b9be338"
+        and current_receipt.get("installation", {}).get("package_sha256")
+        == V040_INSTALLED_PACKAGE_SHA256
+        and current_receipt.get("installation", {}).get("package_tree")
+        == actual_package_tree
+        == V040_PACKAGE_TREE
+        and current_receipt.get("installation", {}).get("files")
+        == current_package_file_hashes
+        and current_receipt.get("installation", {}).get("destination_class")
+        == "managed Codex user Skill installation"
+        and current_receipt.get("installation", {}).get("transaction")
+        == {
+            "cleanup": "REMOVED_EMPTY_TASK_ROOT",
+            "disposition": "EXTERNAL_CANONICAL_NON_REPARSE_SAME_VOLUME",
+            "mode": "EXPLICIT",
+        }
+        and current_receipt.get("trust")
+        == {
+            "record_sha256": "06ec69d391a33ac0e5c3cd0d4ee02d3b29b6c8d45f61f3907927496366845db8",
+            "target_package_tree": V040_PACKAGE_TREE,
+        }
+        and current_receipt.get("evidence_states")
+        == {
+            "broad_product_efficacy": "UNKNOWN",
+            "cross_harness_behavior": "UNKNOWN",
+            "cross_version_lifecycle": (
+                "CONTENT_AND_ELEVATED_POSTFLIGHT_VERIFIED_WITH_ACCESS_REGRESSION_OPEN"
+            ),
+            "local_release_ready": "BLOCKED_BY_INSTALLED_COPY_ACCESS_REGRESSION",
+            "managed_installation": "NOT_ACCEPTED_DEFAULT_READER_ACCESS_FAILED",
+            "natural_adherence": "UNKNOWN",
+            "public_release": "UNKNOWN",
+            "source_candidate_acceptance": "VERIFIED",
+            "stable_installed_copy": "FAILED_DEFAULT_READER_ACCESS",
+        }
+        and current_receipt.get("runtime_finding")
+        == {
+            "discovered_by": "PLANNER_POSTFLIGHT",
+            "id": "WC-INSTALL-POSTFLIGHT-F01",
+            "issue": (
+                "PROMOTED_DESTINATION_RETAINED_PRIVATE_TRANSACTION_ACL_AND_"
+                "DEFAULT_READER_ACCESS_WAS_DENIED"
+            ),
+            "review_history": (
+                "SEPARATE_FROM_FIVE_COMPLETED_REVIEW_RESULTS_AND_TWO_HISTORICAL_"
+                "SOURCE_FINDINGS"
+            ),
+            "status": "OPEN",
+        }
+        and current_receipt.get("restore_verification_finding")
+        == {
+            "discovered_by": "WC-INSTALL-ACCESS-R5-RESULT-01",
+            "id": "WC-INSTALL-ACCESS-R5-F01",
+            "issue": (
+                "RESTORE_SUCCESS_WAS_NOT_FOLLOWED_BY_TARGET_DACL_READBACK_"
+                "COMPARISON"
+            ),
+            "parent_finding": "WC-INSTALL-ACCESS-P01",
+            "severity": "P2",
+            "status": "FIXED_PENDING_R6_REVIEW_AND_PLANNER_ACCEPTANCE",
+        }
+        and current_receipt.get("policy_preservation_finding")
+        == {
+            "discovered_by": "PLANNER_AFTER_R4_NO_FINDINGS",
+            "id": "WC-INSTALL-ACCESS-P01",
+            "issue": (
+                "PARENT_RESET_DID_NOT_PRESERVE_EXISTING_EXPLICIT_OR_PROTECTED_"
+                "DACL_POLICY"
+            ),
+            "review_history": "R4_NO_FINDINGS_RETAINED_WITHOUT_PLANNER_ACCEPTANCE",
+            "severity": "P2",
+            "status": "OPEN",
+        }
+        and current_receipt.get("pending_source_correction")
+        == {
+            "actual_installed_copy_repair": "NOT_PERFORMED",
+            "actual_repair_route": {
+                "effect": (
+                    "ACL_ONLY_RESET_TO_VERIFIED_DESTINATION_PARENT_WITH_ROLLBACK_SNAPSHOT"
+                ),
+                "preconditions": [
+                    "REVIEWED_SOURCE_AND_PLANNER_ACCEPTANCE_AND_LOCAL_COMMIT_COMPLETE",
+                    "INSTALLED_V040_CONTENT_AND_RECEIPT_MATCH_INDEPENDENT_TRUST",
+                    "CURRENT_DACL_MATCHES_RECORDED_PRIVATE_TRANSACTION_POLICY",
+                    "DESTINATION_PARENT_DACL_MATCHES_SEPARATELY_VERIFIED_READER_POLICY",
+                ],
+                "state": "PROPOSED_NOT_EXECUTED",
+            },
+            "non_windows_behavior": "UNCHANGED_PLATFORM_DEFAULT",
+            "state": "PENDING_R6_INDEPENDENT_REVIEW_AND_PLANNER_ACCEPTANCE",
+            "windows_mechanism": (
+                "PRIVATE_TRANSACTION_RECOVERY_MATERIAL_AND_PREMUTATION_DACL_SNAPSHOT_"
+                "WITH_POSTRESTORE_SEMANTIC_READBACK_INSTALL_PARENT_INHERITANCE_AND_"
+                "UPDATE_ROLLBACK_UNINSTALL_RECOVERY_POLICY_PRESERVATION"
+            ),
+        }
+        and current_receipt.get("human_release_notes_review") == "PENDING"
     )
 
     public_candidate_error = None
@@ -518,6 +741,8 @@ def main():
         failures.append(f"candidate.v030_unreadable: {historical_candidate_error}")
     if receipt_error:
         failures.append(f"receipt.unreadable: {receipt_error}")
+    if current_receipt_error:
+        failures.append(f"receipt.v040_unreadable: {current_receipt_error}")
     if public_candidate_error:
         failures.append(f"public_release_candidate.unreadable: {public_candidate_error}")
     if public_evidence_error:
@@ -530,7 +755,7 @@ def main():
         "result": "PASS" if not failures else "FAIL",
         "scope_limits": [
             "no model execution",
-            "no installed-copy proof",
+            "no live installed-copy recheck",
             "no publication proof",
             "no broad efficacy proof",
         ],

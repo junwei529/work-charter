@@ -11,9 +11,10 @@ standalone lifecycle, and [Verification](VERIFICATION.md) for evidence and
 limits.
 
 The package originated at source commit
-`80910a8b2375a11be897e9660c4b00a06d00dd13`. The current `v0.4.1` SOURCE
-candidate changes package permission routing plus Windows DACL restoration and
-updates their bounded evaluation/documentation surfaces under explicit
-repository-native provenance. Independent review and Planner acceptance are
-pending; historical v0.4.0 and v0.3.0 evidence is preserved without being
-relabeled as evidence for this candidate.
+`80910a8b2375a11be897e9660c4b00a06d00dd13`. The current `v0.5.0` SOURCE
+candidate adds strict external role-model configuration and exact five/six-file
+lifecycle compatibility to the accepted v0.4.1 source, with bounded evaluation
+and documentation under explicit repository-native provenance. Independent
+review and Planner acceptance are pending; historical candidate, release, and
+installed-copy evidence is preserved without being relabeled as evidence for
+this candidate.

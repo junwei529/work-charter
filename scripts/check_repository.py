@@ -18,9 +18,9 @@ ROOT = Path(__file__).resolve().parents[1]
 PRODUCT = 'work-charter'
 BASELINE = '80910a8b2375a11be897e9660c4b00a06d00dd13'
 EXPECTED_SOURCE_TREE = '2ec2574116a9b2c4e8ec9a1bb4cb2636cb6279af'
-EXPECTED_SOURCE_MAPPING_SHA256 = '1e8d705c82f207df70f7c1e75db67c6d92d47adb6c8717fc2d88cd39c02db4c2'
-EXPECTED_PACKAGE_COUNT = 5
-EXPECTED_CASES = set(['cold-resume.md', 'small-task-stays-flat.md', 'work-charter-entry.md', 'work-charter-midstream.md', 'work-charter-planner-executor.md', 'work-charter-recovery-integrity.md', 'work-charter-selection.md', 'work-charter-standard.md'])
+EXPECTED_SOURCE_MAPPING_SHA256 = 'b405283b210d6f129055195de6a6deeb455b890ec7c4cb5ae0087cb092bb2cb4'
+EXPECTED_PACKAGE_COUNT = 6
+EXPECTED_CASES = set(['cold-resume.md', 'small-task-stays-flat.md', 'work-charter-entry.md', 'work-charter-midstream.md', 'work-charter-planner-executor.md', 'work-charter-recovery-integrity.md', 'work-charter-role-model-configuration.md', 'work-charter-selection.md', 'work-charter-standard.md'])
 EXPECTED_FIXTURES = set(['cold-resume', 'small-task-stays-flat', 'work-charter-entry', 'work-charter-loop', 'work-charter-recovery-integrity', 'work-charter-standard'])
 EXCLUDED_PARTS = {
     ".git",

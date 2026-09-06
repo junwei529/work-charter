@@ -14,6 +14,7 @@ importing another Skill or the former monorepo evaluation envelope.
 - [`work-charter-midstream.md`](cases/work-charter-midstream.md)
 - [`work-charter-planner-executor.md`](cases/work-charter-planner-executor.md)
 - [`work-charter-recovery-integrity.md`](cases/work-charter-recovery-integrity.md)
+- [`work-charter-role-model-configuration.md`](cases/work-charter-role-model-configuration.md)
 - [`work-charter-selection.md`](cases/work-charter-selection.md)
 - [`work-charter-standard.md`](cases/work-charter-standard.md)
 
@@ -33,8 +34,9 @@ Run `python -B scripts/check_source_contract.py --json` for candidate SOURCE
 clause coverage. The latter validates the package source against the material
 selection/activation, authority, recovery, independent-review/acceptance,
 same-Reviewer re-review, callback deduplication, graph limits, context-switch,
-and Standard O/P/E/R boundaries in this evaluation surface; it does not
-execute a model or claim adherence.
+role-model resolution, and Standard O/P/E/R boundaries in this evaluation
+surface; it also binds the exact package default. It does not execute a model,
+create a role, read a live user configuration, or claim adherence.
 Case execution that invokes a model, installs a Skill, or uses an external
 provider remains a separately authorized evidence action.
 

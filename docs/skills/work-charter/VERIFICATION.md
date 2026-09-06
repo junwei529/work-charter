@@ -4,16 +4,17 @@
 
 - Source commit: `80910a8b2375a11be897e9660c4b00a06d00dd13`
 - Package path: `skills/work-charter/`
-- Package files: 5
+- Package files: 6
 - Provenance manifest: [`../../../provenance/source-map.json`](../../../provenance/source-map.json)
-- Current candidate: [`../../../release/v0.4.1-candidate.json`](../../../release/v0.4.1-candidate.json)
+- Current candidate: [`../../../release/v0.5.0-candidate.json`](../../../release/v0.5.0-candidate.json)
 - Candidate descriptor state: `PENDING_INDEPENDENT_REVIEW`
-- Candidate lineage commit: `df674c773de6f915627af541f0eb37221da9adef`
+- Candidate lineage commit: `59b4d91f46c2ac797c71c900e62dda87cf0cca60`
 - Historical v0.4.0 local-release receipt:
   [`../../../release/v0.4.0-local-release-receipt.json`](../../../release/v0.4.0-local-release-receipt.json)
-- v0.4.1 source-candidate acceptance: `PENDING`
-- v0.4.0 local-release state:
-  `BLOCKED_BY_INSTALLED_COPY_ACCESS_REGRESSION`
+- v0.5.0 source-candidate acceptance: `PENDING`
+- v0.4.1 C4 source correction: independently accepted
+- v0.4.0 installed copy: managed and default-readable after a separately
+  accepted exact ACL-only repair; still version v0.4.0
 
 ## Repository check
 
@@ -110,24 +111,28 @@ Run the deterministic SOURCE contract check:
 python -B scripts/check_source_contract.py --json
 ```
 
-It verifies the exact 5-file package shape, the `v0.4.1` candidate binding, the
+It verifies the exact 6-file package shape, the `v0.5.0` candidate binding, the
 separate immutable v0.4.0 local-release receipt, and the instruction clauses needed for
 direct and indirect selection/activation,
 authority non-expansion, context recovery, independent review/acceptance
 separation, same-Reviewer repair re-review, callback deduplication,
 evidence-first `UNKNOWN` handling, graph limitations, Standard O/P/E/R, and
 direct operation-local permission ownership without higher-contract transfer.
+It also checks the exact four-role default YAML and strict source priority,
+whole-role replacement, validation, authority separation, lifecycle isolation,
+native Codex model/thinking mapping, and existing-role stability clauses.
 It also verifies the immutable v0.4.0 candidate/receipt and v0.3.0 release
 objects against fixed historical package and release-note identities rather
 than comparing them with current bytes. The v0.4.0 receipt qualification binds
 its five recorded review results, source/tool acceptance, exact written
-content, elevated postflight, open default-reader and policy-preservation
-findings, and the R5 readback finding. Later R6 acceptance, the failed
-control-state repair preflight, and the v0.4.1 candidate remain separate facts.
-The checker does not re-read the live installed copy or accept the new
-correction. It is static source evidence, not a
-fresh model run, review, acceptance, publication proof, or stable loaded-copy
-proof.
+content, elevated postflight, receipt-time open default-reader and policy-
+preservation findings, and the R5 readback finding. Later R6 acceptance, the
+failed control-state repair preflight, accepted C4 source, the exact ACL-only
+repair, and the v0.5.0 candidate remain separate facts. The checker does not
+read a live user configuration, create a role, re-read the live installed copy,
+or accept the new candidate. It is static source evidence, not a fresh model
+run, runtime-delivery proof, review, acceptance, publication proof, or stable
+loaded-copy proof.
 
 Run the install lifecycle self-test:
 
@@ -153,9 +158,20 @@ restoration when a later stage move fails. On Windows they additionally verify
 that each random per-operation transaction directory is protected before
 staging, a new install inherits the destination-parent DACL, and a parent-wide
 reader policy does not replace a narrower protected managed-target policy.
-Raw `/save` snapshots of the root, package directories, all five files, and the
-receipt must match after normal update, rollback, injected post-handoff failure
-recovery, and partial-uninstall recovery. AI-bearing records use a one-record
+It recognizes only the exact historical five-file and current six-file package
+sets, exercises six-to-five update and five-to-six rollback, refuses candidate-
+declared extra or missing files and unsafe receipt keys, and proves a disposable
+external user configuration stays byte-identical through lifecycle operations.
+It reads the immutable v0.3.0 descriptor's real digest-omitting package shape,
+then exercises the same legacy shape through disposable dry-run, install,
+status, and uninstall. The current six-file shape still requires its digest;
+explicitly invalid and mismatched digest variants are refused.
+For changed Windows path sets, common DACL records must match exactly, removed
+paths disappear, new paths must be auto-inherited and unprotected, and both the
+projected target snapshot and original recovery snapshot must pass exact
+readback. Same-shape raw `/save` snapshots of the root, package directories,
+package files, and receipt must match after injected post-handoff failure
+recovery and partial-uninstall recovery. AI-bearing records use a one-record
 `/restore`; deliberately no-AI records exercise `SetFileSecurityW`. Both paths
 must round-trip exact control flags and ACE content. Injected snapshot and restore-preflight
 failures must each produce zero move calls. A second focused path simulates a
@@ -244,10 +260,12 @@ ACL-only repair captured and protected a rollback snapshot, then stopped before
 target mutation because its private replica readback differed only in automatic-
 inheritance control state: root `D:P` became `D:PAI` and the other records'
 `D:` became `D:AI`. Exact path membership and ACE order/content were unchanged.
-That counterevidence does not erase R6, but it invalidates whole-tree
-`icacls /restore` as the accepted mechanism for a new repair attempt. The
-actual target, parent ACL, content, receipt, and retained rollback evidence were
-left unchanged.
+That counterevidence does not erase R6, but it invalidated whole-tree
+`icacls /restore` as the accepted mechanism. The later v0.4.1 C4 source used a
+control-aware path-by-path restore plus exact readback and was independently
+accepted at `59b4d91f46c2ac797c71c900e62dda87cf0cca60`. A separately authorized
+ACL-only repair then restored default-reader access to the exact managed v0.4.0
+copy and was accepted for that bounded effect. It did not install v0.4.1.
 
 A same-host disposable Windows probe exercised the superseded R4 correction without
 touching the actual installed copy. Its outer transaction parent deliberately
@@ -291,15 +309,13 @@ close P01, satisfy the later R5 readback finding, or repair the actual
 installation. The R5 finding does not invalidate these observed exact matches;
 it requires the production lifecycle to perform that check on every restore.
 
-The repair of the exact failed v0.4.0 installed copy remains ACL-only. Its first
-authorized attempt stopped at the control-state preflight and made no target
-mutation. A new attempt requires reviewed and accepted v0.4.1 source, any
-separately required local commit, and separate execution authority. It must
-again verify trusted v0.4.0 content/receipt, current and parent DACLs, and a
-protected rollback snapshot before resetting only that exact target to parent
-inheritance. Any failure restores and verifies the snapshot. Default-identity
-status, all five file and receipt reads, hashes, and ACL inspection remain the
-required postflight.
+The repair of the exact failed v0.4.0 installed copy remained ACL-only. Its
+first attempt stopped at the control-state preflight and made no target
+mutation. The later bounded attempt reverified trusted v0.4.0 content/receipt,
+current and parent DACLs, and a protected rollback snapshot, then reset only
+that exact target to parent inheritance. Default-identity status, all five file
+and receipt reads, hashes, and ACL inspection passed. This is historical repair
+evidence, not standing authority for another repair, update, or installation.
 
 ## Evidence limits
 
@@ -307,15 +323,15 @@ The retained cases are deterministic contract fixtures; they do not create
 fresh model, efficacy, release, or installed-copy evidence. SOURCE qualification
 proves clause coverage only. For v0.4.0, the accepted source candidate, six
 completed independent-review results including later R6, and Planner source/tool
-acceptance remain distinct completed evidence. The update attempt has exact
-content and elevated postflight evidence but failed default-reader access, so
-managed installation and `LOCAL_RELEASE_READY` remain blocked. The control-
-state counterevidence and v0.4.1 disposable proof require fresh v0.4.1 review
-and Planner acceptance; they do not prove an actual installed-copy repair or
-post-repair result. The receipt does not prove
-publication, stable installed-copy behavior, natural adherence, other
-cross-version lifecycle effects, cross-Harness behavior, or broad product
-efficacy.
+acceptance remain distinct completed evidence. The original update attempt has
+exact content/elevated postflight evidence and a default-reader failure; the
+later accepted C4 correction and exact ACL-only repair are separately bound
+evidence that closes only that access finding while leaving the package at
+v0.4.0. The current v0.5.0 deterministic checks and evaluation case do not
+prove actual configuration use, role creation, runtime identity, or cross-
+provider execution. The receipt does not prove publication, stable v0.5.0
+installed-copy behavior, natural adherence, other cross-version lifecycle
+effects, cross-Harness behavior, or broad product efficacy.
 
 ## Future-version lifecycle boundary
 

@@ -93,6 +93,41 @@ the approved scope, preserve `UNKNOWN`, explain material capability effects,
 and do not silently auto-adapt. A level adds protection and cost, not action
 authority.
 
+## Resolve Role Models At The Delivery Boundary
+
+Role-model configuration guides an already-authorized dispatcher; it never
+authorizes creating a role, changing a responsibility, or widening any read,
+write, Git, installation, network, provider, credential, or external-effect
+boundary. The package's sole default data owner is
+[the default role-model configuration](assets/role-models.default.yaml).
+`agents/openai.yaml` remains Harness UI metadata and is not a role-model
+selector.
+
+Before delivering a new Orchestrator, Planner, Executor, or Reviewer, the
+authorized dispatcher follows the strict resolution and validation contract in
+[Coordination And Recovery](references/coordination-and-recovery.md). A model
+combination already frozen in the approved delivery contract wins. Otherwise,
+use the contract's explicit configuration path; if none is specified, use the
+user configuration at `~/.config/work-charter/role-models.yaml` when it exists,
+and otherwise use the package default. A declared explicit path that is
+missing or unreadable is an error, not a reason to fall back.
+
+Resolve and display the role, provider, model, parameters, and selected source
+before dispatch. Validate that the chosen native creation route supports the
+provider, model, and every parameter, and stop on unsupported or ambiguous
+input rather than silently changing provider, model, parameter, account,
+credential, or transport. On a supported Codex OpenAI route, pass `model` to
+the native `model` field and `parameters.reasoning_effort` to `thinking`.
+Keep requested values and runtime-observed identity as separate evidence when
+the runtime does not expose both.
+
+Configuration changes affect only later, newly resolved deliveries. They do
+not silently alter an existing role, a frozen delivery, or a recovery that
+continues the same approved combination. This is an instruction-time read, not
+a watcher, background service, general model gateway, or instruction to create
+a user file. Installation lifecycle operations do not own or mutate the
+external user configuration.
+
 ## Establish One Authoritative Carrier
 
 Make these logical responsibilities discoverable without requiring fixed

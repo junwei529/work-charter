@@ -17,6 +17,15 @@ revision cannot be reconciled, or separate role delivery is unavailable or
 uncertain, propose the smallest transition and stop. Do not represent a
 one-agent fallback as Standard.
 
+Before each newly authorized Standard role delivery, the dispatcher applies
+the strict source priority, whole-role replacement, schema validation, native
+capability check, and visible resolved-value requirements in
+[Role-Model Configuration At Dispatch](coordination-and-recovery.md#role-model-configuration-at-dispatch).
+The package [default configuration](../assets/role-models.default.yaml) is the
+sole default data owner. A frozen approved delivery combination remains in
+force, and configuration never supplies delivery or action authority. Existing
+roles do not change when a configuration file changes.
+
 ## Responsibilities
 
 | Role | Owns | Does not do |

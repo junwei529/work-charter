@@ -8,13 +8,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "skills" / "work-charter"
-CURRENT_CANDIDATE = ROOT / "release" / "v0.4.1-candidate.json"
+CURRENT_CANDIDATE = ROOT / "release" / "v0.5.0-candidate.json"
+V041_CANDIDATE = ROOT / "release" / "v0.4.1-candidate.json"
 V040_CANDIDATE = ROOT / "release" / "v0.4.0-candidate.json"
 V040_RECEIPT = ROOT / "release" / "v0.4.0-local-release-receipt.json"
 HISTORICAL_CANDIDATE = ROOT / "release" / "v0.3.0-candidate.json"
 RECEIPT = ROOT / "release" / "v0.3.0-local-release-receipt.json"
 PUBLIC_RELEASE_CANDIDATE = ROOT / "release" / "v0.3.0-public-release-candidate.json"
 PUBLIC_RELEASE_EVIDENCE = ROOT / "release" / "v0.3.0-public-release-evidence.json"
+ROLE_MODEL_CASE = ROOT / "evals" / "cases" / "work-charter-role-model-configuration.md"
 V030_PACKAGE_TREE = "0ac3cbb0f1fa8fa51d8f832c8127eabc9863ec9e"
 V030_PACKAGE_SHA256 = "d445a3cd99c6d8f2ea2d9eee3be7c24781732617fedf08d4e9fd1b3d43ff88d1"
 V030_RELEASE_NOTES_SHA256 = "e37631f77e9dd9a450e618c56967017e49a7c05618baa0b7a2cb838ccd01f12b"
@@ -39,10 +41,34 @@ V030_PACKAGE_FILE_SHA256 = {
 EXPECTED_FILES = {
     "SKILL.md",
     "agents/openai.yaml",
+    "assets/role-models.default.yaml",
     "assets/work-charter.md",
     "references/coordination-and-recovery.md",
     "references/standard-ope.md",
 }
+EXPECTED_DEFAULT_ROLE_MODELS = """schema_version: 1
+roles:
+  orchestrator:
+    provider: openai
+    model: gpt-6-astra
+    parameters:
+      reasoning_effort: xhigh
+  planner:
+    provider: openai
+    model: gpt-6-astra
+    parameters:
+      reasoning_effort: xhigh
+  executor:
+    provider: openai
+    model: gpt-5.6-sol
+    parameters:
+      reasoning_effort: high
+  reviewer:
+    provider: openai
+    model: gpt-6-astra
+    parameters:
+      reasoning_effort: high
+"""
 
 
 def package_digest(files):
@@ -144,9 +170,79 @@ def main():
     skill = texts.get("SKILL.md", "")
     recovery = texts.get("references/coordination-and-recovery.md", "")
     standard = texts.get("references/standard-ope.md", "")
+    role_models = texts.get("assets/role-models.default.yaml", "")
+    role_model_case_error = None
+    try:
+        role_model_case = ROLE_MODEL_CASE.read_text(encoding="utf-8")
+    except (OSError, UnicodeDecodeError) as error:
+        role_model_case = ""
+        role_model_case_error = str(error)
 
     checks = {
-        "package.exact_five_file_shape": actual_files == EXPECTED_FILES,
+        "package.exact_six_file_shape": actual_files == EXPECTED_FILES,
+        "role_models.default_exact": role_models == EXPECTED_DEFAULT_ROLE_MODELS,
+        "role_models.selection_and_replacement": (
+            contains_all(
+                skill,
+                [
+                    "A model combination already frozen in the approved delivery contract wins.",
+                    "A declared explicit path that is missing or unreadable is an error",
+                    "use the user configuration at `~/.config/work-charter/role-models.yaml` when it exists",
+                    "otherwise use the package default",
+                ],
+            )
+            and contains_all(
+                recovery,
+                [
+                    "Each supplied role replaces that complete default role object",
+                    "it must repeat `provider` and `model`",
+                    "omitted `parameters` means that role receives no extra parameters",
+                    "Roles absent from the user file retain their package-default objects.",
+                ],
+            )
+        ),
+        "role_models.validation_and_native_mapping": contains_all(
+            recovery,
+            [
+                "top-level mapping has exactly integer `schema_version: 1` and `roles`",
+                "Reject duplicate or unknown fields and roles",
+                "tags, anchors, aliases, merge keys",
+                "map `model` to the native `model` field",
+                "`parameters.reasoning_effort` to `thinking`",
+                "Stop rather than substitute a different route or value.",
+            ],
+        ),
+        "role_models.authority_lifecycle_and_existing_roles": (
+            contains_all(
+                skill,
+                [
+                    "Role-model configuration guides an already-authorized dispatcher",
+                    "Configuration changes affect only later, newly resolved deliveries.",
+                    "Installation lifecycle operations do not own or mutate the external user configuration.",
+                ],
+            )
+            and contains_all(
+                standard,
+                [
+                    "strict source priority, whole-role replacement, schema validation",
+                    "configuration never supplies delivery or action authority",
+                    "Existing roles do not change when a configuration file changes.",
+                ],
+            )
+        ),
+        "role_models.evaluation_boundary": contains_all(
+            role_model_case,
+            [
+                "Package default",
+                "One-role replacement",
+                "Provider/model replacement without parameters",
+                "Frozen delivery and later edits",
+                "Explicit missing path",
+                "Invalid or unsupported data",
+                "The user file stays outside the install tree",
+                "not a watcher, service, generic parser/runtime dependency",
+            ],
+        ),
         "selection.direct_activation_requires_body": contains_all(
             skill,
             [
@@ -283,13 +379,14 @@ def main():
     except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
         current_candidate_error = str(error)
     current_package_sha256 = package_digest(actual_files) if actual_files == EXPECTED_FILES else None
-    checks["candidate.v041_identity"] = (
+    checks["candidate.v050_identity"] = (
         current_candidate.get("schema") == "work-charter-local-release-candidate/v1"
         and current_candidate.get("product") == "work-charter"
-        and current_candidate.get("version") == "0.4.1"
+        and current_candidate.get("version") == "0.5.0"
         and current_candidate.get("public_identity") == "junwei529/work-charter"
         and current_candidate.get("candidate_state") == "PENDING_INDEPENDENT_REVIEW"
-        and current_candidate.get("package", {}).get("file_count") == 5
+        and current_candidate.get("package", {}).get("file_count") == 6
+        and current_candidate.get("package", {}).get("files") == sorted(EXPECTED_FILES)
         and current_candidate.get("package", {}).get("path") == "skills/work-charter"
         and current_candidate.get("package", {}).get("tree") == actual_package_tree
         and current_candidate.get("package", {}).get("sha256") == current_package_sha256
@@ -303,12 +400,44 @@ def main():
         == "REQUIRES_FRESH_QUALIFICATION"
         and current_candidate.get("lineage")
         == {
+            "historical_package_tree": "a2281edf51b624271cd5675ca02a7f4d5ae4acbb",
+            "previous_candidate": "release/v0.4.1-candidate.json",
+            "previous_local_release_receipt": "release/v0.4.0-local-release-receipt.json",
+            "source_commit": "59b4d91f46c2ac797c71c900e62dda87cf0cca60",
+        }
+        and current_candidate.get("human_release_notes_review") == "PENDING"
+    )
+
+    v041_candidate_error = None
+    v041_candidate = {}
+    try:
+        v041_candidate = json.loads(V041_CANDIDATE.read_text(encoding="utf-8"))
+        if not isinstance(v041_candidate, dict) or not isinstance(
+            v041_candidate.get("package"), dict
+        ):
+            raise ValueError("v0.4.1 candidate descriptor must be an object with an object package")
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
+        v041_candidate_error = str(error)
+    checks["candidate.v041_historical_identity"] = (
+        v041_candidate.get("schema") == "work-charter-local-release-candidate/v1"
+        and v041_candidate.get("product") == "work-charter"
+        and v041_candidate.get("version") == "0.4.1"
+        and v041_candidate.get("public_identity") == "junwei529/work-charter"
+        and v041_candidate.get("candidate_state") == "PENDING_INDEPENDENT_REVIEW"
+        and v041_candidate.get("package")
+        == {
+            "file_count": 5,
+            "path": "skills/work-charter",
+            "sha256": "1fbffa78e7dfdc9509dc8a4b003da1c35b0b11151d09838ebe89d2be6e8bdaf1",
+            "tree": "a2281edf51b624271cd5675ca02a7f4d5ae4acbb",
+        }
+        and v041_candidate.get("lineage")
+        == {
             "historical_package_tree": V040_PACKAGE_TREE,
             "previous_candidate": "release/v0.4.0-candidate.json",
             "previous_local_release_receipt": "release/v0.4.0-local-release-receipt.json",
             "source_commit": "df674c773de6f915627af541f0eb37221da9adef",
         }
-        and current_candidate.get("human_release_notes_review") == "PENDING"
     )
 
     v040_candidate_error = None
@@ -795,8 +924,12 @@ def main():
     if package_scan_error:
         failures.append(f"package.scan: {package_scan_error}")
     failures.extend(package_read_failures)
+    if role_model_case_error:
+        failures.append(f"role_models.case_unreadable: {role_model_case_error}")
     if current_candidate_error:
-        failures.append(f"candidate.v041_unreadable: {current_candidate_error}")
+        failures.append(f"candidate.v050_unreadable: {current_candidate_error}")
+    if v041_candidate_error:
+        failures.append(f"candidate.v041_unreadable: {v041_candidate_error}")
     if v040_candidate_error:
         failures.append(f"candidate.v040_unreadable: {v040_candidate_error}")
     if historical_candidate_error:
@@ -817,6 +950,8 @@ def main():
         "result": "PASS" if not failures else "FAIL",
         "scope_limits": [
             "no model execution",
+            "no role creation or runtime identity proof",
+            "no live user-configuration read",
             "no live installed-copy recheck",
             "no publication proof",
             "no broad efficacy proof",

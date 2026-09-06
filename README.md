@@ -11,27 +11,60 @@ materialized from source commit `80910a8b2375a11be897e9660c4b00a06d00dd13`;
 files changed for the current repository-native version are identified in the
 source map rather than represented as unchanged migration blobs.
 
-The current source candidate is `v0.4.1`, described by
-[`release/v0.4.1-candidate.json`](release/v0.4.1-candidate.json). It retains the
-portable L0-L4 review, evidence, recovery, and callback semantics of v0.4.0,
-clarifies direct operation-local permission ownership, and corrects Windows
-DACL restoration without treating P, AI, AR, ACE order, or path membership as
-non-semantic. The descriptor is a pending pre-review snapshot; there is no
-v0.4.1 receipt or installed-copy claim.
+The current source candidate is `v0.5.0`, described by
+[`release/v0.5.0-candidate.json`](release/v0.5.0-candidate.json). It adds a
+strict external role-model configuration contract and a sixth package file,
+while retaining the accepted v0.4.1 operation-local permission and exact DACL
+restoration corrections. The descriptor is a pending pre-review snapshot;
+there is no v0.5.0 receipt, installation, runtime role-delivery claim, or public
+release claim.
 
 The immutable v0.4.0 receipt binds its accepted candidate, five review results,
 and the failed v0.3-to-v0.4 update at that checkpoint:
 [`release/v0.4.0-local-release-receipt.json`](release/v0.4.0-local-release-receipt.json).
 The later sixth result, R6, found no source issue and Planner accepted the prior
-correction, which was
-committed as `df674c773de6f915627af541f0eb37221da9adef`. A later authorized repair
-preflight against the actual v0.4.0 policy showed that `icacls /restore`
-changed only automatic-inheritance control state (`D:P` to `D:PAI` and `D:` to
-`D:AI`), so it stopped before target mutation. `WC-INSTALL-POSTFLIGHT-F01`
-therefore remains open, and v0.4.1 requires fresh review and Planner acceptance.
-Stable loaded-copy behavior, natural adherence, cross-Harness behavior, public
-release, and broad efficacy remain failed, `UNKNOWN`, or separately authorized
-as recorded.
+correction, which was committed as
+`df674c773de6f915627af541f0eb37221da9adef`. A first authorized repair preflight
+then stopped because `icacls /restore` changed automatic-inheritance control
+state. The v0.4.1 C4 correction replaced that path with exact control-aware
+restore and readback and was independently accepted at
+`59b4d91f46c2ac797c71c900e62dda87cf0cca60`. A later ACL-only repair restored
+default-reader access to the exact managed v0.4.0 copy and closed
+`WC-INSTALL-POSTFLIGHT-F01` for that repair. The installed package remains
+managed v0.4.0; v0.4.1 was not installed. Stable v0.5.0 loaded-copy behavior,
+role-delivery adherence, cross-provider execution, cross-Harness behavior,
+public release, and broad efficacy remain `UNKNOWN` or separately authorized.
+
+## Role-model configuration
+
+The package default is
+[`skills/work-charter/assets/role-models.default.yaml`](skills/work-charter/assets/role-models.default.yaml):
+
+| Role | Provider | Model | Reasoning effort |
+|---|---|---|---|
+| Orchestrator | OpenAI | `gpt-6-astra` | `xhigh` |
+| Planner | OpenAI | `gpt-6-astra` | `xhigh` |
+| Executor | OpenAI | `gpt-5.6-sol` | `high` |
+| Reviewer | OpenAI | `gpt-6-astra` | `high` |
+
+To customize later role deliveries, copy that file to
+`~/.config/work-charter/role-models.yaml` and edit it, or have an approved
+delivery contract name another exact file. No user file means the package
+default applies. A user file may contain only changed roles, but each supplied
+role replaces its whole default object and must repeat `provider` and `model`;
+omitting `parameters` means no parameters for that role. Other absent roles
+retain their package defaults. A missing or unreadable explicitly selected file
+is an error rather than a fallback.
+
+An already frozen delivery combination has priority over later file contents.
+Before a newly authorized role is created, its dispatcher shows the resolved
+role/provider/model/parameters and source and verifies support through the
+intended native route. Codex OpenAI delivery maps `model` to native `model` and
+`reasoning_effort` to `thinking`. Unsupported or ambiguous schema, fields,
+provider, model, or parameters stop delivery; configuration never supplies role
+authority, credentials, endpoints, or commands. Existing roles do not change
+when the file changes. Install, update, rollback, and uninstall never create,
+modify, or delete the external user file.
 
 ## Historical v0.3.0 evidence
 
@@ -85,11 +118,11 @@ python -B scripts/manage_install.py self-test --source .
 ```
 
 The SOURCE check proves that the current candidate instructions contain the
-required selection, activation, authority, recovery, independent-review, and
-Standard O/P/E/R boundaries while preserving fixed historical v0.3 identities
-and validating the exact v0.4 attempt receipt, open access finding, and pending
-source correction. It does not execute a model, re-read the live installed
-copy, accept that correction, prove publication, or establish broad efficacy.
+required selection, activation, authority, recovery, independent-review,
+role-model resolution, and Standard O/P/E/R boundaries while preserving fixed
+historical release identities. It does not execute a model, create a role,
+read a live user configuration, re-read the installed copy, perform an
+installation, prove publication, or establish broad efficacy.
 
 ## Future immutable-source lifecycle
 
@@ -142,26 +175,41 @@ existing recovery, and the original snapshot remains in the protected
 transaction when recovery is incomplete. Other platforms retain their prior
 platform-default permission behavior.
 
+Historical five-file receipts and candidate descriptors and the current six-
+file descriptor are recognized only as exact allow-listed package shapes. A
+legacy five-file candidate may omit the redundant package digest because its
+actual tree must still match an independent trusted tree; the current six-file
+shape requires the digest, and any supplied invalid or mismatched digest fails
+closed. For a Windows update or rollback whose path set changes, the tool first
+proves the original recovery
+snapshot on a private replica, transforms only that replica to the target path
+shape, resets only newly introduced paths to parent inheritance, verifies that
+every common descriptor is unchanged and every new path is auto-inherited and
+unprotected, and proves an exact readback of the projected snapshot. The
+original snapshot remains the recovery authority. Unknown or self-declared
+path sets, unsafe receipt keys, missing or extra paths, and tree mismatches fail
+closed.
+
 The install example is deliberately bound to an immutable v0.3.0 checkout,
 whose package tree is already in the bundled trust map. Do not substitute this
 working checkout into that historical command. The v0.4.0 package was reviewed,
 accepted, externally trust-bound, and written through
 the explicit route recorded in its local-release receipt, but the promoted
 directory retained the transaction ACL and failed default-reader access. The
-committed v0.4.0 correction still failed its later actual-policy preflight
-because `/restore` changed AI. The v0.4.1 candidate replaces that restore path
-and also tightens permission-question routing; it requires fresh independent
-review and Planner acceptance before any new repair attempt. Neither v0.4
-package tree is added to the tool's historical built-in map, so later status or
-mutation must continue to receive the independently retained trust identity.
+committed v0.4.0 correction still failed its first later actual-policy
+preflight because `/restore` changed AI. The accepted v0.4.1 C4 source replaces
+that restore path and also tightens permission-question routing. Its later
+ACL-only application restored the exact v0.4.0 installed copy's default-reader
+access; it did not install the v0.4.1 package. Neither v0.4 package tree is
+added to the tool's historical built-in map, so later status or mutation must
+continue to receive the independently retained trust identity.
 
-The repair for that exact failed v0.4.0 copy remains ACL-only, not a generic
+The repair for that exact failed v0.4.0 copy remained ACL-only, not a generic
 update that discards arbitrary policy. Its first authorized attempt stopped
-before target mutation at the control-state preflight described above. A new
-attempt requires reviewed and accepted v0.4.1 source plus separate execution
-authority, then re-verifies the trusted v0.4.0 content/receipt, current and
-parent DACLs, and rollback snapshot. Default-identity status, direct reads,
-hashes, and ACL inspection remain required postflight.
+before target mutation; the later bounded attempt used accepted C4 source,
+reverified trusted content/receipt and rollback inputs, changed only the target
+DACL, and passed default-identity status, direct-read, hash, and ACL postflight.
+That result does not authorize another repair, package update, or installation.
 
 The tool refuses destinations that are unreceipted, have a malformed or
 mismatched receipt, use the wrong package tree, are locally modified or aliased,
@@ -170,11 +218,10 @@ record, not cryptographic ownership proof: a same-privilege local actor capable
 of forging the complete receipt is outside this mechanism's protection.
 For v0.3.0, the separately authorized persistent same-version lifecycle,
 publication, tag, GitHub Release, and stable installed-copy evidence are
-verified as recorded above. For v0.4.0, only the written bytes and elevated
-receipt/file postflight from the v0.3-to-v0.4 attempt are verified; default
-reader access failed, so the overall transition is not accepted. Other
-cross-version transitions and stable loaded behavior still require separate
-evidence.
+verified as recorded above. For v0.4.0, the original promotion failure and the
+later exact ACL-only access repair remain separate evidence; the repaired copy
+is managed and default-readable, but it is still v0.4.0. Other cross-version
+transitions and stable loaded behavior still require separate evidence.
 
 ### Future update and rollback trust
 

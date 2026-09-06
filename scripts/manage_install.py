@@ -8,27 +8,24 @@ import stat
 import subprocess
 import tempfile
 import uuid
-from pathlib import Path, PureWindowsPath
+from pathlib import Path, PurePosixPath, PureWindowsPath
 
 
 RECEIPT_NAME = ".work-charter-install.json"
 RECEIPT_SCHEMA = "work-charter-install-receipt/v1"
-EXPECTED_FILES = {
+LEGACY_PACKAGE_FILES = frozenset({
     "SKILL.md",
     "agents/openai.yaml",
     "assets/work-charter.md",
     "references/coordination-and-recovery.md",
     "references/standard-ope.md",
-}
-EXPECTED_DIRECTORIES = {
-    Path(relative).parent.as_posix()
-    for relative in EXPECTED_FILES
-    if Path(relative).parent.as_posix() != "."
-}
+})
+EXPECTED_FILES = LEGACY_PACKAGE_FILES | {"assets/role-models.default.yaml"}
+ALLOWED_PACKAGE_FILE_SETS = frozenset({LEGACY_PACKAGE_FILES, EXPECTED_FILES})
 TRUSTED_PACKAGE_TREES = {
     "0.3.0": "0ac3cbb0f1fa8fa51d8f832c8127eabc9863ec9e",
 }
-SELF_TEST_SOURCE_VERSION = "0.4.1"
+SELF_TEST_SOURCE_VERSION = "0.5.0"
 
 
 class LifecycleError(RuntimeError):
@@ -317,6 +314,66 @@ def remove_permission_snapshot(snapshot):
     return True
 
 
+def package_directories(files):
+    return {
+        Path(relative).parent.as_posix()
+        for relative in files
+        if Path(relative).parent.as_posix() != "."
+    }
+
+
+def validate_package_file_set(values, label):
+    if not isinstance(values, (list, tuple, set, frozenset)):
+        raise LifecycleError(f"{label} must be a path list")
+    if any(not isinstance(value, str) for value in values):
+        raise LifecycleError(f"{label} contains a non-string path")
+    if len(values) != len(set(values)):
+        raise LifecycleError(f"{label} contains duplicate paths")
+    files = frozenset(values)
+    for value in files:
+        relative = PurePosixPath(value)
+        if (
+            not value
+            or "\\" in value
+            or ":" in value
+            or relative.is_absolute()
+            or relative.as_posix() != value
+            or any(part in {"", ".", ".."} for part in relative.parts)
+        ):
+            raise LifecycleError(f"{label} contains an unsafe path")
+    if files not in ALLOWED_PACKAGE_FILE_SETS:
+        raise LifecycleError(f"{label} is not an allowed package path set")
+    return files
+
+
+def candidate_file_set(metadata):
+    package = metadata.get("package", {})
+    if package.get("path") != "skills/work-charter":
+        raise LifecycleError("candidate package path mismatch")
+    declared = package.get("files")
+    if declared is None:
+        files = LEGACY_PACKAGE_FILES
+    else:
+        files = validate_package_file_set(declared, "candidate package files")
+    if package.get("file_count") != len(files):
+        raise LifecycleError("candidate package file count mismatch")
+    return files
+
+
+def receipt_file_set(files):
+    if not isinstance(files, dict):
+        raise LifecycleError("receipt files must be an object")
+    result = validate_package_file_set(list(files), "receipt file set")
+    if any(
+        not isinstance(digest, str)
+        or len(digest) != 64
+        or any(character not in "0123456789abcdef" for character in digest)
+        for digest in files.values()
+    ):
+        raise LifecycleError("receipt contains an invalid file digest")
+    return result
+
+
 def candidate_metadata(source, expected_version):
     source = resolved(source)
     path = source / "release" / f"v{expected_version}-candidate.json"
@@ -336,6 +393,7 @@ def candidate_metadata(source, expected_version):
         or any(character not in "0123456789abcdef" for character in value["package"]["tree"])
     ):
         raise LifecycleError("candidate descriptor identity mismatch")
+    candidate_file_set(value)
     return value
 
 
@@ -365,7 +423,13 @@ def git_tree_hash(directory, excluded_names=frozenset()):
     return git_object_hash("tree", b"".join(entries))
 
 
-def package_files(source, expected_tree):
+def candidate_package_digest(files):
+    records = [[relative, files[relative]] for relative in sorted(files)]
+    encoded = json.dumps(records, ensure_ascii=True, separators=(",", ":")).encode("ascii")
+    return hashlib.sha256(encoded).hexdigest()
+
+
+def package_files(source, metadata, expected_tree):
     package = resolved(source) / "skills" / "work-charter"
     if not package.is_dir() or is_link_like(package):
         raise LifecycleError("package root is missing or link-like")
@@ -376,12 +440,27 @@ def package_files(source, expected_tree):
     }
     if any(is_link_like(path) for path in package.rglob("*")):
         raise LifecycleError("package contains a symbolic link, junction, or reparse point")
-    if actual != EXPECTED_FILES:
+    expected_files = candidate_file_set(metadata)
+    if actual != expected_files:
         raise LifecycleError(f"package path set mismatch: {sorted(actual)}")
     tree = git_tree_hash(package)
     if tree != expected_tree:
         raise LifecycleError(f"package tree mismatch: expected {expected_tree}, got {tree}")
-    return package, {relative: sha256(package / relative) for relative in sorted(actual)}, tree
+    files = {relative: sha256(package / relative) for relative in sorted(actual)}
+    package_record = metadata.get("package", {})
+    actual_digest = candidate_package_digest(files)
+    if "sha256" not in package_record:
+        if expected_files != LEGACY_PACKAGE_FILES:
+            raise LifecycleError("candidate package digest is required for the current package shape")
+    elif (
+        not isinstance(package_record.get("sha256"), str)
+        or len(package_record["sha256"]) != 64
+        or any(character not in "0123456789abcdef" for character in package_record["sha256"])
+    ):
+        raise LifecycleError("candidate package digest is invalid")
+    elif package_record["sha256"] != actual_digest:
+        raise LifecycleError("candidate package digest mismatch")
+    return package, files, tree
 
 
 def package_digest(files):
@@ -422,8 +501,10 @@ def current_state(destination, trusted_tree=None):
     if receipt is None:
         return {"state": "FOREIGN_COPY", "reason": "management receipt is absent"}
     expected = receipt.get("files")
-    if not isinstance(expected, dict) or set(expected) != EXPECTED_FILES:
-        return {"state": "DRIFTED", "reason": "receipt file set mismatch"}
+    try:
+        expected_files = receipt_file_set(expected)
+    except LifecycleError as error:
+        return {"state": "DRIFTED", "reason": str(error)}
     version = receipt.get("version")
     if not isinstance(version, str):
         return {"state": "DRIFTED", "reason": "receipt version is invalid"}
@@ -441,14 +522,14 @@ def current_state(destination, trusted_tree=None):
         for path in entries
         if path.is_file() and path.relative_to(destination).as_posix() != RECEIPT_NAME
     }
-    if actual != EXPECTED_FILES:
+    if actual != expected_files:
         return {"state": "DRIFTED", "reason": "managed file set mismatch"}
     actual_directories = {
         path.relative_to(destination).as_posix()
         for path in entries
         if path.is_dir()
     }
-    if actual_directories != EXPECTED_DIRECTORIES:
+    if actual_directories != package_directories(expected_files):
         return {"state": "DRIFTED", "reason": "managed directory set mismatch"}
     actual_hashes = {}
     for relative, expected_hash in expected.items():
@@ -757,6 +838,159 @@ def preflight_permission_restore(
     return "VERIFIED_BEFORE_MUTATION"
 
 
+def package_path_shape(root):
+    root = Path(root)
+    entries = {}
+    for path in root.rglob("*"):
+        if is_link_like(path):
+            raise LifecycleError("permission projection contains a link-like path")
+        relative = path.relative_to(root).as_posix()
+        if path.is_dir():
+            entries[relative] = "directory"
+        elif path.is_file():
+            entries[relative] = "file"
+        else:
+            raise LifecycleError("permission projection contains an unsupported path")
+    return entries
+
+
+def reset_windows_path_inheritance(path):
+    run_windows_acl(path, ["/reset", "/Q"], "new-path inheritance projection")
+
+
+def windows_snapshot_key(root_name, relative=None):
+    parts = [root_name]
+    if relative:
+        parts.extend(PurePosixPath(relative).parts)
+    return "\\".join(part.casefold() for part in parts)
+
+
+def assert_projected_permission_snapshot(
+    original_snapshot,
+    projected_snapshot,
+    root_name,
+    desired_shape,
+    added_paths,
+):
+    original = windows_dacl_snapshot_records(original_snapshot)
+    projected = windows_dacl_snapshot_records(projected_snapshot)
+    expected_keys = {windows_snapshot_key(root_name)} | {
+        windows_snapshot_key(root_name, relative) for relative in desired_shape
+    }
+    if projected.keys() != expected_keys:
+        raise LifecycleError("Windows projected DACL path set mismatch")
+    for key in original.keys() & projected.keys():
+        if original[key] != projected[key]:
+            raise LifecycleError(
+                f"Windows permission projection changed an existing descriptor at {key}"
+            )
+    for relative in added_paths:
+        descriptor = projected[windows_snapshot_key(root_name, relative)]
+        flags = windows_dacl_control_flags(descriptor)
+        if "P" in flags or "AI" not in flags:
+            raise LifecycleError(
+                f"Windows permission projection did not produce inherited ACLs at {relative}"
+            )
+
+
+def project_permission_snapshot(
+    path,
+    stage,
+    transaction,
+    original_snapshot,
+    original_digest,
+):
+    if os.name != "nt":
+        return None, None
+    probe_parent = Path(transaction) / "pp"
+    probe = probe_parent / Path(path).name
+    projected_snapshot = Path(transaction) / "projected-dacl.acl"
+    if probe_parent.exists() or projected_snapshot.exists():
+        raise LifecycleError("Windows DACL projection path is unavailable")
+    try:
+        probe_parent.mkdir()
+        shutil.copytree(path, probe, copy_function=shutil.copyfile)
+        restored = restore_permission_snapshot(
+            probe,
+            original_snapshot,
+            original_digest,
+        )
+        if restored != "PRESERVED_FROM_SNAPSHOT":
+            raise LifecycleError("Windows DACL projection restore returned an invalid result")
+
+        current_shape = package_path_shape(probe)
+        desired_shape = package_path_shape(stage)
+        for relative in current_shape.keys() & desired_shape.keys():
+            if current_shape[relative] != desired_shape[relative]:
+                raise LifecycleError("package path type changed across permission projection")
+
+        removed_paths = current_shape.keys() - desired_shape.keys()
+        for relative in sorted(
+            removed_paths,
+            key=lambda value: (len(PurePosixPath(value).parts), value),
+            reverse=True,
+        ):
+            target = probe.joinpath(*PurePosixPath(relative).parts)
+            if current_shape[relative] == "directory":
+                target.rmdir()
+            else:
+                target.unlink()
+
+        added_paths = desired_shape.keys() - current_shape.keys()
+        added_directories = [
+            relative for relative in added_paths if desired_shape[relative] == "directory"
+        ]
+        for relative in sorted(
+            added_directories,
+            key=lambda value: (len(PurePosixPath(value).parts), value),
+        ):
+            probe.joinpath(*PurePosixPath(relative).parts).mkdir()
+        added_files = [
+            relative for relative in added_paths if desired_shape[relative] == "file"
+        ]
+        for relative in sorted(added_files):
+            parts = PurePosixPath(relative).parts
+            shutil.copyfile(Path(stage).joinpath(*parts), probe.joinpath(*parts))
+        for relative in sorted(
+            added_paths,
+            key=lambda value: (len(PurePosixPath(value).parts), value),
+        ):
+            reset_windows_path_inheritance(probe.joinpath(*PurePosixPath(relative).parts))
+
+        projected_digest = capture_permission_snapshot(probe, projected_snapshot)
+        if not projected_digest:
+            raise LifecycleError("Windows projected DACL snapshot was not created")
+        assert_projected_permission_snapshot(
+            original_snapshot,
+            projected_snapshot,
+            Path(path).name,
+            desired_shape,
+            added_paths,
+        )
+        verified = restore_permission_snapshot(
+            probe,
+            projected_snapshot,
+            projected_digest,
+        )
+        if verified != "PRESERVED_FROM_SNAPSHOT":
+            raise LifecycleError("Windows projected DACL preflight returned an invalid result")
+    except Exception as error:
+        remove_permission_snapshot(projected_snapshot)
+        try:
+            shutil.rmtree(probe_parent)
+        except OSError:
+            pass
+        raise LifecycleError(
+            "Windows DACL path-set projection failed before destination mutation"
+        ) from error
+    try:
+        shutil.rmtree(probe_parent)
+    except OSError as error:
+        remove_permission_snapshot(projected_snapshot)
+        raise LifecycleError("Windows DACL projection cleanup failed") from error
+    return projected_snapshot, projected_digest
+
+
 def synchronize(
     action,
     source,
@@ -786,7 +1020,7 @@ def synchronize(
     trusted_target_tree = TRUSTED_PACKAGE_TREES.get(expected_version) or trusted_target_tree
     if trusted_target_tree is None or metadata["package"]["tree"] != trusted_target_tree:
         raise LifecycleError("source candidate is not bound to a trusted release tree")
-    package, files, tree = package_files(source, trusted_target_tree)
+    package, files, tree = package_files(source, metadata, trusted_target_tree)
     plan = {
         "action": action,
         "destination": str(destination),
@@ -852,6 +1086,9 @@ def synchronize(
     backup = transaction / "backup"
     permission_snapshot = transaction / "previous-dacl.acl"
     permission_snapshot_digest = None
+    target_permission_snapshot = permission_snapshot
+    target_permission_snapshot_digest = None
+    projected_permission_snapshot = transaction / "projected-dacl.acl"
     moved_old = False
     installed_new = False
     try:
@@ -873,6 +1110,21 @@ def synchronize(
                 "PLATFORM_DEFAULT",
             }:
                 raise LifecycleError("DACL restore preflight returned an invalid result")
+            target_permission_snapshot_digest = permission_snapshot_digest
+            if os.name == "nt":
+                receipt = read_receipt(destination)
+                current_files = receipt_file_set(receipt.get("files"))
+                if current_files != frozenset(files):
+                    (
+                        target_permission_snapshot,
+                        target_permission_snapshot_digest,
+                    ) = project_permission_snapshot(
+                        destination,
+                        stage,
+                        transaction,
+                        permission_snapshot,
+                        permission_snapshot_digest,
+                    )
             path_replacer(destination, backup)
             moved_old = True
             backup_permission_result = permission_reconciler(backup)
@@ -900,12 +1152,16 @@ def synchronize(
         else:
             permission_result = permission_restorer(
                 destination,
-                permission_snapshot,
-                permission_snapshot_digest,
+                target_permission_snapshot,
+                target_permission_snapshot_digest,
             )
             if permission_result != "PRESERVED_FROM_SNAPSHOT":
                 raise LifecycleError("destination DACL restore returned an invalid result")
-            plan["destination_permissions"] = "PRESERVED_FROM_PREVIOUS_DESTINATION"
+            plan["destination_permissions"] = (
+                "PROJECTED_FROM_PREVIOUS_DESTINATION"
+                if target_permission_snapshot != permission_snapshot
+                else "PRESERVED_FROM_PREVIOUS_DESTINATION"
+            )
         if current_state(destination, tree).get("state") != "MANAGED":
             raise LifecycleError("installed destination failed receipt verification")
     except Exception as operation_error:
@@ -954,6 +1210,7 @@ def synchronize(
                 f"{transaction}: {'; '.join(recovery_errors)}"
             ) from operation_error
         remove_permission_snapshot(permission_snapshot)
+        remove_permission_snapshot(projected_permission_snapshot)
         if not remove_completed_transaction(
             transaction,
             validated_transaction_root,
@@ -975,6 +1232,7 @@ def synchronize(
             plan["transaction_path"] = str(transaction)
             return plan
     remove_permission_snapshot(permission_snapshot)
+    remove_permission_snapshot(projected_permission_snapshot)
     if not remove_completed_transaction(
         transaction,
         validated_transaction_root,
@@ -1187,15 +1445,34 @@ def uninstall(
     return result
 
 
-def create_test_source(root, version, marker):
+def create_test_source(
+    root,
+    version,
+    marker,
+    files=LEGACY_PACKAGE_FILES,
+    declare_files=False,
+    include_package_sha256=True,
+):
     source = root / f"source-{version}"
     package = source / "skills" / "work-charter"
-    for relative in sorted(EXPECTED_FILES):
+    for relative in sorted(files):
         path = package / relative
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(f"{relative} {marker}\n", encoding="utf-8", newline="\n")
+    file_hashes = {
+        relative: sha256(package / relative) for relative in sorted(files)
+    }
+    package_record = {
+        "file_count": len(files),
+        "path": "skills/work-charter",
+        "tree": git_tree_hash(package),
+    }
+    if include_package_sha256:
+        package_record["sha256"] = candidate_package_digest(file_hashes)
+    if declare_files:
+        package_record["files"] = sorted(files)
     descriptor = {
-        "package": {"tree": git_tree_hash(package)},
+        "package": package_record,
         "product": "work-charter",
         "public_identity": "junwei529/work-charter",
         "schema": "work-charter-local-release-candidate/v1",
@@ -1217,6 +1494,7 @@ def self_test(source=None):
         metadata = candidate_metadata(source, SELF_TEST_SOURCE_VERSION)
         _package, _files, candidate_tree = package_files(
             source,
+            metadata,
             metadata["package"]["tree"],
         )
     with tempfile.TemporaryDirectory(prefix="work-charter-lifecycle-") as temporary:
@@ -1235,8 +1513,14 @@ def self_test(source=None):
             elif result["action"] == "install":
                 expected = "INHERITED_FROM_DESTINATION_PARENT"
             else:
-                expected = "PRESERVED_FROM_PREVIOUS_DESTINATION"
-            assert result["destination_permissions"] == expected
+                expected = {
+                    "PRESERVED_FROM_PREVIOUS_DESTINATION",
+                    "PROJECTED_FROM_PREVIOUS_DESTINATION",
+                }
+            if isinstance(expected, set):
+                assert result["destination_permissions"] in expected
+            else:
+                assert result["destination_permissions"] == expected
 
         def saved_dacl(path, name):
             if os.name != "nt":
@@ -1269,9 +1553,113 @@ def self_test(source=None):
         source_c = create_test_source(root, "0.4.3", "c")
         source_bad = create_test_source(root, "0.4.9", "bad")
         source_forged = create_test_source(root / "forged-source-root", "0.3.0", "forged")
+        historical_v030 = candidate_metadata(source_a, "0.3.0")
+        assert set(historical_v030["package"]) == {"file_count", "path", "tree"}
+        source_legacy_without_digest = create_test_source(
+            root / "legacy-without-digest-root",
+            "0.4.4",
+            "legacy-without-digest",
+            include_package_sha256=False,
+        )
+        legacy_without_digest_metadata = candidate_metadata(
+            source_legacy_without_digest,
+            "0.4.4",
+        )
+        assert set(legacy_without_digest_metadata["package"]) == set(
+            historical_v030["package"]
+        )
+        source_current_without_digest = create_test_source(
+            root / "current-without-digest-root",
+            "0.4.5",
+            "current-without-digest",
+            files=EXPECTED_FILES,
+            declare_files=True,
+            include_package_sha256=False,
+        )
+        current_without_digest_metadata = candidate_metadata(
+            source_current_without_digest,
+            "0.4.5",
+        )
+        try:
+            package_files(
+                source_current_without_digest,
+                current_without_digest_metadata,
+                current_without_digest_metadata["package"]["tree"],
+            )
+        except LifecycleError as error:
+            assert "digest is required" in str(error)
+        else:
+            raise AssertionError("current package shape without a digest was not refused")
+        source_invalid_digest = create_test_source(
+            root / "invalid-digest-root",
+            "0.4.6",
+            "invalid-digest",
+        )
+        invalid_digest_metadata = candidate_metadata(source_invalid_digest, "0.4.6")
+        invalid_digest_metadata["package"]["sha256"] = None
+        try:
+            package_files(
+                source_invalid_digest,
+                invalid_digest_metadata,
+                invalid_digest_metadata["package"]["tree"],
+            )
+        except LifecycleError as error:
+            assert "digest is invalid" in str(error)
+        else:
+            raise AssertionError("explicit invalid package digest was not refused")
+        source_wrong_digest = create_test_source(
+            root / "wrong-digest-root",
+            "0.4.7",
+            "wrong-digest",
+        )
+        wrong_digest_metadata = candidate_metadata(source_wrong_digest, "0.4.7")
+        wrong_digest_metadata["package"]["sha256"] = "0" * 64
+        try:
+            package_files(
+                source_wrong_digest,
+                wrong_digest_metadata,
+                wrong_digest_metadata["package"]["tree"],
+            )
+        except LifecycleError as error:
+            assert "digest mismatch" in str(error)
+        else:
+            raise AssertionError("explicit wrong package digest was not refused")
+        source_extra = create_test_source(
+            root / "extra-source-root",
+            "0.4.8",
+            "extra",
+            files=EXPECTED_FILES | {"assets/unexpected.txt"},
+            declare_files=True,
+        )
+        try:
+            candidate_metadata(source_extra, "0.4.8")
+        except LifecycleError as error:
+            assert "allowed package path set" in str(error)
+        else:
+            raise AssertionError("candidate-declared extra package file was not refused")
+        source_missing = create_test_source(
+            root / "missing-source-root",
+            "0.4.10",
+            "missing",
+            files=EXPECTED_FILES,
+            declare_files=True,
+        )
+        missing_metadata = candidate_metadata(source_missing, "0.4.10")
+        (source_missing / "skills" / "work-charter" / "assets" / "role-models.default.yaml").unlink()
+        try:
+            package_files(
+                source_missing,
+                missing_metadata,
+                missing_metadata["package"]["tree"],
+            )
+        except LifecycleError as error:
+            assert "package path set mismatch" in str(error)
+        else:
+            raise AssertionError("candidate-declared missing package file was not refused")
         tree_a = candidate_metadata(source_a, SELF_TEST_SOURCE_VERSION)["package"]["tree"]
         tree_b = candidate_metadata(source_b, "0.4.2")["package"]["tree"]
         tree_c = candidate_metadata(source_c, "0.4.3")["package"]["tree"]
+        tree_legacy_without_digest = legacy_without_digest_metadata["package"]["tree"]
         tree_bad = candidate_metadata(source_bad, "0.4.9")["package"]["tree"]
         tree_forged = candidate_metadata(source_forged, "0.3.0")["package"]["tree"]
         assert SELF_TEST_SOURCE_VERSION not in TRUSTED_PACKAGE_TREES
@@ -1308,6 +1696,43 @@ def self_test(source=None):
             pass
         else:
             raise AssertionError("forged source candidate was not refused")
+
+        legacy_without_digest_destination = (
+            root / "legacy-without-digest" / "work-charter"
+        )
+        legacy_without_digest_dry_run = synchronize(
+            "install",
+            source_legacy_without_digest,
+            legacy_without_digest_destination,
+            "0.4.4",
+            False,
+            trusted_target_tree=tree_legacy_without_digest,
+        )
+        assert legacy_without_digest_dry_run["effect"] == "DRY_RUN"
+        legacy_without_digest_result = synchronize(
+            "install",
+            source_legacy_without_digest,
+            legacy_without_digest_destination,
+            "0.4.4",
+            True,
+            trusted_target_tree=tree_legacy_without_digest,
+            transaction_root=new_transaction_root("legacy-without-digest-install"),
+        )
+        assert_permission_handoff(legacy_without_digest_result)
+        assert (
+            current_state(
+                legacy_without_digest_destination,
+                tree_legacy_without_digest,
+            )["version"]
+            == "0.4.4"
+        )
+        uninstall(
+            legacy_without_digest_destination,
+            True,
+            trusted_tree=tree_legacy_without_digest,
+            transaction_root=new_transaction_root("legacy-without-digest-uninstall"),
+        )
+        assert current_state(legacy_without_digest_destination)["state"] == "ABSENT"
 
         legacy_container = root / "legacy-calls"
         legacy_container.mkdir()
@@ -1364,6 +1789,13 @@ def self_test(source=None):
         assert current_state(legacy_destination)["state"] == "ABSENT"
 
         destination = root / "managed" / "work-charter"
+        user_config = root / "user-config" / "role-models.yaml"
+        user_config.parent.mkdir()
+        user_config_bytes = (
+            b"schema_version: 1\nroles:\n  executor:\n"
+            b"    provider: example\n    model: custom\n"
+        )
+        user_config.write_bytes(user_config_bytes)
         dry_run = synchronize(
             "install",
             source_a,
@@ -1387,10 +1819,22 @@ def self_test(source=None):
         assert_permission_handoff(install_result)
         assert current_state(destination, tree_a)["version"] == SELF_TEST_SOURCE_VERSION
         assert current_state(destination, tree_b)["state"] == "FOREIGN_COPY"
+        assert user_config.read_bytes() == user_config_bytes
         receipt_path = destination / RECEIPT_NAME
         valid_receipt = receipt_path.read_text(encoding="utf-8")
         receipt_path.write_text('{"destination": null}\n', encoding="utf-8", newline="\n")
         assert current_state(destination, tree_a)["state"] == "DRIFTED"
+        receipt_path.write_text(valid_receipt, encoding="utf-8", newline="\n")
+        unsafe_receipt = json.loads(valid_receipt)
+        unsafe_receipt["files"]["../outside"] = "0" * 64
+        receipt_path.write_text(
+            json.dumps(unsafe_receipt, sort_keys=True),
+            encoding="utf-8",
+            newline="\n",
+        )
+        unsafe_state = current_state(destination, tree_a)
+        assert unsafe_state["state"] == "DRIFTED"
+        assert "unsafe path" in unsafe_state["reason"]
         receipt_path.write_text(valid_receipt, encoding="utf-8", newline="\n")
         original_dacl = None
         if os.name == "nt":
@@ -1541,7 +1985,15 @@ def self_test(source=None):
         assert update_transaction_root in update_moves[1][0].parents
         assert update_moves[1][1] == destination
         if os.name == "nt":
-            assert saved_dacl(destination, "dacl-after-update.acl") == original_dacl
+            after_update = root / "dacl-after-update.acl"
+            saved_dacl(destination, after_update.name)
+            after_update_records = windows_dacl_snapshot_records(after_update)
+            original_records = windows_dacl_snapshot_records(
+                root / "dacl-before-update.acl"
+            )
+            for key in original_records.keys() & after_update_records.keys():
+                assert original_records[key] == after_update_records[key]
+            assert windows_snapshot_key(destination.name, "assets/role-models.default.yaml") not in after_update_records
 
         rollback_moves = []
 
@@ -1567,7 +2019,22 @@ def self_test(source=None):
         assert rollback_transaction_root in rollback_moves[0][1].parents
         assert rollback_transaction_root in rollback_moves[1][0].parents
         if os.name == "nt":
-            assert saved_dacl(destination, "dacl-after-rollback.acl") == original_dacl
+            after_rollback = root / "dacl-after-rollback.acl"
+            original_dacl = saved_dacl(destination, after_rollback.name)
+            after_rollback_records = windows_dacl_snapshot_records(after_rollback)
+            original_records = windows_dacl_snapshot_records(
+                root / "dacl-before-update.acl"
+            )
+            for key in original_records.keys() & after_rollback_records.keys():
+                assert original_records[key] == after_rollback_records[key]
+            added_descriptor = after_rollback_records[
+                windows_snapshot_key(destination.name, "assets/role-models.default.yaml")
+            ]
+            added_flags = windows_dacl_control_flags(added_descriptor)
+            assert "AI" in added_flags and "P" not in added_flags
+            baseline_snapshot = after_rollback
+            baseline_digest = sha256(baseline_snapshot)
+        assert user_config.read_bytes() == user_config_bytes
 
         permission_failure_root = new_transaction_root("permission-handoff-failure")
         permission_failure_calls = []
@@ -1683,9 +2150,6 @@ def self_test(source=None):
         assert not any(preflight_failure_root.iterdir())
 
         if os.name == "nt":
-            baseline_snapshot = root / "dacl-before-update.acl"
-            baseline_digest = sha256(baseline_snapshot)
-
             def noop_dacl_restore(_path, _snapshot):
                 return None
 
@@ -2188,11 +2652,14 @@ def self_test(source=None):
             transaction_root=new_transaction_root("uninstall"),
         )
         assert current_state(destination)["state"] == "ABSENT"
+        assert user_config.read_bytes() == user_config_bytes
     return {
         "result": "PASS",
         "scope": (
             "disposable legacy-apply-compatibility/external-transaction "
             "install/update/rollback/failure-recovery/"
+            "legacy-five-file/current-six-file-transition/external-user-config-invariance/"
+            "legacy-candidate-digest-omission/strict-declared-digest-validation/"
             "Windows-DACL-control-aware-path-restore-and-semantic-readback/"
             "private-backup-tombstone/path-volume-guards/drift/receipt-integrity/"
             "unreceipted/wrong-tree/uninstall"
@@ -2203,6 +2670,8 @@ def self_test(source=None):
             "PRESERVED_OR_INHERITED_BY_ACTION" if os.name == "nt" else "PLATFORM_DEFAULT"
         ),
         "permission_handoff_failure_recovery": "PASS",
+        "legacy_candidate_digest_omission_compatibility": "PASS",
+        "strict_declared_candidate_digest_validation": "PASS",
         "pre_mutation_dacl_snapshot_failure": "PASS",
         "pre_mutation_dacl_restore_preflight_failure": "PASS",
         "pre_mutation_dacl_readback_mismatch": (

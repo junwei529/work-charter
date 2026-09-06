@@ -1,5 +1,54 @@
 # Changelog
 
+## Work Charter v0.5.0
+
+Descriptor snapshot: `PENDING_INDEPENDENT_REVIEW`
+
+Local release state: `PENDING_REVIEW_AND_PLANNER_ACCEPTANCE`
+
+Human release-note review: `PENDING`
+
+### Highlights
+
+- Adds the package-owned `assets/role-models.default.yaml` with approved initial
+  defaults: Orchestrator and Planner use `gpt-6-astra/xhigh`, Executor uses
+  `gpt-5.6-sol/high`, and Reviewer uses `gpt-6-astra/high`.
+- Resolves role metadata at the authorized delivery boundary: a frozen delivery
+  wins, otherwise an explicit contract path, the default user path, or the
+  package default is selected in that order. The resolved role/provider/model/
+  parameters and source are shown before native creation.
+- Makes partial user files replace complete named role objects. Provider and
+  model are required; omitted parameters mean none, so values never leak from
+  a prior model or provider. Unknown, duplicate, ambiguous, executable,
+  secret-bearing, or unsupported data fails closed.
+- Keeps configuration outside authority: it cannot create roles or widen
+  permissions, does not alter existing/frozen deliveries, adds no watcher,
+  service, parser dependency, or generic provider gateway, and is never mutated
+  by install/update/rollback/uninstall.
+- Extends the lifecycle controller from one fixed package set to exact
+  allow-listed historical five-file and current six-file identities. Windows
+  path-set changes are projected on a private replica; common DACL descriptors
+  remain exact, new paths must inherit, and both target and recovery snapshots
+  retain exact readback guarantees.
+- Preserves the real historical five-file candidate format, whose trusted tree
+  can stand without a redundant package digest. The current six-file format
+  still requires its digest, and any explicitly supplied invalid or mismatched
+  digest fails closed.
+- Carries forward independently accepted v0.4.1 C4 source. The separately
+  accepted ACL-only repair made the exact managed v0.4.0 installed copy
+  default-readable without installing v0.4.1.
+
+### Evidence boundaries
+
+- Static checks and the role-configuration evaluation case do not prove Agent
+  adherence, role creation, runtime identity, cross-provider execution, or a
+  live user configuration.
+- The six-file candidate, changed-shape lifecycle behavior, independent review,
+  Planner acceptance, local commit, and any installation remain distinct gates.
+- v0.5.0 grants no persistent installation, user-config write, global-rule
+  migration, provider/account/credential/network change, push, tag, release,
+  or publication authority.
+
 ## Work Charter v0.4.1
 
 Descriptor snapshot: `PENDING_INDEPENDENT_REVIEW`
@@ -36,8 +85,10 @@ Human release-note review: `PENDING`
 - The v0.4.0 R6 no-finding result and Planner source acceptance remain
   historical facts. The later actual-policy preflight is new counterevidence
   that requires this v0.4.1 source checkpoint and fresh review.
-- `WC-INSTALL-POSTFLIGHT-F01` remains open. The actual installed copy, its
-  parent ACL, and all retained v0.4.0 repair snapshots are unchanged.
+- At this descriptor snapshot, `WC-INSTALL-POSTFLIGHT-F01` remained open and
+  the actual installed copy, its parent ACL, and all retained v0.4.0 repair
+  snapshots were unchanged. A later separately accepted ACL-only repair closed
+  that finding for the exact managed v0.4.0 copy without installing v0.4.1.
 - v0.4.1 deterministic checks and disposable Windows proof are source
   qualification only. They do not authorize a new actual repair, commit,
   installation, release, or cleanup.
@@ -97,7 +148,9 @@ Human release-note review: `PENDING`
   and newline form are non-semantic; path membership and exact DACL SDDL,
   including flags and ACE order/content, must match. A later actual-policy
   preflight exposed the AI transition recorded under v0.4.1 and made no target
-  mutation; the actual installed copy remains unrepaired.
+  mutation; at that checkpoint the actual installed copy remained unrepaired.
+  A later separately accepted ACL-only repair restored default-reader access
+  without accepting the v0.3.0-to-v0.4.0 installation transition.
 - Stable loaded-copy behavior, natural adherence, other cross-version
   lifecycle effects, cross-Harness behavior, public source, tag, Release, and
   broad efficacy remain failed, `UNKNOWN`, or separately authorized as

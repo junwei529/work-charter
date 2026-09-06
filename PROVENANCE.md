@@ -10,7 +10,7 @@ The migration baseline files were read directly from the Git object database as
 `80910a8b2375a11be897e9660c4b00a06d00dd13:<source-path>`; no clone, archive, installed copy, cache, discovery
 mapping, or source working-tree byte was used.
 
-The current `v0.4.1` update changes selected package, evaluation,
+The current `v0.5.0` update changes selected package, evaluation,
 documentation, release-metadata, and checker files. Each changed destination is
 classified as `repository-native` and bound to its current target SHA-256 in
 the manifest. Unchanged destinations retain their prior exact-blob or
@@ -47,12 +47,14 @@ target DACL readback. R6 later returned `NO_FINDINGS`, Planner accepted the
 source correction, and commit `df674c773de6f915627af541f0eb37221da9adef`
 recorded it. An authorized actual-policy preflight then showed that whole-tree
 `/restore` changed only AI control state and stopped before target mutation.
-The new v0.4.1 candidate corrects that mechanism and operation-local permission
-routing, but remains pending fresh review and Planner acceptance. Overall
-local-release readiness and managed
-installation are blocked; stable loaded-copy behavior, natural adherence,
-cross-Harness behavior, public release, and broad efficacy remain failed,
-`UNKNOWN`, or separately authorized as recorded.
+The later v0.4.1 C4 correction used control-aware path-by-path restore plus
+exact readback and was independently accepted at
+`59b4d91f46c2ac797c71c900e62dda87cf0cca60`. A separately authorized ACL-only
+repair then restored default-reader access to the exact managed v0.4.0 copy and
+was accepted for that bounded effect without installing v0.4.1. Stable v0.5.0
+loaded-copy behavior, runtime role delivery, cross-provider execution, natural
+adherence, cross-Harness behavior, public release, and broad efficacy remain
+`UNKNOWN` or separately authorized.
 Historical monorepo operational detail and cross-product release state remain
 omitted because full historical continuity is not an acceptance requirement
 and would create a false standalone dependency.
@@ -81,9 +83,11 @@ identities plus the update's exact content, elevated postflight, and open
 default-reader access failure. It contains no private destination or
 transaction locator and makes no accepted-installation, stable loaded-copy,
 natural-adherence, cross-Harness, public-release, or broad-efficacy claim.
-The v0.4.1 descriptor is a separate pending source identity derived from
-committed v0.4.0 source. It has no receipt, installation, publication, or
-acceptance claim.
+The immutable v0.4.1 descriptor remains its pending source snapshot derived
+from committed v0.4.0 source; later C4 acceptance and the installed-copy repair
+do not rewrite it. The v0.5.0 descriptor is a separate pending six-file source
+identity derived from accepted C4. It has no receipt, installation, runtime
+role-delivery, publication, or acceptance claim.
 
 The repository-native lifecycle controller now confines every transient stage,
 backup, tombstone, and recovery archive to a validated external task-scoped
@@ -93,10 +97,10 @@ declared Skill discovery root, or on a different filesystem volume. Existing
 apply calls without an explicit root remain compatible through a visibly
 reported, uniquely created automatic root subject to the same guards; planned
 product operations still use an explicit operator-selected root. This controller
-correction does not change the five-file installable package or any historical
-v0.3.0 object. The explicit-root v0.4.0 attempt completed its content move and
+correction preserves historical five-file package identities and every
+historical v0.3.0 object. The explicit-root v0.4.0 attempt completed its content move and
 removed an empty task transaction root, but its installed destination remained
-unreadable to the default sandbox identity. The current unaccepted source
+unreadable to the default sandbox identity. The later accepted v0.4.1 source
 correction explicitly protects every random per-operation transaction directory
 for Owner Rights, SYSTEM, and Administrators before staging. On Windows it
 captures the complete existing DACL tree inside that private directory and
@@ -114,6 +118,14 @@ path membership and exact per-path DACL SDDL, including P, AI, AR and ACE
 order/content. An unavailable capability, unsupported control state, or
 mismatch fails before destination mutation in preflight; a later mismatch
 enters existing recovery and retains the original snapshot if recovery remains
-incomplete. Other platforms retain prior behavior. This source correction and
-any repair of the actual installed copy remain pending review, acceptance, and
-separate execution authority.
+incomplete. The v0.5.0 controller recognizes only exact allow-listed historical
+five-file and current six-file shapes. A legacy five-file candidate may omit a
+redundant package digest only while its actual tree still matches the separate
+trusted tree; the six-file shape requires the digest, and any supplied invalid
+or mismatched digest is rejected. When a Windows update or rollback changes
+shape, it projects policy on a private replica, requires unchanged common-path
+descriptors and auto-inherited unprotected new paths, exact-restores/readbacks
+the projected policy, and retains the original snapshot for recovery. Other
+platforms retain prior behavior. The current role-model source and lifecycle
+extension remain pending fresh review and acceptance; any installation remains
+separately authorized.

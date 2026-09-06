@@ -7,22 +7,50 @@
 `80910a8b2375a11be897e9660c4b00a06d00dd13` 物化；当前 repository-native
 版本所修改的文件在 source map 中明确分类，不再描述为未改变的迁移 blob。
 
-当前 SOURCE 候选为 `v0.4.1`，由
-[`release/v0.4.1-candidate.json`](release/v0.4.1-candidate.json) 描述。它保留 v0.4.0
-的 L0-L4 review、evidence、recovery 与 callback 语义，补充 operation-local 直接权限问题
-的 ownership，并修正 Windows DACL 恢复，同时不把 P、AI、AR、ACE 顺序或路径成员关系
-降格为非语义差异。descriptor 是待审的 pre-review 快照；目前没有 v0.4.1 receipt 或
-installed-copy claim。
+当前 SOURCE 候选为 `v0.5.0`，由
+[`release/v0.5.0-candidate.json`](release/v0.5.0-candidate.json) 描述。它增加严格的外部
+role-model 配置合同和第六个 package 文件，同时保留已接受的 v0.4.1 operation-local
+权限与 exact DACL 恢复修订。descriptor 是待审的 pre-review 快照；目前没有 v0.5.0
+receipt、安装、runtime role-delivery claim 或公开发布 claim。
 
 不可变 v0.4.0 receipt 在其 checkpoint 绑定已接受候选、五个 review 结果与失败的
 v0.3-to-v0.4 update：
 [`release/v0.4.0-local-release-receipt.json`](release/v0.4.0-local-release-receipt.json)
 记录。之后的第六个结果 R6 未发现 source 问题，Planner 验收了先前修正，并以
-`df674c773de6f915627af541f0eb37221da9adef` 提交。之后获授权的 actual repair preflight
-发现 `icacls /restore` 只改变 automatic-inheritance 控制状态（`D:P`→`D:PAI`，
-`D:`→`D:AI`），因此在 target mutation 前停止。`WC-INSTALL-POSTFLIGHT-F01` 仍为 open，
-v0.4.1 需要新的独立 review 与 Planner acceptance。stable loaded-copy、natural
-adherence、cross-Harness、公开发布与广泛效能继续按记录保持失败、`UNKNOWN` 或需分别授权。
+`df674c773de6f915627af541f0eb37221da9adef` 提交。首次获授权的 actual repair preflight
+因 `icacls /restore` 改变 automatic-inheritance 控制状态而停止。v0.4.1 C4 随后以
+control-aware exact restore/readback 替换该路径，并在
+`59b4d91f46c2ac797c71c900e62dda87cf0cca60` 获独立验收。之后的 ACL-only repair 恢复了
+exact managed v0.4.0 副本的 default-reader access，并仅对该修复关闭
+`WC-INSTALL-POSTFLIGHT-F01`。installed package 仍为 managed v0.4.0，v0.4.1 未安装。
+v0.5.0 stable loaded-copy、role-delivery adherence、跨 provider 执行、cross-Harness、
+公开发布与广泛效能仍为 `UNKNOWN` 或需分别授权。
+
+## Role-model 配置
+
+Package 默认数据位于
+[`skills/work-charter/assets/role-models.default.yaml`](skills/work-charter/assets/role-models.default.yaml)：
+
+| 角色 | Provider | Model | Reasoning effort |
+|---|---|---|---|
+| Orchestrator | OpenAI | `gpt-6-astra` | `xhigh` |
+| Planner | OpenAI | `gpt-6-astra` | `xhigh` |
+| Executor | OpenAI | `gpt-5.6-sol` | `high` |
+| Reviewer | OpenAI | `gpt-6-astra` | `high` |
+
+如需定制后续角色投递，可把该文件复制到
+`~/.config/work-charter/role-models.yaml` 后编辑，或由已批准的 delivery contract 指定
+另一个 exact 文件。没有 user 文件时使用 package 默认。User 文件可只写需要改变的角色，
+但每个已写角色会整体替换其默认对象，必须重写 `provider` 与 `model`；省略
+`parameters` 表示该角色不传额外参数。未出现的其他角色继续使用 package 默认。显式选定
+的文件缺失或不可读时必须报错，不得静默回退。
+
+已经冻结的 delivery 组合优先于之后的文件内容。新角色创建前，获授权 dispatcher 必须展示
+最终 role/provider/model/parameters 与来源，并通过预期 native route 核对支持能力。Codex
+OpenAI 路线把 `model` 映射到 native `model`，把 `reasoning_effort` 映射到 `thinking`。
+Schema、字段、provider、model 或参数不受支持或无法唯一解释时停止；配置不提供角色授权、
+凭据、endpoint 或命令。文件变化不会修改既有角色。Install、update、rollback、uninstall
+均不创建、修改或删除外部 user 文件。
 
 ## 历史 v0.3.0 证据
 
@@ -71,9 +99,9 @@ python -B scripts/manage_install.py self-test --source .
 ```
 
 SOURCE 检查证明当前候选指令包含所需的 selection、activation、authority、recovery、
-independent-review 与 Standard O/P/E/R 边界，同时固定验证历史 v0.3 身份并校验 exact
-v0.4 attempt receipt、开放 access finding 与待审 source correction；它不执行模型、
-不重新读取 live installed copy、不接受该修正、不证明发布，也不建立广泛产品效能。
+independent-review、role-model resolution 与 Standard O/P/E/R 边界，同时固定验证历史
+release 身份；它不执行模型、不创建角色、不读取 live user 配置、不重新读取 installed copy、
+不执行安装、不证明发布，也不建立广泛产品效能。
 
 ## 未来 immutable-source 生命周期
 
@@ -113,28 +141,37 @@ information 的 `SetFileSecurityW`，避免把目录策略传播给子项。按�
 也必须通过相同回读，才能报告成功；恢复仍不完整时，原 snapshot 保留在受保护 transaction
 中。backup 与 tombstone 只继承私有 transaction DACL；其他平台保持原有行为。
 
+历史五文件 receipt/candidate descriptor 与当前六文件 descriptor 只按 exact allow-list
+package shape 识别。legacy 五文件 candidate 可省略冗余 package digest，但实际 tree 仍必须
+匹配独立 trusted tree；当前六文件 shape 必须声明 digest，任何已声明但无效或不匹配的 digest
+均 fail closed。
+Windows update/rollback 的 path set 发生变化时，工具先在私有副本证明原 recovery snapshot，
+仅在该副本上转换为目标 path shape，只把新增路径 reset 到 parent inheritance，然后核对全部
+共同路径 descriptor 未变、每个新增路径均为 auto-inherited 且 unprotected，并对 projected
+snapshot 完成 exact readback。原 snapshot 仍是 recovery authority。未知或自行声明的 path
+set、不安全 receipt key、缺失或多余路径、tree 不匹配均 fail closed。
+
 该 install 示例特意绑定 package tree 已进入内置信任映射的 v0.3.0 不可变 checkout。
 不要把当前 working checkout 代入这条历史命令。v0.4.0 package 已完成 review、
 验收与 candidate 外部 trust 绑定，并按 local-release receipt 的显式路线写入；但 promotion
 后的目录保留了 transaction ACL，default reader access 失败。已提交的 v0.4.0 修正又因
-`/restore` 改变 AI 而在后续 actual-policy preflight 失败。v0.4.1 候选替换恢复路径，并收紧
-权限问题路由；任何新 repair attempt 前仍需完成新的独立 review 与 Planner acceptance。
-两个 v0.4 package tree 均未加入历史内置信任映射，后续 status 或 mutation 仍须提供独立
-保留的 trust identity。
+`/restore` 改变 AI 而在首次后续 actual-policy preflight 失败。已接受的 v0.4.1 C4 source
+替换该恢复路径并收紧权限问题路由。之后的 ACL-only 应用恢复了 exact v0.4.0 installed copy
+的 default-reader access；它没有安装 v0.4.1 package。两个 v0.4 package tree 均未加入
+历史内置信任映射，后续 status 或 mutation 仍须提供独立保留的 trust identity。
 
-该 exact 失败 v0.4.0 副本的修复仍只改变 ACL，不把丢弃任意既有策略变成通用 update
-合同。首次获授权尝试已在上述控制状态 preflight 停止，未改变 target。新的尝试需要通过
-review 与验收的 v0.4.1 source 以及单独 execution authority，并重新核对受信 v0.4.0
-content/receipt、current/parent DACL 与 rollback snapshot。postflight 仍须由默认身份完成
-status、直接读取、hash 与 ACL 检查。
+该 exact 失败 v0.4.0 副本的修复只改变 ACL，不把丢弃任意既有策略变成通用 update 合同。
+首次获授权尝试已在上述控制状态 preflight 停止；之后的有界尝试使用已接受 C4 source，
+重新核对受信 content/receipt 与 rollback 输入，只修改 target DACL，并通过 default-identity
+status、直接读取、hash 与 ACL postflight。该结果不授权另一次修复、package update 或安装。
 
 工具拒绝无 receipt、receipt 畸形或不匹配、package tree 错误、本地已修改、路径别名或
 其他 drift 的 destination。receipt 是完整性与路由记录，不是加密所有权证明；能够以
 同等本地权限伪造完整 receipt 的 actor 不在该机制的保护范围内。v0.3.0 经单独授权的
 同版本 persistent lifecycle、发布、tag、GitHub Release 与 stable installed-copy 证据
-已按上文记录为 VERIFIED。对 v0.4.0，只有本次 v0.3-to-v0.4 attempt 写入的 bytes 与
-elevated receipt/file postflight 已验证；default reader access 失败，因此 overall
-transition 未被接受。其他跨版本转换与 stable loaded behavior 仍需单独取证。
+已按上文记录为 VERIFIED。对 v0.4.0，原 promotion failure 与之后的 exact ACL-only access
+repair 是两份不同证据；修复后的副本为 managed 且 default-readable，但仍是 v0.4.0。
+其他跨版本转换与 stable loaded behavior 仍需单独取证。
 
 ### 后续更新与回滚的信任输入
 

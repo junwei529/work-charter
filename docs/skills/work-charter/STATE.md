@@ -2,39 +2,41 @@
 
 ## Current implementation
 
-Canonical editable source is the 5-file package under
+Canonical editable source is the 6-file package under
 [`skills/work-charter/`](../../../skills/work-charter/). It originated from
-`80910a8b2375a11be897e9660c4b00a06d00dd13`; changed `v0.4.1` package,
+`80910a8b2375a11be897e9660c4b00a06d00dd13`; changed `v0.5.0` package,
 evaluation, documentation, and checker files are repository-native and bound
 to their current hashes in the provenance manifest. Unchanged mapped material
 retains its exact or normalized migration provenance.
 
-## Current v0.4.1 candidate
+## Current v0.5.0 candidate
 
-- Version: `v0.4.1`
-- Candidate descriptor: [`../../../release/v0.4.1-candidate.json`](../../../release/v0.4.1-candidate.json)
+- Version: `v0.5.0`
+- Candidate descriptor: [`../../../release/v0.5.0-candidate.json`](../../../release/v0.5.0-candidate.json)
 - Descriptor state: `PENDING_INDEPENDENT_REVIEW`
-- Package lineage: committed v0.4.0 source
-  `df674c773de6f915627af541f0eb37221da9adef`
+- Package lineage: accepted v0.4.1 C4 source
+  `59b4d91f46c2ac797c71c900e62dda87cf0cca60`
 - Deterministic SOURCE, repository, adversarial, and lifecycle evidence:
   requires fresh qualification for this exact checkpoint
 - Independent technical review and Planner acceptance: `PENDING`
 - Local-release receipt, installation, and publication: not created or claimed
-- Actual v0.4.0 installed-copy repair: not authorized by this candidate and not
-  performed
-- `WC-INSTALL-POSTFLIGHT-F01`: `OPEN`
-- Stable loaded-copy behavior, natural adherence, cross-Harness behavior,
-  public release, and broad efficacy: failed or `UNKNOWN` as recorded
+- Actual v0.4.0 installed copy: remains managed v0.4.0 after the separately
+  accepted ACL-only access repair; v0.4.1 and v0.5.0 were not installed
+- `WC-INSTALL-POSTFLIGHT-F01`: closed only for that exact access repair
+- Runtime role delivery, cross-provider execution, stable loaded-copy behavior,
+  natural adherence, cross-Harness behavior, public release, and broad
+  efficacy: `UNKNOWN` or separately authorized
 
-The candidate preserves the v0.4.0 L0-L4 Reviewer, verification, acceptance,
+The candidate preserves the accepted v0.4.1 L0-L4 Reviewer, verification, acceptance,
 evidence-first `UNKNOWN`, context recovery, callback, and graph boundaries. It
-adds direct operation-local permission ownership without transferring higher
-contract ownership. On Windows it replaces whole-tree restore with a
-control-aware, path-by-path mechanism: AI-bearing records use one-record
-`icacls /restore`, while records without AI use the non-propagating directory
-behavior of `SetFileSecurityW`. Exact P, AI, AR, ACE order/content, and managed
-path membership remain required by post-restore readback. Unsupported states
-fail in the private replica preflight before any target move.
+adds a strict role-model source hierarchy, whole-role replacement semantics,
+closed schema and capability validation, visible native mapping, and a package
+default for Orchestrator/Planner/Executor/Reviewer. Configuration never grants
+role or action authority and never mutates existing roles. On Windows, the
+lifecycle controller additionally supports exact allow-listed five-file and
+six-file package transitions by projecting changed path membership on a private
+replica while preserving every common descriptor. Unsupported path sets,
+control states, inheritance results, or readback fail before any target move.
 
 ## Historical v0.4.0 candidate and failed installation
 
@@ -47,15 +49,20 @@ fail in the private replica preflight before any target move.
 - Accepted correction commit: `df674c773de6f915627af541f0eb37221da9adef`
 - v0.3.0-to-v0.4.0 written bytes and elevated receipt/file postflight:
   `VERIFIED`
-- Default sandbox reader access after promotion: `FAILED`
+- Default sandbox reader access after original promotion: `FAILED`
 - First authorized ACL-only repair: stopped before target mutation because
   `/restore` changed `D:P` to `D:PAI` and `D:` to `D:AI`
-- Managed installation acceptance and `LOCAL_RELEASE_READY`:
-  `BLOCKED_BY_INSTALLED_COPY_ACCESS_REGRESSION`
+- Accepted v0.4.1 C4 source correction:
+  `59b4d91f46c2ac797c71c900e62dda87cf0cca60`
+- Later exact ACL-only repair: `ACCEPTED`; the managed v0.4.0 copy became
+  default-readable and `WC-INSTALL-POSTFLIGHT-F01` closed for that repair
+- Installed package version after repair: `v0.4.0`
 
 The later control-state counterevidence does not erase R6 or its acceptance; it
-invalidates the prior mechanism for a new repair attempt. The actual target,
-parent ACL, source commit, and retained v0.4.0 repair snapshots remain unchanged.
+invalidated the prior mechanism for the first repair attempt. The accepted C4
+mechanism and later bounded repair preserved package bytes and version while
+changing only the exact target's ACL. That evidence does not install v0.4.1 or
+authorize another lifecycle action.
 
 ## Historical v0.3.0 release
 
@@ -92,24 +99,28 @@ on another Skill repository and begins with no configured remote.
 The migration proves historical source identities for mapped files. The current
 manifest proves current target hashes, local link and publication-safety
 constraints, and provenance classification. Fresh deterministic SOURCE
-qualification is intended to prove that the `v0.4.1` instruction text contains
+qualification is intended to prove that the `v0.5.0` instruction text contains
 required selection/activation, authority non-expansion, coordination/recovery,
-review/acceptance separation, and Standard O/P/E/R clauses. It does not prove
-model adherence, technical correctness, or acceptance. The retained cases
-remain contract fixtures; they do not create fresh model, efficacy, release, or
-installed-copy evidence.
+review/acceptance separation, role-model resolution, and Standard O/P/E/R
+clauses, and that its package default matches the documented four-role table.
+It does not prove model adherence, runtime delivery, technical correctness, or
+acceptance. The retained cases remain contract fixtures; they do not create
+fresh model, efficacy, release, or installed-copy evidence.
 
 Evidence states remain separate:
 
-- Current v0.4.1 SOURCE identity and deterministic contract: requires fresh
+- Current v0.5.0 SOURCE identity and deterministic contract: requires fresh
   verification for the exact candidate checkpoint.
-- Current v0.4.1 independent review and Planner acceptance: `PENDING`.
+- Current v0.5.0 independent review and Planner acceptance: `PENDING`.
+- Current v0.5.0 role-delivery runtime and cross-provider execution: `UNKNOWN`.
 - Historical v0.4.0 source-candidate acceptance: `VERIFIED` for the immutable
-  candidate and reviewed installer baseline; the later control-state evidence
-  requires a new mechanism rather than erasing that history.
-- Historical v0.4.0 attempt: exact content and elevated receipt/five-file
-  postflight are `VERIFIED`, but default-reader access is `FAILED`; managed
-  installation and `LOCAL_RELEASE_READY` are not accepted.
+  candidate and reviewed installer baseline; later control-state evidence and
+  the accepted C4 correction remain separate from that history.
+- Historical v0.4.0 original attempt: exact content and elevated receipt/five-
+  file postflight are `VERIFIED`, while default-reader access was `FAILED`.
+- Historical v0.4.0 exact ACL-only repair: `ACCEPTED`; the managed v0.4.0 copy
+  is default-readable and the exact access finding is closed. This did not
+  install v0.4.1 or authorize v0.5.0 effects.
 - Historical v0.3.0 `LOCAL_RELEASE_READY`: `VERIFIED` by the exact-C acceptance
   receipt.
 - Historical v0.3.0 `PUBLIC_RELEASE`: `VERIFIED` for exact P, annotated tag,
@@ -128,10 +139,10 @@ Evidence states remain separate:
 The immutable public-source candidate preserves its pre-effect snapshot. The
 separate post-release evidence subject binds the later public and corrected
 installed-copy facts without rewriting P. The attempted v0.3.0-to-v0.4.0
-update verifies only its written content and elevated postflight, not an
-accepted transition. The first ACL-only repair attempt made no target mutation.
-Other cross-version transitions, cross-Harness behavior, untested contexts, and
-broad efficacy remain `UNKNOWN`.
+update verifies its written content and elevated postflight; its original
+access failure and the later accepted ACL-only repair remain separately
+attributed. Other cross-version transitions, cross-Harness behavior, untested
+contexts, and broad efficacy remain `UNKNOWN`.
 
 Lifecycle receipt validation is bounded to integrity and routing checks. It
 refuses unreceipted, malformed or mismatched-receipt, wrong-tree, modified,
@@ -157,21 +168,33 @@ membership and exact DACL SDDL—including P, AI, AR and ACE order/content—mus
 match. A preflight mismatch produces zero target moves. A later mismatch enters
 existing recovery and retains the original protected snapshot when recovery is
 incomplete. Moved backup/tombstone trees inherit the private transaction DACL;
-other platforms retain prior behavior. This source correction creates a new
-five-file v0.4.1 candidate while leaving immutable v0.4.0/v0.3.0 release objects
-unchanged, and is pending independent review and acceptance.
+other platforms retain prior behavior. Historical five-file receipts and the
+legacy candidate descriptor and the current six-file descriptor are two exact
+allow-listed shapes. The legacy candidate may omit its redundant package
+digest only while its actual tree matches a separate trusted tree; the current
+shape requires the digest, and any supplied invalid or mismatched digest is
+rejected. A changed-shape Windows update/rollback projects policy on a private
+replica, preserves every
+common descriptor, requires new paths to be auto-inherited and unprotected,
+and exact-restores/readbacks the projected snapshot while retaining the
+original for recovery. Unknown/self-declared sets, unsafe receipt paths,
+missing/extra files, or identity mismatches fail closed. Lifecycle self-test
+also proves that a disposable external user configuration remains byte-identical.
+This correction creates a new six-file v0.5.0 candidate while leaving immutable
+v0.4.1/v0.4.0/v0.3.0 objects unchanged, and is pending independent review and
+acceptance.
 
 ## Next gate
 
-The v0.4.1 source checkpoint requires fresh independent review and Planner
-acceptance. Any local commit is a later explicit gate. Only after those gates
-may a separately authorized ACL-only attempt repair the exact current installed
-copy. That route re-verifies trusted v0.4.0 content/receipt, current and parent
-DACLs, and its protected rollback snapshot before resetting only that target to
-parent inheritance. Default-reader status/read/hash/ACL postflight is required.
-Fresh loaded-copy or natural-adherence
-evidence, any global migration, public source, tag, Release, other cross-version
-transition, or broader efficacy claim remains a separate gate. The exact historical v0.3.0
+The v0.5.0 source checkpoint requires fresh deterministic verification,
+independent review, and Planner acceptance. The approved source work package
+permits a necessary local commit only after those gates; it does not authorize
+installation. Any installed-copy update must later present the exact target,
+trusted source identity, backup/rollback, file-set, and ACL effects and receive
+separate direct approval. Fresh role-delivery, loaded-copy, natural-adherence,
+global-rule migration, public source, tag, Release, other cross-version
+transition, cross-provider execution, or broader efficacy remains a separate
+gate. The exact historical v0.3.0
 post-release evidence subject F remains accepted under
 `B2-WC-PUBLIC-EVIDENCE-F-01` without moving its tag or rewriting P.
 

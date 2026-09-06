@@ -86,8 +86,11 @@ natural-adherence, cross-Harness, public-release, or broad-efficacy claim.
 The immutable v0.4.1 descriptor remains its pending source snapshot derived
 from committed v0.4.0 source; later C4 acceptance and the installed-copy repair
 do not rewrite it. The v0.5.0 descriptor is a separate pending six-file source
-identity derived from accepted C4. It has no receipt, installation, runtime
-role-delivery, publication, or acceptance claim.
+identity derived from accepted C4. Its separate local source receipt binds
+accepted commit `8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`, exact
+qualification, ten completed review rounds, and Planner acceptance without
+rewriting the descriptor. It makes no installation, runtime role-delivery, or
+publication claim.
 
 The repository-native lifecycle controller now confines every transient stage,
 backup, tombstone, and recovery archive to a validated external task-scoped
@@ -127,5 +130,6 @@ shape, it projects policy on a private replica, requires unchanged common-path
 descriptors and auto-inherited unprotected new paths, exact-restores/readbacks
 the projected policy, and retains the original snapshot for recovery. Other
 platforms retain prior behavior. The current role-model source and lifecycle
-extension remain pending fresh review and acceptance; any installation remains
-separately authorized.
+extension passed exact qualification, ten completed review rounds, and Planner
+acceptance at the receipt-bound commit; any installation remains separately
+authorized.

@@ -1,17 +1,23 @@
 # Work Charter Verification
 
-## Historical migration baseline and current local release
+## Historical migration baseline and current local source
 
 - Source commit: `80910a8b2375a11be897e9660c4b00a06d00dd13`
 - Package path: `skills/work-charter/`
 - Package files: 6
 - Provenance manifest: [`../../../provenance/source-map.json`](../../../provenance/source-map.json)
 - Current candidate: [`../../../release/v0.5.0-candidate.json`](../../../release/v0.5.0-candidate.json)
-- Candidate descriptor state: `PENDING_INDEPENDENT_REVIEW`
+- Candidate descriptor state: immutable `PENDING_INDEPENDENT_REVIEW` snapshot
+- Accepted source commit: `8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`
+- Source acceptance receipt:
+  [`../../../release/v0.5.0-local-release-receipt.json`](../../../release/v0.5.0-local-release-receipt.json)
 - Candidate lineage commit: `59b4d91f46c2ac797c71c900e62dda87cf0cca60`
 - Historical v0.4.0 local-release receipt:
   [`../../../release/v0.4.0-local-release-receipt.json`](../../../release/v0.4.0-local-release-receipt.json)
-- v0.5.0 source-candidate acceptance: `PENDING`
+- v0.5.0 deterministic qualification, ten-round independent review, and
+  Planner acceptance: `VERIFIED`
+- v0.5.0 local source readiness: `VERIFIED`
+- v0.5.0 installation and publication: `NOT_PERFORMED` / `NOT_AUTHORIZED`
 - v0.4.1 C4 source correction: independently accepted
 - v0.4.0 installed copy: managed and default-readable after a separately
   accepted exact ACL-only repair; still version v0.4.0
@@ -111,8 +117,9 @@ Run the deterministic SOURCE contract check:
 python -B scripts/check_source_contract.py --json
 ```
 
-It verifies the exact 6-file package shape, the `v0.5.0` candidate binding, the
-separate immutable v0.4.0 local-release receipt, and the instruction clauses needed for
+It verifies the exact 6-file package shape, the immutable `v0.5.0` candidate
+binding, its separate source acceptance receipt, the separate immutable v0.4.0
+local-release receipt, and the instruction clauses needed for
 direct and indirect selection/activation,
 authority non-expansion, context recovery, independent review/acceptance
 separation, same-Reviewer repair re-review, callback deduplication,
@@ -128,7 +135,9 @@ its five recorded review results, source/tool acceptance, exact written
 content, elevated postflight, receipt-time open default-reader and policy-
 preservation findings, and the R5 readback finding. Later R6 acceptance, the
 failed control-state repair preflight, accepted C4 source, the exact ACL-only
-repair, and the v0.5.0 candidate remain separate facts. The checker does not
+repair remain separate facts. The v0.5.0 receipt binds exact source identity,
+qualification, review, and Planner acceptance while preserving the candidate's
+pending snapshot. The checker does not
 read a live user configuration, create a role, re-read the live installed copy,
 or accept the new candidate. It is static source evidence, not a fresh model
 run, runtime-delivery proof, review, acceptance, publication proof, or stable
@@ -321,7 +330,9 @@ evidence, not standing authority for another repair, update, or installation.
 
 The retained cases are deterministic contract fixtures; they do not create
 fresh model, efficacy, release, or installed-copy evidence. SOURCE qualification
-proves clause coverage only. For v0.4.0, the accepted source candidate, six
+proves clause coverage only; the separate v0.5.0 receipt binds that result to
+the accepted source commit and completed review/acceptance history. For v0.4.0,
+the accepted source candidate, six
 completed independent-review results including later R6, and Planner source/tool
 acceptance remain distinct completed evidence. The original update attempt has
 exact content/elevated postflight evidence and a default-reader failure; the
@@ -329,7 +340,8 @@ later accepted C4 correction and exact ACL-only repair are separately bound
 evidence that closes only that access finding while leaving the package at
 v0.4.0. The current v0.5.0 deterministic checks and evaluation case do not
 prove actual configuration use, role creation, runtime identity, or cross-
-provider execution. The receipt does not prove publication, stable v0.5.0
+provider execution. The v0.5.0 receipt does not prove publication, installation,
+stable v0.5.0
 installed-copy behavior, natural adherence, other cross-version lifecycle
 effects, cross-Harness behavior, or broad product efficacy.
 

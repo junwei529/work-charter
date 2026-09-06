@@ -4,7 +4,12 @@
 
 Descriptor snapshot: `PENDING_INDEPENDENT_REVIEW`
 
-Local release state: `PENDING_REVIEW_AND_PLANNER_ACCEPTANCE`
+Local source readiness: `VERIFIED`
+
+Acceptance receipt:
+[`release/v0.5.0-local-release-receipt.json`](release/v0.5.0-local-release-receipt.json)
+
+Accepted source commit: `8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`
 
 Human release-note review: `PENDING`
 
@@ -40,11 +45,16 @@ Human release-note review: `PENDING`
 
 ### Evidence boundaries
 
+- The immutable descriptor retains its pending pre-review snapshot. The
+  separate receipt binds ten completed review rounds, final R10 no-new-finding
+  result, Planner acceptance, the accepted commit, and exact deterministic
+  qualification without rewriting the candidate.
 - Static checks and the role-configuration evaluation case do not prove Agent
   adherence, role creation, runtime identity, cross-provider execution, or a
   live user configuration.
-- The six-file candidate, changed-shape lifecycle behavior, independent review,
-  Planner acceptance, local commit, and any installation remain distinct gates.
+- The six-file source, independent review, Planner acceptance, and local commit
+  are complete and receipt-bound. Installation and runtime evidence remain
+  distinct gates.
 - v0.5.0 grants no persistent installation, user-config write, global-rule
   migration, provider/account/credential/network change, push, tag, release,
   or publication authority.

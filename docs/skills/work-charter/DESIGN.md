@@ -53,8 +53,11 @@ project contract ownership. Read-only Reviewers and evidence collectors do not
 solicit write authority.
 
 The current `v0.5.0` candidate adds role-model configuration to the accepted
-v0.4.1 source. Its descriptor is a new pending pre-review snapshot, not a
-receipt. The immutable v0.4.0 candidate and receipt remain the historical
+v0.4.1 source. Its descriptor remains the immutable pending pre-review
+snapshot. The separate v0.5.0 receipt binds accepted source commit
+`8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`, exact qualification, ten completed
+review rounds, and Planner acceptance without rewriting that snapshot. The
+immutable v0.4.0 candidate and receipt remain the historical
 owners of the accepted candidate, reviewed lifecycle-controller baseline, five
 recorded independent-review results, Planner source/tool acceptances, external
 trust identity, and failed update attempt. R6 later returned `NO_FINDINGS`, the
@@ -66,9 +69,9 @@ before target mutation. The v0.4.1 C4 source corrected that mechanism and was
 independently accepted at `59b4d91f46c2ac797c71c900e62dda87cf0cca60`.
 A later ACL-only repair restored default-reader access to the exact managed
 v0.4.0 copy and closed that exact access finding without installing v0.4.1.
-The v0.5.0 candidate creates no installation, publication, runtime-delivery,
-or stable-behavior claim. Historical release metadata and evidence remain
-immutable for their versions.
+The v0.5.0 source receipt creates no installation, publication,
+runtime-delivery, or stable-behavior claim. Historical release metadata and
+evidence remain immutable for their versions.
 
 Historical v0.3.0 candidate C remains immutable. Its separate local-release
 receipt binds the exact commit, candidate tree, package tree, and independent

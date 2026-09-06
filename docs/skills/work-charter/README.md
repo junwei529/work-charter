@@ -14,7 +14,9 @@ The package originated at source commit
 `80910a8b2375a11be897e9660c4b00a06d00dd13`. The current `v0.5.0` SOURCE
 candidate adds strict external role-model configuration and exact five/six-file
 lifecycle compatibility to the accepted v0.4.1 source, with bounded evaluation
-and documentation under explicit repository-native provenance. Independent
-review and Planner acceptance are pending; historical candidate, release, and
-installed-copy evidence is preserved without being relabeled as evidence for
-this candidate.
+and documentation under explicit repository-native provenance. Its immutable
+descriptor retains the pending pre-review snapshot; the separate v0.5.0 receipt
+binds accepted commit `8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`, ten
+completed review rounds, Planner acceptance, and exact deterministic evidence.
+Local source readiness is verified without relabeling historical installation
+or release evidence as evidence for this version.

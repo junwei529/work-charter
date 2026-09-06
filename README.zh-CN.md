@@ -10,8 +10,11 @@
 当前 SOURCE 候选为 `v0.5.0`，由
 [`release/v0.5.0-candidate.json`](release/v0.5.0-candidate.json) 描述。它增加严格的外部
 role-model 配置合同和第六个 package 文件，同时保留已接受的 v0.4.1 operation-local
-权限与 exact DACL 恢复修订。descriptor 是待审的 pre-review 快照；目前没有 v0.5.0
-receipt、安装、runtime role-delivery claim 或公开发布 claim。
+权限与 exact DACL 恢复修订。descriptor 仍保留其不可变的待审 pre-review 快照。独立的
+[`release/v0.5.0-local-release-receipt.json`](release/v0.5.0-local-release-receipt.json)
+绑定已接受 source commit `8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`、十轮已完成
+review、Planner 验收与 exact deterministic qualification。Local source readiness 为
+`VERIFIED`；该 receipt 不产生 v0.5.0 安装、runtime role-delivery 或公开发布 claim。
 
 不可变 v0.4.0 receipt 在其 checkpoint 绑定已接受候选、五个 review 结果与失败的
 v0.3-to-v0.4 update：

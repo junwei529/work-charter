@@ -9,17 +9,23 @@ evaluation, documentation, and checker files are repository-native and bound
 to their current hashes in the provenance manifest. Unchanged mapped material
 retains its exact or normalized migration provenance.
 
-## Current v0.5.0 candidate
+## Current v0.5.0 source
 
 - Version: `v0.5.0`
 - Candidate descriptor: [`../../../release/v0.5.0-candidate.json`](../../../release/v0.5.0-candidate.json)
-- Descriptor state: `PENDING_INDEPENDENT_REVIEW`
+- Descriptor state: immutable `PENDING_INDEPENDENT_REVIEW` pre-review snapshot
+- Accepted source commit: `8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`
+- Source acceptance receipt:
+  [`../../../release/v0.5.0-local-release-receipt.json`](../../../release/v0.5.0-local-release-receipt.json)
 - Package lineage: accepted v0.4.1 C4 source
   `59b4d91f46c2ac797c71c900e62dda87cf0cca60`
 - Deterministic SOURCE, repository, adversarial, and lifecycle evidence:
-  requires fresh qualification for this exact checkpoint
-- Independent technical review and Planner acceptance: `PENDING`
-- Local-release receipt, installation, and publication: not created or claimed
+  `VERIFIED` for the exact receipt-bound source checkpoint
+- Independent technical review: ten completed rounds; R9 P2
+  `WC-ROLE-CONFIG-R9-F01` fixed and closed by R10 with no new findings
+- Planner source and committed-source acceptance: `ACCEPTED`
+- Local source readiness: `VERIFIED`
+- v0.5.0 installation and publication: `NOT_PERFORMED` and `NOT_AUTHORIZED`
 - Actual v0.4.0 installed copy: remains managed v0.4.0 after the separately
   accepted ACL-only access repair; v0.4.1 and v0.5.0 were not installed
 - `WC-INSTALL-POSTFLIGHT-F01`: closed only for that exact access repair
@@ -98,8 +104,8 @@ on another Skill repository and begins with no configured remote.
 
 The migration proves historical source identities for mapped files. The current
 manifest proves current target hashes, local link and publication-safety
-constraints, and provenance classification. Fresh deterministic SOURCE
-qualification is intended to prove that the `v0.5.0` instruction text contains
+constraints, and provenance classification. Receipt-bound deterministic SOURCE
+qualification proves that the `v0.5.0` instruction text contains
 required selection/activation, authority non-expansion, coordination/recovery,
 review/acceptance separation, role-model resolution, and Standard O/P/E/R
 clauses, and that its package default matches the documented four-role table.
@@ -109,9 +115,14 @@ fresh model, efficacy, release, or installed-copy evidence.
 
 Evidence states remain separate:
 
-- Current v0.5.0 SOURCE identity and deterministic contract: requires fresh
-  verification for the exact candidate checkpoint.
-- Current v0.5.0 independent review and Planner acceptance: `PENDING`.
+- Current v0.5.0 SOURCE identity and deterministic contract: `VERIFIED` for
+  accepted commit `8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`.
+- Current v0.5.0 independent review and Planner acceptance: `VERIFIED` by the
+  separate source receipt; the candidate descriptor retains its immutable
+  pending snapshot.
+- Current v0.5.0 local source readiness: `VERIFIED`.
+- Current v0.5.0 installation and publication: `NOT_PERFORMED` and
+  `NOT_AUTHORIZED`.
 - Current v0.5.0 role-delivery runtime and cross-provider execution: `UNKNOWN`.
 - Historical v0.4.0 source-candidate acceptance: `VERIFIED` for the immutable
   candidate and reviewed installer baseline; later control-state evidence and
@@ -180,21 +191,20 @@ and exact-restores/readbacks the projected snapshot while retaining the
 original for recovery. Unknown/self-declared sets, unsafe receipt paths,
 missing/extra files, or identity mismatches fail closed. Lifecycle self-test
 also proves that a disposable external user configuration remains byte-identical.
-This correction creates a new six-file v0.5.0 candidate while leaving immutable
-v0.4.1/v0.4.0/v0.3.0 objects unchanged, and is pending independent review and
-acceptance.
+This correction creates a new six-file v0.5.0 source while leaving immutable
+v0.4.1/v0.4.0/v0.3.0 objects unchanged. Exact qualification, ten completed
+review rounds, and Planner acceptance are bound by the separate v0.5.0 receipt.
 
 ## Next gate
 
-The v0.5.0 source checkpoint requires fresh deterministic verification,
-independent review, and Planner acceptance. The approved source work package
-permits a necessary local commit only after those gates; it does not authorize
-installation. Any installed-copy update must later present the exact target,
-trusted source identity, backup/rollback, file-set, and ACL effects and receive
-separate direct approval. Fresh role-delivery, loaded-copy, natural-adherence,
-global-rule migration, public source, tag, Release, other cross-version
-transition, cross-provider execution, or broader efficacy remains a separate
-gate. The exact historical v0.3.0
+The v0.5.0 source checkpoint is accepted and locally committed. The receipt
+records local source readiness only; it does not authorize installation. Any
+installed-copy update must later present the exact target, trusted source
+identity, backup/rollback, file-set, and ACL effects and receive separate direct
+approval. Fresh role-delivery, loaded-copy, natural-adherence, global-rule
+migration, public source, tag, Release, other cross-version transition,
+cross-provider execution, or broader efficacy remains a separate gate. The
+exact historical v0.3.0
 post-release evidence subject F remains accepted under
 `B2-WC-PUBLIC-EVIDENCE-F-01` without moving its tag or rewriting P.
 

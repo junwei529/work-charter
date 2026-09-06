@@ -1,0 +1,142 @@
+{
+  "authorization_boundaries": {
+    "actual_installation": "NOT_AUTHORIZED",
+    "global_rule_migration": "NOT_AUTHORIZED",
+    "publication": "NOT_AUTHORIZED",
+    "remote_integration": "NOT_AUTHORIZED",
+    "user_role_model_configuration_write": "NOT_AUTHORIZED"
+  },
+  "candidate": {
+    "commit": "8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d",
+    "descriptor": "release/v0.5.0-candidate.json",
+    "descriptor_raw_sha256": "ab91fa3f8dea0deeaa0fea94d7f74dc20fd43a7983dac855351097e955ed547e",
+    "package": {
+      "file_count": 6,
+      "files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "assets/role-models.default.yaml",
+        "assets/work-charter.md",
+        "references/coordination-and-recovery.md",
+        "references/standard-ope.md"
+      ],
+      "path": "skills/work-charter",
+      "sha256": "b15c479518101d522c3ba27f1b32c2406e4586115622ad8fbcd35a00a38e874a",
+      "tree": "413584a6a5968e60a2663ef7554181327180531f"
+    },
+    "tree": "1985606f58d560cb21f06e85207eaae99c1f99d1"
+  },
+  "evidence_states": {
+    "actual_installation": "NOT_PERFORMED",
+    "broad_product_efficacy": "UNKNOWN",
+    "cross_harness_behavior": "UNKNOWN",
+    "cross_provider_runtime": "UNKNOWN",
+    "local_source_ready": "VERIFIED",
+    "natural_adherence": "UNKNOWN",
+    "public_release": "NOT_PERFORMED",
+    "role_delivery_runtime": "UNKNOWN",
+    "source_candidate_acceptance": "VERIFIED",
+    "stable_installed_copy_v050": "UNKNOWN",
+    "user_role_model_configuration": "NOT_READ_OR_WRITTEN"
+  },
+  "historical_runtime": {
+    "installed_version": "0.4.0",
+    "v040_access_repair": "ACCEPTED_FOR_EXACT_ACL_ONLY_EFFECT",
+    "v041_installed": false,
+    "v050_installed": false
+  },
+  "human_release_notes_review": "PENDING",
+  "independent_review": {
+    "completed_rounds": 10,
+    "final_result": "NO_NEW_FINDINGS",
+    "final_round": "WC-ROLE-CONFIG-SOURCE-V050-R10-RESULT-01",
+    "findings": [
+      {
+        "disposition": "FALSE_POSITIVE_CLOSED",
+        "id": "WC-SOURCE-R1-F01",
+        "severity": "P1"
+      },
+      {
+        "disposition": "FIXED_CLOSED",
+        "id": "WC-SOURCE-R1-F02",
+        "severity": "P2"
+      },
+      {
+        "disposition": "FIXED_CLOSED",
+        "id": "WC-INSTALL-ACCESS-P01",
+        "severity": "P2"
+      },
+      {
+        "disposition": "FIXED_CLOSED",
+        "id": "WC-INSTALL-ACCESS-R5-F01",
+        "parent_finding": "WC-INSTALL-ACCESS-P01",
+        "severity": "P2"
+      },
+      {
+        "disposition": "FIXED_CLOSED",
+        "id": "WC-ROLE-CONFIG-R9-F01",
+        "severity": "P2"
+      }
+    ],
+    "fresh_reviewer": {
+      "model": "gpt-6-astra",
+      "reasoning_effort": "high",
+      "rounds": [
+        "WC-ROLE-CONFIG-SOURCE-V050-R9-RESULT-01",
+        "WC-ROLE-CONFIG-SOURCE-V050-R10-RESULT-01"
+      ]
+    },
+    "historical_reviewer": {
+      "model": "gpt-5.6-terra",
+      "reasoning_effort": "high",
+      "rounds": 8
+    },
+    "non_findings": {
+      "r7_acl_hypothesis": "UNCONFIRMED_NOT_A_FINDING",
+      "r8_result": "NO_CONFIRMED_DEFECT"
+    }
+  },
+  "planner_acceptance": {
+    "commit": {
+      "checkpoint": "WC-ROLE-CONFIG-SOURCE-V050-COMMIT-01",
+      "disposition": "WC-ROLE-CONFIG-SOURCE-V050-COMMIT-DISPOSITION-01",
+      "verdict": "ACCEPTED_COMMITTED_SOURCE_V050"
+    },
+    "source": {
+      "checkpoint": "WC-ROLE-CONFIG-SOURCE-V050-ACCEPTED-COMMIT-HANDOFF-01",
+      "review_checkpoint": "WC-ROLE-CONFIG-SOURCE-V050-R10-RESULT-01",
+      "verdict": "ACCEPTED_SOURCE_V050"
+    }
+  },
+  "product": "work-charter",
+  "schema": "work-charter-local-release-receipt/v1",
+  "verification": {
+    "adversarial_repository_matrix": {
+      "cases": 92,
+      "subject": "RECEIPT_AND_CANONICAL_CONSUMERS",
+      "result": "PASS",
+      "terminal_exit_code": 0
+    },
+    "repository": {
+      "mapped_files": 89,
+      "result": "PASS",
+      "subject": "RECEIPT_AND_CANONICAL_CONSUMERS",
+      "terminal_exit_code": 0
+    },
+    "source_contract": {
+      "checks": 26,
+      "result": "PASS",
+      "subject": "RECEIPT_AND_CANONICAL_CONSUMERS",
+      "terminal_exit_code": 0
+    },
+    "windows_lifecycle": {
+      "default_token": "DACL_PREFLIGHT_PERMISSION_DENIED",
+      "disposition": "DISPOSABLE_SOURCE_QUALIFICATION_ONLY",
+      "elevated_token": "PASS",
+      "persistent_effect": false,
+      "subject": "ACCEPTED_SOURCE_COMMIT_C5",
+      "terminal_exit_code": 0
+    }
+  },
+  "version": "0.5.0"
+}

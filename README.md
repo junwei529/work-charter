@@ -15,9 +15,13 @@ The current source candidate is `v0.5.0`, described by
 [`release/v0.5.0-candidate.json`](release/v0.5.0-candidate.json). It adds a
 strict external role-model configuration contract and a sixth package file,
 while retaining the accepted v0.4.1 operation-local permission and exact DACL
-restoration corrections. The descriptor is a pending pre-review snapshot;
-there is no v0.5.0 receipt, installation, runtime role-delivery claim, or public
-release claim.
+restoration corrections. The descriptor remains its immutable pending
+pre-review snapshot. The separate
+[`release/v0.5.0-local-release-receipt.json`](release/v0.5.0-local-release-receipt.json)
+binds accepted source commit `8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`,
+ten completed review rounds, Planner acceptance, and the exact deterministic
+qualification. Local source readiness is `VERIFIED`; no v0.5.0 installation,
+runtime role-delivery, or public-release claim follows from that receipt.
 
 The immutable v0.4.0 receipt binds its accepted candidate, five review results,
 and the failed v0.3-to-v0.4 update at that checkpoint:

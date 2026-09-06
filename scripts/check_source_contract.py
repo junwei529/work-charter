@@ -9,6 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "skills" / "work-charter"
 CURRENT_CANDIDATE = ROOT / "release" / "v0.5.0-candidate.json"
+V050_RECEIPT = ROOT / "release" / "v0.5.0-local-release-receipt.json"
 V041_CANDIDATE = ROOT / "release" / "v0.4.1-candidate.json"
 V040_CANDIDATE = ROOT / "release" / "v0.4.0-candidate.json"
 V040_RECEIPT = ROOT / "release" / "v0.4.0-local-release-receipt.json"
@@ -31,6 +32,11 @@ V040_PACKAGE_FILE_SHA256 = {
     "references/coordination-and-recovery.md": "a12a76e5c784e2ef1f54b1cbc5c8096ac64fabeccc947ff46cb97cc6969eda98",
     "references/standard-ope.md": "62c3da90b662fc4e489abfc32873a5ab92966a6326dd0b16c58285f0933fe48f",
 }
+V050_COMMIT = "8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d"
+V050_TREE = "1985606f58d560cb21f06e85207eaae99c1f99d1"
+V050_CANDIDATE_SHA256 = "ab91fa3f8dea0deeaa0fea94d7f74dc20fd43a7983dac855351097e955ed547e"
+V050_PACKAGE_TREE = "413584a6a5968e60a2663ef7554181327180531f"
+V050_PACKAGE_SHA256 = "b15c479518101d522c3ba27f1b32c2406e4586115622ad8fbcd35a00a38e874a"
 V030_PACKAGE_FILE_SHA256 = {
     "SKILL.md": "c750d51940456b110bc7ed4b7d490690f42ca8ee9b555c23c8fe3d4d056b4dba",
     "agents/openai.yaml": "f0032475e213d75ed17eb41c3424007ebc46c0ddb6739138c9908185beefdad6",
@@ -406,6 +412,173 @@ def main():
             "source_commit": "59b4d91f46c2ac797c71c900e62dda87cf0cca60",
         }
         and current_candidate.get("human_release_notes_review") == "PENDING"
+    )
+
+    v050_receipt_error = None
+    v050_receipt = {}
+    try:
+        parsed_v050_receipt = json.loads(V050_RECEIPT.read_text(encoding="utf-8"))
+        if not isinstance(parsed_v050_receipt, dict):
+            raise ValueError("v0.5.0 local source receipt must be an object")
+        for field in (
+            "authorization_boundaries",
+            "candidate",
+            "evidence_states",
+            "historical_runtime",
+            "independent_review",
+            "planner_acceptance",
+            "verification",
+        ):
+            if not isinstance(parsed_v050_receipt.get(field), dict):
+                raise ValueError(f"v0.5.0 local source receipt field {field!r} must be an object")
+        if not isinstance(parsed_v050_receipt["candidate"].get("package"), dict):
+            raise ValueError("v0.5.0 local source receipt package must be an object")
+        if not isinstance(parsed_v050_receipt["independent_review"].get("findings"), list):
+            raise ValueError("v0.5.0 local source receipt findings must be a list")
+        v050_receipt = parsed_v050_receipt
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
+        v050_receipt_error = str(error)
+    checks["receipt.v050_source_readiness"] = (
+        v050_receipt.get("schema") == "work-charter-local-release-receipt/v1"
+        and v050_receipt.get("product") == "work-charter"
+        and v050_receipt.get("version") == "0.5.0"
+        and v050_receipt.get("candidate")
+        == {
+            "commit": V050_COMMIT,
+            "descriptor": "release/v0.5.0-candidate.json",
+            "descriptor_raw_sha256": V050_CANDIDATE_SHA256,
+            "package": {
+                "file_count": 6,
+                "files": sorted(EXPECTED_FILES),
+                "path": "skills/work-charter",
+                "sha256": V050_PACKAGE_SHA256,
+                "tree": V050_PACKAGE_TREE,
+            },
+            "tree": V050_TREE,
+        }
+        and v050_receipt.get("authorization_boundaries")
+        == {
+            "actual_installation": "NOT_AUTHORIZED",
+            "global_rule_migration": "NOT_AUTHORIZED",
+            "publication": "NOT_AUTHORIZED",
+            "remote_integration": "NOT_AUTHORIZED",
+            "user_role_model_configuration_write": "NOT_AUTHORIZED",
+        }
+        and v050_receipt.get("evidence_states")
+        == {
+            "actual_installation": "NOT_PERFORMED",
+            "broad_product_efficacy": "UNKNOWN",
+            "cross_harness_behavior": "UNKNOWN",
+            "cross_provider_runtime": "UNKNOWN",
+            "local_source_ready": "VERIFIED",
+            "natural_adherence": "UNKNOWN",
+            "public_release": "NOT_PERFORMED",
+            "role_delivery_runtime": "UNKNOWN",
+            "source_candidate_acceptance": "VERIFIED",
+            "stable_installed_copy_v050": "UNKNOWN",
+            "user_role_model_configuration": "NOT_READ_OR_WRITTEN",
+        }
+        and v050_receipt.get("historical_runtime")
+        == {
+            "installed_version": "0.4.0",
+            "v040_access_repair": "ACCEPTED_FOR_EXACT_ACL_ONLY_EFFECT",
+            "v041_installed": False,
+            "v050_installed": False,
+        }
+        and v050_receipt.get("independent_review")
+        == {
+            "completed_rounds": 10,
+            "final_result": "NO_NEW_FINDINGS",
+            "final_round": "WC-ROLE-CONFIG-SOURCE-V050-R10-RESULT-01",
+            "findings": [
+                {
+                    "disposition": "FALSE_POSITIVE_CLOSED",
+                    "id": "WC-SOURCE-R1-F01",
+                    "severity": "P1",
+                },
+                {
+                    "disposition": "FIXED_CLOSED",
+                    "id": "WC-SOURCE-R1-F02",
+                    "severity": "P2",
+                },
+                {
+                    "disposition": "FIXED_CLOSED",
+                    "id": "WC-INSTALL-ACCESS-P01",
+                    "severity": "P2",
+                },
+                {
+                    "disposition": "FIXED_CLOSED",
+                    "id": "WC-INSTALL-ACCESS-R5-F01",
+                    "parent_finding": "WC-INSTALL-ACCESS-P01",
+                    "severity": "P2",
+                },
+                {
+                    "disposition": "FIXED_CLOSED",
+                    "id": "WC-ROLE-CONFIG-R9-F01",
+                    "severity": "P2",
+                },
+            ],
+            "fresh_reviewer": {
+                "model": "gpt-6-astra",
+                "reasoning_effort": "high",
+                "rounds": [
+                    "WC-ROLE-CONFIG-SOURCE-V050-R9-RESULT-01",
+                    "WC-ROLE-CONFIG-SOURCE-V050-R10-RESULT-01",
+                ],
+            },
+            "historical_reviewer": {
+                "model": "gpt-5.6-terra",
+                "reasoning_effort": "high",
+                "rounds": 8,
+            },
+            "non_findings": {
+                "r7_acl_hypothesis": "UNCONFIRMED_NOT_A_FINDING",
+                "r8_result": "NO_CONFIRMED_DEFECT",
+            },
+        }
+        and v050_receipt.get("planner_acceptance")
+        == {
+            "commit": {
+                "checkpoint": "WC-ROLE-CONFIG-SOURCE-V050-COMMIT-01",
+                "disposition": "WC-ROLE-CONFIG-SOURCE-V050-COMMIT-DISPOSITION-01",
+                "verdict": "ACCEPTED_COMMITTED_SOURCE_V050",
+            },
+            "source": {
+                "checkpoint": "WC-ROLE-CONFIG-SOURCE-V050-ACCEPTED-COMMIT-HANDOFF-01",
+                "review_checkpoint": "WC-ROLE-CONFIG-SOURCE-V050-R10-RESULT-01",
+                "verdict": "ACCEPTED_SOURCE_V050",
+            },
+        }
+        and v050_receipt.get("verification")
+        == {
+            "adversarial_repository_matrix": {
+                "cases": 92,
+                "result": "PASS",
+                "subject": "RECEIPT_AND_CANONICAL_CONSUMERS",
+                "terminal_exit_code": 0,
+            },
+            "repository": {
+                "mapped_files": 89,
+                "result": "PASS",
+                "subject": "RECEIPT_AND_CANONICAL_CONSUMERS",
+                "terminal_exit_code": 0,
+            },
+            "source_contract": {
+                "checks": 26,
+                "result": "PASS",
+                "subject": "RECEIPT_AND_CANONICAL_CONSUMERS",
+                "terminal_exit_code": 0,
+            },
+            "windows_lifecycle": {
+                "default_token": "DACL_PREFLIGHT_PERMISSION_DENIED",
+                "disposition": "DISPOSABLE_SOURCE_QUALIFICATION_ONLY",
+                "elevated_token": "PASS",
+                "persistent_effect": False,
+                "subject": "ACCEPTED_SOURCE_COMMIT_C5",
+                "terminal_exit_code": 0,
+            },
+        }
+        and v050_receipt.get("human_release_notes_review") == "PENDING"
     )
 
     v041_candidate_error = None
@@ -928,6 +1101,8 @@ def main():
         failures.append(f"role_models.case_unreadable: {role_model_case_error}")
     if current_candidate_error:
         failures.append(f"candidate.v050_unreadable: {current_candidate_error}")
+    if v050_receipt_error:
+        failures.append(f"receipt.v050_unreadable: {v050_receipt_error}")
     if v041_candidate_error:
         failures.append(f"candidate.v041_unreadable: {v041_candidate_error}")
     if v040_candidate_error:

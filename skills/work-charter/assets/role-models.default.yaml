@@ -20,3 +20,69 @@ roles:
     model: gpt-6-astra
     parameters:
       reasoning_effort: high
+level_overrides:
+  l0:
+    primary:
+      provider: openai
+      model: gpt-6-astra
+      parameters:
+        reasoning_effort: medium
+  l1:
+    primary:
+      provider: openai
+      model: gpt-6-astra
+      parameters:
+        reasoning_effort: medium
+    reviewer:
+      provider: openai
+      model: gpt-6-astra
+      parameters:
+        reasoning_effort: medium
+  l2:
+    primary:
+      provider: openai
+      model: gpt-6-astra
+      parameters:
+        reasoning_effort: medium
+    reviewer:
+      provider: openai
+      model: gpt-6-astra
+      parameters:
+        reasoning_effort: medium
+  l3:
+    planner:
+      provider: openai
+      model: gpt-6-astra
+      parameters:
+        reasoning_effort: max
+    executor:
+      provider: openai
+      model: gpt-6-astra
+      parameters:
+        reasoning_effort: medium
+    reviewer:
+      provider: openai
+      model: gpt-6-astra
+      parameters:
+        reasoning_effort: medium
+  l4:
+    orchestrator:
+      provider: openai
+      model: gpt-6-astra
+      parameters:
+        reasoning_effort: max
+    planner:
+      provider: openai
+      model: gpt-6-astra
+      parameters:
+        reasoning_effort: max
+    executor:
+      provider: openai
+      model: gpt-6-astra
+      parameters:
+        reasoning_effort: medium
+    reviewer:
+      provider: openai
+      model: gpt-6-astra
+      parameters:
+        reasoning_effort: medium

@@ -7,14 +7,25 @@
 `80910a8b2375a11be897e9660c4b00a06d00dd13` 物化；当前 repository-native
 版本所修改的文件在 source map 中明确分类，不再描述为未改变的迁移 blob。
 
-当前 SOURCE 候选为 `v0.5.0`，由
-[`release/v0.5.0-candidate.json`](release/v0.5.0-candidate.json) 描述。它增加严格的外部
-role-model 配置合同和第六个 package 文件，同时保留已接受的 v0.4.1 operation-local
-权限与 exact DACL 恢复修订。descriptor 仍保留其不可变的待审 pre-review 快照。独立的
+已接受的 `v0.5.0` source 由不可变 pre-review 快照
+[`release/v0.5.0-candidate.json`](release/v0.5.0-candidate.json) 描述。独立的
 [`release/v0.5.0-local-release-receipt.json`](release/v0.5.0-local-release-receipt.json)
 绑定已接受 source commit `8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`、十轮已完成
 review、Planner 验收与 exact deterministic qualification。Local source readiness 为
 `VERIFIED`；该 receipt 不产生 v0.5.0 安装、runtime role-delivery 或公开发布 claim。
+
+当前 [`v0.6.1` 候选](release/v0.6.1-candidate.json)让启动提示复用已覆盖范围的授权，
+补齐面向接收方判断与行动的完整、适量表达原则，并将配置解析收拢到必读的唯一 reference。
+六文件包、schema1、默认模型、权限和审查合同保持不变。新输入独立验证与审查，
+安装及推送仍按已授权的阶段门执行。
+
+此前本地 `v0.6.0` 候选增加向后兼容的“级别 × 实际职责”配置解析，由
+[`release/v0.6.0-candidate.json`](release/v0.6.0-candidate.json) 绑定。
+R12 已完成独立技术审查，无新增 findings；Planner 已接受未提交的冻结源码检查点。
+[验收记录](docs/skills/work-charter/STATE.md#accepted-v060-source-checkpoint)明确范围和身份；
+candidate 保留审查前快照，不表示已提交、local release ready、安装或全局生效。
+不可变 v0.5.0 candidate/receipt
+只继续作为其 exact bytes 的历史证据。
 
 不可变 v0.4.0 receipt 在其 checkpoint 绑定已接受候选、五个 review 结果与失败的
 v0.3-to-v0.4 update：
@@ -34,6 +45,8 @@ v0.5.0 stable loaded-copy、role-delivery adherence、跨 provider 执行、cros
 Package 默认数据位于
 [`skills/work-charter/assets/role-models.default.yaml`](skills/work-charter/assets/role-models.default.yaml)：
 
+通用兼容回落保持原值：
+
 | 角色 | Provider | Model | Reasoning effort |
 |---|---|---|---|
 | Orchestrator | OpenAI | `gpt-6-astra` | `xhigh` |
@@ -41,19 +54,42 @@ Package 默认数据位于
 | Executor | OpenAI | `gpt-5.6-sol` | `high` |
 | Reviewer | OpenAI | `gpt-6-astra` | `high` |
 
-如需定制后续角色投递，可把该文件复制到
-`~/.config/work-charter/role-models.yaml` 后编辑，或由已批准的 delivery contract 指定
-另一个 exact 文件。没有 user 文件时使用 package 默认。User 文件可只写需要改变的角色，
-但每个已写角色会整体替换其默认对象，必须重写 `provider` 与 `model`；省略
-`parameters` 表示该角色不传额外参数。未出现的其他角色继续使用 package 默认。显式选定
-的文件缺失或不可读时必须报错，不得静默回退。
+已批准级别默认均使用 OpenAI `gpt-6-astra`：
 
-已经冻结的 delivery 组合优先于之后的文件内容。新角色创建前，获授权 dispatcher 必须展示
-最终 role/provider/model/parameters 与来源，并通过预期 native route 核对支持能力。Codex
-OpenAI 路线把 `model` 映射到 native `model`，把 `reasoning_effort` 映射到 `thinking`。
-Schema、字段、provider、model 或参数不受支持或无法唯一解释时停止；配置不提供角色授权、
-凭据、endpoint 或命令。文件变化不会修改既有角色。Install、update、rollback、uninstall
-均不创建、修改或删除外部 user 文件。
+| 级别 | 实际职责与 reasoning effort |
+|---|---|
+| L0 | primary `medium` |
+| L1/L2 | primary、reviewer `medium` |
+| L3 | planner `max`；executor、reviewer `medium` |
+| L4 | orchestrator、planner `max`；executor、reviewer `medium` |
+
+L0 reviewer 未新增覆盖，沿用通用回落。这些配置值不代表评测最优或已运行生效。
+
+如需定制后续任务启动或角色投递，可把该文件复制到
+`~/.config/work-charter/role-models.yaml` 后编辑，或由已批准的 delivery contract 指定
+另一个 exact 文件。Schema v1 继续接受旧四角色文件。Partial 文件可以新增通用
+`primary`、替换有差异的通用职责，并/或为 `l0` 到 `l4` 添加有限的
+`level_overrides`。每个对象都是 whole-object replacement，必须重写 `provider` 和
+`model`；省略 `parameters` 表示不传参数。缺失用户对象时回落到包内对象；没有用户文件也能采用包内级别默认。
+
+解析优先级为：已冻结的完整 delivery 组合；本次新任务/角色已明确确认的完整组合；用户级别对象；
+用户通用对象；包内级别对象；包内通用对象。用户通用配置优先于包内级别覆盖。宿主的 `main` 标签在查找前归一化为 `primary`。如果
+`L0`/`L1`/`L2` 的主负责人在两个来源中均无等级覆盖或通用 `primary`，派发边界不传 model override，
+保留宿主选择，不能借用 Planner 或 Executor 默认。
+
+可查找矩阵是：`L0` 为 primary 加按独立规则触发的临时 R；`L1`/`L2` 为 primary 加可选
+R；`L3` 为 P/E/R；`L4` 为 O/P/E/R。配置项不会启用角色，`L0` 仍不激活 Work Charter。
+创建前，边界展示 level、实际职责、provider/model/parameters、对象来源和文件来源，并核对
+native 支持。Codex OpenAI 把 `model` 映射到 native `model`，把
+`reasoning_effort` 映射到 `thinking`；不支持或含糊的数据 fail closed。文件变化不改变
+既有任务或角色。Package 只定义该接口；global/host task-start consumer 尚未迁移，source 和
+fixture 不能证明本机已实际采用。Install、update、rollback、uninstall 均不修改外部 user
+文件。
+
+提示词按[共同合同、实际职责、本次任务与必要模型适配](skills/work-charter/references/coordination-and-recovery.md#task-and-role-prompt-construction)组织。
+已授权工作继续推进，保留材料决策与真实权限门；模型差异按需依据官方指导或可归属证据，
+effort 仍为运行参数。提示词与交接保留关键事实、决定、材料限制及下一步，
+优先删重复背景和无关内容，不用硬字数限制换取表面简短。全局迁移待相关 Skill 验收及获批适用副本切换后另行处理。
 
 ## 历史 v0.3.0 证据
 
@@ -101,10 +137,17 @@ python -B scripts/check_source_contract.py --json
 python -B scripts/manage_install.py self-test --source .
 ```
 
-SOURCE 检查证明当前候选指令包含所需的 selection、activation、authority、recovery、
-independent-review、role-model resolution 与 Standard O/P/E/R 边界，同时固定验证历史
-release 身份；它不执行模型、不创建角色、不读取 live user 配置、不重新读取 installed copy、
-不执行安装、不证明发布，也不建立广泛产品效能。
+SOURCE checker 会把静态 selection、activation、authority、recovery、independent-review、
+“级别 × 实际职责”与 Standard O/P/E/R 条款，同 required current-package identity gate 分开
+报告。当前 v0.6.1 descriptor 必须绑定实际 package tree/digest；任一不匹配都使命令失败。
+不可变 v0.5.0 descriptor 只按历史值核对；当前输入结果见
+[验证](docs/skills/work-charter/VERIFICATION.md)。
+
+Lifecycle self-test 是当前 v0.6.1 package 的 required gate，先核对 source 与描述文件绑定。
+旧 exact-release checkout 不能替代当前输入覆盖。Staged adversarial repository matrix
+同样不覆盖 unstaged working-tree delta。缺失的检查不能被报告为通过或不适用。
+这些检查仍不执行模型、不创建任务或角色、不运行 host/global consumer、不读取 live user 配置、
+不重新读取 installed copy、不证明发布，也不建立广泛产品效能。
 
 ## 未来 immutable-source 生命周期
 

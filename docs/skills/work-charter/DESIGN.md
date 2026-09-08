@@ -7,10 +7,25 @@ independent review, and proportional coordination. The canonical installable sou
 [`skills/work-charter/`](../../../skills/work-charter/). Package instructions, references,
 assets, and metadata originated from `80910a8b2375a11be897e9660c4b00a06d00dd13`.
 The source map preserves exact historical origin while classifying changed
-`v0.5.0` files as repository-native rather than exact migration blobs.
+repository-native files honestly. Immutable release objects retain the exact
+accepted `v0.5.0` identity; the prior level-role source is the local
+[`v0.6.0` candidate](../../../release/v0.6.0-candidate.json). R12 completed with
+no new findings and Planner accepted its uncommitted frozen source checkpoint;
+[State](STATE.md#accepted-v060-source-checkpoint) owns the acceptance scope. The
+descriptor remains an immutable pre-review snapshot, not a release receipt.
+The current [v0.6.1 candidate](../../../release/v0.6.1-candidate.json) refines
+startup authorization reuse and prompt expression, with configuration details
+owned only by the required coordination reference. Defaults and schema remain
+unchanged; its source identity, checks, and review are separate.
 
 The repository owns one Skill product. Cross-Skill composition is optional and
 cannot grant authority or create a hard dependency.
+
+Prompts combine the shared contract, actual responsibility, current task, and
+necessary model adaptation. The package reference owns detailed construction;
+model guidance is read on demand and effort stays native metadata. No model
+name changes authority, and continuation preserves real review and acceptance
+gates without redundant confirmation or repeated unaffected verification.
 
 ## Package contract
 
@@ -20,17 +35,28 @@ assets own detailed coordination, recovery, Standard O/P/E/R, and template
 guidance. The repository checker fails if any package byte or expected path
 differs from its current recorded mapping.
 
-`assets/role-models.default.yaml` is the sole default-data owner for role model
-selection. An authorized dispatcher resolves a frozen delivery combination,
-an explicitly selected file, the default user file, or the package default in
-that order; validates a closed schema and native route support; then displays
-the final role/provider/model/parameters and source before delivery. A partial
-user file replaces each supplied role as a whole and never inherits omitted
-parameters. Configuration is data and cannot authorize role creation or any
-action. It does not create a parser dependency, watcher, service, provider
-gateway, credential store, or automatic change to an existing role.
+`assets/role-models.default.yaml` is the sole default-data owner and retains its
+exact four general O/P/E/R objects and values as compatibility fallbacks,
+plus 12 approved Astra level objects specified in that YAML. Schema v1 now permits an
+explicit or user file to add a general `primary` and bounded
+`level_overrides`. An authorized task-start or dispatch boundary resolves a
+frozen complete combination, a task-explicit confirmed complete combination,
+user level, user general, package level, then package general. A user general
+object beats a package level object; absent user files consume package defaults.
+Each supplied object replaces a whole object and never inherits omitted
+parameters. Only when both sources lack a primary object, an unconfigured low-level primary preserves host
+selection and never borrows E or P. The boundary validates the complete file
+and native route support, then displays level, responsibility, requested
+values, object source, and file source before creation. Configuration is data
+and cannot authorize task or role creation or any action. It does not create a
+parser dependency, watcher, service, provider gateway, credential store, or
+automatic change to an existing task or role.
 
-`L0` remains no active Charter even when an external review gate applies.
+`L0` remains no active Charter even when its local task-selection consumer uses
+the configuration interface or an external review gate applies. The package
+does not itself integrate that host/global consumer. The valid lookup matrix is
+L0 primary plus separately triggered temporary R, L1/L2 primary plus optional
+R, L3 P/E/R, and L4 O/P/E/R; matrix membership never enables a role.
 `L1` and `L2` retain one primary owner and may add one bounded read-only
 Reviewer. `L3` separates Planner target acceptance, Executor implementation and
 verification, and Reviewer technical inspection. `L4` adds Orchestrator project
@@ -52,9 +78,9 @@ relay or status report. This operation-local gate does not transfer Phase or
 project contract ownership. Read-only Reviewers and evidence collectors do not
 solicit write authority.
 
-The current `v0.5.0` candidate adds role-model configuration to the accepted
-v0.4.1 source. Its descriptor remains the immutable pending pre-review
-snapshot. The separate v0.5.0 receipt binds accepted source commit
+The immutable `v0.5.0` candidate added the first role-model configuration to the
+accepted v0.4.1 source. Its descriptor remains the pending pre-review snapshot.
+The separate v0.5.0 receipt binds accepted source commit
 `8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`, exact qualification, ten completed
 review rounds, and Planner acceptance without rewriting that snapshot. The
 immutable v0.4.0 candidate and receipt remain the historical
@@ -70,8 +96,10 @@ independently accepted at `59b4d91f46c2ac797c71c900e62dda87cf0cca60`.
 A later ACL-only repair restored default-reader access to the exact managed
 v0.4.0 copy and closed that exact access finding without installing v0.4.1.
 The v0.5.0 source receipt creates no installation, publication,
-runtime-delivery, or stable-behavior claim. Historical release metadata and
-evidence remain immutable for their versions.
+runtime-delivery, or stable-behavior claim. The later level-role extension was
+the local v0.6.0 candidate. Neither it nor the current v0.6.1 prompt revision
+rewrites or inherits v0.5.0 acceptance.
+Historical release metadata and evidence remain immutable for their versions.
 
 Historical v0.3.0 candidate C remains immutable. Its separate local-release
 receipt binds the exact commit, candidate tree, package tree, and independent
@@ -98,9 +126,10 @@ fixed at P.
 - `evals/cases/work-charter-selection.md`
 - `evals/cases/work-charter-standard.md`
 
-Unchanged cases and fixtures retain exact source-blob provenance; files revised
-for `v0.5.0` are repository-native and individually hashed. Together they define
-deterministic inputs and expected boundaries. The accepted candidate and the
+Unchanged cases and fixtures retain exact source-blob provenance; cases revised
+for v0.5.0 or the later v0.6.0/v0.6.1 candidates are repository-native
+and individually hashed. Together they define deterministic inputs and expected
+boundaries. The accepted candidate and the
 attempted update have separate review, acceptance, postflight, and access
 evidence; exact installed bytes do not override a failed default-reader check.
 Model adherence, stable loaded-copy behavior, publication, and broad efficacy
@@ -158,9 +187,11 @@ remain separately authorized evidence classes.
   snapshot remains the recovery authority. The receipt
   provides integrity and routing evidence, not cryptographic ownership proof
   against a same-privilege local actor capable of forging the complete receipt.
-- SOURCE contract qualification checks instruction and exact default-data
-  coverage only. Model adherence, actual role delivery, live installed-copy
-  behavior, publication, and broad efficacy
+- The SOURCE checker reports instruction and exact default-data clauses
+  separately, but overall qualification also requires the current package tree
+  and digest to match the selected candidate descriptor. Static clause success
+  cannot identify an unversioned package. Model adherence, actual role
+  delivery, live installed-copy behavior, publication, and broad efficacy
   require separate evidence. Receipt validation is static and does not re-read
   the live installation.
 

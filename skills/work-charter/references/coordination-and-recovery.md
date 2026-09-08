@@ -179,34 +179,139 @@ external effect, workspace, or integration policy, stop and route the
 material decision through the existing owner. Do not use proposal flexibility
 to weaken a guardrail or expand authority.
 
+## Task And Role Prompt Construction
+
+Compose prompts from shared contract, actual responsibility, current task, and
+necessary model adaptation. These are logical inputs, not mandatory headings
+or copied instruction sets. An ordinary L0 host task can use this shape without
+selecting or activating Work Charter.
+
+- Shared contract: identify the authoritative outcome, scope, permissions,
+  acceptance, revision, and stop conditions. Restate only boundaries the
+  receiving context needs to act unambiguously.
+- Actual responsibility: include only the receiver's authorized work below.
+  Model names never grant responsibility or permission.
+- Current task: give the bounded deliverable, relevant inputs and evidence,
+  remaining work, required verification, and result route. Prescribe internal
+  steps only for a dependency, protected risk, or explicit contract requirement.
+- Necessary model adaptation: include only a supported difference relevant to
+  the actual model and task, with its source; otherwise use adaptation `none`.
+
+| Actual responsibility | Prompt addition |
+| --- | --- |
+| Primary (`L0`-`L2`) | Complete authorized implementation, required verification, and delivery; at L1/L2 retain the applicable record and disposition independently required Reviewer findings. Do not create P/E separation or claim independent self-acceptance. |
+| Orchestrator (`L4`) | Frame project outcome, Mandate, phase direction, and Planner return route; assess project-level results without directing the Executor or repeating technical review. |
+| Planner (`L3`/`L4`) | Supply the executable contract, acceptance criteria, and E/R routes; assess returned evidence and direct corrections while remaining read-only on implementation and routing technical review to R. |
+| Executor (`L3`/`L4`) | Complete authorized work and required checks, preserve findings and evidence, and return the stable checkpoint to the Planner; do not expand scope or accept the result. |
+| Reviewer (when enabled) | Inspect frozen input and necessary semantic context read-only; return actionable findings, coverage, and unknowns to the designated assessor or primary owner without repair or self-granted authority. |
+
+Cold prompts provide sufficient authoritative pointers and hard boundaries to
+start without a conversation search. Warm continuations retain the contract
+anchor, changed task/evidence, next authorized action, and return route; omit
+unchanged instructions already reliable in context. Recovery restores missing
+contract, writer, checkpoint, findings, and permission history. Do not nest an
+old delegation envelope inside a new one. Use the optional
+[prompt scaffold](../assets/work-charter.md#task-or-role-prompt) without creating
+a second authority file.
+
+Keep every prompt and handoff proportionate and complete for the receiver's
+next decision or action. Preserve key facts, decisions, material limitations,
+and the next step. First remove repeated background, preambles, reassurance,
+and unrelated content. Brevity must not hide a constraint, unresolved decision,
+or evidence needed to act. Apply this throughout the exchange, not only to the
+final result; use no fixed word limit or extra mandatory message templates.
+
+Complete authorized work through required checks and its result route. Ask only
+for a missing material decision or permission; resolve routine choices within
+the existing contract. Make a required decision concrete with independent
+authorized work first. Silence never approves the dependent action. Preserve
+activation/adoption, material replan, operation permission, independent review,
+and acceptance gates. Remove duplicate warnings and arbitrary step counts, not
+those boundaries. Repeat verification only when its input changed, it failed,
+or an unresolved material concern requires it; complete all required checks.
+
+### Model Adaptation On Demand
+
+For the actual selected Astra, Sol, Terra, or Luna model, consult current
+official guidance only when a model-specific adjustment is needed, or use
+relevant attributable behavioral evidence already authorized for this work.
+Record the source and supported delta; do not routinely load or copy four
+guides. A host documentation Skill may help, but this package requires no other
+Skill or private reference path. Missing guidance never justifies invented
+model stereotypes; unresolved native parameter support still stops dispatch.
+A source claim does not prove runtime identity or model efficacy.
+
+The [official Astra prompting guidance](https://developers.openai.com/api/docs/guides/latest-model#prompting-best-practices),
+checked on 2026-09-07, supports explicit in-scope continuation, clear instruction
+priority, and testing proportional to demonstrated need. Where relevant, use
+the common continuation and verification rule above without another approval
+loop or copied guide. This grants no new roles or relaxed evidence gates.
+Consult another model's own guidance before applying model-specific claims.
+
+Reasoning effort is a supported runtime parameter and evaluation variable,
+not a responsibility or prose replacement such as "think harder". Keep the
+shared contract/role/task prompt stable across effort settings; do not copy a
+full prompt for each setting or change an active task's model. If evaluation is
+separately authorized, distinguish prompt, model, and effort changes for
+attributable evidence. Editing a prompt does not authorize model evaluation.
+
 ## Role-Model Configuration At Dispatch
 
-Apply this section only after the governing contract has authorized delivery
-of the named role. Configuration selects execution metadata for that delivery;
-it grants no role, action, read, write, Git, installation, provider, credential,
-network, or external-effect authority.
+Apply this section only when the governing contract has authorized a new task
+or delivery and identified its protection level and actual responsibility.
+Configuration selects execution metadata for that start or delivery; it grants
+no task, role, action, read, write, Git, installation, provider, credential,
+network, or external-effect authority. A level describes coordination and
+governance, not task difficulty or a monotonic model-investment scale; never
+infer the level from a model name or the model from a level alone.
 
-Resolve one source in this order:
+First resolve the delivery inputs in this order:
 
-1. Preserve a provider, model, and parameter combination already frozen in the
-   approved delivery contract. Do not reread configuration to replace it.
-2. Otherwise, when the contract names an explicit configuration file, read
-   exactly that file. Missing or unreadable input stops delivery; do not fall
-   back and hide the failure.
-3. Otherwise, read `~/.config/work-charter/role-models.yaml` when it exists.
-4. Otherwise, read the package
-   [default configuration](../assets/role-models.default.yaml).
+1. Preserve a complete provider/model/parameters combination already frozen
+   for this delivery. Do not reread configuration to replace it.
+2. Otherwise, use a complete combination explicitly confirmed for this new
+   task or role. This task-local value is contract input, not another YAML
+   source, and omitted `parameters` means no parameters.
+3. Otherwise, resolve from configuration using source priority first and
+   level-before-general priority within each source, as defined below.
+
+For step 3, select at most one override file. When the contract names an
+explicit configuration file, read exactly that file. Missing or unreadable
+input stops delivery; do not fall back and hide the failure. Otherwise read
+`~/.config/work-charter/role-models.yaml` when it exists. If neither exists,
+use only the package [default configuration](../assets/role-models.default.yaml).
+The selected explicit or user file supplies higher-priority complete objects;
+the package supplies fallback objects. Do not merge fields across them or
+introduce another directory source.
 
 The user path is outside Skill discovery and installation roots. Never search
 project directories or other user paths for alternatives. Install, update,
 rollback, and uninstall must not create, modify, move, or delete the user file.
 
-Accept only this bounded data shape:
+The package default retains its four general objects and existing values as
+compatibility fallbacks, and adds the approved L0-L4 level overrides. It has no
+general `primary` or `l0.reviewer` override; the latter uses the general
+Reviewer fallback unless explicitly configured. Missing user entries may use
+package level defaults, including for primary owners. Accept configuration
+only in this bounded data shape:
 
-- the top-level mapping has exactly integer `schema_version: 1` and `roles`;
-- `roles` contains only `orchestrator`, `planner`, `executor`, and `reviewer`;
-- each supplied role has exactly nonempty plain-string `provider` and `model`,
-  plus optional mapping `parameters`; and
+- the top-level mapping has integer `schema_version: 1`, at least one of
+  `roles` or `level_overrides`, and no other field;
+- `roles`, when present, contains only `primary`, `orchestrator`, `planner`,
+  `executor`, and `reviewer`;
+- `level_overrides`, when present, contains only `l0`, `l1`, `l2`, `l3`, and
+  `l4`; each level may contain only the actual responsibilities in this matrix:
+
+  | Level | Configurable actual responsibilities |
+  | --- | --- |
+  | `l0` | `primary`, `reviewer` |
+  | `l1` | `primary`, `reviewer` |
+  | `l2` | `primary`, `reviewer` |
+  | `l3` | `planner`, `executor`, `reviewer` |
+  | `l4` | `orchestrator`, `planner`, `executor`, `reviewer` |
+
+- each supplied general or level-specific object has exactly nonempty
+  plain-string `provider` and `model`, plus optional mapping `parameters`; and
 - each parameter name and value must be explicitly supported by the selected
   provider/model and the current native creation route.
 
@@ -217,17 +322,52 @@ interpolation. Treat the file as data only. Do not add a parser dependency,
 start a service, evaluate content, interpolate values, or silently discard an
 unsupported parameter.
 
-The package default supplies all four roles. A user file may supply only the
-roles it changes. Each supplied role replaces that complete default role
-object: it must repeat `provider` and `model`, and omitted `parameters` means
-that role receives no extra parameters. Do not inherit parameters from the
-default object, a previous model, or a different provider. Roles absent from
-the user file retain their package-default objects. The contract's explicit
-file follows the same replacement rule unless that contract has separately
-frozen a complete delivery combination.
+An explicit or user file may supply only the general roles and level-role
+combinations it changes. Every supplied object is a whole-object replacement:
+it must repeat `provider` and `model`, and omitted `parameters` means no
+parameters for that combination. Do not inherit parameters from a package
+object, another level, a previous model, or a different provider. Missing
+objects fall through to the next object in the lookup order; they do not
+invent values or merge parameters. The same rule applies to task-local
+explicit combinations unless the contract already froze the complete delivery.
 
-The authorized dispatcher resolves the named role before creation, then shows
-the final role, provider, model, parameters, and source. It verifies provider,
+At the task-start or role-dispatch boundary, normalize a host label `main` to
+the canonical actual responsibility `primary`; do not accept both spellings as
+YAML keys. Validate the complete selected file before using any entry, so an
+unknown or invalid entry is not silently ignored merely because its role is not
+enabled. Validate the package defaults as well when consulting them. Then
+resolve the identified level and actual responsibility:
+
+1. selected explicit or user file: `level_overrides.<level>.<responsibility>`;
+2. selected explicit or user file: `roles.<responsibility>`;
+3. package default: `level_overrides.<level>.<responsibility>`;
+4. package default: `roles.<responsibility>`; or
+5. only for `primary`, when neither source supplies an object, preserve the host's existing
+   selection by sending no provider, model, or parameter override. Record the
+   requested combination as `UNSPECIFIED`, the source as `host selection`, and
+   runtime identity as `UNKNOWN` unless the host exposes it. Never borrow the
+   `executor` or `planner` object for a primary owner.
+
+Use the first present complete object; with no selected user file, start at
+the package level lookup. An explicit/user general object wins over a package
+level override, preserving legacy four-role user files. For example, a user
+general Executor configured as Sol/high still wins for L3 or L4 even though
+the package level default is Astra/medium. If that user file omits Executor,
+the applicable package level override wins before the package general fallback.
+The current package supplies every valid primary lookup, so host pass-through
+is a defensive compatibility rule rather than the current no-user-file result.
+
+The matrix defines which objects may be selected, not which roles are enabled.
+An `l0.reviewer`, `l1.reviewer`, or `l2.reviewer` entry never creates a Reviewer
+or activates a review gate. `L0` remains no active Charter; its local
+task-selection consumer may reuse this input contract without loading or
+activating Work Charter. Until a host or global task-start consumer actually
+implements the interface, package text and deterministic fixtures prove only
+the source contract, not local adoption or effective runtime delivery.
+
+The authorized boundary resolves the named level and actual responsibility
+before creation, then shows the final level, responsibility, provider, model,
+parameters, object source, and configuration-file source. It verifies provider,
 model, parameter, account/actor, and target support through the intended native
 route. On a supported Codex OpenAI route, map `model` to the native `model`
 field and `parameters.reasoning_effort` to `thinking`; use another provider or
@@ -235,10 +375,10 @@ parameter only when that exact route supports it. Stop rather than substitute
 a different route or value. Record requested delivery values separately from
 runtime-observed identity when the runtime does not expose the latter.
 
-A later file edit affects only a later, newly resolved delivery. It does not
-change an existing role, a frozen delivery, or same-combination recovery. This
-contract is an instruction-time read, not a file watcher, background component,
-or general model gateway.
+A later file edit affects only a later, newly resolved task or delivery. It does
+not change an existing primary task or role, a frozen delivery, or
+same-combination recovery. This contract is an instruction-time read, not a
+file watcher, background component, or general model gateway.
 
 ## Planner, Executor, And Reviewer (`L3`)
 

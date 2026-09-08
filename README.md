@@ -11,17 +11,30 @@ materialized from source commit `80910a8b2375a11be897e9660c4b00a06d00dd13`;
 files changed for the current repository-native version are identified in the
 source map rather than represented as unchanged migration blobs.
 
-The current source candidate is `v0.5.0`, described by
-[`release/v0.5.0-candidate.json`](release/v0.5.0-candidate.json). It adds a
-strict external role-model configuration contract and a sixth package file,
-while retaining the accepted v0.4.1 operation-local permission and exact DACL
-restoration corrections. The descriptor remains its immutable pending
-pre-review snapshot. The separate
+The accepted `v0.5.0` source is described by the immutable pre-review snapshot
+[`release/v0.5.0-candidate.json`](release/v0.5.0-candidate.json). The separate
 [`release/v0.5.0-local-release-receipt.json`](release/v0.5.0-local-release-receipt.json)
 binds accepted source commit `8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`,
 ten completed review rounds, Planner acceptance, and the exact deterministic
 qualification. Local source readiness is `VERIFIED`; no v0.5.0 installation,
 runtime role-delivery, or public-release claim follows from that receipt.
+
+The current [`v0.6.1` candidate](release/v0.6.1-candidate.json) refines the
+startup prompt to reuse scoped authorization, makes prompts and handoffs
+concise but complete for their receiver, and routes configuration parsing to
+one required reference. It preserves schema 1, the six-file package, defaults,
+and authority/review boundaries. Its checks and review bind fresh input;
+installation and publication follow only their authorized gates.
+
+The prior local `v0.6.0` candidate adds backward-compatible
+level-by-actual-responsibility resolution and is bound by
+[`release/v0.6.0-candidate.json`](release/v0.6.0-candidate.json).
+R12 completed independent technical review with no new findings; Planner
+accepted the uncommitted frozen source checkpoint. The [acceptance record](docs/skills/work-charter/STATE.md#accepted-v060-source-checkpoint)
+identifies its scope and limits. The candidate remains its pre-review snapshot;
+this is not committed source, local release readiness, installation, or global
+adoption. The immutable
+v0.5.0 candidate and receipt remain historical evidence for their exact bytes.
 
 The immutable v0.4.0 receipt binds its accepted candidate, five review results,
 and the failed v0.3-to-v0.4 update at that checkpoint:
@@ -41,8 +54,10 @@ public release, and broad efficacy remain `UNKNOWN` or separately authorized.
 
 ## Role-model configuration
 
-The package default is
+The package defaults are owned by
 [`skills/work-charter/assets/role-models.default.yaml`](skills/work-charter/assets/role-models.default.yaml):
+
+General compatibility fallbacks:
 
 | Role | Provider | Model | Reasoning effort |
 |---|---|---|---|
@@ -51,24 +66,55 @@ The package default is
 | Executor | OpenAI | `gpt-5.6-sol` | `high` |
 | Reviewer | OpenAI | `gpt-6-astra` | `high` |
 
-To customize later role deliveries, copy that file to
-`~/.config/work-charter/role-models.yaml` and edit it, or have an approved
-delivery contract name another exact file. No user file means the package
-default applies. A user file may contain only changed roles, but each supplied
-role replaces its whole default object and must repeat `provider` and `model`;
-omitting `parameters` means no parameters for that role. Other absent roles
-retain their package defaults. A missing or unreadable explicitly selected file
-is an error rather than a fallback.
+Approved level defaults use OpenAI `gpt-6-astra`:
 
-An already frozen delivery combination has priority over later file contents.
-Before a newly authorized role is created, its dispatcher shows the resolved
-role/provider/model/parameters and source and verifies support through the
-intended native route. Codex OpenAI delivery maps `model` to native `model` and
-`reasoning_effort` to `thinking`. Unsupported or ambiguous schema, fields,
-provider, model, or parameters stop delivery; configuration never supplies role
-authority, credentials, endpoints, or commands. Existing roles do not change
-when the file changes. Install, update, rollback, and uninstall never create,
-modify, or delete the external user file.
+| Level | Responsibility and reasoning effort |
+|---|---|
+| L0 | primary `medium` |
+| L1/L2 | primary and reviewer `medium` |
+| L3 | planner `max`; executor and reviewer `medium` |
+| L4 | orchestrator and planner `max`; executor and reviewer `medium` |
+
+No L0 Reviewer override is supplied; its general fallback remains applicable.
+These configured choices are not evidence of optimality or runtime adoption.
+
+To customize later task starts or role deliveries, copy that file to
+`~/.config/work-charter/role-models.yaml` and edit it, or have an approved
+delivery contract name another exact file. Schema v1 still accepts the legacy
+four-role file. A partial file may add a general `primary`, replace changed
+general roles, and/or add bounded `level_overrides` for `l0` through `l4`.
+Every supplied object is a whole replacement and must repeat `provider` and
+`model`; omitted `parameters` means none. Missing user objects fall through to package objects. No user file is needed
+to consume package level defaults.
+
+Resolution is: an already frozen complete delivery combination; then a complete
+combination explicitly confirmed for the new task or role; then its applicable
+user level object; user general object; package level object; package general
+object. User general configuration beats package level defaults. A host `main`
+label normalizes to `primary`. If an `L0`/`L1`/`L2` primary has neither a level
+override nor a general `primary` in either source, the boundary sends no model override and
+preserves host selection—it never borrows Planner or Executor defaults.
+
+The valid lookup matrix is `L0` primary plus separately triggered temporary R;
+`L1`/`L2` primary plus optional R; `L3` P/E/R; and `L4` O/P/E/R. Entries do not
+enable roles, and `L0` still does not activate Work Charter. Before creation,
+the boundary shows level, actual responsibility, provider/model/parameters,
+object source, and file source and verifies native support. Codex OpenAI maps
+`model` to native `model` and `reasoning_effort` to `thinking`. Unsupported or
+ambiguous data fails closed. Existing tasks and roles do not change when the
+file changes. The package defines this interface; global and host task-start
+consumers have not yet been migrated, so the source and fixtures are not proof
+of effective local delivery. Install, update, rollback, and uninstall never
+mutate the external user file.
+
+Prompts use the [shared contract, actual responsibility, current task, and
+necessary model adaptation](skills/work-charter/references/coordination-and-recovery.md#task-and-role-prompt-construction).
+Reuse valid authority for continuation, retain material gates, and adapt to an
+actual model only with relevant guidance or attributable evidence. Effort stays
+in runtime metadata. Each prompt and handoff retains the facts, decisions,
+material limits, and next action its receiver needs; remove repeated
+background and unrelated prose before essential information. Global migration follows separate Skill acceptance and
+an approved applicable-copy switch; it is not performed by this candidate.
 
 ## Historical v0.3.0 evidence
 
@@ -121,12 +167,22 @@ python -B scripts/check_source_contract.py --json
 python -B scripts/manage_install.py self-test --source .
 ```
 
-The SOURCE check proves that the current candidate instructions contain the
-required selection, activation, authority, recovery, independent-review,
-role-model resolution, and Standard O/P/E/R boundaries while preserving fixed
-historical release identities. It does not execute a model, create a role,
-read a live user configuration, re-read the installed copy, perform an
-installation, prove publication, or establish broad efficacy.
+The SOURCE checker reports the static selection, activation, authority,
+recovery, independent-review, level-role, and Standard O/P/E/R clauses
+separately from the required current-package identity gate. The v0.6.1
+descriptor must bind the actual current tree and digest; any mismatch makes
+the command fail. The immutable v0.5.0 descriptor is checked only against its
+historical values. Current-input results are recorded in
+[Verification](docs/skills/work-charter/VERIFICATION.md).
+
+The lifecycle self-test is a required gate for the current v0.6.1 package and
+first binds its source to the matching descriptor. An older exact-release
+checkout is not coverage for the current input. The staged adversarial
+repository matrix likewise does not cover an unstaged working-tree delta.
+Neither missing gate may be reported as passed or inapplicable.
+These checks still do not execute a model, create a task or
+role, exercise a host/global consumer, read a live user configuration, re-read
+the installed copy, prove publication, or establish broad efficacy.
 
 ## Future immutable-source lifecycle
 

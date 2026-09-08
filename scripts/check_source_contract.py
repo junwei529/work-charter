@@ -8,7 +8,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "skills" / "work-charter"
-CURRENT_CANDIDATE = ROOT / "release" / "v0.5.0-candidate.json"
+CURRENT_CANDIDATE = ROOT / "release" / "v0.6.1-candidate.json"
+V060_CANDIDATE = ROOT / "release" / "v0.6.0-candidate.json"
+V060_CANDIDATE_SHA256 = "5890f3e7c73ed1d4046269a03b1385097a0596cca804a57e49a838d588aa96ff"
+V060_PACKAGE_TREE = "12fe4c65683a82d9d60295160681247b812efa0b"
+V050_CANDIDATE = ROOT / "release" / "v0.5.0-candidate.json"
 V050_RECEIPT = ROOT / "release" / "v0.5.0-local-release-receipt.json"
 V041_CANDIDATE = ROOT / "release" / "v0.4.1-candidate.json"
 V040_CANDIDATE = ROOT / "release" / "v0.4.0-candidate.json"
@@ -74,6 +78,72 @@ roles:
     model: gpt-6-astra
     parameters:
       reasoning_effort: high
+level_overrides:
+  l0:
+    primary:
+      provider: openai
+      model: gpt-6-astra
+      parameters:
+        reasoning_effort: medium
+  l1:
+    primary:
+      provider: openai
+      model: gpt-6-astra
+      parameters:
+        reasoning_effort: medium
+    reviewer:
+      provider: openai
+      model: gpt-6-astra
+      parameters:
+        reasoning_effort: medium
+  l2:
+    primary:
+      provider: openai
+      model: gpt-6-astra
+      parameters:
+        reasoning_effort: medium
+    reviewer:
+      provider: openai
+      model: gpt-6-astra
+      parameters:
+        reasoning_effort: medium
+  l3:
+    planner:
+      provider: openai
+      model: gpt-6-astra
+      parameters:
+        reasoning_effort: max
+    executor:
+      provider: openai
+      model: gpt-6-astra
+      parameters:
+        reasoning_effort: medium
+    reviewer:
+      provider: openai
+      model: gpt-6-astra
+      parameters:
+        reasoning_effort: medium
+  l4:
+    orchestrator:
+      provider: openai
+      model: gpt-6-astra
+      parameters:
+        reasoning_effort: max
+    planner:
+      provider: openai
+      model: gpt-6-astra
+      parameters:
+        reasoning_effort: max
+    executor:
+      provider: openai
+      model: gpt-6-astra
+      parameters:
+        reasoning_effort: medium
+    reviewer:
+      provider: openai
+      model: gpt-6-astra
+      parameters:
+        reasoning_effort: medium
 """
 
 
@@ -177,6 +247,8 @@ def main():
     recovery = texts.get("references/coordination-and-recovery.md", "")
     standard = texts.get("references/standard-ope.md", "")
     role_models = texts.get("assets/role-models.default.yaml", "")
+    charter_asset = texts.get("assets/work-charter.md", "")
+    ui_metadata = texts.get("agents/openai.yaml", "")
     role_model_case_error = None
     try:
         role_model_case = ROLE_MODEL_CASE.read_text(encoding="utf-8")
@@ -185,33 +257,75 @@ def main():
         role_model_case_error = str(error)
 
     checks = {
+        "prompts.contract_role_task_layers": contains_all(recovery, [
+            "shared contract, actual responsibility, current task, and necessary model adaptation",
+            "| Primary (`L0`-`L2`)", "| Orchestrator (`L4`)",
+            "| Planner (`L3`/`L4`)", "| Executor (`L3`/`L4`)", "| Reviewer (when enabled)",
+            "Cold prompts", "Warm continuations", "Recovery restores",
+        ]) and "## Task Or Role Prompt" in charter_asset,
+        "prompts.continuation_and_real_gates": contains_all(recovery, [
+            "Complete authorized work through required checks and its result route",
+            "Silence never approves the dependent action",
+            "activation/adoption, material replan, operation permission, independent review, and acceptance gates",
+            "Repeat verification only when its input changed, it failed, or an unresolved material concern requires it",
+        ]),
+        "prompts.startup_and_complete_expression": (
+            contains_all(ui_metadata, [
+                "Use $work-charter",
+                "reusing existing authorization within its scope",
+                "asking only for missing project-read or adoption decisions",
+            ])
+            and "then ask before inspecting project details" not in ui_metadata
+            and contains_all(recovery, [
+                "every prompt and handoff proportionate and complete",
+                "receiver's next decision or action",
+                "Preserve key facts, decisions, material limitations, and the next step",
+                "First remove repeated background, preambles, reassurance, and unrelated content",
+                "not only to the final result",
+                "no fixed word limit or extra mandatory message templates",
+            ])
+        ),
+        "prompts.model_delta_and_effort": contains_all(recovery, [
+            "actual selected Astra, Sol, Terra, or Luna model",
+            "Record the source and supported delta",
+            "package requires no other Skill or private reference path",
+            "Reasoning effort is a supported runtime parameter and evaluation variable",
+            "Editing a prompt does not authorize model evaluation",
+        ]),
         "package.exact_six_file_shape": actual_files == EXPECTED_FILES,
         "role_models.default_exact": role_models == EXPECTED_DEFAULT_ROLE_MODELS,
-        "role_models.selection_and_replacement": (
-            contains_all(
-                skill,
-                [
-                    "A model combination already frozen in the approved delivery contract wins.",
-                    "A declared explicit path that is missing or unreadable is an error",
-                    "use the user configuration at `~/.config/work-charter/role-models.yaml` when it exists",
-                    "otherwise use the package default",
-                ],
-            )
-            and contains_all(
-                recovery,
-                [
-                    "Each supplied role replaces that complete default role object",
-                    "it must repeat `provider` and `model`",
-                    "omitted `parameters` means that role receives no extra parameters",
-                    "Roles absent from the user file retain their package-default objects.",
-                ],
-            )
+        "role_models.entrypoint_routing": (
+            "references/coordination-and-recovery.md#role-model-configuration-at-dispatch" in skill
+            and "coordination-and-recovery.md#role-model-configuration-at-dispatch" in standard
+            and "## Role-Model Configuration At Dispatch" in recovery
+            and contains_all(skill, ["then read", "Follow it before reading configuration"])
+            and "then read and apply" in " ".join(standard.split())
         ),
-        "role_models.validation_and_native_mapping": contains_all(
+        "role_models.priority_and_replacement": contains_all(recovery, [
+            "Preserve a complete provider/model/parameters combination already frozen",
+            "Otherwise, use a complete combination explicitly confirmed for this new task or role",
+            "selected explicit or user file: `level_overrides.<level>.<responsibility>`",
+            "selected explicit or user file: `roles.<responsibility>`",
+            "package default: `level_overrides.<level>.<responsibility>`",
+            "package default: `roles.<responsibility>`",
+            "only for `primary`, when neither source supplies an object",
+            "Never borrow the `executor` or `planner` object for a primary owner",
+            "Missing or unreadable input stops delivery",
+            "Every supplied object is a whole-object replacement",
+            "it must repeat `provider` and `model`",
+            "omitted `parameters` means no parameters for that combination",
+        ]),
+        "role_models.schema_matrix_and_native_mapping": contains_all(
             recovery,
             [
-                "top-level mapping has exactly integer `schema_version: 1` and `roles`",
-                "Reject duplicate or unknown fields and roles",
+                "top-level mapping has integer `schema_version: 1`, at least one of `roles` or `level_overrides`, and no other field",
+                "`roles`, when present, contains only `primary`, `orchestrator`, `planner`, `executor`, and `reviewer`",
+                "| `l0` | `primary`, `reviewer` |",
+                "| `l1` | `primary`, `reviewer` |",
+                "| `l2` | `primary`, `reviewer` |",
+                "| `l3` | `planner`, `executor`, `reviewer` |",
+                "| `l4` | `orchestrator`, `planner`, `executor`, `reviewer` |",
+                "Validate the complete selected file before using any entry",
                 "tags, anchors, aliases, merge keys",
                 "map `model` to the native `model` field",
                 "`parameters.reasoning_effort` to `thinking`",
@@ -223,30 +337,43 @@ def main():
                 skill,
                 [
                     "Role-model configuration guides an already-authorized dispatcher",
-                    "Configuration changes affect only later, newly resolved deliveries.",
+                    "Configuration changes affect only later, newly resolved tasks or deliveries.",
+                    "`L0` remains no active Charter",
+                    "does not prove that any host or global task-start consumer has integrated it",
                     "Installation lifecycle operations do not own or mutate the external user configuration.",
                 ],
             )
             and contains_all(
                 standard,
                 [
-                    "strict source priority, whole-role replacement, schema validation",
-                    "configuration never supplies delivery or action authority",
-                    "Existing roles do not change when a configuration file changes.",
+                    "Preserve frozen combinations",
+                    "require native support",
+                    "Configuration never authorizes delivery or action, enables a role, or changes an existing task.",
                 ],
             )
         ),
         "role_models.evaluation_boundary": contains_all(
             role_model_case,
             [
-                "Package default",
-                "One-role replacement",
-                "Provider/model replacement without parameters",
-                "Frozen delivery and later edits",
+                "Legacy four-role package default",
+                "General role replacement remains whole-object",
+                "General primary and level override",
+                "Frozen then task-explicit then configured priority",
+                "Unconfigured low-level primary preserves host selection",
+                "Listed but unenabled role",
                 "Explicit missing path",
                 "Invalid or unsupported data",
                 "The user file stays outside the install tree",
-                "not a watcher, service, generic parser/runtime dependency",
+                "host/global consumer integration",
+            ],
+        ),
+        "role_models.carrier_evidence_boundary": contains_all(
+            charter_asset,
+            [
+                "Resolved execution metadata",
+                "level, actual responsibility, provider/model/parameters or host-selection pass-through",
+                "object source, file source, requested values",
+                "Configuration choice does not enable a listed role or authorize delivery or action.",
             ],
         ),
         "selection.direct_activation_requires_body": contains_all(
@@ -374,18 +501,22 @@ def main():
 
     current_candidate_error = None
     current_candidate = {}
+    current_package_sha256 = package_digest(actual_files) if actual_files == EXPECTED_FILES else None
+    package_identity_error = None
     actual_package_tree = None
     try:
-        current_candidate = json.loads(CURRENT_CANDIDATE.read_text(encoding="utf-8"))
+        actual_package_tree = git_tree_hash(PACKAGE)
+    except (OSError, ValueError) as error:
+        package_identity_error = str(error)
+    try:
+        current_candidate = json.loads(V050_CANDIDATE.read_text(encoding="utf-8"))
         if not isinstance(current_candidate, dict) or not isinstance(
             current_candidate.get("package"), dict
         ):
-            raise ValueError("current candidate descriptor must be an object with an object package")
-        actual_package_tree = git_tree_hash(PACKAGE)
+            raise ValueError("v0.5.0 candidate descriptor must be an object with an object package")
     except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
         current_candidate_error = str(error)
-    current_package_sha256 = package_digest(actual_files) if actual_files == EXPECTED_FILES else None
-    checks["candidate.v050_identity"] = (
+    checks["candidate.v050_historical_identity"] = (
         current_candidate.get("schema") == "work-charter-local-release-candidate/v1"
         and current_candidate.get("product") == "work-charter"
         and current_candidate.get("version") == "0.5.0"
@@ -394,8 +525,8 @@ def main():
         and current_candidate.get("package", {}).get("file_count") == 6
         and current_candidate.get("package", {}).get("files") == sorted(EXPECTED_FILES)
         and current_candidate.get("package", {}).get("path") == "skills/work-charter"
-        and current_candidate.get("package", {}).get("tree") == actual_package_tree
-        and current_candidate.get("package", {}).get("sha256") == current_package_sha256
+        and current_candidate.get("package", {}).get("tree") == V050_PACKAGE_TREE
+        and current_candidate.get("package", {}).get("sha256") == V050_PACKAGE_SHA256
         and current_candidate.get("evidence_states", {}).get("independent_review") == "PENDING"
         and current_candidate.get("evidence_states", {}).get("planner_acceptance") == "PENDING"
         and current_candidate.get("evidence_states", {}).get("local_release_ready")
@@ -412,6 +543,64 @@ def main():
             "source_commit": "59b4d91f46c2ac797c71c900e62dda87cf0cca60",
         }
         and current_candidate.get("human_release_notes_review") == "PENDING"
+    )
+    v060_candidate_error = None
+    try:
+        v060_candidate_bytes = V060_CANDIDATE.read_bytes()
+        checks["candidate.v060_historical_identity"] = (
+            hashlib.sha256(v060_candidate_bytes).hexdigest() == V060_CANDIDATE_SHA256
+        )
+    except OSError as error:
+        checks["candidate.v060_historical_identity"] = False
+        v060_candidate_error = str(error)
+
+    successor_error = None
+    successor = {}
+    try:
+        parsed_successor = json.loads(CURRENT_CANDIDATE.read_text(encoding="utf-8"))
+        if not isinstance(parsed_successor, dict) or any(
+            not isinstance(parsed_successor.get(field), dict)
+            for field in ("package", "evidence_states", "lineage")
+        ):
+            raise ValueError("v0.6.1 candidate requires object package, evidence_states, and lineage")
+        successor = parsed_successor
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
+        successor_error = str(error)
+    checks["candidate.v061_identity"] = (
+        successor.get("schema") == "work-charter-local-release-candidate/v1"
+        and successor.get("product") == "work-charter"
+        and successor.get("version") == "0.6.1"
+        and successor.get("public_identity") == "junwei529/work-charter"
+        and successor.get("candidate_state") == "PENDING_INDEPENDENT_REVIEW"
+        and successor.get("human_release_notes_review") == "PENDING"
+        and successor.get("release_notes") == "CHANGELOG.md"
+        and successor.get("package", {}).get("file_count") == 6
+        and successor.get("package", {}).get("files") == sorted(EXPECTED_FILES)
+        and successor.get("package", {}).get("path") == "skills/work-charter"
+        and successor.get("lineage") == {
+            "historical_package_tree": V060_PACKAGE_TREE,
+            "previous_candidate": "release/v0.6.0-candidate.json",
+            "source_commit": "018ff69a26b70a3a490b57f3641b356739bb228f",
+        }
+        and successor.get("evidence_states") == {
+            "broad_product_efficacy": "UNKNOWN",
+            "cross_provider_runtime": "UNKNOWN",
+            "cross_version_lifecycle": "REQUIRES_FRESH_QUALIFICATION",
+            "independent_review": "PENDING",
+            "local_release_ready": "PENDING_REVIEW_AND_PLANNER_ACCEPTANCE",
+            "planner_acceptance": "PENDING",
+            "public_release": "UNKNOWN",
+            "role_delivery_runtime": "UNKNOWN",
+            "source_contract": "REQUIRES_FRESH_DETERMINISTIC_CHECK",
+            "stable_installed_copy": "UNKNOWN",
+        }
+    )
+    checks["candidate.current_package_binding"] = (
+        checks["candidate.v061_identity"]
+        and actual_package_tree is not None
+        and current_package_sha256 is not None
+        and successor.get("package", {}).get("tree") == actual_package_tree
+        and successor.get("package", {}).get("sha256") == current_package_sha256
     )
 
     v050_receipt_error = None
@@ -1101,6 +1290,12 @@ def main():
         failures.append(f"role_models.case_unreadable: {role_model_case_error}")
     if current_candidate_error:
         failures.append(f"candidate.v050_unreadable: {current_candidate_error}")
+    if successor_error:
+        failures.append(f"candidate.v061_unreadable: {successor_error}")
+    if v060_candidate_error:
+        failures.append(f"candidate.v060_unreadable: {v060_candidate_error}")
+    if package_identity_error:
+        failures.append(f"package.identity: {package_identity_error}")
     if v050_receipt_error:
         failures.append(f"receipt.v050_unreadable: {v050_receipt_error}")
     if v041_candidate_error:
@@ -1117,15 +1312,49 @@ def main():
         failures.append(f"public_release_candidate.unreadable: {public_candidate_error}")
     if public_evidence_error:
         failures.append(f"public_release_evidence.unreadable: {public_evidence_error}")
+    static_clause_prefixes = (
+        "authority.",
+        "recovery.",
+        "review.",
+        "prompts.",
+        "role_models.",
+        "selection.",
+        "standard.",
+    )
+    static_clause_checks = {
+        name: passed
+        for name, passed in checks.items()
+        if name.startswith(static_clause_prefixes)
+    }
+    current_package_bound = checks.get("candidate.current_package_binding", False)
     result = {
         "checks": checks,
+        "current_package_differs_from_v050": (
+            current_package_sha256 is not None
+            and current_package_sha256 != V050_PACKAGE_SHA256
+        ),
+        "current_package_tree": actual_package_tree,
         "failures": failures,
         "package_sha256": current_package_sha256,
         "proof_class": "deterministic-source-contract",
+        "required_identity_gate": (
+            "SATISFIED" if current_package_bound else "BLOCKED_CURRENT_PACKAGE_UNBOUND"
+        ),
         "result": "PASS" if not failures else "FAIL",
+        "source_release_identity": (
+            "BOUND_TO_V061_CANDIDATE"
+            if current_package_bound
+            else "UNBOUND_PENDING_SUCCESSOR_VERSION_AND_DESCRIPTOR"
+        ),
+        "static_clause_checks_passed": sum(static_clause_checks.values()),
+        "static_clause_checks_total": len(static_clause_checks),
+        "static_clause_result": (
+            "PASS" if all(static_clause_checks.values()) else "FAIL"
+        ),
         "scope_limits": [
             "no model execution",
-            "no role creation or runtime identity proof",
+            "no task or role creation or runtime identity proof",
+            "no host or global task-start consumer execution",
             "no live user-configuration read",
             "no live installed-copy recheck",
             "no publication proof",

@@ -30,13 +30,20 @@ importing another Skill or the former monorepo evaluation envelope.
 ## Deterministic verification
 
 Run `python -B scripts/check_repository.py --json` from the repository root.
-Run `python -B scripts/check_source_contract.py --json` for candidate SOURCE
-clause coverage. The latter validates the package source against the material
+Run `python -B scripts/check_source_contract.py --json` for static SOURCE clause
+coverage and the required current-package candidate binding. The static result
+validates the package source against the material
 selection/activation, authority, recovery, independent-review/acceptance,
 same-Reviewer re-review, callback deduplication, graph limits, context-switch,
-role-model resolution, and Standard O/P/E/R boundaries in this evaluation
-surface; it also binds the exact package default. It does not execute a model,
-create a role, read a live user configuration, or claim adherence.
+level-by-actual-role model resolution, and Standard O/P/E/R boundaries in this
+evaluation surface; it also binds the exact general compatibility fallbacks, approved level
+defaults, contract/role/task/model-delta prompt clauses, scoped startup
+authorization, complete expression, and required reference reachability.
+Current candidate identity is v0.6.1; the v0.6.0 descriptor is preserved as a
+fixed historical snapshot. It does not execute a model, create a task or role, read a live user
+configuration, exercise a host/global consumer, or claim adherence. Static
+clause success does not make an unbound package a qualified candidate; without
+a matching descriptor the overall command must fail.
 Case execution that invokes a model, installs a Skill, or uses an external
 provider remains a separately authorized evidence action.
 

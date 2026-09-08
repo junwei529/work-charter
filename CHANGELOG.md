@@ -1,5 +1,57 @@
 # Changelog
 
+## Work Charter v0.6.1
+
+Local candidate: [release/v0.6.1-candidate.json](release/v0.6.1-candidate.json)
+
+Independent review, Planner acceptance, and human release-note review: `PENDING`
+
+- Reuses scoped authorization in the default startup prompt, asking only for
+  missing project-read or adoption decisions.
+- Keeps prompts and handoffs proportionate and complete for the receiver's
+  next decision/action, removing repeated background before material content.
+- Routes entrypoint and Standard configuration lookups to one required
+  coordination reference. Priority, whole-object replacement, validation,
+  native mapping, approved defaults, and authority boundaries are unchanged.
+- Binds fresh package qualification to v0.6.1 and preserves the frozen v0.6.0
+  descriptor and prior evidence. Installation and publication require their
+  own completed gates; neither is claimed by this candidate.
+
+## Work Charter v0.6.0
+
+Local candidate: [`release/v0.6.0-candidate.json`](release/v0.6.0-candidate.json)
+
+Descriptor snapshot: `PENDING_INDEPENDENT_REVIEW`
+
+Human release-note review: `PENDING`
+
+R12 completed with no new findings; Planner source verdict:
+`ACCEPTED_FROZEN_SOURCE_CHECKPOINT` for the uncommitted input recorded in
+[State](docs/skills/work-charter/STATE.md#accepted-v060-source-checkpoint). The
+pre-review descriptor is unchanged. Later acceptance-record edits are checked
+separately; no commit, local release readiness, installation, or global adoption
+follows from this verdict.
+
+- Adds optional general `primary` and `level_overrides` to schema version 1,
+  preserving legacy four-role YAML and exact general compatibility defaults.
+  Adds 12 approved Astra level objects; canonical YAML owns their values.
+- Resolves a frozen delivery, a task-explicit confirmed combination, user
+  level, user general, package level, then package general objects.
+  Every selected object is complete; omitted parameters never carry over.
+- Represents L0/L1/L2 primary owners without borrowing Planner or Executor
+  metadata. Only a primary absent from both sources preserves host selection. Entries do not
+  create roles, L0 does not activate Charter, and active tasks do not change.
+- Builds prompts from contract, actual responsibility, current task, and
+  supported model delta. Reuses valid authority, keeps real gates, and avoids
+  redundant microsteps/checks. Effort stays native runtime metadata.
+- Requires the current package tree and digest to match the v0.6.0 descriptor
+  and directs lifecycle qualification to that source version. Historical
+  candidates, receipts, failures, and acceptance remain attached to their bytes.
+- Defines a task-start and dispatch interface; host/global consumers are not
+  integrated. Deterministic checks do not prove model efficacy or runtime
+  adoption. Installation, real user configuration, global rules, model runs,
+  commit, and publication remain separate authorization boundaries.
+
 ## Work Charter v0.5.0
 
 Descriptor snapshot: `PENDING_INDEPENDENT_REVIEW`

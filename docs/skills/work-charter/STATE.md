@@ -4,12 +4,88 @@
 
 Canonical editable source is the 6-file package under
 [`skills/work-charter/`](../../../skills/work-charter/). It originated from
-`80910a8b2375a11be897e9660c4b00a06d00dd13`; changed `v0.5.0` package,
-evaluation, documentation, and checker files are repository-native and bound
-to their current hashes in the provenance manifest. Unchanged mapped material
-retains its exact or normalized migration provenance.
+`80910a8b2375a11be897e9660c4b00a06d00dd13`; changed package, evaluation,
+documentation, and checker files carry their recorded transformations and are bound to their
+current hashes in the provenance manifest. Unchanged mapped material retains
+its exact or normalized migration provenance. The working package is now
+the local v0.6.1 candidate, pending fresh independent review and Planner
+acceptance. The accepted v0.6.0 source and record checkpoints remain below.
 
-## Current v0.5.0 source
+## Current v0.6.1 local candidate
+
+- Version: v0.6.1; schema 1, six package files, approved default model/effort
+  objects and role/permission/review contracts unchanged
+- Changes: startup prompt reuses scoped authorization; prompts and handoffs
+  retain necessary facts, decisions, material limits, and next action;
+  configuration resolution has one required reference owner
+- Candidate: [v0.6.1 descriptor](../../../release/v0.6.1-candidate.json),
+  `PENDING_INDEPENDENT_REVIEW`; no committed-source receipt
+- Package identity and current-input qualification: [Verification](VERIFICATION.md#current-v061-qualification)
+- Independent technical review and Planner source acceptance: `PENDING`
+- Commit, managed installation, installation acceptance, and Git publication:
+  not yet performed for this candidate; require their applicable gates
+- Global consumer migration: `NOT_PERFORMED`; runtime/efficacy: `UNKNOWN`
+- v0.6.0 descriptor and historical release objects remain byte-identical;
+  previous checks and R12 do not prove this new input
+
+## Accepted v0.6.0 source checkpoint
+
+- Source verdict: `ACCEPTED_FROZEN_SOURCE_CHECKPOINT`
+- Independent technical review: cumulative R12 completed, `No new findings`;
+  coverage was the complete 21-file source diff plus necessary unchanged
+  semantic context. Read-only input identity held before and after review.
+- Planner accepted the configuration capability, approved level defaults,
+  prompt method, and that complete frozen input; P-C1/P-C2 are closed.
+- Accepted baseline HEAD: `018ff69a26b70a3a490b57f3641b356739bb228f`
+- Accepted staged-diff SHA-256:
+  `237d7c0b0cf4318699c9e24d187e24843b76532700677ce9f343c7429da2b2bd`
+- Accepted candidate SHA-256:
+  `5890f3e7c73ed1d4046269a03b1385097a0596cca804a57e49a838d588aa96ff`
+- Package shape: unchanged 6 files
+- Configuration schema: backward-compatible `schema_version: 1` extension
+- Package general defaults: unchanged O/P/E/R compatibility objects and values
+- Package level defaults: 12 approved Astra objects in the canonical YAML
+- Prompt method: contract + actual responsibility + current task + supported
+  model delta; effort remains runtime metadata, model efficacy unverified
+- Added configuration objects: optional general `primary` plus bounded
+  `level_overrides` for the actual-responsibility matrix
+- Resolution: frozen delivery, task-explicit confirmed combination, user level,
+  user general, package level, package general, then host-selection
+  pass-through only for a `primary` absent from both sources
+- Actual-responsibility matrix: L0 primary plus separately triggered temporary
+  R; L1/L2 primary plus optional R; L3 P/E/R; L4 O/P/E/R
+- L0 activation: remains no active Charter
+- Existing tasks/roles and role enablement: unchanged by configuration
+- Package tree:
+  `12fe4c65683a82d9d60295160681247b812efa0b` and package SHA-256
+  `b73cf79466e8289fcb2d6eb441db91ce13def0cb2092e58bcbdfef14de08a50a`
+- Candidate descriptor: [`../../../release/v0.6.0-candidate.json`](../../../release/v0.6.0-candidate.json)
+- Current-input SOURCE, repository, staged adversarial, and lifecycle checks:
+  see [Verification](VERIFICATION.md)
+- Host/global task-start consumer integration: `NOT_PERFORMED`
+- Commit/native commit gate, local release readiness, installation, and
+  publication: not established or authorized by this source acceptance
+- Runtime delivery, loaded-copy behavior, and broad efficacy: `UNKNOWN`
+- Package version: v0.6.0; YAML schema version: 1 with optional field extensions
+
+The candidate remains its original `PENDING_INDEPENDENT_REVIEW` snapshot,
+including pending evidence fields. The later source acceptance above does not
+rewrite that snapshot or require a committed-source receipt. No v0.6.0 commit
+is claimed. Historical C5/C6, R1-R12, prior permission refusals, failed checks,
+findings, and consumed authority remain part of the same work history.
+
+The subsequent acceptance-record checkpoint also passed Planner verification.
+Its 11-file delta comprised nine existing documents and mechanical provenance/
+checker pins, with staged-diff SHA-256
+`b1d5f69d15cff09c06c2e178718f1ded2b57ec7b22b38c5cd72749c1c35724c7`.
+At that closeout, all six package files, candidate, historical release objects,
+installer, and SOURCE checker stayed byte-identical to the source checkpoint.
+Its own checks and acceptance remain distinct from later v0.6.1 work.
+
+This development source does not rewrite or inherit the accepted v0.5.0 source
+identity, review, or Planner acceptance below.
+
+## Immutable accepted v0.5.0 source
 
 - Version: `v0.5.0`
 - Candidate descriptor: [`../../../release/v0.5.0-candidate.json`](../../../release/v0.5.0-candidate.json)
@@ -33,7 +109,7 @@ retains its exact or normalized migration provenance.
   natural adherence, cross-Harness behavior, public release, and broad
   efficacy: `UNKNOWN` or separately authorized
 
-The candidate preserves the accepted v0.4.1 L0-L4 Reviewer, verification, acceptance,
+The v0.5.0 candidate preserves the accepted v0.4.1 L0-L4 Reviewer, verification, acceptance,
 evidence-first `UNKNOWN`, context recovery, callback, and graph boundaries. It
 adds a strict role-model source hierarchy, whole-role replacement semantics,
 closed schema and capability validation, visible native mapping, and a package
@@ -104,26 +180,37 @@ on another Skill repository and begins with no configured remote.
 
 The migration proves historical source identities for mapped files. The current
 manifest proves current target hashes, local link and publication-safety
-constraints, and provenance classification. Receipt-bound deterministic SOURCE
-qualification proves that the `v0.5.0` instruction text contains
-required selection/activation, authority non-expansion, coordination/recovery,
-review/acceptance separation, role-model resolution, and Standard O/P/E/R
-clauses, and that its package default matches the documented four-role table.
-It does not prove model adherence, runtime delivery, technical correctness, or
-acceptance. The retained cases remain contract fixtures; they do not create
-fresh model, efficacy, release, or installed-copy evidence.
+constraints, and provenance classification. The v0.5.0 receipt-bound
+deterministic qualification proves only that exact historical instruction text
+and four-role default. The current checker separately reports the development
+source's static selection/activation, authority, coordination/recovery,
+review/acceptance, level-role resolution, Standard O/P/E/R, and unchanged
+default-data clauses, and requires exact current-package binding to v0.6.1.
+Neither result proves model adherence, host/global
+consumer integration, runtime delivery, technical correctness, or acceptance
+for the development source. R12 and Planner acceptance apply to the v0.6.0
+checkpoint recorded above; v0.6.1 review and acceptance remain pending.
+The retained cases remain contract fixtures; they
+do not create fresh model, efficacy, release, or installed-copy evidence.
 
 Evidence states remain separate:
 
-- Current v0.5.0 SOURCE identity and deterministic contract: `VERIFIED` for
+- Current v0.6.1 SOURCE identity: provenance-bound working bytes and a matching
+  candidate descriptor. Input-bound deterministic results are recorded in
+  [Verification](VERIFICATION.md). R13 reviewed the prior frozen input; the
+  corrected state records await re-review and Planner source acceptance.
+- Historical v0.6.0 source and acceptance records: accepted at the checkpoints
+  above. Its immutable descriptor retains the pre-review pending snapshot;
+  that snapshot does not reopen the accepted history or qualify v0.6.1.
+- Immutable v0.5.0 SOURCE identity and deterministic contract: `VERIFIED` for
   accepted commit `8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`.
-- Current v0.5.0 independent review and Planner acceptance: `VERIFIED` by the
+- Immutable v0.5.0 independent review and Planner acceptance: `VERIFIED` by the
   separate source receipt; the candidate descriptor retains its immutable
   pending snapshot.
-- Current v0.5.0 local source readiness: `VERIFIED`.
-- Current v0.5.0 installation and publication: `NOT_PERFORMED` and
+- Immutable v0.5.0 local source readiness: `VERIFIED`.
+- v0.5.0 installation and publication: `NOT_PERFORMED` and
   `NOT_AUTHORIZED`.
-- Current v0.5.0 role-delivery runtime and cross-provider execution: `UNKNOWN`.
+- v0.5.0 role-delivery runtime and cross-provider execution: `UNKNOWN`.
 - Historical v0.4.0 source-candidate acceptance: `VERIFIED` for the immutable
   candidate and reviewed installer baseline; later control-state evidence and
   the accepted C4 correction remain separate from that history.
@@ -197,14 +284,26 @@ review rounds, and Planner acceptance are bound by the separate v0.5.0 receipt.
 
 ## Next gate
 
-The v0.5.0 source checkpoint is accepted and locally committed. The receipt
-records local source readiness only; it does not authorize installation. Any
-installed-copy update must later present the exact target, trusted source
-identity, backup/rollback, file-set, and ACL effects and receive separate direct
-approval. Fresh role-delivery, loaded-copy, natural-adherence, global-rule
-migration, public source, tag, Release, other cross-version transition,
-cross-provider execution, or broader efficacy remains a separate gate. The
-exact historical v0.3.0
+The current v0.6.1 candidate awaits re-review of the corrected records and
+Planner source acceptance, using the frozen complete input and applicable
+current-index checks. Unchanged package/lifecycle evidence is reused only with
+its matching identity; changed inputs require their own verification.
+
+The approved conditional closeout then proceeds to a local commit, followed by
+a managed installation from the immutable accepted commit and an independently
+confirmed trusted package tree. Receipt, content, default-reader access, and
+permission/rollback checks precede Planner installation acceptance. Only then
+may normal fast-forward Git publication proceed to the intended repository's
+main branch after actual Git actor, target, live ref/ancestry, and outgoing
+content checks. These actions are authorized but not yet completed; source
+acceptance is not installation or publication evidence. A material change or
+an operation-local permission requirement still stops its dependent action.
+
+Historical v0.6.0 acceptance and pending descriptor snapshots remain separate
+from this current workflow. Host/global consumer migration, fresh role-delivery,
+loaded-copy behavior, natural adherence, tags, Releases, other cross-version
+transitions, cross-provider execution, and broader efficacy remain separate
+gates. The exact historical v0.3.0
 post-release evidence subject F remains accepted under
 `B2-WC-PUBLIC-EVIDENCE-F-01` without moving its tag or rewriting P.
 

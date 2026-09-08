@@ -1,14 +1,67 @@
 # Work Charter Verification
 
-## Historical migration baseline and current local source
+## Current v0.6.1 qualification
+
+The current six-file source binds [v0.6.1](../../../release/v0.6.1-candidate.json).
+New startup text, prompt-expression guidance, and configuration routing require
+fresh checks. Defaults/schema/role contracts remain unchanged; the accepted
+v0.6.0 snapshot, its failed and passing evidence, and cumulative review history
+remain historical inputs, not current proof.
+
+- Package tree: `08689a9706fa15dbe6889eec1572e7c8943c1f1c`
+- Package SHA-256: `05fd73d5087693b374f184297e74dd0d57f8999a1b02c63279e4930a11dfbc35`
+- Repository: `PASS`, 91 mapped files, terminal exit code 0
+- Focused SOURCE: `PASS`, 35/35 checks, 22/22 static clauses, terminal exit code 0;
+  current package tree and digest both match the v0.6.1 descriptor
+- Lifecycle self-test: `PASS`, terminal exit code 0, Windows ACL capture/restore/
+  readback and disposable recovery coverage; `persistent_effect: false`
+- Skill validation: `PASS`, terminal exit code 0
+- Candidate binding: 9 positive/negative cases `PASS`, terminal exit code 0,
+  including rejection of an old package pair and a changed v0.6.0 snapshot
+- Staged adversarial: required on the final complete index; the review
+  checkpoint carries the matching input manifest and terminal result
+- Independent review and Planner acceptance: `PENDING`
+- Actual installation, Git publication, runtime, and efficacy: not established
+
+## Historical v0.6.0 qualification and migration baseline
+
+The prior v0.6.0 input passed 17 static/29 total SOURCE checks, repository,
+lifecycle, and staged adversarial checks. The supplemental defaults and prompt
+changes invalidate those passes for current-input claims; the checkpoint keeps
+the earlier identities and terminal results as history.
+
 
 - Source commit: `80910a8b2375a11be897e9660c4b00a06d00dd13`
 - Package path: `skills/work-charter/`
 - Package files: 6
 - Provenance manifest: [`../../../provenance/source-map.json`](../../../provenance/source-map.json)
-- Current candidate: [`../../../release/v0.5.0-candidate.json`](../../../release/v0.5.0-candidate.json)
-- Candidate descriptor state: immutable `PENDING_INDEPENDENT_REVIEW` snapshot
-- Accepted source commit: `8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`
+- Accepted working package: uncommitted v0.6.0 frozen source
+  checkpoint; R12 completed with no new findings, Planner verdict
+  `ACCEPTED_FROZEN_SOURCE_CHECKPOINT`; identity and scope in [State](STATE.md#accepted-v060-source-checkpoint)
+- Historical descriptor: [`../../../release/v0.6.0-candidate.json`](../../../release/v0.6.0-candidate.json)
+- Current package shape: unchanged 6 files
+- Current schema/default boundary: backward-compatible schema-v1 level-role
+  extension; four general compatibility values unchanged, 12 approved level objects
+- Accepted-input repository check: `PASS`, 90 mapped files; terminal exit code 0
+- Accepted v0.6.0 static SOURCE clauses: `PASS`, 20/20; total SOURCE checks 32/32
+- Accepted v0.6.0 package tree:
+  `12fe4c65683a82d9d60295160681247b812efa0b`
+- Accepted v0.6.0 package SHA-256:
+  `b73cf79466e8289fcb2d6eb441db91ce13def0cb2092e58bcbdfef14de08a50a`
+- Required current-package candidate binding: `SATISFIED`; overall SOURCE
+  `PASS`, terminal exit code 0
+- Accepted v0.6.0 source release identity: `BOUND_TO_V060_CANDIDATE`
+- Accepted-input staged adversarial matrix: `PASS`, 92/92, terminal exit code 0;
+  this result binds the accepted index only, not later record updates
+- Accepted v0.6.0 lifecycle self-test: `PASS`, terminal exit code 0, using a
+  Windows token approved for disposable ACL effects; `persistent_effect: false`
+- Candidate-binding positive/negative cases: `PASS`, 7/7, terminal exit code 0
+- Skill frontmatter validation: `PASS`, terminal exit code 0 after shortening
+  redundant description wording; the prior overlength failure remains recorded
+- Prompt clauses are deterministic source checks, not model-behavior evidence
+- Immutable v0.5.0 candidate: [`../../../release/v0.5.0-candidate.json`](../../../release/v0.5.0-candidate.json)
+- v0.5.0 descriptor state: immutable `PENDING_INDEPENDENT_REVIEW` snapshot
+- Accepted v0.5.0 source commit: `8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`
 - Source acceptance receipt:
   [`../../../release/v0.5.0-local-release-receipt.json`](../../../release/v0.5.0-local-release-receipt.json)
 - Candidate lineage commit: `59b4d91f46c2ac797c71c900e62dda87cf0cca60`
@@ -21,6 +74,31 @@
 - v0.4.1 C4 source correction: independently accepted
 - v0.4.0 installed copy: managed and default-readable after a separately
   accepted exact ACL-only repair; still version v0.4.0
+
+The earlier unbound development check remains historical counterevidence:
+its static clauses passed 17/17, but overall SOURCE failed with exit 1 because
+no current candidate matched the package tree and digest. The v0.6.0 descriptor
+now supplies that missing binding; it does not rewrite the failed result or
+the older candidate/receipt. Neither qualification nor these notes grant
+independent review, Planner acceptance, installation, or publication.
+
+## Historical v0.6.0 acceptance-record verification
+
+R12 covered the accepted 21-file source diff and necessary unchanged context;
+Planner checked the same frozen input and accepted it. These are independent
+technical-review and source-acceptance evidence, not a native commit gate.
+The unchanged package/candidate and qualification inputs retain the SOURCE,
+lifecycle, and binding evidence above. Acceptance-record synchronization does
+not require another lifecycle run or claim new runtime proof. The focused
+SOURCE checker remains an applicable inexpensive static identity check.
+
+The later 11-file documentation and mechanical provenance/pin delta passed
+bounded consumer and protected-file identity checks, repository qualification,
+SOURCE 32/32, diff integrity, and a new 92-case adversarial run against its
+complete index. Planner accepted those records. The closeout checkpoint binds
+the full input and terminal results; it does not reuse the source-checkpoint
+matrix result. At closeout the pre-review candidate and nine historical release
+objects remained unchanged. No committed-source receipt was created.
 
 ## Repository check
 
@@ -117,17 +195,27 @@ Run the deterministic SOURCE contract check:
 python -B scripts/check_source_contract.py --json
 ```
 
-It verifies the exact 6-file package shape, the immutable `v0.5.0` candidate
-binding, its separate source acceptance receipt, the separate immutable v0.4.0
-local-release receipt, and the instruction clauses needed for
+It verifies the v0.6.1 descriptor, exact 6-file working package shape, unchanged
+general compatibility defaults, 12 approved level defaults, prompt construction
+clauses and mandatory reference routes, backward-compatible schema-v1 level-role
+contract, the immutable v0.6.0 descriptor hash, immutable `v0.5.0`
+historical candidate identity and separate acceptance receipt, the separate
+immutable v0.4.0 local-release receipt, and the instruction clauses needed for
 direct and indirect selection/activation,
 authority non-expansion, context recovery, independent review/acceptance
 separation, same-Reviewer repair re-review, callback deduplication,
 evidence-first `UNKNOWN` handling, graph limitations, Standard O/P/E/R, and
 direct operation-local permission ownership without higher-contract transfer.
-It also checks the exact four-role default YAML and strict source priority,
-whole-role replacement, validation, authority separation, lifecycle isolation,
-native Codex model/thinking mapping, and existing-role stability clauses.
+For configuration it checks frozen/task-explicit/level/general/host-selection
+priority, the L0-L4 actual-responsibility matrix, whole-object replacement,
+complete-file validation, L0 non-activation, no role enablement, native Codex
+model/thinking mapping, existing task/role stability, and the explicit boundary
+that host/global consumer integration is not yet performed.
+It separately computes the current package Git tree and package digest and
+requires both to equal the selected candidate descriptor. A package that merely
+differs from v0.5.0 is not an identified successor. Without a matching trusted
+candidate, static clauses may report `PASS` but the required identity gate and
+the overall command remain `FAIL` with a nonzero exit code.
 It also verifies the immutable v0.4.0 candidate/receipt and v0.3.0 release
 objects against fixed historical package and release-note identities rather
 than comparing them with current bytes. The v0.4.0 receipt qualification binds
@@ -135,19 +223,28 @@ its five recorded review results, source/tool acceptance, exact written
 content, elevated postflight, receipt-time open default-reader and policy-
 preservation findings, and the R5 readback finding. Later R6 acceptance, the
 failed control-state repair preflight, accepted C4 source, the exact ACL-only
-repair remain separate facts. The v0.5.0 receipt binds exact source identity,
-qualification, review, and Planner acceptance while preserving the candidate's
-pending snapshot. The checker does not
-read a live user configuration, create a role, re-read the live installed copy,
-or accept the new candidate. It is static source evidence, not a fresh model
-run, runtime-delivery proof, review, acceptance, publication proof, or stable
+repair remain separate facts. The v0.5.0 receipt binds its exact historical
+source identity, qualification, review, and Planner acceptance while preserving
+the candidate's pending snapshot; it does not bind the development package.
+The checker does not read a live user configuration, create a task or role,
+exercise a host/global consumer, re-read the live installed copy, choose a
+successor version, or accept the candidate source. Its static-clause result
+is evidence, not a substitute for the required identity gate, a fresh model run,
+runtime-delivery proof, review, acceptance, publication proof, or stable
 loaded-copy proof.
 
-Run the install lifecycle self-test:
+The install lifecycle self-test remains a required current-input gate:
 
 ```powershell
 python -B scripts/manage_install.py self-test --source .
 ```
+
+The self-test's source preflight requires the current package to match the
+v0.6.1 descriptor. A missing descriptor or tree/digest mismatch fails before
+temporary lifecycle effects. A passing older exact-release checkout does not
+cover these bytes. Disposable self-test effects
+remain distinct from persistent installation, but neither distinction removes
+the current source-identity prerequisite or creates execution authority.
 
 On Windows, run the complete self-test with a token capable of `icacls /save`,
 single-record `/restore`, and `SetFileSecurityW`. The production lifecycle
@@ -329,18 +426,22 @@ evidence, not standing authority for another repair, update, or installation.
 ## Evidence limits
 
 The retained cases are deterministic contract fixtures; they do not create
-fresh model, efficacy, release, or installed-copy evidence. SOURCE qualification
-proves clause coverage only; the separate v0.5.0 receipt binds that result to
-the accepted source commit and completed review/acceptance history. For v0.4.0,
+fresh model, efficacy, release, or installed-copy evidence. The current SOURCE
+checker reports static clause coverage for the working package and requires
+the current-package identity gate. The separate v0.5.0 receipt
+binds its historical qualification to its accepted source commit and completed
+review/acceptance history; it does not bind the v0.6.0 or v0.6.1 candidate bytes.
+For v0.4.0,
 the accepted source candidate, six
 completed independent-review results including later R6, and Planner source/tool
 acceptance remain distinct completed evidence. The original update attempt has
 exact content/elevated postflight evidence and a default-reader failure; the
 later accepted C4 correction and exact ACL-only repair are separately bound
 evidence that closes only that access finding while leaving the package at
-v0.4.0. The current v0.5.0 deterministic checks and evaluation case do not
-prove actual configuration use, role creation, runtime identity, or cross-
-provider execution. The v0.5.0 receipt does not prove publication, installation,
+v0.4.0. The current deterministic checks and evaluation case do not prove
+actual configuration use, host/global consumer integration, role creation,
+runtime identity, or cross-provider execution. The v0.5.0 receipt does not
+prove publication, installation,
 stable v0.5.0
 installed-copy behavior, natural adherence, other cross-version lifecycle
 effects, cross-Harness behavior, or broad product efficacy.

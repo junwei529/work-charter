@@ -15,6 +15,10 @@ worktree. Remove unused prompts and keep pointers instead of copied content.
 - Standing-policy locator: `<if applicable; otherwise none>`
 - Intended workspace and writer: `<workspace/worktree and one-writer boundary>`
 - Role owners and review route: `<primary owner, or O/P/E/R owners; stable checkpoint and finding/disposition routes>`
+- Resolved execution metadata: `<for each newly resolved task/role: level,
+  actual responsibility, provider/model/parameters or host-selection
+  pass-through, object source, file source, requested values, and observable
+  runtime identity>`
 - Last material checkpoint and evidence: `<pointer, subject/revision, invalidation condition>`
 - Reviewed input and coverage: `<baseline, actual change, semantic context, tests, docs, untracked inputs, graph/generated limits>`
 - Findings and correction history: `<cumulative findings, dispositions, repairs, Reviewer continuity or replacement reason>`
@@ -75,4 +79,15 @@ compaction, deliberate rotation, and successor Sessions.>
 policy without copying it. For role separation, state the Result Notice and
 checkpoint-bound disposition routes; terminal dispositions require no
 acknowledgement. Send one current Notice per checkpoint and retain cumulative
-review history. Profile choice does not authorize delivery or action.>
+review history. Configuration choice does not enable a listed role or authorize
+delivery or action.>
+
+## Task Or Role Prompt
+
+<Optional prompt scaffold, not a second authoritative contract. Shared contract:
+locator/revision and material boundaries. Actual responsibility: primary or the
+authorized O/P/E/R role. Current task: deliverable, inputs, required checks,
+stop conditions, and return route. Necessary model adaptation: supported delta
+and source, or none. Cold prompts supply missing context; warm prompts carry
+only changed facts and the valid anchor; recovery preserves findings and
+permission history. Keep effort in native runtime parameters.>

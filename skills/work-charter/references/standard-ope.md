@@ -17,14 +17,14 @@ revision cannot be reconciled, or separate role delivery is unavailable or
 uncertain, propose the smallest transition and stop. Do not represent a
 one-agent fallback as Standard.
 
-Before each newly authorized Standard role delivery, the dispatcher applies
-the strict source priority, whole-role replacement, schema validation, native
-capability check, and visible resolved-value requirements in
+Before each newly authorized Standard role delivery, identify `L4` and the
+actual responsibility, then read and apply
 [Role-Model Configuration At Dispatch](coordination-and-recovery.md#role-model-configuration-at-dispatch).
-The package [default configuration](../assets/role-models.default.yaml) is the
-sole default data owner. A frozen approved delivery combination remains in
-force, and configuration never supplies delivery or action authority. Existing
-roles do not change when a configuration file changes.
+That section is the sole owner of configuration resolution and validation;
+do not reconstruct a parallel lookup here. Preserve frozen combinations,
+require native support, and keep requested values separate from runtime
+identity. Configuration never authorizes delivery or action, enables a role,
+or changes an existing task.
 
 ## Responsibilities
 
@@ -55,6 +55,13 @@ approval gates. Standard normally has two user-owned contract gates per phase:
 the Mandate and the Phase Definition. This hierarchy applies only when Standard
 is already applicable and approved; ordinary and single-Agent work remains
 flat.
+
+Build role prompts from the
+[shared contract, actual responsibility, current task, and necessary model adaptation](coordination-and-recovery.md#task-and-role-prompt-construction).
+Include only the receiver's authorized responsibilities and current work.
+Warm continuations reuse a valid contract and send the delta without another
+prompt approval or role for an internal step. Model and effort selection never
+changes O/P/E/R permissions, independent review, or acceptance boundaries.
 
 Reviewer findings are technical evidence, while Planner and Orchestrator
 assessments are role verdicts rather than extra user confirmation gates. The

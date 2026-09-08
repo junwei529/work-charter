@@ -10,12 +10,15 @@ The migration baseline files were read directly from the Git object database as
 `80910a8b2375a11be897e9660c4b00a06d00dd13:<source-path>`; no clone, archive, installed copy, cache, discovery
 mapping, or source working-tree byte was used.
 
-The current `v0.5.0` update changes selected package, evaluation,
-documentation, release-metadata, and checker files. Each changed destination is
-classified as `repository-native` and bound to its current target SHA-256 in
+The immutable `v0.5.0` candidate and receipt retain their exact historical
+identities. The working tree retains the accepted v0.6.0 level-role configuration
+checkpoint and adds the v0.6.1 prompt revision, bound by
+[`release/v0.6.1-candidate.json`](release/v0.6.1-candidate.json). Each
+changed package, evaluation, documentation, and checker destination is
+classified by its recorded transformation and bound to its current target SHA-256 in
 the manifest. Unchanged destinations retain their prior exact-blob or
 normalized-rewrite provenance. This preserves historical origin without making
-a false byte-identity claim for new work.
+a false byte-identity or accepted-version claim for new work.
 
 ## Transformation classes
 
@@ -90,7 +93,14 @@ identity derived from accepted C4. Its separate local source receipt binds
 accepted commit `8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`, exact
 qualification, ten completed review rounds, and Planner acceptance without
 rewriting the descriptor. It makes no installation, runtime role-delivery, or
-publication claim.
+publication claim. The working level-role extension changes repository-native
+bytes after that checkpoint. The new v0.6.0 descriptor binds this local candidate
+without reusing v0.5.0 acceptance. R12 later completed with no new findings
+and Planner accepted the uncommitted frozen source checkpoint. The descriptor
+retains its pre-review pending snapshot; [State](docs/skills/work-charter/STATE.md#accepted-v060-source-checkpoint)
+owns that later acceptance identity and scope. Record-only changes refresh
+existing mapped documentation and the checker pin without changing package,
+candidate, historical release, installer, or SOURCE-checker bytes.
 
 The repository-native lifecycle controller now confines every transient stage,
 backup, tombstone, and recovery archive to a validated external task-scoped
@@ -129,7 +139,27 @@ or mismatched digest is rejected. When a Windows update or rollback changes
 shape, it projects policy on a private replica, requires unchanged common-path
 descriptors and auto-inherited unprotected new paths, exact-restores/readbacks
 the projected policy, and retains the original snapshot for recovery. Other
-platforms retain prior behavior. The current role-model source and lifecycle
+platforms retain prior behavior. The first role-model source and lifecycle
 extension passed exact qualification, ten completed review rounds, and Planner
-acceptance at the receipt-bound commit; any installation remains separately
-authorized.
+acceptance at the v0.5.0 receipt-bound commit. For the later level-role
+extension, the SOURCE identity gate requires both the actual tree and digest
+to match the current v0.6.1 descriptor, while preserving the frozen v0.6.0
+descriptor under its own exact historical hash. Current deterministic check results are recorded
+in [Verification](docs/skills/work-charter/VERIFICATION.md). R12 technical review
+and Planner frozen-source acceptance are separately recorded in State. The v0.6.0
+record changes also passed separate Planner verification; host/global consumer integration,
+installation, native commit qualification, and publication remain unperformed
+or unauthorized as applicable.
+
+The accepted v0.6.0 candidate additionally changed the package default-data file with
+approved level overrides and updates prompt construction in existing package
+references and assets. General compatibility values and historical release
+objects remain intact. Current hashes are refreshed in the source map; source
+changes do not establish installation, consumer integration, or model efficacy.
+
+The current v0.6.1 revision changes startup metadata, prompt-expression text,
+and entrypoint routing. The original `agents/openai.yaml` source blob remains
+attributable in a normalized-text rewrite entry rather than being falsely
+marked byte-identical. Current documentation, candidate, and checker mappings
+are refreshed. The prior v0.6.0 candidate and all older release objects remain
+unchanged; neither those records nor R12 qualify the new package.

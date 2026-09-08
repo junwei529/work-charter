@@ -1,6 +1,6 @@
 ---
 name: work-charter
-description: Bound consequential Codex work by outcome, authority, evidence, recovery, independent review, and proportional coordination. Use for `$work-charter`, direct intent, or clear continuity, writer, stale-evidence, recovery, authorization, review, or assessment symptoms. Indirect matches are metadata-sufficient proposals; body loading is optional and grants no authority. Begin `Work Charter appears applicable because ...`; explain why, propose activation plus the smallest read, and ask confirmation. Before confirmation, claim no selected/loaded/invoked/active/adopted state and prescribe no pause/writer/evidence/handoff/resume workflow. Direct intent or confirmation plus body permits activation. Preserve unexposed identity as `UNKNOWN`; inspect only approved scope. Initial adoption and first Standard policy need approval. Exclude small tasks, one failure/correction, size/duration-only, docs/shell-only, and non-Codex adaptation. Activation never authorizes roles, writes, rules, worktrees, Git, installation, or external effects.
+description: Bound consequential Codex work by outcome, authority, evidence, recovery, independent review, and proportional coordination. Use for `$work-charter`, direct intent, or continuity, writer, stale-evidence, recovery, authorization, review, or assessment symptoms. Indirect matches are metadata-sufficient proposals; optional body loading grants no authority. Begin `Work Charter appears applicable because ...`; explain why, propose activation plus the smallest read, and ask confirmation. Before confirmation, claim no selected/loaded/invoked/active/adopted state and prescribe no pause/writer/evidence/handoff/resume workflow. Direct intent or confirmation plus body permits activation. Preserve unexposed identity as `UNKNOWN`; inspect only approved scope. Initial adoption and first Standard policy need approval. Exclude small tasks, one failure/correction, size/duration-only, docs/shell-only, and non-Codex adaptation. Activation never authorizes roles, writes, rules, worktrees, Git, installation, or external effects.
 ---
 
 # Work Charter
@@ -52,10 +52,11 @@ ordinary activation. Before any additional project inspection:
    owners, one declared Charter carrier (or one exact root fallback check),
    current workspace/branch/worktree/dirty/writer facts, and only named
    checkpoint or evidence pointers;
-3. ask the user to authorize that bounded read, unless an applicable approved
-   standing policy already grants the exact scope; and
-4. after approval, inspect only that scope and return a recommendation before
-   taking action.
+3. ask the user to authorize that bounded read only when existing user approval
+   or an applicable approved standing policy does not already cover it; and
+4. inspect only that scope and recommend any still-unapproved adoption or
+   coordination choice. Continue work already authorized by the current
+   contract without asking for the same permission again.
 
 If an approved read cannot be completed through the approved route, preserve
 the affected fact as `UNKNOWN` and stop safely; ask for a different route only
@@ -65,8 +66,9 @@ read to compensate.
 
 The user may confirm activation and the exact read scope together. Otherwise,
 activation alone still stops before project inspection. State any reused read
-policy visibly. Expanding into implementation content, another worktree, task
-history, or an external system needs fresh read approval. Activation or read
+policy visibly. A read outside existing approval, including additional
+implementation content, another worktree, task history, or an external system,
+needs fresh read approval. Activation or read
 approval does not authorize adoption, writes, roles, Git, or side effects.
 
 ## Recommend The Least Sufficient Protection
@@ -103,30 +105,44 @@ boundary. The package's sole default data owner is
 `agents/openai.yaml` remains Harness UI metadata and is not a role-model
 selector.
 
-Before delivering a new Orchestrator, Planner, Executor, or Reviewer, the
-authorized dispatcher follows the strict resolution and validation contract in
-[Coordination And Recovery](references/coordination-and-recovery.md). A model
-combination already frozen in the approved delivery contract wins. Otherwise,
-use the contract's explicit configuration path; if none is specified, use the
-user configuration at `~/.config/work-charter/role-models.yaml` when it exists,
-and otherwise use the package default. A declared explicit path that is
-missing or unreadable is an error, not a reason to fall back.
+Before resolving a newly authorized task or role, identify its protection level
+and actual responsibility, then read
+[Role-Model Configuration At Dispatch](references/coordination-and-recovery.md#role-model-configuration-at-dispatch).
+That reference owns the complete priority, whole-object replacement, source
+selection, schema validation, unknown-input rejection, and native mapping
+contract. Follow it before reading configuration or creating the authorized
+task; unavailable or incomparable required input stops dispatch.
 
-Resolve and display the role, provider, model, parameters, and selected source
-before dispatch. Validate that the chosen native creation route supports the
-provider, model, and every parameter, and stop on unsupported or ambiguous
-input rather than silently changing provider, model, parameter, account,
-credential, or transport. On a supported Codex OpenAI route, pass `model` to
-the native `model` field and `parameters.reasoning_effort` to `thinking`.
-Keep requested values and runtime-observed identity as separate evidence when
-the runtime does not expose both.
+Preserve frozen delivery combinations and existing tasks. Configuration
+changes affect only later, newly resolved tasks or deliveries. Configuration
+never creates roles or supplies action authority. `L0` remains no active
+Charter, even when a host uses this interface. The package does not prove that
+any host or global task-start consumer has integrated it. Installation lifecycle
+operations do not own or mutate the external user configuration.
 
-Configuration changes affect only later, newly resolved deliveries. They do
-not silently alter an existing role, a frozen delivery, or a recovery that
-continues the same approved combination. This is an instruction-time read, not
-a watcher, background service, general model gateway, or instruction to create
-a user file. Installation lifecycle operations do not own or mutate the
-external user configuration.
+## Compose Prompts From Contract, Responsibility, And Task
+
+Build one prompt from the shared contract, actual responsibility, current task,
+and only necessary model adaptation. Keep authoritative constraints and result
+routes explicit; use pointers to unchanged context instead of copied rules,
+logs, or nested delegation envelopes. Add the receiving role's work and output,
+not every other role's procedure. The detailed construction guidance is in
+[Coordination And Recovery](references/coordination-and-recovery.md#task-and-role-prompt-construction).
+
+Carry already-authorized work through its required checks and handoff. Routine
+implementation choices, internal steps, and same-scope corrections do not need
+another confirmation when the contract and guardrails still cover them.
+Preserve genuine activation, adoption, permission, review, and acceptance gates;
+make a pending user decision concrete using authorized independent work, then
+wait before the dependent action. A Working Proposal stays replaceable even
+when it appears in a template or handoff.
+
+Complete the required verification and checks appropriate to the changed
+behavior. Broaden or repeat them only for changed inputs, failures, or unresolved
+material risk; do not add repeated passes or model evaluations merely to make
+the prompt look thorough. Preserve producer-before-consumer dependencies and
+evidence identity. Keep reasoning effort in supported runtime parameters, not
+in a separate prompt for each effort setting.
 
 ## Establish One Authoritative Carrier
 

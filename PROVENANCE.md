@@ -163,3 +163,22 @@ attributable in a normalized-text rewrite entry rather than being falsely
 marked byte-identical. Current documentation, candidate, and checker mappings
 are refreshed. The prior v0.6.0 candidate and all older release objects remain
 unchanged; neither those records nor R12 qualify the new package.
+
+The subsequent v0.6.1 managed-update attempt stopped before target mutation
+because its private replica lacked the fully inherited target's parent context.
+The repository-side correction changes only the lifecycle controller, its
+embedded tests and mapped documentation/checker provenance. It replaces real
+replicas with empty context models and protects each real material object before
+writing bytes or moving the old tree. The original strict snapshot comparator,
+six-file package, v0.6.1 candidate, version and receipt schema remain unchanged.
+The detailed supported-policy and recovery contract is in
+[Design](docs/skills/work-charter/DESIGN.md#windows-permission-context-and-private-handoff).
+Earlier failed evidence is retained. Corrected-source qualification and review
+do not imply a new actual install attempt, installation acceptance or publication.
+R16 subsequently confirmed the R15 non-Windows directory-mode finding fixed,
+with no new blocking/material findings, and Planner accepted the complete
+[frozen installer source](docs/skills/work-charter/STATE.md#accepted-installer-source-checkpoint).
+The acceptance-record update changes only existing record owners and mechanical
+target hashes/checker pin. Installer, six-file package, candidate and historical
+release bytes remain unchanged; their bound lifecycle/privacy evidence is reused
+without claiming another run, actual installation or native commit qualification.

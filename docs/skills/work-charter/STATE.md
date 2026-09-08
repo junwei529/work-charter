@@ -8,8 +8,9 @@ Canonical editable source is the 6-file package under
 documentation, and checker files carry their recorded transformations and are bound to their
 current hashes in the provenance manifest. Unchanged mapped material retains
 its exact or normalized migration provenance. The working package is now
-the local v0.6.1 candidate, pending fresh independent review and Planner
-acceptance. The accepted v0.6.0 source and record checkpoints remain below.
+the local v0.6.1 candidate. Its installer correction has independent review and
+Planner frozen-source acceptance; commit and actual retry remain subsequent
+operations. The accepted v0.6.0 source and record checkpoints remain below.
 
 ## Current v0.6.1 local candidate
 
@@ -21,12 +22,42 @@ acceptance. The accepted v0.6.0 source and record checkpoints remain below.
 - Candidate: [v0.6.1 descriptor](../../../release/v0.6.1-candidate.json),
   `PENDING_INDEPENDENT_REVIEW`; no committed-source receipt
 - Package identity and current-input qualification: [Verification](VERIFICATION.md#current-v061-qualification)
-- Independent technical review and Planner source acceptance: `PENDING`
-- Commit, managed installation, installation acceptance, and Git publication:
-  not yet performed for this candidate; require their applicable gates
+- Current installer correction: `ACCEPTED_FROZEN_SOURCE_CHECKPOINT`; R16
+  confirmed R15-F01 fixed with no new blocking/material findings, followed by
+  Planner source acceptance; six-file package and candidate bytes unchanged
+- The earlier v0.6.1 source was accepted and committed. Its authorized managed
+  update stopped in fully inherited DACL preflight before target mutation.
+  The new SOURCE correction has not been committed or retried against the
+  installed copy; installation acceptance and Git publication remain pending.
 - Global consumer migration: `NOT_PERFORMED`; runtime/efficacy: `UNKNOWN`
 - v0.6.0 descriptor and historical release objects remain byte-identical;
-  previous checks and R12 do not prove this new input
+  previous checks and R12 do not prove this new installer input
+
+The failed update and bounded diagnosis exposed a missing inheritance-parent
+context in the old private replica. The correction uses an empty context model
+and individually private real material, with a temporary private handoff before
+moving old objects. Partial ACL failure requires recovery even with zero moves.
+The supported permissions, owner/writer admission and recovery rules are owned
+by [Design](DESIGN.md#windows-permission-context-and-private-handoff); current
+SOURCE evidence requirements are owned by [Verification](VERIFICATION.md#current-v061-qualification).
+The last verified installed copy remains managed v0.4.0. Prior failed evidence
+is retained and the SOURCE result does not establish a successful installation.
+
+### Accepted installer source checkpoint
+
+The accepted object is the complete 92-file index on baseline
+`74b477d856b540e437ecb267dddf617dea5aa2`, with a 10-path staged diff SHA-256
+`5eebc1eef646e180f37a64b5cdc52835594ea73a612494def86b7939d85fa7d5`.
+Installer SHA-256 is
+`e2c5d382144b120d9310fc0783b3fb0a7790866a6f6c1d1ff66a45010553c608`.
+R15 reviewed the correction; R16 verified the non-Windows mkdir compatibility
+fix and unchanged Windows branch. Planner independently matched the full index,
+working bytes and diff before acceptance. Subsequent record synchronization
+preserves that accepted installer/package identity and has its own final-index
+checks; it does not rewrite the accepted checkpoint or pending candidate snapshot.
+This acceptance addresses the reproduced inheritance defect within the existing
+contract; it does not make every installer guarantee necessary for every Skill
+installation. Native POSIX execution remains `UNKNOWN` / `NOT_PERFORMED`.
 
 ## Accepted v0.6.0 source checkpoint
 
@@ -197,8 +228,10 @@ Evidence states remain separate:
 
 - Current v0.6.1 SOURCE identity: provenance-bound working bytes and a matching
   candidate descriptor. Input-bound deterministic results are recorded in
-  [Verification](VERIFICATION.md). R13 reviewed the prior frozen input; the
-  corrected state records await re-review and Planner source acceptance.
+  [Verification](VERIFICATION.md). The earlier R13 state-record finding was
+  fixed and accepted after R14 before the prior source commit. The later
+  installer correction has the separate accepted checkpoint above; its record
+  synchronization is not an outstanding R13 source review.
 - Historical v0.6.0 source and acceptance records: accepted at the checkpoints
   above. Its immutable descriptor retains the pre-review pending snapshot;
   that snapshot does not reopen the accepted history or qualify v0.6.1.
@@ -253,7 +286,7 @@ shape through a visibly marked `AUTO_COMPATIBILITY` root with the same guards.
 The disposable self-test covers all four legacy apply forms, explicit-path
 install/update/rollback/uninstall, pre-mutation path and volume refusal,
 preservation when the initial backup move fails, and verified restoration after
-a later replacement failure. The current Windows-specific correction also
+a later replacement failure. The historical v0.4.1 Windows-specific correction
 protects every random per-operation transaction directory for Owner Rights,
 SYSTEM, and Administrators. New installs inherit the destination-parent DACL;
 update/rollback/uninstall save the complete prior DACL tree and prove restore
@@ -284,10 +317,11 @@ review rounds, and Planner acceptance are bound by the separate v0.5.0 receipt.
 
 ## Next gate
 
-The current v0.6.1 candidate awaits re-review of the corrected records and
-Planner source acceptance, using the frozen complete input and applicable
-current-index checks. Unchanged package/lifecycle evidence is reused only with
-its matching identity; changed inputs require their own verification.
+The v0.6.1 installer source is accepted at the checkpoint above. The next step
+is bounded synchronization of these acceptance records and final-index checks,
+followed by preparation of the exact new local commit and managed retry.
+Unchanged installer/package bytes retain their bound lifecycle/privacy evidence;
+record checks do not establish a commit, actual retry or installation acceptance.
 
 The approved conditional closeout then proceeds to a local commit, followed by
 a managed installation from the immutable accepted commit and an independently

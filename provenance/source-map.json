@@ -47,7 +47,7 @@
       "destination": "CHANGELOG.md",
       "kind": "repository-native",
       "note": "Work Charter repository release notes through the v0.6.1 local candidate",
-      "target_sha256": "5178d9c6b02c57db19835cae88947643072f1eaac7b31b0ed7f57b590eec369e"
+      "target_sha256": "d564fd797caa31a5c8bd5375525044d579044e55af1325185326d34af0b8f927"
     },
     {
       "destination": "LICENSE",
@@ -61,25 +61,25 @@
       "destination": "PROVENANCE.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "ed476e1e55116ed66dadf992f6397e0064e328c33cfbd785cff081ae30e6122b"
+      "target_sha256": "fd62b5ba037eef2488c398e5dfa5f2c4868125eaa866bfa600910faa1228efe7"
     },
     {
       "destination": "README.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "b80911e19ec28b032ff34607c0dc0ab1ca7ef9019f0cac678aa25c6525ddd04c"
+      "target_sha256": "9aba4fa4b5f7bccd0172cc3b03a9cc70539a23e70a5a9d0669c93c50998ed5d8"
     },
     {
       "destination": "README.zh-CN.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "b3cf9c477a672f5a2ddb1e725e57161505475371cfff0923c135cb3356f0e362"
+      "target_sha256": "bbbcd2a7e349f0548c36b812f9d17f670e2bf9ac392c610fc7dc0c4038b87b50"
     },
     {
       "destination": "docs/skills/work-charter/DESIGN.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "968974382b4d786a6270134547de528cc0777f616d0d2835e3a8765e6a44a15c"
+      "target_sha256": "c7c85c213b722399699bf218f553369765ab513873e714c301946166e7779508"
     },
     {
       "destination": "docs/skills/work-charter/README.md",
@@ -97,13 +97,13 @@
       "destination": "docs/skills/work-charter/STATE.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "4db707bb6770b7f64cde41aa241d813104b52e7ab95b70cc551869f1d3ec6b08"
+      "target_sha256": "e06eb99d1ca371abdc94916e4c40eb3e24f13ec8a91d95e524f9312fac099f64"
     },
     {
       "destination": "docs/skills/work-charter/VERIFICATION.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "57dbe841e96d205448f73de7722b1b3a7b479ec07945a89e2d6899814bd4dd29"
+      "target_sha256": "d783959ad53a58aedf189e42e1f145ee5b78a8a9919644a2c1eadaa85e4f5625"
     },
     {
       "destination": "evals/README.md",
@@ -625,8 +625,8 @@
           "source_path": "evals/check-fixtures.ps1"
         }
       ],
-      "target_normalized_sha256": "98e0bbfb9a4685f60c7bf00ba3b234d19aa23974f48b24b5220a2bc18020872d",
-      "target_sha256": "98e0bbfb9a4685f60c7bf00ba3b234d19aa23974f48b24b5220a2bc18020872d",
+      "target_normalized_sha256": "66e9b89a376fa1f2f30a59a951cb1404a9b311ef8a5a85e51b4d49ce3d88c62f",
+      "target_sha256": "66e9b89a376fa1f2f30a59a951cb1404a9b311ef8a5a85e51b4d49ce3d88c62f",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -639,7 +639,7 @@
       "destination": "scripts/manage_install.py",
       "kind": "repository-native",
       "note": "Origin-aware product-specific install lifecycle tool",
-      "target_sha256": "ad17e1bf897ea1ee82386a923101d7348330f9929497aef2218f8d4d61f29119"
+      "target_sha256": "e2c5d382144b120d9310fc0783b3fb0a7790866a6f6c1d1ff66a45010553c608"
     },
     {
       "destination": "skills/work-charter/SKILL.md",

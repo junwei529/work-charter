@@ -3,10 +3,21 @@
 ## Current v0.6.1 qualification
 
 The current six-file source binds [v0.6.1](../../../release/v0.6.1-candidate.json).
-New startup text, prompt-expression guidance, and configuration routing require
-fresh checks. Defaults/schema/role contracts remain unchanged; the accepted
+Startup text, prompt-expression guidance, and configuration routing are bound
+by the current package checks. Defaults/schema/role contracts remain unchanged; the accepted
 v0.6.0 snapshot, its failed and passing evidence, and cumulative review history
 remain historical inputs, not current proof.
+
+The repository-side installer correction leaves this package and candidate
+unchanged. The [accepted installer checkpoint](STATE.md#accepted-installer-source-checkpoint)
+binds completed SOURCE/repository, full Windows lifecycle, 92-case staged
+adversarial and separate default-reader privacy checks. Its final privacy input
+denied direct reads of 44 material objects and allowed 21 empty/restored objects.
+R16 confirmed R15-F01 fixed; Planner accepted the exact frozen source.
+Record synchronization reuses lifecycle/privacy only while installer/package
+bytes remain identical, and refreshes SOURCE/repository and final-index
+adversarial checks. This is disposable SOURCE evidence, not actual installation,
+publication or a native commit gate. Native POSIX execution remains unperformed.
 
 - Package tree: `08689a9706fa15dbe6889eec1572e7c8943c1f1c`
 - Package SHA-256: `05fd73d5087693b374f184297e74dd0d57f8999a1b02c63279e4930a11dfbc35`
@@ -20,7 +31,8 @@ remain historical inputs, not current proof.
   including rejection of an old package pair and a changed v0.6.0 snapshot
 - Staged adversarial: required on the final complete index; the review
   checkpoint carries the matching input manifest and terminal result
-- Independent review and Planner acceptance: `PENDING`
+- Independent review and Planner source acceptance: `VERIFIED` for the
+  accepted installer checkpoint; subsequent records retain separate input checks
 - Actual installation, Git publication, runtime, and efficacy: not established
 
 ## Historical v0.6.0 qualification and migration baseline
@@ -248,8 +260,9 @@ the current source-identity prerequisite or creates execution authority.
 
 On Windows, run the complete self-test with a token capable of `icacls /save`,
 single-record `/restore`, and `SetFileSecurityW`. The production lifecycle
-performs the same control-aware restore-and-readback preflight against a private
-replica and fails before destination mutation when the token or filesystem
+performs the same control-aware restore-and-readback preflight against an empty
+model with an isolated parent inheritance context and fails before target ACL
+changes or moves when the token or filesystem
 cannot preserve and verify the existing DACL tree.
 
 The self-test uses disposable temporary directories to exercise install,
@@ -288,8 +301,30 @@ changed P/AI/AR flags, and changed ACE order/content must not. An injected
 mismatch after promotion must not report success and must
 verify the recovered old target. If both promotion and recovery readbacks
 mismatch, the operation must report incomplete recovery and retain the original
-snapshot inside the protected transaction. Moved backup and tombstone trees
-inherit the protected transaction DACL. Other platforms report
+snapshot inside the protected transaction. Backup and tombstone objects must
+already have individually protected private DACLs before the first move. The
+fully inherited fixture gives the destination parent a broader read/execute
+policy and exercises five-to-five, five-to-six, and six-to-five transitions.
+Each preflight model must contain only zero-byte managed-shaped files, and the
+original/private/original roundtrip must preserve the unchanged strict snapshot.
+Both update and uninstall inject a failure after the first real private ACL
+write; zero moves must still result in verified original-policy recovery.
+Untrusted parent writers and hard-linked managed files are refused with zero
+target ACL writes and zero moves. Owner, NULL/complex DACL and parent-identity
+admission cases are also checked. Partial uninstall deletion must recover the
+same old bytes and permissions from a private ZIP through a private stage.
+
+The final correction checkpoint additionally pairs an elevated disposable
+fixture producer with a separate default-identity direct reader. It must show
+that empty model objects and the restored public target are readable while
+each retained material object's own ACL denies that reader. Checking only a
+private ancestor, or using another elevated child as the reader, is insufficient.
+Neither fixture accesses the actual installed copy. A focused helper-branch
+check verifies that non-Windows
+directory creation passes no explicit mode and Windows keeps its 0700 creation
+plus DACL protection. This Windows-host branch check is not a native POSIX
+installation or umask result; native POSIX lifecycle behavior remains untested.
+Other platforms report
 `PLATFORM_DEFAULT` and preserve the prior permission behavior. The reparse case is reported as
 `UNAVAILABLE` when the host cannot create a disposable directory symlink or
 junction; the deterministic production guard remains present. The self-test

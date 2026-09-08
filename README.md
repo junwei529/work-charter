@@ -212,28 +212,30 @@ the destination discovery root, reports `AUTO_COMPATIBILITY`, and removes that
 directory after a clean result. This fallback does not authorize or replace the
 explicit path required by a planned installation or release operation. In both
 modes, stage, backup, tombstone, and recovery-archive material stays under the
-external per-operation transaction directory. A failure to move the old
-destination to backup leaves that destination untouched; a later replacement
-failure restores and verifies the old managed copy or reports the preserved
-recovery path. The v0.4.1 Windows correction first removes inheritance from
-each random per-operation transaction directory and grants access only to Owner
-Rights, SYSTEM, and Administrators. A new install inherits the destination
-parent's existing DACL. Before update, rollback, or uninstall mutation, the tool
-saves the complete existing DACL tree inside the private transaction and
-restores it path by path to a private replica. Records whose snapshot already
+external per-operation transaction directory. On Windows, every content-bearing
+object and permission snapshot is individually protected for Owner Rights,
+SYSTEM, and Administrators before bytes are written. A new install inherits the
+destination parent's existing DACL. Before updating, rolling back, or uninstalling,
+the tool qualifies the original DACL on a zero-byte model with an isolated copy
+of the parent's inheritance context. This includes an original-policy/private-
+policy/original-policy roundtrip. Records whose snapshot already
 contains AI use a one-record `icacls /restore`; records without AI use
 `SetFileSecurityW` with DACL and, when required, protected-DACL information so
 the setter does not propagate a directory policy to children. Shallow-to-deep
 application is followed by the same bounded `/save` readback. The comparison
 ignores record enumeration order and newline serialization, but requires the
 same managed path set and exact DACL SDDL for each path, including P, AI, AR,
-and ACE order/content. Unsupported control states or any mismatch fail before a
-target move. The saved policy is then applied to the promoted or recovered
-target and read back under the same rule before success is reported; backup and
-tombstone trees inherit the private transaction DACL. A later mismatch enters
-existing recovery, and the original snapshot remains in the protected
-transaction when recovery is incomplete. Other platforms retain their prior
-platform-default permission behavior.
+and ACE order/content. Unsupported control states or any preflight mismatch fail
+before target ACL changes or moves. After those checks, the exact old managed
+objects become private before the first move to backup or tombstone. Readers can
+temporarily lose access during this handoff. Even a failed move can therefore
+require restoring changed ACLs. Promotion and recovery restore the original
+policy at the real destination parent and verify it before reporting success.
+Incomplete recovery retains the original snapshot and complete old content.
+Uninstall archive recovery is unpacked privately before promotion. Untrusted
+writers, unsupported owners/ACE forms, hard-linked managed files, or context
+drift are refused. The [design](docs/skills/work-charter/DESIGN.md#windows-permission-context-and-private-handoff)
+defines these bounds; other platforms retain their prior permission behavior.
 
 Historical five-file receipts and candidate descriptors and the current six-
 file descriptor are recognized only as exact allow-listed package shapes. A
@@ -242,7 +244,7 @@ actual tree must still match an independent trusted tree; the current six-file
 shape requires the digest, and any supplied invalid or mismatched digest fails
 closed. For a Windows update or rollback whose path set changes, the tool first
 proves the original recovery
-snapshot on a private replica, transforms only that replica to the target path
+snapshot on the same empty context model, transforms only that model to the target path
 shape, resets only newly introduced paths to parent inheritance, verifies that
 every common descriptor is unchanged and every new path is auto-inherited and
 unprotected, and proves an exact readback of the projected snapshot. The

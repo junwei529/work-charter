@@ -3,11 +3,13 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import shutil
 import stat
 import subprocess
 import tempfile
 import uuid
+import zipfile
 from pathlib import Path, PurePosixPath, PureWindowsPath
 
 
@@ -262,7 +264,212 @@ def harden_transaction_permissions(transaction):
     return "PRIVATE_OWNER_SYSTEM_ADMINISTRATORS"
 
 
+def windows_security(path=None, descriptor=None):
+    """Read native owner/DACL and decode only ordinary allow/deny ACEs."""
+    import ctypes
+    from ctypes import wintypes
+
+    adv = ctypes.WinDLL("advapi32", use_last_error=True)
+    kernel = ctypes.WinDLL("kernel32", use_last_error=True)
+    kernel.LocalFree.argtypes = [ctypes.c_void_p]
+    kernel.LocalFree.restype = ctypes.c_void_p
+    adv.ConvertSidToStringSidW.argtypes = [ctypes.c_void_p, ctypes.POINTER(wintypes.LPWSTR)]
+    adv.ConvertSidToStringSidW.restype = wintypes.BOOL
+    adv.ConvertStringSecurityDescriptorToSecurityDescriptorW.argtypes = [
+        wintypes.LPCWSTR, wintypes.DWORD, ctypes.POINTER(ctypes.c_void_p),
+        ctypes.POINTER(wintypes.DWORD),
+    ]
+    adv.ConvertStringSecurityDescriptorToSecurityDescriptorW.restype = wintypes.BOOL
+    adv.GetNamedSecurityInfoW.argtypes = [
+        wintypes.LPWSTR, ctypes.c_int, wintypes.DWORD,
+        ctypes.POINTER(ctypes.c_void_p), ctypes.c_void_p,
+        ctypes.c_void_p, ctypes.c_void_p, ctypes.POINTER(ctypes.c_void_p),
+    ]
+    adv.GetNamedSecurityInfoW.restype = wintypes.DWORD
+    adv.ConvertSecurityDescriptorToStringSecurityDescriptorW.argtypes = [
+        ctypes.c_void_p, wintypes.DWORD, wintypes.DWORD,
+        ctypes.POINTER(wintypes.LPWSTR), ctypes.POINTER(wintypes.DWORD),
+    ]
+    adv.ConvertSecurityDescriptorToStringSecurityDescriptorW.restype = wintypes.BOOL
+    adv.GetSecurityDescriptorDacl.argtypes = [
+        ctypes.c_void_p, ctypes.POINTER(wintypes.BOOL),
+        ctypes.POINTER(ctypes.c_void_p), ctypes.POINTER(wintypes.BOOL),
+    ]
+    adv.GetSecurityDescriptorDacl.restype = wintypes.BOOL
+    adv.GetAce.argtypes = [ctypes.c_void_p, wintypes.DWORD, ctypes.POINTER(ctypes.c_void_p)]
+    adv.GetAce.restype = wintypes.BOOL
+
+    def sid_text(pointer):
+        text = wintypes.LPWSTR()
+        if not adv.ConvertSidToStringSidW(pointer, ctypes.byref(text)):
+            raise LifecycleError("Windows owner or trustee SID conversion failed")
+        try:
+            return text.value
+        finally:
+            kernel.LocalFree(ctypes.cast(text, ctypes.c_void_p))
+
+    security = ctypes.c_void_p()
+    owner = ctypes.c_void_p()
+    if path is not None:
+        assert_no_link_like_components(path, "security object")
+        status = adv.GetNamedSecurityInfoW(
+            str(path), 1, 5, ctypes.byref(owner), None, None, None,
+            ctypes.byref(security),
+        )
+        if status:
+            raise LifecycleError(f"Windows owner/DACL read failed with error {status}")
+    elif not adv.ConvertStringSecurityDescriptorToSecurityDescriptorW(
+        descriptor, 1, ctypes.byref(security), None,
+    ):
+        raise LifecycleError("Windows DACL admission conversion failed")
+    try:
+        text = wintypes.LPWSTR()
+        if not adv.ConvertSecurityDescriptorToStringSecurityDescriptorW(
+            security, 1, 4, ctypes.byref(text), None,
+        ):
+            raise LifecycleError("Windows DACL serialization failed")
+        try:
+            dacl_text = text.value
+        finally:
+            kernel.LocalFree(ctypes.cast(text, ctypes.c_void_p))
+        present, defaulted = wintypes.BOOL(), wintypes.BOOL()
+        dacl = ctypes.c_void_p()
+        if not adv.GetSecurityDescriptorDacl(
+            security, ctypes.byref(present), ctypes.byref(dacl), ctypes.byref(defaulted),
+        ) or not present.value or not dacl.value:
+            raise LifecycleError("Windows absent or NULL DACL is unsupported")
+        # ACL header: revision/reserved, size, ACE count, reserved.
+        count = ctypes.c_ushort.from_address(dacl.value + 4).value
+        aces = []
+        for index in range(count):
+            ace = ctypes.c_void_p()
+            if not adv.GetAce(dacl, index, ctypes.byref(ace)):
+                raise LifecycleError("Windows DACL ACE read failed")
+            kind = ctypes.c_ubyte.from_address(ace.value).value
+            flags = ctypes.c_ubyte.from_address(ace.value + 1).value
+            if kind not in {0, 1} or flags & ~0x1f:
+                raise LifecycleError("Windows complex ACE type or flags are unsupported")
+            aces.append({
+                "type": kind, "flags": flags,
+                "mask": ctypes.c_uint32.from_address(ace.value + 4).value,
+                "sid": sid_text(ace.value + 8),
+            })
+        return {"owner": sid_text(owner) if owner.value else None,
+                "dacl": dacl_text, "aces": aces}
+    finally:
+        kernel.LocalFree(security)
+
+
+def windows_process_sid():
+    import ctypes
+    from ctypes import wintypes
+
+    adv = ctypes.WinDLL("advapi32", use_last_error=True)
+    kernel = ctypes.WinDLL("kernel32", use_last_error=True)
+    kernel.GetCurrentProcess.restype = wintypes.HANDLE
+    kernel.CloseHandle.argtypes = [wintypes.HANDLE]
+    kernel.LocalFree.argtypes = [ctypes.c_void_p]
+    kernel.LocalFree.restype = ctypes.c_void_p
+    adv.OpenProcessToken.argtypes = [wintypes.HANDLE, wintypes.DWORD, ctypes.POINTER(wintypes.HANDLE)]
+    adv.GetTokenInformation.argtypes = [wintypes.HANDLE, ctypes.c_int, ctypes.c_void_p,
+                                       wintypes.DWORD, ctypes.POINTER(wintypes.DWORD)]
+    adv.ConvertSidToStringSidW.argtypes = [ctypes.c_void_p, ctypes.POINTER(wintypes.LPWSTR)]
+    token = wintypes.HANDLE()
+    if not adv.OpenProcessToken(kernel.GetCurrentProcess(), 8, ctypes.byref(token)):
+        raise LifecycleError("Windows process identity read failed")
+    try:
+        size = wintypes.DWORD()
+        adv.GetTokenInformation(token, 1, None, 0, ctypes.byref(size))
+        if not size.value:
+            raise LifecycleError("Windows process SID size unavailable")
+        buffer = ctypes.create_string_buffer(size.value)
+        if not adv.GetTokenInformation(token, 1, buffer, size, ctypes.byref(size)):
+            raise LifecycleError("Windows process SID read failed")
+        pointer = ctypes.cast(buffer, ctypes.POINTER(ctypes.c_void_p))[0]
+        text = wintypes.LPWSTR()
+        if not adv.ConvertSidToStringSidW(pointer, ctypes.byref(text)):
+            raise LifecycleError("Windows process SID conversion failed")
+        try:
+            return text.value
+        finally:
+            kernel.LocalFree(ctypes.cast(text, ctypes.c_void_p))
+    finally:
+        kernel.CloseHandle(token)
+
+
+def assert_windows_trusted_writers(path, security=None):
+    security = security or windows_security(path)
+    trusted = {"S-1-5-18", "S-1-5-32-544", windows_process_sid()}
+    if security["owner"] not in trusted:
+        raise LifecycleError("Windows object owner is outside the trusted writer set")
+    # Reject any untrusted allow capable of mutation, including inherit-only
+    # grants. Do not try to prove that a deny ACE cancels such a grant.
+    writing = 0x000d0156 | 0x40000000 | 0x10000000
+    for ace in security["aces"]:
+        trusted_sid = ace["sid"] in trusted | {"S-1-3-4", "S-1-3-0"}
+        if ace["type"] == 0 and ace["mask"] & writing and not trusted_sid:
+            raise LifecycleError("Windows DACL permits an untrusted writer")
+    return security
+
+
+def windows_private_descriptor(directory):
+    flags = "OICI" if directory else ""
+    return "D:P" + "".join(f"(A;{flags};FA;;;{sid})" for sid in ("OW", "SY", "BA"))
+
+
+def assert_windows_private_object(path):
+    security = assert_windows_trusted_writers(path)
+    expected = windows_security(descriptor=windows_private_descriptor(Path(path).is_dir()))
+    def ordered(aces):
+        return sorted((ace["type"], ace["flags"], ace["mask"], ace["sid"]) for ace in aces)
+    if ("P" not in windows_dacl_control_flags(security["dacl"])
+            or ordered(security["aces"]) != ordered(expected["aces"])):
+        raise LifecycleError("Windows transaction object is not individually private")
+
+
+def create_private_directory(path):
+    path = Path(path)
+    if os.name == "nt":
+        path.mkdir(mode=0o700)
+        set_windows_dacl(path, windows_private_descriptor(True))
+        assert_windows_private_object(path)
+    else:
+        path.mkdir()
+
+
+def create_private_file(path):
+    path = Path(path)
+    with path.open("xb"):
+        pass
+    if os.name == "nt":
+        set_windows_dacl(path, windows_private_descriptor(False))
+        assert_windows_private_object(path)
+
+
+def write_private_bytes(path, data):
+    create_private_file(path)
+    Path(path).write_bytes(data)
+
+
+def assert_private_tree(path):
+    if os.name == "nt":
+        for target in [Path(path), *Path(path).rglob("*")]:
+            assert_windows_private_object(target)
+
+
+def privatize_tree(path):
+    if os.name == "nt":
+        for target in [Path(path), *sorted(Path(path).rglob("*"))]:
+            assert_no_link_like_components(target, "private handoff")
+            if target.is_file() and target.stat().st_nlink != 1:
+                raise LifecycleError("Windows private handoff refuses a hard-linked file")
+            set_windows_dacl(target, windows_private_descriptor(target.is_dir()))
+        assert_private_tree(path)
+
+
 def create_transaction_directory(transaction_root):
+    if os.name == "nt":
+        assert_windows_trusted_writers(transaction_root)
     transaction = transaction_root / f".wct-{uuid.uuid4().hex}"
     transaction.mkdir(mode=0o700)
     try:
@@ -273,6 +480,8 @@ def create_transaction_directory(transaction_root):
         }:
             raise LifecycleError("transaction permission isolation returned an invalid result")
         assert_no_link_like_components(transaction, "transaction directory")
+        if os.name == "nt":
+            assert_windows_private_object(transaction)
         return transaction
     except Exception:
         try:
@@ -567,15 +776,19 @@ def write_receipt(destination, metadata, files, receipt_destination=None):
 
 def stage_source(package, files, destination, metadata, transaction):
     stage = transaction / "stage"
-    stage.mkdir()
+    create_private_directory(stage)
     try:
+        for relative in sorted(package_directories(files), key=lambda value: (len(PurePosixPath(value).parts), value)):
+            create_private_directory(stage / relative)
         for relative in sorted(files):
             target = stage / relative
-            target.parent.mkdir(parents=True, exist_ok=True)
+            create_private_file(target)
             shutil.copyfile(package / relative, target)
+        create_private_file(stage / RECEIPT_NAME)
         write_receipt(stage, metadata, files, destination)
         if any(sha256(stage / relative) != digest for relative, digest in files.items()):
             raise LifecycleError("staged package failed file verification")
+        assert_private_tree(stage)
         return stage, metadata, files
     except Exception:
         shutil.rmtree(stage, ignore_errors=True)
@@ -595,6 +808,7 @@ def capture_permission_snapshot(path, snapshot):
     snapshot = Path(snapshot)
     if snapshot.exists():
         raise LifecycleError("permission snapshot path already exists")
+    create_private_file(snapshot)
     run_windows_acl(
         path,
         ["/save", str(snapshot), "/T", "/Q"],
@@ -603,6 +817,7 @@ def capture_permission_snapshot(path, snapshot):
     try:
         if not snapshot.is_file() or snapshot.stat().st_size == 0:
             raise LifecycleError("Windows DACL snapshot is missing or empty")
+        assert_windows_private_object(snapshot)
         return sha256(snapshot)
     except OSError as error:
         raise LifecycleError("Windows DACL snapshot is unreadable") from error
@@ -734,7 +949,7 @@ def set_windows_dacl(path, descriptor):
 def restore_windows_dacl_with_ai(path, descriptor, snapshot):
     record = Path(snapshot).with_name(f".wcr-{uuid.uuid4().hex}.acl")
     try:
-        record.write_bytes(
+        write_private_bytes(record,
             f"{Path(path).name}\r\n{descriptor}\r\n\r\n".encode("utf-16-le")
         )
         run_windows_acl(
@@ -747,6 +962,7 @@ def restore_windows_dacl_with_ai(path, descriptor, snapshot):
 
 
 def restore_windows_dacl_records(path, snapshot):
+    assert_no_link_like_components(path, "DACL restore")
     path = resolved(path)
     entries = windows_dacl_snapshot_entries(snapshot)
     root_key = path.name.casefold()
@@ -759,11 +975,15 @@ def restore_windows_dacl_records(path, snapshot):
     for relative, descriptor in ordered:
         if relative.parts[0].casefold() != root_key:
             raise LifecycleError("Windows DACL snapshot path escapes the managed root")
-        target = resolved(path.parent.joinpath(*relative.parts))
+        declared_target = path.parent.joinpath(*relative.parts)
+        assert_no_link_like_components(declared_target, "DACL restore")
+        target = resolved(declared_target)
         if target != path and path not in target.parents:
             raise LifecycleError("Windows DACL snapshot path escapes the managed root")
         if not target.exists() or is_link_like(target):
             raise LifecycleError("Windows DACL restore target is missing or link-like")
+        if target.is_file() and target.stat().st_nlink != 1:
+            raise LifecycleError("Windows DACL restore refuses a hard-linked file")
         targets.append((target, descriptor))
     for target, descriptor in targets:
         if "AI" in windows_dacl_control_flags(descriptor):
@@ -810,19 +1030,24 @@ def preflight_permission_restore(
     snapshot,
     expected_digest,
     permission_restorer=restore_permission_snapshot,
+    permission_context=None,
 ):
     if os.name != "nt":
         return "PLATFORM_DEFAULT"
+    context = permission_context or capture_permission_context(path, snapshot, expected_digest)
     probe_parent = Path(transaction) / "p"
-    probe = probe_parent / Path(path).name
+    probe = probe_parent / "context" / Path(path).name
     if probe_parent.exists():
         raise LifecycleError("Windows DACL restore preflight path is unavailable")
     try:
-        probe_parent.mkdir()
-        shutil.copytree(path, probe, copy_function=shutil.copyfile)
+        create_permission_model(probe_parent, path, context)
         result = permission_restorer(probe, snapshot, expected_digest)
         if result != "PRESERVED_FROM_SNAPSHOT":
             raise LifecycleError("Windows DACL restore preflight returned an invalid result")
+        privatize_tree(probe)
+        if permission_restorer(probe, snapshot, expected_digest) != "PRESERVED_FROM_SNAPSHOT":
+            raise LifecycleError("Windows private handoff roundtrip failed")
+        assert_context_owners(probe, context)
     except Exception as error:
         try:
             shutil.rmtree(probe_parent)
@@ -852,6 +1077,119 @@ def package_path_shape(root):
         else:
             raise LifecycleError("permission projection contains an unsupported path")
     return entries
+
+
+def object_identity(path):
+    metadata = Path(path).stat()
+    return [metadata.st_dev, metadata.st_ino]
+
+
+def capture_parent_context(path):
+    parent = Path(path).parent
+    security = assert_windows_trusted_writers(parent)
+    return {"path": str(parent), "identity": object_identity(parent), "security": security}
+
+
+def assert_parent_context(context):
+    if os.name != "nt" or context is None:
+        return
+    parent = Path(context["path"])
+    assert_no_link_like_components(parent, "destination parent")
+    if object_identity(parent) != context["identity"] or windows_security(parent) != context["security"]:
+        raise LifecycleError("Windows destination parent identity or permission drift")
+
+
+def capture_permission_context(path, snapshot, expected_digest):
+    path = Path(path)
+    if sha256(snapshot) != expected_digest:
+        raise LifecycleError("Windows DACL context snapshot identity mismatch")
+    parent = capture_parent_context(path)
+    shape = package_path_shape(path)
+    files = {name for name, kind in shape.items() if kind == "file"}
+    package = validate_package_file_set(files - {RECEIPT_NAME}, "DACL context package")
+    if files != package | {RECEIPT_NAME} or {
+        name for name, kind in shape.items() if kind == "directory"
+    } != package_directories(package):
+        raise LifecycleError("Windows DACL context shape is not managed")
+    entries = windows_dacl_snapshot_records(snapshot)
+    objects = {}
+    for relative in ["", *sorted(shape)]:
+        target = path / relative
+        security = assert_windows_trusted_writers(target)
+        if target.is_file() and target.stat().st_nlink != 1:
+            raise LifecycleError("Windows DACL context refuses a hard-linked file")
+        key = windows_snapshot_key(path.name, relative)
+        if entries.get(key) != security["dacl"]:
+            raise LifecycleError("Windows DACL context differs from original snapshot")
+        objects[relative] = {
+            "identity": object_identity(target), "security": security,
+            "sha256": sha256(target) if target.is_file() else None,
+        }
+    if len(entries) != len(objects):
+        raise LifecycleError("Windows DACL context snapshot path set mismatch")
+    owner = objects[""]["security"]["owner"]
+    if any(value["security"]["owner"] != owner for value in objects.values()):
+        raise LifecycleError("Windows managed tree has differing owners")
+    assert_parent_context(parent)
+    return {"parent": parent, "path": str(path), "shape": shape,
+            "objects": objects, "owner": owner, "snapshot_sha256": expected_digest}
+
+
+def assert_context_owners(path, context):
+    for target in [Path(path), *Path(path).rglob("*")]:
+        if windows_security(target)["owner"] != context["owner"]:
+            raise LifecycleError("Windows handoff would change an object owner")
+
+
+def assert_permission_context(path, context, original_permissions=True, same_objects=True):
+    if context is None:
+        return
+    assert_parent_context(context["parent"])
+    if package_path_shape(path) != context["shape"]:
+        raise LifecycleError("Windows managed path shape drift")
+    for relative, expected in context["objects"].items():
+        target = Path(path) / relative
+        assert_no_link_like_components(target, "managed handoff")
+        if same_objects and object_identity(target) != expected["identity"]:
+            raise LifecycleError("Windows managed object identity drift")
+        security = windows_security(target)
+        if security["owner"] != expected["security"]["owner"]:
+            raise LifecycleError("Windows managed owner drift")
+        if original_permissions and security != expected["security"]:
+            raise LifecycleError("Windows managed permission drift")
+        if expected["sha256"] is not None and (
+            target.stat().st_nlink != 1 or sha256(target) != expected["sha256"]
+        ):
+            raise LifecycleError("Windows managed file identity or content drift")
+
+
+def create_permission_model(container, path, context):
+    # Only empty managed-shaped objects enter the readable ACL model. Original
+    # bytes, receipts and snapshots stay outside it in individually private files.
+    create_private_directory(container)
+    model_parent = Path(container) / "context"
+    create_private_directory(model_parent)
+    original = context["parent"]["security"]["dacl"]
+    aces = []
+    for ace in re.findall(r"\(([^()]*)\)", original):
+        fields = ace.split(";")
+        if len(fields) != 6 or fields[0] not in {"A", "D"}:
+            raise LifecycleError("Windows inheritance context ACE is unsupported")
+        fields[1] = fields[1].replace("ID", "")
+        aces.append("(" + ";".join(fields) + ")")
+    set_windows_dacl(model_parent, "D:P" + "".join(aces))
+    assert_windows_trusted_writers(model_parent)
+    probe = model_parent / Path(path).name
+    probe.mkdir()
+    for relative in sorted(context["shape"], key=lambda name: (len(PurePosixPath(name).parts), name)):
+        target = probe / relative
+        if context["shape"][relative] == "directory":
+            target.mkdir()
+        else:
+            with target.open("xb"):
+                pass
+    assert_context_owners(probe, context)
+    return probe
 
 
 def reset_windows_path_inheritance(path):
@@ -899,17 +1237,18 @@ def project_permission_snapshot(
     transaction,
     original_snapshot,
     original_digest,
+    permission_context=None,
 ):
     if os.name != "nt":
         return None, None
+    context = permission_context or capture_permission_context(path, original_snapshot, original_digest)
     probe_parent = Path(transaction) / "pp"
-    probe = probe_parent / Path(path).name
+    probe = probe_parent / "context" / Path(path).name
     projected_snapshot = Path(transaction) / "projected-dacl.acl"
     if probe_parent.exists() or projected_snapshot.exists():
         raise LifecycleError("Windows DACL projection path is unavailable")
     try:
-        probe_parent.mkdir()
-        shutil.copytree(path, probe, copy_function=shutil.copyfile)
+        create_permission_model(probe_parent, path, context)
         restored = restore_permission_snapshot(
             probe,
             original_snapshot,
@@ -950,7 +1289,8 @@ def project_permission_snapshot(
         ]
         for relative in sorted(added_files):
             parts = PurePosixPath(relative).parts
-            shutil.copyfile(Path(stage).joinpath(*parts), probe.joinpath(*parts))
+            with probe.joinpath(*parts).open("xb"):
+                pass
         for relative in sorted(
             added_paths,
             key=lambda value: (len(PurePosixPath(value).parts), value),
@@ -974,6 +1314,9 @@ def project_permission_snapshot(
         )
         if verified != "PRESERVED_FROM_SNAPSHOT":
             raise LifecycleError("Windows projected DACL preflight returned an invalid result")
+        privatize_tree(probe)
+        restore_permission_snapshot(probe, projected_snapshot, projected_digest)
+        assert_context_owners(probe, context)
     except Exception as error:
         remove_permission_snapshot(projected_snapshot)
         try:
@@ -1091,7 +1434,12 @@ def synchronize(
     projected_permission_snapshot = transaction / "projected-dacl.acl"
     moved_old = False
     installed_new = False
+    private_handoff_started = False
+    permission_context = None
+    context_file = transaction / "permission-context.json"
+    parent_context = None
     try:
+        parent_context = capture_parent_context(destination) if os.name == "nt" else None
         if action in {"update", "rollback"}:
             permission_snapshot_digest = permission_snapshotter(
                 destination,
@@ -1099,6 +1447,12 @@ def synchronize(
             )
             if os.name == "nt" and not permission_snapshot_digest:
                 raise LifecycleError("Windows DACL snapshot was not created")
+            if os.name == "nt":
+                permission_context = capture_permission_context(
+                    destination, permission_snapshot, permission_snapshot_digest,
+                )
+                parent_context = permission_context["parent"]
+                write_private_bytes(context_file, json.dumps(permission_context).encode("utf-8"))
             preflight_result = permission_restore_preflight(
                 destination,
                 transaction,
@@ -1124,17 +1478,21 @@ def synchronize(
                         transaction,
                         permission_snapshot,
                         permission_snapshot_digest,
+                        permission_context,
                     )
+                assert_context_owners(stage, permission_context)
+                assert_permission_context(destination, permission_context)
+                private_handoff_started = True
+                privatize_tree(destination)
+                assert_permission_context(destination, permission_context, original_permissions=False)
+            assert_parent_context(parent_context)
             path_replacer(destination, backup)
             moved_old = True
-            backup_permission_result = permission_reconciler(backup)
-            if backup_permission_result not in {
-                "INHERITED_FROM_PARENT",
-                "PLATFORM_DEFAULT",
-            }:
-                raise LifecycleError("backup permission handoff returned an invalid result")
+            assert_private_tree(backup)
         elif destination.exists():
             raise LifecycleError("install destination appeared after preflight")
+        assert_parent_context(parent_context)
+        assert_private_tree(stage)
         path_replacer(stage, destination)
         installed_new = True
         if permission_snapshot_digest is None:
@@ -1150,6 +1508,8 @@ def synchronize(
                 else permission_result
             )
         else:
+            assert_parent_context(parent_context)
+            assert_context_owners(destination, permission_context)
             permission_result = permission_restorer(
                 destination,
                 target_permission_snapshot,
@@ -1164,12 +1524,15 @@ def synchronize(
             )
         if current_state(destination, tree).get("state") != "MANAGED":
             raise LifecycleError("installed destination failed receipt verification")
+        assert_parent_context(parent_context)
     except Exception as operation_error:
         recovery_errors = []
         if installed_new and destination.exists():
             try:
+                assert_parent_context(parent_context)
+                assert_no_link_like_components(destination, "failed destination cleanup")
                 shutil.rmtree(destination)
-            except OSError as error:
+            except (OSError, LifecycleError) as error:
                 recovery_errors.append(f"new destination cleanup failed: {error}")
         if moved_old:
             if destination.exists():
@@ -1178,6 +1541,9 @@ def synchronize(
                 recovery_errors.append("old destination backup is missing")
             else:
                 try:
+                    assert_parent_context(parent_context)
+                    assert_permission_context(backup, permission_context, original_permissions=False)
+                    assert_private_tree(backup)
                     path_replacer(backup, destination)
                     if permission_snapshot_digest is None:
                         restored_permission_result = permission_reconciler(destination)
@@ -1200,10 +1566,23 @@ def synchronize(
                             )
                     if current_state(destination, state.get("package_tree")).get("state") != "MANAGED":
                         raise LifecycleError("restored destination failed receipt verification")
+                    assert_permission_context(destination, permission_context)
                 except Exception as error:
                     recovery_errors.append(f"old destination restore failed: {error}")
+        elif private_handoff_started:
+            try:
+                assert_permission_context(destination, permission_context, original_permissions=False)
+                if permission_restorer(destination, permission_snapshot, permission_snapshot_digest) != "PRESERVED_FROM_SNAPSHOT":
+                    raise LifecycleError("partial private handoff restore returned an invalid result")
+                assert_permission_context(destination, permission_context)
+            except Exception as error:
+                recovery_errors.append(f"partial private handoff restore failed: {error}")
         if stage.exists():
-            shutil.rmtree(stage, ignore_errors=True)
+            try:
+                assert_no_link_like_components(stage, "failed stage cleanup")
+                shutil.rmtree(stage)
+            except (OSError, LifecycleError) as error:
+                recovery_errors.append(f"stage cleanup failed: {error}")
         if recovery_errors:
             raise LifecycleError(
                 f"{action} failed; automatic recovery is incomplete; transaction preserved at "
@@ -1211,6 +1590,7 @@ def synchronize(
             ) from operation_error
         remove_permission_snapshot(permission_snapshot)
         remove_permission_snapshot(projected_permission_snapshot)
+        remove_permission_snapshot(context_file)
         if not remove_completed_transaction(
             transaction,
             validated_transaction_root,
@@ -1223,8 +1603,10 @@ def synchronize(
         raise
     if moved_old:
         try:
+            assert_no_link_like_components(backup, "backup cleanup")
+            assert_private_tree(backup)
             backup_remover(backup)
-        except OSError as error:
+        except (OSError, LifecycleError) as error:
             plan["backup_path"] = str(backup)
             plan["cleanup_error"] = str(error)
             plan["package_sha256"] = package_digest(files)
@@ -1233,6 +1615,7 @@ def synchronize(
             return plan
     remove_permission_snapshot(permission_snapshot)
     remove_permission_snapshot(projected_permission_snapshot)
+    remove_permission_snapshot(context_file)
     if not remove_completed_transaction(
         transaction,
         validated_transaction_root,
@@ -1245,6 +1628,40 @@ def synchronize(
     plan["package_sha256"] = package_digest(files)
     plan["result"] = "MANAGED"
     return plan
+
+
+def recovery_archive_members(archive):
+    members = archive.infolist()
+    names = [member.filename for member in members]
+    if len(names) != len(set(names)):
+        raise LifecycleError("uninstall recovery archive has duplicate paths")
+    files = {member.filename for member in members if not member.is_dir()}
+    package = validate_package_file_set(files - {RECEIPT_NAME}, "recovery archive package")
+    directories = package_directories(package)
+    if files != package | {RECEIPT_NAME} or any(
+        member.filename not in files | {name + "/" for name in directories}
+        for member in members
+    ):
+        raise LifecycleError("uninstall recovery archive path set mismatch")
+    return files, directories
+
+
+def verify_recovery_archive(archive_path, destination):
+    with zipfile.ZipFile(archive_path) as archive:
+        files, _directories = recovery_archive_members(archive)
+        if any(archive.read(name) != (Path(destination) / name).read_bytes() for name in files):
+            raise LifecycleError("uninstall recovery archive content mismatch")
+
+
+def unpack_private_archive(archive_path, destination):
+    with zipfile.ZipFile(archive_path) as archive:
+        files, directories = recovery_archive_members(archive)
+        create_private_directory(destination)
+        for name in sorted(directories):
+            create_private_directory(Path(destination) / name)
+        for name in sorted(files):
+            write_private_bytes(Path(destination) / name, archive.read(name))
+    assert_private_tree(destination)
 
 
 def uninstall(
@@ -1318,6 +1735,8 @@ def uninstall(
     tombstone = transaction / "tombstone"
     recovery_base = transaction / "uninstall-recovery"
     permission_snapshot = transaction / "previous-dacl.acl"
+    context_file = transaction / "permission-context.json"
+    permission_context = None
     try:
         permission_snapshot_digest = permission_snapshotter(
             destination,
@@ -1325,6 +1744,9 @@ def uninstall(
         )
         if os.name == "nt" and not permission_snapshot_digest:
             raise LifecycleError("Windows DACL snapshot was not created")
+        if os.name == "nt":
+            permission_context = capture_permission_context(destination, permission_snapshot, permission_snapshot_digest)
+            write_private_bytes(context_file, json.dumps(permission_context).encode("utf-8"))
         preflight_result = permission_restore_preflight(
             destination,
             transaction,
@@ -1338,6 +1760,7 @@ def uninstall(
             raise LifecycleError("DACL restore preflight returned an invalid result")
     except Exception:
         remove_permission_snapshot(permission_snapshot)
+        remove_permission_snapshot(context_file)
         if not remove_completed_transaction(
             transaction,
             validated_transaction_root,
@@ -1349,11 +1772,17 @@ def uninstall(
             )
         raise
     try:
+        create_private_file(recovery_base.with_suffix(".zip"))
         recovery_archive = Path(
             shutil.make_archive(str(recovery_base), "zip", root_dir=destination)
         )
+        if os.name == "nt":
+            assert_windows_private_object(recovery_archive)
+        archive_digest = sha256(recovery_archive)
+        verify_recovery_archive(recovery_archive, destination)
     except Exception:
         remove_permission_snapshot(permission_snapshot)
+        remove_permission_snapshot(context_file)
         if not remove_completed_transaction(
             transaction,
             validated_transaction_root,
@@ -1364,11 +1793,28 @@ def uninstall(
                 f"{transaction_recovery_path(transaction, validated_transaction_root)}"
             )
         raise
+    private_handoff_started = False
     try:
+        assert_permission_context(destination, permission_context)
+        private_handoff_started = True
+        privatize_tree(destination)
+        assert_permission_context(destination, permission_context, original_permissions=False)
         path_replacer(destination, tombstone)
-    except Exception:
+    except Exception as operation_error:
+        if private_handoff_started and permission_context is not None:
+            try:
+                assert_permission_context(destination, permission_context, original_permissions=False)
+                if permission_restorer(destination, permission_snapshot, permission_snapshot_digest) != "PRESERVED_FROM_SNAPSHOT":
+                    raise LifecycleError("partial uninstall handoff restore returned an invalid result")
+                assert_permission_context(destination, permission_context)
+            except Exception as restore_error:
+                raise LifecycleError(
+                    f"uninstall private handoff failed; recovery retained at {transaction}; "
+                    f"automatic restore failed: {restore_error}"
+                ) from operation_error
         recovery_archive.unlink(missing_ok=True)
         remove_permission_snapshot(permission_snapshot)
+        remove_permission_snapshot(context_file)
         if not remove_completed_transaction(
             transaction,
             validated_transaction_root,
@@ -1380,17 +1826,19 @@ def uninstall(
             )
         raise
     try:
-        tombstone_permission_result = permission_reconciler(tombstone)
-        if tombstone_permission_result not in {
-            "INHERITED_FROM_PARENT",
-            "PLATFORM_DEFAULT",
-        }:
-            raise LifecycleError("tombstone permission handoff returned an invalid result")
+        assert_private_tree(tombstone)
         tombstone_remover(tombstone)
     except Exception as error:
         try:
-            destination.mkdir()
-            shutil.unpack_archive(recovery_archive, destination, "zip")
+            if sha256(recovery_archive) != archive_digest:
+                raise LifecycleError("uninstall recovery archive identity mismatch")
+            recovery_stage = transaction / "recovery-stage"
+            unpack_private_archive(recovery_archive, recovery_stage)
+            assert_permission_context(recovery_stage, permission_context, original_permissions=False, same_objects=False)
+            assert_private_tree(recovery_stage)
+            if destination.exists():
+                raise LifecycleError("uninstall recovery destination appeared")
+            path_replacer(recovery_stage, destination)
             if permission_snapshot_digest is None:
                 restored_permission_result = permission_reconciler(destination)
                 if restored_permission_result not in {
@@ -1412,6 +1860,7 @@ def uninstall(
                     )
             if current_state(destination, trusted_tree).get("state") != "MANAGED":
                 raise LifecycleError("restored destination failed receipt verification")
+            assert_permission_context(destination, permission_context, same_objects=False)
         except Exception as restore_error:
             raise LifecycleError(
                 "uninstall cleanup failed; recovery archive preserved at "
@@ -1432,6 +1881,7 @@ def uninstall(
         result["warning"] = f"uninstall completed; recovery archive cleanup failed: {error}"
         return result
     remove_permission_snapshot(permission_snapshot)
+    remove_permission_snapshot(context_file)
     if not remove_completed_transaction(
         transaction,
         validated_transaction_root,
@@ -1486,6 +1936,234 @@ def create_test_source(
         newline="\n",
     )
     return source
+
+
+def self_test_inherited_permissions(root, legacy_source, other_legacy_source, current_source):
+    if os.name != "nt":
+        return "NOT_APPLICABLE"
+    fixture = root / "fully-inherited"
+    create_private_directory(fixture)
+    policy = fixture / "policy"
+    create_private_directory(policy)
+    set_windows_dacl(policy, windows_private_descriptor(True) + "(A;OICI;0x1200a9;;;WD)")
+    discovery = policy / "skills"
+    discovery.mkdir()
+    reset_windows_path_inheritance(discovery)
+    destination = discovery / "work-charter"
+    transactions = fixture / "transactions"
+    create_private_directory(transactions)
+    vault = fixture / "vault"
+    create_private_directory(vault)
+    transitions = [
+        (legacy_source, "0.4.2"), (other_legacy_source, "0.4.3"),
+        (current_source, SELF_TEST_SOURCE_VERSION), (legacy_source, "0.4.2"),
+    ]
+    current_tree = None
+    model_observations = []
+    move_observations = []
+
+    def inspect_model(path, transaction, snapshot, digest):
+        def restore_empty(probe, raw, identity):
+            assert all(target.stat().st_size == 0 for target in probe.rglob("*") if target.is_file())
+            assert_windows_private_object(raw)
+            assert_private_tree(transaction / "stage") if (transaction / "stage").exists() else None
+            model_observations.append(str(probe.relative_to(transaction)))
+            return restore_permission_snapshot(probe, raw, identity)
+        return preflight_permission_restore(path, transaction, snapshot, digest, restore_empty)
+
+    def move_private(source_path, target_path):
+        assert_private_tree(source_path)
+        move_observations.append((Path(source_path).name, Path(target_path).name))
+        os.replace(source_path, target_path)
+        assert_private_tree(target_path)
+
+    for index, (source, version) in enumerate(transitions):
+        expected_tree = candidate_metadata(source, version)["package"]["tree"]
+        before = None
+        if current_tree:
+            before_path = vault / f"before-{index}.acl"
+            capture_permission_snapshot(destination, before_path)
+            before = windows_dacl_snapshot_records(before_path)
+            assert all("AI" in windows_dacl_control_flags(value)
+                       and "P" not in windows_dacl_control_flags(value) for value in before.values())
+        result = synchronize(
+            "update" if current_tree else "install", source, destination, version, True,
+            trusted_current_tree=current_tree, trusted_target_tree=expected_tree,
+            transaction_root=transactions, path_replacer=move_private,
+            permission_restore_preflight=inspect_model,
+        )
+        assert result["result"] == "MANAGED"
+        current_tree = expected_tree
+        after_path = vault / f"after-{index}.acl"
+        capture_permission_snapshot(destination, after_path)
+        after = windows_dacl_snapshot_records(after_path)
+        assert all("AI" in windows_dacl_control_flags(value)
+                   and "P" not in windows_dacl_control_flags(value) for value in after.values())
+        if before:
+            assert all(before[key] == after[key] for key in before.keys() & after.keys())
+        assert not any(transactions.iterdir())
+    assert len(model_observations) == 6 and len(move_observations) == 7
+
+    snapshot = vault / "fault-baseline.acl"
+    digest = capture_permission_snapshot(destination, snapshot)
+    context = capture_permission_context(destination, snapshot, digest)
+    original_setter = globals()["set_windows_dacl"]
+    actual_writes = []
+
+    def fail_partial_private(path, descriptor):
+        path = Path(path)
+        if path == destination or destination in path.parents:
+            actual_writes.append(path)
+            if len(actual_writes) == 2:
+                raise OSError("simulated partial private DACL failure")
+        return original_setter(path, descriptor)
+
+    globals()["set_windows_dacl"] = fail_partial_private
+    prior_moves = len(move_observations)
+    try:
+        try:
+            synchronize(
+                "update", other_legacy_source, destination, "0.4.3", True,
+                trusted_current_tree=current_tree,
+                trusted_target_tree=candidate_metadata(other_legacy_source, "0.4.3")["package"]["tree"],
+                transaction_root=transactions, path_replacer=move_private,
+            )
+        except OSError as error:
+            assert "partial private DACL failure" in str(error)
+        else:
+            raise AssertionError("partial private DACL failure was not surfaced")
+    finally:
+        globals()["set_windows_dacl"] = original_setter
+    assert len(move_observations) == prior_moves and len(actual_writes) >= 2
+    assert_permission_context(destination, context)
+    assert not any(transactions.iterdir())
+
+    # The same partial-ACL boundary also exists before an uninstall move.
+    actual_writes.clear()
+    globals()["set_windows_dacl"] = fail_partial_private
+    try:
+        try:
+            uninstall(destination, True, trusted_tree=current_tree, transaction_root=transactions,
+                      path_replacer=move_private)
+        except OSError as error:
+            assert "partial private DACL failure" in str(error)
+        else:
+            raise AssertionError("partial uninstall private DACL failure was not surfaced")
+    finally:
+        globals()["set_windows_dacl"] = original_setter
+    assert len(move_observations) == prior_moves and len(actual_writes) >= 2
+    assert_permission_context(destination, context)
+    assert not any(transactions.iterdir())
+
+    # Parent drift and unsupported writer policy fail before any target ACL or move.
+    bad = windows_security(descriptor="D:P(A;OICI;FW;;;WD)")
+    bad["owner"] = context["owner"]
+    try:
+        assert_windows_trusted_writers(destination, bad)
+    except LifecycleError as error:
+        assert "untrusted writer" in str(error)
+    else:
+        raise AssertionError("untrusted writer admission succeeded")
+    bad_owner = dict(context["objects"][""]["security"], owner="S-1-1-0")
+    try:
+        assert_windows_trusted_writers(destination, bad_owner)
+    except LifecycleError as error:
+        assert "owner" in str(error)
+    else:
+        raise AssertionError("untrusted owner admission succeeded")
+    try:
+        windows_security(descriptor="D:NO_ACCESS_CONTROL")
+    except LifecycleError as error:
+        assert "NULL DACL" in str(error)
+    else:
+        raise AssertionError("NULL DACL admission succeeded")
+    try:
+        object_guid = "-".join("1" * width for width in (8, 4, 4, 4, 12))
+        windows_security(descriptor=f"D:(OA;;FA;{object_guid};;WD)")
+    except LifecycleError as error:
+        assert "complex ACE" in str(error)
+    else:
+        raise AssertionError("complex DACL admission succeeded")
+    drifted = dict(context["parent"], identity=[-1, -1])
+    try:
+        assert_parent_context(drifted)
+    except LifecycleError as error:
+        assert "drift" in str(error)
+    else:
+        raise AssertionError("parent identity drift was not refused")
+
+    def count_actual_writes(path, descriptor):
+        path = Path(path)
+        if path == destination or destination in path.parents:
+            actual_writes.append(path)
+        return original_setter(path, descriptor)
+
+    def refused_update():
+        synchronize(
+            "update", other_legacy_source, destination, "0.4.3", True,
+            trusted_current_tree=current_tree,
+            trusted_target_tree=candidate_metadata(other_legacy_source, "0.4.3")["package"]["tree"],
+            transaction_root=transactions, path_replacer=move_private,
+        )
+
+    unsafe_parent = context["parent"]["security"]["dacl"] + "(A;OICI;FW;;;WD)"
+    original_setter(discovery, unsafe_parent)
+    actual_writes.clear()
+    globals()["set_windows_dacl"] = count_actual_writes
+    try:
+        try:
+            refused_update()
+        except LifecycleError as error:
+            assert "untrusted writer" in str(error)
+        else:
+            raise AssertionError("unsafe parent update was not refused")
+    finally:
+        globals()["set_windows_dacl"] = original_setter
+        restore_windows_dacl_with_ai(discovery, context["parent"]["security"]["dacl"], snapshot)
+    assert actual_writes == [] and len(move_observations) == prior_moves
+    assert_permission_context(destination, context)
+    assert not any(transactions.iterdir())
+
+    alias = fixture / "hardlink-alias"
+    alias.hardlink_to(destination / "SKILL.md")
+    globals()["set_windows_dacl"] = count_actual_writes
+    try:
+        try:
+            refused_update()
+        except LifecycleError as error:
+            assert "hard-linked" in str(error)
+        else:
+            raise AssertionError("hard-linked managed file was not refused")
+    finally:
+        globals()["set_windows_dacl"] = original_setter
+        alias.unlink()
+    assert actual_writes == [] and len(move_observations) == prior_moves
+    assert_permission_context(destination, context)
+    assert not any(transactions.iterdir())
+
+    def partial_delete(path):
+        assert_private_tree(path)
+        assert_windows_private_object(path.parent / "uninstall-recovery.zip")
+        (path / "SKILL.md").unlink()
+        raise OSError("simulated inherited uninstall deletion failure")
+
+    try:
+        uninstall(destination, True, trusted_tree=current_tree, transaction_root=transactions,
+                  tombstone_remover=partial_delete, path_replacer=move_private,
+                  permission_restore_preflight=inspect_model)
+    except LifecycleError as error:
+        assert "managed destination was restored" in str(error)
+    else:
+        raise AssertionError("partial inherited uninstall failure was not surfaced")
+    assert_permission_context(destination, context, same_objects=False)
+    retained = list(transactions.iterdir())
+    assert len(retained) == 1
+    assert_private_tree(retained[0])
+    shutil.rmtree(retained[0])
+    uninstall(destination, True, trusted_tree=current_tree, transaction_root=transactions,
+              path_replacer=move_private, permission_restore_preflight=inspect_model)
+    assert not destination.exists() and not any(transactions.iterdir())
+    return "PASS"
 
 
 def self_test(source=None):
@@ -2653,6 +3331,7 @@ def self_test(source=None):
         )
         assert current_state(destination)["state"] == "ABSENT"
         assert user_config.read_bytes() == user_config_bytes
+        inherited_permissions = self_test_inherited_permissions(root, source_b, source_c, source_a)
     return {
         "result": "PASS",
         "scope": (
@@ -2704,6 +3383,11 @@ def self_test(source=None):
         "windows_restrictive_dacl_preservation": (
             "PASS" if os.name == "nt" else "NOT_APPLICABLE"
         ),
+        "windows_fully_inherited_shape_transitions": inherited_permissions,
+        "windows_empty_model_private_material": inherited_permissions,
+        "windows_private_before_move_and_partial_handoff_restore": inherited_permissions,
+        "windows_inherited_uninstall_private_archive_recovery": inherited_permissions,
+        "windows_owner_writer_parent_context_admission": inherited_permissions,
         "transaction_alias_test": alias_check,
         "transaction_reparse_test": link_check,
     }

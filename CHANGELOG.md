@@ -4,7 +4,9 @@
 
 Local candidate: [release/v0.6.1-candidate.json](release/v0.6.1-candidate.json)
 
-Independent review, Planner acceptance, and human release-note review: `PENDING`
+Independent source review and Planner acceptance: verified at the
+[installer checkpoint](docs/skills/work-charter/STATE.md#accepted-installer-source-checkpoint).
+The candidate retains its pre-review snapshot; human release-note review is `PENDING`.
 
 - Reuses scoped authorization in the default startup prompt, asking only for
   missing project-read or adoption decisions.
@@ -16,6 +18,13 @@ Independent review, Planner acceptance, and human release-note review: `PENDING`
 - Binds fresh package qualification to v0.6.1 and preserves the frozen v0.6.0
   descriptor and prior evidence. Installation and publication require their
   own completed gates; neither is claimed by this candidate.
+- Corrects repository-side Windows installer preflight for fully inherited
+  targets using an empty model with the original parent's inheritance context.
+  Real transaction material is individually private; old objects become private
+  before moving, with verified restoration after partial ACL failures. Uninstall
+  recovery unpacks privately before promotion. The package, version, candidate
+  and receipt schema are unchanged. Corrected source is accepted; actual retry
+  and installation acceptance remain subsequent gates.
 
 ## Work Charter v0.6.0
 

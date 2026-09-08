@@ -154,33 +154,17 @@ remain separately authorized evidence classes.
   tool refuses unreceipted, malformed or mismatched-receipt, wrong-tree,
   modified, aliased, and drifted destinations. A failed initial backup move
   never deletes the old destination; failures after that move restore and
-  verify the old managed copy or retain an explicit recovery path. On Windows,
-  each random per-operation transaction directory is first protected for Owner
-  Rights, SYSTEM, and Administrators. A genuinely new install inherits the
-  destination parent's existing DACL. Before update, rollback, or uninstall
-  mutation, the controller saves the complete existing DACL tree inside the
-  private transaction and restores it path by path to a private replica.
-  AI-bearing snapshot records use a one-record `icacls /restore`; records
-  without AI use `SetFileSecurityW` with DACL and, when required, protected-DACL
-  information. The latter setter is used for its documented non-propagating
-  directory behavior. Records are applied shallow-to-deep and then read back
-  through the same bounded `/save` representation. Enumeration order and
-  newline serialization are ignored; managed-path membership and exact
-  per-path DACL SDDL—including P, AI, AR and ACE order/content—must match.
-  Missing capability, an unsupported control state, or any mismatch therefore
-  fails before a target move. The promoted or recovered target receives the
-  saved policy and passes the same readback before success is reported; moved
-  backup and tombstone trees inherit the protected transaction DACL. A later
-  mismatch enters the same recovery path, which retains the original snapshot
-  when recovery is incomplete. Other platforms retain the existing platform-
-  default permission behavior. Historical five-file receipts and the current
+  verify the old managed copy or retain an explicit recovery path. Windows
+  follows the [permission-context and private-handoff contract](#windows-permission-context-and-private-handoff)
+  below; other platforms retain the existing platform-default permission
+  behavior. Historical five-file receipts and the current
   six-file descriptor map only to two exact allow-listed path sets. The legacy
   five-file candidate shape may omit its redundant package digest while its
   actual tree remains bound to a separate trusted tree. The six-file shape
   requires the digest; any explicitly supplied invalid or mismatched digest is
   rejected. When a Windows update or rollback changes between them, the
   controller restores the
-  original snapshot to a private replica, transforms only that replica to the
+  original snapshot to the empty context model, transforms only that model to the
   target shape, resets only new paths to inherited ACLs, proves every common
   descriptor is unchanged and every new path is auto-inherited and unprotected,
   then exact-restores and reads back the projected snapshot. The original
@@ -194,6 +178,65 @@ remain separately authorized evidence classes.
   delivery, live installed-copy behavior, publication, and broad efficacy
   require separate evidence. Receipt validation is static and does not re-read
   the live installation.
+
+## Windows permission context and private handoff
+
+The installer freezes the managed path shape, file and receipt hashes, object
+identities, owners and DACLs, plus the destination parent's identity, owner and
+DACL. It admits ordinary allow/deny ACEs only. Owners must be the executing user,
+SYSTEM or Administrators, and every existing managed object must have the same
+owner. New model, stage and recovery objects must preserve that owner; the tool
+does not acquire WRITE_OWNER or change ownership. Owner Rights and Creator Owner
+are admitted only within those verified owner and inheritance bounds.
+
+Any allow ACE for another principal that can write data, create or delete
+children, delete objects, change attributes/EA, WRITE_DAC or WRITE_OWNER, or grant
+generic write/all causes refusal, including inherit-only grants. A deny ACE is
+not used to cancel an otherwise untrusted write grant. NULL DACLs, complex ACEs,
+unsupported control states and hard-linked managed files are refused. Canonical
+path/reparse guards and parent/object/content checks run again before effects,
+promotion and recovery. The existing single-writer contract still applies to
+trusted administrators and the executing identity.
+
+Permission preflight and path-shape projection contain only the fixed allowed
+empty directories and zero-byte files. A protected explicit synthetic parent
+copies the real parent's ACE order, principals, rights and propagation flags;
+only inherited ACE markers are cleared on that synthetic parent. This blocks
+the outer private transaction policy from contaminating the model. Original
+snapshots are never rewritten or normalized to make the model pass. Original
+readers may directly read these empty objects and their ACL metadata; no real
+package bytes, receipt bytes, raw snapshot or recovery archive enters the model.
+
+The existing production restore path must prove both original-policy restore
+and an original/private/original roundtrip on that model before target effects.
+AI-bearing records use single-record `icacls /restore`; no-AI records use
+`SetFileSecurityW` with DACL and required protected-DACL information, without
+propagating directory policy to children. The shallow-to-deep restore and `/save`
+readback ignore only record enumeration order and newline serialization. Managed
+path membership and per-path SDDL, including P/AI/AR and ACE order/content, remain
+exact. Projection also preserves every common descriptor and requires new paths
+to be auto-inherited and unprotected.
+
+All real stage, snapshot, metadata, backup, tombstone and ZIP recovery objects
+receive and verify their own protected Owner Rights/SYSTEM/Administrators DACL.
+New files are empty until that protection passes. After all preflight checks,
+the exact old managed tree is privatized before the first move. This introduces
+a temporary reader-unavailability window; there is no continuous-readability or
+duration guarantee. A partial ACL failure, including one before any move, must
+restore the original policy at the real parent and verify old contents. A moved
+backup or tombstone is already private and does not rely on later inheritance.
+
+Promotion preserves private content until the real destination path is reached,
+then restores and verifies the original or projected policy under the unchanged
+parent. A new install alone adopts parent inheritance. Uninstall verifies a
+private archive before moving/deleting the old copy. Partial-deletion recovery
+unpacks into individually private objects, verifies old content and owners,
+then promotes and restores the original policy. Any incomplete recovery retains
+the original snapshot and complete old content, with an explicit recovery path.
+Recovery and cleanup must not follow a newly introduced reparse path.
+On non-Windows platforms, stage and unpacked recovery directories retain default
+`mkdir()` permissions (0777 subject to umask). The outer transaction remains
+private; Windows directory creation and per-object DACL protection are unchanged.
 
 ## Cross-version trust distribution
 

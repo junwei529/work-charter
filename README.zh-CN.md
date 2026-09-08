@@ -173,26 +173,29 @@ task-scoped 且位于所有 Skill discovery root 之外的 transaction 目录，
 discovery root 之外自动创建唯一、经验证且同卷的目录，在结果中标记
 `AUTO_COMPATIBILITY`，并在正常完成后删除该目录。此兼容 fallback 不授权、也不替代计划中
 安装或发布操作所需的显式路径。两种模式下，stage、backup、tombstone 与 recovery archive
-都只位于外部的单次事务目录中。若旧 destination 移入 backup 的第一步失败，原 destination
-保持不动；若之后的替换失败，工具会恢复并验证原 managed copy，否则报告保留下来的
-recovery 路径。v0.4.1 Windows 修正会先移除每个随机 per-operation transaction 目录的
-继承，并仅向 Owner Rights、SYSTEM 与 Administrators 授权。全新 install 继承
-destination parent 的既有 DACL；update、rollback 或 uninstall mutation 前，工具把现有
-完整 DACL tree 保存到私有 transaction 中，再逐路径回放到私有副本。快照中已含 AI 的
+都只位于外部的单次事务目录中。Windows 上每个真实内容对象和权限快照都在写入字节前，
+逐对象保护为仅 Owner Rights、SYSTEM 与 Administrators 可访问。全新 install 继承
+destination parent 的既有 DACL；update、rollback 或 uninstall 前，工具在具有隔离父继承
+上下文的零字节模型中证明原 DACL 可恢复，并完成“原策略→私有策略→原策略”的往返。
+快照中已含 AI 的
 记录使用单记录 `icacls /restore`；不含 AI 的记录使用携带 DACL 及必要 protected-DACL
 information 的 `SetFileSecurityW`，避免把目录策略传播给子项。按浅到深应用后，再用同一
 有界 `/save` 表示回读。比较忽略记录枚举顺序和换行序列化，但要求 managed path 集合一致，
 并逐路径精确匹配 DACL SDDL，包括 P、AI、AR 与 ACE 顺序/内容。不受支持的控制状态或任何
-不匹配都会在 destination mutation 前 fail closed。promotion 或恢复后的 target 回放旧策略后
-也必须通过相同回读，才能报告成功；恢复仍不完整时，原 snapshot 保留在受保护 transaction
-中。backup 与 tombstone 只继承私有 transaction DACL；其他平台保持原有行为。
+预检不匹配都会在 target ACL 修改或移动前拒绝。全部预检通过后，精确受管旧对象先逐个
+私有化，再首次移入 backup 或 tombstone，期间原读者可能短暂失去访问能力。因此，移动
+失败也可能需要恢复已经修改的 ACL。promotion 和恢复都在真实 destination parent 下恢复
+原策略并回读；恢复不完整时保留原 snapshot 和完整旧内容。卸载 ZIP 也先解包到逐对象私有
+的 recovery stage，再提升至真实路径。未知写者、无法保持的 owner、不支持的 ACE、受管文件
+硬链接及上下文漂移均拒绝。详见[设计边界](docs/skills/work-charter/DESIGN.md#windows-permission-context-and-private-handoff)；
+其他平台保持原有权限行为。
 
 历史五文件 receipt/candidate descriptor 与当前六文件 descriptor 只按 exact allow-list
 package shape 识别。legacy 五文件 candidate 可省略冗余 package digest，但实际 tree 仍必须
 匹配独立 trusted tree；当前六文件 shape 必须声明 digest，任何已声明但无效或不匹配的 digest
 均 fail closed。
-Windows update/rollback 的 path set 发生变化时，工具先在私有副本证明原 recovery snapshot，
-仅在该副本上转换为目标 path shape，只把新增路径 reset 到 parent inheritance，然后核对全部
+Windows update/rollback 的 path set 发生变化时，工具先在同一零内容上下文模型证明原 recovery snapshot，
+仅在该模型上转换为目标 path shape，只把新增路径 reset 到 parent inheritance，然后核对全部
 共同路径 descriptor 未变、每个新增路径均为 auto-inherited 且 unprotected，并对 projected
 snapshot 完成 exact readback。原 snapshot 仍是 recovery authority。未知或自行声明的 path
 set、不安全 receipt key、缺失或多余路径、tree 不匹配均 fail closed。

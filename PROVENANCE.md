@@ -12,8 +12,9 @@ mapping, or source working-tree byte was used.
 
 The immutable `v0.5.0` candidate and receipt retain their exact historical
 identities. The working tree retains the accepted v0.6.0 level-role configuration
-checkpoint and adds the v0.6.1 prompt revision, bound by
-[`release/v0.6.1-candidate.json`](release/v0.6.1-candidate.json). Each
+checkpoint and accepted v0.6.1 prompt/installer revisions. It now adds the
+user-confirmed v0.6.2 guardrail-necessity and auxiliary-cost guidance, bound by
+[`release/v0.6.2-candidate.json`](release/v0.6.2-candidate.json). Each
 changed package, evaluation, documentation, and checker destination is
 classified by its recorded transformation and bound to its current target SHA-256 in
 the manifest. Unchanged destinations retain their prior exact-blob or
@@ -143,8 +144,8 @@ platforms retain prior behavior. The first role-model source and lifecycle
 extension passed exact qualification, ten completed review rounds, and Planner
 acceptance at the v0.5.0 receipt-bound commit. For the later level-role
 extension, the SOURCE identity gate requires both the actual tree and digest
-to match the current v0.6.1 descriptor, while preserving the frozen v0.6.0
-descriptor under its own exact historical hash. Current deterministic check results are recorded
+to match the current v0.6.2 descriptor, while preserving the frozen v0.6.0 and
+v0.6.1 descriptors under their exact historical hashes. Current deterministic check results are recorded
 in [Verification](docs/skills/work-charter/VERIFICATION.md). R12 technical review
 and Planner frozen-source acceptance are separately recorded in State. The v0.6.0
 record changes also passed separate Planner verification; host/global consumer integration,
@@ -157,7 +158,7 @@ references and assets. General compatibility values and historical release
 objects remain intact. Current hashes are refreshed in the source map; source
 changes do not establish installation, consumer integration, or model efficacy.
 
-The current v0.6.1 revision changes startup metadata, prompt-expression text,
+The historical v0.6.1 revision changed startup metadata, prompt-expression text,
 and entrypoint routing. The original `agents/openai.yaml` source blob remains
 attributable in a normalized-text rewrite entry rather than being falsely
 marked byte-identical. Current documentation, candidate, and checker mappings
@@ -182,3 +183,19 @@ The acceptance-record update changes only existing record owners and mechanical
 target hashes/checker pin. Installer, six-file package, candidate and historical
 release bytes remain unchanged; their bound lifecycle/privacy evidence is reused
 without claiming another run, actual installation or native commit qualification.
+
+The v0.6.2 revision changes the existing entrypoint, coordination reference,
+and Charter asset for two portable judgment rules. Version and mapped consumer
+records follow that new package. The only installer-file change is the
+self-test source-version constant; production logic and self-test function
+bodies remain unchanged. The current SOURCE checker binds the new candidate
+and pins the prior v0.6.1 snapshot without rewriting it. Existing origin and
+transformation classes remain attributable; new candidate metadata is
+repository-native. Accepted production-mechanism evidence stays bound to its
+historical input, and fresh lifecycle qualification covers the changed package.
+
+R17 subsequently found no new blocking or material findings, and Planner
+accepted the [v0.6.2 frozen source](docs/skills/work-charter/STATE.md#accepted-v062-source-checkpoint).
+Acceptance-record synchronization changes only existing record owners and
+necessary mapping hashes/checker pin. Package, candidate, installer and SOURCE
+checker bytes stay fixed; source acceptance is not installation or publication.

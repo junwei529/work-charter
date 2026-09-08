@@ -8,11 +8,51 @@ Canonical editable source is the 6-file package under
 documentation, and checker files carry their recorded transformations and are bound to their
 current hashes in the provenance manifest. Unchanged mapped material retains
 its exact or normalized migration provenance. The working package is now
-the local v0.6.1 candidate. Its installer correction has independent review and
-Planner frozen-source acceptance; commit and actual retry remain subsequent
-operations. The accepted v0.6.0 source and record checkpoints remain below.
+the local v0.6.2 candidate. It follows accepted v0.6.1 source and installer
+correction commit `38dd18cb65b4afd24ef2139dcc63a014de1c5ccf`, independently
+verified by the Planner. Historical acceptance does not qualify the new package.
 
-## Current v0.6.1 local candidate
+## Current v0.6.2 local candidate
+
+- Version: user-confirmed v0.6.2; schema 1 and six-file package shape retained
+- Changes: Agent-derived guardrails explain concrete failure/consequence,
+  needed protection strength, and why simpler existing methods are insufficient;
+  expanding auxiliary work prompts the primary owner or Planner to compare
+  remaining costs and simpler routes to the same protected user outcome
+- Explicit user/project requirements retain existing authority; no extra
+  role, form, or approval gate is added
+- Candidate: [v0.6.2 descriptor](../../../release/v0.6.2-candidate.json),
+  `PENDING_INDEPENDENT_REVIEW`; no committed-source receipt
+- Package identity and required qualification: [Verification](VERIFICATION.md#current-v062-qualification)
+- Source acceptance: R17 found no new blocking or material findings; Planner
+  independently accepted the [frozen source checkpoint](#accepted-v062-source-checkpoint)
+- Production installer, default models, schema, and metadata are unchanged;
+  only the installer's self-test version constant follows v0.6.2
+- The unstarted v0.6.1 installation retry is suspended. Review and acceptance
+  of this final version precede its immutable-source check and managed install;
+  Planner installation acceptance precedes ordinary fast-forward publication
+- Last verified installed copy: managed v0.4.0; no new actual installation
+- Global consumer migration: `NOT_PERFORMED`; runtime/efficacy: `UNKNOWN`
+- Existing candidate snapshots, R1-R17, findings, failures, and consumed
+  operations remain historical evidence; no count or approval is reset
+
+### Accepted v0.6.2 source checkpoint
+
+R17 reviewed the complete 18-path difference and material unchanged context;
+Planner independently verified the same 93-file index and working bytes and
+accepted both portable additions. Baseline commit is
+`38dd18cb65b4afd24ef2139dcc63a014de1c5ccf`; accepted staged diff SHA-256 is
+`47fd0803259cb27766a35f0e5c56e5c7425a6fae37de1ab7f679071b9b9dd717`, and
+indexed-content manifest SHA-256 is
+`adb9e1043ef2a542ac203de6701153bf8613424b73f418d56704b1cd8c88980e`.
+Package and qualification identities are in [Verification](VERIFICATION.md#current-v062-qualification).
+This is independent technical review and frozen-source acceptance, not native
+review, installation, publication, or runtime efficacy. The candidate retains
+its immutable pre-review pending snapshot. Subsequent acceptance-record and
+mapping changes receive separate final-input checks without changing the
+accepted package or installer.
+
+## Historical v0.6.1 local candidate
 
 - Version: v0.6.1; schema 1, six package files, approved default model/effort
   objects and role/permission/review contracts unchanged
@@ -21,14 +61,16 @@ operations. The accepted v0.6.0 source and record checkpoints remain below.
   configuration resolution has one required reference owner
 - Candidate: [v0.6.1 descriptor](../../../release/v0.6.1-candidate.json),
   `PENDING_INDEPENDENT_REVIEW`; no committed-source receipt
-- Package identity and current-input qualification: [Verification](VERIFICATION.md#current-v061-qualification)
+- Package identity and input-bound qualification: [Verification](VERIFICATION.md#historical-v061-qualification)
 - Current installer correction: `ACCEPTED_FROZEN_SOURCE_CHECKPOINT`; R16
   confirmed R15-F01 fixed with no new blocking/material findings, followed by
   Planner source acceptance; six-file package and candidate bytes unchanged
 - The earlier v0.6.1 source was accepted and committed. Its authorized managed
   update stopped in fully inherited DACL preflight before target mutation.
-  The new SOURCE correction has not been committed or retried against the
-  installed copy; installation acceptance and Git publication remain pending.
+  The SOURCE correction and synchronized records were committed as
+  `38dd18cb65b4afd24ef2139dcc63a014de1c5ccf` and independently checked by the
+  Planner. The unstarted installation retry was suspended; neither installation
+  acceptance nor Git publication is established by that commit.
 - Global consumer migration: `NOT_PERFORMED`; runtime/efficacy: `UNKNOWN`
 - v0.6.0 descriptor and historical release objects remain byte-identical;
   previous checks and R12 do not prove this new installer input
@@ -39,7 +81,7 @@ and individually private real material, with a temporary private handoff before
 moving old objects. Partial ACL failure requires recovery even with zero moves.
 The supported permissions, owner/writer admission and recovery rules are owned
 by [Design](DESIGN.md#windows-permission-context-and-private-handoff); current
-SOURCE evidence requirements are owned by [Verification](VERIFICATION.md#current-v061-qualification).
+SOURCE evidence requirements are owned by [Verification](VERIFICATION.md#historical-v061-qualification).
 The last verified installed copy remains managed v0.4.0. Prior failed evidence
 is retained and the SOURCE result does not establish a successful installation.
 
@@ -216,25 +258,27 @@ deterministic qualification proves only that exact historical instruction text
 and four-role default. The current checker separately reports the development
 source's static selection/activation, authority, coordination/recovery,
 review/acceptance, level-role resolution, Standard O/P/E/R, and unchanged
-default-data clauses, and requires exact current-package binding to v0.6.1.
+default-data clauses, and requires exact current-package binding to v0.6.2.
 Neither result proves model adherence, host/global
 consumer integration, runtime delivery, technical correctness, or acceptance
 for the development source. R12 and Planner acceptance apply to the v0.6.0
-checkpoint recorded above; v0.6.1 review and acceptance remain pending.
+checkpoint recorded above; R14/R16 and later Planner checks qualify the
+accepted v0.6.1 source. R17 and Planner acceptance apply to the v0.6.2 frozen
+source checkpoint above; later effects retain their separate gates.
 The retained cases remain contract fixtures; they
 do not create fresh model, efficacy, release, or installed-copy evidence.
 
 Evidence states remain separate:
 
-- Current v0.6.1 SOURCE identity: provenance-bound working bytes and a matching
+- Current v0.6.2 SOURCE identity: provenance-bound working bytes and a matching
   candidate descriptor. Input-bound deterministic results are recorded in
-  [Verification](VERIFICATION.md). The earlier R13 state-record finding was
+  [Verification](VERIFICATION.md). The earlier v0.6.1 R13 state-record finding was
   fixed and accepted after R14 before the prior source commit. The later
   installer correction has the separate accepted checkpoint above; its record
   synchronization is not an outstanding R13 source review.
 - Historical v0.6.0 source and acceptance records: accepted at the checkpoints
   above. Its immutable descriptor retains the pre-review pending snapshot;
-  that snapshot does not reopen the accepted history or qualify v0.6.1.
+  that snapshot does not reopen the accepted history or qualify v0.6.2.
 - Immutable v0.5.0 SOURCE identity and deterministic contract: `VERIFIED` for
   accepted commit `8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`.
 - Immutable v0.5.0 independent review and Planner acceptance: `VERIFIED` by the
@@ -317,11 +361,13 @@ review rounds, and Planner acceptance are bound by the separate v0.5.0 receipt.
 
 ## Next gate
 
-The v0.6.1 installer source is accepted at the checkpoint above. The next step
-is bounded synchronization of these acceptance records and final-index checks,
-followed by preparation of the exact new local commit and managed retry.
-Unchanged installer/package bytes retain their bound lifecycle/privacy evidence;
-record checks do not establish a commit, actual retry or installation acceptance.
+The v0.6.2 frozen source is independently reviewed and accepted. The next step
+is bounded acceptance-record synchronization and final-index checks, followed
+by preparation of the ordinary local commit from that stable input.
+The accepted production installer logic retains its prior semantic and safety
+evidence; a changed self-test version constant is not byte-identical installer
+source, and the changed package requires a fresh lifecycle run. The suspended
+v0.6.1 retry is not used to install this version.
 
 The approved conditional closeout then proceeds to a local commit, followed by
 a managed installation from the immutable accepted commit and an independently

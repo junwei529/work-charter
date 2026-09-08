@@ -39,8 +39,10 @@ level-by-actual-role model resolution, and Standard O/P/E/R boundaries in this
 evaluation surface; it also binds the exact general compatibility fallbacks, approved level
 defaults, contract/role/task/model-delta prompt clauses, scoped startup
 authorization, complete expression, and required reference reachability.
-Current candidate identity is v0.6.1; the v0.6.0 descriptor is preserved as a
-fixed historical snapshot. It does not execute a model, create a task or role, read a live user
+Current candidate identity is v0.6.2; the v0.6.0 and v0.6.1 descriptors remain
+fixed historical snapshots. The new guardrail/cost prose is inspected in
+independent source review; phrase matching is not evidence of its behavioral
+effectiveness. The checker does not execute a model, create a task or role, read a live user
 configuration, exercise a host/global consumer, or claim adherence. Static
 clause success does not make an unbound package a qualified candidate; without
 a matching descriptor the overall command must fail.

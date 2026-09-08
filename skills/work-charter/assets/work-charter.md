@@ -31,7 +31,9 @@ worktree. Remove unused prompts and keep pointers instead of copied content.
 - **Confirmed Contract:** `<user-confirmed outcomes, acceptance, and exclusions>`
 - **Necessary Guardrails:** `<safety, permission, reversibility, trust,
   irreversible-effect, and authoritative project-rule constraints; name the
-  source or protected risk>`
+  source or protected risk; for Agent-derived guards, give the concrete
+  failure/consequence, needed strength, and why simpler existing methods do
+  not suffice; explicit user/project requirements need no new justification>`
 - **Working Proposal:** `<current Agent-proposed route, tools, sequence,
   implementation, and verification; replaceable while contract and guardrails
   remain intact>`
@@ -41,6 +43,11 @@ worktree. Remove unused prompts and keep pointers instead of copied content.
 Do not promote the Working Proposal into a hard requirement. When a proposed
 method is rejected, remove or replace it unless an independently justified
 durable boundary remains.
+
+If auxiliary work keeps expanding, the current primary owner or Planner
+compares simpler routes to the same protected outcome against remaining
+coordination, implementation, verification, and maintenance cost. Keep the
+minimum sufficient user-visible result in view; tool promises add no user goal.
 
 ## Outcome And Non-Goals
 

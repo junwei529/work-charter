@@ -166,6 +166,24 @@ revised:
   that can materially change the first two layers or another protected
   boundary.
 
+For a guardrail derived by the Agent, distinguish the protected outcome from
+the chosen mechanism and its strength. Identify the concrete failure and its
+consequence, the strength needed to address it, and why simpler existing
+methods do not suffice. The Necessary Guardrail label, a documented tool
+promise, or general implementation approval alone proves none of these.
+Explicit user and project requirements retain their authority under the
+existing contract; do not require the user to justify them again.
+
+If auxiliary repair or coordination keeps expanding, the current primary
+owner or Planner determines the minimum sufficient user-visible outcome and
+compares the remaining coordination, implementation, verification, and
+maintenance cost with simpler viable routes to the same protected outcome.
+Sunk effort and findings about a tool's own promises do not turn that tool
+into a new user goal. Reuse these four layers and the existing decision owner;
+this assessment adds no role, required form, or approval gate. Preserve real
+defects, evidence, explicit requirements, and applicable verification while
+replacing a proposal.
+
 Do not promote an Agent-proposed method into a user requirement merely because
 it appeared in an earlier plan, prompt, or handoff. A contract-preserving
 Working Proposal change needs no Charter or Definition revision, renewed

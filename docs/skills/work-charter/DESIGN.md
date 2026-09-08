@@ -13,10 +13,17 @@ accepted `v0.5.0` identity; the prior level-role source is the local
 no new findings and Planner accepted its uncommitted frozen source checkpoint;
 [State](STATE.md#accepted-v060-source-checkpoint) owns the acceptance scope. The
 descriptor remains an immutable pre-review snapshot, not a release receipt.
-The current [v0.6.1 candidate](../../../release/v0.6.1-candidate.json) refines
+The accepted [v0.6.1 candidate](../../../release/v0.6.1-candidate.json) refines
 startup authorization reuse and prompt expression, with configuration details
-owned only by the required coordination reference. Defaults and schema remain
-unchanged; its source identity, checks, and review are separate.
+owned only by the required coordination reference. The current
+[v0.6.2 candidate](../../../release/v0.6.2-candidate.json) adds the bounded
+guardrail-necessity and auxiliary-cost guidance in
+[Contract And Proposal Changes](../../../skills/work-charter/references/coordination-and-recovery.md#contract-and-proposal-changes).
+The entrypoint carries the essential rule and the existing Charter template
+provides a short prompt. Explicit requirements keep their authority; these
+additions do not create roles, forms, or approval gates. Defaults, schema, and
+production installation behavior remain unchanged; the self-test version
+binding follows the new package.
 
 The repository owns one Skill product. Cross-Skill composition is optional and
 cannot grant authority or create a hard dependency.
@@ -97,8 +104,8 @@ A later ACL-only repair restored default-reader access to the exact managed
 v0.4.0 copy and closed that exact access finding without installing v0.4.1.
 The v0.5.0 source receipt creates no installation, publication,
 runtime-delivery, or stable-behavior claim. The later level-role extension was
-the local v0.6.0 candidate. Neither it nor the current v0.6.1 prompt revision
-rewrites or inherits v0.5.0 acceptance.
+the local v0.6.0 candidate. Neither it nor the later v0.6.1 and current v0.6.2
+revisions rewrite or inherit v0.5.0 acceptance.
 Historical release metadata and evidence remain immutable for their versions.
 
 Historical v0.3.0 candidate C remains immutable. Its separate local-release

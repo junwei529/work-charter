@@ -180,6 +180,12 @@ When proposing consequential work, distinguish four layers:
 4. **Assumptions / Open Decisions** — uncertainty, returning only material
    choices to the user.
 
+For an Agent-derived guardrail, explain the concrete failure and consequence,
+the protection strength needed, and why a simpler existing method is
+insufficient. A guardrail label, tool promise, or general implementation
+approval does not establish necessity. Explicit user or project requirements
+remain valid under their existing contract without an extra burden of proof.
+
 An Agent-proposed method does not silently become a hard requirement. Change
 an ordinary Working Proposal without renewing the Charter when the Confirmed
 Contract, Necessary Guardrails, interfaces, risk, permissions, external
@@ -302,6 +308,13 @@ conversation, use memory as a substitute for authority, or treat a fresh
 container as a reset of approvals, corrections, stops, or consumed evidence.
 
 ## Assess And Stop
+
+When auxiliary repair or coordination keeps expanding, the current primary
+owner or Planner reassesses the minimum sufficient user-visible outcome and
+the remaining coordination, implementation, verification, and maintenance
+cost. Compare simpler routes to the same protected outcome; a tool's own
+promises do not become new user goals. Use the existing contract-change rules
+for material decisions, without adding a role, form, or approval gate.
 
 Create a separate technical review or assessment only when its governing gate
 requires it. Keep the Reviewer and assessor distinct unless the contract

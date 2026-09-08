@@ -19,12 +19,16 @@ ten completed review rounds, Planner acceptance, and the exact deterministic
 qualification. Local source readiness is `VERIFIED`; no v0.5.0 installation,
 runtime role-delivery, or public-release claim follows from that receipt.
 
-The current [`v0.6.1` candidate](release/v0.6.1-candidate.json) refines the
-startup prompt to reuse scoped authorization, makes prompts and handoffs
-concise but complete for their receiver, and routes configuration parsing to
-one required reference. It preserves schema 1, the six-file package, defaults,
-and authority/review boundaries. Its checks and review bind fresh input;
-installation and publication follow only their authorized gates.
+The current [`v0.6.2` candidate](release/v0.6.2-candidate.json) asks Agents to
+justify the failure, required strength, and lack of simpler alternatives behind
+their own guardrails. When auxiliary work keeps growing, the primary owner or
+Planner compares the remaining cost with simpler routes to the same protected
+user outcome. Explicit requirements keep their existing authority. The
+[contract guidance](skills/work-charter/references/coordination-and-recovery.md#contract-and-proposal-changes)
+owns these two additions; schema 1, the six-file shape, defaults, and production
+installation behavior are unchanged. The accepted v0.6.1 source and candidate
+remain historical; fresh v0.6.2 checks, review, installation, and publication
+have their own input and action boundaries.
 
 The prior local `v0.6.0` candidate adds backward-compatible
 level-by-actual-responsibility resolution and is bound by
@@ -169,13 +173,13 @@ python -B scripts/manage_install.py self-test --source .
 
 The SOURCE checker reports the static selection, activation, authority,
 recovery, independent-review, level-role, and Standard O/P/E/R clauses
-separately from the required current-package identity gate. The v0.6.1
+separately from the required current-package identity gate. The v0.6.2
 descriptor must bind the actual current tree and digest; any mismatch makes
 the command fail. The immutable v0.5.0 descriptor is checked only against its
 historical values. Current-input results are recorded in
 [Verification](docs/skills/work-charter/VERIFICATION.md).
 
-The lifecycle self-test is a required gate for the current v0.6.1 package and
+The lifecycle self-test is a required gate for the current v0.6.2 package and
 first binds its source to the matching descriptor. An older exact-release
 checkout is not coverage for the current input. The staged adversarial
 repository matrix likewise does not cover an unstaged working-tree delta.

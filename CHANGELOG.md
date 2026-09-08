@@ -1,5 +1,25 @@
 # Changelog
 
+## Work Charter v0.6.2
+
+Local candidate: [release/v0.6.2-candidate.json](release/v0.6.2-candidate.json)
+
+Independent source review and Planner acceptance: verified at the
+[v0.6.2 source checkpoint](docs/skills/work-charter/STATE.md#accepted-v062-source-checkpoint).
+The candidate retains its pre-review snapshot; human release-note review is `PENDING`.
+
+- Requires Agent-derived guardrails to explain the concrete failure and
+  consequence, required protection strength, and why simpler existing methods
+  are insufficient. Explicit user/project requirements need no new justification.
+- As auxiliary work grows, the primary owner or Planner reassesses the minimum
+  sufficient user-visible result and compares remaining coordination,
+  implementation, verification, and maintenance cost with simpler routes to
+  the same protected outcome. Tool promises do not create new user goals.
+- Reuses the four contract layers and existing template. Defaults, schema,
+  production installer logic, and historical candidates remain unchanged;
+  self-test and current candidate qualification bind v0.6.2. This candidate
+  claims no actual installation, publication, or behavioral efficacy.
+
 ## Work Charter v0.6.1
 
 Local candidate: [release/v0.6.1-candidate.json](release/v0.6.1-candidate.json)

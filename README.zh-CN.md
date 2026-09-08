@@ -14,10 +14,12 @@
 review、Planner 验收与 exact deterministic qualification。Local source readiness 为
 `VERIFIED`；该 receipt 不产生 v0.5.0 安装、runtime role-delivery 或公开发布 claim。
 
-当前 [`v0.6.1` 候选](release/v0.6.1-candidate.json)让启动提示复用已覆盖范围的授权，
-补齐面向接收方判断与行动的完整、适量表达原则，并将配置解析收拢到必读的唯一 reference。
-六文件包、schema1、默认模型、权限和审查合同保持不变。新输入独立验证与审查，
-安装及推送仍按已授权的阶段门执行。
+当前 [`v0.6.2` 候选](release/v0.6.2-candidate.json)要求 Agent 为自行推导的护栏说明
+具体失败及后果、所需保护强度，以及更简单的现有办法为何不足。辅助工作持续扩大时，
+由当前主任务或 Planner 比较剩余成本和达到同一受保护用户结果的更简单路线。
+用户及项目明确要求保持原有权威；这两项补充由[合同说明](skills/work-charter/references/coordination-and-recovery.md#contract-and-proposal-changes)承载。
+六文件结构、schema1、默认模型及生产安装行为不变。已接受的 v0.6.1 源码和候选保留为历史；
+v0.6.2 的验证、审查、安装与推送分别绑定新输入及对应操作边界。
 
 此前本地 `v0.6.0` 候选增加向后兼容的“级别 × 实际职责”配置解析，由
 [`release/v0.6.0-candidate.json`](release/v0.6.0-candidate.json) 绑定。
@@ -139,11 +141,11 @@ python -B scripts/manage_install.py self-test --source .
 
 SOURCE checker 会把静态 selection、activation、authority、recovery、independent-review、
 “级别 × 实际职责”与 Standard O/P/E/R 条款，同 required current-package identity gate 分开
-报告。当前 v0.6.1 descriptor 必须绑定实际 package tree/digest；任一不匹配都使命令失败。
+报告。当前 v0.6.2 descriptor 必须绑定实际 package tree/digest；任一不匹配都使命令失败。
 不可变 v0.5.0 descriptor 只按历史值核对；当前输入结果见
 [验证](docs/skills/work-charter/VERIFICATION.md)。
 
-Lifecycle self-test 是当前 v0.6.1 package 的 required gate，先核对 source 与描述文件绑定。
+Lifecycle self-test 是当前 v0.6.2 package 的 required gate，先核对 source 与描述文件绑定。
 旧 exact-release checkout 不能替代当前输入覆盖。Staged adversarial repository matrix
 同样不覆盖 unstaged working-tree delta。缺失的检查不能被报告为通过或不适用。
 这些检查仍不执行模型、不创建任务或角色、不运行 host/global consumer、不读取 live user 配置、

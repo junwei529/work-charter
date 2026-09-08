@@ -8,7 +8,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "skills" / "work-charter"
-CURRENT_CANDIDATE = ROOT / "release" / "v0.6.1-candidate.json"
+CURRENT_CANDIDATE = ROOT / "release" / "v0.6.2-candidate.json"
+V061_CANDIDATE = ROOT / "release" / "v0.6.1-candidate.json"
+V061_CANDIDATE_SHA256 = "e03b2a6781b0b156679568e08b9df114770de1ebec904f2bdf126491bf18ed1a"
+V061_PACKAGE_TREE = "08689a9706fa15dbe6889eec1572e7c8943c1f1c"
 V060_CANDIDATE = ROOT / "release" / "v0.6.0-candidate.json"
 V060_CANDIDATE_SHA256 = "5890f3e7c73ed1d4046269a03b1385097a0596cca804a57e49a838d588aa96ff"
 V060_PACKAGE_TREE = "12fe4c65683a82d9d60295160681247b812efa0b"
@@ -554,6 +557,16 @@ def main():
         checks["candidate.v060_historical_identity"] = False
         v060_candidate_error = str(error)
 
+    v061_candidate_error = None
+    try:
+        v061_candidate_bytes = V061_CANDIDATE.read_bytes()
+        checks["candidate.v061_historical_identity"] = (
+            hashlib.sha256(v061_candidate_bytes).hexdigest() == V061_CANDIDATE_SHA256
+        )
+    except OSError as error:
+        checks["candidate.v061_historical_identity"] = False
+        v061_candidate_error = str(error)
+
     successor_error = None
     successor = {}
     try:
@@ -562,14 +575,14 @@ def main():
             not isinstance(parsed_successor.get(field), dict)
             for field in ("package", "evidence_states", "lineage")
         ):
-            raise ValueError("v0.6.1 candidate requires object package, evidence_states, and lineage")
+            raise ValueError("v0.6.2 candidate requires object package, evidence_states, and lineage")
         successor = parsed_successor
     except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
         successor_error = str(error)
-    checks["candidate.v061_identity"] = (
+    checks["candidate.v062_identity"] = (
         successor.get("schema") == "work-charter-local-release-candidate/v1"
         and successor.get("product") == "work-charter"
-        and successor.get("version") == "0.6.1"
+        and successor.get("version") == "0.6.2"
         and successor.get("public_identity") == "junwei529/work-charter"
         and successor.get("candidate_state") == "PENDING_INDEPENDENT_REVIEW"
         and successor.get("human_release_notes_review") == "PENDING"
@@ -578,9 +591,9 @@ def main():
         and successor.get("package", {}).get("files") == sorted(EXPECTED_FILES)
         and successor.get("package", {}).get("path") == "skills/work-charter"
         and successor.get("lineage") == {
-            "historical_package_tree": V060_PACKAGE_TREE,
-            "previous_candidate": "release/v0.6.0-candidate.json",
-            "source_commit": "018ff69a26b70a3a490b57f3641b356739bb228f",
+            "historical_package_tree": V061_PACKAGE_TREE,
+            "previous_candidate": "release/v0.6.1-candidate.json",
+            "source_commit": "38dd18cb65b4afd24ef2139dcc63a014de1c5ccf",
         }
         and successor.get("evidence_states") == {
             "broad_product_efficacy": "UNKNOWN",
@@ -596,7 +609,7 @@ def main():
         }
     )
     checks["candidate.current_package_binding"] = (
-        checks["candidate.v061_identity"]
+        checks["candidate.v062_identity"]
         and actual_package_tree is not None
         and current_package_sha256 is not None
         and successor.get("package", {}).get("tree") == actual_package_tree
@@ -1291,7 +1304,9 @@ def main():
     if current_candidate_error:
         failures.append(f"candidate.v050_unreadable: {current_candidate_error}")
     if successor_error:
-        failures.append(f"candidate.v061_unreadable: {successor_error}")
+        failures.append(f"candidate.v062_unreadable: {successor_error}")
+    if v061_candidate_error:
+        failures.append(f"candidate.v061_unreadable: {v061_candidate_error}")
     if v060_candidate_error:
         failures.append(f"candidate.v060_unreadable: {v060_candidate_error}")
     if package_identity_error:
@@ -1342,7 +1357,7 @@ def main():
         ),
         "result": "PASS" if not failures else "FAIL",
         "source_release_identity": (
-            "BOUND_TO_V061_CANDIDATE"
+            "BOUND_TO_V062_CANDIDATE"
             if current_package_bound
             else "UNBOUND_PENDING_SUCCESSOR_VERSION_AND_DESCRIPTOR"
         ),

@@ -1,8 +1,50 @@
 # Work Charter Verification
 
-## Current v0.6.1 qualification
+## Current v0.6.2 qualification
 
-The current six-file source binds [v0.6.1](../../../release/v0.6.1-candidate.json).
+The current six-file package binds [v0.6.2](../../../release/v0.6.2-candidate.json).
+It adds only guardrail-necessity and auxiliary-cost guidance in the existing
+entrypoint, coordination reference, and Charter template. Independent semantic
+review covers the two additions; existing static clause checks do not measure
+their behavioral effectiveness. No new model evaluation is claimed.
+
+- Package tree: `d0f3148a17f5d6c7bcec22df214a19a8ec75a62d`
+- Package SHA-256: `c6ba36706f48ed7b3342045fc01dae5ca8db8f92f143c0b673dedfa2b04acf9d`
+- Repository: `PASS`, 92 mapped files, terminal exit code 0
+- Focused SOURCE: `PASS`, 36/36 checks and 22/22 existing static clauses;
+  current package tree/digest and both historical descriptor hashes verified
+- Candidate binding: 9 positive/negative cases `PASS`, including rejection of
+  the old v0.6.1 package pair and a changed historical v0.6.1 snapshot
+- Complete current-package Windows lifecycle: `PASS`, terminal exit code 0,
+  including inherited permission transitions and failure recovery;
+  `persistent_effect: false`
+- Skill validation: `PASS`, terminal exit code 0 with Python UTF-8 mode
+- Staged adversarial: required on the final complete index; the review
+  checkpoint carries the matching input manifest and full terminal result
+- Independent review and Planner acceptance: `VERIFIED` for the
+  [R17 frozen source checkpoint](STATE.md#accepted-v062-source-checkpoint);
+  record synchronization retains separate final-input checks
+- Actual installation, publication, runtime adoption, and efficacy: not established
+
+The only installer-file change is `SELF_TEST_SOURCE_VERSION` from 0.6.1 to
+0.6.2. The production functions and self-test function bodies are unchanged.
+Their prior accepted R16 semantic and privacy evidence may be reused for those
+unchanged mechanisms, while the current package receives fresh lifecycle
+qualification. Prior privacy03 results remain bound to their original installer
+hash and fixtures; they are not a new run on this file. Default model data,
+schema, UI metadata, and the Standard reference remain unchanged. Native POSIX
+lifecycle execution remains `UNKNOWN` / `NOT_PERFORMED`.
+
+R17 completed full-diff review with no new blocking or material findings;
+Planner independently accepted its stable source input. The following record
+synchronization leaves package, candidate, installer, and SOURCE-checker bytes
+unchanged. Their bound lifecycle, candidate, and Skill validation results are
+reused; SOURCE/repository and the final complete-index adversarial checks are
+refreshed. This does not create another lifecycle, privacy, or model run.
+
+## Historical v0.6.1 qualification
+
+The prior six-file source binds [v0.6.1](../../../release/v0.6.1-candidate.json).
 Startup text, prompt-expression guidance, and configuration routing are bound
 by the current package checks. Defaults/schema/role contracts remain unchanged; the accepted
 v0.6.0 snapshot, its failed and passing evidence, and cumulative review history
@@ -207,10 +249,10 @@ Run the deterministic SOURCE contract check:
 python -B scripts/check_source_contract.py --json
 ```
 
-It verifies the v0.6.1 descriptor, exact 6-file working package shape, unchanged
+It verifies the v0.6.2 descriptor, exact 6-file working package shape, unchanged
 general compatibility defaults, 12 approved level defaults, prompt construction
 clauses and mandatory reference routes, backward-compatible schema-v1 level-role
-contract, the immutable v0.6.0 descriptor hash, immutable `v0.5.0`
+contract, the immutable v0.6.0 and v0.6.1 descriptor hashes, immutable `v0.5.0`
 historical candidate identity and separate acceptance receipt, the separate
 immutable v0.4.0 local-release receipt, and the instruction clauses needed for
 direct and indirect selection/activation,
@@ -252,7 +294,7 @@ python -B scripts/manage_install.py self-test --source .
 ```
 
 The self-test's source preflight requires the current package to match the
-v0.6.1 descriptor. A missing descriptor or tree/digest mismatch fails before
+v0.6.2 descriptor. A missing descriptor or tree/digest mismatch fails before
 temporary lifecycle effects. A passing older exact-release checkout does not
 cover these bytes. Disposable self-test effects
 remain distinct from persistent installation, but neither distinction removes
@@ -465,7 +507,7 @@ fresh model, efficacy, release, or installed-copy evidence. The current SOURCE
 checker reports static clause coverage for the working package and requires
 the current-package identity gate. The separate v0.5.0 receipt
 binds its historical qualification to its accepted source commit and completed
-review/acceptance history; it does not bind the v0.6.0 or v0.6.1 candidate bytes.
+review/acceptance history; it does not bind later candidate bytes.
 For v0.4.0,
 the accepted source candidate, six
 completed independent-review results including later R6, and Planner source/tool

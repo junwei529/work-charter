@@ -51,8 +51,10 @@ state. The v0.4.1 C4 correction replaced that path with exact control-aware
 restore and readback and was independently accepted at
 `59b4d91f46c2ac797c71c900e62dda87cf0cca60`. A later ACL-only repair restored
 default-reader access to the exact managed v0.4.0 copy and closed
-`WC-INSTALL-POSTFLIGHT-F01` for that repair. The installed package remains
-managed v0.4.0; v0.4.1 was not installed. Stable v0.5.0 loaded-copy behavior,
+`WC-INSTALL-POSTFLIGHT-F01` for that repair. At that repair checkpoint the package remained
+managed v0.4.0; v0.4.1 was not installed. The later
+[accepted v0.6.2 installation](docs/skills/work-charter/STATE.md#accepted-v062-user-installation)
+records the current verified user copy. Stable v0.5.0 loaded-copy behavior,
 role-delivery adherence, cross-provider execution, cross-Harness behavior,
 public release, and broad efficacy remain `UNKNOWN` or separately authorized.
 
@@ -285,8 +287,8 @@ of forging the complete receipt is outside this mechanism's protection.
 For v0.3.0, the separately authorized persistent same-version lifecycle,
 publication, tag, GitHub Release, and stable installed-copy evidence are
 verified as recorded above. For v0.4.0, the original promotion failure and the
-later exact ACL-only access repair remain separate evidence; the repaired copy
-is managed and default-readable, but it is still v0.4.0. Other cross-version
+later exact ACL-only access repair remain separate evidence; the repair left that copy
+managed and default-readable at v0.4.0 before the later accepted update. Other cross-version
 transitions and stable loaded behavior still require separate evidence.
 
 ### Future update and rollback trust

@@ -24,7 +24,8 @@ their behavioral effectiveness. No new model evaluation is claimed.
 - Independent review and Planner acceptance: `VERIFIED` for the
   [R17 frozen source checkpoint](STATE.md#accepted-v062-source-checkpoint);
   record synchronization retains separate final-input checks
-- Actual installation, publication, runtime adoption, and efficacy: not established
+- Actual installation: independently accepted; see [installation verification](#accepted-v062-installation-verification)
+- Publication, runtime adoption, and efficacy: not established
 
 The only installer-file change is `SELF_TEST_SOURCE_VERSION` from 0.6.1 to
 0.6.2. The production functions and self-test function bodies are unchanged.
@@ -41,6 +42,35 @@ synchronization leaves package, candidate, installer, and SOURCE-checker bytes
 unchanged. Their bound lifecycle, candidate, and Skill validation results are
 reused; SOURCE/repository and the final complete-index adversarial checks are
 refreshed. This does not create another lifecycle, privacy, or model run.
+
+## Accepted v0.6.2 installation verification
+
+The existing production installer updated the exact managed user copy from
+v0.4.0 to the accepted source commit recorded in [State](STATE.md#accepted-v062-user-installation).
+The production command and both elevated and default-reader postflight checks
+completed with terminal exit code 0. Planner independently re-read the installed
+copy with default permissions and accepted the same evidence:
+
+- All six package files match the immutable source bytes and receipt hashes;
+  the installed tree equals the current package tree above.
+- Receipt SHA-256: `4780615f62b52e59acb0b83c814345d386620b2626e91b2ab982b2e1fb396971`.
+- Receipt-content digest: `1fffae47d87bcfe03db12e63172564f065647dd338269405f77e47f9723e191d`;
+  this is a different hash domain from the source-package digest above.
+- Default-reader access passed for every package file and the receipt.
+- The original ten object permission policies and destination parent remained
+  unchanged. The added default-data asset inherited the existing policy;
+  production projected-permission snapshot readback passed.
+- No active transaction residue was observed. Private before/after and command
+  evidence remains retained outside discovery roots; it was not claimed cleaned.
+  Recovery was unnecessary, and no rollback of this successful installation was run.
+
+This is bounded actual Windows installation evidence. It does not establish
+loaded-copy behavior in existing tasks, host/global consumer migration, native
+POSIX lifecycle behavior, model adherence, publication, or broad efficacy.
+The previous failed preparation and installation evidence remains unchanged.
+Record synchronization preserves package/candidate/installer identities and
+reuses their accepted qualification; SOURCE/repository and final-index
+adversarial checks apply to the new record input.
 
 ## Historical v0.6.1 qualification
 
@@ -525,4 +555,4 @@ effects, cross-Harness behavior, or broad product efficacy.
 
 ## Future-version lifecycle boundary
 
-The lifecycle command accepts `--trusted-target-package-tree` and `--trusted-current-package-tree` for versions outside its built-in trust map. These values are explicit external trust inputs, not candidate-derived metadata. B2 verifies same-version effects from exact public `v0.3.0`; the v0.4.0 receipt additionally verifies only the content and elevated postflight of the failed-access update attempt. Other cross-version behavior remains `UNKNOWN`. Dry runs and legacy apply calls retain their existing call shape. A legacy apply call without `--transaction-root` reports `AUTO_COMPATIBILITY` and uses a unique external same-volume root with the same overlap and reparse guards. Planned product installation, update, rollback, and uninstall commands supply `--transaction-root` explicitly; the operator repeats `--discovery-root` for active roots beyond the automatically protected destination parent and source `skills` directory. If recovery-archive cleanup fails after a successful uninstall, the command reports `ABSENT`, retains and identifies the archive and transaction path, and returns a warning instead of misreporting the completed uninstall as failed.
+The lifecycle command accepts `--trusted-target-package-tree` and `--trusted-current-package-tree` for versions outside its built-in trust map. These values are explicit external trust inputs, not candidate-derived metadata. B2 verifies same-version effects from exact public `v0.3.0`; the v0.4.0 receipt additionally verifies only the content and elevated postflight of the failed-access update attempt. The later accepted v0.4.0-to-v0.6.2 update is bounded by the installation verification above; other cross-version behavior remains `UNKNOWN`. Dry runs and legacy apply calls retain their existing call shape. A legacy apply call without `--transaction-root` reports `AUTO_COMPATIBILITY` and uses a unique external same-volume root with the same overlap and reparse guards. Planned product installation, update, rollback, and uninstall commands supply `--transaction-root` explicitly; the operator repeats `--discovery-root` for active roots beyond the automatically protected destination parent and source `skills` directory. If recovery-archive cleanup fails after a successful uninstall, the command reports `ABSENT`, retains and identifies the archive and transaction path, and returns a warning instead of misreporting the completed uninstall as failed.

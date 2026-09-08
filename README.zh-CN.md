@@ -38,7 +38,8 @@ v0.3-to-v0.4 update：
 control-aware exact restore/readback 替换该路径，并在
 `59b4d91f46c2ac797c71c900e62dda87cf0cca60` 获独立验收。之后的 ACL-only repair 恢复了
 exact managed v0.4.0 副本的 default-reader access，并仅对该修复关闭
-`WC-INSTALL-POSTFLIGHT-F01`。installed package 仍为 managed v0.4.0，v0.4.1 未安装。
+`WC-INSTALL-POSTFLIGHT-F01`。该修复检查点的 package 仍为 managed v0.4.0，v0.4.1 未安装。之后的
+[v0.6.2 安装接受记录](docs/skills/work-charter/STATE.md#accepted-v062-user-installation)说明当前已核验用户副本。
 v0.5.0 stable loaded-copy、role-delivery adherence、跨 provider 执行、cross-Harness、
 公开发布与广泛效能仍为 `UNKNOWN` 或需分别授权。
 
@@ -221,7 +222,7 @@ status、直接读取、hash 与 ACL postflight。该结果不授权另一次修
 同等本地权限伪造完整 receipt 的 actor 不在该机制的保护范围内。v0.3.0 经单独授权的
 同版本 persistent lifecycle、发布、tag、GitHub Release 与 stable installed-copy 证据
 已按上文记录为 VERIFIED。对 v0.4.0，原 promotion failure 与之后的 exact ACL-only access
-repair 是两份不同证据；修复后的副本为 managed 且 default-readable，但仍是 v0.4.0。
+repair 是两份不同证据；该修复使副本在之后的已接受更新前保持 managed、default-readable 的 v0.4.0 状态。
 其他跨版本转换与 stable loaded behavior 仍需单独取证。
 
 ### 后续更新与回滚的信任输入

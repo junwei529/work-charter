@@ -28,10 +28,10 @@ verified by the Planner. Historical acceptance does not qualify the new package.
   independently accepted the [frozen source checkpoint](#accepted-v062-source-checkpoint)
 - Production installer, default models, schema, and metadata are unchanged;
   only the installer's self-test version constant follows v0.6.2
-- The unstarted v0.6.1 installation retry is suspended. Review and acceptance
-  of this final version precede its immutable-source check and managed install;
-  Planner installation acceptance precedes ordinary fast-forward publication
-- Last verified installed copy: managed v0.4.0; no new actual installation
+- The unstarted v0.6.1 installation retry remains suspended
+- Accepted source commit: `21391c98197485494690050ce2a889745c10403c`
+- Last verified installed copy: managed v0.6.2;
+  [actual installation accepted](#accepted-v062-user-installation) by Planner
 - Global consumer migration: `NOT_PERFORMED`; runtime/efficacy: `UNKNOWN`
 - Existing candidate snapshots, R1-R17, findings, failures, and consumed
   operations remain historical evidence; no count or approval is reset
@@ -51,6 +51,18 @@ review, installation, publication, or runtime efficacy. The candidate retains
 its immutable pre-review pending snapshot. Subsequent acceptance-record and
 mapping changes receive separate final-input checks without changing the
 accepted package or installer.
+
+### Accepted v0.6.2 user installation
+
+The managed user copy was updated from v0.4.0 using the existing production
+installer and immutable accepted source commit
+`21391c98197485494690050ce2a889745c10403c`. Planner independently verified
+the source, six installed files, receipt, default-reader access, and bounded
+permission preservation and accepted this exact installation. Detailed checks
+and limits are in [Verification](VERIFICATION.md#accepted-v062-installation-verification).
+Prior failed attempts remain historical evidence; this success does not imply
+loaded-copy behavior, consumer migration, model adherence, publication, or
+other lifecycle transitions.
 
 ## Historical v0.6.1 local candidate
 
@@ -82,7 +94,7 @@ moving old objects. Partial ACL failure requires recovery even with zero moves.
 The supported permissions, owner/writer admission and recovery rules are owned
 by [Design](DESIGN.md#windows-permission-context-and-private-handoff); current
 SOURCE evidence requirements are owned by [Verification](VERIFICATION.md#historical-v061-qualification).
-The last verified installed copy remains managed v0.4.0. Prior failed evidence
+At that historical checkpoint the installed copy remained managed v0.4.0. Prior failed evidence
 is retained and the SOURCE result does not establish a successful installation.
 
 ### Accepted installer source checkpoint
@@ -294,7 +306,7 @@ Evidence states remain separate:
 - Historical v0.4.0 original attempt: exact content and elevated receipt/five-
   file postflight are `VERIFIED`, while default-reader access was `FAILED`.
 - Historical v0.4.0 exact ACL-only repair: `ACCEPTED`; the managed v0.4.0 copy
-  is default-readable and the exact access finding is closed. This did not
+  became default-readable and the exact access finding was closed. This did not
   install v0.4.1 or authorize v0.5.0 effects.
 - Historical v0.3.0 `LOCAL_RELEASE_READY`: `VERIFIED` by the exact-C acceptance
   receipt.
@@ -361,23 +373,16 @@ review rounds, and Planner acceptance are bound by the separate v0.5.0 receipt.
 
 ## Next gate
 
-The v0.6.2 frozen source is independently reviewed and accepted. The next step
-is bounded acceptance-record synchronization and final-index checks, followed
-by preparation of the ordinary local commit from that stable input.
-The accepted production installer logic retains its prior semantic and safety
-evidence; a changed self-test version constant is not byte-identical installer
-source, and the changed package requires a fresh lifecycle run. The suspended
-v0.6.1 retry is not used to install this version.
-
-The approved conditional closeout then proceeds to a local commit, followed by
-a managed installation from the immutable accepted commit and an independently
-confirmed trusted package tree. Receipt, content, default-reader access, and
-permission/rollback checks precede Planner installation acceptance. Only then
-may normal fast-forward Git publication proceed to the intended repository's
-main branch after actual Git actor, target, live ref/ancestry, and outgoing
-content checks. These actions are authorized but not yet completed; source
-acceptance is not installation or publication evidence. A material change or
-an operation-local permission requirement still stops its dependent action.
+The accepted v0.6.2 source is committed and its exact managed user installation
+is independently accepted. The remaining closeout work is minimal installation
+record synchronization, final-input checks, an ordinary records commit, and
+normal fast-forward publication to the intended repository's main branch.
+Publication requires the actual Git authentication actor, exact target, write
+capability, live ref/local ancestry, and outgoing-content checks. It has not
+been performed. A material change or an operation-local permission requirement
+still stops its dependent action. Package, installer and immutable candidate
+bytes remain unchanged; installation qualification is not rerun for these
+record-only changes.
 
 Historical v0.6.0 acceptance and pending descriptor snapshots remain separate
 from this current workflow. Host/global consumer migration, fresh role-delivery,

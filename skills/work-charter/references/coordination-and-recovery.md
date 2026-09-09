@@ -1,12 +1,13 @@
 # Coordination And Recovery
 
-For direct intent or activation confirmation, load this Skill-package reference
-when the applicable branch requires it. That package read neither requires nor
-consumes target-project read approval. Obtain or reuse bounded read approval
-before following the project/evidence reconciliation steps below for first
-adoption, re-entry, midstream adoption, durable single-agent work,
-Planner/Executor separation, interruption, recovery, or a same-scope
-correction loop.
+Read the sections required by the entrypoint for the current assessment,
+approved level, responsibility, and next action. Package reading neither
+requires nor consumes target-project read approval. Reuse applicable Charter
+and bounded read authority before reconciliation; an authorized assessment
+needs no extra activation gate. Loading does not itself adopt a level or
+authorize project inspection, roles, or effects. Retain shared authority,
+writer, evidence, recovery, and handoff boundaries while reading operating
+details only for the work your role owns.
 
 ## Minimum Read And Reconciliation Order
 
@@ -44,7 +45,14 @@ Use the shortest route:
   ordinary flat (`L0`) or current-task Charter (`L1`) recommendation; propose
   durability only when recovery requires it; or
 - previously adopted workstream: known locator, applicability, live
-  workspace/writer, named evidence, then recommendation.
+  workspace/writer and named evidence, then resume under the valid Charter
+  and level; recommend a change only for manual reassessment or material drift.
+
+First assessment considers L0-L4 and leaves adoption to the user. Manual
+reassessment compares the proposed change with the existing contract and level;
+it does not restart first adoption. Small-task exclusions do not discard an
+applicable Charter. Use the re-entry precedence below for material changes;
+otherwise continue within existing authority without another activation gate.
 
 `L1` keeps one primary owner and its logical Charter locator in the reliable
 current task. It promises no cold recovery. `L2` adds one discoverable durable
@@ -243,7 +251,7 @@ Complete authorized work through required checks and its result route. Ask only
 for a missing material decision or permission; resolve routine choices within
 the existing contract. Make a required decision concrete with independent
 authorized work first. Silence never approves the dependent action. Preserve
-activation/adoption, material replan, operation permission, independent review,
+adoption, material replan, operation permission, independent review,
 and acceptance gates. Remove duplicate warnings and arbitrary step counts, not
 those boundaries. Repeat verification only when its input changed, it failed,
 or an unresolved material concern requires it; complete all required checks.

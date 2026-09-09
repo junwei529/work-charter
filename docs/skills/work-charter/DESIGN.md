@@ -15,7 +15,7 @@ no new findings and Planner accepted its uncommitted frozen source checkpoint;
 descriptor remains an immutable pre-review snapshot, not a release receipt.
 The accepted [v0.6.1 candidate](../../../release/v0.6.1-candidate.json) refines
 startup authorization reuse and prompt expression, with configuration details
-owned only by the required coordination reference. The current
+owned only by the required coordination reference. The prior
 [v0.6.2 candidate](../../../release/v0.6.2-candidate.json) adds the bounded
 guardrail-necessity and auxiliary-cost guidance in
 [Contract And Proposal Changes](../../../skills/work-charter/references/coordination-and-recovery.md#contract-and-proposal-changes).
@@ -24,6 +24,27 @@ provides a short prompt. Explicit requirements keep their authority; these
 additions do not create roles, forms, or approval gates. Defaults, schema, and
 production installation behavior remain unchanged; the self-test version
 binding follows the new package.
+
+The current [v0.6.3 candidate](../../../release/v0.6.3-candidate.json)
+separates loaded instructions from an adopted Charter. The
+[entrypoint](../../../skills/work-charter/SKILL.md#enter-with-progressive-authorization)
+owns three branches: applicable approved continuation, first L0-L4 assessment,
+and manual reassessment against the existing contract. Valid continuation
+reuses its Charter and level across small tasks and new Threads. First adoption
+and material level, permission, or contract changes remain user decisions;
+bounded assessment reuses existing read authority without an activation gate.
+Explicit no-read instructions and failed-route limits remain binding.
+
+Every applying fresh role loads the full Skill and its shared authority,
+safety, evidence and recovery boundaries. Coordination and Standard references
+are read by applicable level, responsibility and next action, retaining shared
+role boundaries and required handoff interfaces. A dispatcher resolving a new
+delivery reads the complete configuration section. This reduces unrelated
+procedure loading without omitting permission, single-writer or independent
+review constraints. The package does not force Harness preloading or prove a
+runtime read path. L0 has no active Charter; L1 has a current-task carrier;
+L2-L4 require a discoverable durable anchor. The existing four re-entry routes
+and their precedence are retained.
 
 The repository owns one Skill product. Cross-Skill composition is optional and
 cannot grant authority or create a hard dependency.
@@ -104,7 +125,7 @@ A later ACL-only repair restored default-reader access to the exact managed
 v0.4.0 copy and closed that exact access finding without installing v0.4.1.
 The v0.5.0 source receipt creates no installation, publication,
 runtime-delivery, or stable-behavior claim. The later level-role extension was
-the local v0.6.0 candidate. Neither it nor the later v0.6.1 and current v0.6.2
+the local v0.6.0 candidate. Neither it nor the later v0.6.1, v0.6.2 and current v0.6.3
 revisions rewrite or inherit v0.5.0 acceptance.
 Historical release metadata and evidence remain immutable for their versions.
 

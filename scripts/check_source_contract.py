@@ -8,7 +8,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "skills" / "work-charter"
-CURRENT_CANDIDATE = ROOT / "release" / "v0.6.2-candidate.json"
+CURRENT_CANDIDATE = ROOT / "release" / "v0.6.3-candidate.json"
+V062_CANDIDATE = ROOT / "release" / "v0.6.2-candidate.json"
+V062_CANDIDATE_SHA256 = "9a379f98e384eb08b040bf776cd2cddc115dd27c124cd311e90a1d79466b6981"
+V062_PACKAGE_TREE = "d0f3148a17f5d6c7bcec22df214a19a8ec75a62d"
 V061_CANDIDATE = ROOT / "release" / "v0.6.1-candidate.json"
 V061_CANDIDATE_SHA256 = "e03b2a6781b0b156679568e08b9df114770de1ebec904f2bdf126491bf18ed1a"
 V061_PACKAGE_TREE = "08689a9706fa15dbe6889eec1572e7c8943c1f1c"
@@ -269,14 +272,14 @@ def main():
         "prompts.continuation_and_real_gates": contains_all(recovery, [
             "Complete authorized work through required checks and its result route",
             "Silence never approves the dependent action",
-            "activation/adoption, material replan, operation permission, independent review, and acceptance gates",
+            "adoption, material replan, operation permission, independent review, and acceptance gates",
             "Repeat verification only when its input changed, it failed, or an unresolved material concern requires it",
         ]),
         "prompts.startup_and_complete_expression": (
             contains_all(ui_metadata, [
                 "Use $work-charter",
-                "reusing existing authorization within its scope",
-                "asking only for missing project-read or adoption decisions",
+                "continue an applicable approved Charter and level",
+                "reusing authorized reads and asking only for missing permissions or material adoption changes",
             ])
             and "then ask before inspecting project details" not in ui_metadata
             and contains_all(recovery, [
@@ -379,27 +382,43 @@ def main():
                 "Configuration choice does not enable a listed role or authorize delivery or action.",
             ],
         ),
-        "selection.direct_activation_requires_body": contains_all(
+        "selection.assessment_and_adoption_are_distinct": contains_all(
             skill,
             [
-                "A direct `$work-charter` invocation",
                 "Load the full Skill first",
-                "Activation requires both direct intent or confirmation",
+                "First assessment",
+                "evaluates L0-L4",
+                "The user chooses the level to adopt.",
+                "An assessment request is not adoption.",
+                "`L0` has no active Charter.",
             ],
         ),
-        "selection.indirect_is_proposal_only": contains_all(
+        "selection.applicable_charter_precedes_new_adoption": contains_all(
             skill,
             [
-                "Work Charter appears applicable because ...",
-                "Before confirmation, do not say Work Charter is",
-                "Do not inspect the project or apply the Work Charter workflow",
+                "reuse the approved Charter and level without asking again",
+                "Small-task exclusions do not cancel an applicable Charter.",
+                "Manual reassessment",
+                "start from the existing Charter and level",
+                "material level, permission, or contract changes require the user's decision",
             ],
         ),
-        "authority.loading_and_activation_do_not_expand_authority": contains_all(
+        "selection.references_follow_role_and_level": contains_all(
+            skill,
+            [
+                "Each fresh Thread or role applying this guidance must load the full Skill body",
+                "not every other role's procedure",
+                "Leave the Standard reference unloaded for L0-L3 by default.",
+                "Do not skip a shared permission, independent-review, writer, or recovery boundary",
+            ],
+        ),
+        "authority.loading_and_assessment_do_not_expand_authority": contains_all(
             skill,
             [
                 "Package loading never expands project-read or action authority.",
-                "Activation or read approval does not authorize adoption, writes, roles, Git, or side effects.",
+                "An authorized bounded read-only assessment needs no separate activation or repeated read approval",
+                "An explicit no-read instruction remains binding.",
+                "Assessment or read approval does not authorize adoption, writes, roles, Git, installation, global changes, or external effects.",
             ],
         ),
         "authority.direct_operation_permission_gate": (
@@ -557,6 +576,15 @@ def main():
         checks["candidate.v060_historical_identity"] = False
         v060_candidate_error = str(error)
 
+    v062_candidate_error = None
+    try:
+        checks["candidate.v062_historical_identity"] = (
+            hashlib.sha256(V062_CANDIDATE.read_bytes()).hexdigest() == V062_CANDIDATE_SHA256
+        )
+    except OSError as error:
+        checks["candidate.v062_historical_identity"] = False
+        v062_candidate_error = str(error)
+
     v061_candidate_error = None
     try:
         v061_candidate_bytes = V061_CANDIDATE.read_bytes()
@@ -575,14 +603,14 @@ def main():
             not isinstance(parsed_successor.get(field), dict)
             for field in ("package", "evidence_states", "lineage")
         ):
-            raise ValueError("v0.6.2 candidate requires object package, evidence_states, and lineage")
+            raise ValueError("v0.6.3 candidate requires object package, evidence_states, and lineage")
         successor = parsed_successor
     except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
         successor_error = str(error)
-    checks["candidate.v062_identity"] = (
+    checks["candidate.v063_identity"] = (
         successor.get("schema") == "work-charter-local-release-candidate/v1"
         and successor.get("product") == "work-charter"
-        and successor.get("version") == "0.6.2"
+        and successor.get("version") == "0.6.3"
         and successor.get("public_identity") == "junwei529/work-charter"
         and successor.get("candidate_state") == "PENDING_INDEPENDENT_REVIEW"
         and successor.get("human_release_notes_review") == "PENDING"
@@ -591,9 +619,9 @@ def main():
         and successor.get("package", {}).get("files") == sorted(EXPECTED_FILES)
         and successor.get("package", {}).get("path") == "skills/work-charter"
         and successor.get("lineage") == {
-            "historical_package_tree": V061_PACKAGE_TREE,
-            "previous_candidate": "release/v0.6.1-candidate.json",
-            "source_commit": "38dd18cb65b4afd24ef2139dcc63a014de1c5ccf",
+            "historical_package_tree": V062_PACKAGE_TREE,
+            "previous_candidate": "release/v0.6.2-candidate.json",
+            "source_commit": "6c14676ac07dd0244e43c13f23ae8a3c3df04789",
         }
         and successor.get("evidence_states") == {
             "broad_product_efficacy": "UNKNOWN",
@@ -609,7 +637,7 @@ def main():
         }
     )
     checks["candidate.current_package_binding"] = (
-        checks["candidate.v062_identity"]
+        checks["candidate.v063_identity"]
         and actual_package_tree is not None
         and current_package_sha256 is not None
         and successor.get("package", {}).get("tree") == actual_package_tree
@@ -1304,7 +1332,9 @@ def main():
     if current_candidate_error:
         failures.append(f"candidate.v050_unreadable: {current_candidate_error}")
     if successor_error:
-        failures.append(f"candidate.v062_unreadable: {successor_error}")
+        failures.append(f"candidate.v063_unreadable: {successor_error}")
+    if v062_candidate_error:
+        failures.append(f"candidate.v062_unreadable: {v062_candidate_error}")
     if v061_candidate_error:
         failures.append(f"candidate.v061_unreadable: {v061_candidate_error}")
     if v060_candidate_error:
@@ -1357,7 +1387,7 @@ def main():
         ),
         "result": "PASS" if not failures else "FAIL",
         "source_release_identity": (
-            "BOUND_TO_V062_CANDIDATE"
+            "BOUND_TO_V063_CANDIDATE"
             if current_package_bound
             else "UNBOUND_PENDING_SUCCESSOR_VERSION_AND_DESCRIPTOR"
         ),

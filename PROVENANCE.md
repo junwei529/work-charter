@@ -12,9 +12,11 @@ mapping, or source working-tree byte was used.
 
 The immutable `v0.5.0` candidate and receipt retain their exact historical
 identities. The working tree retains the accepted v0.6.0 level-role configuration
-checkpoint and accepted v0.6.1 prompt/installer revisions. It now adds the
-user-confirmed v0.6.2 guardrail-necessity and auxiliary-cost guidance, bound by
-[`release/v0.6.2-candidate.json`](release/v0.6.2-candidate.json). Each
+checkpoint and accepted v0.6.1 prompt/installer revisions. The v0.6.2 guardrail-necessity and auxiliary-cost revision remains historical,
+bound by its immutable descriptor. The current user-confirmed v0.6.3 entry
+revision reuses approved Charters, separates assessment from adoption, and
+scopes reference reading by responsibility, bound by
+[`release/v0.6.3-candidate.json`](release/v0.6.3-candidate.json). Each
 changed package, evaluation, documentation, and checker destination is
 classified by its recorded transformation and bound to its current target SHA-256 in
 the manifest. Unchanged destinations retain their prior exact-blob or
@@ -144,8 +146,8 @@ platforms retain prior behavior. The first role-model source and lifecycle
 extension passed exact qualification, ten completed review rounds, and Planner
 acceptance at the v0.5.0 receipt-bound commit. For the later level-role
 extension, the SOURCE identity gate requires both the actual tree and digest
-to match the current v0.6.2 descriptor, while preserving the frozen v0.6.0 and
-v0.6.1 descriptors under their exact historical hashes. Current deterministic check results are recorded
+to match the current v0.6.3 descriptor, while preserving the frozen v0.6.0,
+v0.6.1 and v0.6.2 descriptors under their exact historical hashes. Current deterministic check results are recorded
 in [Verification](docs/skills/work-charter/VERIFICATION.md). R12 technical review
 and Planner frozen-source acceptance are separately recorded in State. The v0.6.0
 record changes also passed separate Planner verification; host/global consumer integration,

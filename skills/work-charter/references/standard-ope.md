@@ -5,6 +5,13 @@ an applicable approved standing policy, active Charter, and discoverable
 durable control location support it. `L4` is internal shorthand; Standard
 O/P/E/R is the public name.
 
+A fresh L4 role loads the full Skill body and this reference's shared entry,
+responsibility, single-writer and permission boundaries, then its own operating
+steps and handoff interfaces. It does not load every other role's procedures
+or repeat adoption merely because it is a new Thread. Manual reassessment uses
+the current Charter and policy as its baseline; material changes remain
+user-owned. Valid continuity never implies automatic role creation.
+
 Initial persistent adoption and the first Standard standing policy are
 user-owned decisions. Later reuse must name the policy and exact bounded read
 scope being reused, remain visible to the user, and stay subordinate to

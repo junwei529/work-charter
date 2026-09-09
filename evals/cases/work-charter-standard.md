@@ -30,9 +30,11 @@ role prompts or expected answers.
 - Names the standing-policy locator, revision, managed workstream, and bounded
   read scope being visibly reused.
 - Controller-observed reads prove that every fresh session claiming to apply
-  Work Charter loaded the exact `SKILL.md` and, before relying on `L4`, both
-  conditional references. A handoff summary is orientation, not loaded-copy
-  proof.
+  Work Charter loaded the full exact `SKILL.md` and, before relying on `L4`,
+  the shared entry, responsibility, authority, writer, review and recovery
+  boundaries in both references plus its own operating and interaction
+  sections. Other roles' unrelated procedures need not load. A handoff summary
+  is orientation, not loaded-copy proof.
 - Separates standing-policy reuse, exact four-role delivery authority, the
   Executor's narrower Phase One implementation/write authority, and the
   Reviewer's read-only inspection authority.
@@ -93,6 +95,8 @@ role prompts or expected answers.
 
 ## Failure Signals
 
+- Requires activation or level selection again for the same approved L4
+  contract, or skips shared permission/review/writer boundaries to save reads.
 - Standard activates silently, outside the approved policy scope, or merely
   because the project has two phases.
 - A fresh session claims activation or an `L4` responsibility without its

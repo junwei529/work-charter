@@ -2,6 +2,79 @@
 
 [English](README.md)
 
+让复杂的 AI 项目接得住，也交得出。
+
+Work Charter 是面向 Codex 的项目协作 Skill。它提供 L0–L4 五档协作方案，以及配套的角色分工和模型配置，帮助你从日常任务逐步组织到跨对话、跨角色和多阶段项目。
+
+它会根据项目的连续性、分工和验收需要推荐合适级别，说明收益与成本，由你确认采用。已有且仍适用的工作约定可以继续沿用。
+
+## 五档协作方案，覆盖不同工作需要
+
+| 级别 | 协作方式 | 默认角色 | 解决什么问题 |
+|---|---|---|---|
+| L0：直接执行 | 按当前任务要求完成工作，不建立 Charter | 主负责人 | 保持日常任务简洁 |
+| L1：任务约定 | 在当前对话中明确目标、边界和完成标准 | 主负责人，可按需加入审阅者 | 让本次工作有清晰约定 |
+| L2：持续接续 | 增加可持久保存的工作记录与恢复入口 | 主负责人，可按需加入审阅者 | 换对话后仍能接上已有工作 |
+| L3：独立分工 | 分开规划、执行与技术审阅 | Planner、Executor、Reviewer | 让实现与评估有明确分工 |
+| L4：项目统筹 | 在 L3 基础上增加跨阶段的项目管理 | Orchestrator、Planner、Executor、Reviewer | 协调项目方向、阶段目标和整体验收 |
+
+L1 的约定保留在当前对话中；需要可靠的跨对话恢复时，使用 L2 及以上方案。级别越高，需要维护的协作信息也越多，因此优先选择足够满足需要的一档。
+
+## 默认分工，让每个角色知道自己负责什么
+
+- **Orchestrator｜项目统筹**：负责项目方向、阶段安排和项目层面的验收。
+- **Planner｜规划与验收**：明确阶段目标、工作边界和完成标准，评估执行结果。
+- **Executor｜执行与验证**：实现获准的工作，完成必要检查并交付结果。
+- **Reviewer｜独立技术审阅**：检查实现中的问题，提供可追溯的发现和依据。
+
+L0–L2 的主负责人直接负责当前任务。角色方案本身不会自动创建任务或扩大操作权限。
+
+## 默认模型配置与自定义
+
+作者基于多个实际代码仓库，围绕 Orchestrator、Planner、Executor、Reviewer 各自的分工构建了私有评测集。当前 L0–L4 的默认模型与推理等级，依据这套评测结果设置。
+
+这些默认值提供一个可直接起步的参考。使用者可以根据项目特点、可用模型、使用成本和实际表现，灵活调整各级别、各角色的模型与推理等级。
+
+用户自定义配置优先于包内默认。调整适用于之后按该配置创建的任务，已有任务保留原设置。
+
+| 适用范围 | 包内默认配置 |
+|---|---|
+| L0 主负责人 | Astra · medium |
+| L1–L2 主负责人及可选 Reviewer | Astra · medium |
+| L3 Planner；L4 Orchestrator、Planner | Astra · max |
+| L3–L4 Executor、Reviewer | Astra · medium |
+
+这里的 Astra 指 `gpt-6-astra`，`medium` 和 `max` 表示推理投入设置。L0 若由其他独立规则触发临时 Reviewer，当前沿用通用的 Astra · high 回落配置。
+
+这些是包内预设，实际采用情况需要由任务创建流程核对；完整规则见[默认配置文件](skills/work-charter/assets/role-models.default.yaml)。
+
+## 一个使用场景
+
+一个项目需要分几次对话完成，可以先评估是否采用 L2，保留关键决定、当前状态、验证依据和下一步。
+
+当项目需要独立规划与技术审阅时，再评估 L3 的分工成本；出现多个需要统一协调的阶段时，再考虑 L4。整个过程沿用已有有效决定，并对实质变化作出明确调整。
+
+## 开始使用
+
+```text
+$work-charter
+这个项目需要分几次对话完成。
+请从 L0–L4 中推荐合适的协作级别，
+说明默认角色、模型配置，以及收益和维护成本。
+```
+
+已有工作约定时：
+
+```text
+按现有已批准的 Work Charter 继续项目。
+先核对当前状态，再推进下一项已授权工作。
+```
+
+[设计](docs/skills/work-charter/DESIGN.md) · [当前状态](docs/skills/work-charter/STATE.md) · [验证](docs/skills/work-charter/VERIFICATION.md) · [评估场景](evals/README.md)
+
+<details>
+<summary>技术参考、安装与恢复、版本沿革和历史证据</summary>
+
 本仓库是 `work-charter` 的独立产品仓库。可安装包位于
 [`skills/work-charter/`](skills/work-charter/)。它最初由源提交
 `80910a8b2375a11be897e9660c4b00a06d00dd13` 物化；当前 repository-native
@@ -14,7 +87,14 @@
 review、Planner 验收与 exact deterministic qualification。Local source readiness 为
 `VERIFIED`；该 receipt 不产生 v0.5.0 安装、runtime role-delivery 或公开发布 claim。
 
-当前 [`v0.6.2` 候选](release/v0.6.2-candidate.json)要求 Agent 为自行推导的护栏说明
+当前 [`v0.6.3` 候选](release/v0.6.3-candidate.json)复用适用且已批准的 Charter 与级别，
+小任务及新 Thread 接续也无需重新激活或选级。首次评估比较 L0-L4，由用户决定采纳；
+手动复评以既有合同为基线。获准的有界只读评估不再增加激活或重复读取确认。
+每个应用规则的新角色完整加载 Skill 和共同边界，再按实际职责与下一动作读取参考章节。
+加载不等于采纳或行动授权；[状态](docs/skills/work-charter/STATE.md#current-v063-local-candidate)和
+[验证](docs/skills/work-charter/VERIFICATION.md#current-v063-qualification)记录当前源码范围与证据限制。
+
+此前 [`v0.6.2` 候选](release/v0.6.2-candidate.json)要求 Agent 为自行推导的护栏说明
 具体失败及后果、所需保护强度，以及更简单的现有办法为何不足。辅助工作持续扩大时，
 由当前主任务或 Planner 比较剩余成本和达到同一受保护用户结果的更简单路线。
 用户及项目明确要求保持原有权威；这两项补充由[合同说明](skills/work-charter/references/coordination-and-recovery.md#contract-and-proposal-changes)承载。
@@ -140,13 +220,13 @@ python -B scripts/check_source_contract.py --json
 python -B scripts/manage_install.py self-test --source .
 ```
 
-SOURCE checker 会把静态 selection、activation、authority、recovery、independent-review、
+SOURCE checker 会把静态 selection、assessment/adoption、authority、recovery、independent-review、
 “级别 × 实际职责”与 Standard O/P/E/R 条款，同 required current-package identity gate 分开
-报告。当前 v0.6.2 descriptor 必须绑定实际 package tree/digest；任一不匹配都使命令失败。
+报告。当前 v0.6.3 descriptor 必须绑定实际 package tree/digest；任一不匹配都使命令失败。
 不可变 v0.5.0 descriptor 只按历史值核对；当前输入结果见
 [验证](docs/skills/work-charter/VERIFICATION.md)。
 
-Lifecycle self-test 是当前 v0.6.2 package 的 required gate，先核对 source 与描述文件绑定。
+Lifecycle self-test 是当前 v0.6.3 package 的 required gate，先核对 source 与描述文件绑定。
 旧 exact-release checkout 不能替代当前输入覆盖。Staged adversarial repository matrix
 同样不覆盖 unstaged working-tree delta。缺失的检查不能被报告为通过或不适用。
 这些检查仍不执行模型、不创建任务或角色、不运行 host/global consumer、不读取 live user 配置、
@@ -228,3 +308,5 @@ repair 是两份不同证据；该修复使副本在之后的已接受更新前�
 ### 后续更新与回滚的信任输入
 
 工具内置的信任映射只授权 v0.3.0 package tree。后续不可变 Release 必须在候选 checkout 之外独立发布经人工复核的 package-tree 身份。更新或回滚到工具未内置的版本时，使用 `--trusted-target-package-tree <git-tree-sha1>` 提供该外部信任锚；若当前已安装版本也不在内置映射中，再对 update、rollback、status 和 uninstall 使用 `--trusted-current-package-tree <git-tree-sha1>` 提供此前独立保留的身份。不得从待安装 source tree 自身复制这两个信任值；后续版本的公开 Release 与跨版本 lifecycle 证据在分别建立前仍为 `UNKNOWN`。
+
+</details>

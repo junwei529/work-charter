@@ -1,5 +1,24 @@
 # Changelog
 
+## Work Charter v0.6.3
+
+Local candidate: [release/v0.6.3-candidate.json](release/v0.6.3-candidate.json)
+
+Independent source review and Planner acceptance are pending. This candidate
+does not qualify installation, global use, publication, or model behavior.
+
+- Reuses an applicable approved Charter and level across small tasks and new
+  Threads without another activation or level-selection question.
+- Distinguishes first L0-L4 assessment, user-owned adoption, and manual
+  reassessment against the existing contract. Reuses authorized bounded reads;
+  missing authority, explicit no-read limits and material changes retain gates.
+- Requires the full Skill in every applying fresh role, then shared boundaries
+  and only the reference sections needed by its responsibility and next action.
+  Loading remains distinct from active/adopted state and action authority.
+- Updates existing cases, startup metadata and static SOURCE assertions.
+  Six-file shape, default-model values, schema, Charter asset and production
+  installer behavior are unchanged; only its self-test version follows v0.6.3.
+
 ## Work Charter v0.6.2
 
 Local candidate: [release/v0.6.2-candidate.json](release/v0.6.2-candidate.json)

@@ -1,6 +1,6 @@
 ---
 name: work-charter
-description: Bound consequential Codex work by outcome, authority, evidence, recovery, independent review, and proportional coordination. Use for `$work-charter`, direct intent, or continuity, writer, stale-evidence, recovery, authorization, review, or assessment symptoms. Indirect matches are metadata-sufficient proposals; optional body loading grants no authority. Begin `Work Charter appears applicable because ...`; explain why, propose activation plus the smallest read, and ask confirmation. Before confirmation, claim no selected/loaded/invoked/active/adopted state and prescribe no pause/writer/evidence/handoff/resume workflow. Direct intent or confirmation plus body permits activation. Preserve unexposed identity as `UNKNOWN`; inspect only approved scope. Initial adoption and first Standard policy need approval. Exclude small tasks, one failure/correction, size/duration-only, docs/shell-only, and non-Codex adaptation. Activation never authorizes roles, writes, rules, worktrees, Git, installation, or external effects.
+description: Bound Codex work by an applicable approved Charter, proportional L0-L4 assessment, authority, evidence, recovery, and independent review. Reuse a valid Charter and level for the same workstream without activation or level reselection, including small tasks. Use for direct assessment or reassessment requests and material continuity, writer, authorization, or recovery needs. First assessment recommends a user-owned level; reassessment starts from the existing contract. Load the full body before using this guidance and only relevant reference sections. Loading or assessment is not adoption or action authority. Without an applicable Charter or assessment request, do not select merely for small tasks, one failure, duration, documentation, shell diagnosis, or non-Codex adaptation.
 ---
 
 # Work Charter
@@ -11,65 +11,58 @@ other tasks, or enforce permissions.
 
 ## Enter With Progressive Authorization
 
-Distinguish native package availability from user-visible activation:
+Load the full Skill first when entering assessment, reassessment, or an
+authorized continuation. Native catalog selection or body loading is an
+instruction mechanism, not adoption or action authority. If the body cannot
+load, report degraded loading and do not claim to apply Work Charter. Preserve
+an unexposed loaded path or revision as `UNKNOWN`; do not invent exact-copy
+proof or claim that this package forces every Harness to preload it.
 
-- A direct `$work-charter` invocation or ordinary-language request that
-  explicitly asks to use Work Charter requests activation without another
-  confirmation. Load the full Skill first; only then say that you are now using
-  it.
-- An indirect installed-Skills request or symptom-only match is proposal-only.
-  Catalog metadata is sufficient for that proposal; native selection may or
-  may not already have loaded this `SKILL.md`, and neither outcome grants
-  authority. Begin the first visible response with `Work Charter appears
-  applicable because ...`, explain why, propose activation and the smallest
-  project read, and ask for confirmation. Do not use a heading or status label
-  such as `Selected skill`. Before confirmation, do not say Work Charter is
-  selected, loaded, invoked, active, adopted, or in force, even with a caveat
-  about Harness state or user authorization. Do not inspect the project or
-  apply the Work Charter workflow: do not prescribe pausing implementation,
-  establishing a writer, revalidating evidence, creating a handoff, gating
-  resume, choosing a protection level, or delivering roles.
+Use supplied context and already-authorized bounded reads to distinguish:
 
-Native selection can load this `SKILL.md` without user authorization because it
-is the Harness instruction mechanism, not a project or action effect. Direct
-intent or activation confirmation permits user-visible activation and loading
-only the package references required by the applicable workflow branch. Those
-are Skill-package reads, not project inspection. An exact project-read limit
-constrains only project or evidence sources; do not ask for a second permission
-to load package instructions needed by the activated Skill. Package loading
-never expands project-read or action authority.
+1. **Applicable approved Charter:** reconcile its workstream, revision, level,
+   authority, and live state. When they align, reuse the approved Charter and
+   level without asking again to activate or select a level. Small-task
+   exclusions do not cancel an applicable Charter. State the reused contract
+   and next authorized action briefly. A new Thread alone does not require
+   adoption again; use the existing re-entry routes for material drift.
+2. **First assessment:** when no approved Charter applies, a new-work or manual
+   assessment request evaluates L0-L4 and recommends the least sufficient
+   level with its cost. The user chooses the level to adopt. A direct
+   `$work-charter` invocation requests this assessment unless it explicitly
+   requests reassessment or continues an applicable approved Charter.
+3. **Manual reassessment:** start from the existing Charter and level, compare
+   the requested change with that baseline, and recommend retaining or
+   changing it. Keep valid authority; material level, permission, or contract
+   changes require the user's decision before dependent work.
 
-Activation requires both direct intent or confirmation and the full Skill body
-being available in the current context. If only metadata is available or the
-body cannot load, report degraded loading and stop without claiming activation.
-If the Harness does not expose the exact loaded path or revision, preserve that
-identity as `UNKNOWN` and make no exact-copy claim; that alone does not block
-ordinary activation. Before any additional project inspection:
+An assessment request is not adoption. `L0` has no active Charter. A Charter
+is active only when its adopted L1-L4 contract applies and the full body is
+available. Do not claim active, adopted, or in-force status from a symptom,
+catalog entry, file presence, or mere invocation. An indirect match without an
+applicable Charter may propose assessment; do not silently adopt a level,
+establish roles, or impose new writer, pause, or handoff duties.
 
-1. name the continuity, control, authorization, recovery, writer, or
-   assessment need in ordinary language;
-2. propose the smallest read scope: declared project rules and canonical
-   owners, one declared Charter carrier (or one exact root fallback check),
-   current workspace/branch/worktree/dirty/writer facts, and only named
-   checkpoint or evidence pointers;
-3. ask the user to authorize that bounded read only when existing user approval
-   or an applicable approved standing policy does not already cover it; and
-4. inspect only that scope and recommend any still-unapproved adoption or
-   coordination choice. Continue work already authorized by the current
-   contract without asking for the same permission again.
+Before project inspection, identify the smallest useful scope: declared rules
+and canonical owners, one declared Charter carrier (or one exact root fallback
+check), relevant workspace/branch/dirty/writer facts, and named evidence.
+Reuse existing read approval within its scope. An authorized bounded read-only
+assessment needs no separate activation or repeated read approval, even before
+adoption. If authority is missing, ask only for that exact read or material
+decision. An explicit no-read instruction remains binding. Continue otherwise
+authorized work that does not depend on a pending adoption decision.
+
+Package loading never expands project-read or action authority. Read only the
+reference sections needed by this level, responsibility, and next action;
+those package reads do not consume target-project read approval. First
+persistent adoption and the first Standard standing policy remain user-owned.
+Assessment or read approval does not authorize adoption, writes, roles, Git,
+installation, global changes, or external effects.
 
 If an approved read cannot be completed through the approved route, preserve
-the affected fact as `UNKNOWN` and stop safely; ask for a different route only
-as a new visible proposal. Do not inspect adjacent hidden files or metadata,
-search neighboring paths, infer from unapproved observations, or broaden the
-read to compensate.
-
-The user may confirm activation and the exact read scope together. Otherwise,
-activation alone still stops before project inspection. State any reused read
-policy visibly. A read outside existing approval, including additional
-implementation content, another worktree, task history, or an external system,
-needs fresh read approval. Activation or read
-approval does not authorize adoption, writes, roles, Git, or side effects.
+the affected fact as `UNKNOWN` and stop its dependent work. Do not broaden the
+scope, search neighboring or hidden sources, or change routes to compensate.
+Propose any required broader read or different route explicitly.
 
 ## Recommend The Least Sufficient Protection
 
@@ -132,7 +125,7 @@ not every other role's procedure. The detailed construction guidance is in
 Carry already-authorized work through its required checks and handoff. Routine
 implementation choices, internal steps, and same-scope corrections do not need
 another confirmation when the contract and guardrails still cover them.
-Preserve genuine activation, adoption, permission, review, and acceptance gates;
+Preserve genuine adoption, permission, review, and acceptance gates;
 make a pending user decision concrete using authorized independent work, then
 wait before the dependent action. A Working Proposal stays replaceable even
 when it appears in a template or handoff.
@@ -242,17 +235,27 @@ scarce, one-shot, or unauthorized.
 
 ## Reconcile Before Continuing
 
-For first adoption, re-entry, interruption, a material baseline change,
-suspected overlap, or any `L3`/`L4` role applying Work Charter responsibilities,
-read [Coordination And Recovery](references/coordination-and-recovery.md). Each
-fresh `L4` role must also read
-[Standard O/P/E/R](references/standard-ope.md) before applying any `L4`
-responsibility, including implementation. Each fresh role that claims to apply
-Work Charter must first load the full Skill, then complete its own conditional
-reference reads; a handoff summary is not loaded-copy proof. Leave the Standard
-reference unloaded for `L0`-`L3` by default. An explicit evaluation of a
-transition to `L4` may read it within the approved scope; that read does not
-authorize the transition or any `L4` responsibility.
+Each fresh Thread or role applying this guidance must load the full Skill
+body, including its shared authority, safety, evidence, and recovery
+boundaries. A handoff summary is not loaded-copy proof. Existing valid adoption
+authorizes continuation without another activation question; loading does not
+renew or expand the contract.
+
+Use [Coordination And Recovery](references/coordination-and-recovery.md) by
+section: minimum reconciliation, applicability and re-entry for first
+assessment or continuation; durability for L2-L4; context-switch recovery when
+recovering; and shared L3 role/writer/review boundaries for L3-L4. Read the
+operating details needed by your own responsibility and its handoff interfaces,
+not every other role's procedure. A dispatcher resolving a newly authorized
+delivery reads the complete configuration section before using that interface;
+other roles do not load configuration just because it is in the same file.
+
+An L4 role also reads the shared entry and responsibility boundaries in
+[Standard O/P/E/R](references/standard-ope.md), then the operating steps for
+its own work and required interactions. Leave the Standard reference unloaded
+for L0-L3 by default. A scoped evaluation of a transition to L4 may read the
+needed sections without authorizing the transition. Do not skip a shared
+permission, independent-review, writer, or recovery boundary to save context.
 
 Match the named managed workstream, not the whole repository, and compare the
 carrier revision with live workspace, writer, dirty ownership, evidence

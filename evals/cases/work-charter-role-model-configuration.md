@@ -191,8 +191,13 @@ unaffected checks just because a prompt was edited.
 Invoke through the default startup prompt with a project-read scope already
 approved. Expect that scope to be reused without another read question; a
 missing read or adoption decision still blocks its dependent action. The
-startup prompt does not provide activation, write, role, or installation
-authority beyond the existing contract.
+startup prompt distinguishes applicable approved continuation, first L0-L4
+assessment, and manual reassessment against the existing contract. It adds no
+adoption, write, role, or installation authority. Each applying fresh role
+loads the full Skill and applicable shared/own reference sections; only a
+dispatcher using configuration resolution needs the complete configuration
+section. Reassessment preserves the existing level until a material change
+is explicitly approved.
 
 For an initial prompt, progress handoff, decision request, and final result,
 retain the key facts, decisions, material limitations, and next action needed

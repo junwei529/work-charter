@@ -2,6 +2,79 @@
 
 [简体中文](README.zh-CN.md)
 
+Keep complex AI projects moving across handoffs—and through to delivery.
+
+Work Charter is a project collaboration Skill for Codex. It offers five levels, L0–L4, with role responsibilities and model configurations to help you move from everyday tasks to projects spanning conversations, roles, and phases.
+
+It recommends a suitable level based on the project's continuity, division of responsibilities, and acceptance needs, explains the benefits and costs, and leaves adoption to you. Existing working agreements can continue when they still apply.
+
+## Five collaboration levels for different needs
+
+| Level | How it works | Default roles | What it helps with |
+|---|---|---|---|
+| L0: Direct execution | Complete the current task without establishing a Charter | Primary owner | Keep everyday tasks simple |
+| L1: Task agreement | Define goals, boundaries, and completion criteria in the current conversation | Primary owner, with an optional Reviewer | Give the current task a clear agreement |
+| L2: Durable continuity | Add a persistent work record and recovery entry point | Primary owner, with an optional Reviewer | Pick up existing work in a new conversation |
+| L3: Separate responsibilities | Separate planning, execution, and technical review | Planner, Executor, Reviewer | Make implementation and assessment responsibilities clear |
+| L4: Project coordination | Add coordination across phases to L3 | Orchestrator, Planner, Executor, Reviewer | Coordinate project direction, phase goals, and overall acceptance |
+
+An L1 agreement stays in the current conversation. For reliable recovery across conversations, use L2 or above. Higher levels require more coordination information to maintain, so start with the least sufficient level.
+
+## Clear responsibilities for each role
+
+- **Orchestrator — project coordination:** Owns project direction, phase planning, and project-level acceptance.
+- **Planner — planning and acceptance:** Defines phase goals, work boundaries, and completion criteria, then assesses the results.
+- **Executor — implementation and verification:** Implements authorized work, completes the necessary checks, and delivers results.
+- **Reviewer — independent technical review:** Inspects implementation issues and provides traceable findings and evidence.
+
+At L0–L2, the primary owner is directly responsible for the current task. A role arrangement does not itself create tasks or expand permissions.
+
+## Default models and customization
+
+The author built a private evaluation set from multiple real code repositories, organized around the responsibilities of the Orchestrator, Planner, Executor, and Reviewer. The current L0–L4 model and reasoning defaults were selected using those evaluation results.
+
+These defaults provide a starting point. You can adjust models and reasoning settings for each level and role based on your project, available models, cost, and observed performance.
+
+User configuration takes priority over package defaults. Changes apply to tasks subsequently created using that configuration; existing tasks retain their settings.
+
+| Scope | Package default |
+|---|---|
+| L0 primary owner | Astra · medium |
+| L1–L2 primary owner and optional Reviewer | Astra · medium |
+| L3 Planner; L4 Orchestrator and Planner | Astra · max |
+| L3–L4 Executor and Reviewer | Astra · medium |
+
+Astra means `gpt-6-astra`; `medium` and `max` are reasoning effort settings. If a separate rule triggers a temporary Reviewer at L0, the current general fallback is Astra · high.
+
+These are package presets. The task creation process must verify what is actually used; see the [default configuration file](skills/work-charter/assets/role-models.default.yaml) for the complete configuration.
+
+## An example
+
+For a project that spans several conversations, first assess whether L2 is appropriate to preserve key decisions, current state, verification evidence, and the next step.
+
+When the project needs independent planning and technical review, assess the coordination cost of L3. When several phases need shared direction, consider L4. Throughout, retain valid decisions and make explicit adjustments for material changes.
+
+## Get started
+
+```text
+$work-charter
+This project will take several conversations to complete.
+Recommend a suitable collaboration level from L0–L4.
+Explain the default roles, model configuration, benefits, and maintenance cost.
+```
+
+If a working agreement is already in place:
+
+```text
+Continue the project under the existing approved Work Charter.
+Check the current state, then proceed with the next authorized action.
+```
+
+[Design](docs/skills/work-charter/DESIGN.md) · [Current state](docs/skills/work-charter/STATE.md) · [Verification](docs/skills/work-charter/VERIFICATION.md) · [Evaluation scenarios](evals/README.md)
+
+<details>
+<summary>Technical reference, installation and recovery, version history, and historical evidence</summary>
+
 Bounds consequential Codex work by outcome, authority, evidence, recovery,
 independent review, and proportional coordination.
 
@@ -19,7 +92,18 @@ ten completed review rounds, Planner acceptance, and the exact deterministic
 qualification. Local source readiness is `VERIFIED`; no v0.5.0 installation,
 runtime role-delivery, or public-release claim follows from that receipt.
 
-The current [`v0.6.2` candidate](release/v0.6.2-candidate.json) asks Agents to
+The current [`v0.6.3` candidate](release/v0.6.3-candidate.json) reuses an
+applicable approved Charter and level, including small tasks and continuation
+in a new Thread. First assessment recommends L0-L4 for user adoption; manual
+reassessment starts from the existing contract. Authorized bounded assessment
+needs no separate activation or repeated read question. Every applying fresh
+role loads the full Skill and shared boundaries, then only reference sections
+needed by its responsibility and next action. Loading is not adoption or action
+authority. [State](docs/skills/work-charter/STATE.md#current-v063-local-candidate)
+and [Verification](docs/skills/work-charter/VERIFICATION.md#current-v063-qualification)
+record this source candidate's scope and evidence limits.
+
+The prior [`v0.6.2` candidate](release/v0.6.2-candidate.json) asks Agents to
 justify the failure, required strength, and lack of simpler alternatives behind
 their own guardrails. When auxiliary work keeps growing, the primary owner or
 Planner compares the remaining cost with simpler routes to the same protected
@@ -173,15 +257,15 @@ python -B scripts/check_source_contract.py --json
 python -B scripts/manage_install.py self-test --source .
 ```
 
-The SOURCE checker reports the static selection, activation, authority,
+The SOURCE checker reports the static selection, assessment/adoption, authority,
 recovery, independent-review, level-role, and Standard O/P/E/R clauses
-separately from the required current-package identity gate. The v0.6.2
+separately from the required current-package identity gate. The v0.6.3
 descriptor must bind the actual current tree and digest; any mismatch makes
 the command fail. The immutable v0.5.0 descriptor is checked only against its
 historical values. Current-input results are recorded in
 [Verification](docs/skills/work-charter/VERIFICATION.md).
 
-The lifecycle self-test is a required gate for the current v0.6.2 package and
+The lifecycle self-test is a required gate for the current v0.6.3 package and
 first binds its source to the matching descriptor. An older exact-release
 checkout is not coverage for the current input. The staged adversarial
 repository matrix likewise does not cover an unstaged working-tree delta.
@@ -294,3 +378,5 @@ transitions and stable loaded behavior still require separate evidence.
 ### Future update and rollback trust
 
 The bundled trust map authorizes the v0.3.0 package tree only. A later immutable release must publish its human-reviewed package-tree identity independently of the candidate checkout. Supply that external trust anchor with `--trusted-target-package-tree <git-tree-sha1>` when updating or rolling back to a version not bundled in this tool. If the currently installed version is also absent from the bundled map, supply its independently retained identity with `--trusted-current-package-tree <git-tree-sha1>` for update, rollback, status, and uninstall. Never copy either trust value from the source tree being installed; future-version public release and cross-version lifecycle evidence remain `UNKNOWN` until separately established.
+
+</details>

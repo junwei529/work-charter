@@ -1,8 +1,66 @@
 # Work Charter Verification
 
-## Current v0.6.2 qualification
+## Current v0.6.3 qualification
 
-The current six-file package binds [v0.6.2](../../../release/v0.6.2-candidate.json).
+The current six-file source binds [v0.6.3](../../../release/v0.6.3-candidate.json).
+Entry and reference-reading changes are SOURCE instructions. Existing cases
+now specify first assessment, approved continuation, manual reassessment,
+scoped read reuse, explicit denial and fresh-role full-body/shared-boundary
+loading. No model case or actual Harness read-path evaluation is claimed.
+
+- Package tree: `40d454daa3dbf50421508860b0f4b5e4542d4052`
+- Package SHA-256: `a91b1ea71c0e70494588df49666494b7ecb907e114107e5e2258c54488b40ca4`
+- Focused SOURCE: `PASS`, 38/38 checks including 23/23 static clauses;
+  current package tree/digest and historical descriptor identities matched
+- Repository: `PASS`, 93 mapped files; Skill metadata validation: `PASS`
+- Candidate binding: 9/9 positive/negative cases `PASS`, including rejection
+  of the old v0.6.2 package pair and changed historical v0.6.2 descriptor
+- Complete current-package Windows lifecycle: `PASS`, terminal exit code 0,
+  in the explicitly approved Administrator execution; `persistent_effect: false`.
+  It covers protected and fully inherited permissions, update/rollback,
+  changed package shapes, failure recovery, and permission readback.
+  The preceding failed runs and permission diagnostics remain retained evidence.
+  The initial default-route run failed at Windows DACL restore preflight before
+  destination mutation; its terminal output alone did not establish the cause.
+  This later pass qualifies the current package in the tested execution context;
+  it does not establish default-route capability or authorize another elevated run.
+- Staged adversarial: `PASS`, terminal exit code 0, on the complete 94-file
+  current-source index. The checker consumes the index; the final review
+  checkpoint must carry its matching input and terminal result after any
+  record synchronization. A predecessor-index pass does not qualify new bytes.
+- Native v0.6.3 review R1: terminal exit code 0, no findings, all 26 paths
+  and material unchanged context inspected, with unchanged input identity;
+  actual provider/model/effort: OpenAI / gpt-6-astra / medium
+- Planner source acceptance: `VERIFIED` for the
+  [accepted source checkpoint](STATE.md#accepted-v063-source-checkpoint)
+- Commit, actual installation, global changes and publication:
+  `NOT_PERFORMED` at this source-acceptance checkpoint
+- Runtime adherence, fresh-Thread actual full-body/reference reads,
+  cross-Harness behavior and broad efficacy: `UNKNOWN`
+
+The production installer and self-test bodies are unchanged; the sole change
+in that file is `SELF_TEST_SOURCE_VERSION` from 0.6.2 to 0.6.3. Prior accepted
+semantic evidence for unchanged mechanisms remains historical, while the new
+package has the fresh disposable Windows lifecycle qualification above. No production
+installation is implied. Default-model data, schema, and Charter asset remain
+unchanged. Native POSIX lifecycle execution remains `NOT_PERFORMED` / `UNKNOWN`.
+
+Documentation impact is updated in the entrypoint/reference owners, root and
+product indexes, Design, State, this Verification, Provenance, Changelog and
+the existing evaluation surface. The unchanged Charter asset, default-data
+owner, fixtures, cold-resume and ordinary-small-task cases were checked for
+impact. Historical candidates/receipts retain their bytes and original scope.
+
+R1 and Planner acceptance bind the frozen source checkpoint above. The
+following acceptance-record synchronization does not change the six-file
+package, candidate descriptor or installer; their prior input-bound checks
+remain applicable. SOURCE/repository checks, the complete-index adversarial
+matrix and native review apply to the final synchronized input before commit.
+The candidate is a pre-review snapshot, not a committed-source receipt.
+
+## Historical v0.6.2 qualification
+
+The prior six-file package binds [v0.6.2](../../../release/v0.6.2-candidate.json).
 It adds only guardrail-necessity and auxiliary-cost guidance in the existing
 entrypoint, coordination reference, and Charter template. Independent semantic
 review covers the two additions; existing static clause checks do not measure

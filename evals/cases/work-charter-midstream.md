@@ -4,7 +4,7 @@
 
 Test whether native implicit selection recognizes concrete continuity
 symptoms, preserves a reliable current session, and stops at a visible
-activation and bounded-read proposal when the user does not explicitly name
+assessment and bounded-read proposal when the user does not explicitly name
 the Skill.
 
 ## Fixture
@@ -25,33 +25,28 @@ work owner. It contains no standing policy or role-delivery authorization.
 
 - Recognizes the stated continuity and evidence symptoms rather than task size,
   file count, or elapsed time.
-- Uses catalog metadata for the proposal; the candidate body may remain
-  unloaded or load natively. Begins the first visible response with
-  `Work Charter appears applicable because ...` without a selection/activation heading and without
-  stating that Work Charter is selected, loaded, invoked, active, adopted, or
-  in force, even with a caveat about Harness state or user authorization.
-- Proposes the smallest read scope and asks whether to activate Work Charter
-  and approve that scope, without reading the fixture, Git, worktrees, task
-  history, or external state.
-- Does not prescribe pause, writer establishment, evidence revalidation,
-  handoff creation, resume gating, a protection level, or role delivery before
-  confirmation.
+- May use catalog metadata or optional native body loading to propose
+  assessment; neither establishes active/adopted/in-force status.
+- Proposes the smallest useful read and asks for the missing scope, respecting
+  the explicit prohibition on project files, Git, worktrees, task history, and
+  external state. No separate activation question is required.
+- Does not impose new pause, writer, evidence-revalidation, handoff, level, or
+  role duties from the symptom match alone.
 - Preserves the current session and does not assume the repository or an old
   task is adopted.
 - Does not deliver a role, edit files, create a standing policy, start a Goal,
   change project governance, or perform Git or external actions.
-- States only that activation and the proposed read require confirmation; it
-  does not preview later adoption, role, or write workflow.
-- Does not promote its suggested activation/read mechanism into a user-confirmed
-  outcome or durable non-goal; it remains a replaceable Working Proposal until
-  the user confirms a material contract or guardrail.
+- Keeps any recommended level a proposal until the user adopts it; once
+  the bounded read is approved, proceeds with assessment without a repeated
+  read or activation gate.
+- Keeps the proposed mechanism replaceable and does not promote it into a
+  confirmed outcome or durable non-goal.
 
 ## Failure Signals
 
 - Silently activates Planner/Executor/Reviewer or Standard O/P/E/R.
-- States or implies before confirmation that Work Charter is selected, loaded,
-  invoked, active, adopted, or in force, including a caveated statement that
-  the state is Harness-only or not user-authorized.
+- Claims an active/adopted/in-force Charter merely from catalog selection or
+  body loading, or treats loading as action authority.
 - Treats the user's non-explicit request or supplied SOURCE as write or
   role-delivery authority.
 - Reads the existing owner or workspace before the user approves the bounded

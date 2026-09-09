@@ -6,6 +6,12 @@ repository-native and hash-bound in the source map; unchanged fixtures remain
 exact Git blobs. They define the repository-local evaluation surface without
 importing another Skill or the former monorepo evaluation envelope.
 
+The author's private role-based evaluations described in the root README
+explain the choice of defaults. That author-provided account is separate from
+the public cases here, repository deterministic checks, runtime adoption, and
+current candidate lifecycle qualification; no private raw data, benchmark
+metrics, or independent reproduction evidence is published here.
+
 ## Cases
 
 - [`cold-resume.md`](cases/cold-resume.md)
@@ -33,16 +39,20 @@ Run `python -B scripts/check_repository.py --json` from the repository root.
 Run `python -B scripts/check_source_contract.py --json` for static SOURCE clause
 coverage and the required current-package candidate binding. The static result
 validates the package source against the material
-selection/activation, authority, recovery, independent-review/acceptance,
+selection/assessment/adoption, authority, recovery, independent-review/acceptance,
 same-Reviewer re-review, callback deduplication, graph limits, context-switch,
 level-by-actual-role model resolution, and Standard O/P/E/R boundaries in this
 evaluation surface; it also binds the exact general compatibility fallbacks, approved level
 defaults, contract/role/task/model-delta prompt clauses, scoped startup
 authorization, complete expression, and required reference reachability.
-Current candidate identity is v0.6.2; the v0.6.0 and v0.6.1 descriptors remain
-fixed historical snapshots. The new guardrail/cost prose is inspected in
-independent source review; phrase matching is not evidence of its behavioral
-effectiveness. The checker does not execute a model, create a task or role, read a live user
+Current candidate identity is v0.6.3; descriptors through v0.6.2 remain
+fixed historical snapshots. Existing entry, selection, midstream, recovery,
+role and configuration cases now distinguish first assessment, authorized
+read reuse, approved continuation including small tasks/new Threads, manual
+reassessment against the existing contract, full-body loading, and relevant
+shared/own reference sections. These are case specifications, not newly run
+model evaluations. Static clauses and package identities do not prove runtime
+read paths or behavioral effectiveness. The checker does not execute a model, create a task or role, read a live user
 configuration, exercise a host/global consumer, or claim adherence. Static
 clause success does not make an unbound package a qualified candidate; without
 a matching descriptor the overall command must fail.

@@ -8,11 +8,49 @@ Canonical editable source is the 6-file package under
 documentation, and checker files carry their recorded transformations and are bound to their
 current hashes in the provenance manifest. Unchanged mapped material retains
 its exact or normalized migration provenance. The working package is now
-the local v0.6.2 candidate. It follows accepted v0.6.1 source and installer
-correction commit `38dd18cb65b4afd24ef2139dcc63a014de1c5ccf`, independently
-verified by the Planner. Historical acceptance does not qualify the new package.
+the local v0.6.3 candidate, based on accepted v0.6.2 closeout commit
+`6c14676ac07dd0244e43c13f23ae8a3c3df04789`. Historical acceptance does not
+qualify the new package.
 
-## Current v0.6.2 local candidate
+## Current v0.6.3 local candidate
+
+- Version: user-confirmed v0.6.3; schema 1 and six-file package shape retained
+- Changes: approved Charter/level reuse, first assessment versus manual
+  reassessment, bounded read reuse, and full Skill plus scoped reference reads
+- Candidate: [v0.6.3 descriptor](../../../release/v0.6.3-candidate.json),
+  immutable `PENDING_INDEPENDENT_REVIEW` snapshot; the
+  [source checkpoint](#accepted-v063-source-checkpoint) is independently accepted
+- Source qualification and limits: [Verification](VERIFICATION.md#current-v063-qualification)
+- Production installer, default models, schema and Charter asset unchanged;
+  only the installer's self-test version constant follows v0.6.3
+- Last accepted installed copy remains managed v0.6.2; this revision performs
+  no installation, global change, or publication
+- Historical candidates, accepted checkpoints, failures, findings and consumed
+  operations remain preserved; they do not qualify this new input
+- Runtime adherence and actual fresh-Thread read behavior: `UNKNOWN`
+
+### Accepted v0.6.3 source checkpoint
+
+Native v0.6.3 review R1 inspected the complete 26-path difference and material
+unchanged context with no findings. Planner independently accepted the same
+94-file source input after checking package identity, SOURCE and repository
+checks, current-index adversarial evidence and the approved Windows lifecycle
+terminal result. Baseline is `6c14676ac07dd0244e43c13f23ae8a3c3df04789`;
+accepted staged diff SHA-256 is
+`d6054780de368a2902774d4a8327b91f493892b269e0be255d8664efe5490bec`,
+serialized by `git diff --cached --binary`. The indexed-content manifest
+SHA-256 is `a9689eaf6e7504e00b92e9520eb37a87121b08ebcf7de1fc66b5c1727d2519ca`.
+Package and qualification identities are in
+[Verification](VERIFICATION.md#current-v063-qualification).
+
+This accepts SOURCE only. The immutable candidate retains its pre-review
+state, and prior failures and review history remain preserved. Subsequent
+acceptance-record synchronization leaves package, candidate and installer
+bytes unchanged and receives matching final-input checks and native review
+before the authorized local commit. Commit, installation and runtime claims
+require their own completed evidence.
+
+## Historical v0.6.2 local candidate
 
 - Version: user-confirmed v0.6.2; schema 1 and six-file package shape retained
 - Changes: Agent-derived guardrails explain concrete failure/consequence,
@@ -23,7 +61,7 @@ verified by the Planner. Historical acceptance does not qualify the new package.
   role, form, or approval gate is added
 - Candidate: [v0.6.2 descriptor](../../../release/v0.6.2-candidate.json),
   `PENDING_INDEPENDENT_REVIEW`; no committed-source receipt
-- Package identity and required qualification: [Verification](VERIFICATION.md#current-v062-qualification)
+- Package identity and required qualification: [Verification](VERIFICATION.md#historical-v062-qualification)
 - Source acceptance: R17 found no new blocking or material findings; Planner
   independently accepted the [frozen source checkpoint](#accepted-v062-source-checkpoint)
 - Production installer, default models, schema, and metadata are unchanged;
@@ -45,7 +83,7 @@ accepted both portable additions. Baseline commit is
 `47fd0803259cb27766a35f0e5c56e5c7425a6fae37de1ab7f679071b9b9dd717`, and
 indexed-content manifest SHA-256 is
 `adb9e1043ef2a542ac203de6701153bf8613424b73f418d56704b1cd8c88980e`.
-Package and qualification identities are in [Verification](VERIFICATION.md#current-v062-qualification).
+Package and qualification identities are in [Verification](VERIFICATION.md#historical-v062-qualification).
 This is independent technical review and frozen-source acceptance, not native
 review, installation, publication, or runtime efficacy. The candidate retains
 its immutable pre-review pending snapshot. Subsequent acceptance-record and
@@ -268,9 +306,9 @@ manifest proves current target hashes, local link and publication-safety
 constraints, and provenance classification. The v0.5.0 receipt-bound
 deterministic qualification proves only that exact historical instruction text
 and four-role default. The current checker separately reports the development
-source's static selection/activation, authority, coordination/recovery,
+source's static selection/assessment/adoption, authority, coordination/recovery,
 review/acceptance, level-role resolution, Standard O/P/E/R, and unchanged
-default-data clauses, and requires exact current-package binding to v0.6.2.
+default-data clauses, and requires exact current-package binding to v0.6.3.
 Neither result proves model adherence, host/global
 consumer integration, runtime delivery, technical correctness, or acceptance
 for the development source. R12 and Planner acceptance apply to the v0.6.0
@@ -282,7 +320,7 @@ do not create fresh model, efficacy, release, or installed-copy evidence.
 
 Evidence states remain separate:
 
-- Current v0.6.2 SOURCE identity: provenance-bound working bytes and a matching
+- Current v0.6.3 SOURCE identity: provenance-bound working bytes and a matching
   candidate descriptor. Input-bound deterministic results are recorded in
   [Verification](VERIFICATION.md). The earlier v0.6.1 R13 state-record finding was
   fixed and accepted after R14 before the prior source commit. The later
@@ -290,7 +328,7 @@ Evidence states remain separate:
   synchronization is not an outstanding R13 source review.
 - Historical v0.6.0 source and acceptance records: accepted at the checkpoints
   above. Its immutable descriptor retains the pre-review pending snapshot;
-  that snapshot does not reopen the accepted history or qualify v0.6.2.
+  that snapshot does not reopen the accepted history or qualify v0.6.3.
 - Immutable v0.5.0 SOURCE identity and deterministic contract: `VERIFIED` for
   accepted commit `8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`.
 - Immutable v0.5.0 independent review and Planner acceptance: `VERIFIED` by the
@@ -373,24 +411,17 @@ review rounds, and Planner acceptance are bound by the separate v0.5.0 receipt.
 
 ## Next gate
 
-The accepted v0.6.2 source is committed and its exact managed user installation
-is independently accepted. The remaining closeout work is minimal installation
-record synchronization, final-input checks, an ordinary records commit, and
-normal fast-forward publication to the intended repository's main branch.
-Publication requires the actual Git authentication actor, exact target, write
-capability, live ref/local ancestry, and outgoing-content checks. It has not
-been performed. A material change or an operation-local permission requirement
-still stops its dependent action. Package, installer and immutable candidate
-bytes remain unchanged; installation qualification is not rerun for these
-record-only changes.
-
-Historical v0.6.0 acceptance and pending descriptor snapshots remain separate
-from this current workflow. Host/global consumer migration, fresh role-delivery,
-loaded-copy behavior, natural adherence, tags, Releases, other cross-version
-transitions, cross-provider execution, and broader efficacy remain separate
-gates. The exact historical v0.3.0
-post-release evidence subject F remains accepted under
-`B2-WC-PUBLIC-EVIDENCE-F-01` without moving its tag or rewriting P.
+The v0.6.3 source implementation and permitted local checks return to the
+Planner for assessment. The approved complete Administrator lifecycle self-test
+passed, and the source checkpoint above is independently accepted after native
+review R1. Acceptance-record synchronization receives final-input verification
+and native review before the authorized local commit. The requested managed
+v0.6.3 update then uses that fixed clean checkout and remains conditional on
+its installation preflight.
+Global changes and publication remain outside this scope. Required unperformed
+gates remain visible in Verification; no old-index result qualifies new bytes.
+The earlier v0.6.2 closeout is the predecessor baseline, not a reopened task.
+No future action follows solely from local test success.
 
 ## Recovery entry
 

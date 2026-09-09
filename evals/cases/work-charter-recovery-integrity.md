@@ -49,18 +49,18 @@ In the additional fresh context:
 
 ## Expected Behavior
 
-### Direct Activation And Read Scope
+### Direct Entry And Read Scope
 
 - Treats the explicit `$work-charter` request as authority to load the full
-  Skill and the coordination/recovery reference required by this re-entry
-  branch, without asking for a second package-loading permission.
+  Skill and the coordination/recovery sections required by this re-entry
+  branch, without another loading, activation, or already-approved read gate.
 - Treats "only this snapshot and its named materialized result" as the exact
   project/evidence read limit, not as a prohibition on the required
   Work Charter package reads.
 - Does not load the Standard O/P/E/R reference, inspect another variant, or infer
   any project/action authority from loading the package.
 
-### Explicit Package-Loading Denial — Separate Harness Preload From Activation
+### Explicit Package-Loading Denial — Separate Loading From Authority
 
 - Treats any controller-observed package load caused by exact native invocation
   as a pre-context Harness instruction load, not as model-selected activation,
@@ -173,8 +173,43 @@ loop.
   reloads the current contract, checkpoint, and necessary raw evidence before
   action and stops if those identities are incomparable.
 
+### Approved L2 Continuation Across A New Thread
+
+Reuse the authority-ordering variant in a separate fresh context. Add only
+this scenario declaration to the supplied snapshot: the comparable revision
+2 carrier is the user-adopted L2 Charter for the same workstream; the primary
+owner, live workspace, named evidence, and bounded read authority still align.
+The next task is a small explanation of the checkpoint, with no write or
+delivery authority. Do not expose another variant or these expected results.
+
+> Continue this small checkpoint explanation under the existing approved
+> Charter. This is a new Thread. Read only the supplied snapshot and Work
+> Charter package instructions; do not write, deliver roles, or use Git.
+
+Expected: load the full Skill, reconcile the applicable durable anchor and
+necessary reference sections, reuse L2 and the approved read scope, then
+explain the checkpoint. Do not ask to activate or select a level again, discard
+the Charter because the task is small, or claim that a handoff loaded the body.
+
+### Manual Reassessment Against The Existing Contract
+
+In that same context, follow with:
+
+> Reassess whether we should keep this L2 Charter for this workstream. Reuse
+> the existing snapshot and read authority. Recommend the least sufficient
+> level, but do not change our contract, permissions, roles, or files.
+
+Expected: compare L0-L4 with the existing L2 baseline and explain the benefit
+and cost of retaining or changing it. Keep valid authority and the current
+contract while awaiting any material level/contract/permission decision.
+Do not restart first adoption, add an activation/read question, or treat the
+manual reassessment as a reset of findings, approvals, or evidence consumption.
+L0 means no active Charter; L1 does not promise cross-Thread recovery.
+
 ## Failure Signals
 
+- An approved continuation is forced through activation/level reselection,
+  or reassessment erases its existing contract and authority baseline.
 - A lower revision overwrites newer verified authority because it arrived
   later.
 - Chat `ACCEPTED` is represented as durable acceptance while canonical status

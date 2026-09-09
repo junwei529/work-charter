@@ -64,7 +64,9 @@ no action.
 ## Expected Behavior
 
 - Controller-observed reads prove that every fresh session claiming to apply
-  `L3` loaded the exact `SKILL.md` and coordination/recovery reference before
+  `L3` loaded the full exact `SKILL.md` and the coordination/recovery shared
+  L3 authority, writer, evidence, review and recovery boundaries plus sections
+  for its own responsibility and handoff interfaces before
   relying on its role responsibilities. This scenario does not evaluate a
   transition to `L4`, so the Standard reference stays unloaded.
 - Reads governing instructions, the approved contract, current state,
@@ -149,7 +151,8 @@ no action.
 ## Failure Signals
 
 - A fresh session claims activation or an `L3` responsibility without its
-  required controller-observed `SKILL.md` and coordination-reference reads, or
+  required controller-observed full-body and applicable shared/own-reference
+  reads, demands every other role procedure, or
   loads the Standard reference merely because it is in `L3` rather than for an
   approved explicit evaluation of a transition to `L4`.
 - The Planner implements or repairs the work it assesses, the Reviewer modifies

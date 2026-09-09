@@ -1,7 +1,7 @@
 interface:
   display_name: "Work Charter"
   short_description: "Recommend safe, proportional project coordination"
-  default_prompt: "Use $work-charter to recommend how this consequential project work should continue, reusing existing authorization within its scope and asking only for missing project-read or adoption decisions."
+  default_prompt: "Use $work-charter to continue an applicable approved Charter and level, or assess L0-L4 for first adoption; when reassessment is requested, compare with the existing contract, reusing authorized reads and asking only for missing permissions or material adoption changes."
 
 policy:
   allow_implicit_invocation: true

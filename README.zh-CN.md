@@ -119,7 +119,7 @@ control-aware exact restore/readback 替换该路径，并在
 `59b4d91f46c2ac797c71c900e62dda87cf0cca60` 获独立验收。之后的 ACL-only repair 恢复了
 exact managed v0.4.0 副本的 default-reader access，并仅对该修复关闭
 `WC-INSTALL-POSTFLIGHT-F01`。该修复检查点的 package 仍为 managed v0.4.0，v0.4.1 未安装。之后的
-[v0.6.2 安装接受记录](docs/skills/work-charter/STATE.md#accepted-v062-user-installation)说明当前已核验用户副本。
+[v0.6.3 安装接受记录](docs/skills/work-charter/STATE.md#accepted-v063-user-installation)说明当前已核验用户副本。
 v0.5.0 stable loaded-copy、role-delivery adherence、跨 provider 执行、cross-Harness、
 公开发布与广泛效能仍为 `UNKNOWN` 或需分别授权。
 

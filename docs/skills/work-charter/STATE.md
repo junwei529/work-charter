@@ -23,8 +23,9 @@ qualify the new package.
 - Source qualification and limits: [Verification](VERIFICATION.md#current-v063-qualification)
 - Production installer, default models, schema and Charter asset unchanged;
   only the installer's self-test version constant follows v0.6.3
-- Last accepted installed copy remains managed v0.6.2; this revision performs
-  no installation, global change, or publication
+- Last accepted installed copy: managed v0.6.3; see the
+  [accepted user installation](#accepted-v063-user-installation)
+- Global changes and tagged release: not performed for this revision
 - Historical candidates, accepted checkpoints, failures, findings and consumed
   operations remain preserved; they do not qualify this new input
 - Runtime adherence and actual fresh-Thread read behavior: `UNKNOWN`
@@ -43,12 +44,25 @@ SHA-256 is `a9689eaf6e7504e00b92e9520eb37a87121b08ebcf7de1fc66b5c1727d2519ca`.
 Package and qualification identities are in
 [Verification](VERIFICATION.md#current-v063-qualification).
 
-This accepts SOURCE only. The immutable candidate retains its pre-review
-state, and prior failures and review history remain preserved. Subsequent
-acceptance-record synchronization leaves package, candidate and installer
-bytes unchanged and receives matching final-input checks and native review
-before the authorized local commit. Commit, installation and runtime claims
-require their own completed evidence.
+This checkpoint accepts SOURCE only. The immutable candidate retains its
+pre-review state, and prior failures and review history remain preserved.
+Subsequent acceptance-record synchronization left package, candidate and
+installer bytes unchanged. Matching final-input checks and native review R2
+passed with full coverage, unchanged input and no findings before local commit
+`d5a35c3a8e6baae5a2bf76d29fe16ee1c951aada`. Planner independently verified
+that commit and all 94 committed files. Both native reviews used the approved
+OpenAI / gpt-6-astra / medium configuration; neither produced a finding.
+
+### Accepted v0.6.3 user installation
+
+The existing managed user copy was updated from v0.6.2 using the fixed clean
+checkout of the accepted source commit above. The separately approved single
+Administrator update completed successfully. Planner independently accepted
+the installed six-file package, receipt, default-reader access and preservation
+of all original managed-path and parent permissions. Detailed identities,
+verification and recovery limits are in
+[Verification](VERIFICATION.md#accepted-v063-installation-verification).
+This installation does not establish fresh-task behavior or model adherence.
 
 ## Historical v0.6.2 local candidate
 
@@ -411,17 +425,16 @@ review rounds, and Planner acceptance are bound by the separate v0.5.0 receipt.
 
 ## Next gate
 
-The v0.6.3 source implementation and permitted local checks return to the
-Planner for assessment. The approved complete Administrator lifecycle self-test
-passed, and the source checkpoint above is independently accepted after native
-review R1. Acceptance-record synchronization receives final-input verification
-and native review before the authorized local commit. The requested managed
-v0.6.3 update then uses that fixed clean checkout and remains conditional on
-its installation preflight.
-Global changes and publication remain outside this scope. Required unperformed
-gates remain visible in Verification; no old-index result qualifies new bytes.
-The earlier v0.6.2 closeout is the predecessor baseline, not a reopened task.
-No future action follows solely from local test success.
+The v0.6.3 source commit and managed local installation are independently
+accepted. The separately requested GitHub push includes these installation
+records in an ordinary records commit after matching final-input checks and
+native review. This does not amend the accepted source commit or reopen its
+completed review gate. Package, candidate, installer and default configuration
+bytes remain fixed; unchanged lifecycle qualification is not rerun.
+Normal fast-forward publication to the repository's main branch requires
+verified authentication actor, target, write capability and live ancestry.
+Git push is separate from a tag or GitHub Release. Global changes and new
+runtime experiments remain outside this closeout.
 
 ## Recovery entry
 

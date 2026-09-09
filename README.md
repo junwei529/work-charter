@@ -137,7 +137,7 @@ restore and readback and was independently accepted at
 default-reader access to the exact managed v0.4.0 copy and closed
 `WC-INSTALL-POSTFLIGHT-F01` for that repair. At that repair checkpoint the package remained
 managed v0.4.0; v0.4.1 was not installed. The later
-[accepted v0.6.2 installation](docs/skills/work-charter/STATE.md#accepted-v062-user-installation)
+[accepted v0.6.3 installation](docs/skills/work-charter/STATE.md#accepted-v063-user-installation)
 records the current verified user copy. Stable v0.5.0 loaded-copy behavior,
 role-delivery adherence, cross-provider execution, cross-Harness behavior,
 public release, and broad efficacy remain `UNKNOWN` or separately authorized.

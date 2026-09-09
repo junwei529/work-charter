@@ -14,7 +14,7 @@ The current [`v0.6.3` candidate](../../../release/v0.6.3-candidate.json)
 reuses applicable approved Charters, distinguishes first assessment and manual
 reassessment, and scopes reference reads after full Skill loading. Adoption
 and material changes remain user-owned; see
-[State](STATE.md#current-v063-local-candidate) for the pending source boundary.
+[State](STATE.md#current-v063-local-candidate) for accepted source and local-installation scope.
 
 The package originated at source commit
 `80910a8b2375a11be897e9660c4b00a06d00dd13`. Immutable `v0.5.0` source evidence

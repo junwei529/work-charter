@@ -4,8 +4,10 @@
 
 Local candidate: [release/v0.6.3-candidate.json](release/v0.6.3-candidate.json)
 
-Independent source review and Planner acceptance are pending. This candidate
-does not qualify installation, global use, publication, or model behavior.
+Source review, Planner acceptance and the managed local update are complete;
+see [State](docs/skills/work-charter/STATE.md#current-v063-local-candidate).
+The candidate retains its immutable pre-review snapshot. Global use,
+publication and model behavior remain outside that acceptance.
 
 - Reuses an applicable approved Charter and level across small tasks and new
   Threads without another activation or level-selection question.

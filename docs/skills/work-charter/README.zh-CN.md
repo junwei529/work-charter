@@ -11,7 +11,7 @@ proportional coordination 约束有后果的 Codex 工作。
 
 当前 [`v0.6.3` 候选](../../../release/v0.6.3-candidate.json)复用适用且已批准的 Charter，
 区分首次评估与基于既有合同的手动复评，并在完整加载 Skill 后按职责读取参考章节。
-采纳与实质变更仍由用户决定；参见[状态](STATE.md#current-v063-local-candidate)中的待验收源码边界。
+采纳与实质变更仍由用户决定；参见[状态](STATE.md#current-v063-local-candidate)中的源码及本地安装接受范围。
 
 package 起源于源提交 `80910a8b2375a11be897e9660c4b00a06d00dd13`。不可变 `v0.5.0`
 source 证据绑定已接受 commit `8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`、十轮已完成

@@ -28,13 +28,16 @@ loading. No model case or actual Harness read-path evaluation is claimed.
   current-source index. The checker consumes the index; the final review
   checkpoint must carry its matching input and terminal result after any
   record synchronization. A predecessor-index pass does not qualify new bytes.
-- Native v0.6.3 review R1: terminal exit code 0, no findings, all 26 paths
-  and material unchanged context inspected, with unchanged input identity;
+- Native v0.6.3 reviews R1 and R2: each terminal exit code 0, no findings,
+  all 26 paths and material unchanged context inspected, with unchanged input;
   actual provider/model/effort: OpenAI / gpt-6-astra / medium
 - Planner source acceptance: `VERIFIED` for the
   [accepted source checkpoint](STATE.md#accepted-v063-source-checkpoint)
-- Commit, actual installation, global changes and publication:
-  `NOT_PERFORMED` at this source-acceptance checkpoint
+- Source commit: independently verified; see the
+  [accepted source checkpoint](STATE.md#accepted-v063-source-checkpoint)
+- Actual installation: independently accepted; see
+  [installation verification](#accepted-v063-installation-verification)
+- Global changes and tagged release: `NOT_PERFORMED` for v0.6.3
 - Runtime adherence, fresh-Thread actual full-body/reference reads,
   cross-Harness behavior and broad efficacy: `UNKNOWN`
 
@@ -52,11 +55,45 @@ owner, fixtures, cold-resume and ordinary-small-task cases were checked for
 impact. Historical candidates/receipts retain their bytes and original scope.
 
 R1 and Planner acceptance bind the frozen source checkpoint above. The
-following acceptance-record synchronization does not change the six-file
-package, candidate descriptor or installer; their prior input-bound checks
-remain applicable. SOURCE/repository checks, the complete-index adversarial
-matrix and native review apply to the final synchronized input before commit.
-The candidate is a pre-review snapshot, not a committed-source receipt.
+subsequent source-acceptance records passed matching SOURCE/repository and
+complete-index adversarial checks, followed by native R2 before commit. The
+candidate remains a pre-review snapshot, not a committed-source receipt.
+
+### Accepted v0.6.3 installation verification
+
+The separately approved single Administrator update from managed v0.6.2 to
+v0.6.3 used the accepted source commit recorded in
+[State](STATE.md#accepted-v063-source-checkpoint) and returned terminal exit 0.
+The prior disposable self-test permission was not reused as installation
+authority. Both Administrator and default-reader postflight passed; Planner
+also independently read the installed files, receipt and permissions.
+
+- Installed package: `MANAGED`, v0.6.3; six files exactly match the fixed
+  source commit, with UTF-8/no-BOM/LF and no reparse points verified
+- Package tree: the current six-file tree recorded above
+- Installer/receipt package digest:
+  `8348262f0786c828f123cc3e6f944418ef15cb96a73e1c31d4dba1520d7c7335`;
+  this serialization differs from the SOURCE file-list digest above
+- Receipt SHA-256:
+  `6bebfa8e78be104507b4091284337398c542c6efcf5c85ee28c0e1043713d1f8`
+- All 11 managed file/directory permissions and the destination-parent policy
+  preserved; before/after DACL snapshots have identical SHA-256
+  `a0fde6f63a2ee49d16b160a50abbf37c662fb9072daa2fe3eceae74b8566cc3c`,
+  with exact semantic readback verified
+- Original Charter/default-model asset bytes unchanged; user model
+  configuration was not accessed or modified
+- No installer transaction residue; original ACL and operation evidence remain
+  retained privately for recovery/audit, outside Skill discovery
+
+The fixed source checkout was clean throughout installation and its verification.
+The installation-status records were initially accepted as an uncommitted
+record-only difference. The separately requested GitHub closeout now subjects
+their ordinary records commit to matching repository/mapping, final-index and
+diff-format checks plus a separate native review. They do not alter the
+accepted source commit, package, candidate, installer, historical receipts or
+source-review packet. Unchanged lifecycle and model qualification are not rerun.
+Prior failures and consumed operations remain retained. Fresh-task read behavior,
+model adherence and cross-Harness efficacy remain `UNKNOWN`.
 
 ## Historical v0.6.2 qualification
 

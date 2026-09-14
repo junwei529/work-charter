@@ -1,5 +1,38 @@
 # Changelog
 
+## Work Charter v0.6.5
+
+Local candidate: [release/v0.6.5-candidate.json](release/v0.6.5-candidate.json).
+Current qualification and configuration status are recorded in
+[State](docs/skills/work-charter/STATE.md#current-v065-local-candidate).
+
+- Uses Astra xhigh for L4 Orchestrator and Astra high for L3/L4 Planner.
+- Adds explicit Astra medium for a separately triggered L0 Reviewer; other
+  level-role values and all general compatibility fallbacks are unchanged.
+- Synchronizes configuration guidance, bilingual model tables and case data.
+- Retains schema 1, the six-file package, selection behavior and production
+  installation logic. User configuration remains separately owned and is never
+  created or changed by the installer. No new performance evaluation is claimed.
+
+## Work Charter v0.6.4
+
+Local candidate: [release/v0.6.4-candidate.json](release/v0.6.4-candidate.json).
+Current qualification and installation are recorded in
+[State](docs/skills/work-charter/STATE.md#current-v064-local-candidate).
+
+- Shortens the description and shared entry; loads detailed procedures only
+  for the current responsibility, level and action.
+- Keeps routine L0 entry checks free of governance reads, carriers and roles.
+- Proactively reassesses material scope, permission, acceptance and recovery
+  changes while preserving user-owned level adoption and existing authority.
+- Reuses question/answer authority with its exact scope, keeping action-local
+  permission and execution evidence distinct.
+- Replaces fixed repository pre-read and repeated-check rituals with relevant
+  owner reads and checks proportionate to the changed mechanism.
+- Preserves six-file shape, model data, metadata, Charter asset and production
+  installer behavior; the self-test version follows the new package.
+
+
 ## Work Charter v0.6.3
 
 Local candidate: [release/v0.6.3-candidate.json](release/v0.6.3-candidate.json)

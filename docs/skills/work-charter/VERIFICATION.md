@@ -1,6 +1,121 @@
 # Work Charter Verification
 
-## Current v0.6.3 qualification
+## v0.6.5 publication verification
+
+The publication target is the complete reviewed source diff plus current
+documentation and provenance consumers, with package tree `d0df02a81471c2b9e157c9f6faebc65948cb4b54`.
+Run the affected source check before the final repository check and independent
+review; bind their results to this input. The public commit, annotated tag and
+Release require readback after the authorized transaction. This checkpoint
+claims no new installer lifecycle, model, fresh-task loading or efficacy result.
+
+## Current v0.6.5 qualification
+
+The current six-file source binds [v0.6.5](../../../release/v0.6.5-candidate.json).
+Changes affect default data and its documentation, case and version bindings.
+Configuration precedence, schema, role authorization and production installation
+logic are unchanged. The installer self-test version follows the candidate.
+
+- Package tree: `d0df02a81471c2b9e157c9f6faebc65948cb4b54`
+- SOURCE file-list SHA-256: `486ba40fd32a626232a22d606c640a097d270769a30844c1c7c50a59ce9427bb`
+- Actual SOURCE: all 41 checks pass, including 24 static clauses, current
+  candidate binding and the immutable v0.6.4 descriptor. Static clauses remain
+  lint rather than runtime proof. Repository inventory is 95 mapped files;
+  run the repository check after this record synchronization before delivery.
+- Focused configuration: all 13 approved level-role objects and the four
+  unchanged general fallback objects pass; the complete user-file candidate
+  equals the default. Negative checks reject the predecessor package pair and
+  a changed historical v0.6.4 descriptor.
+- Actual application: terminal exit 0; all 96 source paths (95 mapped files
+  plus the manifest) match the reviewed candidate or unchanged baseline.
+  Elevated user-file readback matches the default SHA-256
+  `548c0ce3ad4cdf2378b190caadc19d30bf75ab86ebe96be8a4d433ed87596348`.
+- Independent v065-R1 reviewed all 18 changed paths, user YAML and the bounded
+  apply helper, with no findings. The primary owner verified delivery; there
+  was no independent Planner acceptance or native-review invocation.
+- Ordinary user-file readback initially failed with PermissionError because
+  the new directory and file inherited administrator-only access. Independent
+  v065-R2 found no technical issue in the bounded two-path read-only repair.
+  Automatic approval first rejected execution before process creation because
+  the extra persistent ACL effect lacked explicit approval. After the user's
+  direct approval, the same reviewed plan completed with terminal exit 0.
+- Actual ACL postflight: exact owner, original ACEs, inheritance controls and
+  parent permissions preserved; only directory ReadAndExecute and file Read
+  were added for the Codex reader group, both non-inheriting. No write rights
+  were added and the complete file contents retained their SHA-256 above.
+- Ordinary Codex-reader postflight: terminal exit 0, full configuration read,
+  all 13 approved level-role values and four unchanged general fallbacks,
+  complete user/default byte equality, all 96 source paths and the unchanged
+  installed v0.6.3 inventory/hashes verified. This proves scoped readability
+  and data identity, not model dispatch or host reload.
+- Current installation: managed v0.6.5 after explicit user approval. Independent
+  v065-Install-R1 compared all 11 live/staged nodes, package files, receipt,
+  owners and full security descriptors with no findings. The actual update and
+  ordinary-reader verification each returned exit 0; all six installed files
+  match the reviewed source, and the complete v0.6.3 rollback copy is retained.
+- Native status reports MANAGED v0.6.5 with package tree above and installer
+  mapping digest `ddc96384a8eb3ad32b76f97623ce095a362e8add31665b281c94efeb6912852d`.
+  Original permissions were preserved. An ordinary read verifies that the
+  personal file, installed default and source default have identical bytes;
+  the personal file and its directory retain their prior owner/DACL.
+- The user file remains a separately owned snapshot. This local installation
+  does not establish fresh-task selection, host reload or model behavior.
+- The initial candidate precheck rejected a stale v0.6.4 version literal; the
+  corrected v0.6.5 binding passed. Failed checks and the ACL rejection remain
+  retained evidence and are not replaced by the later scoped successes.
+- Actual role delivery, host reload and comparative model performance: `UNKNOWN`
+- Full installer lifecycle, staged-index adversarial and model evaluations are
+  not rerun for this data-only change; prior results remain historical
+
+<a id="current-v064-qualification"></a>
+
+## Historical v0.6.4 qualification
+
+The current six-file source binds [v0.6.4](../../../release/v0.6.4-candidate.json).
+The changed mechanism is instruction selection, progressive loading, material
+reassessment and repository guidance. Production lifecycle, schema, default
+models and permission algorithms are unchanged. The installer self-test
+version follows the package; historical full lifecycle and staged-index runs
+remain historical, not new v0.6.4 passes.
+
+- Package tree: `a4974a1fa9b6f4f01437c4db17110db47bbf32b1`
+- SOURCE file-list SHA-256: `c3f80dbb3cf3138331039aa6931cf599b0463aeb824195a16f821849513c3135`
+- SOURCE check: `PASS`, including 24/24 static clauses and current candidate
+  identity; static assertions are limited lint, not model behavior proof
+- SOURCE: all 40 checks pass; repository: 94 mapped files pass; metadata:
+  valid. Actual source application returned exit 0 and matched the reviewed bytes.
+- Independent review: R1 identified the missing low-level Reviewer-continuity
+  route and stale bilingual navigation; R2 inspected their corrections and
+  closed both findings. No unresolved findings remain. This was direct cold
+  subagent review, not a native-review run or separate Planner acceptance.
+- Focused binding checks reject predecessor package substitution and altered
+  historical descriptors. They exercise the unchanged identity algorithm;
+  the corrected final candidate also passed its SOURCE binding check.
+- Bounded forward behavior: an independent candidate-use response recognized
+  L1 cross-session recovery drift, recommended L2 with cost, retained user
+  adoption and no-project-read/write limits, and created no roles. The shared
+  entry and assessment path were unchanged by review corrections. This is not
+  native implicit-selection or installed-copy evidence.
+- Installation preparation: R3 directly compared all 11 stage/live nodes,
+  package/receipt hashes, Owner and full SDDL, with no new findings. The actual
+  update and its default-reader postflight remain pending explicit installation
+  approval; prepared bytes do not establish installation.
+- Local global-rule application completed separately with matching five-file
+  readback; this does not qualify a new installed package or host reload.
+- Runtime native selection, fresh-task read paths and broad efficacy: `UNKNOWN`
+
+Read the relevant owner before its governed action and reuse unchanged reads.
+Run SOURCE and repository checks against the final candidate when their inputs
+change. Select additional checks for changed behavior or a material unresolved
+risk. Installer/permission changes require affected lifecycle coverage;
+provenance algorithm changes require affected adversarial coverage. Text-only
+changes do not themselves require complete historical matrices. Repeat checks
+only for changed inputs, failures, explicit applicable gates or material risks.
+Actual installation checks and previously frozen contracts remain binding.
+
+<a id="current-v063-qualification"></a>
+
+## Historical v0.6.3 qualification
 
 The current six-file source binds [v0.6.3](../../../release/v0.6.3-candidate.json).
 Entry and reference-reading changes are SOURCE instructions. Existing cases

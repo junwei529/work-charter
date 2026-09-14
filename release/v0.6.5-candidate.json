@@ -1,0 +1,45 @@
+{
+  "candidate_state": "PENDING_INDEPENDENT_REVIEW",
+  "evidence_states": {
+    "broad_product_efficacy": "UNKNOWN",
+    "cross_provider_runtime": "UNKNOWN",
+    "cross_version_lifecycle": "NOT_RERUN_UNCHANGED_MECHANISM",
+    "independent_review": "PENDING",
+    "local_release_ready": "PENDING_REVIEW_AND_PLANNER_ACCEPTANCE",
+    "planner_acceptance": "PENDING",
+    "public_release": "UNKNOWN",
+    "role_delivery_runtime": "UNKNOWN",
+    "source_contract": "REQUIRES_FRESH_DETERMINISTIC_CHECK",
+    "stable_installed_copy": "UNKNOWN"
+  },
+  "human_release_notes_review": "PENDING",
+  "lineage": {
+    "historical_package_tree": "a4974a1fa9b6f4f01437c4db17110db47bbf32b1",
+    "previous_candidate": "release/v0.6.4-candidate.json",
+    "source_commit": "ca1589140822a10d8e122bd36a860e5a2c673943"
+  },
+  "package": {
+    "file_count": 6,
+    "files": [
+      "SKILL.md",
+      "agents/openai.yaml",
+      "assets/role-models.default.yaml",
+      "assets/work-charter.md",
+      "references/coordination-and-recovery.md",
+      "references/standard-ope.md"
+    ],
+    "path": "skills/work-charter",
+    "sha256": "486ba40fd32a626232a22d606c640a097d270769a30844c1c7c50a59ce9427bb",
+    "tree": "d0df02a81471c2b9e157c9f6faebc65948cb4b54"
+  },
+  "product": "work-charter",
+  "public_identity": "junwei529/work-charter",
+  "release_notes": "CHANGELOG.md",
+  "schema": "work-charter-local-release-candidate/v1",
+  "verification": [
+    "python -B scripts/check_repository.py --json",
+    "python -B scripts/check_source_contract.py --json",
+    "Focused level-role defaults, unchanged compatibility fallbacks and copied user-file identity; see docs/skills/work-charter/VERIFICATION.md"
+  ],
+  "version": "0.6.5"
+}

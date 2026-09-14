@@ -25,35 +25,35 @@ additions do not create roles, forms, or approval gates. Defaults, schema, and
 production installation behavior remain unchanged; the self-test version
 binding follows the new package.
 
-The current [v0.6.3 candidate](../../../release/v0.6.3-candidate.json)
-separates loaded instructions from an adopted Charter. The
-[entrypoint](../../../skills/work-charter/SKILL.md#enter-with-progressive-authorization)
-owns three branches: applicable approved continuation, first L0-L4 assessment,
-and manual reassessment against the existing contract. Valid continuation
-reuses its Charter and level across small tasks and new Threads. First adoption
-and material level, permission, or contract changes remain user decisions;
-bounded assessment reuses existing read authority without an activation gate.
-Explicit no-read instructions and failed-route limits remain binding.
+The current [v0.6.5 candidate](../../../release/v0.6.5-candidate.json) adjusts
+level-role reasoning defaults by user decision: explicit L0 Reviewer medium,
+L3/L4 Planner high, and L4 Orchestrator xhigh. Other level objects and all general
+compatibility fallbacks retain their values. This is configuration tuning, not
+a new model evaluation. It retains the prior
+[v0.6.4 candidate](../../../release/v0.6.4-candidate.json), which uses a [lightweight entry](../../../skills/work-charter/SKILL.md#lightweight-entry-and-material-changes)
+from supplied context. Without an applicable Charter, requested assessment or
+material need, ordinary work stays L0 without a governance read, carrier or
+role. An applying role reads the complete shorter shared body and only the
+existing reference sections required by its actual decision and responsibility.
+The shared body retains authority, writer, evidence, review and recovery
+boundaries; detailed adoption, role delivery and configuration remain in the
+coordination reference. New delivery resolution still reads its complete
+configuration section. L4 alone loads Standard by default.
 
-Every applying fresh role loads the full Skill and its shared authority,
-safety, evidence and recovery boundaries. Coordination and Standard references
-are read by applicable level, responsibility and next action, retaining shared
-role boundaries and required handoff interfaces. A dispatcher resolving a new
-delivery reads the complete configuration section. This reduces unrelated
-procedure loading without omitting permission, single-writer or independent
-review constraints. The package does not force Harness preloading or prove a
-runtime read path. L0 has no active Charter; L1 has a current-task carrier;
-L2-L4 require a discoverable durable anchor. The existing four re-entry routes
-and their precedence are retained.
+Approved continuation reuses the Charter and level across task boundaries.
+First assessment recommends L0-L4 for user adoption; manual reassessment starts
+from the existing contract. Material scope, permission, acceptance, writer or
+recovery changes trigger reassessment before the affected action. Recommendation
+does not adopt a level; independent already-authorized work can continue.
+Duration, file count and isolated failures do not themselves raise the level.
+L0 has no active Charter, L1 uses a current-task carrier, and L2-L4 need a
+discoverable durable anchor. Existing re-entry precedence remains intact.
 
-The repository owns one Skill product. Cross-Skill composition is optional and
-cannot grant authority or create a hard dependency.
-
-Prompts combine the shared contract, actual responsibility, current task, and
-necessary model adaptation. The package reference owns detailed construction;
-model guidance is read on demand and effort stays native metadata. No model
-name changes authority, and continuation preserves real review and acceptance
-gates without redundant confirmation or repeated unaffected verification.
+The public package remains self-contained. A host may add a small entry check
+without loading the package for routine L0 work; this source cannot prove
+host integration, every-task loading or runtime adherence. Verification follows
+the changed mechanism, while actual installation retains identity and permission
+checks. Historical candidate, acceptance and failure evidence is preserved.
 
 ## Package contract
 
@@ -65,7 +65,7 @@ differs from its current recorded mapping.
 
 `assets/role-models.default.yaml` is the sole default-data owner and retains its
 exact four general O/P/E/R objects and values as compatibility fallbacks,
-plus 12 approved Astra level objects specified in that YAML. Schema v1 now permits an
+plus 13 approved Astra level objects specified in that YAML. Schema v1 now permits an
 explicit or user file to add a general `primary` and bounded
 `level_overrides`. An authorized task-start or dispatch boundary resolves a
 frozen complete combination, a task-explicit confirmed complete combination,
@@ -125,7 +125,7 @@ A later ACL-only repair restored default-reader access to the exact managed
 v0.4.0 copy and closed that exact access finding without installing v0.4.1.
 The v0.5.0 source receipt creates no installation, publication,
 runtime-delivery, or stable-behavior claim. The later level-role extension was
-the local v0.6.0 candidate. Neither it nor the later v0.6.1, v0.6.2 and current v0.6.3
+the local v0.6.0 candidate. Neither it nor the later v0.6.1, v0.6.2, v0.6.3, v0.6.4 and current v0.6.5
 revisions rewrite or inherit v0.5.0 acceptance.
 Historical release metadata and evidence remain immutable for their versions.
 

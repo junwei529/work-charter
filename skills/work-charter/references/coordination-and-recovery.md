@@ -37,6 +37,22 @@ workspace, mutates Git, or performs an external effect.
 
 ## First Adoption And Durability
 
+At task entry, the lightweight check uses supplied context; ordinary stable
+work needs no project read, carrier or role. Enter these detailed sections for
+an assessment request, an applicable adopted contract, or a material change.
+Before the next affected action, reassess new scope, authority, external effect,
+acceptance, writer/role, durable-recovery or cross-phase needs. Recommend the
+least sufficient level and its benefit/cost; adoption and level changes remain
+user-owned. Routine steps, one failure or elapsed time do not force reassessment.
+
+An adopted contract makes outcome/non-goals, scope and hard boundaries,
+authorization and material effects, acceptance/verification, and stop/recovery
+conditions discoverable. These are logical responsibilities, not required
+headings or a new file suite. Prefer an existing canonical carrier; use the
+[Charter asset](../assets/work-charter.md) only when no suitable carrier exists
+and its creation is authorized. Optional planning or goal features do not
+replace a Charter, action authority, verification or acceptance.
+
 Use the shortest route:
 
 - existing project: declared rules, existing canonical owner, current
@@ -283,6 +299,13 @@ attributable evidence. Editing a prompt does not authorize model evaluation.
 
 ## Role-Model Configuration At Dispatch
 
+Configuration changes affect only later, newly resolved tasks or deliveries.
+Preserve existing tasks and frozen combinations. `L0` remains no active Charter
+even when a host uses this configuration interface. The package does not prove
+that any host or global task-start consumer has integrated it. Installation
+lifecycle operations do not own or mutate the external user configuration.
+`agents/openai.yaml` is UI metadata, not a role-model selector.
+
 Apply this section only when the governing contract has authorized a new task
 or delivery and identified its protection level and actual responsibility.
 Configuration selects execution metadata for that start or delivery; it grants
@@ -316,8 +339,8 @@ rollback, and uninstall must not create, modify, move, or delete the user file.
 
 The package default retains its four general objects and existing values as
 compatibility fallbacks, and adds the approved L0-L4 level overrides. It has no
-general `primary` or `l0.reviewer` override; the latter uses the general
-Reviewer fallback unless explicitly configured. Missing user entries may use
+general `primary`; its explicit `l0.reviewer` override is Astra medium for
+a separately authorized temporary Reviewer. Missing user entries may use
 package level defaults, including for primary owners. Accept configuration
 only in this bounded data shape:
 
@@ -420,11 +443,8 @@ the reviewed target.
 Keep at most one Planner, one Executor, one Reviewer for the active package,
 one active execution lane, and one repository writer. Reuse reliable role
 sessions; do not create roles for implementation slices, documentation sync,
-verification reruns, or ordinary repairs. Prefer the same reliable Reviewer
-for re-review after repair. Replace it only when its context is unreliable,
-the input, permission, or workspace changes materially, independence is
-breached, or an explicit blind review is required. Replacement retains the
-cumulative findings, authority, and evidence-consumption history.
+verification reruns, or ordinary repairs. Apply the shared review-input and
+Reviewer-continuity rules below.
 
 For a warm handoff, include only receiving role and writer/authority boundary,
 changed facts and evidence pointers, bounded action, active stop condition,
@@ -448,6 +468,14 @@ The normal review path is:
    checkpoint, and the same Reviewer re-reviews the affected and cumulative
    material surface; and
 6. only after review convergence does the Planner decide target acceptance.
+
+## Review Input At Any Level
+
+Prefer the same reliable Reviewer
+for re-review after repair. Replace it only when its context is unreliable,
+the input, permission, or workspace changes materially, independence is
+breached, or an explicit blind review is required. Replacement retains the
+cumulative findings, authority, and evidence-consumption history.
 
 Give the Reviewer the actual change and baseline, necessary surrounding
 source, tests, documentation consumers, material untracked inputs, and explicit
@@ -533,7 +561,11 @@ rerun consequential, scarce, one-shot, or unauthorized evidence merely to
 replace a missing terminal result.
 
 Assign each material user question one semantic owner at a stable decision
-locator and revision. A non-owner may forward that exact question or relay the
+locator and revision. Keep the complete visible question and original user
+answer linked to their locators, authorized scope and material actor/target
+identity. Track semantic approval, operation-local permission and execution
+status separately. Preserve this linkage across recovery without copying full
+conversations or creating a second approval ledger. A non-owner may forward that exact question or relay the
 user's exact answer and authority anchor once to the owner. It must not ask a
 parallel version, reinterpret the answer, claim a second approval, or create a
 fresh decision merely because the carrier task changed. Transfer ownership

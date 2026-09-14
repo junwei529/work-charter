@@ -1,5 +1,20 @@
 # Work Charter State
 
+## v0.6.5 publication
+
+The user authorized final checks and independent review, commit and normal
+fast-forward push, then a new annotated `v0.6.5` tag and public GitHub Release.
+This publication includes the accepted source and local installation records;
+it does not repeat or extend their runtime or installed-copy qualifications.
+The package tree is `d0df02a81471c2b9e157c9f6faebc65948cb4b54`.
+
+This is the pre-publication source checkpoint: remote effects are pending.
+After publication, record the observed commit, peeled tag and Release identity
+here without moving the tag. Preserve all previous candidates, failed evidence,
+tags and Releases. The next gate is final-input review and the authorized
+publication transaction; new installs, global configuration and model experiments
+are outside this publication scope.
+
 ## Current implementation
 
 Canonical editable source is the 6-file package under
@@ -8,11 +23,69 @@ Canonical editable source is the 6-file package under
 documentation, and checker files carry their recorded transformations and are bound to their
 current hashes in the provenance manifest. Unchanged mapped material retains
 its exact or normalized migration provenance. The working package is now
-the local v0.6.3 candidate, based on accepted v0.6.2 closeout commit
-`6c14676ac07dd0244e43c13f23ae8a3c3df04789`. Historical acceptance does not
+the local v0.6.5 candidate, following the frozen v0.6.4 source on
+accepted v0.6.3 closeout commit
+`ca1589140822a10d8e122bd36a860e5a2c673943`. Historical acceptance does not
 qualify the new package.
 
-## Current v0.6.3 local candidate
+## Current v0.6.5 local candidate
+
+- Scope: approved level-role defaults and their bounded data/documentation consumers
+- Candidate: [v0.6.5 descriptor](../../../release/v0.6.5-candidate.json), a
+  pre-review snapshot; all prior candidates and failure evidence are preserved
+- Defaults: L0 primary/R and L1/L2 primary/R Astra medium; L3 Planner high;
+  L4 Orchestrator xhigh and Planner high; L3/L4 Executor/Reviewer remain medium
+- General compatibility fallbacks, schema, shared entry, role authorization and
+  production installer behavior are unchanged
+- Source: applied and verified; independent v065-R1 inspected all 18 changed
+  paths and the bounded apply helper with no findings. The primary owner
+  verified delivery; this is not independent Planner acceptance.
+- Approved user configuration: created as a complete copy of the new default;
+  both elevated and ordinary Codex readback confirmed identical bytes and all
+  13 level-role objects. The user file remains an independently owned snapshot.
+- Independent v065-R2 found no technical issue in the bounded two-path read-only
+  ACL correction. Its first execution was rejected before process creation;
+  after the user's explicit approval, the correction completed with exit 0.
+  Ordinary-reader verification passed. Parent permissions, original ACEs,
+  owners, inheritance controls and file contents were preserved; no write
+  permission was added. The prior denial remains retained evidence.
+- Qualification: [current verification](VERIFICATION.md#current-v065-qualification)
+- Current installed package: managed v0.6.5. After explicit installation
+  approval, a fresh v0.6.5 stage passed independent installation-input review
+  and the actual update plus ordinary-reader postflight completed with exit 0.
+  The full v0.6.3 rollback copy and unused v0.6.4 stage remain retained outside
+  discovery roots. The personal configuration and its permissions are unchanged.
+- Installation authority did not include publication; the separate current
+  publication authorization is recorded above
+- Model delivery, host reload and comparative performance remain `UNKNOWN`
+
+<a id="current-v064-local-candidate"></a>
+
+## Historical v0.6.4 local candidate
+
+- Scope: shorter shared entry, relevant reference loading, lightweight L0
+  checks and proactive material reassessment with user-owned level decisions
+- Candidate: [v0.6.4 descriptor](../../../release/v0.6.4-candidate.json), a
+  pre-review snapshot; schema 1 and the six-file package shape are retained
+- Changes preserve shared authority, independent review, writer and recovery
+  boundaries; default models, metadata, Charter asset and production installer
+  logic are unchanged
+- Repository guidance reads the relevant owner and verifies the changed
+  mechanism, retaining identity, provenance and explicit frozen gates
+- Qualification: [current verification](VERIFICATION.md#current-v064-qualification)
+- Source: applied and verified; independent R1 findings AR-01 and AR-02 were
+  corrected and closed by the same Reviewer in R2, with no remaining findings.
+  The primary owner verified delivery; this is not independent Planner acceptance.
+- Installation: stage prepared and independently checked in R3; actual update
+  awaits the explicit installation decision. Last installed copy remains v0.6.3.
+- Local global-entry and decision-routing updates were applied under their own
+  owner; this does not prove fresh-task loading of this new package.
+- Commit, push and release are outside this revision's authority
+- Actual host loading, model adherence and broad efficacy remain `UNKNOWN`
+
+<a id="current-v063-local-candidate"></a>
+
+## Historical v0.6.3 local candidate
 
 - Version: user-confirmed v0.6.3; schema 1 and six-file package shape retained
 - Changes: approved Charter/level reuse, first assessment versus manual
@@ -425,16 +498,10 @@ review rounds, and Planner acceptance are bound by the separate v0.5.0 receipt.
 
 ## Next gate
 
-The v0.6.3 source commit and managed local installation are independently
-accepted. The separately requested GitHub push includes these installation
-records in an ordinary records commit after matching final-input checks and
-native review. This does not amend the accepted source commit or reopen its
-completed review gate. Package, candidate, installer and default configuration
-bytes remain fixed; unchanged lifecycle qualification is not rerun.
-Normal fast-forward publication to the repository's main branch requires
-verified authentication actor, target, write capability and live ancestry.
-Git push is separate from a tag or GitHub Release. Global changes and new
-runtime experiments remain outside this closeout.
+Complete the approved [v0.6.5 publication](#v065-publication)
+using the final reviewed input, then record the observed public identities.
+Retain prior installation and approval-failure evidence and all recovery copies.
+Fresh-task loading, runtime behavior and performance remain separately scoped.
 
 ## Recovery entry
 

@@ -27,6 +27,11 @@ level_overrides:
       model: gpt-6-astra
       parameters:
         reasoning_effort: medium
+    reviewer:
+      provider: openai
+      model: gpt-6-astra
+      parameters:
+        reasoning_effort: medium
   l1:
     primary:
       provider: openai
@@ -54,7 +59,7 @@ level_overrides:
       provider: openai
       model: gpt-6-astra
       parameters:
-        reasoning_effort: max
+        reasoning_effort: high
     executor:
       provider: openai
       model: gpt-6-astra
@@ -70,12 +75,12 @@ level_overrides:
       provider: openai
       model: gpt-6-astra
       parameters:
-        reasoning_effort: max
+        reasoning_effort: xhigh
     planner:
       provider: openai
       model: gpt-6-astra
       parameters:
-        reasoning_effort: max
+        reasoning_effort: high
     executor:
       provider: openai
       model: gpt-6-astra

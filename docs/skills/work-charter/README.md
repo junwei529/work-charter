@@ -10,11 +10,13 @@ The canonical package is [`skills/work-charter/`](../../../skills/work-charter/)
 standalone lifecycle, and [Verification](VERIFICATION.md) for evidence and
 limits.
 
-The current [`v0.6.3` candidate](../../../release/v0.6.3-candidate.json)
-reuses applicable approved Charters, distinguishes first assessment and manual
-reassessment, and scopes reference reads after full Skill loading. Adoption
-and material changes remain user-owned; see
-[State](STATE.md#current-v063-local-candidate) for accepted source and local-installation scope.
+The current [`v0.6.5` candidate](../../../release/v0.6.5-candidate.json)
+adjusts approved level-role reasoning defaults. It retains lightweight entry from
+[v0.6.4](../../../release/v0.6.4-candidate.json), loads the shorter shared body and
+relevant details when needed, and reassesses material changes without adopting
+a level for the user. It preserves approved Charter reuse and shared review,
+authority and recovery boundaries; see
+[State](STATE.md#current-v065-local-candidate) for current source and installation status.
 
 The package originated at source commit
 `80910a8b2375a11be897e9660c4b00a06d00dd13`. Immutable `v0.5.0` source evidence
@@ -31,7 +33,7 @@ accepted the uncommitted frozen source checkpoint; [State](STATE.md#accepted-v06
 records the scope and identity. The descriptor remains its pre-review snapshot.
 This does not establish a commit, local release readiness, installation, or
 global adoption; its acceptance-record changes also passed separate checks and Planner
-verification. This history does not qualify the v0.6.3 input.
+verification. This history does not qualify the current v0.6.5 input.
 
 The candidate also supplies approved package level defaults and contract/role/task
 prompt construction with supported model deltas. General user configuration

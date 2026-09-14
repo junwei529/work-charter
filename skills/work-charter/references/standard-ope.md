@@ -5,7 +5,7 @@ an applicable approved standing policy, active Charter, and discoverable
 durable control location support it. `L4` is internal shorthand; Standard
 O/P/E/R is the public name.
 
-A fresh L4 role loads the full Skill body and this reference's shared entry,
+A fresh L4 role loads the complete slim shared Skill body and this reference's shared entry,
 responsibility, single-writer and permission boundaries, then its own operating
 steps and handoff interfaces. It does not load every other role's procedures
 or repeat adoption merely because it is a new Thread. Manual reassessment uses

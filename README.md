@@ -2,6 +2,8 @@
 
 [简体中文](README.zh-CN.md)
 
+Version **v0.6.5**. [Publication status](docs/skills/work-charter/STATE.md#v065-publication).
+
 Keep complex AI projects moving across handoffs—and through to delivery.
 
 Work Charter is a project collaboration Skill for Codex. It offers five levels, L0–L4, with role responsibilities and model configurations to help you move from everyday tasks to projects spanning conversations, roles, and phases.
@@ -31,7 +33,7 @@ At L0–L2, the primary owner is directly responsible for the current task. A ro
 
 ## Default models and customization
 
-The author built a private evaluation set from multiple real code repositories, organized around the responsibilities of the Orchestrator, Planner, Executor, and Reviewer. The current L0–L4 model and reasoning defaults were selected using those evaluation results.
+The author built a private evaluation set from multiple real code repositories, organized around the responsibilities of the Orchestrator, Planner, Executor, and Reviewer. Those results informed the earlier baseline; v0.6.5 adjusts the reasoning defaults by user decision, without claiming a new evaluation result.
 
 These defaults provide a starting point. You can adjust models and reasoning settings for each level and role based on your project, available models, cost, and observed performance.
 
@@ -39,12 +41,13 @@ User configuration takes priority over package defaults. Changes apply to tasks 
 
 | Scope | Package default |
 |---|---|
-| L0 primary owner | Astra · medium |
+| L0 primary owner and separately triggered Reviewer | Astra · medium |
 | L1–L2 primary owner and optional Reviewer | Astra · medium |
-| L3 Planner; L4 Orchestrator and Planner | Astra · max |
+| L3–L4 Planner | Astra · high |
+| L4 Orchestrator | Astra · xhigh |
 | L3–L4 Executor and Reviewer | Astra · medium |
 
-Astra means `gpt-6-astra`; `medium` and `max` are reasoning effort settings. If a separate rule triggers a temporary Reviewer at L0, the current general fallback is Astra · high.
+Astra means `gpt-6-astra`; `medium`, `high` and `xhigh` are reasoning effort settings. The L0 Reviewer entry supplies a model only when a separate rule authorizes that temporary role.
 
 These are package presets. The task creation process must verify what is actually used; see the [default configuration file](skills/work-charter/assets/role-models.default.yaml) for the complete configuration.
 
@@ -92,16 +95,20 @@ ten completed review rounds, Planner acceptance, and the exact deterministic
 qualification. Local source readiness is `VERIFIED`; no v0.5.0 installation,
 runtime role-delivery, or public-release claim follows from that receipt.
 
-The current [`v0.6.3` candidate](release/v0.6.3-candidate.json) reuses an
-applicable approved Charter and level, including small tasks and continuation
-in a new Thread. First assessment recommends L0-L4 for user adoption; manual
-reassessment starts from the existing contract. Authorized bounded assessment
-needs no separate activation or repeated read question. Every applying fresh
-role loads the full Skill and shared boundaries, then only reference sections
-needed by its responsibility and next action. Loading is not adoption or action
-authority. [State](docs/skills/work-charter/STATE.md#current-v063-local-candidate)
-and [Verification](docs/skills/work-charter/VERIFICATION.md#current-v063-qualification)
-record this source candidate's scope and evidence limits.
+The current [`v0.6.5` candidate](release/v0.6.5-candidate.json) adjusts the approved
+level-role defaults above and preserves the [v0.6.4 entry revision](release/v0.6.4-candidate.json). It keeps task-entry
+assessment lightweight. An ordinary task without an applicable Charter or
+material need stays at L0 without loading governance references or creating
+roles. Applying roles load the shorter shared Skill body, then details only
+for their decision, level and responsibility. An existing approved Charter is
+reused. Material scope, permission, acceptance or recovery changes trigger a
+reassessment and recommendation; the user still decides level adoption.
+The package does not guarantee host-wide automatic loading or enforcement.
+[State](docs/skills/work-charter/STATE.md#current-v065-local-candidate) and
+[Verification](docs/skills/work-charter/VERIFICATION.md#current-v065-qualification)
+record the candidate's scope and evidence limits. The accepted
+[`v0.6.3` source and installation](docs/skills/work-charter/STATE.md#historical-v063-local-candidate)
+remain historical evidence.
 
 The prior [`v0.6.2` candidate](release/v0.6.2-candidate.json) asks Agents to
 justify the failure, required strength, and lack of simpler alternatives behind
@@ -138,7 +145,8 @@ default-reader access to the exact managed v0.4.0 copy and closed
 `WC-INSTALL-POSTFLIGHT-F01` for that repair. At that repair checkpoint the package remained
 managed v0.4.0; v0.4.1 was not installed. The later
 [accepted v0.6.3 installation](docs/skills/work-charter/STATE.md#accepted-v063-user-installation)
-records the current verified user copy. Stable v0.5.0 loaded-copy behavior,
+records that historical copy; [current state](docs/skills/work-charter/STATE.md#current-v065-local-candidate)
+records the verified v0.6.5 update. Stable v0.5.0 loaded-copy behavior,
 role-delivery adherence, cross-provider execution, cross-Harness behavior,
 public release, and broad efficacy remain `UNKNOWN` or separately authorized.
 
@@ -160,12 +168,12 @@ Approved level defaults use OpenAI `gpt-6-astra`:
 
 | Level | Responsibility and reasoning effort |
 |---|---|
-| L0 | primary `medium` |
+| L0 | primary and reviewer `medium` |
 | L1/L2 | primary and reviewer `medium` |
-| L3 | planner `max`; executor and reviewer `medium` |
-| L4 | orchestrator and planner `max`; executor and reviewer `medium` |
+| L3 | planner `high`; executor and reviewer `medium` |
+| L4 | orchestrator `xhigh`; planner `high`; executor and reviewer `medium` |
 
-No L0 Reviewer override is supplied; its general fallback remains applicable.
+L0 supplies an explicit Reviewer `medium` override for a separately triggered role.
 These configured choices are not evidence of optimality or runtime adoption.
 
 To customize later task starts or role deliveries, copy that file to
@@ -252,27 +260,24 @@ behavior, cross-Harness behavior, untested contexts, and broad efficacy remain
 ## Verify
 
 ```powershell
-python -B scripts/check_repository.py --json
 python -B scripts/check_source_contract.py --json
-python -B scripts/manage_install.py self-test --source .
+python -B scripts/check_repository.py --json
 ```
 
-The SOURCE checker reports the static selection, assessment/adoption, authority,
-recovery, independent-review, level-role, and Standard O/P/E/R clauses
-separately from the required current-package identity gate. The v0.6.3
-descriptor must bind the actual current tree and digest; any mismatch makes
-the command fail. The immutable v0.5.0 descriptor is checked only against its
-historical values. Current-input results are recorded in
-[Verification](docs/skills/work-charter/VERIFICATION.md).
+Run the relevant checks against the final changed input. The SOURCE checker
+separates static contract clauses from the required v0.6.5 tree/digest binding
+and preserves historical descriptor identities. Static wording and identity
+checks do not prove model behavior. See
+[Verification](docs/skills/work-charter/VERIFICATION.md) for current results.
 
-The lifecycle self-test is a required gate for the current v0.6.3 package and
-first binds its source to the matching descriptor. An older exact-release
-checkout is not coverage for the current input. The staged adversarial
-repository matrix likewise does not cover an unstaged working-tree delta.
-Neither missing gate may be reported as passed or inapplicable.
-These checks still do not execute a model, create a task or
-role, exercise a host/global consumer, read a live user configuration, re-read
-the installed copy, prove publication, or establish broad efficacy.
+Select additional checks for the mechanism changed: installer or permission
+changes require affected lifecycle cases; provenance validation changes
+require affected adversarial cases; selection/loading changes need a bounded
+behavior check. A text or metadata change alone does not require rerunning the
+complete lifecycle or staged-index matrix. Existing explicit frozen gates
+retain their scope; the complete v0.6.3 qualification remains historical and
+is not reported as a fresh v0.6.5 run. Actual installation still requires its
+own identity, permission and postflight checks.
 
 ## Future immutable-source lifecycle
 

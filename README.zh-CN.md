@@ -2,6 +2,8 @@
 
 [English](README.md)
 
+当前版本 **v0.6.5**。[发布状态](docs/skills/work-charter/STATE.md#v065-publication)。
+
 让复杂的 AI 项目接得住，也交得出。
 
 Work Charter 是面向 Codex 的项目协作 Skill。它提供 L0–L4 五档协作方案，以及配套的角色分工和模型配置，帮助你从日常任务逐步组织到跨对话、跨角色和多阶段项目。
@@ -31,7 +33,7 @@ L0–L2 的主负责人直接负责当前任务。角色方案本身不会自动
 
 ## 默认模型配置与自定义
 
-作者基于多个实际代码仓库，围绕 Orchestrator、Planner、Executor、Reviewer 各自的分工构建了私有评测集。当前 L0–L4 的默认模型与推理等级，依据这套评测结果设置。
+作者基于多个实际代码仓库，围绕 Orchestrator、Planner、Executor、Reviewer 各自的分工构建了私有评测集。此前的配置基线参考了这些结果；v0.6.5 按用户决定调整推理等级，不代表新增评测结论。
 
 这些默认值提供一个可直接起步的参考。使用者可以根据项目特点、可用模型、使用成本和实际表现，灵活调整各级别、各角色的模型与推理等级。
 
@@ -39,12 +41,13 @@ L0–L2 的主负责人直接负责当前任务。角色方案本身不会自动
 
 | 适用范围 | 包内默认配置 |
 |---|---|
-| L0 主负责人 | Astra · medium |
+| L0 主负责人及独立触发的临时 Reviewer | Astra · medium |
 | L1–L2 主负责人及可选 Reviewer | Astra · medium |
-| L3 Planner；L4 Orchestrator、Planner | Astra · max |
+| L3–L4 Planner | Astra · high |
+| L4 Orchestrator | Astra · xhigh |
 | L3–L4 Executor、Reviewer | Astra · medium |
 
-这里的 Astra 指 `gpt-6-astra`，`medium` 和 `max` 表示推理投入设置。L0 若由其他独立规则触发临时 Reviewer，当前沿用通用的 Astra · high 回落配置。
+这里的 Astra 指 `gpt-6-astra`，`medium`、`high` 和 `xhigh` 表示推理投入设置。L0 的 Reviewer 配置只在其他独立规则授权该临时角色时提供模型值。
 
 这些是包内预设，实际采用情况需要由任务创建流程核对；完整规则见[默认配置文件](skills/work-charter/assets/role-models.default.yaml)。
 
@@ -87,12 +90,15 @@ $work-charter
 review、Planner 验收与 exact deterministic qualification。Local source readiness 为
 `VERIFIED`；该 receipt 不产生 v0.5.0 安装、runtime role-delivery 或公开发布 claim。
 
-当前 [`v0.6.3` 候选](release/v0.6.3-candidate.json)复用适用且已批准的 Charter 与级别，
-小任务及新 Thread 接续也无需重新激活或选级。首次评估比较 L0-L4，由用户决定采纳；
-手动复评以既有合同为基线。获准的有界只读评估不再增加激活或重复读取确认。
-每个应用规则的新角色完整加载 Skill 和共同边界，再按实际职责与下一动作读取参考章节。
-加载不等于采纳或行动授权；[状态](docs/skills/work-charter/STATE.md#current-v063-local-candidate)和
-[验证](docs/skills/work-charter/VERIFICATION.md#current-v063-qualification)记录当前源码范围与证据限制。
+当前 [`v0.6.5` 候选](release/v0.6.5-candidate.json)调整上述已批准级别模型默认值，并保留
+[v0.6.4 入口修订](release/v0.6.4-candidate.json)。普通任务没有适用
+Charter 或材料需求时保持 L0，不为入口检查加载治理参考或创建角色。实际应用规则的角色
+完整读取精简后的共同正文，再按当前决定、级别和职责读取详细章节。已有批准的 Charter
+继续复用；范围、权限、验收或恢复条件发生材料变化时主动复评并建议，仍由用户决定采纳
+或调整级别。Skill 本身不保证所有宿主自动加载，也不提供强制执行能力。
+[状态](docs/skills/work-charter/STATE.md#current-v065-local-candidate)和
+[验证](docs/skills/work-charter/VERIFICATION.md#current-v065-qualification)记录当前范围与证据限制。
+已接受的 [v0.6.3 源码与安装](docs/skills/work-charter/STATE.md#historical-v063-local-candidate)保留为历史证据。
 
 此前 [`v0.6.2` 候选](release/v0.6.2-candidate.json)要求 Agent 为自行推导的护栏说明
 具体失败及后果、所需保护强度，以及更简单的现有办法为何不足。辅助工作持续扩大时，
@@ -119,7 +125,8 @@ control-aware exact restore/readback 替换该路径，并在
 `59b4d91f46c2ac797c71c900e62dda87cf0cca60` 获独立验收。之后的 ACL-only repair 恢复了
 exact managed v0.4.0 副本的 default-reader access，并仅对该修复关闭
 `WC-INSTALL-POSTFLIGHT-F01`。该修复检查点的 package 仍为 managed v0.4.0，v0.4.1 未安装。之后的
-[v0.6.3 安装接受记录](docs/skills/work-charter/STATE.md#accepted-v063-user-installation)说明当前已核验用户副本。
+[v0.6.3 安装接受记录](docs/skills/work-charter/STATE.md#accepted-v063-user-installation)保留该历史副本证据；
+[当前状态](docs/skills/work-charter/STATE.md#current-v065-local-candidate)记录已核验的 v0.6.5 更新。
 v0.5.0 stable loaded-copy、role-delivery adherence、跨 provider 执行、cross-Harness、
 公开发布与广泛效能仍为 `UNKNOWN` 或需分别授权。
 
@@ -141,12 +148,12 @@ Package 默认数据位于
 
 | 级别 | 实际职责与 reasoning effort |
 |---|---|
-| L0 | primary `medium` |
+| L0 | primary、reviewer `medium` |
 | L1/L2 | primary、reviewer `medium` |
-| L3 | planner `max`；executor、reviewer `medium` |
-| L4 | orchestrator、planner `max`；executor、reviewer `medium` |
+| L3 | planner `high`；executor、reviewer `medium` |
+| L4 | orchestrator `xhigh`；planner `high`；executor、reviewer `medium` |
 
-L0 reviewer 未新增覆盖，沿用通用回落。这些配置值不代表评测最优或已运行生效。
+L0 reviewer 明确配置为 `medium`，仅供独立触发的临时角色使用。这些配置值不代表评测最优或已运行生效。
 
 如需定制后续任务启动或角色投递，可把该文件复制到
 `~/.config/work-charter/role-models.yaml` 后编辑，或由已批准的 delivery contract 指定
@@ -215,22 +222,19 @@ receipt 必须绑定该 commit；annotated tag 与 GitHub Release 已在显式�
 ## 验证
 
 ```powershell
-python -B scripts/check_repository.py --json
 python -B scripts/check_source_contract.py --json
-python -B scripts/manage_install.py self-test --source .
+python -B scripts/check_repository.py --json
 ```
 
-SOURCE checker 会把静态 selection、assessment/adoption、authority、recovery、independent-review、
-“级别 × 实际职责”与 Standard O/P/E/R 条款，同 required current-package identity gate 分开
-报告。当前 v0.6.3 descriptor 必须绑定实际 package tree/digest；任一不匹配都使命令失败。
-不可变 v0.5.0 descriptor 只按历史值核对；当前输入结果见
-[验证](docs/skills/work-charter/VERIFICATION.md)。
+对最终变更输入执行相应检查。SOURCE checker 分别核对静态合同条款、v0.6.5 的
+tree/digest 绑定和历史描述文件身份；静态文案及身份检查不证明模型行为。
+当前结果见[验证记录](docs/skills/work-charter/VERIFICATION.md)。
 
-Lifecycle self-test 是当前 v0.6.3 package 的 required gate，先核对 source 与描述文件绑定。
-旧 exact-release checkout 不能替代当前输入覆盖。Staged adversarial repository matrix
-同样不覆盖 unstaged working-tree delta。缺失的检查不能被报告为通过或不适用。
-这些检查仍不执行模型、不创建任务或角色、不运行 host/global consumer、不读取 live user 配置、
-不重新读取 installed copy、不证明发布，也不建立广泛产品效能。
+其他检查按改变的机制选择：安装器或权限变化覆盖相关生命周期场景，来源验证逻辑变化
+覆盖相关对抗场景，选择与加载变化进行有界行为检查。普通文案或元数据变化本身不要求
+重跑完整 lifecycle 或 staged-index matrix。已有明确冻结 gate 保持原范围；v0.6.3 的
+完整 qualification 是历史证据，不作为 v0.6.5 新运行报告。实际安装仍单独核对身份、
+权限与安装后状态。
 
 ## 未来 immutable-source 生命周期
 

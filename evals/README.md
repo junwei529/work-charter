@@ -45,12 +45,16 @@ level-by-actual-role model resolution, and Standard O/P/E/R boundaries in this
 evaluation surface; it also binds the exact general compatibility fallbacks, approved level
 defaults, contract/role/task/model-delta prompt clauses, scoped startup
 authorization, complete expression, and required reference reachability.
-Current candidate identity is v0.6.3; descriptors through v0.6.2 remain
-fixed historical snapshots. Existing entry, selection, midstream, recovery,
+Current candidate identity is v0.6.5; descriptors through v0.6.4 remain
+fixed historical snapshots. The configuration case follows all 13 approved
+level-role objects and a copied user-file snapshot; this adds no model-performance
+evidence. Existing entry, selection, midstream, recovery,
 role and configuration cases now distinguish first assessment, authorized
 read reuse, approved continuation including small tasks/new Threads, manual
-reassessment against the existing contract, full-body loading, and relevant
-shared/own reference sections. These are case specifications, not newly run
+reassessment against the existing contract, full shared-body loading, and
+relevant reference sections. The selection case now also covers routine L0
+entry without governance reads and a material recovery change that prompts
+a recommendation without adopting a new level. These are case specifications, not newly run
 model evaluations. Static clauses and package identities do not prove runtime
 read paths or behavioral effectiveness. The checker does not execute a model, create a task or role, read a live user
 configuration, exercise a host/global consumer, or claim adherence. Static

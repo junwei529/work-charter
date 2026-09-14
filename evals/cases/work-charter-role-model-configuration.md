@@ -51,15 +51,19 @@ this approved table using provider `openai` and model `gpt-6-astra`:
 
 | Level | Responsibility and reasoning effort |
 | --- | --- |
-| L0 | primary=medium |
+| L0 | primary=medium, reviewer=medium |
 | L1/L2 | primary=medium, reviewer=medium |
-| L3 | planner=max, executor=medium, reviewer=medium |
-| L4 | orchestrator=max, planner=max, executor=medium, reviewer=medium |
+| L3 | planner=high, executor=medium, reviewer=medium |
+| L4 | orchestrator=xhigh, planner=high, executor=medium, reviewer=medium |
 
-Expected: all 12 objects use their package-level source. No l0.reviewer
-level object exists; a separately enabled L0 Reviewer uses the legacy general
-Reviewer fallback. An empty user role mapping has the same fallbacks. No
-configuration creates a role or activates L0. Native support remains required.
+Expected: all 13 objects use their package-level source, including explicit
+l0.reviewer=medium for a separately enabled temporary Reviewer. An empty user
+role mapping has the same fallbacks. No configuration creates a role or
+activates L0. Native support remains required.
+
+With an exact copy of the complete package default in a disposable user file,
+all 13 level-role values remain identical and their object source becomes
+user-level. This is a snapshot; later package changes do not rewrite the user file.
 
 ### General role replacement remains whole-object
 

@@ -1,5 +1,13 @@
 # Provenance And Transformation Boundary
 
+## v0.6.5 publication boundary
+
+The publication packages the accepted current source unchanged. Its installable
+package tree is `d0df02a81471c2b9e157c9f6faebc65948cb4b54`. Publication record edits affect existing
+documentation and the current mapping/checker pin only. Historical candidates,
+receipts and source maps remain frozen. The [current state](docs/skills/work-charter/STATE.md#v065-publication)
+owns the publication transaction and its observed public identities.
+
 ## Source identity
 
 This standalone repository was materialized from named Git tree entries at
@@ -13,15 +21,17 @@ mapping, or source working-tree byte was used.
 The immutable `v0.5.0` candidate and receipt retain their exact historical
 identities. The working tree retains the accepted v0.6.0 level-role configuration
 checkpoint and accepted v0.6.1 prompt/installer revisions. The v0.6.2 guardrail-necessity and auxiliary-cost revision remains historical,
-bound by its immutable descriptor. The current user-confirmed v0.6.3 entry
-revision reuses approved Charters, separates assessment from adoption, and
-scopes reference reading by responsibility, bound by
-[`release/v0.6.3-candidate.json`](release/v0.6.3-candidate.json). Each
-changed package, evaluation, documentation, and checker destination is
-classified by its recorded transformation and bound to its current target SHA-256 in
-the manifest. Unchanged destinations retain their prior exact-blob or
-normalized-rewrite provenance. This preserves historical origin without making
-a false byte-identity or accepted-version claim for new work.
+bound by its immutable descriptor. The accepted v0.6.3 entry and installation
+remain historical. The v0.6.4 entry revision remains bound by its frozen
+descriptor. The current v0.6.5 revision adjusts approved level-role defaults and
+their configuration guidance. It is bound by
+[`release/v0.6.5-candidate.json`](release/v0.6.5-candidate.json). Two of the six
+package files change from v0.6.4; the shared entry, metadata, Charter asset and
+Standard reference retain their bytes. Schema and production installation logic
+are unchanged. Repository checks bind the new data and historical descriptors. Changed destinations retain their recorded source
+transformation and current target SHA-256; unchanged destinations retain exact
+or normalized migration provenance. Historical candidates, receipts and source
+identities are not rewritten or claimed to qualify the new package.
 
 ## Transformation classes
 
@@ -146,8 +156,8 @@ platforms retain prior behavior. The first role-model source and lifecycle
 extension passed exact qualification, ten completed review rounds, and Planner
 acceptance at the v0.5.0 receipt-bound commit. For the later level-role
 extension, the SOURCE identity gate requires both the actual tree and digest
-to match the current v0.6.3 descriptor, while preserving the frozen v0.6.0,
-v0.6.1 and v0.6.2 descriptors under their exact historical hashes. Current deterministic check results are recorded
+to match the current v0.6.5 descriptor, while preserving the frozen v0.6.0,
+v0.6.1, v0.6.2, v0.6.3 and v0.6.4 descriptors under their exact historical hashes. Current deterministic check results are recorded
 in [Verification](docs/skills/work-charter/VERIFICATION.md). R12 technical review
 and Planner frozen-source acceptance are separately recorded in State. The v0.6.0
 record changes also passed separate Planner verification; host/global consumer integration,

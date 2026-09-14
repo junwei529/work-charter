@@ -2,8 +2,8 @@
 
 ## Goal
 
-Distinguish native package loading, first assessment, approved continuation,
-manual reassessment, and adoption. Catalog or body visibility is not authority.
+Distinguish lightweight task entry, native package loading, first assessment,
+approved continuation, material reassessment, and adoption. Catalog or body visibility is not authority.
 
 ## Setup
 
@@ -73,7 +73,10 @@ before the counted turn, as in the entry case; do not expose the other variant.
    > Fix the local off-by-one error, run its focused unit test, and do not
    > commit.
 
-   Do not select Work Charter solely for this small task. The separate
+   Finish any host entry check from supplied context without loading governance
+   references, reading project state just for that check, creating roles or
+   asking a level question. Do not select Work Charter solely for this small
+   task. The separate
    approved-Charter small-task scenario in the recovery case must still reuse
    its existing Charter.
 
@@ -91,6 +94,20 @@ before the counted turn, as in the entry case; do not expose the other variant.
    > and reports a misleading success. Diagnose the shell boundary.
 
    Do not select Work Charter merely for shell diagnosis.
+
+7. **Material recovery change during approved work**
+
+   > The approved L1 task contract covers this local edit. The work must now
+   > survive a handoff tomorrow, and its only recovery information is in this
+   > session. Assess that change from this description; do not read or write
+   > project files, create roles, or change the approved level.
+
+   Load the shared body and only relevant reconciliation, durability and
+   contract-change sections. Identify the material recovery change, retain
+   the L1 baseline, and recommend the least sufficient durable option with
+   its benefit and cost. Leave level adoption and any missing write authority
+   to the user. Do not load model configuration or Standard, create a carrier,
+   or stop unrelated work already covered by the contract.
 
 ## Failure Signals
 

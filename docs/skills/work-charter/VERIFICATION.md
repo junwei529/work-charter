@@ -2,12 +2,25 @@
 
 ## v0.6.5 publication verification
 
-The publication target is the complete reviewed source diff plus current
-documentation and provenance consumers, with package tree `d0df02a81471c2b9e157c9f6faebc65948cb4b54`.
-Run the affected source check before the final repository check and independent
-review; bind their results to this input. The public commit, annotated tag and
-Release require readback after the authorized transaction. This checkpoint
-claims no new installer lifecycle, model, fresh-task loading or efficacy result.
+SOURCE 41 checks (24 static clauses) and repository 95 mapped files passed for the final publication
+input, with terminal exit code 0. Where applicable, SOURCE preceded repository
+validation; actual-source checks after applying reviewed records also passed.
+The complete diff and Release notes received independent read-only review.
+Independent publication review found no actionable findings in this
+product; its unchanged reviewed input was retained through R2.
+
+Reviewed source was committed as `05dc4f395ef607b6ea0209514caa759d532a6bff`. Staged blob identity,
+the commit's package tree `d0df02a81471c2b9e157c9f6faebc65948cb4b54`, and clean postcommit
+working-tree state were verified. The public annotated tag and Release were
+created with the approved version and read back against the exact commit.
+Title and body matched the reviewed notes (normalizing line endings and final
+newlines); the Release was public, non-prerelease and Latest, with old tags
+unchanged. [State](STATE.md#v065-publication) owns public identities.
+
+This closeout changes existing publication records and their mapping/checker
+consumers only. Package, installer, historical candidates, tagged source and
+published notes retain their bytes. No additional installer lifecycle, model,
+fresh-task loading, cross-Harness or efficacy result is claimed.
 
 ## Current v0.6.5 qualification
 

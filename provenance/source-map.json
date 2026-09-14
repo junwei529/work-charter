@@ -67,13 +67,13 @@
       "destination": "README.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "6fb174afe0f378b824687c94b7b0c097f960b24c43d0df34e152281e3a02717f"
+      "target_sha256": "e7179e2b66475d2deadf41bdd6a03908d42f92b19221d07b03e1d7ff00cf5aeb"
     },
     {
       "destination": "README.zh-CN.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "f85ad8649563ff2d5882506b341c6ca697d788018fbb27eb263743c16d1a7090"
+      "target_sha256": "bcf997771a1b469e48f7b4c2d96cdcc32f43faa9c5dd1dffd13caee8aebfac27"
     },
     {
       "destination": "docs/skills/work-charter/DESIGN.md",
@@ -97,13 +97,13 @@
       "destination": "docs/skills/work-charter/STATE.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "a383e67066a27d533b3da24ca54435efc1da7f0e1ed5043ffdb1b9af58eb5cee"
+      "target_sha256": "6cd363d4e90c7a7e46a340e799c1f42d66e6132e57ee8ddb165b9e5fc3a1372b"
     },
     {
       "destination": "docs/skills/work-charter/VERIFICATION.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "2bbc11dadefd1a37445bb15fbfed03120efbb6e16e9c4d76630ebf35053853fd"
+      "target_sha256": "28de9302edaeccbfdf58cfde8c01fef3beed70057e91c7eef6c55aaa357e8ed7"
     },
     {
       "destination": "evals/README.md",
@@ -655,8 +655,8 @@
           "source_path": "evals/check-fixtures.ps1"
         }
       ],
-      "target_normalized_sha256": "551e0b654f9b7d3876ba6508d7ffc3d5cd6f17a368e6fdf1ebfcf2c1daa22fd2",
-      "target_sha256": "551e0b654f9b7d3876ba6508d7ffc3d5cd6f17a368e6fdf1ebfcf2c1daa22fd2",
+      "target_normalized_sha256": "d2454e409e6dd8d765fd0cd910f84506133aafbaa116f3ffeb716a9b4942709e",
+      "target_sha256": "d2454e409e6dd8d765fd0cd910f84506133aafbaa116f3ffeb716a9b4942709e",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {

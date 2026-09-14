@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-当前版本 **v0.6.5**。[发布状态](docs/skills/work-charter/STATE.md#v065-publication)。
+最新正式版本：**[v0.6.5](https://github.com/junwei529/work-charter/releases/tag/v0.6.5)**。[发布核验记录](docs/skills/work-charter/STATE.md#v065-publication)。
 
 让复杂的 AI 项目接得住，也交得出。
 

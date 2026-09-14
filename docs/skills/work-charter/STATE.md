@@ -2,18 +2,24 @@
 
 ## v0.6.5 publication
 
-The user authorized final checks and independent review, commit and normal
-fast-forward push, then a new annotated `v0.6.5` tag and public GitHub Release.
-This publication includes the accepted source and local installation records;
-it does not repeat or extend their runtime or installed-copy qualifications.
-The package tree is `d0df02a81471c2b9e157c9f6faebc65948cb4b54`.
+Status: **PUBLISHED_VERIFIED**, observed `2026-09-14T03:16:51Z`.
 
-This is the pre-publication source checkpoint: remote effects are pending.
-After publication, record the observed commit, peeled tag and Release identity
-here without moving the tag. Preserve all previous candidates, failed evidence,
-tags and Releases. The next gate is final-input review and the authorized
-publication transaction; new installs, global configuration and model experiments
-are outside this publication scope.
+| Public identity | Verified value |
+| --- | --- |
+| Immutable source commit | `05dc4f395ef607b6ea0209514caa759d532a6bff` |
+| Annotated tag | `v0.6.5`; object `065c1809da592e90822e58e750ff863898710120`, peeled to the source commit above |
+| GitHub Release | [v0.6.5](https://github.com/junwei529/work-charter/releases/tag/v0.6.5), id `388128463`; non-draft, non-prerelease, Latest at publication |
+| Installable package tree | `d0df02a81471c2b9e157c9f6faebc65948cb4b54` |
+
+The authenticated repository owner, push capability, exact remote main and absent
+new tag were checked before publication. Main and the new annotated tag were
+pushed atomically, then the Release title, reviewed body, target commit and Latest
+state were read back. The old `v0.3.0` tag object remained unchanged.
+
+The default branch may advance with this records-only closeout or later changes;
+the immutable tag continues to identify the source commit above. Publication
+does not extend the earlier local installation, model, loading or efficacy
+evidence. Historical candidates, failures and recovery records retain their scope.
 
 ## Current implementation
 
@@ -23,12 +29,14 @@ Canonical editable source is the 6-file package under
 documentation, and checker files carry their recorded transformations and are bound to their
 current hashes in the provenance manifest. Unchanged mapped material retains
 its exact or normalized migration provenance. The working package is now
-the local v0.6.5 candidate, following the frozen v0.6.4 source on
+v0.6.5, publicly released as recorded above, following the frozen v0.6.4 source on
 accepted v0.6.3 closeout commit
 `ca1589140822a10d8e122bd36a860e5a2c673943`. Historical acceptance does not
 qualify the new package.
 
-## Current v0.6.5 local candidate
+<a id="current-v065-local-candidate"></a>
+
+## Current v0.6.5 source and local installation
 
 - Scope: approved level-role defaults and their bounded data/documentation consumers
 - Candidate: [v0.6.5 descriptor](../../../release/v0.6.5-candidate.json), a
@@ -498,10 +506,10 @@ review rounds, and Planner acceptance are bound by the separate v0.5.0 receipt.
 
 ## Next gate
 
-Complete the approved [v0.6.5 publication](#v065-publication)
-using the final reviewed input, then record the observed public identities.
-Retain prior installation and approval-failure evidence and all recovery copies.
-Fresh-task loading, runtime behavior and performance remain separately scoped.
+The [v0.6.5 publication](#v065-publication) is complete.
+No publication action remains. Verify current Git state before new work, retain
+prior installation and approval-failure evidence and recovery records, and keep
+fresh-task loading, runtime behavior and performance separately scoped.
 
 ## Recovery entry
 

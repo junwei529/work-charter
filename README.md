@@ -2,7 +2,7 @@
 
 [简体中文](README.zh-CN.md)
 
-Version **v0.6.5**. [Publication status](docs/skills/work-charter/STATE.md#v065-publication).
+Latest release: **[v0.6.5](https://github.com/junwei529/work-charter/releases/tag/v0.6.5)**. [Verified publication](docs/skills/work-charter/STATE.md#v065-publication).
 
 Keep complex AI projects moving across handoffs—and through to delivery.
 

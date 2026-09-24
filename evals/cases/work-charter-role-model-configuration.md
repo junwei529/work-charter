@@ -11,12 +11,12 @@ configuration as task, role, review, or action authority.
 Use the package default and disposable user configuration files. Do not write a
 real user configuration, install a Skill, contact a provider, create a task or
 role, or claim that a host/global consumer has integrated the interface. The
-unchanged package general defaults are:
+current package general defaults are:
 
-- Orchestrator: `openai`, `gpt-6-astra`, `reasoning_effort: xhigh`
-- Planner: `openai`, `gpt-6-astra`, `reasoning_effort: xhigh`
-- Executor: `openai`, `gpt-5.6-sol`, `reasoning_effort: high`
-- Reviewer: `openai`, `gpt-6-astra`, `reasoning_effort: high`
+- Orchestrator: `openai`, `gpt-6-astra`, `reasoning_effort: high`
+- Planner: `openai`, `gpt-6-astra`, `reasoning_effort: high`
+- Executor: `openai`, `gpt-6-sol`, `reasoning_effort: xhigh`
+- Reviewer: `openai`, `gpt-6-astra`, `reasoning_effort: medium`
 
 The selectable actual-responsibility matrix is:
 
@@ -41,23 +41,23 @@ listed task or role, and `L0` remains no active Charter.
 > Resolve the metadata and stop before creation.
 
 Expected: accept the unchanged schema-v1 four-role YAML, select the user
-Executor object, and show `l3` / `executor` / `openai` / `gpt-5.6-sol` /
-`reasoning_effort: high`, with user-general object and user-file sources. This beats the package l3.executor override.
+Executor object, and show `l3` / `executor` / `openai` / `gpt-6-sol` /
+`reasoning_effort: xhigh`, with user-general object and user-file sources. This beats the package l3.executor override.
 
 ### Package level defaults without a user file
 
 With no frozen/task-confirmed value and no user file, resolve every object in
-this approved table using provider `openai` and model `gpt-6-astra`:
+this approved table using provider `openai`:
 
 | Level | Responsibility and reasoning effort |
 | --- | --- |
-| L0 | primary=medium, reviewer=medium |
-| L1/L2 | primary=medium, reviewer=medium |
-| L3 | planner=high, executor=medium, reviewer=medium |
-| L4 | orchestrator=xhigh, planner=high, executor=medium, reviewer=medium |
+| L0 | primary=Sol/xhigh, reviewer=Sol/xhigh |
+| L1/L2 | primary=Sol/xhigh, reviewer=Sol/xhigh |
+| L3 | planner=Astra/high, executor=Sol/xhigh, reviewer=Astra/medium |
+| L4 | orchestrator=Astra/high, planner=Astra/high, executor=Sol/xhigh, reviewer=Astra/medium |
 
 Expected: all 13 objects use their package-level source, including explicit
-l0.reviewer=medium for a separately enabled temporary Reviewer. An empty user
+l0.reviewer=Sol/xhigh for a separately enabled temporary Reviewer. An empty user
 role mapping has the same fallbacks. No configuration creates a role or
 activates L0. Native support remains required.
 
@@ -134,7 +134,7 @@ default. Omitted parameters in any selected complete object mean none.
 > package fixture without level overrides for this defensive case.
 
 The current package supplies every low-level primary; absent user configuration
-therefore selects Astra/medium and does not take this defensive branch.
+therefore selects Sol/xhigh and does not take this defensive branch.
 
 Expected: normalize a host `main` label to actual responsibility `primary`,
 pass no provider/model/parameter override, and record requested values as

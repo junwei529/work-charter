@@ -1,5 +1,173 @@
 # Work Charter State
 
+## v0.7.1 publication input checkpoint
+
+The user authorized a public v0.7.1 release of the accepted cumulative
+v0.6.6–v0.7.1 source after v0.6.5. At this preparation checkpoint, source
+commit, remote main update, annotated tag and GitHub Release are pending the
+final full-diff independent review and required checks. The package identity
+remains tree `8ea9baf2b52635b3bdc0e9984e0d823c8984cc58`; the local managed
+copy already matches that source. Intermediate candidates remain unpublished
+historical evidence. This authorization does not change the package, install,
+configuration, business projects or old review/failure records.
+
+## v0.7.1 outcome-scoped authority
+
+The user selected v0.7.1 for a bounded source and managed-local-copy update.
+One writer owns the current increment over the preserved v0.7.0 dirty working
+tree. The [candidate](../../../release/v0.7.1-candidate.json) binds the new
+six-file source package; historical candidates and failed or withdrawn review
+evidence retain their own identities. This revision clarifies outcome-scoped
+authorization and replaceable ordinary methods while preserving the v0.7.0
+delegation, E/R loop, P acceptance, model defaults and protected stops.
+
+The source contract passed 27/27 static clauses and the current v0.7.1 package
+identity gate; repository provenance passed with 100 mapped files. Independent
+R1 found two current documentation-consumer issues, both corrected by the
+original writer; the same R returned No findings in R2. The prior global
+G-R1-01/G-R1-02 corrections and withdrawn G-R2-01 keep their separate history.
+
+The existing manager updated the local target to MANAGED v0.7.1 with terminal
+exit 0. All six installed files match the reviewed source. Its original DACL
+snapshot matches the post-update snapshot, the complete v0.7.0 copy and
+rollback source remain in a private location outside Skill discovery, and the
+transaction directory is empty. Administrator and ordinary-reader postflight
+both passed. The installed package tree is
+`8ea9baf2b52635b3bdc0e9984e0d823c8984cc58`. The same independent R
+returned No findings in postflight R3 after directly checking the installed
+files, permissions, rollback inputs and final records. Source and installation
+writers are closed. No commit, staging, publication, global configuration or
+business-project effect was performed. Runtime loading and natural adherence
+remain UNKNOWN.
+
+## v070 delegation update
+
+The user-confirmed v0.7.0 source implements explicit delegation, bounded E/R
+correction and revised role-model defaults. Independent review R4 closed all
+prior findings with No findings; static source checks passed 27/27 and the
+repository check passed with 99 mapped files. The preserved v0.6.8 dirty
+baseline and all historical descriptors remain intact.
+
+The managed local copy was updated to v0.7.0 through the unchanged installer.
+The real update exited 0; all six installed files match the reviewed source,
+original permissions and the already-selected personal configuration were
+preserved, the verified v0.6.8 rollback copy remains available, and the
+transaction directory is empty. Both privileged and ordinary-reader postflight
+passed. Package tree: `9bc03ec6f1ac081b738da2ca316b18b22a356aea`.
+Source digest: `2c1e9202e1c25c7ccd0ae64ecdd08926c18cef319fc93859dcea2d5b74fd289d`.
+
+Independent postflight R5 returned No findings. Source and installation
+writers are closed; no source or installation action remains pending. No commit, tag, publication or
+business-project continuation was performed. Existing tasks, frozen model
+combinations, failed evidence and consumed limits remain intact. Runtime
+adoption and natural cost/quality effects remain UNKNOWN. Earlier sections
+retain dated history.
+
+## v0.6.8 Sol compatibility update
+
+The user selected v0.6.8 and authorized changing the general Executor fallback
+to `gpt-6-sol/high`, necessary source/check documentation, and the local managed
+update. All level-role Astra values and selection precedence remain unchanged.
+One current source writer owns this bounded increment over the preserved
+v0.6.7 working tree; prior dirty changes and frozen descriptors remain intact.
+
+The [candidate](../../../release/v0.6.8-candidate.json) binds the changed six-file
+package. The SOURCE check passed all 27 static clauses and the current/historical
+identity gates; the repository check passed for 98 mapped files. Independent
+read-only review completed with no findings, and the authorized managed update
+completed with exit 0. Administrator and ordinary-reader verification passed:
+all six installed files match source, original permissions and the separately
+updated personal configuration are preserved, and the transaction root is empty.
+The v0.6.7 rollback material remains retained outside discovery roots. The writer
+is closed; runtime loading and natural model adoption remain UNKNOWN. No commit, push, tag, public release or model evaluation is included.
+[Verification](VERIFICATION.md#v068-sol-compatibility-verification) records results.
+
+## Unreleased evidence-scope revision
+
+The v0.6.7 working revision clarifies evidence coverage and completion
+claims, bounded evidence delegation, and recovery of actual inspection
+progress. This is source maintenance with required verification,
+independent read-only review and same-scope correction. It does not
+reopen installation, publication, user configuration, global-rule changes
+or model evaluations. The accepted v0.6.6 source and local installation,
+and the published v0.6.5 release, retain their own evidence.
+[Verification](VERIFICATION.md#unreleased-evidence-scope-verification)
+records this candidate's checks and remaining limits.
+
+The [v0.6.7 candidate](../../../release/v0.6.7-candidate.json) binds the
+six-file package. Source maintenance and required checks are complete.
+Independent read-only v067-R1 reviewed the complete 20-path increment from
+the accepted v0.6.6 source and necessary semantic context with no findings.
+The primary owner completed bounded record closeout and relinquished the
+source writer. This is source delivery, not independent self-acceptance;
+the package creates no Planner acceptance layer. The candidate retains its
+pre-review snapshot. v0.6.7 remains uncommitted and unpublished; the separately
+authorized local installation is recorded below. Natural adherence and runtime
+effectiveness remain `UNKNOWN`.
+
+## v0.6.7 local installation
+
+The separately authorized managed update from v0.6.6 to v0.6.7 completed
+successfully after independent installation-input review v067-Install-R1
+reported no findings. The actual update, administrator postflight and
+ordinary-reader postflight all completed with exit 0. All six installed files
+match the delivered source; all 11 managed-node owners/DACLs, parent
+identity/policy and personal model configuration bytes/permissions are
+preserved. The complete private v0.6.6 rollback copy, its original receipt
+and permission snapshot remain retained outside discovery roots. Earlier
+recovery material is unchanged, and the transaction directory is empty.
+
+[Installation verification](VERIFICATION.md#v067-local-installation-verification)
+binds the installed identity and bounded checks. The primary owner completed
+the mechanical records and closed the writer; this does not add an independent
+acceptance layer. No Git staging, commit, push, tag or publication was performed.
+Fresh-task loading, existing-task reload, Harness/model adoption and natural
+effectiveness remain `UNKNOWN`.
+
+## Unreleased handoff revision
+
+The v0.6.6 source revised decision closure, continuous work-package execution,
+review-result routing, mechanical recording and recovery before the next
+affected action. This is authorized source work with independent read-only
+review; it does not reopen prior release or installation operations or adopt
+the old role workflow for this maintenance package.
+
+The user confirmed v0.6.6 for this revision. The
+[v0.6.6 candidate](../../../release/v0.6.6-candidate.json) binds these package
+bytes as a pre-review snapshot. The published v0.6.5 descriptor, tag, receipts
+and installation evidence stay fixed. Source changes, existing
+documentation/case/check synchronization and same-scope repairs are authorized;
+stage, commit, push, release, user configuration/ACL changes, global changes
+and model evaluations remain outside this package. Installation received the
+separate authorization recorded below. One source writer
+owns the working diff and relinquishes it during independent review and at
+handoff. [Verification](VERIFICATION.md#unreleased-handoff-verification) owns
+the current check limits and candidate qualification.
+
+## v0.6.6 accepted source and local installation
+
+The final v0.6.6 source checkpoint was accepted after independent review.
+R1 found no findings; R2 identified stale current-version documentation
+(HR-01), and the same Reviewer closed it in R3 with no new findings.
+The source diff remains uncommitted and the candidate remains its original
+pre-review snapshot.
+
+The separately authorized managed update from v0.6.5 to v0.6.6 completed
+successfully. Independent installation-input review found no findings.
+The actual update, administrator postflight and ordinary-reader postflight
+all completed with exit 0. All six installed files match the accepted package;
+all 11 managed-node owners/DACLs and the parent identity/policy are preserved.
+The personal model configuration and its permissions are unchanged.
+A complete private v0.6.5 copy, its receipt and the original permission snapshot
+remain retained outside discovery roots; earlier recovery material was not
+changed. The installation transaction finished without residue.
+
+[Installation verification](VERIFICATION.md#v066-local-installation-verification)
+records the exact package and receipt identities and the bounded preparation
+failures. This proves the managed installed copy and ordinary readability;
+fresh-task loading, Harness behavior and long-term efficacy remain `UNKNOWN`.
+No Git staging, commit, push, tag or publication was performed.
+
 ## v0.6.5 publication
 
 Status: **PUBLISHED_VERIFIED**, observed `2026-09-14T03:16:51Z`.
@@ -28,15 +196,16 @@ Canonical editable source is the 6-file package under
 `80910a8b2375a11be897e9660c4b00a06d00dd13`; changed package, evaluation,
 documentation, and checker files carry their recorded transformations and are bound to their
 current hashes in the provenance manifest. Unchanged mapped material retains
-its exact or normalized migration provenance. The working package is now
-v0.6.5, publicly released as recorded above, following the frozen v0.6.4 source on
+its exact or normalized migration provenance. The released baseline is
+v0.6.5, published as recorded above; the v0.7.1 working revision is described
+at the top of this file. The released version follows the frozen v0.6.4 source on
 accepted v0.6.3 closeout commit
 `ca1589140822a10d8e122bd36a860e5a2c673943`. Historical acceptance does not
 qualify the new package.
 
 <a id="current-v065-local-candidate"></a>
 
-## Current v0.6.5 source and local installation
+## Released v0.6.5 source and local installation
 
 - Scope: approved level-role defaults and their bounded data/documentation consumers
 - Candidate: [v0.6.5 descriptor](../../../release/v0.6.5-candidate.json), a
@@ -58,7 +227,7 @@ qualify the new package.
   owners, inheritance controls and file contents were preserved; no write
   permission was added. The prior denial remains retained evidence.
 - Qualification: [current verification](VERIFICATION.md#current-v065-qualification)
-- Current installed package: managed v0.6.5. After explicit installation
+- Historical v0.6.5 installation checkpoint: managed v0.6.5. After explicit installation
   approval, a fresh v0.6.5 stage passed independent installation-input review
   and the actual update plus ordinary-reader postflight completed with exit 0.
   The full v0.6.3 rollback copy and unused v0.6.4 stage remain retained outside
@@ -504,7 +673,15 @@ This correction creates a new six-file v0.5.0 source while leaving immutable
 v0.4.1/v0.4.0/v0.3.0 objects unchanged. Exact qualification, ten completed
 review rounds, and Planner acceptance are bound by the separate v0.5.0 receipt.
 
-## Next gate
+## Historical v0.6.7 closeout
+
+At the v0.6.7 checkpoint, source maintenance and separately authorized local
+installation, required verification and independent installation-input review
+were complete with no open findings. Its writer closed and diff remained uncommitted;
+publication is not authorized. The accepted v0.6.6 source and its historical
+local installation retain their scope.
+Source qualification, installed-copy proof and publication remain separate
+evidence and authority boundaries.
 
 The [v0.6.5 publication](#v065-publication) is complete.
 No publication action remains. Verify current Git state before new work, retain

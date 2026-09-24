@@ -4,56 +4,56 @@ roles:
     provider: openai
     model: gpt-6-astra
     parameters:
-      reasoning_effort: xhigh
+      reasoning_effort: high
   planner:
     provider: openai
     model: gpt-6-astra
     parameters:
-      reasoning_effort: xhigh
+      reasoning_effort: high
   executor:
     provider: openai
-    model: gpt-5.6-sol
+    model: gpt-6-sol
     parameters:
-      reasoning_effort: high
+      reasoning_effort: xhigh
   reviewer:
     provider: openai
     model: gpt-6-astra
     parameters:
-      reasoning_effort: high
+      reasoning_effort: medium
 level_overrides:
   l0:
     primary:
       provider: openai
-      model: gpt-6-astra
+      model: gpt-6-sol
       parameters:
-        reasoning_effort: medium
+        reasoning_effort: xhigh
     reviewer:
       provider: openai
-      model: gpt-6-astra
+      model: gpt-6-sol
       parameters:
-        reasoning_effort: medium
+        reasoning_effort: xhigh
   l1:
     primary:
       provider: openai
-      model: gpt-6-astra
+      model: gpt-6-sol
       parameters:
-        reasoning_effort: medium
+        reasoning_effort: xhigh
     reviewer:
       provider: openai
-      model: gpt-6-astra
+      model: gpt-6-sol
       parameters:
-        reasoning_effort: medium
+        reasoning_effort: xhigh
   l2:
     primary:
       provider: openai
-      model: gpt-6-astra
+      model: gpt-6-sol
       parameters:
-        reasoning_effort: medium
+        reasoning_effort: xhigh
     reviewer:
       provider: openai
-      model: gpt-6-astra
+      model: gpt-6-sol
       parameters:
-        reasoning_effort: medium
+        reasoning_effort: xhigh
   l3:
     planner:
       provider: openai
@@ -62,9 +62,9 @@ level_overrides:
         reasoning_effort: high
     executor:
       provider: openai
-      model: gpt-6-astra
+      model: gpt-6-sol
       parameters:
-        reasoning_effort: medium
+        reasoning_effort: xhigh
     reviewer:
       provider: openai
       model: gpt-6-astra
@@ -75,7 +75,7 @@ level_overrides:
       provider: openai
       model: gpt-6-astra
       parameters:
-        reasoning_effort: xhigh
+        reasoning_effort: high
     planner:
       provider: openai
       model: gpt-6-astra
@@ -83,9 +83,9 @@ level_overrides:
         reasoning_effort: high
     executor:
       provider: openai
-      model: gpt-6-astra
+      model: gpt-6-sol
       parameters:
-        reasoning_effort: medium
+        reasoning_effort: xhigh
     reviewer:
       provider: openai
       model: gpt-6-astra

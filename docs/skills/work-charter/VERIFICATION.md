@@ -1,5 +1,263 @@
 # Work Charter Verification
 
+## v0.7.1 verification scope
+
+The changed instruction contract is covered by the existing Planner/Executor
+scenario's ordinary-method and protected-boundary contrasts. These are
+representative specifications, not a fresh model run or natural-adherence
+proof. The SOURCE check passed 27/27 static clauses, current v0.7.1 package
+binding and historical candidate pins. The six-file package tree is
+`8ea9baf2b52635b3bdc0e9984e0d823c8984cc58`; package SHA-256 is
+`a8493a52b081ff8e90df60bb882559b615be52780a0ee1ee1a7e3fcd5b3e01d9`.
+Repository provenance passed with 100 mapped files; `git diff --check` passed.
+The optional original-source Git-object membership check could not resolve
+the recorded migration commit in the provided old repository, so direct
+source-object membership remains UNKNOWN; the pinned standalone mapping check
+passed separately. No full historical qualification or model evaluation is
+implied.
+
+Independent R1 inspected the actual diff and found two P2 current-document
+consumer mismatches: stale model tables and old current-state pointers. The
+original writer repaired both; R2 re-reviewed the changed input and returned
+No findings, closing both. This is independent semantic review, not natural
+behavior proof.
+
+The existing managed update's dry-run and actual apply both exited 0. Actual
+receipt reports MANAGED v0.7.1 and package tree above. Administrator postflight
+found six byte-equal installed/source files, exact pre/post DACL equality,
+an intact complete v0.7.0 backup and rollback source, and an empty transaction
+directory. An ordinary Codex reader also read all six files and the receipt,
+matching the source and MANAGED status. Installer production logic is unchanged;
+only its self-test version binding moved. No rollback or full lifecycle suite
+was run. The same independent R directly checked the installed copy, eleven
+unchanged DACL records, complete v0.7.0 backup, valid rollback source, empty
+transaction directory and current records, returning No findings in R3. The
+review retained a denied ordinary read of the private backup and a mistaken
+receipt-path assertion as no-write diagnostics; authorized read-only follow-up
+resolved coverage. An earlier auto-review denial of a no-apply dry-run also
+remains a separate permission-gate event; the exact approval anchor was then
+confirmed and dry-run/apply completed. Fresh-task Skill loading, existing-task
+reload and natural adherence remain UNKNOWN.
+
+## v0.7.0 verification scope
+
+The current source-contract check passed 27/27 static clauses, required
+`BOUND_TO_V070_CANDIDATE` identity and retained historical pins, with no failures.
+Repository verification passed with 99 mapped files. The existing provenance
+mapping constant and checker hashes were mechanically refreshed after the first
+repository check reported their stale binding; no checker logic was weakened.
+
+Independent R1/R2 corrected stale role routes, retry wording, delegation-source
+trust, model examples and current-version consumers. R3/R4 reviewed the exact
+application packet and operational helpers; R4 returned No findings with all
+earlier findings closed. This is semantic/static review, not model evaluation.
+
+An actual managed update exited 0 and produced MANAGED v0.7.0. Six files match
+the reviewed source, original target and parent permissions are preserved,
+the already-selected personal configuration is unchanged by the installer,
+the verified v0.6.8 rollback copy and ACL snapshot are retained, and the
+transaction root is empty. Privileged and ordinary-reader postflight both
+passed. No rollback was executed or claimed tested.
+
+Review scenarios cover delegated versus planning-only Definition authority,
+direct same-scope E/R correction versus protected-boundary stops, retained
+delegated requests and complete model selection. Scenario edits and static
+checks do not prove agent adherence. No forced compaction, benchmark, scarce
+business rerun or full installer-lifecycle rerun was performed. Installer
+production logic is unchanged; only its self-test version binding moved.
+Independent postflight R5 returned No findings on actual installation and
+recorded recovery evidence. Final records use the ordinary mapped-file check; runtime adoption,
+performance and natural cost/quality effects remain UNKNOWN.
+
+## v068 Sol compatibility verification
+
+The v0.6.8 increment changes the general Executor fallback model only, retaining
+`high`; all 13 Astra level-role objects, schema and precedence are unchanged.
+The SOURCE contract and repository checks must bind the new candidate and preserve
+v0.6.7 as historical input. Current examples/check data follow GPT-6 Sol;
+historical runs keep their original model identities.
+
+`python -B scripts/check_source_contract.py --json` passed all 27 static clauses,
+the v0.6.8 package binding, and historical candidate identities including v0.6.7.
+`python -B scripts/check_repository.py --json` passed with 98 mapped files.
+Package tree: `03b4053d61b6b55877c4fb1401c42bc34b1cc89c`;
+package SHA-256: `9ca7dd69cde29cf57dfb549edfb90c21d0e377effad991bfac87c66381117b48`.
+The update dry-run passed after creating its required existing transaction root.
+An ordinary-sandbox permission snapshot attempt stopped at the process-SID trust
+check before installation; administrator preparation then passed with no policy
+change. The old installed files, receipt and permission snapshot are retained.
+Independent read-only review V068-R1 covered the full increment and installation
+input with no findings. The first apply stopped before creating a transaction
+because its sandbox-owned root was outside the administrator trusted writer set.
+The existing installation and permissions were verified unchanged. A new private
+administrator-owned transaction root was created using the existing helper;
+V068-R2 reviewed this input delta with no findings. The second authorized update
+completed with exit 0. The first postflight used a pre-update content assertion
+and rejected the expected model/receipt changes; this temporary check was corrected
+to compare permissions against the old snapshot and content against new source.
+No production installer or permission policy was changed. Corrected
+administrator postflight verified all six source/installed files, preserved
+permissions and unchanged personal configuration. Ordinary-reader postflight
+also passed. The receipt is MANAGED v0.6.8 and the transaction root is empty.
+The complete v0.6.7 files/receipt and permission snapshot remain retained outside
+discovery roots. These are local installation results, not runtime/model proof. Installer production logic is unchanged; only its self-test source
+version follows this candidate. No full lifecycle suite or provider/model run is
+required for this configuration-only increment. Runtime adoption remains UNKNOWN.
+
+## Unreleased evidence-scope verification
+
+This revision changes the portable evidence and recovery instruction
+contract. The affected Planner/Executor and recovery cases specify
+acquisition-versus-inspection, partial coverage, data-scope and resume
+counterexamples. These are contract specifications and focused source
+checks, not fresh model runs or proof of natural adherence.
+Qualify the final candidate with the SOURCE contract check, then the
+repository identity and provenance check. Preserve historical candidate
+and receipt identities. Reuse unaffected qualification only with its
+original input and scope. Record independent semantic review separately
+from deterministic checks. Installation, loaded-copy behavior and
+broader effectiveness remain outside this source qualification.
+
+The [v0.6.7 candidate](../../../release/v0.6.7-candidate.json) binds package
+tree `b1171c73a4e4c243b982a701c4790d181524b6c2` and SOURCE file-list digest
+`4a5477754200d10d075787cea65b1df0c9241176380501b9a09249a9c2dc0cc2`.
+The SOURCE command completed with exit 0: 46 checks passed, including the
+unchanged 27 static clauses, current candidate binding and the new historical
+v0.6.6 descriptor pin. Five focused binding cases passed: current and restored
+binding, plus rejection of the predecessor package pair, predecessor version
+and altered historical descriptor. Negative cases returned the expected
+exit 1 inside the successful check; they are not failed qualification runs.
+Skill metadata validation completed with exit 0.
+Repository validation completed with exit 0 for 97 mapped files; the final
+diff whitespace check also passed.
+
+Independent read-only v067-R1 reported no findings after examining all
+20 changed paths against the accepted v0.6.6 baseline and the necessary
+surrounding instruction, case, identity-check and documentation context.
+The 98-file input identity check found no drift; it is identity evidence,
+not a claim that all unchanged files received semantic inspection. The
+primary owner recorded the returned result and source-read-only endpoint,
+then refreshed the affected mapping and repository check. This bounded
+recording does not add another acceptance layer or claim model validation.
+
+The new evidence-scope semantics are specified by the cases and require
+independent semantic review; no new wording-match tests claim behavioral
+coverage. Default models, UI metadata, schema and the Standard reference
+retain their bytes. The installer's only change is its existing self-test
+source-version constant, so it resolves this candidate when explicitly run.
+The production mechanism is unchanged; full lifecycle, staged adversarial
+and model evaluations are outside this bounded qualification.
+
+## v0.6.7 local installation verification
+
+The delivered source was installed through the existing managed update path,
+using a private frozen stage and explicit same-volume transaction root outside
+Skill discovery. Independent v067-Install-R1 inspected the actual helper and
+its predecessor delta, relevant installer validation/permission/recovery paths,
+stage, live target, rollback, receipt, permission snapshot and ordinary-reader
+evidence with no findings. The 98-file frozen source identity remained unchanged
+at installation input; that identity check is not semantic review of every file.
+
+- Previous managed package: v0.6.6, tree
+  `d5018129b990686515c91e40184ebf9e5abfc546`, matching the retained source baseline.
+- Installed package: MANAGED v0.6.7, tree
+  `b1171c73a4e4c243b982a701c4790d181524b6c2`; SOURCE file-list digest
+  `4a5477754200d10d075787cea65b1df0c9241176380501b9a09249a9c2dc0cc2`.
+- Installer dictionary digest:
+  `72e960800a05e609f224a0f3b1ddae0f871590247918848f590b068de46351c8`.
+- Installed receipt SHA-256:
+  `6aa9a66bed20cf056c1f1a64dfb2f39c1d7960d3afe9c1cf783a5316b50be987`.
+- Preparation, actual update, administrator postflight and ordinary-reader
+  postflight each completed with exit 0. Six installed files match the source
+  byte for byte. All 11 node owners/DACLs, parent identity/policy, and personal
+  configuration bytes/permissions are unchanged. No extra ACL repair occurred.
+- The complete private v0.6.6 rollback copy and receipt match the previous
+  target; its original permission snapshot is retained. Earlier rollback and
+  failed-attempt evidence remain intact. The transaction directory is empty.
+
+This installation had no failed command, approval rejection or open finding.
+The primary owner's mechanical closeout updates only State, this verification
+record and their existing mapping/checker pin; package and candidate stay fixed.
+The affected repository and diff checks qualify those final record bytes.
+No full lifecycle replay or model test was performed. Fresh-task loading,
+existing-task reload, Harness/model adoption and natural effectiveness remain
+`UNKNOWN`; installation does not establish those outcomes or authorize publication.
+
+## Unreleased handoff verification
+
+The changed mechanism is the instruction contract for substantive decisions,
+review routing, continuous execution, record closeout and affected-action
+recovery. The existing Planner/Executor, Standard and recovery cases specify
+ordinary-step continuity, R reporting without a pure receipt, required P
+verdict delivery, record-only endpoints, material findings/permissions/delivery
+uncertainty and idle-role recovery contrasts. These are specifications and
+static lint, not new model runs or proof of Harness behavior.
+
+The user-confirmed [v0.6.6 candidate](../../../release/v0.6.6-candidate.json)
+binds the six-file tree `d5018129b990686515c91e40184ebf9e5abfc546` and SOURCE
+file-list digest `455e567ad5592792e4133e086dd0a7109472ddf78f4d24a24732621b0bbb8084`.
+Run focused SOURCE first, then the repository mapping check and Skill metadata
+validation on the final diff. SOURCE requires the current candidate binding
+and exact historical v0.6.5 descriptor identity. Focused negative checks reject
+a predecessor package pair and a changed historical descriptor.
+
+Local qualification passed all 45 SOURCE checks, including 27 static clauses,
+and five focused binding cases (current/restored binding plus rejection of the
+predecessor package, predecessor version and altered historical descriptor).
+Repository validation covers 96 mapped files. Skill metadata validation is
+reused from the unchanged package input; no model or runtime proof is implied.
+
+The earlier unversioned input passed 27 static clauses but failed its required
+candidate binding; that failure remains historical and was not an overall
+SOURCE PASS. Independent read-only review of that input found no findings;
+the version/candidate/checker delta requires review of the final input. The new
+descriptor remains a pre-review snapshot rather than a review or release receipt.
+
+Default model data, metadata, schema and production installer mechanisms are
+unchanged; only the installer's self-test version constant follows v0.6.6.
+Installer lifecycle, full repository adversarial and model runs are
+not required for these text semantics; historical evidence retains its own
+input and scope. The separately authorized installation is recorded below;
+publication remains outside this work.
+
+## v0.6.6 local installation verification
+
+The accepted source was installed through the existing managed update path
+using a private frozen stage and explicit same-volume transaction root outside
+Skill discovery. Independent v066-Install-R1 inspected the helper, live target,
+stage, rollback copy, 11-node permission snapshot and parent context with no
+findings. All 97 frozen source files remained unchanged at installation input.
+
+- Previous managed package: v0.6.5, tree
+  `d0df02a81471c2b9e157c9f6faebc65948cb4b54`, verified against published source
+  commit `05dc4f395ef607b6ea0209514caa759d532a6bff`.
+- Installed package: MANAGED v0.6.6, tree
+  `d5018129b990686515c91e40184ebf9e5abfc546`; SOURCE file-list digest
+  `455e567ad5592792e4133e086dd0a7109472ddf78f4d24a24732621b0bbb8084`.
+- Installer dictionary digest:
+  `30336c7bb55d50044cf9fda81d6e2650c5d9563f0eeeee6c1f0be34f7ff0c08f`.
+- Installed receipt SHA-256:
+  `a2775629821f7f136c2f98fcbe67f1e41bb3585503f4dd9addd516e260489604`.
+- Actual update, administrator verification and ordinary-reader verification
+  each completed with exit 0. Six installed files match the accepted source
+  byte for byte. All 11 managed-node owners and DACLs, parent identity/policy,
+  and external personal model configuration bytes/permissions are unchanged.
+- The complete private v0.6.5 copy and receipt match the previous target;
+  its original DACL snapshot remains available. Earlier recovery material is
+  unchanged, and the completed transaction directory is empty.
+
+The first ordinary preparation stopped before creating installation material
+or changing the target because the sandbox actor could not admit the existing
+administrator writer. Native administrator preparation then completed with
+exit 0. An ordinary configuration-permission probe also stopped at an
+unreadable ancestor; its scope was narrowed to content hashing, while the
+administrator check verified configuration permissions. The Reviewer required
+an approved native read to inspect private material. These bounded read and
+preparation failures remain evidence; no ACL repair or policy relaxation was
+performed. No full lifecycle replay, model evaluation or new business task was
+used. Fresh-task loading, Harness behavior and long-term efficacy remain
+`UNKNOWN`; installed-copy proof does not establish them.
+
 ## v0.6.5 publication verification
 
 SOURCE 41 checks (24 static clauses) and repository 95 mapped files passed for the final publication
@@ -24,7 +282,7 @@ fresh-task loading, cross-Harness or efficacy result is claimed.
 
 ## Current v0.6.5 qualification
 
-The current six-file source binds [v0.6.5](../../../release/v0.6.5-candidate.json).
+The released six-file source binds [v0.6.5](../../../release/v0.6.5-candidate.json).
 Changes affect default data and its documentation, case and version bindings.
 Configuration precedence, schema, role authorization and production installation
 logic are unchanged. The installer self-test version follows the candidate.
@@ -61,7 +319,7 @@ logic are unchanged. The installer self-test version follows the candidate.
   complete user/default byte equality, all 96 source paths and the unchanged
   installed v0.6.3 inventory/hashes verified. This proves scoped readability
   and data identity, not model dispatch or host reload.
-- Current installation: managed v0.6.5 after explicit user approval. Independent
+- Historical v0.6.5 installation: managed v0.6.5 after explicit user approval. Independent
   v065-Install-R1 compared all 11 live/staged nodes, package files, receipt,
   owners and full security descriptors with no findings. The actual update and
   ordinary-reader verification each returned exit 0; all six installed files

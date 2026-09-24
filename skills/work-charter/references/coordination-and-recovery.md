@@ -164,17 +164,38 @@ or consumed evidence when the material contract and checkpoint are unchanged.
 Before a foreseeable switch, preserve the smallest sufficient checkpoint in
 the existing authoritative carrier: Charter locator and revision, role and
 writer, workspace, reviewed input, open findings, evidence and invalidation
-condition, last returned disposition, and next authorized action. After the
-switch, reload the current contract and checkpoint, compare them with live
-workspace and writer state, then retrieve only missing evidence. Memory or a
+condition, any required returned disposition, and next authorized action or concrete blocker and return route. Preserve an
+unfinished delegated request and its authority even when the latest visible
+message contains no new request. Before
+the next affected action after the switch, reconcile the current contract and
+checkpoint with live workspace and writer state, then retrieve only missing
+evidence. Do not wake idle roles merely because governing text changed. Memory or a
 conversation summary may locate evidence but cannot replace current authority,
 raw terminal proof, or durable state. If role, ruleset, input, or workspace
 identity is incomparable, stop safely and use the applicable re-entry route.
+
+For ongoing evidence work, the checkpoint also distinguishes material
+already obtained, the portion actually examined, supported conclusions
+and remaining gaps. Reconcile reusable results with the same source
+subject and checkpoint before consuming them. Resume the unexamined or
+invalidated portion when it is authorized and necessary; neither data
+acquisition nor a successful extraction marks it as examined. Reuse
+admissible saved results instead of repeating collection solely because
+the context changed, and retain request consumption and failed or invalid
+attempts. Use the existing carrier: L1 may keep the bounded record in its
+task; L2-L4 use their authorized durable anchor. No separate reading
+ledger or new authority file is required.
 
 ## Contract And Proposal Changes
 
 Keep four layers explicit when a Charter or Phase proposal is being formed or
 revised:
+
+Express authorization by the intended outcome, functional domain, environment,
+permitted effects, and real aggregate cost. Name sensitive or production
+targets, frozen evidence, managed paths, required interface and migration
+identity, consumer ordering, and non-repeatable effects when they matter.
+Approval of a general route does not authorize an unlisted external effect.
 
 - **Confirmed Contract** records only user-confirmed outcomes, acceptance, and
   exclusions. Changing it requires the applicable material user decision.
@@ -209,7 +230,17 @@ defects, evidence, explicit requirements, and applicable verification while
 replacing a proposal.
 
 Do not promote an Agent-proposed method into a user requirement merely because
-it appeared in an earlier plan, prompt, or handoff. A contract-preserving
+it appeared in an earlier plan, prompt, handoff, or generally approved plan.
+An ordinary file list, sequence without a real dependency, chosen tool or
+check arrangement, per-message relay or acknowledgement, and Agent-set
+per-repair limit are Working Proposal unless a user or project explicitly
+fixes them or a concrete protected risk requires them. Within authorized
+outcomes and effects, E may choose ordinary implementation details that were
+not enumerated in the approval. Preserve the protection target while choosing
+the least sufficient mechanism and strength; do not treat a mechanism's own
+promise as the reason to keep it.
+An explicitly adopted hard stop or frozen consumption limit remains binding
+until its authorized owner changes it; do not retroactively call it a proposal. A contract-preserving
 Working Proposal change needs no Charter or Definition revision, renewed
 approval, or unrelated durable-document churn. Remove or replace a rejected
 Agent invention; record it as a durable non-goal only when an independently
@@ -220,6 +251,45 @@ permission, trust boundary, irreversible effect, authoritative rule, risk,
 external effect, workspace, or integration policy, stop and route the
 material decision through the existing owner. Do not use proposal flexibility
 to weaken a guardrail or expand authority.
+
+## Delegated Decisions And Escalation
+
+Resolve a problem at the lowest role that already has authority over it.
+Use the existing Mandate, Definition or task contract to distinguish fixed
+outcomes and guardrails, delegated choices, authorized effects, and exceptions.
+These are concise contract contents, not new documents or required forms.
+
+| Decision | Responsible owner and return condition |
+| --- | --- |
+| Ordinary implementation method, file choice, verification order, equivalent substitution and same-scope repair | E, or the L0-L2 primary, within authorized outcome, domain, environment, effects and cost; return to P or the primary owner when equivalence, authority or a protected boundary is unclear. |
+| Technical finding, coverage and re-review judgment | Read-only R; resolve technical questions and correct or withdraw a finding from evidence, preserving its history. R neither repairs nor accepts the target. |
+| In-phase sequencing, contract-preserving correction, finding disputes, recovery allocation and target acceptance | P within the approved delegation; escalate only a decision outside that delegation. P does not repeat technical review. |
+| Direction, cross-phase tradeoffs, Mandate interpretation and project-level acceptance | O within the user-approved project authority; do not bypass P to direct E/R. |
+| Reserved outcome, acceptance floor, authority, aggregate cost or external-effect change; next unapproved phase | User, through the existing semantic owner; direct operation-local consent stays with the actual action task. |
+
+For L4, a user-approved Mandate may explicitly authorize P to finalize an
+in-bound Phase Definition and dispatch its specified E/R work. Record the
+delegating approval and P's conformance decision; this is delegated authority,
+not P self-granting execution. Without that authorization, or with unresolved
+material user choices, the Mandate remains planning-only and the Definition
+still needs user approval. Existing planning-only Mandates and frozen contracts
+do not acquire execution authority from this rule. A next phase remains a user
+decision. L0-L2 use their actual primary and necessary R, without adding O/P/E.
+
+P may preauthorize the correction loop below in the approved delivery contract.
+For recovery, prefer an aggregate authorized cost/effect boundary with concrete
+stop conditions over Agent-invented per-command quotas. E may correct an
+in-scope, repeatable failure only when the prior terminal and side effects are
+known, a concrete delta addresses the failure, evidence remains usable, and
+the next action stays within authority and remaining budget. Unknown effects,
+permission conflict, exhausted limits, repeated failure without semantic
+progress, or a protected-boundary change stop the affected work. P handles
+in-bound recovery; only a decision beyond P goes to O or the user. Explicit
+one-shot, human-review, scarce-evidence, timeout and frozen consumption limits
+still bind. A sensitive or production target, managed path, compatibility or
+migration identity, required producer-before-consumer order, independent R,
+or reserved acceptance cannot be relaxed as an ordinary method choice.
+Reclassifying a failure or starting another task never resets them.
 
 ## Task And Role Prompt Construction
 
@@ -239,13 +309,25 @@ selecting or activating Work Charter.
 - Necessary model adaptation: include only a supported difference relevant to
   the actual model and task, with its source; otherwise use adaptation `none`.
 
+For an evidence-collection assignment, state the bounded question, source
+scope and permitted collection, retention and disclosure. Include the
+subject, revision, time range or inspection unit only when it defines the
+actual boundary. Identify the responsible decision owner, result route and
+any applicable budget or stop condition; do not invent a universal quota.
+The return distinguishes source locators, actual inspection coverage,
+findings, inferences and unknowns. Evidence-only responsibility grants no
+implementation, acceptance or broader data authority. The primary owner or
+designated assessor retains the decision and checks material returned
+claims in proportion to their consequence; do not automatically reread
+every record.
+
 | Actual responsibility | Prompt addition |
 | --- | --- |
 | Primary (`L0`-`L2`) | Complete authorized implementation, required verification, and delivery; at L1/L2 retain the applicable record and disposition independently required Reviewer findings. Do not create P/E separation or claim independent self-acceptance. |
 | Orchestrator (`L4`) | Frame project outcome, Mandate, phase direction, and Planner return route; assess project-level results without directing the Executor or repeating technical review. |
-| Planner (`L3`/`L4`) | Supply the executable contract, acceptance criteria, and E/R routes; assess returned evidence and direct corrections while remaining read-only on implementation and routing technical review to R. |
-| Executor (`L3`/`L4`) | Complete authorized work and required checks, preserve findings and evidence, and return the stable checkpoint to the Planner; do not expand scope or accept the result. |
-| Reviewer (when enabled) | Inspect frozen input and necessary semantic context read-only; return actionable findings, coverage, and unknowns to the designated assessor or primary owner without repair or self-granted authority. |
+| Planner (`L3`/`L4`) | Supply the executable contract, acceptance criteria, and E/R routes; exercise the delegated in-phase choices, authorize the bounded correction route and accept stable results while remaining read-only on implementation and routing technical review to R. |
+| Executor (`L3`/`L4`) | Complete authorized work and required checks, preserve findings and evidence, and return the stable checkpoint to the Planner or use the preauthorized E/R correction route; do not expand scope or accept the result. |
+| Reviewer (when enabled) | Inspect frozen input and necessary semantic context read-only; return actionable findings, coverage, and unknowns through the approved route; same-scope findings may go directly to E for preauthorized repair. Correct findings from evidence without repair, acceptance or self-granted authority. |
 
 Cold prompts provide sufficient authoritative pointers and hard boundaries to
 start without a conversation search. Warm continuations retain the contract
@@ -254,7 +336,10 @@ unchanged instructions already reliable in context. Recovery restores missing
 contract, writer, checkpoint, findings, and permission history. Do not nest an
 old delegation envelope inside a new one. Use the optional
 [prompt scaffold](../assets/work-charter.md#task-or-role-prompt) without creating
-a second authority file.
+a second authority file. Keep reliable history at its existing owner; a warm
+payload need not repeat full documents, every hash or the whole approval chain.
+Include the evidence and boundaries needed for the receiver's next action;
+there is no fixed word count or call limit.
 
 Keep every prompt and handoff proportionate and complete for the receiver's
 next decision or action. Preserve key facts, decisions, material limitations,
@@ -337,9 +422,9 @@ The user path is outside Skill discovery and installation roots. Never search
 project directories or other user paths for alternatives. Install, update,
 rollback, and uninstall must not create, modify, move, or delete the user file.
 
-The package default retains its four general objects and existing values as
-compatibility fallbacks, and adds the approved L0-L4 level overrides. It has no
-general `primary`; its explicit `l0.reviewer` override is Astra medium for
+The package default supplies four general compatibility fallback objects
+and approved L0-L4 level overrides; the YAML owns their current values. It has
+no general `primary`. Its explicit `l0.reviewer` object applies only to
 a separately authorized temporary Reviewer. Missing user entries may use
 package level defaults, including for primary owners. Accept configuration
 only in this bounded data shape:
@@ -401,7 +486,7 @@ Use the first present complete object; with no selected user file, start at
 the package level lookup. An explicit/user general object wins over a package
 level override, preserving legacy four-role user files. For example, a user
 general Executor configured as Sol/high still wins for L3 or L4 even though
-the package level default is Astra/medium. If that user file omits Executor,
+the package level default is Sol/xhigh. If that user file omits Executor,
 the applicable package level override wins before the package general fallback.
 The current package supplies every valid primary lookup, so host pass-through
 is a defensive compatibility rule rather than the current no-user-file result.
@@ -455,19 +540,47 @@ and capture the dirty boundary. Concurrent or unexplained changes pause
 writing, require a delta inventory and one-writer restoration, and invalidate
 affected evidence until rechecked.
 
+The Executor continuously completes the authorized package's implementation,
+necessary checks and implementation documentation. Preparation, ordinary
+internal repairs and individual checks are not separate acceptance checkpoints.
+Hand off a stable review input, a material blocker, a permission change or an
+explicitly independent outcome; preserve any contract-required checkpoint.
+
 The normal review path is:
 
-1. the Executor verifies its work and sends one review-ready Result Notice to
-   the Planner for a named stable checkpoint;
-2. the Planner confirms contract scope, freezes the review input, and routes
-   that checkpoint to the Reviewer;
-3. the Reviewer returns findings, inspected coverage, exclusions, and
-   unresolved `UNKNOWN` facts to the Planner without writing the target;
-4. the Planner returns one checkpoint-bound disposition to the Executor;
-5. when correction is required, the Executor repairs and verifies a new
-   checkpoint, and the same Reviewer re-reviews the affected and cumulative
-   material surface; and
-6. only after review convergence does the Planner decide target acceptance.
+1. E verifies the package and sends one review-ready Result Notice to P for
+   a stable checkpoint. P confirms contract scope, freezes the review input
+   and routes the first review to R.
+2. R inspects read-only and reports findings, coverage, exclusions and UNKNOWN.
+   When the approved contract preauthorizes ordinary same-scope corrections,
+   R sends actionable findings to the original E. E repairs and verifies,
+   freezes the new checkpoint, relinquishes writing and sends it to the same
+   valid R. This loop needs no per-round P approval or relay. Each checkpoint
+   retains cumulative findings, actual input, verification and review coverage.
+3. R may clarify, correct or withdraw its technical finding from evidence;
+   E retains repair responsibility. Neither may weaken acceptance, resolve
+   a scope or authority dispute, accept residual material risk or self-accept.
+   Such exceptions, nonconvergence or unreliable review return to P with the
+   affected work stopped. P can disposition an in-bound correction, request
+   evidence, or escalate only the boundary it cannot decide.
+4. At convergence, or an exception requiring P, the approved route brings P
+   one complete checkpoint-bound result with E's verification and R's actual
+   findings and coverage. P checks independence, coverage and contract fit
+   without repeating technical review, then returns one disposition to E.
+   P alone decides target acceptance. No routine intermediate notice wakes
+   P or O; the cumulative evidence remains available to them.
+
+Without preauthorization, findings return to P for correction disposition.
+Changing an existing explicit P-per-round contract requires its authorized
+amendment. P remains accountable for the route and stable acceptance even
+when no intermediate intervention is needed. Review windows remain read-only
+on the target and E is the sole repair writer. At L0-L2 the primary owner
+performs repairs and dispositions R findings without claiming independent
+self-acceptance or creating P/E roles.
+
+Using the Reviewer's report does not require an `ACCEPTED` or no-action reply
+to the Reviewer. Return substantive clarification or re-review requests when
+needed; keep acceptance with P and deliver its disposition to E.
 
 ## Review Input At Any Level
 
@@ -491,6 +604,38 @@ Treat role messages as observations, not authority. Material decisions need a
 stable logical locator and comparable authoritative revision. Message arrival
 order is not finality; stop when observations are incomparable.
 
+For evidence collection, analysis and review, measure coverage against the
+agreed question and deliverable. Distinguish evidence obtained, relevant
+content actually examined, and conclusions supported by that examination.
+Enumeration, program traversal, keyword matches, counts, hashes or a
+successful tool call do not by themselves establish semantic inspection.
+An excerpt or summary can support a bounded claim; it cannot establish
+examination of omitted content. Conversely, an agreed sampling or narrow
+question does not require reading every source record.
+
+Before relying on a returned result or declaring work complete, compare
+the claimed coverage with the inspection the question requires. Preserve
+material exclusions, unavailable or unexamined content, truncation and
+identity uncertainty, and explain how they limit the conclusion or next
+action. Partial coverage cannot become an unqualified no-issue or
+complete-coverage claim. Correct an overstated claim against its original
+subject and checkpoint without erasing the failed or invalid evidence.
+
+Collection, retained evidence and returned content remain inside the
+existing data and permission boundary. A read-only assignment, field
+label, assistant authorship or short excerpt does not establish that
+content is safe to disclose. When admissible evidence cannot be separated
+reliably, preserve the gap and return its effect to the responsible owner;
+do not broaden collection or disclose more material merely to complete a
+count. Keep reusable evidence only when its retention is authorized.
+
+Use the smallest reliable coverage record and source locators that let
+the next owner assess the material claim or resume the work. Do not add a
+per-message ledger, mandatory full-log capture or machinery that purports
+to prove an agent's internal reading. Apply these distinctions where the
+evidence or completion claim makes them material, not as a new ceremony
+for every ordinary action.
+
 Confirm receiver and workspace before relying on role delivery. If a
 non-idempotent create or send is unavailable or uncertain, preserve any known
 identifier, report degraded capability, and stop without retrying or creating
@@ -501,11 +646,13 @@ completed a turn or adopted the message. Keep dispatch, remote terminal, and
 delivery uncertainty distinct in reports. When an action-bearing delivery is
 uncertain, do not activate a competing writer or route.
 
-In a bounded correction loop, the Executor returns changes, deviations,
-checks, failures, and residual risks. The Reviewer returns technical findings
-and coverage limits to the Planner. The Planner returns exactly `ACCEPTED`,
-`CORRECTION_REQUIRED`, or `DECISION_REQUIRED` to the Executor and owns the
-acceptance decision. Bind review and correction history to the same logical
+For L3/L4 correction, follow
+[Planner, Executor, And Reviewer](#planner-executor-and-reviewer-l3): P routes
+the first review; a preauthorized same-scope R-to-original-E-to-same-valid-R
+loop returns the stable or exception result to P for acceptance. Otherwise,
+findings return to P. E's return includes changes, deviations, checks, failures
+and residual risks. Use the checkpoint-bound dispositions defined below.
+Bind review and correction history to the same logical
 Charter subject and material contract/acceptance revision, and bind each
 finding and verdict to the stable checkpoint it assessed. Task, Session, root,
 branch, worktree, delivery epoch, attempt name, or internal slice is a carrier
@@ -513,20 +660,20 @@ or observation; changing one does not reset approvals, completed corrections,
 consumed evidence opportunities, or open findings. An authorized material
 successor or split keeps a predecessor pointer and the applicable history.
 
-When a material governing source changes, the Session that observed the old
-rules may reread the new text for context and complete an already-permitted
-closeout. That does not prove the Harness rebuilt or freshly loaded the changed
-instruction chain. Before the next action whose coordination, authority, or
-evidence contract depends on the new rules, start a fresh Session or run,
-identify every applicable governing source, record a normalized-text identity
-for each, and requalify the affected conditions. Reuse unaffected evidence and
-history; do not turn a ruleset transition into a blanket rerun or a reset of
-approvals, corrections, consumed evidence, or open findings.
+When a material governing source changes, reconcile the current rules and
+contract before the next action that depends on them. Recover only the affected
+part and stop that action if authority, revision or evidence conflicts cannot
+be resolved. Do not broadcast a reload to idle roles. Work Charter owns this
+understanding and recovery boundary; the Harness or an explicit special
+contract owns loading proof and any required fresh-run mechanism. Manual
+rereading, hashes or a new task alone do not prove a freshly loaded instruction
+chain. Existing frozen fresh-run qualifications, stop conditions, failures and
+consumed evidence remain binding; this guidance does not revoke them. Reuse
+unaffected evidence and history without a blanket rerun or an authority reset.
 
-For every Result Notice, its route contract names the notice recipient and the
-return route. That recipient returns exactly one checkpoint-bound disposition
-through the return route unless independent assessment is required; in that
-case, the named assessment owner produces the disposition:
+For a material result requiring acceptance or permission to continue, name the
+assessor, assessed checkpoint and route to the role that acts on the decision.
+The named assessor returns one explicit checkpoint-bound disposition:
 
 1. `CORRECTION_REQUIRED` with one bounded, verifiable same-scope delta;
 2. `ACCEPTED` with the next already-authorized tranche, when one exists;
@@ -536,20 +683,31 @@ case, the named assessment owner produces the disposition:
 The disposition identifies the assessed checkpoint, verdict, next action or
 explicitly no action, observable writer state, durable-recording state, and—if
 a user decision is required—the stable decision locator and owner. This is a
-portable message contract, not a required receipt file or public state
-machine. A lower role that has returned its Result Notice stops polling and
-remains idle; the upper role likewise stops after returning its disposition.
+portable decision contract, not a required receipt file, message registry or
+public state machine. A role that hands off stops polling and remains idle;
+the assessor likewise stops after returning its disposition unless authorized
+recording remains in its writer window.
 A terminal disposition requires no acknowledgement, preventing callback
 ping-pong. A disposition sent to the wrong route, omitted, duplicated, or
-bound to a stale checkpoint is not convergence. Until the one current
-disposition is delivered, the lower role is semantically awaiting verdict even
-when its runtime status is idle; silence is never acceptance.
+bound to a stale checkpoint does not close a required decision. Until that
+disposition is delivered, the dependent role is semantically awaiting verdict
+even when its runtime status is idle; silence is never acceptance.
+
+Pure factual, evidence or mechanical-recording completion notices do not
+automatically create an acceptance checkpoint or a reply obligation. A request
+for correction, evidence or a decision returns the substantive content needed
+by its requester. Determine this from the effect and applicable contract, not
+the message label: never rename a material decision as a notice to bypass
+approval. A cross-project status receiver adds no acceptance layer merely by
+receiving a notice; changing an explicitly agreed acceptance layer requires
+the user's contract decision.
 
 Send at most one current Result Notice per route for one checkpoint. Do not
 resend an unchanged checkpoint, mirror a finding or verdict, poll another role,
-or require an acknowledgement to keep the loop alive. A correction or other
-material input change creates a new checkpoint and one new Notice while the
-prior Notice, findings, and disposition remain part of cumulative history.
+or require an acknowledgement to keep the loop alive. A corrected stable review
+input or other material handoff creates a new checkpoint and one new Notice;
+ordinary internal repairs and mechanical records do not by themselves do so.
+Prior Notices, findings and dispositions remain part of cumulative history.
 
 When a finding or result is `UNKNOWN`, the Planner or primary owner first
 examines the raw terminal result and nearby counterexamples already inside its
@@ -617,6 +775,22 @@ Bind material evidence to its mutable subject, revision, and invalidation
 condition. Observe ignored, untracked, private, generated, or external results
 beyond tracked Git status. A material subject change invalidates the evidence
 for reuse but does not erase its historical consumption. Keep an assessment
-verdict separate from durable recording; until an authorized governance writer
-records and verifies a verdict another session will rely on, report recording
-as pending.
+verdict separate from durable recording; report a formed verdict and pending
+recording separately until an authorized writer records and verifies it in the
+existing canonical owner before another session relies on that durable state.
+
+Use the existing authorized single-writer window. A Planner or Orchestrator
+with governance-write authority records its own formed disposition after
+assessment ends and the execution writer has relinquished the workspace. If
+only the Executor may write, include the exact record update in the disposition
+or authorized closeout sent to the Executor. The Executor never prewrites a
+future Planner or Orchestrator verdict. Mechanical persistence of a formed
+verdict is not a new technical acceptance package. Correct a recording error
+as a record repair; return to the relevant gate only if the correction changes
+contract, risk or acceptance meaning. Independent Git review requirements still
+apply to any resulting commit.
+
+Define the closeout endpoint in the disposition: required records and checks,
+any authorized remaining action, and the resulting writer state. A verified
+mechanical completion may be reported as fact without an acceptance-of-records
+loop. This does not waive an explicitly required independent outcome or gate.

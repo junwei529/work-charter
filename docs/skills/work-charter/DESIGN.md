@@ -1,5 +1,42 @@
 # Work Charter Design
 
+## Current outcome-scoped authority revision
+
+v0.7.1 retains the v0.7.0 role, delegation, model and correction contracts.
+Authorization names outcomes, domain, environment, permitted effects and real
+cost. Ordinary implementation files, tools, sequencing and repeatable repairs
+are replaceable proposals unless explicitly fixed or needed for a concrete
+protected risk. Sensitive targets, immutable evidence, required compatibility
+and ordering, independent review, acceptance and external effects remain hard
+boundaries. The existing coordination reference owns the detailed distinction;
+the shared entry, Charter template and Standard operating path point to it.
+No role, carrier, dependency or production installer mechanism is added.
+
+## Current delegation revision
+
+v0.7.0 makes the lowest-authorized-role decision rule explicit. A user-approved
+Mandate may delegate in-bound Definition finalization and specified dispatch
+to P; planning-only and frozen contracts retain their gates. A preauthorized
+same-scope correction can run from R to original E and back to the same valid
+R, with P accepting the stable result or handling exceptions. R remains
+read-only, E owns repairs, and O owns project-level decisions. Recovery keeps
+unfinished authorized work and actual risk/cost limits without inventing
+per-command approval counters. No new mandatory carrier or role is added.
+
+The package YAML owns the approved Sol/Astra combinations; whole-object
+selection and runtime-evidence distinctions are unchanged. This is a user
+configuration decision, not a new performance evaluation. Existing user files
+are never rewritten by the installer; host-specific updates require authority.
+The sections below retain earlier design history where dated.
+
+## Historical v0.6.8 Sol compatibility revision
+
+v0.6.8 changes only the package general Executor fallback to `gpt-6-sol/high`.
+The 13 Astra level-role objects and whole-object selection precedence are
+unchanged. A selected user general object still outranks a package level object;
+an existing user file is never changed by the installer. Historical references
+below describe their original package defaults.
+
 ## Product boundary
 
 Bounds consequential Codex work by outcome, authority, evidence, recovery,
@@ -25,7 +62,7 @@ additions do not create roles, forms, or approval gates. Defaults, schema, and
 production installation behavior remain unchanged; the self-test version
 binding follows the new package.
 
-The current [v0.6.5 candidate](../../../release/v0.6.5-candidate.json) adjusts
+The released [v0.6.5 candidate](../../../release/v0.6.5-candidate.json) adjusts
 level-role reasoning defaults by user decision: explicit L0 Reviewer medium,
 L3/L4 Planner high, and L4 Orchestrator xhigh. Other level objects and all general
 compatibility fallbacks retain their values. This is configuration tuning, not
@@ -63,9 +100,18 @@ assets own detailed coordination, recovery, Standard O/P/E/R, and template
 guidance. The repository checker fails if any package byte or expected path
 differs from its current recorded mapping.
 
+The shared entry and coordination reference define a portable
+evidence-scope contract: acquisition, actual inspection and supported
+judgment remain distinct. Evidence delegation carries its source and data
+boundaries without transferring implementation or acceptance authority.
+Recovery retains material inspection progress at the existing carrier.
+Harness-specific collection, output, storage and identifier mechanics
+remain outside this package. The contract does not require full-log
+capture, a per-message ledger, fixed sampling quotas or a new role layout.
+
 `assets/role-models.default.yaml` is the sole default-data owner and retains its
-exact four general O/P/E/R objects and values as compatibility fallbacks,
-plus 13 approved Astra level objects specified in that YAML. Schema v1 now permits an
+four general O/P/E/R objects as compatibility fallbacks,
+plus 13 approved level-role objects specified in that YAML. Schema v1 now permits an
 explicit or user file to add a general `primary` and bounded
 `level_overrides`. An authorized task-start or dispatch boundary resolves a
 frozen complete combination, a task-explicit confirmed complete combination,
@@ -93,10 +139,32 @@ direction and phase acceptance without duplicating technical review.
 Review is bound to an actual stable checkpoint, baseline, necessary semantic
 context, tests, documentation consumers, material untracked inputs, and stated
 graph/generated-artifact limits. Repair normally returns to the same reliable
-Reviewer, with cumulative findings preserved. One checkpoint has at most one
-current Notice per route; terminal returns require no acknowledgement. Context
-switches preserve contract, authority, role/writer, finding, stop, and evidence
-history unless a material identity changes.
+Reviewer, with cumulative findings preserved. A material result needing
+acceptance or continuation authority receives its named assessor's disposition
+at the role that acts on it. Factual/evidence notices do not add acceptance
+receipts; labels cannot bypass material gates. E completes the authorized
+package, checks and implementation documentation before stable review except
+at a material boundary. P checks R independence and coverage without repeating
+technical review and sends its stable or exception decision to E. The approved
+preauthorized correction route can bypass per-round P intervention; R is idle
+when no substantive review or clarification is pending. O stays dormant except for direction, cross-phase dependencies,
+material project risk and Phase acceptance.
+
+Verdict formation and durable recording are distinct. The authorized writer
+records only formed verdicts: P/O after assessment and writer relinquishment
+when permitted, otherwise E under the returned disposition's record instructions.
+Mechanical recording has a defined checked endpoint rather than recursive
+acceptance of records; material meaning changes and independent Git review
+remain governed by their gates. A cross-project status receiver adds no layer
+without a contract decision. Warm payloads reuse reliable anchors and send only
+needed changes, evidence, action and boundaries.
+
+Context recovery preserves authority, role/writer, finding, stop and evidence
+history. Reconcile current rules before the next affected work without waking
+idle roles. Harness or explicit special contracts own fresh-run/loading proof;
+manual rereads, hashes or new tasks alone do not establish it, and frozen
+qualification and consumption boundaries remain binding. The v0.6.6
+revision's state and evidence limits are owned by State and Verification.
 
 Authorization remains bound to its action, subject, actor class, effect, and
 risk rather than to a carrier task. A still-valid authorization may therefore
@@ -125,7 +193,7 @@ A later ACL-only repair restored default-reader access to the exact managed
 v0.4.0 copy and closed that exact access finding without installing v0.4.1.
 The v0.5.0 source receipt creates no installation, publication,
 runtime-delivery, or stable-behavior claim. The later level-role extension was
-the local v0.6.0 candidate. Neither it nor the later v0.6.1, v0.6.2, v0.6.3, v0.6.4 and current v0.6.5
+the local v0.6.0 candidate. Neither it nor the later v0.6.1, v0.6.2, v0.6.3, v0.6.4, v0.6.5 and current v0.6.6
 revisions rewrite or inherit v0.5.0 acceptance.
 Historical release metadata and evidence remain immutable for their versions.
 

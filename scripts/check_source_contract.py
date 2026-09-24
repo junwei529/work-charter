@@ -8,7 +8,22 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "skills" / "work-charter"
-CURRENT_CANDIDATE = ROOT / "release" / "v0.6.5-candidate.json"
+CURRENT_CANDIDATE = ROOT / "release" / "v0.7.1-candidate.json"
+V070_CANDIDATE = ROOT / "release" / "v0.7.0-candidate.json"
+V070_CANDIDATE_SHA256 = "656f021a2af4b8af6683a32b60a9c6e08fa8f1e7bd44611ad7f23cc33ed235b7"
+V070_PACKAGE_TREE = "9bc03ec6f1ac081b738da2ca316b18b22a356aea"
+V068_CANDIDATE = ROOT / "release" / "v0.6.8-candidate.json"
+V068_CANDIDATE_SHA256 = "5477e80a235e77b09ca8afb93ff3dbe5bb880c17ca2786474f4e780d8ab1130d"
+V068_PACKAGE_TREE = "03b4053d61b6b55877c4fb1401c42bc34b1cc89c"
+V067_CANDIDATE = ROOT / "release" / "v0.6.7-candidate.json"
+V067_CANDIDATE_SHA256 = "1a8fb41f176038412b08aa57cac9b9e0f5bfcc0c5f122e0f78090e8a3695dbca"
+V067_PACKAGE_TREE = "b1171c73a4e4c243b982a701c4790d181524b6c2"
+V066_CANDIDATE = ROOT / "release" / "v0.6.6-candidate.json"
+V066_CANDIDATE_SHA256 = "d61c43225dc919486ff78d0edc8d85d3a45b04eceeb9e1fa5ce815983ae85660"
+V066_PACKAGE_TREE = "d5018129b990686515c91e40184ebf9e5abfc546"
+V065_CANDIDATE = ROOT / "release" / "v0.6.5-candidate.json"
+V065_CANDIDATE_SHA256 = "64596e7ae47ed9abcd4fe90b9fbfe042d6351ab0f57f0627edb45a9f6e7cb236"
+V065_PACKAGE_TREE = "d0df02a81471c2b9e157c9f6faebc65948cb4b54"
 V064_CANDIDATE = ROOT / "release" / "v0.6.4-candidate.json"
 V064_CANDIDATE_SHA256 = "fd561fd8b90441cb5bba8ee6f791d79b043cfee26d34e48e0152439642c7f27a"
 V064_PACKAGE_TREE = "a4974a1fa9b6f4f01437c4db17110db47bbf32b1"
@@ -74,56 +89,56 @@ roles:
     provider: openai
     model: gpt-6-astra
     parameters:
-      reasoning_effort: xhigh
+      reasoning_effort: high
   planner:
     provider: openai
     model: gpt-6-astra
     parameters:
-      reasoning_effort: xhigh
+      reasoning_effort: high
   executor:
     provider: openai
-    model: gpt-5.6-sol
+    model: gpt-6-sol
     parameters:
-      reasoning_effort: high
+      reasoning_effort: xhigh
   reviewer:
     provider: openai
     model: gpt-6-astra
     parameters:
-      reasoning_effort: high
+      reasoning_effort: medium
 level_overrides:
   l0:
     primary:
       provider: openai
-      model: gpt-6-astra
+      model: gpt-6-sol
       parameters:
-        reasoning_effort: medium
+        reasoning_effort: xhigh
     reviewer:
       provider: openai
-      model: gpt-6-astra
+      model: gpt-6-sol
       parameters:
-        reasoning_effort: medium
+        reasoning_effort: xhigh
   l1:
     primary:
       provider: openai
-      model: gpt-6-astra
+      model: gpt-6-sol
       parameters:
-        reasoning_effort: medium
+        reasoning_effort: xhigh
     reviewer:
       provider: openai
-      model: gpt-6-astra
+      model: gpt-6-sol
       parameters:
-        reasoning_effort: medium
+        reasoning_effort: xhigh
   l2:
     primary:
       provider: openai
-      model: gpt-6-astra
+      model: gpt-6-sol
       parameters:
-        reasoning_effort: medium
+        reasoning_effort: xhigh
     reviewer:
       provider: openai
-      model: gpt-6-astra
+      model: gpt-6-sol
       parameters:
-        reasoning_effort: medium
+        reasoning_effort: xhigh
   l3:
     planner:
       provider: openai
@@ -132,9 +147,9 @@ level_overrides:
         reasoning_effort: high
     executor:
       provider: openai
-      model: gpt-6-astra
+      model: gpt-6-sol
       parameters:
-        reasoning_effort: medium
+        reasoning_effort: xhigh
     reviewer:
       provider: openai
       model: gpt-6-astra
@@ -145,7 +160,7 @@ level_overrides:
       provider: openai
       model: gpt-6-astra
       parameters:
-        reasoning_effort: xhigh
+        reasoning_effort: high
     planner:
       provider: openai
       model: gpt-6-astra
@@ -153,9 +168,9 @@ level_overrides:
         reasoning_effort: high
     executor:
       provider: openai
-      model: gpt-6-astra
+      model: gpt-6-sol
       parameters:
-        reasoning_effort: medium
+        reasoning_effort: xhigh
     reviewer:
       provider: openai
       model: gpt-6-astra
@@ -489,7 +504,7 @@ def main():
             'When a finding or result is `UNKNOWN`',
             'Distinguish a summary or compaction inside one run',
             'Send at most one current Result Notice per route for one checkpoint.',
-            'A correction or other material input change creates a new checkpoint and one new Notice',
+            'A corrected stable review input or other material handoff creates a new checkpoint and one new Notice',
         ]),
         "standard.role_separation_and_hierarchy": contains_all(
             standard,
@@ -499,7 +514,7 @@ def main():
                 "Planner -> Executor execution tranche or work package",
                 "Executor -> internal steps or slices",
                 "Planner -> Reviewer stable review checkpoint",
-                "Reviewer -> Planner findings and coverage limits",
+                "Reviewer -> Planner stable findings and coverage limits",
                 "Keep one active lane, one repository writer, at most one Planner, at most one Executor, and one reliable Reviewer for the active package.",
             ],
         ),
@@ -510,10 +525,30 @@ def main():
                 "freezes the review input and exclusions, and routes it to the Reviewer",
                 "the same reliable Reviewer re-reviews the affected and cumulative material surface",
                 "returns exactly one checkpoint-bound",
-                "the next authorized governance writer records and verifies the verdict",
-                "send at most one current Notice per checkpoint and one returned disposition",
+                "the authorized writer records and verifies the verdict",
+                "Return a disposition for a required decision to the role that acts on it",
             ],
         ),
+        "review.decision_closure_not_message_receipts": contains_all(recovery, [
+            "For a material result requiring acceptance or permission to continue",
+            "Pure factual, evidence or mechanical-recording completion notices do not automatically create an acceptance checkpoint or a reply obligation.",
+            "never rename a material decision as a notice to bypass approval",
+            "Using the Reviewer's report does not require an `ACCEPTED` or no-action reply to the Reviewer.",
+            "ordinary internal repairs and individual checks are not separate acceptance checkpoints.",
+        ]),
+        "review.formed_verdict_and_recording_endpoint": contains_all(recovery, [
+            "the execution writer has relinquished the workspace",
+            "The Executor never prewrites a future Planner or Orchestrator verdict.",
+            "Mechanical persistence of a formed verdict is not a new technical acceptance package.",
+            "Independent Git review requirements still apply",
+            "Define the closeout endpoint in the disposition",
+        ]),
+        "recovery.next_affected_action_and_loading_owner": contains_all(recovery, [
+            "before the next action that depends on them",
+            "Do not broadcast a reload to idle roles.",
+            "the Harness or an explicit special contract owns loading proof and any required fresh-run mechanism.",
+            "Existing frozen fresh-run qualifications, stop conditions, failures and consumed evidence remain binding",
+        ]),
     }
 
     current_candidate_error = None
@@ -599,6 +634,24 @@ def main():
         checks["candidate.v063_historical_identity"] = False
         v063_candidate_error = str(error)
 
+    v066_candidate_error = None
+    try:
+        checks["candidate.v066_historical_identity"] = (
+            hashlib.sha256(V066_CANDIDATE.read_bytes()).hexdigest() == V066_CANDIDATE_SHA256
+        )
+    except OSError as error:
+        checks["candidate.v066_historical_identity"] = False
+        v066_candidate_error = str(error)
+
+    v065_candidate_error = None
+    try:
+        checks["candidate.v065_historical_identity"] = (
+            hashlib.sha256(V065_CANDIDATE.read_bytes()).hexdigest() == V065_CANDIDATE_SHA256
+        )
+    except OSError as error:
+        checks["candidate.v065_historical_identity"] = False
+        v065_candidate_error = str(error)
+
     v064_candidate_error = None
     try:
         checks["candidate.v064_historical_identity"] = (
@@ -608,6 +661,21 @@ def main():
         checks["candidate.v064_historical_identity"] = False
         v064_candidate_error = str(error)
 
+    v067_candidate_error = None
+    try:
+        checks["candidate.v067_historical_identity"] = (
+            hashlib.sha256(V067_CANDIDATE.read_bytes()).hexdigest() == V067_CANDIDATE_SHA256
+        )
+    except OSError as error:
+        checks["candidate.v067_historical_identity"] = False
+        v067_candidate_error = str(error)
+
+    checks["candidate.v068_historical_identity"] = (
+        hashlib.sha256(V068_CANDIDATE.read_bytes()).hexdigest() == V068_CANDIDATE_SHA256
+    )
+    checks["candidate.v070_historical_identity"] = (
+        hashlib.sha256(V070_CANDIDATE.read_bytes()).hexdigest() == V070_CANDIDATE_SHA256
+    )
     successor_error = None
     successor = {}
     try:
@@ -616,14 +684,14 @@ def main():
             not isinstance(parsed_successor.get(field), dict)
             for field in ("package", "evidence_states", "lineage")
         ):
-            raise ValueError("v0.6.5 candidate requires object package, evidence_states, and lineage")
+            raise ValueError("v0.7.1 candidate requires object package, evidence_states, and lineage")
         successor = parsed_successor
     except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
         successor_error = str(error)
-    checks["candidate.v065_identity"] = (
+    checks["candidate.v071_identity"] = (
         successor.get("schema") == "work-charter-local-release-candidate/v1"
         and successor.get("product") == "work-charter"
-        and successor.get("version") == "0.6.5"
+        and successor.get("version") == "0.7.1"
         and successor.get("public_identity") == "junwei529/work-charter"
         and successor.get("candidate_state") == "PENDING_INDEPENDENT_REVIEW"
         and successor.get("human_release_notes_review") == "PENDING"
@@ -632,25 +700,25 @@ def main():
         and successor.get("package", {}).get("files") == sorted(EXPECTED_FILES)
         and successor.get("package", {}).get("path") == "skills/work-charter"
         and successor.get("lineage") == {
-            "historical_package_tree": V064_PACKAGE_TREE,
-            "previous_candidate": "release/v0.6.4-candidate.json",
-            "source_commit": "ca1589140822a10d8e122bd36a860e5a2c673943",
+            "historical_package_tree": V070_PACKAGE_TREE,
+            "previous_candidate": "release/v0.7.0-candidate.json",
+            "source_commit": "1f9697a5f1c1fd9c454fdaa21952f63ab6eaa052",
         }
         and successor.get("evidence_states") == {
             "broad_product_efficacy": "UNKNOWN",
             "cross_provider_runtime": "UNKNOWN",
             "cross_version_lifecycle": "NOT_RERUN_UNCHANGED_MECHANISM",
             "independent_review": "PENDING",
-            "local_release_ready": "PENDING_REVIEW_AND_PLANNER_ACCEPTANCE",
-            "planner_acceptance": "PENDING",
-            "public_release": "UNKNOWN",
+            "local_release_ready": "NOT_AUTHORIZED",
+            "planner_acceptance": "NOT_APPLICABLE",
+            "public_release": "NOT_AUTHORIZED",
             "role_delivery_runtime": "UNKNOWN",
             "source_contract": "REQUIRES_FRESH_DETERMINISTIC_CHECK",
-            "stable_installed_copy": "UNKNOWN",
+            "stable_installed_copy": "PENDING_AUTHORIZED_UPDATE",
         }
     )
     checks["candidate.current_package_binding"] = (
-        checks["candidate.v065_identity"]
+        checks["candidate.v071_identity"]
         and actual_package_tree is not None
         and current_package_sha256 is not None
         and successor.get("package", {}).get("tree") == actual_package_tree
@@ -1345,7 +1413,13 @@ def main():
     if current_candidate_error:
         failures.append(f"candidate.v050_unreadable: {current_candidate_error}")
     if successor_error:
-        failures.append(f"candidate.v065_unreadable: {successor_error}")
+        failures.append(f"candidate.v071_unreadable: {successor_error}")
+    if v067_candidate_error:
+        failures.append(f"candidate.v067_unreadable: {v067_candidate_error}")
+    if v066_candidate_error:
+        failures.append(f"candidate.v066_unreadable: {v066_candidate_error}")
+    if v065_candidate_error:
+        failures.append(f"candidate.v065_unreadable: {v065_candidate_error}")
     if v064_candidate_error:
         failures.append(f"candidate.v064_unreadable: {v064_candidate_error}")
     if v063_candidate_error:
@@ -1404,7 +1478,7 @@ def main():
         ),
         "result": "PASS" if not failures else "FAIL",
         "source_release_identity": (
-            "BOUND_TO_V065_CANDIDATE"
+            "BOUND_TO_V071_CANDIDATE"
             if current_package_bound
             else "UNBOUND_PENDING_SUCCESSOR_VERSION_AND_DESCRIPTOR"
         ),

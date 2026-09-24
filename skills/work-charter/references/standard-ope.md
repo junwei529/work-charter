@@ -42,7 +42,10 @@ or changes an existing task.
 | Executor | Authorized implementation, verification, evidence, and implementation documentation | Expand scope, select a new phase, review its own work, or approve its own result |
 | Reviewer | Read-only semantic inspection of a stable checkpoint, actionable findings, and explicit coverage limits | Modify the reviewed target, direct project scope, or decide target or phase acceptance |
 
-The Orchestrator normally remains dormant during phase execution. Keep one
+The Orchestrator normally remains dormant during phase execution, handling
+only direction, cross-phase dependencies, material project risk and phase
+acceptance. The Planner owns in-phase decisions and stable acceptance; preauthorized
+ordinary repairs close through E and R without per-round Planner intervention. Keep one
 active lane, one repository writer, at most one Planner, at most one Executor,
 and one reliable Reviewer for the active package.
 
@@ -54,14 +57,17 @@ Planner -> Phase Definition
 Planner -> Executor execution tranche or work package
 Executor -> internal steps or slices
 Planner -> Reviewer stable review checkpoint
-Reviewer -> Planner findings and coverage limits
+Reviewer -> Executor preauthorized same-scope findings; otherwise Planner
+Reviewer -> Planner stable findings and coverage limits
 ```
 
 Executor-internal steps or slices are not separate Definitions, roles, or
-approval gates. Standard normally has two user-owned contract gates per phase:
-the Mandate and the Phase Definition. This hierarchy applies only when Standard
-is already applicable and approved; ordinary and single-Agent work remains
-flat.
+approval gates. The user approves the Mandate. It may explicitly delegate
+in-bound Definition finalization and specified E/R delivery to P; otherwise
+the Definition remains a separate user gate. Missing material choices keep
+the Mandate planning-only. Existing approvals are not expanded retrospectively.
+See [Delegated Decisions And Escalation](coordination-and-recovery.md#delegated-decisions-and-escalation).
+This hierarchy applies only to approved Standard work; ordinary work remains flat.
 
 Build role prompts from the
 [shared contract, actual responsibility, current task, and necessary model adaptation](coordination-and-recovery.md#task-and-role-prompt-construction).
@@ -95,38 +101,55 @@ answer once and never mirror it.
 3. The Planner makes the active Charter implementation-ready and identifies
    authorized execution tranches or work packages, writer, evidence, and stop
    conditions.
-4. The Executor implements only that work, may organize it into internal steps
-   or slices without another Definition or approval gate, verifies it, and
+4. The Executor continuously completes that work, necessary checks and
+   implementation documentation. Preparation, individual checks and ordinary
+   repairs do not create acceptance checkpoints. It may organize internal steps
+   or slices and choose ordinary files, tools and check order within the approved
+   outcome, domain, environment, effects and cost without another Definition or
+   approval gate. Explicit dependencies, frozen evidence and protected effects
+   still bind. It verifies the package, and
    returns one review-ready Result Notice to the Planner for a named stable
    checkpoint. It then stops polling and remains idle.
 5. The Planner confirms that checkpoint matches the contract, freezes the
-   review input and exclusions, and routes it to the Reviewer. The Reviewer
-   inspects the actual change, necessary semantic context, tests,
-   documentation consumers, material untracked inputs, and declared graph or
-   generated-artifact limits, then returns findings and coverage to the
-   Planner without modifying the target.
-6. The Planner returns exactly one checkpoint-bound `ACCEPTED`,
-   `CORRECTION_REQUIRED`, or `DECISION_REQUIRED` disposition to the Executor.
-   Same-scope corrections or a listed next tranche may continue there;
-   terminal acceptance or decision-required sends a no-action disposition and
-   requires no acknowledgement. When correction is required, the Executor
-   repairs and verifies a new checkpoint and the same reliable Reviewer
-   re-reviews the affected and cumulative material surface before Planner
-   acceptance. Reviewer replacement requires an unreliable context, material
-   input/permission/workspace change, breached independence, or an explicit
-   blind-review rule and never resets history.
-7. Before the Orchestrator relies on Planner acceptance, the next authorized
-   governance writer records and verifies the verdict and evidence pointer in
-   the target project's canonical owner. Otherwise report recording as pending
-   and stop.
+   review input and exclusions, and routes it to the Reviewer. R inspects the
+   actual change, necessary semantic context, tests, documentation consumers,
+   material untracked inputs and graph/generated limits without writing.
+6. Follow the approved correction route in
+   [Planner, Executor, And Reviewer](coordination-and-recovery.md#planner-executor-and-reviewer).
+   Preauthorized ordinary same-scope findings go from R to the original E;
+   E repairs and verifies, and the same reliable Reviewer re-reviews the
+   affected and cumulative material surface. No per-round P approval is needed.
+   Without preauthorization, or for disputes, nonconvergence, uncertain
+   authority or material risk, return to P. At convergence or an exception,
+   P checks independence, coverage and contract fit without repeating technical
+   review, then returns exactly one checkpoint-bound `ACCEPTED`,
+   `CORRECTION_REQUIRED`, or `DECISION_REQUIRED` disposition to E. Acceptance
+   stays with P; R never repairs or accepts. Terminal dispositions need no ACK.
+   Reviewer replacement requires a material reliability, independence or
+   contract reason and never resets cumulative history.
+
+7. Keep the formed verdict and its recording state separate. With governance
+   write authority, the Planner records its verdict after assessment and the
+   Executor's writer relinquishment. If only the Executor may write, include
+   that mechanical record update and its checks in the disposition or closeout.
+   Before another session relies on durable acceptance, the authorized writer
+   records and verifies the verdict and evidence pointer in the canonical owner;
+   otherwise report recording as pending. The Executor never prewrites a future
+   verdict. Fix record errors as records, returning to the relevant gate only
+   for changes to contract, risk or acceptance meaning. Git review still applies.
 8. The Planner returns its phase-level Result Notice to the Orchestrator. The
    Orchestrator assesses project direction and transition without duplicating
    implementation review, then returns exactly one checkpoint-bound
    disposition to the Planner. It never contacts the Executor directly.
-   Record and verify that read-only assessment before another session or phase
-   transition relies on it.
-9. An unapproved phase, material replan, permission change, or residual-risk
-   decision returns to the user.
+   Record and verify that assessment through the same authorized writer rule
+   before another session or phase transition relies on its durable state.
+   Define the final records, checks, remaining authorized actions and writer
+   state; a factual recording-complete notice does not start another acceptance
+   loop. Cross-project status receipt alone adds no acceptance layer; an explicit
+   existing layer changes only through the user's contract decision.
+9. An unapproved phase or change beyond delegated outcome, permission, cost,
+   effect, risk or acceptance authority returns to the user through its owner.
+   In-bound P choices do not automatically require O or user approval.
 
 Use durable state for cold or recovery entry and compact warm handoffs while
 role sessions remain reliable. Work Charter cannot guarantee role delivery,
@@ -135,6 +158,10 @@ writer locking, message finality, graph completeness, or compliance. Treat
 nearby counterexamples already within scope, then escalate only if the missing
 fact requires broader authority or changes a protected boundary. Report
 capability degradation honestly and stop for material control, delivery,
-writer, review-input, or evidence ambiguity. For every route, send at most one
-current Notice per checkpoint and one returned disposition; never poll, mirror
-the result, or require acknowledgement.
+writer, review-input, or evidence ambiguity. Return a disposition for a required
+decision to the role that acts on it; factual and evidence notices need no pure
+acceptance receipt. Do not relabel a decision to bypass its gate. Never poll,
+mirror the result or require acknowledgement. Recover current rules only before
+the next affected work; idle roles are not broadcast-woken by text changes.
+Harness loading proof and explicit frozen fresh-run contracts retain their
+separate requirements under the shared recovery boundary.

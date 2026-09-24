@@ -1,8 +1,76 @@
 # Provenance And Transformation Boundary
 
+## v0.7.1 public-source lineage
+
+The v0.7.1 publication input incorporates the accepted but independently
+unpublished v0.6.6–v0.7.1 increments since the v0.6.5 public source. Historical
+candidate descriptors keep their original identities; the v0.7.1 descriptor
+remains its pre-review package snapshot. Current repository-native documentation
+hashes bind the release-facing source, while the six-file package tree remains
+`8ea9baf2b52635b3bdc0e9984e0d823c8984cc58`. A source commit, tag and
+GitHub Release require their own verified records; the mapping alone proves
+none of those effects.
+
+## v0.7.1 outcome-scoped authority revision
+
+The new candidate binds the revised six-file package. Only the shared entry,
+Charter template, coordination reference and Standard reference change within
+that package; model defaults and metadata remain unchanged. Current repository
+consumers and provenance hashes follow these bytes. The v0.7.0 candidate and
+earlier identities remain historical. Installer production logic is unchanged;
+its self-test source-version binding follows v0.7.1.
+
+## v0.7.0 delegation revision
+
+The current candidate updates five package files, affected guidance/evaluation
+consumers and deterministic bindings. Historical candidates remain immutable,
+including v0.6.8. The source map preserves origin records and refreshes only
+changed destination hashes. The installer production mechanism is unchanged;
+its self-test source-version binding follows the candidate. Current verification
+and installation state are recorded in State and Verification.
+
+## v0.6.8 Sol compatibility source
+
+The current revision updates the general Executor fallback to GPT-6 Sol/high.
+Only the model YAML changes inside the six-file installable package. Existing
+README tables, configuration cases and static checks follow the new default.
+The [v0.6.8 candidate](release/v0.6.8-candidate.json) binds the new package;
+v0.6.7 and earlier descriptors and historical evidence remain frozen.
+The source map records current target hashes without changing source ancestry.
+Schema, selection precedence, Astra level objects and production installer logic
+are unchanged. [State](docs/skills/work-charter/STATE.md#v068-sol-compatibility-update)
+owns the current source and installation outcome.
+
+## v0.6.7 evidence-scope source
+
+The v0.6.7 working revision changes the shared entry, coordination
+reference and Charter template for evidence scope, delegation and
+inspection recovery. Existing documentation, cases and required source
+identity/check consumers follow that bounded change. The new candidate
+binds its own package bytes; historical candidates, receipts and
+qualification retain their original identities. Model data, metadata,
+schema and production installation behavior are unchanged. Only the
+installer's existing self-test source-version binding follows v0.6.7;
+the lifecycle suite is not rerun for this instruction-only revision.
+[State](docs/skills/work-charter/STATE.md#unreleased-evidence-scope-revision)
+owns the current source boundary.
+
+## v0.6.6 handoff source boundary
+
+The handoff revision changes the shared entry, coordination and Standard
+references, and Charter template, with bounded existing documentation, cases
+and static checker consumers. Their current target hashes follow the source
+map. The released v0.6.5 candidate and receipts remain immutable. The separately
+confirmed [v0.6.6 candidate](release/v0.6.6-candidate.json) binds the changed
+package; the SOURCE checker also pins the old descriptor identity. Model data,
+metadata, schema and production installer logic remain unchanged; only the
+installer's self-test version constant follows v0.6.6.
+[State](docs/skills/work-charter/STATE.md#unreleased-handoff-revision) owns the
+current work boundary. New qualification does not rewrite historical evidence.
+
 ## v0.6.5 publication boundary
 
-The publication packages the accepted current source unchanged. Its installable
+The publication packaged its accepted source unchanged. Its installable
 package tree is `d0df02a81471c2b9e157c9f6faebc65948cb4b54`. Publication record edits affect existing
 documentation and the current mapping/checker pin only. Historical candidates,
 receipts and source maps remain frozen. The [current state](docs/skills/work-charter/STATE.md#v065-publication)
@@ -23,7 +91,7 @@ identities. The working tree retains the accepted v0.6.0 level-role configuratio
 checkpoint and accepted v0.6.1 prompt/installer revisions. The v0.6.2 guardrail-necessity and auxiliary-cost revision remains historical,
 bound by its immutable descriptor. The accepted v0.6.3 entry and installation
 remain historical. The v0.6.4 entry revision remains bound by its frozen
-descriptor. The current v0.6.5 revision adjusts approved level-role defaults and
+descriptor. The released v0.6.5 revision adjusts approved level-role defaults and
 their configuration guidance. It is bound by
 [`release/v0.6.5-candidate.json`](release/v0.6.5-candidate.json). Two of the six
 package files change from v0.6.4; the shared entry, metadata, Charter asset and
@@ -156,8 +224,8 @@ platforms retain prior behavior. The first role-model source and lifecycle
 extension passed exact qualification, ten completed review rounds, and Planner
 acceptance at the v0.5.0 receipt-bound commit. For the later level-role
 extension, the SOURCE identity gate requires both the actual tree and digest
-to match the current v0.6.5 descriptor, while preserving the frozen v0.6.0,
-v0.6.1, v0.6.2, v0.6.3 and v0.6.4 descriptors under their exact historical hashes. Current deterministic check results are recorded
+to match the current v0.7.1 descriptor, while preserving the frozen v0.6.0,
+v0.6.1, v0.6.2, v0.6.3, v0.6.4, v0.6.5, v0.6.6, v0.6.7, v0.6.8 and v0.7.0 descriptors under their exact historical hashes. Current deterministic check results are recorded
 in [Verification](docs/skills/work-charter/VERIFICATION.md). R12 technical review
 and Planner frozen-source acceptance are separately recorded in State. The v0.6.0
 record changes also passed separate Planner verification; host/global consumer integration,

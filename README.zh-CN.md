@@ -2,7 +2,10 @@
 
 [English](README.md)
 
-最新正式版本：**[v0.6.5](https://github.com/junwei529/work-charter/releases/tag/v0.6.5)**。[发布核验记录](docs/skills/work-charter/STATE.md#v065-publication)。
+当前包源码：**[v0.7.1](docs/skills/work-charter/STATE.md#v071-outcome-scoped-authority)**。
+正式发布状态见 [GitHub Releases](https://github.com/junwei529/work-charter/releases)，
+核验记录见[状态](docs/skills/work-charter/STATE.md)。上一公开版本为 v0.6.5；
+中间的 v0.6.6–v0.7.0 候选未单独发布。
 
 让复杂的 AI 项目接得住，也交得出。
 
@@ -33,7 +36,7 @@ L0–L2 的主负责人直接负责当前任务。角色方案本身不会自动
 
 ## 默认模型配置与自定义
 
-作者基于多个实际代码仓库，围绕 Orchestrator、Planner、Executor、Reviewer 各自的分工构建了私有评测集。此前的配置基线参考了这些结果；v0.6.5 按用户决定调整推理等级，不代表新增评测结论。
+作者基于多个实际代码仓库，围绕 Orchestrator、Planner、Executor、Reviewer 各自的分工构建了私有评测集。此前的配置基线参考了这些结果；v0.7.0 按用户决定调整模型和推理等级，不代表新增评测结论。
 
 这些默认值提供一个可直接起步的参考。使用者可以根据项目特点、可用模型、使用成本和实际表现，灵活调整各级别、各角色的模型与推理等级。
 
@@ -41,13 +44,14 @@ L0–L2 的主负责人直接负责当前任务。角色方案本身不会自动
 
 | 适用范围 | 包内默认配置 |
 |---|---|
-| L0 主负责人及独立触发的临时 Reviewer | Astra · medium |
-| L1–L2 主负责人及可选 Reviewer | Astra · medium |
+| L0 主负责人及独立触发的临时 Reviewer | Sol · xhigh |
+| L1–L2 主负责人及可选 Reviewer | Sol · xhigh |
 | L3–L4 Planner | Astra · high |
-| L4 Orchestrator | Astra · xhigh |
-| L3–L4 Executor、Reviewer | Astra · medium |
+| L4 Orchestrator | Astra · high |
+| L3–L4 Executor | Sol · xhigh |
+| L3–L4 Reviewer | Astra · medium |
 
-这里的 Astra 指 `gpt-6-astra`，`medium`、`high` 和 `xhigh` 表示推理投入设置。L0 的 Reviewer 配置只在其他独立规则授权该临时角色时提供模型值。
+这里的 Astra 指 `gpt-6-astra`、Sol 指 `gpt-6-sol`，`medium`、`high` 和 `xhigh` 表示推理投入设置。L0 的 Reviewer 配置只在其他独立规则授权该临时角色时提供模型值。
 
 这些是包内预设，实际采用情况需要由任务创建流程核对；完整规则见[默认配置文件](skills/work-charter/assets/role-models.default.yaml)。
 
@@ -90,7 +94,7 @@ $work-charter
 review、Planner 验收与 exact deterministic qualification。Local source readiness 为
 `VERIFIED`；该 receipt 不产生 v0.5.0 安装、runtime role-delivery 或公开发布 claim。
 
-当前 [`v0.6.5` 候选](release/v0.6.5-candidate.json)调整上述已批准级别模型默认值，并保留
+已发布的 [`v0.6.5` 候选](release/v0.6.5-candidate.json)调整上述已批准级别模型默认值，并保留
 [v0.6.4 入口修订](release/v0.6.4-candidate.json)。普通任务没有适用
 Charter 或材料需求时保持 L0，不为入口检查加载治理参考或创建角色。实际应用规则的角色
 完整读取精简后的共同正文，再按当前决定、级别和职责读取详细章节。已有批准的 Charter
@@ -126,7 +130,8 @@ control-aware exact restore/readback 替换该路径，并在
 exact managed v0.4.0 副本的 default-reader access，并仅对该修复关闭
 `WC-INSTALL-POSTFLIGHT-F01`。该修复检查点的 package 仍为 managed v0.4.0，v0.4.1 未安装。之后的
 [v0.6.3 安装接受记录](docs/skills/work-charter/STATE.md#accepted-v063-user-installation)保留该历史副本证据；
-[当前状态](docs/skills/work-charter/STATE.md#current-v065-local-candidate)记录已核验的 v0.6.5 更新。
+[历史 v0.6.5 状态](docs/skills/work-charter/STATE.md#current-v065-local-candidate)记录当时的更新；
+[当前状态](docs/skills/work-charter/STATE.md#v071-outcome-scoped-authority)承接 v0.7.1 候选。
 v0.5.0 stable loaded-copy、role-delivery adherence、跨 provider 执行、cross-Harness、
 公开发布与广泛效能仍为 `UNKNOWN` 或需分别授权。
 
@@ -135,25 +140,26 @@ v0.5.0 stable loaded-copy、role-delivery adherence、跨 provider 执行、cros
 Package 默认数据位于
 [`skills/work-charter/assets/role-models.default.yaml`](skills/work-charter/assets/role-models.default.yaml)：
 
-通用兼容回落保持原值：
+通用兼容回落（当前值）：
 
 | 角色 | Provider | Model | Reasoning effort |
 |---|---|---|---|
-| Orchestrator | OpenAI | `gpt-6-astra` | `xhigh` |
-| Planner | OpenAI | `gpt-6-astra` | `xhigh` |
-| Executor | OpenAI | `gpt-5.6-sol` | `high` |
-| Reviewer | OpenAI | `gpt-6-astra` | `high` |
+| Orchestrator | OpenAI | `gpt-6-astra` | `high` |
+| Planner | OpenAI | `gpt-6-astra` | `high` |
+| Executor | OpenAI | `gpt-6-sol` | `xhigh` |
+| Reviewer | OpenAI | `gpt-6-astra` | `medium` |
 
-已批准级别默认均使用 OpenAI `gpt-6-astra`：
+已批准级别默认：L0-L2 与 Executor 使用 OpenAI Sol，Planner、Orchestrator
+及 L3-L4 Reviewer 使用 Astra：
 
 | 级别 | 实际职责与 reasoning effort |
 |---|---|
-| L0 | primary、reviewer `medium` |
-| L1/L2 | primary、reviewer `medium` |
-| L3 | planner `high`；executor、reviewer `medium` |
-| L4 | orchestrator `xhigh`；planner `high`；executor、reviewer `medium` |
+| L0 | primary、reviewer Sol `xhigh` |
+| L1/L2 | primary、reviewer Sol `xhigh` |
+| L3 | planner Astra `high`；executor Sol `xhigh`；reviewer Astra `medium` |
+| L4 | orchestrator、planner Astra `high`；executor Sol `xhigh`；reviewer Astra `medium` |
 
-L0 reviewer 明确配置为 `medium`，仅供独立触发的临时角色使用。这些配置值不代表评测最优或已运行生效。
+L0 reviewer 明确配置为 Sol/xhigh，仅供独立触发的临时角色使用。这些配置值不代表评测最优或已运行生效。
 
 如需定制后续任务启动或角色投递，可把该文件复制到
 `~/.config/work-charter/role-models.yaml` 后编辑，或由已批准的 delivery contract 指定
@@ -226,14 +232,14 @@ python -B scripts/check_source_contract.py --json
 python -B scripts/check_repository.py --json
 ```
 
-对最终变更输入执行相应检查。SOURCE checker 分别核对静态合同条款、v0.6.5 的
-tree/digest 绑定和历史描述文件身份；静态文案及身份检查不证明模型行为。
+对最终变更输入执行相应检查。SOURCE checker 分别核对静态合同条款、v0.7.1 的
+tree/digest 绑定和历史描述文件身份（包括 v0.7.0）；静态文案及身份检查不证明模型行为。
 当前结果见[验证记录](docs/skills/work-charter/VERIFICATION.md)。
 
 其他检查按改变的机制选择：安装器或权限变化覆盖相关生命周期场景，来源验证逻辑变化
 覆盖相关对抗场景，选择与加载变化进行有界行为检查。普通文案或元数据变化本身不要求
 重跑完整 lifecycle 或 staged-index matrix。已有明确冻结 gate 保持原范围；v0.6.3 的
-完整 qualification 是历史证据，不作为 v0.6.5 新运行报告。实际安装仍单独核对身份、
+完整 qualification 是历史证据，不作为后续修订的新运行报告。实际安装仍单独核对身份、
 权限与安装后状态。
 
 ## 未来 immutable-source 生命周期

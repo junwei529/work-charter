@@ -68,10 +68,17 @@ at `L0`-`L2` does not by itself adopt or raise a level, or create P/E roles.
   affected action when authority, writer, scope or evidence is incomparable.
   A new task, level, attempt or context never resets approval, failure,
   findings, stop conditions or consumed evidence.
+- Match evidence and completion claims to the agreed inspection scope.
+  Obtaining or traversing records does not establish that their relevant
+  content was examined. Retain material selection, truncation and missing
+  coverage; apply the evidence-scope contract in
+  [Authority, Delivery, Correction, And Evidence](references/coordination-and-recovery.md#authority-delivery-correction-and-evidence).
 - Protect user-confirmed outcomes and real guardrails; keep Agent-proposed
-  methods replaceable. Explain the concrete risk before treating an inferred
+  methods replaceable. Scope authorization by outcome, domain, environment,
+  effects and real cost; ordinary unlisted methods within that scope need no
+  separate approval. Explain the concrete risk before treating an inferred
   guardrail as necessary. Do not preserve rejected Agent inventions as new
-  requirements. Use an existing canonical carrier; `L1` may use the task,
+  requirements or infer permission for unlisted external effects. Use an existing canonical carrier; `L1` may use the task,
   while `L2`-`L4` need a durable anchor with authorized writes.
 - The implementer verifies the work it changed. An independent Reviewer
   inspects the stable change when requested, required by a gate, or warranted
@@ -84,6 +91,11 @@ at `L0`-`L2` does not by itself adopt or raise a level, or create P/E roles.
   only for changed inputs, failures or unresolved material concerns. Preserve
   producer-before-consumer order and raw terminal evidence. Do not rerun
   scarce, consequential or unauthorized work to replace a missing result.
+- Resolve problems at the lowest already-authorized responsibility. P may
+  exercise explicit in-phase delegation; E repairs and R independently reviews.
+  A preauthorized same-scope E/R loop needs no per-round P approval; P accepts
+  the stable result. Retain user-reserved and frozen boundaries. See
+  [Delegated Decisions And Escalation](references/coordination-and-recovery.md#delegated-decisions-and-escalation).
 - Give each material user decision one owner. Reuse valid approval; preserve
   the complete question/answer linkage, authorized scope and target, and the
   distinction between permission and execution. An operation-local permission
@@ -100,8 +112,9 @@ unchanged material already loaded; do not read every other role's procedure.
 | --- | --- |
 | First assessment or adoption | Minimum Read And Reconciliation Order; First Adoption And Durability |
 | Approved continuation or material drift | Minimum Read And Reconciliation Order; Managed Workstream And Multiple Worktrees; Re-entry Routes |
-| Proposal or contract change | Contract And Proposal Changes |
+| Proposal, delegation or escalation | Contract And Proposal Changes; Delegated Decisions And Escalation |
 | Prompt or task delivery | Task And Role Prompt Construction; Authority, Delivery, Correction, And Evidence |
+| Evidence collection, delegated inspection, or completion claims | Task And Role Prompt Construction; Authority, Delivery, Correction, And Evidence |
 | Newly authorized model resolution | [Role-Model Configuration At Dispatch](references/coordination-and-recovery.md#role-model-configuration-at-dispatch); identify level and responsibility first, then read the complete section before reading configuration or dispatching |
 | L3/L4 review or writer handoff | Planner, Executor, And Reviewer; Authority, Delivery, Correction, And Evidence |
 | Review at L0-L2, a user permission gate, or evidence consumption | Authority, Delivery, Correction, And Evidence; [Review Input At Any Level](references/coordination-and-recovery.md#review-input-at-any-level) |
@@ -118,8 +131,14 @@ creates roles nor changes existing tasks. Preserve frozen combinations and
 external user configuration. Loading this package grants no Git, installation,
 global configuration, publication, provider or other external effect.
 
-For a handoff, bind one current Result Notice and one returned disposition to
-the checkpoint and named recipient. Preserve prior findings and failures;
-do not poll, resend unchanged input, or require a terminal acknowledgement.
-Record material decisions in their existing owner before another session
-relies on them. Read or restore only the missing evidence needed to continue.
+Close material decisions, not every message exchange. A result that needs
+acceptance or permission to continue requires the named assessor's explicit
+checkpoint-bound disposition, delivered to the role that acts on it. Factual,
+evidence and mechanical-recording notices do not by themselves require an
+acceptance reply; relabeling a decision as a notice never bypasses its gate.
+Complete the authorized work package, checks and implementation documentation
+before a stable review handoff, unless a material blocker or boundary intervenes.
+Keep decisions and their durable recording distinct, with one authorized writer
+and a defined closeout endpoint. Preserve findings and failures; do not poll,
+resend unchanged input or require a terminal acknowledgement. Recover only what
+the next affected action needs; idle roles need no broadcast reload.

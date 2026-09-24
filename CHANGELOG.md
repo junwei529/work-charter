@@ -1,5 +1,69 @@
 # Changelog
 
+## v0.7.1
+
+This release source includes the accepted, previously unpublished v0.6.6–v0.7.1
+increments. The intermediate candidates remain historical snapshots, not
+separate public releases.
+
+- Scope authorization by outcome, domain, environment, effects and real cost;
+  keep ordinary files, tools, check order and same-scope repairs replaceable.
+- Retain explicit sensitive, production, managed, compatibility, evidence,
+  independent-review and acceptance boundaries, including old hard stops.
+- Consolidate duplicate correction routing in its existing owner and extend
+  representative positive and protected-boundary scenarios. Model defaults,
+  schema and production installer behavior are unchanged.
+
+## 0.7.0 - Unreleased
+
+- Make in-phase delegation, reserved decisions and escalation explicit.
+- Allow explicitly authorized P finalization/dispatch and direct same-scope
+  E/R correction, preserving planning-only contracts and P acceptance.
+- Keep recovery proportional to real effects, aggregate cost and valid stops;
+  preserve unfinished delegated work and frozen evidence through recovery.
+- Set L0-L2 primary/R and L3-L4 E to Sol/xhigh; L3 P and L4 O/P to Astra/high;
+  L3-L4 R to Astra/medium. Model changes do not change authority or old tasks.
+- Retain schema-v1 complete-object precedence, installer behavior and historical
+  candidates. No new empirical model-performance claim is made.
+
+## v0.6.8 — Sol compatibility default (unreleased)
+
+- Changes only the general Executor model from `gpt-5.6-sol` to `gpt-6-sol`, retaining `high`.
+- Keeps all 13 Astra level-role objects, schema and selection precedence unchanged.
+- Synchronizes current configuration examples, README tables and static checks.
+- Preserves prior candidate identities and historical model evidence; local installation is separately tracked in State.
+
+## Work Charter v0.6.7 (unreleased)
+
+User-confirmed source candidate: [v0.6.7](release/v0.6.7-candidate.json); see
+[State](docs/skills/work-charter/STATE.md#unreleased-evidence-scope-revision).
+
+- Distinguishes acquired evidence, actual inspection and supported conclusions
+  against the agreed scope, retaining sampling limits and material gaps.
+- Carries collection, retention and disclosure boundaries through evidence
+  delegation without transferring implementation or acceptance authority.
+- Preserves inspection progress, source identity and consumed attempts across
+  recovery, using existing carriers without a reading ledger or full-log rule.
+- Keeps the six-file package, model data, metadata, schema, role/level boundaries
+  and v0.6.6 delivery semantics. Only the existing installer self-test version
+  binding follows this candidate; production installation behavior is unchanged.
+- Source qualification and independent review do not establish installation,
+  natural adherence or broader effectiveness.
+
+## Work Charter v0.6.6 (unreleased)
+
+User-confirmed source candidate: [v0.6.6](release/v0.6.6-candidate.json); see
+[State](docs/skills/work-charter/STATE.md#unreleased-handoff-revision).
+
+- Closes substantive decisions without requiring acceptance replies for every
+  factual, review-evidence or mechanical-recording notice.
+- Keeps execution continuous through the authorized package and independent
+  review, with P deciding for E and R idle unless substantive follow-up is needed.
+- Separates formed verdicts from authorized durable recording and defines a
+  finite closeout; preserves real gates and single-writer boundaries.
+- Recovers current rules before affected work without broadcast wakeups;
+  keeps Harness loading proof and frozen fresh-run requirements separate.
+
 ## Work Charter v0.6.5
 
 Local candidate: [release/v0.6.5-candidate.json](release/v0.6.5-candidate.json).

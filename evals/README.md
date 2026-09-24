@@ -1,5 +1,17 @@
 # Work Charter Evaluations
 
+## Current v0.7.1 scenario changes
+
+The Planner/Executor case contrasts ordinary same-scope file and repair choices
+with permission, evidence, managed-path and acceptance stops. It is a scenario
+definition, not a new model evaluation or natural-adherence result.
+
+## Current v0.7.0 scenario changes
+
+The Standard, Planner/Executor, recovery-integrity and role-model scenarios
+include the new delegation contrasts and approved model combinations. These
+are maintained scenario definitions; no new model evaluation has been run.
+
 These cases and fixtures originated from source commit
 `80910a8b2375a11be897e9660c4b00a06d00dd13`. Files revised for `v0.4.0` are
 repository-native and hash-bound in the source map; unchanged fixtures remain
@@ -35,9 +47,9 @@ metrics, or independent reproduction evidence is published here.
 
 ## Deterministic verification
 
-Run `python -B scripts/check_repository.py --json` from the repository root.
 Run `python -B scripts/check_source_contract.py --json` for static SOURCE clause
-coverage and the required current-package candidate binding. The static result
+coverage and the required current-package candidate binding, then
+`python -B scripts/check_repository.py --json` from the repository root. The static result
 validates the package source against the material
 selection/assessment/adoption, authority, recovery, independent-review/acceptance,
 same-Reviewer re-review, callback deduplication, graph limits, context-switch,
@@ -45,8 +57,17 @@ level-by-actual-role model resolution, and Standard O/P/E/R boundaries in this
 evaluation surface; it also binds the exact general compatibility fallbacks, approved level
 defaults, contract/role/task/model-delta prompt clauses, scoped startup
 authorization, complete expression, and required reference reachability.
-Current candidate identity is v0.6.5; descriptors through v0.6.4 remain
-fixed historical snapshots. The configuration case follows all 13 approved
+The current candidate is user-confirmed v0.7.1; all earlier descriptors through
+v0.7.0 remain fixed historical snapshots. Current binding and the retained
+historical descriptor pins are required; the earlier unversioned binding failure remains
+historical. The Planner/Executor and recovery cases specify acquisition versus
+actual inspection, bounded sampling, data permissions and recovery of inspection
+progress. Independent semantic review assesses these instruction changes;
+the existing static checks do not prove that an agent follows them.
+Planner/Executor, Standard and recovery cases retain decision-versus-
+notice, continuous internal work, mechanical closeout and affected-action
+recovery contrasts. They preserve explicit frozen loading requirements without
+turning them into general broadcast or fresh-run rules. The configuration case follows all 13 approved
 level-role objects and a copied user-file snapshot; this adds no model-performance
 evidence. Existing entry, selection, midstream, recovery,
 role and configuration cases now distinguish first assessment, authorized

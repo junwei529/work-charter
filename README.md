@@ -2,7 +2,11 @@
 
 [简体中文](README.zh-CN.md)
 
-Latest release: **[v0.6.5](https://github.com/junwei529/work-charter/releases/tag/v0.6.5)**. [Verified publication](docs/skills/work-charter/STATE.md#v065-publication).
+Current package source: **[v0.7.1](docs/skills/work-charter/STATE.md#v071-outcome-scoped-authority)**.
+See [GitHub Releases](https://github.com/junwei529/work-charter/releases) for
+publication status and [State](docs/skills/work-charter/STATE.md) for verified
+release evidence. The previous public release was v0.6.5; intermediate
+v0.6.6–v0.7.0 candidates were not published separately.
 
 Keep complex AI projects moving across handoffs—and through to delivery.
 
@@ -33,7 +37,7 @@ At L0–L2, the primary owner is directly responsible for the current task. A ro
 
 ## Default models and customization
 
-The author built a private evaluation set from multiple real code repositories, organized around the responsibilities of the Orchestrator, Planner, Executor, and Reviewer. Those results informed the earlier baseline; v0.6.5 adjusts the reasoning defaults by user decision, without claiming a new evaluation result.
+The author built a private evaluation set from multiple real code repositories, organized around the responsibilities of the Orchestrator, Planner, Executor, and Reviewer. Those results informed the earlier baseline; v0.7.0 changes model and reasoning defaults by user decision, without claiming a new evaluation result.
 
 These defaults provide a starting point. You can adjust models and reasoning settings for each level and role based on your project, available models, cost, and observed performance.
 
@@ -41,13 +45,14 @@ User configuration takes priority over package defaults. Changes apply to tasks 
 
 | Scope | Package default |
 |---|---|
-| L0 primary owner and separately triggered Reviewer | Astra · medium |
-| L1–L2 primary owner and optional Reviewer | Astra · medium |
+| L0 primary owner and separately triggered Reviewer | Sol · xhigh |
+| L1–L2 primary owner and optional Reviewer | Sol · xhigh |
 | L3–L4 Planner | Astra · high |
-| L4 Orchestrator | Astra · xhigh |
-| L3–L4 Executor and Reviewer | Astra · medium |
+| L4 Orchestrator | Astra · high |
+| L3–L4 Executor | Sol · xhigh |
+| L3–L4 Reviewer | Astra · medium |
 
-Astra means `gpt-6-astra`; `medium`, `high` and `xhigh` are reasoning effort settings. The L0 Reviewer entry supplies a model only when a separate rule authorizes that temporary role.
+Astra means `gpt-6-astra` and Sol means `gpt-6-sol`; `medium`, `high` and `xhigh` are reasoning effort settings. The L0 Reviewer entry supplies a model only when a separate rule authorizes that temporary role.
 
 These are package presets. The task creation process must verify what is actually used; see the [default configuration file](skills/work-charter/assets/role-models.default.yaml) for the complete configuration.
 
@@ -95,7 +100,7 @@ ten completed review rounds, Planner acceptance, and the exact deterministic
 qualification. Local source readiness is `VERIFIED`; no v0.5.0 installation,
 runtime role-delivery, or public-release claim follows from that receipt.
 
-The current [`v0.6.5` candidate](release/v0.6.5-candidate.json) adjusts the approved
+The released [`v0.6.5` candidate](release/v0.6.5-candidate.json) adjusts the approved
 level-role defaults above and preserves the [v0.6.4 entry revision](release/v0.6.4-candidate.json). It keeps task-entry
 assessment lightweight. An ordinary task without an applicable Charter or
 material need stays at L0 without loading governance references or creating
@@ -145,8 +150,9 @@ default-reader access to the exact managed v0.4.0 copy and closed
 `WC-INSTALL-POSTFLIGHT-F01` for that repair. At that repair checkpoint the package remained
 managed v0.4.0; v0.4.1 was not installed. The later
 [accepted v0.6.3 installation](docs/skills/work-charter/STATE.md#accepted-v063-user-installation)
-records that historical copy; [current state](docs/skills/work-charter/STATE.md#current-v065-local-candidate)
-records the verified v0.6.5 update. Stable v0.5.0 loaded-copy behavior,
+records that historical copy; [historical v0.6.5 state](docs/skills/work-charter/STATE.md#current-v065-local-candidate)
+records that update. [Current state](docs/skills/work-charter/STATE.md#v071-outcome-scoped-authority)
+tracks the v0.7.1 candidate. Stable v0.5.0 loaded-copy behavior,
 role-delivery adherence, cross-provider execution, cross-Harness behavior,
 public release, and broad efficacy remain `UNKNOWN` or separately authorized.
 
@@ -159,21 +165,22 @@ General compatibility fallbacks:
 
 | Role | Provider | Model | Reasoning effort |
 |---|---|---|---|
-| Orchestrator | OpenAI | `gpt-6-astra` | `xhigh` |
-| Planner | OpenAI | `gpt-6-astra` | `xhigh` |
-| Executor | OpenAI | `gpt-5.6-sol` | `high` |
-| Reviewer | OpenAI | `gpt-6-astra` | `high` |
+| Orchestrator | OpenAI | `gpt-6-astra` | `high` |
+| Planner | OpenAI | `gpt-6-astra` | `high` |
+| Executor | OpenAI | `gpt-6-sol` | `xhigh` |
+| Reviewer | OpenAI | `gpt-6-astra` | `medium` |
 
-Approved level defaults use OpenAI `gpt-6-astra`:
+Approved level defaults use OpenAI Sol for L0-L2 and Executor, and Astra
+for Planner, Orchestrator and L3-L4 Reviewer:
 
 | Level | Responsibility and reasoning effort |
 |---|---|
-| L0 | primary and reviewer `medium` |
-| L1/L2 | primary and reviewer `medium` |
-| L3 | planner `high`; executor and reviewer `medium` |
-| L4 | orchestrator `xhigh`; planner `high`; executor and reviewer `medium` |
+| L0 | primary and reviewer Sol `xhigh` |
+| L1/L2 | primary and reviewer Sol `xhigh` |
+| L3 | planner Astra `high`; executor Sol `xhigh`; reviewer Astra `medium` |
+| L4 | orchestrator and planner Astra `high`; executor Sol `xhigh`; reviewer Astra `medium` |
 
-L0 supplies an explicit Reviewer `medium` override for a separately triggered role.
+L0 supplies an explicit Sol/xhigh Reviewer override for a separately triggered role.
 These configured choices are not evidence of optimality or runtime adoption.
 
 To customize later task starts or role deliveries, copy that file to
@@ -265,8 +272,9 @@ python -B scripts/check_repository.py --json
 ```
 
 Run the relevant checks against the final changed input. The SOURCE checker
-separates static contract clauses from the required v0.6.5 tree/digest binding
-and preserves historical descriptor identities. Static wording and identity
+separates static contract clauses from the required v0.7.1 tree/digest binding
+and preserves historical descriptor identities, including v0.7.0.
+Static wording and identity
 checks do not prove model behavior. See
 [Verification](docs/skills/work-charter/VERIFICATION.md) for current results.
 
@@ -276,7 +284,7 @@ require affected adversarial cases; selection/loading changes need a bounded
 behavior check. A text or metadata change alone does not require rerunning the
 complete lifecycle or staged-index matrix. Existing explicit frozen gates
 retain their scope; the complete v0.6.3 qualification remains historical and
-is not reported as a fresh v0.6.5 run. Actual installation still requires its
+is not reported as a fresh run for a later revision. Actual installation still requires its
 own identity, permission and postflight checks.
 
 ## Future immutable-source lifecycle

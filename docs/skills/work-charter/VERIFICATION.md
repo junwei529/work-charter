@@ -1,5 +1,34 @@
 # Work Charter Verification
 
+## v0.7.1 publication verification
+
+The final cumulative source input from v0.6.5 HEAD contained 23 tracked
+changes and five untracked historical candidate descriptors. The same
+independent Astra/medium Reviewer inspected the actual full diff, necessary
+consumers and exact Release body. It reported no blocking finding and one
+deferred P3 broken section fragment, `V071-PUB-R1-01`; repairing the link would
+change the already accepted package bytes. Earlier `V071-R1-01` and
+`V071-R1-02` remain fixed. SOURCE passed 27/27 static clauses and current plus
+historical package identity gates; repository provenance passed with 100 mapped
+files, and the staged diff passed whitespace check. These checks do not prove
+natural adherence or the optional old-source Git-object membership.
+
+The source commit is `a27e8058061c674278ab30c6cd14d544b1c130db`;
+its `skills/work-charter` tree equals the accepted
+`8ea9baf2b52635b3bdc0e9984e0d823c8984cc58`. Before writing remotely,
+the actor was `junwei529`, the exact repository was `junwei529/work-charter`,
+push/admin capability was reported, remote main matched the reviewed baseline,
+and the tag and Release were absent. An atomic Git push fast-forwarded remote
+main and added annotated tag object `27c50a323019a14882920f7e83c1ac32ec1edefb`;
+remote readback showed its peeled commit equals the source commit. The GitHub
+Release URL is
+`https://github.com/junwei529/work-charter/releases/tag/v0.7.1`, id
+`395420133`. API readback verified non-draft, non-prerelease, target equal to
+the source commit, exact reviewed body, and equality with `releases/latest`.
+The first readback script failed while decoding UTF-8 API output using the
+host's default GBK codec; explicit UTF-8 readback then passed without any
+additional remote mutation. Final records have their own mapped-file check.
+
 ## v0.7.1 verification scope
 
 The changed instruction contract is covered by the existing Planner/Executor

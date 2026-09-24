@@ -2,11 +2,9 @@
 
 [简体中文](README.zh-CN.md)
 
-Current package source: **[v0.7.1](docs/skills/work-charter/STATE.md#v071-outcome-scoped-authority)**.
-See [GitHub Releases](https://github.com/junwei529/work-charter/releases) for
-publication status and [State](docs/skills/work-charter/STATE.md) for verified
-release evidence. The previous public release was v0.6.5; intermediate
-v0.6.6–v0.7.0 candidates were not published separately.
+Latest release: **[v0.7.1](https://github.com/junwei529/work-charter/releases/tag/v0.7.1)**.
+[Verified publication](docs/skills/work-charter/STATE.md#v071-publication).
+The intermediate v0.6.6–v0.7.0 candidates were not published separately.
 
 Keep complex AI projects moving across handoffs—and through to delivery.
 

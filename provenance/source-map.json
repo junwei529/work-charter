@@ -61,19 +61,19 @@
       "destination": "PROVENANCE.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "92cc0c4eb4fc68b8431b7d7ed4bfe58b37e5de92480703ce53d41d68bd36aa38"
+      "target_sha256": "ed8b3acfb629db5f145964f701bf6330ada2ddab52756b51c08a99352a4526df"
     },
     {
       "destination": "README.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "ae3bd3d69343179fde92b6bd09ea05855ad7ad123f649c98b83b69945a17407b"
+      "target_sha256": "19009372b2457af3484e7a287f1529a0c4215ad3dd30193d136c8cedcec628ef"
     },
     {
       "destination": "README.zh-CN.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "f83a4e50b092012707c8d615b1dc247a0f546dddf481241e9e5b67b0945fee80"
+      "target_sha256": "1b72025dc65588054503238bcc69b6dcb7d24ca971468017e2b0b769851adc46"
     },
     {
       "destination": "docs/skills/work-charter/DESIGN.md",
@@ -97,13 +97,13 @@
       "destination": "docs/skills/work-charter/STATE.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "0285e02ee11b34e30a25a6aba6794893064f7eb4d55dffeec31ccb1e793b8105"
+      "target_sha256": "26fefbf25bbb75756546c063a2f72d487f239aa4a452a12a671a1e17b5d84f3c"
     },
     {
       "destination": "docs/skills/work-charter/VERIFICATION.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "c9e8c57f1e86857809f30604b6f5fd1b7bc61db5b7810055e9cc4712e2a0b0f9"
+      "target_sha256": "90282c3217158d294b73c2444de3a5157fe3bc4911c601c579bc44b3b57f0ecd"
     },
     {
       "destination": "evals/README.md",
@@ -685,8 +685,8 @@
           "source_path": "evals/check-fixtures.ps1"
         }
       ],
-      "target_normalized_sha256": "89ddb04a7ba245764f688b2296c2f04451b0100dd16a21dfc1ba0e372f959bd8",
-      "target_sha256": "89ddb04a7ba245764f688b2296c2f04451b0100dd16a21dfc1ba0e372f959bd8",
+      "target_normalized_sha256": "9eca5a2183827eca07f00aaa15542ea5985d043e674334d8bbd40d20c3dedcf1",
+      "target_sha256": "9eca5a2183827eca07f00aaa15542ea5985d043e674334d8bbd40d20c3dedcf1",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {

@@ -1,5 +1,18 @@
 # Provenance And Transformation Boundary
 
+## v0.7.1 public release record
+
+The immutable public source commit is
+`a27e8058061c674278ab30c6cd14d544b1c130db`; annotated tag `v0.7.1`
+has object `27c50a323019a14882920f7e83c1ac32ec1edefb` and peels to that
+commit. Its six-file package tree is
+`8ea9baf2b52635b3bdc0e9984e0d823c8984cc58`. The formal non-draft,
+non-prerelease Latest GitHub Release is
+[v0.7.1](https://github.com/junwei529/work-charter/releases/tag/v0.7.1).
+These facts supplement, not rewrite, the retained v0.6.5 publication record
+and pre-review intermediate candidates. Record-only documentation updates
+follow the source tag without changing package bytes or source lineage.
+
 ## v0.7.1 public-source lineage
 
 The v0.7.1 publication input incorporates the accepted but independently

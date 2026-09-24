@@ -2,9 +2,8 @@
 
 [English](README.md)
 
-当前包源码：**[v0.7.1](docs/skills/work-charter/STATE.md#v071-outcome-scoped-authority)**。
-正式发布状态见 [GitHub Releases](https://github.com/junwei529/work-charter/releases)，
-核验记录见[状态](docs/skills/work-charter/STATE.md)。上一公开版本为 v0.6.5；
+最新正式版本：**[v0.7.1](https://github.com/junwei529/work-charter/releases/tag/v0.7.1)**。
+[发布核验记录](docs/skills/work-charter/STATE.md#v071-publication)。
 中间的 v0.6.6–v0.7.0 候选未单独发布。
 
 让复杂的 AI 项目接得住，也交得出。

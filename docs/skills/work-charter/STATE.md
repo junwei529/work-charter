@@ -1,5 +1,30 @@
 # Work Charter State
 
+## v0.7.1 publication
+
+Status: **PUBLISHED_VERIFIED**, observed 2026-09-24. The accepted cumulative
+v0.6.6–v0.7.1 source was committed as
+`a27e8058061c674278ab30c6cd14d544b1c130db` after independent full-diff
+review. Remote `main` fast-forwarded from the v0.6.5 source HEAD
+`1f9697a5f1c1fd9c454fdaa21952f63ab6eaa052` to that commit. The new
+annotated `v0.7.1` tag object is
+`27c50a323019a14882920f7e83c1ac32ec1edefb`; it peels to the same source
+commit. The [GitHub Release](https://github.com/junwei529/work-charter/releases/tag/v0.7.1)
+is id `395420133`, non-draft, non-prerelease and Latest; its target and body
+were read back against the reviewed source commit and release text. Prior
+v0.6.5 public objects and intermediate candidate identities remain intact.
+
+The published six-file package tree remains
+`8ea9baf2b52635b3bdc0e9984e0d823c8984cc58`, matching the separately
+verified local MANAGED v0.7.1 copy. The release does not re-run installation,
+change user configuration, or prove fresh-task loading, runtime adoption or
+natural efficacy. The release-input Reviewer reported no blocking finding;
+V071-PUB-R1-01 is a deferred P3 section-anchor issue in the accepted package.
+Changing it would alter this version's package identity and was not needed to
+read the procedure. Earlier V071-R1-01/R1-02 remain fixed, and global review
+history remains separately scoped. Publication evidence and records closeout
+are detailed in [Verification](VERIFICATION.md#v071-publication-verification).
+
 ## v0.7.1 publication input checkpoint
 
 The user authorized a public v0.7.1 release of the accepted cumulative

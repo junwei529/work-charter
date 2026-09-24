@@ -1,9 +1,10 @@
 # Work Charter
 
-Current source candidate is [v0.8.0](STATE.md#v080-source-candidate).
+Latest published release is [v0.8.0](STATE.md#v080-publication).
 It presents Direct, Team, and Phased work with conditional selection, product-
 specific independent review and complete responsibility-based model defaults.
-Published v0.7.1 evidence remains bound to its original package.
+The [candidate](STATE.md#v080-source-candidate) retains its pre-effect
+snapshot; published v0.7.1 evidence remains bound to its original package.
 
 [简体中文](README.zh-CN.md)
 

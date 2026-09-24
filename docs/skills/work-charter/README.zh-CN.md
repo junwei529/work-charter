@@ -1,8 +1,9 @@
 # Work Charter
 
-Current source candidate is [v0.8.0](STATE.md#v080-source-candidate).
+最新正式发布版本为 [v0.8.0](STATE.md#v080-publication)。
 Direct、Team、Phased 的条件选择、按实际产物的独立审查和成对模型默认值
-由本候选承接；已发布 v0.7.1 的证据仍绑定其原包。
+由本版承接；[候选](STATE.md#v080-source-candidate)保留发布前快照，
+已发布 v0.7.1 的证据仍绑定其原包。
 
 [English](README.md)
 

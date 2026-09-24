@@ -54,8 +54,10 @@ The user selected v0.8.0 and authorized source delivery, managed installation,
 bounded global consumers and publication in the existing public repository.
 The candidate binds only its own source bytes. Source checks, independent
 review, managed installation and four specified consumers have separate
-observed evidence; Git and remote effects remain pending. The v0.7.1
-candidate and published objects stay historical.
+observed evidence; at that checkpoint Git and remote effects remained
+pending. Their later publication readback is recorded in
+[State](STATE.md#v080-publication). The v0.7.1 candidate and published
+objects stay historical.
 
 ## Current outcome-scoped authority revision
 

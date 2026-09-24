@@ -2,10 +2,10 @@
 
 [English](README.md)
 
-最新正式版本：**[v0.7.1](https://github.com/junwei529/work-charter/releases/tag/v0.7.1)**。
-[发布核验记录](docs/skills/work-charter/STATE.md#v071-publication)。
-[v0.8.0 源码候选](release/v0.8.0-candidate.json)已通过独立源码审查，
-GitHub 发布尚待执行。本地 MANAGED 安装及指定全局消费者的结果见
+最新正式版本：**[v0.8.0](https://github.com/junwei529/work-charter/releases/tag/v0.8.0)**。
+[发布核验记录](docs/skills/work-charter/STATE.md#v080-publication)。
+[v0.8.0 源码候选](release/v0.8.0-candidate.json)保留发布前快照；
+本地 MANAGED 安装及指定全局消费者的证据见
 [状态记录](docs/skills/work-charter/STATE.md#v080-source-candidate)。
 
 让复杂的 AI 项目接得住，也交得出。

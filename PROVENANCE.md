@@ -1,5 +1,18 @@
 # Provenance And Transformation Boundary
 
+## v0.8.0 public release record
+
+The accepted public source commit is
+`287ffbf62d4a11bae11957de9407e1bc7f97b82d`. Its six-file package
+tree is `ca62f3b449a08799d4ce3dbbeb3fe2455472b271`.
+Annotated `v0.8.0` tag object
+`534696f1f86d460509c4a86fbe34f74c24e8785b` peels to that commit.
+The formal non-draft, non-prerelease Latest GitHub Release is
+[v0.8.0](https://github.com/junwei529/work-charter/releases/tag/v0.8.0).
+Remote main, tag, target and exact reviewed body received separate readback.
+This later records-only closeout does not alter the published tag or package.
+The v0.7.1 lineage and its prior findings remain historical.
+
 ## v0.8.0 source candidate
 
 The new [candidate](release/v0.8.0-candidate.json) binds the six-file

@@ -2,12 +2,11 @@
 
 [简体中文](README.zh-CN.md)
 
-Latest release: **[v0.7.1](https://github.com/junwei529/work-charter/releases/tag/v0.7.1)**.
-[Verified publication](docs/skills/work-charter/STATE.md#v071-publication).
-The [v0.8.0 source candidate](release/v0.8.0-candidate.json) has passed
-independent source review; GitHub publication is pending. Local managed-copy
-and bounded global-consumer outcomes are recorded in
-[State](docs/skills/work-charter/STATE.md#v080-source-candidate).
+Latest release: **[v0.8.0](https://github.com/junwei529/work-charter/releases/tag/v0.8.0)**.
+[Verified publication](docs/skills/work-charter/STATE.md#v080-publication).
+The [v0.8.0 source candidate](release/v0.8.0-candidate.json) retains its
+pre-effect snapshot; local managed-copy and bounded global-consumer evidence
+is recorded in [State](docs/skills/work-charter/STATE.md#v080-source-candidate).
 
 Keep complex AI projects moving across handoffs—and through to delivery.
 

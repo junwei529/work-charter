@@ -1,8 +1,30 @@
 # Work Charter State
 
+## v0.8.0 publication
+
+Status: **PUBLISHED_VERIFIED**, observed 2026-09-25 (Asia/Shanghai).
+The independently reviewed source commit is
+`287ffbf62d4a11bae11957de9407e1bc7f97b82d`, a direct child of the
+previous remote main `712594687920540dfe7618d47401885c785167a4`.
+Its six-file package tree equals the accepted candidate
+`ca62f3b449a08799d4ce3dbbeb3fe2455472b271`. An atomic push
+fast-forwarded remote main and added annotated `v0.8.0` tag object
+`534696f1f86d460509c4a86fbe34f74c24e8785b`; remote readback showed
+the tag peels to the source commit.
+
+The [GitHub Release](https://github.com/junwei529/work-charter/releases/tag/v0.8.0)
+is id `395875288`, non-draft, non-prerelease and Latest. API readback
+verified its target is the exact source commit and its body exactly matches
+the independently reviewed text. The source tag does not include this later
+records-only closeout; the package tree and tag remain fixed. The local
+MANAGED v0.8.0 and four specified consumers were separately verified before
+publication as recorded below. Fresh-task loading, effective runtime model
+metadata and natural adherence remain UNKNOWN.
+
 ## v0.8.0 source candidate
 
-Status: **SOURCE_REVIEWED_LOCAL_APPLIED_PUBLICATION_PENDING**, v0.8.0 selected.
+Prepublication status: **SOURCE_REVIEWED_LOCAL_APPLIED_PUBLICATION_PENDING**,
+v0.8.0 selected.
 The sole source writer prepared the Direct/Team/Phased interface, conditional
 selection, responsibility-based R input, task/subagent carrier choices and
 complete model/effort defaults in the existing six-file package and scenarios.

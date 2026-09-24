@@ -1,5 +1,34 @@
 # Work Charter Verification
 
+## v0.8.0 publication verification
+
+The same independent Astra/medium R completed full source and global-consumer
+review, a two-line consumer correction and re-review, installation/application
+postflight review, and a records correction and re-review. V080-R1-01 and
+V080-R3-01 are FIXED; no blocking finding remained at the source commit gate.
+The source commit is
+`287ffbf62d4a11bae11957de9407e1bc7f97b82d`, with package tree
+`ca62f3b449a08799d4ce3dbbeb3fe2455472b271`. SOURCE passed 30/30
+static clauses and current/historical identity checks; repository provenance
+passed for 101 mapped files and the staged diff passed whitespace check.
+Optional original-source Git-object membership was not requested.
+
+The actor and exact public repository had push capability; remote main matched
+the reviewed parent before publication, and v0.8.0 tag and Release were absent.
+An atomic Git push advanced main to the source commit and added annotated tag
+object `534696f1f86d460509c4a86fbe34f74c24e8785b`. Git and API
+readback agreed on main, tag object and peeled commit. The formal GitHub
+Release is
+[v0.8.0](https://github.com/junwei529/work-charter/releases/tag/v0.8.0),
+id `395875288`. API readback found it non-draft, non-prerelease, Latest,
+targeting the source commit, with the exact independently reviewed body.
+The records-only closeout requires its own mapped-file check and independent
+incremental review; it cannot change the accepted package or tag.
+
+These observations verify publication identity and local installation, not
+fresh-task Skill loading, effective model routing, natural adherence,
+performance, or a live user-configuration override.
+
 ## v0.8.0 candidate verification plan
 
 Changed semantics are exercised in the existing selection, role-model,
@@ -23,7 +52,8 @@ agent behavior or a released source identity. The v0.8.0 candidate and source
 map now bind the package, and source/repository checks passed on the reviewed
 input. Independent R inspected the full source diff, necessary consumers and
 Release body. Installer identity received its own post-action readback;
-GitHub Release still requires later publication and readback. Existing v0.7.1
+at this prepublication checkpoint GitHub Release required separate readback.
+Existing v0.7.1
 checks and review are historical evidence; they do not validate this draft or
 fresh-task loading, effective runtime metadata, cost or natural adherence.
 
@@ -60,8 +90,8 @@ candidate-hash preflight, then were written in place from the reviewed
 proposals. Postflight bytes match all four candidate hashes and owner/DACL
 values match their pre-application states. These consumers are outside the
 public repository's source map and do not prove a fresh task loads this Skill
-or uses the recommended model combinations. The GitHub source commit,
-annotated tag, push and Release remain pending publication verification.
+or uses the recommended model combinations. At this prepublication checkpoint,
+the GitHub source commit, annotated tag, push and Release remained pending.
 
 ## v0.7.1 publication verification
 

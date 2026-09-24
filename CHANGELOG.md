@@ -1,5 +1,27 @@
 # Changelog
 
+## v0.8.0
+
+- Present Direct, Team, and Phased as the three user-facing work arrangements;
+  preserve the existing L0/L1/L2 contract and recovery distinctions inside
+  Direct and do not migrate old approved contracts.
+- Choose conditionally from known goals, real constraints and authorized bounded
+  discovery, user autonomy and intervention, then review product, role carrier
+  and recovery need. Ordinary small work needs no extra questionnaire or role.
+- Scope independent review to the actual O/P/E/Direct product, applicable
+  instructions and evidence. The author repairs; the same valid Reviewer
+  rechecks. Keep P acceptance and O's route through P.
+- Permit continuing subagents, separate role tasks or a mix when the actual
+  delivery route supports permission, continuity, intervention and results;
+  retain existing host and project rules.
+- Set the package schema-v1 defaults to Direct primary and Team P and Phased O
+  `gpt-6-astra/high`, Phased P and E `gpt-6-sol/xhigh`, and every enabled
+  independent R `gpt-6-astra/medium`. Preserve complete-object user
+  overrides, frozen combinations and historical candidates. This is a
+  recommended configuration, not a model-performance or runtime proof.
+- Correct the previously deferred Standard section-link fragment from
+  V071-PUB-R1-01 without changing the published v0.7.1 package.
+
 ## v0.7.1
 
 This release source includes the accepted, previously unpublished v0.6.6–v0.7.1

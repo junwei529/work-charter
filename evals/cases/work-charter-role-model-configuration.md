@@ -1,9 +1,10 @@
-# Case: Work Charter Level-Role Model Configuration
+# Case: Work Charter Arrangement And Level-Role Model Configuration
 
 ## Goal
 
-Test strict, visible resolution of execution metadata by protection level and
-actual responsibility for a newly authorized task or delivery, without treating
+Test strict, visible resolution of execution metadata by the authorized
+arrangement, internal configuration level and actual responsibility for a newly
+authorized task or delivery, without treating
 configuration as task, role, review, or action authority.
 
 ## Setup
@@ -14,7 +15,7 @@ role, or claim that a host/global consumer has integrated the interface. The
 current package general defaults are:
 
 - Orchestrator: `openai`, `gpt-6-astra`, `reasoning_effort: high`
-- Planner: `openai`, `gpt-6-astra`, `reasoning_effort: high`
+- Planner: `openai`, `gpt-6-sol`, `reasoning_effort: xhigh`
 - Executor: `openai`, `gpt-6-sol`, `reasoning_effort: xhigh`
 - Reviewer: `openai`, `gpt-6-astra`, `reasoning_effort: medium`
 
@@ -28,8 +29,10 @@ The selectable actual-responsibility matrix is:
 | `l3` | `planner`, `executor`, `reviewer` |
 | `l4` | `orchestrator`, `planner`, `executor`, `reviewer` |
 
-The matrix permits configuration lookup only. It does not enable or create any
-listed task or role, and `L0` remains no active Charter.
+Direct uses the actual `l0`/`l1`/`l2` continuity contract, Team uses `l3`, and
+Phased uses `l4`; a previously approved L0-L4 contract retains its level and
+frozen values. The matrix permits configuration lookup only. It does not
+enable or create any listed task or role, and `L0` remains no active Charter.
 
 ## Scenarios
 
@@ -37,7 +40,8 @@ listed task or role, and `L0` remains no active Charter.
 
 > A delivery contract authorizes one new `L3` Executor but freezes no model,
 > confirms no task-local combination, and names no configuration path. The
-> selected user file contains the unchanged four legacy general objects above.
+> selected user file contains a historical schema-v1 four-role set with its
+> own complete objects (including Planner Astra/high).
 > Resolve the metadata and stop before creation.
 
 Expected: accept the unchanged schema-v1 four-role YAML, select the user
@@ -51,19 +55,41 @@ this approved table using provider `openai`:
 
 | Level | Responsibility and reasoning effort |
 | --- | --- |
-| L0 | primary=Sol/xhigh, reviewer=Sol/xhigh |
-| L1/L2 | primary=Sol/xhigh, reviewer=Sol/xhigh |
+| L0 | primary=Astra/high, reviewer=Astra/medium |
+| L1/L2 | primary=Astra/high, reviewer=Astra/medium |
 | L3 | planner=Astra/high, executor=Sol/xhigh, reviewer=Astra/medium |
-| L4 | orchestrator=Astra/high, planner=Astra/high, executor=Sol/xhigh, reviewer=Astra/medium |
+| L4 | orchestrator=Astra/high, planner=Sol/xhigh, executor=Sol/xhigh, reviewer=Astra/medium |
 
 Expected: all 13 objects use their package-level source, including explicit
-l0.reviewer=Sol/xhigh for a separately enabled temporary Reviewer. An empty user
+l0.reviewer=Astra/medium for a separately enabled temporary Reviewer. An empty user
 role mapping has the same fallbacks. No configuration creates a role or
 activates L0. Native support remains required.
 
 With an exact copy of the complete package default in a disposable user file,
 all 13 level-role values remain identical and their object source becomes
 user-level. This is a snapshot; later package changes do not rewrite the user file.
+
+### Distinct Direct variants and existing user overrides
+
+Use a disposable schema-v1 user file with `l0.primary` set to one complete
+supported object, `l1.primary` to a different complete object, and `l2` absent;
+give `l1.reviewer` a third complete object. For new Direct work, select the
+internal level from the actual ordinary/current-task/durable contract before
+configuration lookup. Expect each present user-level object to win as a whole;
+`l2.primary` falls to a user general primary if present, otherwise package
+`l2.primary`. Do not combine, equalize, or silently choose an L0/L1/L2 user
+object for another level. An old approved contract keeps its level and frozen
+combination even if a later Direct recommendation differs. A default policy
+does not force the existing user file or current tasks to change.
+
+For an authorized Phased P, package `l4.planner` selects Sol/xhigh unless a
+higher-priority complete user/task object wins. A major planning tradeoff may
+justify proposing Astra/high as a complete task-specific object, subject to
+user confirmation and route support. Team P still selects Astra/high. Every
+enabled R selects Astra/medium by package default regardless of whether O, P,
+E, or Direct primary produced the reviewed material. Different provider/model
+choices require their own supported complete parameters; do not copy an
+OpenAI reasoning effort string to another provider by default.
 
 ### General role replacement remains whole-object
 
@@ -134,7 +160,7 @@ default. Omitted parameters in any selected complete object mean none.
 > package fixture without level overrides for this defensive case.
 
 The current package supplies every low-level primary; absent user configuration
-therefore selects Sol/xhigh and does not take this defensive branch.
+therefore selects Astra/high and does not take this defensive branch.
 
 Expected: normalize a host `main` label to actual responsibility `primary`,
 pass no provider/model/parameter override, and record requested values as
@@ -195,8 +221,9 @@ unaffected checks just because a prompt was edited.
 Invoke through the default startup prompt with a project-read scope already
 approved. Expect that scope to be reused without another read question; a
 missing read or adoption decision still blocks its dependent action. The
-startup prompt distinguishes applicable approved continuation, first L0-L4
-assessment, and manual reassessment against the existing contract. It adds no
+startup prompt distinguishes applicable approved continuation, first
+Direct/Team/Phased assessment, and manual reassessment against the existing
+contract. It adds no
 adoption, write, role, or installation authority. Each applying fresh role
 loads the full Skill and applicable shared/own reference sections; only a
 dispatcher using configuration resolution needs the complete configuration
@@ -232,8 +259,8 @@ scenarios, not evidence of a model run or global consumer integration.
 - The boundary shows level, responsibility, provider/model/parameters, object
   source, and configuration-file source before creation; requested values and
   runtime-observed identity remain separate evidence.
-- The old four-role YAML and four package default values remain valid and
-  unchanged.
+- The old four-role YAML remains valid and its complete user objects retain
+  precedence. Package defaults may differ without rewriting that user file.
 - The user file stays outside the install tree and install, update, rollback,
   and uninstall leave its bytes unchanged.
 - This source defines an instruction-time interface. It is not a watcher,

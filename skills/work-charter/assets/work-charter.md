@@ -8,13 +8,14 @@ roles can read at the same revision; do not copy authoritative files into each
 worktree. Remove unused prompts and keep pointers instead of copied content.
 
 - Managed workstream and exclusions: `<bounded line of work and what it does not cover>`
-- Protection and responsibilities: `<plain-language shape; internal L1 | L2 | L3 | L4 if useful>`
+- Work arrangement and responsibilities: `<Direct | Team | Phased, reason and real coordination cost; internal L1 | L2 | L3 | L4 only when useful for an applicable contract or configuration>`
 - Contract state: `<draft | proposed | approved | superseded>`
 - Run disposition: `<active | paused | closed>`
 - Canonical locator and revision: `<portable locator and comparable freshness marker>`
 - Standing-policy locator: `<if applicable; otherwise none>`
 - Intended workspace and writer: `<workspace/worktree and one-writer boundary>`
-- Role owners and review route: `<primary owner, or O/P/E/R owners; stable checkpoint and finding/disposition routes>`
+- Role owners, carriers and review route: `<primary or actual O/P/E/R responsibilities; task/subagent/mixed carriers, reachable stable checkpoint and finding/disposition routes>`
+- Review product and timing: `<actual result, implementation plan or overall direction; required gate, applicable instructions/contract, input, Reviewer and assessor>`
 - Resolved execution metadata: `<for each newly resolved task/role: level,
   actual responsibility, provider/model/parameters or host-selection
   pass-through, object source, file source, requested values, and observable
@@ -108,7 +109,9 @@ Otherwise findings return to P. P receives the cumulative stable or exception
 result and returns its acceptance/correction/decision disposition to E. Record only formed verdicts
 within the authorized single-writer window; mechanical closeout does not recurse
 into acceptance of its records. Retain cumulative review history. Configuration
-choice does not enable a listed role or authorize delivery or action.>
+choice does not enable a listed role or authorize delivery or action. Distinct
+responsibilities may use continuing subagents or separate tasks only when
+permission, continuity, user intervention and result reachability fit.>
 
 ## Task Or Role Prompt
 

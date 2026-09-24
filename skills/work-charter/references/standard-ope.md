@@ -1,9 +1,10 @@
-# Standard Orchestrator/Planner/Executor/Reviewer (`L4`)
+# Phased Standard Orchestrator/Planner/Executor/Reviewer (`L4`)
 
-Use Standard O/P/E/R for consequential multi-phase project governance only when
+Use Phased Standard O/P/E/R for consequential multi-phase project governance only when
 an applicable approved standing policy, active Charter, and discoverable
-durable control location support it. `L4` is internal shorthand; Standard
-O/P/E/R is the public name.
+durable control location support it. `L4` is internal configuration shorthand;
+Phased is the user-facing arrangement. Do not migrate an old L4 contract merely
+because this label changes.
 
 A fresh L4 role loads the complete slim shared Skill body and this reference's shared entry,
 responsibility, single-writer and permission boundaries, then its own operating
@@ -39,7 +40,7 @@ or changes an existing task.
 |---|---|---|
 | Orchestrator | Project direction, phase order, mandates, project-level acceptance, and transitions | Implement work, direct the Executor or Reviewer, or repeat technical review |
 | Planner | Active Charter, execution boundaries, Executor and Reviewer routing, correction direction, and target acceptance | Implement, repair, or technically review the work under assessment |
-| Executor | Authorized implementation, verification, evidence, and implementation documentation | Expand scope, select a new phase, review its own work, or approve its own result |
+| Executor | Authorized implementation, self-check, repair, verification, evidence, and implementation documentation | Expand scope, select a new phase, serve as independent Reviewer of its own work, or approve its own result |
 | Reviewer | Read-only semantic inspection of a stable checkpoint, actionable findings, and explicit coverage limits | Modify the reviewed target, direct project scope, or decide target or phase acceptance |
 
 The Orchestrator normally remains dormant during phase execution, handling
@@ -48,11 +49,17 @@ acceptance. The Planner owns in-phase decisions and stable acceptance; preauthor
 ordinary repairs close through E and R without per-round Planner intervention. Keep one
 active lane, one repository writer, at most one Planner, at most one Executor,
 and one reliable Reviewer for the active package.
+P may continue as O's subagent when context, permission, intervention and the
+result route remain reliable; E/R may likewise be continuing subagents or
+separately addressable tasks. Role separation alone does not require a top-level
+task, and a subagent does not guarantee hard isolation or cross-parent recovery.
 
 The portable responsibility hierarchy is:
 
 ```text
 Orchestrator -> Phase Mandate
+Orchestrator -> independent review of its own planning product when enabled;
+Reviewer -> Orchestrator planning findings, not phase E/R direction
 Planner -> Phase Definition
 Planner -> Executor execution tranche or work package
 Executor -> internal steps or slices
@@ -76,7 +83,7 @@ Warm continuations reuse a valid contract and send the delta without another
 prompt approval or role for an internal step. Model and effort selection never
 changes O/P/E/R permissions, independent review, or acceptance boundaries.
 
-Reviewer findings are technical evidence, while Planner and Orchestrator
+Reviewer findings are independent inspection evidence, while Planner and Orchestrator
 assessments are role verdicts rather than extra user confirmation gates. The
 Orchestrator owns questions about project
 direction, cross-phase risk, the next phase, or a Mandate. The Planner owns
@@ -98,6 +105,11 @@ answer once and never mirror it.
    Charter revisions, managed workstream, workspace/writer boundary, and named
    evidence using [Coordination And Recovery](coordination-and-recovery.md).
 2. The Orchestrator bounds project direction and the current phase outcome.
+   When requested or required for a real direction/Mandate product, route a
+   stable independent planning review with its applicable instructions,
+   contract and evidence. O corrects its own planning product and the same
+   valid R re-reviews; review neither adopts the Mandate nor gives O a route
+   around P to phase E/R.
 3. The Planner makes the active Charter implementation-ready and identifies
    authorized execution tranches or work packages, writer, evidence, and stop
    conditions.
@@ -115,7 +127,7 @@ answer once and never mirror it.
    actual change, necessary semantic context, tests, documentation consumers,
    material untracked inputs and graph/generated limits without writing.
 6. Follow the approved correction route in
-   [Planner, Executor, And Reviewer](coordination-and-recovery.md#planner-executor-and-reviewer).
+   [Planner, Executor, And Reviewer](coordination-and-recovery.md#planner-executor-and-reviewer-l3).
    Preauthorized ordinary same-scope findings go from R to the original E;
    E repairs and verifies, and the same reliable Reviewer re-reviews the
    affected and cumulative material surface. No per-round P approval is needed.

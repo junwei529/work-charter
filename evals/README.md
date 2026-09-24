@@ -1,5 +1,13 @@
 # Work Charter Evaluations
 
+## Current v0.8.0 scenario changes
+
+The existing selection, role-model, Planner/Executor and Standard cases cover
+conditional Direct/Team/Phased choice, old-contract continuity, reviewed
+O/P/E products, carrier choices, complete model defaults and user overrides.
+They remain scenario specifications, not a new model run or natural-adherence
+result.
+
 ## Current v0.7.1 scenario changes
 
 The Planner/Executor case contrasts ordinary same-scope file and repair choices
@@ -57,8 +65,8 @@ level-by-actual-role model resolution, and Standard O/P/E/R boundaries in this
 evaluation surface; it also binds the exact general compatibility fallbacks, approved level
 defaults, contract/role/task/model-delta prompt clauses, scoped startup
 authorization, complete expression, and required reference reachability.
-The current candidate is user-confirmed v0.7.1; all earlier descriptors through
-v0.7.0 remain fixed historical snapshots. Current binding and the retained
+The current candidate is user-confirmed v0.8.0; all earlier descriptors through
+v0.7.1 remain fixed historical snapshots. Current binding and the retained
 historical descriptor pins are required; the earlier unversioned binding failure remains
 historical. The Planner/Executor and recovery cases specify acquisition versus
 actual inspection, bounded sampling, data permissions and recovery of inspection

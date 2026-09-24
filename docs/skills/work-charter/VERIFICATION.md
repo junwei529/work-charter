@@ -1,5 +1,68 @@
 # Work Charter Verification
 
+## v0.8.0 candidate verification plan
+
+Changed semantics are exercised in the existing selection, role-model,
+Planner/Executor and Standard scenarios: ordinary small work with no new
+ceremony; known answers reused; bounded discovery before organization;
+targeted R for a high-risk Direct change; conditional result/plan/direction
+review; O/P/E-specific instructions and product evidence; original-author
+repair and same-R re-review; Team P highest and Phased O/P routing; continuing
+subagent, separate-task and mixed carriers with permission/result reachability;
+old L0/L1/L2 contracts and distinct user overrides; schema-v1 whole-object
+precedence and the new default pairs. These are specifications until an
+actual runner or semantic R examines behavior; editing cases is not a run.
+
+The version-independent focused checks are package shape, YAML
+parse/value assertions, Markdown link targets, Python syntax for unchanged
+scripts, and `git diff --check`. These passed on the unversioned draft: six
+expected package files, schema-v1 YAML with all 13 intended complete
+level-role pairs, reachable relative Markdown targets and fragments, script
+AST parse, and no diff whitespace errors. They do not establish semantic
+agent behavior or a released source identity. The v0.8.0 candidate and source
+map now bind the package, and source/repository checks passed on the reviewed
+input. Independent R inspected the full source diff, necessary consumers and
+Release body. Installer identity received its own post-action readback;
+GitHub Release still requires later publication and readback. Existing v0.7.1
+checks and review are historical evidence; they do not validate this draft or
+fresh-task loading, effective runtime metadata, cost or natural adherence.
+
+At this candidate checkpoint, `python -B scripts/check_source_contract.py --json`
+returned PASS: 30/30 static clauses, `BOUND_TO_V080_CANDIDATE`, current
+package tree `ca62f3b449a08799d4ce3dbbeb3fe2455472b271`, and preserved
+historical pins through v0.7.1. This is source-text and package identity
+evidence only; source, repository and semantic-review gates cover their own
+inputs and need refreshing after changed material.
+
+Independent Astra/medium R1 inspected all 24 changed tracked paths, the
+untracked candidate, four private before/after global-consumer proposals and
+the exact Release body. It found V080-R1-01, a P2 correction-route conflict:
+the global rules still sent O/P planning findings to E. The original writer
+changed only two proposed consumer lines so the reviewed product's author
+repairs it and the existing result/acceptance route applies. The same R's
+bounded R2 returned PASS with V080-R1-01 FIXED and no open blocking findings.
+The v0.7.1 Standard-fragment P3 is FIXED in the new package; earlier v0.7.1
+findings remain historical. R did not claim runtime adherence or installation.
+
+The existing manager's v0.7.1-to-v0.8.0 dry-run and apply both exited 0,
+using an explicit private same-volume transaction root. Postflight found
+MANAGED v0.8.0 at package tree
+`ca62f3b449a08799d4ce3dbbeb3fe2455472b271`; all six installed
+files are byte-equal to reviewed source. Eleven DACL records match the
+pre-update snapshot. A complete private seven-file v0.7.1 copy retains its
+previous package tree, and the transaction root has no live transaction
+directories. The copied receipt remains bound to its original destination;
+the copied folder was therefore checked by file identity/tree, not falsely
+reported as a second live MANAGED installation. No rollback was executed.
+
+The four specified global/host consumers passed exact baseline and
+candidate-hash preflight, then were written in place from the reviewed
+proposals. Postflight bytes match all four candidate hashes and owner/DACL
+values match their pre-application states. These consumers are outside the
+public repository's source map and do not prove a fresh task loads this Skill
+or uses the recommended model combinations. The GitHub source commit,
+annotated tag, push and Release remain pending publication verification.
+
 ## v0.7.1 publication verification
 
 The final cumulative source input from v0.6.5 HEAD contained 23 tracked

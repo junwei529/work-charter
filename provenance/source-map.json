@@ -47,7 +47,7 @@
       "destination": "CHANGELOG.md",
       "kind": "repository-native",
       "note": "Work Charter repository release notes through the v0.6.1 local candidate",
-      "target_sha256": "30c169bf533bb401039e1dd860d5d7650341fe4ff4cc8f57f983606fa0e735c2"
+      "target_sha256": "b6eafcca1cb8e9286653ea0d832a67242bd544eda51ae1e3d2181d2dbd22c2fd"
     },
     {
       "destination": "LICENSE",
@@ -61,55 +61,55 @@
       "destination": "PROVENANCE.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "ed8b3acfb629db5f145964f701bf6330ada2ddab52756b51c08a99352a4526df"
+      "target_sha256": "7856c10eb826f0e3d3d114272828418c75419b4edca739b78ab714c844c943f7"
     },
     {
       "destination": "README.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "19009372b2457af3484e7a287f1529a0c4215ad3dd30193d136c8cedcec628ef"
+      "target_sha256": "40bcd1bf66dfc9287f1e1bdf5113b4f860b65d0c83c432a90918b3ed464ef86f"
     },
     {
       "destination": "README.zh-CN.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "1b72025dc65588054503238bcc69b6dcb7d24ca971468017e2b0b769851adc46"
+      "target_sha256": "7189903da3cea766eae721968bc9f05ffb9d286cdd1fdbdefbe0d8ac9a59b9af"
     },
     {
       "destination": "docs/skills/work-charter/DESIGN.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "c127282bd588d4e4c31b2a2d444aaaac7ed1329ae76af94c540e546cf7ec857a"
+      "target_sha256": "55b18e655b17f2744a40f65b5f4c0fd62067d525e1610806a87cea92e71bed24"
     },
     {
       "destination": "docs/skills/work-charter/README.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "b9ecb053b2a5518a9d5f37d35857529593c60b05bcc7e1f8542802a386c1ddf9"
+      "target_sha256": "d5e8458412033b9eda0afaa7616990566d1e2379b69962bc7733acfe6c33f678"
     },
     {
       "destination": "docs/skills/work-charter/README.zh-CN.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "34423863b5726469980176145f5e0c20d56c03ae4e46433460a171624586f80c"
+      "target_sha256": "bf739a9511f9e8a3d1d34bf1f93b3a1e66386ce7cd474346ec1adcb0a4978c0b"
     },
     {
       "destination": "docs/skills/work-charter/STATE.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "26fefbf25bbb75756546c063a2f72d487f239aa4a452a12a671a1e17b5d84f3c"
+      "target_sha256": "013d533323e7b7e666dfcd3d05443bc13f4600161cfc6671382cf53fa4afdc33"
     },
     {
       "destination": "docs/skills/work-charter/VERIFICATION.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "90282c3217158d294b73c2444de3a5157fe3bc4911c601c579bc44b3b57f0ecd"
+      "target_sha256": "33bd22f4c0eaf7a9981f97747be007930a6ac67ec41c33086488e4511d1ea333"
     },
     {
       "destination": "evals/README.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate evaluation index",
-      "target_sha256": "ae277ff06eeef59e984a305d164b430b2d719b820deaf80f22dc8c769194c29e"
+      "target_sha256": "9dc1e86da539c1f9624aa63e9b93688a664626c5acabbca24303ed4f046992fd"
     },
     {
       "destination": "evals/cases/cold-resume.md",
@@ -139,7 +139,7 @@
       "destination": "evals/cases/work-charter-planner-executor.md",
       "kind": "repository-native",
       "note": "Work Charter v0.4.0 evaluation contract or fixture",
-      "target_sha256": "60b03ea70371ca443c3627091729fcc391bc3dee4a565caef42146bd59256805"
+      "target_sha256": "2d245f50f80e7ec573baba61449b880b99adb8880380326afc00a37278484504"
     },
     {
       "destination": "evals/cases/work-charter-recovery-integrity.md",
@@ -151,7 +151,7 @@
       "destination": "evals/cases/work-charter-role-model-configuration.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 level-role configuration contract case",
-      "target_sha256": "8bb615db756af51dbb2e1b8c2b16817ab9038a22d94a091cf7123dc72a5412cf"
+      "target_sha256": "37f1fdbe9184d9b92d7b4761e39d314e20f855904d1351a11379e179ffdd9134"
     },
     {
       "destination": "evals/cases/work-charter-selection.md",
@@ -163,15 +163,15 @@
           "source_path": "evals/cases/work-charter-selection.md"
         }
       ],
-      "target_normalized_sha256": "ffbbcbcdbe4b31287e90fa1acacf5365d831620e2b96ea4662f4c6b2e8d5517a",
-      "target_sha256": "ffbbcbcdbe4b31287e90fa1acacf5365d831620e2b96ea4662f4c6b2e8d5517a",
+      "target_normalized_sha256": "3396ebc564de038689d7552446d57614f5f8b34fa169acdb5b865903bb201486",
+      "target_sha256": "3396ebc564de038689d7552446d57614f5f8b34fa169acdb5b865903bb201486",
       "transform": "UTF-8 without BOM, LF newlines; v0.6.3 assessment, continuation and scoped-reading case revision"
     },
     {
       "destination": "evals/cases/work-charter-standard.md",
       "kind": "repository-native",
       "note": "Work Charter v0.4.0 evaluation contract or fixture",
-      "target_sha256": "e758fce9d866ad2cf13ac8c071ddcfabd5d9ee78872bea9f2524b94b00c98631"
+      "target_sha256": "d6dda66fd6888a2a50dc6e0dc299216fc1f611cccc893a95281cd8dac488eabc"
     },
     {
       "destination": "evals/fixtures/cold-resume/AGENTS.md",
@@ -670,6 +670,12 @@
       "target_sha256": "01215b53f9c8dc93460d63abb0cefdacc4ac77ba96c500a0078215f1804f62dc"
     },
     {
+      "destination": "release/v0.8.0-candidate.json",
+      "kind": "repository-native",
+      "note": "Work Charter v0.8.0 pre-review source candidate",
+      "target_sha256": "5e4962e9b8333e60b4e45c96f0c3ed96a3c06e5fd7de202ba95c2c7d2f3d07c0"
+    },
+    {
       "destination": "scripts/check_repository.py",
       "kind": "standalone-normalized-text-rewrite",
       "note": "Standalone slice of repository and fixture validation",
@@ -685,27 +691,27 @@
           "source_path": "evals/check-fixtures.ps1"
         }
       ],
-      "target_normalized_sha256": "9eca5a2183827eca07f00aaa15542ea5985d043e674334d8bbd40d20c3dedcf1",
-      "target_sha256": "9eca5a2183827eca07f00aaa15542ea5985d043e674334d8bbd40d20c3dedcf1",
+      "target_normalized_sha256": "70600b422b140c2075f42215aa3fa19072554509d5d91fa1d02760c958d940cc",
+      "target_sha256": "70600b422b140c2075f42215aa3fa19072554509d5d91fa1d02760c958d940cc",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
       "destination": "scripts/check_source_contract.py",
       "kind": "repository-native",
       "note": "Work Charter v0.6.2 current candidate and historical SOURCE contract checker",
-      "target_sha256": "a1563761d3fa711dfc91917d79c12641217deecf99660c8662f18522e7b20392"
+      "target_sha256": "432d39e91e4f394df8c779e1faa182ef811ee4d69a92f3f9e4b53c020474f323"
     },
     {
       "destination": "scripts/manage_install.py",
       "kind": "repository-native",
       "note": "Origin-aware product-specific install lifecycle tool",
-      "target_sha256": "622a5ed4c3557aca4754819c63c48f0e72b84e8aaa7347c35964fbcda2a03483"
+      "target_sha256": "48b9e70a87c3f4a847be430f1a46d3fc4a8858bafb525ac1167cb034652c14d7"
     },
     {
       "destination": "skills/work-charter/SKILL.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.2 minimal guardrail necessity and auxiliary cost guidance",
-      "target_sha256": "e7de95018595d66688a03384473587c9609b79f8590da3548b687e252ff336db"
+      "target_sha256": "40232e29392f6239db872f6eef127d6894bde2f610d0279561a8329da24425e0"
     },
     {
       "destination": "skills/work-charter/agents/openai.yaml",
@@ -718,33 +724,33 @@
           "source_path": "skills/work-charter/agents/openai.yaml"
         }
       ],
-      "target_normalized_sha256": "6feb45cdba04d85cb16682f3da7a6c8986f46a1a8a39e1777dcd18b9375c8a5d",
-      "target_sha256": "6feb45cdba04d85cb16682f3da7a6c8986f46a1a8a39e1777dcd18b9375c8a5d",
+      "target_normalized_sha256": "dc3082facf7cde0cbd68a391ff17fc20613b148b35f15e30b0fd8e5a8bb87a95",
+      "target_sha256": "dc3082facf7cde0cbd68a391ff17fc20613b148b35f15e30b0fd8e5a8bb87a95",
       "transform": "UTF-8 without BOM, LF newlines; default startup prompt reuses scoped authorization while preserving missing read and adoption gates"
     },
     {
       "destination": "skills/work-charter/assets/role-models.default.yaml",
       "kind": "repository-native",
       "note": "Work Charter v0.5.0 role-model default data",
-      "target_sha256": "0ff315ea0912ef140735f66aa00737eec8c00ce5f4490fd579b2ec849e968747"
+      "target_sha256": "7bff625e37f4b9c1589ffbe3a4320cb439a1ade86fb4c034efa0a35b50e7f965"
     },
     {
       "destination": "skills/work-charter/assets/work-charter.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.2 minimal guardrail necessity and auxiliary cost guidance",
-      "target_sha256": "fbc085916d51d1eda86234c952daf5a86ac7783026cf7bbe9e6507684dda83ba"
+      "target_sha256": "239d5d3201a34135b784292111f28ff7ed0caa07c2ad9a7679ed457049dbb6af"
     },
     {
       "destination": "skills/work-charter/references/coordination-and-recovery.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.2 minimal guardrail necessity and auxiliary cost guidance",
-      "target_sha256": "9eaca6e4a0843e3ee25cc16f197261b82d595a9c4b38361e1ea71873df18683c"
+      "target_sha256": "51be911c658cd10bfcd20461380c3547e2b02da94820e0284ae52ae862292563"
     },
     {
       "destination": "skills/work-charter/references/standard-ope.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate package semantics",
-      "target_sha256": "5c9a77644d75297775b2a37fa20da520f12993655d3fe0f18553a840be1800b8"
+      "target_sha256": "0ee7c9fc53046d0916d9a833827d233aac37004806ba08e6a8aafc99439eac85"
     }
   ],
   "manifest_provenance": [

@@ -1,21 +1,23 @@
 ---
 name: work-charter
-description: Assess L0-L4 protection for Codex work. Use for assessment or reassessment, an applicable approved Charter, or material scope, authority, coordination, or recovery changes. Keep ordinary stable work lightweight; level changes remain user-owned.
+description: Choose proportionate Direct, Team, or Phased work and continue an applicable approved Charter. Use for assessment, reassessment, or material scope, authority, coordination, or recovery changes. Ordinary stable work needs no Charter ceremony.
 ---
 
 # Work Charter
 
 Keep the contract smaller than the work it protects. Work Charter is advisory:
 it can recommend and stop its own work, but cannot lock writers, reroute other
-tasks, or enforce permissions. A level adds protection and cost, not authority.
+tasks, or enforce permissions. A work arrangement adds coordination cost, not
+authority.
 
 ## Lightweight Entry And Material Changes
 
 At task entry, use supplied context to check for an applicable Charter and
 material scope, authority, coordination, or recovery needs. When none applies
 and no assessment was requested, finish this check and continue ordinary
-authorized work as `L0`. Do not load references, inspect a project, create a
-Charter or roles, or ask for confirmation merely to complete this check.
+authorized work directly (`L0` internally). Do not load references, inspect a
+project, create a Charter or roles, or ask for confirmation merely to complete
+this check.
 A host may perform this small check before selecting the package; this Skill
 does not prove that every host has integrated such an entry.
 
@@ -28,34 +30,41 @@ Catalog visibility, a summary, or manual rereading is not fresh loaded-copy proo
 - **Applicable approved Charter:** reconcile the same workstream, revision,
   authority and relevant live state, then reuse the approved Charter and level
   without asking again. A small task or new Thread does not cancel that Charter.
-- **First assessment:** a direct invocation or assessment request evaluates
-  L0-L4 and recommends the least sufficient level with its benefit and cost.
-  The user chooses the level to adopt. An assessment request is not adoption.
+- **First assessment:** a direct invocation or assessment request recommends
+  Direct, Team, or Phased work with its benefit and coordination cost. Begin
+  with known goals, completion evidence, real constraints, authorized bounded
+  discovery, and the user's autonomy or intervention preference. Ask only when
+  an answer changes the arrangement or a protected decision. The user chooses
+  whether to adopt a proposed Charter; assessment is not adoption.
 - **Manual reassessment:** start from the existing Charter and level, retain
   valid authority, and compare the requested change with that baseline.
 
 Before the next affected action, proactively reassess when new information
 materially changes outcome/scope, permissions or external effects, acceptance,
 writer or role boundaries, durable recovery, or cross-phase dependencies.
-Recommend retaining or changing the level; do not silently adopt or upgrade it.
-Material level, permission, or contract changes require the user's decision
-before dependent work. Continue independent work already covered by authority.
+Recommend retaining or changing the arrangement; do not silently adopt or
+upgrade it. Material coordination, permission, or contract changes require the
+user's decision before dependent work. Continue independent work already
+covered by authority.
 Duration, file count, one failure, model choice, context growth, or use of
 another Skill alone is not a reason to escalate or repeat an assessment.
 
-## Least Sufficient Protection
+## Least Sufficient Work Arrangement
 
-| Level | Protection and added cost |
+| Arrangement | When useful and added cost |
 | --- | --- |
-| `L0` | Ordinary task; no active Charter. A separate review gate may still apply. |
-| `L1` | One primary owner and a bounded current-task contract; no cold-recovery promise. |
-| `L2` | `L1` plus one discoverable durable recovery anchor. |
-| `L3` | Durable contract with Planner/Executor/Reviewer separation and one execution writer. |
-| `L4` | `L3` plus Orchestrator, standing policy and multi-phase governance. |
+| **Direct** | One primary owner completes the work. Use ordinary task context, an agreed current-task contract, or a durable anchor only as recovery requires. An independent review gate can still apply. |
+| **Team** | A Planner owns the executable contract and acceptance; an Executor implements with one writer; an independent Reviewer inspects actual work when requested or required. Separation and handoffs add cost. |
+| **Phased** | An Orchestrator owns direction and phase acceptance above phase-local Planner, Executor, and applicable Reviewer responsibilities. Use for consequential multi-phase governance with durable continuity. |
 
-`L0` has no active Charter. An adopted `L1`-`L4` contract is active only for
-its applicable workstream with this shared body available. Independent review
-at `L0`-`L2` does not by itself adopt or raise a level, or create P/E roles.
+For existing contracts and configuration, Direct maps to internal `L0` (no
+active Charter), `L1` (bounded current-task contract), or `L2` (discoverable
+durable recovery); Team maps to `L3`, and Phased to `L4`. Select the Direct
+variant from the actual agreement and continuity need, not a complexity score
+or a mandatory user questionnaire. Existing L0-L4 contracts keep their own
+approved terms and model combinations; this description does not migrate them.
+An adopted Charter applies only to its workstream. Independent review of Direct
+work does not create Planner/Executor roles or adopt a Charter.
 
 ## Shared Boundaries
 
@@ -80,10 +89,13 @@ at `L0`-`L2` does not by itself adopt or raise a level, or create P/E roles.
   guardrail as necessary. Do not preserve rejected Agent inventions as new
   requirements or infer permission for unlisted external effects. Use an existing canonical carrier; `L1` may use the task,
   while `L2`-`L4` need a durable anchor with authorized writes.
-- The implementer verifies the work it changed. An independent Reviewer
+- The implementer verifies and repairs the work it changed. It never acts as
+  the independent Reviewer of its own work. An independent Reviewer
   inspects the stable change when requested, required by a gate, or warranted
   by a material security, permission, data-loss, interface or core-decision
-  boundary. The designated assessor decides whether outcome and evidence
+  boundary. Review can cover an actual direction, plan, or implementation
+  product; use its applicable instructions, contract and real evidence. The
+  designated assessor decides whether outcome and evidence
   satisfy the contract. Tests and review output are not acceptance; without a
   separate assessor, the primary owner's disposition is not independent acceptance.
 - Complete authorized work through its required checks and handoff. Choose
@@ -110,19 +122,20 @@ unchanged material already loaded; do not read every other role's procedure.
 
 | Current need | Required section |
 | --- | --- |
-| First assessment or adoption | Minimum Read And Reconciliation Order; First Adoption And Durability |
+| First assessment or adoption | Minimum Read And Reconciliation Order; First Adoption And Durability; Conditional Work Selection |
 | Approved continuation or material drift | Minimum Read And Reconciliation Order; Managed Workstream And Multiple Worktrees; Re-entry Routes |
 | Proposal, delegation or escalation | Contract And Proposal Changes; Delegated Decisions And Escalation |
 | Prompt or task delivery | Task And Role Prompt Construction; Authority, Delivery, Correction, And Evidence |
 | Evidence collection, delegated inspection, or completion claims | Task And Role Prompt Construction; Authority, Delivery, Correction, And Evidence |
 | Newly authorized model resolution | [Role-Model Configuration At Dispatch](references/coordination-and-recovery.md#role-model-configuration-at-dispatch); identify level and responsibility first, then read the complete section before reading configuration or dispatching |
-| L3/L4 review or writer handoff | Planner, Executor, And Reviewer; Authority, Delivery, Correction, And Evidence |
-| Review at L0-L2, a user permission gate, or evidence consumption | Authority, Delivery, Correction, And Evidence; [Review Input At Any Level](references/coordination-and-recovery.md#review-input-at-any-level) |
+| Team/Phased review or writer handoff | Planner, Executor, And Reviewer; Authority, Delivery, Correction, And Evidence |
+| Direct review, a user permission gate, or evidence consumption | Authority, Delivery, Correction, And Evidence; [Review Input At Any Level](references/coordination-and-recovery.md#review-input-at-any-level) |
 | Context recovery or changed governing source | Context-Switch Recovery; Re-entry Routes; governing-source reload boundary in Authority, Delivery, Correction, And Evidence |
 
-At `L4`, also read the shared entry and responsibility boundaries of
+For approved Phased work (`L4` internally), also read the shared entry and
+responsibility boundaries of
 [Standard O/P/E/R](references/standard-ope.md), then only your operating steps
-and required interactions. Leave the Standard reference unloaded for L0-L3
+and required interactions. Leave the Standard reference unloaded for Direct/Team
 by default; a scoped transition assessment may read the needed sections.
 Do not skip shared permission, independent-review, writer or recovery boundaries.
 

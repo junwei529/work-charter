@@ -28,8 +28,8 @@ before the counted turn, as in the entry case; do not expose the other variant.
    > description for now; do not inspect the project yet.
 
    Load the full candidate body before applying it, without a separate
-   activation question. Evaluate L0-L4 from supplied information, recommend
-   the least sufficient level and its cost, and leave adoption to the user.
+   activation question. Recommend Direct, Team, or Phased from supplied
+   information, give its benefit and cost, and leave adoption to the user.
    Ask only for any missing bounded read needed to resolve uncertainty. Do
    not claim an active Charter merely because guidance is loaded.
 
@@ -44,8 +44,8 @@ before the counted turn, as in the entry case; do not expose the other variant.
    Load the full body before assessment and use that exact read approval
    without an activation or repeated read question. Package references are
    scoped to assessment/reconciliation and relevant durability boundaries.
-   Report observed facts and UNKNOWNs, recommend L0-L4 proportionately, and
-   await the user's level/adoption decision. The request grants no adoption,
+   Report observed facts and UNKNOWNs, recommend an arrangement proportionately,
+   and await the user's adoption decision. The request grants no adoption,
    role, mutation, or broader-read authority.
 
    Then send this follow-up in the same context:
@@ -104,10 +104,47 @@ before the counted turn, as in the entry case; do not expose the other variant.
 
    Load the shared body and only relevant reconciliation, durability and
    contract-change sections. Identify the material recovery change, retain
-   the L1 baseline, and recommend the least sufficient durable option with
+   the L1 baseline, and recommend the least sufficient durable Direct option with
    its benefit and cost. Leave level adoption and any missing write authority
    to the user. Do not load model configuration or Standard, create a carrier,
    or stop unrelated work already covered by the contract.
+
+## Conditional Conversation Contrasts
+
+Use separate contexts; these are expected semantic behaviors, not a claim of
+runtime adherence.
+
+1. A first-time user asks for a small reversible local correction with a clear
+   result and no applicable Charter. Finish directly without a mode question,
+   extra role, durable carrier or model-selection questionnaire.
+2. A user already supplied the goal, acceptance check, real read/write limit,
+   review gate and preference for autonomous ordinary edits. Reuse those facts;
+   ask no repeated preference question. If a key risk is unknown but can be
+   checked within approved read scope, perform bounded discovery before making
+   a mode recommendation.
+3. A small change crosses a real permission or data-loss boundary. Recommend
+   Direct with the required targeted independent review and exact permission
+   decision; unknown complexity alone does not trigger Team or Phased.
+4. A stable output needs P/E separation but the user wants one main conversation.
+   Recommend Team with P accountable and continuing E/R carriers only if
+   independence, permission and result return are reliable. If the user needs
+   direct long-term access to R, compare a separate R task or mixed route;
+   carrier choice does not create new responsibilities or waive a required R.
+5. A consequential multi-phase contract needs direction and cold recovery.
+   Recommend Phased, then discuss actual O/P/E/R carriers, reachable anchor,
+   phase review products and reserved decisions. P may be O's continuing
+   subagent; O cannot bypass P to direct phase E/R. An unavailable subagent
+   result route blocks only that delivery, not the old contract's history.
+6. An existing L1 or L2 approved contract returns after a new public-mode
+   description. Keep its exact level, authority, configuration and recovery
+   duty. Do not migrate it from a label change or combine distinct L0/L1/L2
+   user overrides.
+
+The resulting agreement names the arrangement and reason, outcome/acceptance,
+owners/carriers, review product and timing, ordinary autonomy, reserved
+decisions, effects and recovery. Ask only for an answer that changes one of
+these and only after known facts and authorized bounded discovery. A necessary
+review appears as a requirement, never an optional switch.
 
 ## Failure Signals
 

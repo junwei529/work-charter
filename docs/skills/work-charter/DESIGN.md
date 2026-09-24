@@ -1,5 +1,62 @@
 # Work Charter Design
 
+## v0.8.0 work-arrangement design
+
+This source candidate provides three user-facing arrangements: Direct
+(one primary owner), Team (P owns the result with E and applicable R), and
+Phased (O owns direction and phase acceptance above phase-local P/E/R). The
+previous four-mode naming proposal is withdrawn. The published v0.7.1 package,
+candidate and review evidence remain unchanged. The local managed installation
+now uses v0.8.0; a complete private v0.7.1 copy is retained for recovery.
+Existing L0-L4 contracts do not migrate because this draft changes public language.
+Internally, Direct retains distinct L0 ordinary/no Charter, L1 current-task
+contract and L2 durable-recovery variants; Team maps to L3 and Phased to L4.
+
+Selection is conditional: reuse the applicable contract, confirmed preferences
+and authorized facts; establish outcome, completion evidence and real
+constraints; perform bounded authorized discovery for material unknowns;
+resolve autonomy and intervention preferences; recommend the least sufficient
+arrangement; then consider independent review of actual result, plan or
+direction, role carriers and recovery only where those branches apply. The
+single resulting agreement records roles, review, effects, reserved decisions
+and return route. It does not impose a fixed questionnaire, complexity score,
+automatic escalation, or new Charter on ordinary small work. Mandatory review
+is displayed as a real gate, not an optional preference.
+
+R uses a common read-only and independence contract plus the reviewed role's
+actual product and this checkpoint's risks. Applicable canonical instructions,
+contract revision, baseline and evidence are reachable inputs; an author
+summary does not replace them. O planning review checks direction, tradeoffs,
+dependencies, real guards and coordination cost; P Definition review checks
+execution, acceptance, sufficient authorization and unnecessary method
+freezing; E/Direct result review checks behavior, regressions, verification and
+consumers. The original author repairs its own product, with the same valid R
+re-reviewing. P retains implementation acceptance, and O cannot bypass P to
+instruct phase E/R. Self-check and self-repair remain normal; independent R of
+one's own work is excluded. Tasks and continuing subagents are carrier choices
+subject to reliable permission, continuity, intervention and result routes,
+not a proxy for responsibility or proof of hard isolation. Existing global
+Git/Phase delivery rules remain separate consumers; their bounded v0.8.0
+adaptations were reviewed and applied after the source package passed R.
+
+Schema v1 and its single package YAML owner remain. New no-user-file defaults
+are Direct primary Astra/high and R Astra/medium; Team P Astra/high, E
+Sol/xhigh, R Astra/medium; Phased O Astra/high, P/E Sol/xhigh and R
+Astra/medium. Material P planning or difficult E judgment may be proposed as
+Astra/high through an explicitly confirmed complete object. The first role
+lookup remains frozen, task-explicit, selected user level, user general,
+package level, package general; no cross-object field merge occurs. Distinct
+legacy L0/L1/L2 user overrides remain distinct. No external user file, current
+task, global default or Luna evidence-reader is changed by this draft. Model
+recommendations are neither performance evidence nor runtime-adoption proof.
+
+The user selected v0.8.0 and authorized source delivery, managed installation,
+bounded global consumers and publication in the existing public repository.
+The candidate binds only its own source bytes. Source checks, independent
+review, managed installation and four specified consumers have separate
+observed evidence; Git and remote effects remain pending. The v0.7.1
+candidate and published objects stay historical.
+
 ## Current outcome-scoped authority revision
 
 v0.7.1 retains the v0.7.0 role, delegation, model and correction contracts.

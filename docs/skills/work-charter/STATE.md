@@ -1,5 +1,44 @@
 # Work Charter State
 
+## v0.8.0 source candidate
+
+Status: **SOURCE_REVIEWED_LOCAL_APPLIED_PUBLICATION_PENDING**, v0.8.0 selected.
+The sole source writer prepared the Direct/Team/Phased interface, conditional
+selection, responsibility-based R input, task/subagent carrier choices and
+complete model/effort defaults in the existing six-file package and scenarios.
+This version does not migrate old approved Charter contracts. The published
+v0.7.1 source, tag, Release and findings retain their recorded identities.
+Its deferred P3 Standard section-link finding is fixed in the new v0.8.0
+source without changing the v0.7.1 package.
+
+Internal L0/L1/L2 distinctions remain separate Direct contracts; L3 maps to
+Team and L4 to Phased. Existing schema-v1 per-level user overrides are not
+rewritten or merged. New package defaults express the confirmed
+responsibility-based pairs. Deterministic source/repository checks passed.
+Independent R1 found one P2 in the proposed global correction route; the
+writer fixed it in the bounded consumer patch, and the same R returned PASS
+in R2 with no open blocking findings. The existing manager then updated the
+local copy to MANAGED v0.8.0. All six installed package files match source
+bytes, 11 DACL records match the pre-update snapshot, a complete private
+v0.7.1 copy is retained, and the transaction directory has no live entries.
+Four exact global/host consumers were separately applied from the reviewed
+patch after baseline hash checks; their resulting bytes and DACLs were
+verified. These observations do not prove fresh-task loading, effective model
+metadata or natural behavior. The user has also authorized public GitHub
+publication; commit, tag, push and Release remain pending their own checks
+and readback. Existing v0.7.1 release history below is frozen historical
+evidence.
+
+Candidate package tree: `ca62f3b449a08799d4ce3dbbeb3fe2455472b271`.
+Package SHA-256:
+`6f28071bc1be25029ef005ecf33590858a54f7b03d933ecc7d9055f664fad59d`.
+The source-contract check passed 30/30 static clauses, v0.8.0 identity and
+retained historical pins at the reviewed source checkpoint. Repository mapping
+passed for 101 files before this local evidence update and must be refreshed
+for the final intended diff. The candidate descriptor is the pre-effect source
+snapshot; its pending fields are retained as history rather than rewritten
+as post-installation claims.
+
 ## v0.7.1 publication
 
 Status: **PUBLISHED_VERIFIED**, observed 2026-09-24. The accepted cumulative

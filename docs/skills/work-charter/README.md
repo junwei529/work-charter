@@ -1,9 +1,9 @@
 # Work Charter
 
-Current source is [v0.7.1](STATE.md#v071-outcome-scoped-authority).
-It retains v0.7.0 delegation and model defaults while distinguishing approved
-outcomes and effects from replaceable implementation methods.
-Earlier evidence remains bound to its original package.
+Current source candidate is [v0.8.0](STATE.md#v080-source-candidate).
+It presents Direct, Team, and Phased work with conditional selection, product-
+specific independent review and complete responsibility-based model defaults.
+Published v0.7.1 evidence remains bound to its original package.
 
 [简体中文](README.zh-CN.md)
 
@@ -25,7 +25,7 @@ relevant details when needed, and reassesses material changes without adopting
 a level for the user. It preserves approved Charter reuse and shared review,
 authority and recovery boundaries; see
 [historical v0.6.5 state](STATE.md#current-v065-local-candidate).
-[Current state](STATE.md#v071-outcome-scoped-authority) owns source and installation status.
+[Current state](STATE.md#v080-source-candidate) owns source and installation status.
 
 The package originated at source commit
 `80910a8b2375a11be897e9660c4b00a06d00dd13`. Immutable `v0.5.0` source evidence

@@ -1,9 +1,8 @@
 # Work Charter
 
-Current source is [v0.7.1](STATE.md#v071-outcome-scoped-authority).
-It retains v0.7.0 delegation and model defaults while distinguishing approved
-outcomes and effects from replaceable implementation methods.
-Earlier evidence remains bound to its original package.
+Current source candidate is [v0.8.0](STATE.md#v080-source-candidate).
+Direct、Team、Phased 的条件选择、按实际产物的独立审查和成对模型默认值
+由本候选承接；已发布 v0.7.1 的证据仍绑定其原包。
 
 [English](README.md)
 

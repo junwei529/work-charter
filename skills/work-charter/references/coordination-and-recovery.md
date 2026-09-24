@@ -42,8 +42,9 @@ work needs no project read, carrier or role. Enter these detailed sections for
 an assessment request, an applicable adopted contract, or a material change.
 Before the next affected action, reassess new scope, authority, external effect,
 acceptance, writer/role, durable-recovery or cross-phase needs. Recommend the
-least sufficient level and its benefit/cost; adoption and level changes remain
-user-owned. Routine steps, one failure or elapsed time do not force reassessment.
+least sufficient work arrangement and its benefit/cost; adoption and material
+coordination changes remain user-owned. Routine steps, one failure or elapsed
+time do not force reassessment.
 
 An adopted contract makes outcome/non-goals, scope and hard boundaries,
 authorization and material effects, acceptance/verification, and stop/recovery
@@ -58,15 +59,16 @@ Use the shortest route:
 - existing project: declared rules, existing canonical owner, current
   workspace, then recommendation;
 - new project: user description, minimum declared entry point, then an
-  ordinary flat (`L0`) or current-task Charter (`L1`) recommendation; propose
+  ordinary Direct (`L0`) or current-task Charter (`L1`) recommendation; propose
   durability only when recovery requires it; or
 - previously adopted workstream: known locator, applicability, live
   workspace/writer and named evidence, then resume under the valid Charter
   and level; recommend a change only for manual reassessment or material drift.
 
-First assessment considers L0-L4 and leaves adoption to the user. Manual
-reassessment compares the proposed change with the existing contract and level;
-it does not restart first adoption. Small-task exclusions do not discard an
+First assessment considers Direct, Team, and Phased and leaves adoption to the
+user. Manual reassessment compares the proposed change with the existing
+contract and internal level; it does not restart first adoption. Small-task
+exclusions do not discard an
 applicable Charter. Use the re-entry precedence below for material changes;
 otherwise continue within existing authority without another activation gate.
 
@@ -84,6 +86,62 @@ recoverable through bounded reads. Propose a standalone carrier only when no
 suitable owner exists or the recovery boundary is materially clearer. Its
 creation or update always needs write authority; do not create a duplicate
 after one failed path guess.
+
+## Conditional Work Selection
+
+Reuse a known contract, confirmed preferences, and permitted facts before
+asking. Establish the outcome and completion evidence, existing plan or need
+for exploration, and real constraints on data, production systems, external
+effects, compatibility, irreversibility, time or cost. When material facts are
+unknown, perform only authorized bounded discovery or propose a bounded read;
+unknown complexity alone does not justify the most elaborate arrangement.
+Next resolve how much routine autonomy the user wants and which decisions or
+work lines need their participation. Do not ask the user to score complexity
+or answer facts that authorized inspection can establish.
+
+Recommend the least sufficient arrangement in ordinary language:
+
+- **Direct:** one primary owner; an ordinary small task needs no Charter,
+  questionnaire or role. An agreed current-task contract and a durable recovery
+  anchor are different Direct variants when their actual continuity needs call
+  for them. A high-risk small change can stay Direct with targeted independent
+  review.
+- **Team:** Planner (P) is the highest accountable owner; Executor (E) owns
+  implementation and verification. Enable independent Reviewer (R) for the
+  actual product when requested, required by a gate, or justified by material
+  risk. Do not add an Orchestrator merely to make the hierarchy symmetrical.
+- **Phased:** Orchestrator (O) is the highest owner for direction and phase
+  acceptance; phase-local P owns Definition, E/R routing and target acceptance.
+  Use standing policy and durable continuity only when consequential multi-phase
+  work requires them.
+
+Then branch only where a real choice remains. For an actual output, decide
+whether independent review covers the result, its implementation plan, or a
+real overall direction, and when the stable review input exists. Explain any
+mandatory review as a gate rather than an optional preference. For each actual
+responsibility, choose a continuing subagent, a separately addressable task,
+or a mix according to user intervention, reliable continuity, permission and
+result reachability. P can continue as O's subagent; E and R need independent
+responsibility and a reachable return route, not necessarily top-level tasks.
+An ordinary carrier proposal is Direct in the primary task, Team with P in the
+main task and continuing E and applicable R subagents, or Phased with a long-lived O and
+phase-local P/E/R carriers. Choose separate role tasks or a mix when direct
+intervention or cross-parent recovery warrants them.
+Subagents do not guarantee zero context cost, hard isolation or recovery across
+a different parent task. If a carrier cannot sustain the agreed responsibility,
+stop the affected delivery and choose an authorized route. Applicable host,
+project and approved delivery rules still govern the actual route; this Skill
+does not change them. Ask about cold
+recovery or handoff only when it changes the required anchor or route.
+
+The final single work agreement states the arrangement and reason, outcome and
+acceptance, actual owners/carriers and writer, review products and timing,
+ordinary autonomy and reserved decisions, permitted and excluded effects,
+material cost, recovery and return route. Ask only a question whose answer
+changes one of these; skip a branch with no applicable product or carrier
+choice. Recompute only an affected branch when an answer changes the proposal.
+Do not treat silence as approval. Keep an existing approved L0-L4 contract and
+frozen delivery combination until its owner authorizes a material change.
 
 ## Managed Workstream And Multiple Worktrees
 
@@ -262,7 +320,7 @@ These are concise contract contents, not new documents or required forms.
 | Decision | Responsible owner and return condition |
 | --- | --- |
 | Ordinary implementation method, file choice, verification order, equivalent substitution and same-scope repair | E, or the L0-L2 primary, within authorized outcome, domain, environment, effects and cost; return to P or the primary owner when equivalence, authority or a protected boundary is unclear. |
-| Technical finding, coverage and re-review judgment | Read-only R; resolve technical questions and correct or withdraw a finding from evidence, preserving its history. R neither repairs nor accepts the target. |
+| Review finding, coverage and re-review judgment | Read-only R; resolve inspection questions and correct or withdraw a finding from evidence, preserving its history. R neither repairs nor accepts the target. |
 | In-phase sequencing, contract-preserving correction, finding disputes, recovery allocation and target acceptance | P within the approved delegation; escalate only a decision outside that delegation. P does not repeat technical review. |
 | Direction, cross-phase tradeoffs, Mandate interpretation and project-level acceptance | O within the user-approved project authority; do not bypass P to direct E/R. |
 | Reserved outcome, acceptance floor, authority, aggregate cost or external-effect change; next unapproved phase | User, through the existing semantic owner; direct operation-local consent stays with the actual action task. |
@@ -323,11 +381,11 @@ every record.
 
 | Actual responsibility | Prompt addition |
 | --- | --- |
-| Primary (`L0`-`L2`) | Complete authorized implementation, required verification, and delivery; at L1/L2 retain the applicable record and disposition independently required Reviewer findings. Do not create P/E separation or claim independent self-acceptance. |
-| Orchestrator (`L4`) | Frame project outcome, Mandate, phase direction, and Planner return route; assess project-level results without directing the Executor or repeating technical review. |
-| Planner (`L3`/`L4`) | Supply the executable contract, acceptance criteria, and E/R routes; exercise the delegated in-phase choices, authorize the bounded correction route and accept stable results while remaining read-only on implementation and routing technical review to R. |
-| Executor (`L3`/`L4`) | Complete authorized work and required checks, preserve findings and evidence, and return the stable checkpoint to the Planner or use the preauthorized E/R correction route; do not expand scope or accept the result. |
-| Reviewer (when enabled) | Inspect frozen input and necessary semantic context read-only; return actionable findings, coverage, and unknowns through the approved route; same-scope findings may go directly to E for preauthorized repair. Correct findings from evidence without repair, acceptance or self-granted authority. |
+| Direct primary (`L0`-`L2`) | Complete authorized implementation, required verification, and delivery; at L1/L2 retain the applicable record and disposition independently required Reviewer findings. Do not create P/E separation or claim independent self-acceptance. |
+| Phased Orchestrator (`L4`) | Frame project outcome, Mandate, phase direction, and Planner return route; assess project-level results without directing the Executor or repeating technical review. |
+| Team/Phased Planner (`L3`/`L4`) | Supply the executable contract, acceptance criteria, and E/R routes; exercise delegated in-phase choices, authorize the bounded correction route and accept stable results while remaining read-only on implementation and routing technical review to R. Team P is the highest owner. |
+| Team/Phased Executor (`L3`/`L4`) | Complete authorized work and required checks, preserve findings and evidence, and return the stable checkpoint to the Planner or use the preauthorized E/R correction route; do not expand scope or accept the result. |
+| Reviewer (when enabled) | Inspect the named direction, plan or implementation product and necessary semantic context read-only; return actionable findings, coverage, and unknowns through the approved route. Correct findings from evidence without repair, acceptance or self-granted authority. |
 
 Cold prompts provide sufficient authoritative pointers and hard boundaries to
 start without a conversation search. Warm continuations retain the contract
@@ -392,7 +450,15 @@ lifecycle operations do not own or mutate the external user configuration.
 `agents/openai.yaml` is UI metadata, not a role-model selector.
 
 Apply this section only when the governing contract has authorized a new task
-or delivery and identified its protection level and actual responsibility.
+or delivery and identified its actual responsibility and internal configuration
+level. For new work, Direct selects `l0`, `l1`, or `l2` from the actual contract
+and continuity need; Team uses `l3`, and Phased uses `l4`. This maps the public
+arrangement onto schema v1 without changing its shape. Existing approved
+L0-L4 contracts keep their exact level, user configuration and frozen delivery
+objects; never merge distinct L0/L1/L2 user overrides or pick one as the
+others' value. If the applicable level or a material user preference is
+unresolved, decide that boundary before delivery, not by silently falling
+through to another level.
 Configuration selects execution metadata for that start or delivery; it grants
 no task, role, action, read, write, Git, installation, provider, credential,
 network, or external-effect authority. A level describes coordination and
@@ -423,8 +489,19 @@ project directories or other user paths for alternatives. Install, update,
 rollback, and uninstall must not create, modify, move, or delete the user file.
 
 The package default supplies four general compatibility fallback objects
-and approved L0-L4 level overrides; the YAML owns their current values. It has
-no general `primary`. Its explicit `l0.reviewer` object applies only to
+and L0-L4 level overrides; the YAML is the sole owner of exact current
+provider/model/parameter values. Its OpenAI capability policy puts the
+flagship default on Direct primary, Team P and Phased O, a mainline default on
+Phased P and E, and the same independent-review default on every enabled R.
+Major planning tradeoffs or difficult implementation judgments can justify a
+complete task-specific flagship recommendation for P or E. Present a default
+as the complete pair from the YAML, including effort, not a model name alone.
+This policy is not model-performance proof or authority to alter an existing
+task. Do not recommend a faster lower-cost model as the default merely from
+price. User-confirmed complete provider/model/parameters combinations can
+override the recommendation when the route supports them; do not transplant
+OpenAI effort names onto another provider.
+It has no general `primary`. Its explicit `l0.reviewer` object applies only to
 a separately authorized temporary Reviewer. Missing user entries may use
 package level defaults, including for primary owners. Accept configuration
 only in this bounded data shape:
@@ -516,8 +593,9 @@ file watcher, background component, or general model gateway.
 
 ## Planner, Executor, And Reviewer (`L3`)
 
-Use `L3` only after approval when independent contract ownership or assessment
-materially protects implementation. The Planner owns the active Charter,
+Use Team (`L3` internally) only after approval when independent contract
+ownership or assessment materially protects implementation. The Planner owns
+the active Charter,
 clarification, review routing, correction direction, and target acceptance and
 remains read-only while assessing. The Executor owns only authorized
 implementation, verification, evidence, and implementation documentation. The
@@ -526,8 +604,13 @@ context, reports actionable findings and coverage limits, and never modifies
 the reviewed target.
 
 Keep at most one Planner, one Executor, one Reviewer for the active package,
-one active execution lane, and one repository writer. Reuse reliable role
-sessions; do not create roles for implementation slices, documentation sync,
+one active execution lane, and one repository writer. P is Team's highest
+owner; Phased adds O above P for project direction. A responsibility can run in
+a continuing subagent or a separately addressable task if its authority,
+context, independence, intervention and result route are reliable. Distinct
+responsibility does not require a top-level task; a subagent does not establish
+hard isolation, zero context cost, or cross-parent recovery. Reuse reliable
+carriers; do not create roles for implementation slices, documentation sync,
 verification reruns, or ordinary repairs. Apply the shared review-input and
 Reviewer-continuity rules below.
 
@@ -597,6 +680,32 @@ only when its repository, baseline, checkpoint, freshness, changed paths, and
 limitations are known. A read-only Reviewer does not silently build or refresh
 an index. Hashes, graphs, diff size, clean status, tests, and implementation
 reports are evidence; none replaces semantic review or acceptance.
+
+Define one review contract from the common read-only and independence boundary,
+the reviewed responsibility and actual product, and this checkpoint's material
+risk. Supply reachable applicable canonical instructions and contract revisions,
+the actual evidence and baseline, inspection limits, and the return and
+acceptance owner. The author's summary may point to evidence but does not
+replace it. An instruction applicable to the author is review criteria, not
+permission for R to perform that author's work. State whether the review
+covers the product, compliance with an agreed process, or both; do not scan
+unrelated role history by default.
+
+| Reviewed product | Review emphasis |
+| --- | --- |
+| O's direction or Mandate | Outcome, alternatives and tradeoffs, cross-phase dependencies, real guardrails and coordination cost. O may request independent review of its own planning product; this does not let O bypass P to command phase E/R. |
+| P's Definition or execution plan | Executable scope and acceptance, sufficient authorization, E/R route, and whether ordinary files, order or repair rounds were incorrectly frozen. |
+| E's implementation or Direct primary's result | Behavior, regression, verification evidence, consumers, and protected interfaces, data, permission or decision boundaries. |
+
+A Direct primary can obtain independent planning review without inventing P or
+O. The original author corrects a same-scope finding and the same valid R
+re-reviews the changed and cumulative surface; R neither repairs nor accepts.
+For Team/Phased implementation, preserve an explicitly preauthorized
+R-to-original-E-to-same-R route and P's stable acceptance. Planning findings
+return to the planning author and its designated assessor; they cannot grant
+execution, phase acceptance or external-effect permission. An upstream
+contract defect found during implementation goes to its owner rather than
+being silently waived or rewritten by E.
 
 ## Authority, Delivery, Correction, And Evidence
 

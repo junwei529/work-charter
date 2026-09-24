@@ -8,7 +8,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "skills" / "work-charter"
-CURRENT_CANDIDATE = ROOT / "release" / "v0.7.1-candidate.json"
+CURRENT_CANDIDATE = ROOT / "release" / "v0.8.0-candidate.json"
+V071_CANDIDATE = ROOT / "release" / "v0.7.1-candidate.json"
+V071_CANDIDATE_SHA256 = "01215b53f9c8dc93460d63abb0cefdacc4ac77ba96c500a0078215f1804f62dc"
+V071_PACKAGE_TREE = "8ea9baf2b52635b3bdc0e9984e0d823c8984cc58"
 V070_CANDIDATE = ROOT / "release" / "v0.7.0-candidate.json"
 V070_CANDIDATE_SHA256 = "656f021a2af4b8af6683a32b60a9c6e08fa8f1e7bd44611ad7f23cc33ed235b7"
 V070_PACKAGE_TREE = "9bc03ec6f1ac081b738da2ca316b18b22a356aea"
@@ -92,9 +95,9 @@ roles:
       reasoning_effort: high
   planner:
     provider: openai
-    model: gpt-6-astra
+    model: gpt-6-sol
     parameters:
-      reasoning_effort: high
+      reasoning_effort: xhigh
   executor:
     provider: openai
     model: gpt-6-sol
@@ -109,36 +112,36 @@ level_overrides:
   l0:
     primary:
       provider: openai
-      model: gpt-6-sol
+      model: gpt-6-astra
       parameters:
-        reasoning_effort: xhigh
+        reasoning_effort: high
     reviewer:
       provider: openai
-      model: gpt-6-sol
+      model: gpt-6-astra
       parameters:
-        reasoning_effort: xhigh
+        reasoning_effort: medium
   l1:
     primary:
       provider: openai
-      model: gpt-6-sol
+      model: gpt-6-astra
       parameters:
-        reasoning_effort: xhigh
+        reasoning_effort: high
     reviewer:
       provider: openai
-      model: gpt-6-sol
+      model: gpt-6-astra
       parameters:
-        reasoning_effort: xhigh
+        reasoning_effort: medium
   l2:
     primary:
       provider: openai
-      model: gpt-6-sol
+      model: gpt-6-astra
       parameters:
-        reasoning_effort: xhigh
+        reasoning_effort: high
     reviewer:
       provider: openai
-      model: gpt-6-sol
+      model: gpt-6-astra
       parameters:
-        reasoning_effort: xhigh
+        reasoning_effort: medium
   l3:
     planner:
       provider: openai
@@ -163,9 +166,9 @@ level_overrides:
         reasoning_effort: high
     planner:
       provider: openai
-      model: gpt-6-astra
+      model: gpt-6-sol
       parameters:
-        reasoning_effort: high
+        reasoning_effort: xhigh
     executor:
       provider: openai
       model: gpt-6-sol
@@ -291,8 +294,8 @@ def main():
     checks = {
         "prompts.contract_role_task_layers": contains_all(recovery, [
             "shared contract, actual responsibility, current task, and necessary model adaptation",
-            "| Primary (`L0`-`L2`)", "| Orchestrator (`L4`)",
-            "| Planner (`L3`/`L4`)", "| Executor (`L3`/`L4`)", "| Reviewer (when enabled)",
+            "| Direct primary (`L0`-`L2`)", "| Phased Orchestrator (`L4`)",
+            "| Team/Phased Planner (`L3`/`L4`)", "| Team/Phased Executor (`L3`/`L4`)", "| Reviewer (when enabled)",
             "Cold prompts", "Warm continuations", "Recovery restores",
         ]) and "## Task Or Role Prompt" in charter_asset,
         "prompts.continuation_and_real_gates": contains_all(recovery, [
@@ -304,8 +307,8 @@ def main():
         "prompts.startup_and_complete_expression": (
             contains_all(ui_metadata, [
                 "Use $work-charter",
-                "continue an applicable approved Charter and level",
-                "reusing authorized reads and asking only for missing permissions or material adoption changes",
+                "continue an applicable approved Charter",
+                "ask only for missing decisions that change the arrangement, authority, review, or recovery",
             ])
             and "then ask before inspecting project details" not in ui_metadata
             and contains_all(recovery, [
@@ -388,6 +391,7 @@ def main():
             role_model_case,
             [
                 "Legacy four-role package default",
+                "Distinct Direct variants and existing user overrides",
                 "General role replacement remains whole-object",
                 "General primary and level override",
                 "Frozen then task-explicit then configured priority",
@@ -408,15 +412,25 @@ def main():
                 "Configuration choice does not enable a listed role or authorize delivery or action.",
             ],
         ),
+        "role_models.arrangement_compatibility": contains_all(recovery, [
+            "Direct selects `l0`, `l1`, or `l2` from the actual contract",
+            "Team uses `l3`, and Phased uses `l4`",
+            "never merge distinct L0/L1/L2 user overrides",
+            "Present a default",
+            "including effort, not a model name alone.",
+        ]) and contains_all(role_model_case, [
+            "Distinct Direct variants and existing user overrides",
+            "Every enabled R selects Astra/medium",
+        ]),
         "selection.assessment_and_adoption_are_distinct": contains_all(
             skill,
             [
                 "Load the full Skill first",
                 "First assessment",
-                "evaluates L0-L4",
-                "The user chooses the level to adopt.",
-                "An assessment request is not adoption.",
-                "`L0` has no active Charter.",
+                "recommends",
+                "Direct, Team, or Phased work",
+                "assessment is not adoption.",
+                "`L0` (no",
             ],
         ),
         "selection.applicable_charter_precedes_new_adoption": contains_all(skill, [
@@ -424,22 +438,35 @@ def main():
             'A small task or new Thread does not cancel that Charter.',
             'Manual reassessment',
             'start from the existing Charter and level',
-            "Material level, permission, or contract changes require the user's decision",
+            "Material coordination, permission, or contract changes require the",
         ]),
         "selection.references_follow_role_and_level": contains_all(skill, [
             'this shared entry is the required body',
             'Read only what supports the current decision or action',
             "do not read every other role's procedure",
-            'Leave the Standard reference unloaded for L0-L3 by default',
+            'Leave the Standard reference unloaded for Direct/Team',
             'Do not skip shared permission, independent-review, writer or recovery boundaries.',
         ]),
         "selection.lightweight_entry_and_material_reassessment": contains_all(skill, [
             "At task entry, use supplied context",
-            "continue ordinary authorized work as `L0`",
+            "continue ordinary",
+            "authorized work directly (`L0` internally)",
             "Do not load references, inspect a project, create a Charter or roles",
             "Before the next affected action, proactively reassess",
             "do not silently adopt or upgrade it",
             "Continue independent work already covered by authority.",
+        ]),
+        "selection.conditional_work_arrangement": contains_all(skill, [
+            "## Least Sufficient Work Arrangement",
+            "**Direct**", "**Team**", "**Phased**",
+            "Existing L0-L4 contracts keep their own",
+        ]) and contains_all(recovery, [
+            "## Conditional Work Selection",
+            "Reuse a known contract, confirmed preferences, and permitted facts",
+            "unknown complexity alone does not justify the most elaborate arrangement",
+            "mandatory review as a gate rather than an optional preference",
+            "An ordinary carrier proposal is Direct in the primary task",
+            "The final single work agreement states",
         ]),
         "authority.loading_and_assessment_do_not_expand_authority": contains_all(skill, [
             'Package loading never expands project-read or action authority.',
@@ -486,12 +513,12 @@ def main():
             ],
         ),
         "review.levels_and_responsibility_separation": contains_all(skill, [
-            'A separate review gate may still apply.',
-            'Independent review at `L0`-`L2` does not by itself adopt or raise a level, or create P/E roles.',
-            'Planner/Executor/Reviewer separation',
-            'The implementer verifies the work it changed.',
+            'An independent review gate can still apply.',
+            'Independent review of Direct',
+            'does not create Planner/Executor roles or adopt a Charter.',
+            'The implementer verifies and repairs the work it changed.',
             'An independent Reviewer inspects the stable change',
-            'The designated assessor decides whether outcome and evidence satisfy the contract.',
+            'The designated assessor decides whether outcome and evidence',
         ]),
         "review.same_reviewer_and_input_limits": contains_all(recovery, [
             'Prefer the same reliable Reviewer for re-review after repair.',
@@ -499,6 +526,18 @@ def main():
             'Give the Reviewer the actual change and baseline, necessary surrounding source, tests, documentation consumers, material untracked inputs',
             'A read-only Reviewer does not silently build or refresh an index.',
             'none replaces semantic review or acceptance.',
+        ]),
+        "review.role_product_and_carrier": contains_all(recovery, [
+            "the reviewed responsibility and actual product",
+            "reachable applicable canonical instructions and contract revisions",
+            "| O's direction or Mandate |",
+            "| P's Definition or execution plan |",
+            "| E's implementation or Direct primary's result |",
+            "The original author corrects a same-scope finding",
+            "a subagent does not establish",
+        ]) and contains_all(standard, [
+            "Orchestrator -> independent review of its own planning product when enabled",
+            "serve as independent Reviewer of its own work",
         ]),
         "review.unknown_context_and_callback_boundaries": contains_all(recovery, [
             'When a finding or result is `UNKNOWN`',
@@ -676,6 +715,9 @@ def main():
     checks["candidate.v070_historical_identity"] = (
         hashlib.sha256(V070_CANDIDATE.read_bytes()).hexdigest() == V070_CANDIDATE_SHA256
     )
+    checks["candidate.v071_historical_identity"] = (
+        hashlib.sha256(V071_CANDIDATE.read_bytes()).hexdigest() == V071_CANDIDATE_SHA256
+    )
     successor_error = None
     successor = {}
     try:
@@ -684,14 +726,14 @@ def main():
             not isinstance(parsed_successor.get(field), dict)
             for field in ("package", "evidence_states", "lineage")
         ):
-            raise ValueError("v0.7.1 candidate requires object package, evidence_states, and lineage")
+            raise ValueError("v0.8.0 candidate requires object package, evidence_states, and lineage")
         successor = parsed_successor
     except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
         successor_error = str(error)
-    checks["candidate.v071_identity"] = (
+    checks["candidate.v080_identity"] = (
         successor.get("schema") == "work-charter-local-release-candidate/v1"
         and successor.get("product") == "work-charter"
-        and successor.get("version") == "0.7.1"
+        and successor.get("version") == "0.8.0"
         and successor.get("public_identity") == "junwei529/work-charter"
         and successor.get("candidate_state") == "PENDING_INDEPENDENT_REVIEW"
         and successor.get("human_release_notes_review") == "PENDING"
@@ -700,25 +742,25 @@ def main():
         and successor.get("package", {}).get("files") == sorted(EXPECTED_FILES)
         and successor.get("package", {}).get("path") == "skills/work-charter"
         and successor.get("lineage") == {
-            "historical_package_tree": V070_PACKAGE_TREE,
-            "previous_candidate": "release/v0.7.0-candidate.json",
-            "source_commit": "1f9697a5f1c1fd9c454fdaa21952f63ab6eaa052",
+            "historical_package_tree": V071_PACKAGE_TREE,
+            "previous_candidate": "release/v0.7.1-candidate.json",
+            "source_commit": "a27e8058061c674278ab30c6cd14d544b1c130db",
         }
         and successor.get("evidence_states") == {
             "broad_product_efficacy": "UNKNOWN",
             "cross_provider_runtime": "UNKNOWN",
             "cross_version_lifecycle": "NOT_RERUN_UNCHANGED_MECHANISM",
             "independent_review": "PENDING",
-            "local_release_ready": "NOT_AUTHORIZED",
+            "local_release_ready": "AUTHORIZED_PENDING_CHECKS",
             "planner_acceptance": "NOT_APPLICABLE",
-            "public_release": "NOT_AUTHORIZED",
+            "public_release": "AUTHORIZED_PENDING_CHECKS",
             "role_delivery_runtime": "UNKNOWN",
             "source_contract": "REQUIRES_FRESH_DETERMINISTIC_CHECK",
             "stable_installed_copy": "PENDING_AUTHORIZED_UPDATE",
         }
     )
     checks["candidate.current_package_binding"] = (
-        checks["candidate.v071_identity"]
+        checks["candidate.v080_identity"]
         and actual_package_tree is not None
         and current_package_sha256 is not None
         and successor.get("package", {}).get("tree") == actual_package_tree
@@ -1413,7 +1455,7 @@ def main():
     if current_candidate_error:
         failures.append(f"candidate.v050_unreadable: {current_candidate_error}")
     if successor_error:
-        failures.append(f"candidate.v071_unreadable: {successor_error}")
+        failures.append(f"candidate.v080_unreadable: {successor_error}")
     if v067_candidate_error:
         failures.append(f"candidate.v067_unreadable: {v067_candidate_error}")
     if v066_candidate_error:
@@ -1478,7 +1520,7 @@ def main():
         ),
         "result": "PASS" if not failures else "FAIL",
         "source_release_identity": (
-            "BOUND_TO_V071_CANDIDATE"
+            "BOUND_TO_V080_CANDIDATE"
             if current_package_bound
             else "UNBOUND_PENDING_SUCCESSOR_VERSION_AND_DESCRIPTOR"
         ),

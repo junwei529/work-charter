@@ -4,69 +4,93 @@
 
 Latest release: **[v0.7.1](https://github.com/junwei529/work-charter/releases/tag/v0.7.1)**.
 [Verified publication](docs/skills/work-charter/STATE.md#v071-publication).
-The intermediate v0.6.6–v0.7.0 candidates were not published separately.
+The [v0.8.0 source candidate](release/v0.8.0-candidate.json) has passed
+independent source review; GitHub publication is pending. Local managed-copy
+and bounded global-consumer outcomes are recorded in
+[State](docs/skills/work-charter/STATE.md#v080-source-candidate).
 
 Keep complex AI projects moving across handoffs—and through to delivery.
 
-Work Charter is a project collaboration Skill for Codex. It offers five levels, L0–L4, with role responsibilities and model configurations to help you move from everyday tasks to projects spanning conversations, roles, and phases.
+Work Charter is a project collaboration Skill for Codex. It helps you choose
+Direct, Team, or Phased work according to the result, real constraints, review
+needs, and how you want to participate. An existing approved agreement remains
+in force until its owner changes it.
 
-It recommends a suitable level based on the project's continuity, division of responsibilities, and acceptance needs, explains the benefits and costs, and leaves adoption to you. Existing working agreements can continue when they still apply.
+It reuses known facts, inspects only authorized scope, and asks only questions
+whose answers change the arrangement or a protected decision. Ordinary small
+tasks need no Charter or extra questionnaire.
 
-## Five collaboration levels for different needs
+## Three ways to work
 
-| Level | How it works | Default roles | What it helps with |
-|---|---|---|---|
-| L0: Direct execution | Complete the current task without establishing a Charter | Primary owner | Keep everyday tasks simple |
-| L1: Task agreement | Define goals, boundaries, and completion criteria in the current conversation | Primary owner, with an optional Reviewer | Give the current task a clear agreement |
-| L2: Durable continuity | Add a persistent work record and recovery entry point | Primary owner, with an optional Reviewer | Pick up existing work in a new conversation |
-| L3: Separate responsibilities | Separate planning, execution, and technical review | Planner, Executor, Reviewer | Make implementation and assessment responsibilities clear |
-| L4: Project coordination | Add coordination across phases to L3 | Orchestrator, Planner, Executor, Reviewer | Coordinate project direction, phase goals, and overall acceptance |
+| Arrangement | How it works | When it helps |
+|---|---|---|
+| **Direct** | One primary owner completes the work; add a current-task agreement, durable recovery anchor, or independent review only when needed. | Everyday work, including a small high-risk change needing targeted review. |
+| **Team** | A Planner owns the agreement and acceptance; an Executor implements; an independent Reviewer checks the actual product when requested or required. | Work that benefits from separated implementation and assessment. |
+| **Phased** | An Orchestrator owns direction and phase acceptance above phase-local Planner, Executor and applicable Reviewer roles. | Consequential work across several dependent phases. |
 
-An L1 agreement stays in the current conversation. For reliable recovery across conversations, use L2 or above. Higher levels require more coordination information to maintain, so start with the least sufficient level.
+Direct retains three internal variants: ordinary task (L0, no active Charter),
+current-task agreement (L1), and discoverable durable recovery (L2). Team maps
+to L3 and Phased to L4 for existing configuration and contracts. These
+distinctions keep their original recovery duties; old agreements do not
+automatically migrate. More coordination costs more, so use the least sufficient
+arrangement.
 
 ## Clear responsibilities for each role
 
-- **Orchestrator — project coordination:** Owns project direction, phase planning, and project-level acceptance.
-- **Planner — planning and acceptance:** Defines phase goals, work boundaries, and completion criteria, then assesses the results.
-- **Executor — implementation and verification:** Implements authorized work, completes the necessary checks, and delivers results.
-- **Reviewer — independent technical review:** Inspects implementation issues and provides traceable findings and evidence.
+- **Direct primary:** Completes authorized work and its checks.
+- **Orchestrator (Phased):** Owns project direction and phase acceptance.
+- **Planner (Team or Phased):** Defines an executable agreement and accepts results. Team's Planner is its highest owner.
+- **Executor:** Implements, checks, repairs, and delivers authorized work.
+- **Reviewer:** Independently inspects an actual direction, plan, or implementation product against applicable instructions, the agreement, and evidence. The original author corrects findings; the same valid Reviewer rechecks.
 
-At L0–L2, the primary owner is directly responsible for the current task. A role arrangement does not itself create tasks or expand permissions.
+Roles may use continuing subagents, separate tasks, or a mix where permission,
+user intervention, continuity, and return routes support them. Separate roles
+do not require separate top-level tasks. A work arrangement does not itself
+create tasks, expand permissions, or guarantee isolation or recovery.
 
 ## Default models and customization
 
-The author built a private evaluation set from multiple real code repositories, organized around the responsibilities of the Orchestrator, Planner, Executor, and Reviewer. Those results informed the earlier baseline; v0.7.0 changes model and reasoning defaults by user decision, without claiming a new evaluation result.
+The package supplies complete provider, model, and reasoning-effort defaults.
+They are recommendations by responsibility, not a claim of superior measured
+performance or proof that an existing task has changed.
 
-These defaults provide a starting point. You can adjust models and reasoning settings for each level and role based on your project, available models, cost, and observed performance.
+You can override a complete combination for an authorized new task or role.
+Availability and parameters must be checked on the intended route.
 
 User configuration takes priority over package defaults. Changes apply to tasks subsequently created using that configuration; existing tasks retain their settings.
 
-| Scope | Package default |
+| Responsibility | Package default |
 |---|---|
-| L0 primary owner and separately triggered Reviewer | Sol · xhigh |
-| L1–L2 primary owner and optional Reviewer | Sol · xhigh |
-| L3–L4 Planner | Astra · high |
-| L4 Orchestrator | Astra · high |
-| L3–L4 Executor | Sol · xhigh |
-| L3–L4 Reviewer | Astra · medium |
+| Direct primary; Team Planner; Phased Orchestrator | `gpt-6-astra` · `high` |
+| Phased Planner; Team/Phased Executor | `gpt-6-sol` · `xhigh` |
+| Any enabled independent Reviewer | `gpt-6-astra` · `medium` |
 
-Astra means `gpt-6-astra` and Sol means `gpt-6-sol`; `medium`, `high` and `xhigh` are reasoning effort settings. The L0 Reviewer entry supplies a model only when a separate rule authorizes that temporary role.
+For a major planning tradeoff or difficult implementation judgment, an
+authorized delivery may explicitly choose a complete `gpt-6-astra`/`high`
+combination for P or E. A Reviewer default is used only when review is actually
+enabled. A different provider needs supported parameters for that provider;
+OpenAI effort names are not universal.
 
 These are package presets. The task creation process must verify what is actually used; see the [default configuration file](skills/work-charter/assets/role-models.default.yaml) for the complete configuration.
 
 ## An example
 
-For a project that spans several conversations, first assess whether L2 is appropriate to preserve key decisions, current state, verification evidence, and the next step.
+For a task that must survive a handoff, Direct may need a durable recovery
+anchor. If separate implementation and acceptance would help, consider Team.
+If several phases need shared direction, consider Phased.
 
-When the project needs independent planning and technical review, assess the coordination cost of L3. When several phases need shared direction, consider L4. Throughout, retain valid decisions and make explicit adjustments for material changes.
+Independent review can cover an implementation, an executable plan, or an
+overall direction when that product exists. Required review cannot be switched
+off by preference. Keep valid decisions and ask about material changes before
+dependent action.
 
 ## Get started
 
 ```text
 $work-charter
 This project will take several conversations to complete.
-Recommend a suitable collaboration level from L0–L4.
-Explain the default roles, model configuration, benefits, and maintenance cost.
+Recommend Direct, Team, or Phased work from what is already known.
+Explain the outcome, roles, review, recovery, complete model defaults, and cost.
 ```
 
 If a working agreement is already in place:
@@ -149,8 +173,8 @@ default-reader access to the exact managed v0.4.0 copy and closed
 managed v0.4.0; v0.4.1 was not installed. The later
 [accepted v0.6.3 installation](docs/skills/work-charter/STATE.md#accepted-v063-user-installation)
 records that historical copy; [historical v0.6.5 state](docs/skills/work-charter/STATE.md#current-v065-local-candidate)
-records that update. [Current state](docs/skills/work-charter/STATE.md#v071-outcome-scoped-authority)
-tracks the v0.7.1 candidate. Stable v0.5.0 loaded-copy behavior,
+records that update. [Current state](docs/skills/work-charter/STATE.md#v080-source-candidate)
+tracks the v0.8.0 candidate. Stable v0.5.0 loaded-copy behavior,
 role-delivery adherence, cross-provider execution, cross-Harness behavior,
 public release, and broad efficacy remain `UNKNOWN` or separately authorized.
 
@@ -164,21 +188,21 @@ General compatibility fallbacks:
 | Role | Provider | Model | Reasoning effort |
 |---|---|---|---|
 | Orchestrator | OpenAI | `gpt-6-astra` | `high` |
-| Planner | OpenAI | `gpt-6-astra` | `high` |
+| Planner | OpenAI | `gpt-6-sol` | `xhigh` |
 | Executor | OpenAI | `gpt-6-sol` | `xhigh` |
 | Reviewer | OpenAI | `gpt-6-astra` | `medium` |
 
-Approved level defaults use OpenAI Sol for L0-L2 and Executor, and Astra
-for Planner, Orchestrator and L3-L4 Reviewer:
+Current package level defaults map Direct to L0-L2, Team to L3, and Phased to
+L4. User configuration and frozen old contracts retain their own values:
 
 | Level | Responsibility and reasoning effort |
 |---|---|
-| L0 | primary and reviewer Sol `xhigh` |
-| L1/L2 | primary and reviewer Sol `xhigh` |
+| L0 | primary Astra `high`; reviewer Astra `medium` |
+| L1/L2 | primary Astra `high`; reviewer Astra `medium` |
 | L3 | planner Astra `high`; executor Sol `xhigh`; reviewer Astra `medium` |
-| L4 | orchestrator and planner Astra `high`; executor Sol `xhigh`; reviewer Astra `medium` |
+| L4 | orchestrator Astra `high`; planner and executor Sol `xhigh`; reviewer Astra `medium` |
 
-L0 supplies an explicit Sol/xhigh Reviewer override for a separately triggered role.
+L0 supplies an explicit Astra/medium Reviewer override for a separately triggered role.
 These configured choices are not evidence of optimality or runtime adoption.
 
 To customize later task starts or role deliveries, copy that file to
@@ -206,8 +230,8 @@ object source, and file source and verifies native support. Codex OpenAI maps
 `model` to native `model` and `reasoning_effort` to `thinking`. Unsupported or
 ambiguous data fails closed. Existing tasks and roles do not change when the
 file changes. The package defines this interface; global and host task-start
-consumers have not yet been migrated, so the source and fixtures are not proof
-of effective local delivery. Install, update, rollback, and uninstall never
+consumers require their own verified adaptation, so the source and fixtures are
+not proof of effective local delivery. Install, update, rollback, and uninstall never
 mutate the external user file.
 
 Prompts use the [shared contract, actual responsibility, current task, and
@@ -270,8 +294,8 @@ python -B scripts/check_repository.py --json
 ```
 
 Run the relevant checks against the final changed input. The SOURCE checker
-separates static contract clauses from the required v0.7.1 tree/digest binding
-and preserves historical descriptor identities, including v0.7.0.
+separates static contract clauses from the required v0.8.0 tree/digest binding
+and preserves historical descriptor identities, including v0.7.1.
 Static wording and identity
 checks do not prove model behavior. See
 [Verification](docs/skills/work-charter/VERIFICATION.md) for current results.

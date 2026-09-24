@@ -1,5 +1,20 @@
 # Provenance And Transformation Boundary
 
+## v0.8.0 source candidate
+
+The new [candidate](release/v0.8.0-candidate.json) binds the six-file
+Direct/Team/Phased package and its complete role-model defaults. It follows
+the immutable v0.7.1 candidate and published source while retaining their
+exact identities. Schema v1 and installer production behavior remain in place;
+the installer self-test source version and current deterministic checks follow
+this candidate. Current repository-native target hashes are refreshed in the
+source map. The six-file package passed independent review and was installed
+through the existing manager; its local byte identity, previous DACL and
+private previous-version copy were checked. Four exact host/project
+consumers were separately reviewed and applied with their DACLs preserved.
+These local observations do not prove Git publication, live task loading,
+effective model routing or natural behavior.
+
 ## v0.7.1 public release record
 
 The immutable public source commit is

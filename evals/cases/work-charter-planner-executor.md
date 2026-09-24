@@ -64,6 +64,29 @@ Planner approval for the file or each repair. Keep one writer, report the
 deviation and verify the actual behavior. An Agent-set per-repair count or
 per-message acknowledgement does not become a hard gate through plan approval.
 
+## Review-Product And Carrier Contrasts
+
+Use separate snapshots, without changing the approved batching contract:
+
+- Before E work, P asks a read-only independent R to inspect the executable
+  Definition. Supply the actual Definition, applicable P instructions and
+  authority, baseline, acceptance and E/R route. R checks implementability,
+  sufficient authorization and whether an ordinary file sequence or repair
+  count was incorrectly frozen. P corrects its own plan; the same valid R
+  re-reviews. R does not implement, approve the Definition or become P.
+- After E work, use the implementation checkpoint. Supply E's applicable
+  instructions, actual diff, tests, consumers, protected boundaries and
+  cumulative findings. R checks behavior and regression, while P handles
+  acceptance. E may self-check and repair, but cannot act as independent R.
+- Put P in the main task and E/R in reliable continuing subagents for one
+  variant; use separately addressable tasks for another variant when the user
+  needs direct long-term intervention. Both need the same responsibility,
+  writer, independence and result-route proofs. Do not infer zero context
+  cost, hard isolation or cross-parent recovery from a subagent label.
+- If an E-side implementation review finds an upstream Definition defect,
+  route that issue to P. E does not silently rewrite permission or acceptance;
+  an approved prior Definition does not exempt its material contradiction.
+
 ## Material-Boundary Contrast
 
 Run this contrast in a separate fresh copy of the same fixture:

@@ -156,3 +156,17 @@ permission. Preserve cumulative findings, verified new input and single-writer
 review windows. P receives the stable result and alone accepts it. A disputed
 finding, unknown effect, exhausted real limit or material risk returns to P;
 R cannot write the fix or waive acceptance, and E cannot declare its own review.
+
+## Direction-review and continuity contrast
+
+Before a new Phase Definition, O may request a bounded independent review of
+its Mandate or overall direction. Give R the actual Mandate, applicable O
+instructions, user-approved project boundary, alternatives, cross-phase
+dependencies, real guardrails, cost and named return/acceptance owner. R checks
+that product and reports findings; O corrects its own plan and the same valid
+R re-reviews. This review neither adopts the Mandate nor lets O direct a phase
+E/R around P. A separate P-Definition review checks execution, acceptance and
+delegation, not O's entire history. E review checks implementation and
+consumers. If a subagent P loses its parent or reachable return route, preserve
+the Charter, findings and consumed evidence, then stop the affected delivery;
+do not claim automatic cross-parent recovery or silently create a replacement.

@@ -4,69 +4,82 @@
 
 最新正式版本：**[v0.7.1](https://github.com/junwei529/work-charter/releases/tag/v0.7.1)**。
 [发布核验记录](docs/skills/work-charter/STATE.md#v071-publication)。
-中间的 v0.6.6–v0.7.0 候选未单独发布。
+[v0.8.0 源码候选](release/v0.8.0-candidate.json)已通过独立源码审查，
+GitHub 发布尚待执行。本地 MANAGED 安装及指定全局消费者的结果见
+[状态记录](docs/skills/work-charter/STATE.md#v080-source-candidate)。
 
 让复杂的 AI 项目接得住，也交得出。
 
-Work Charter 是面向 Codex 的项目协作 Skill。它提供 L0–L4 五档协作方案，以及配套的角色分工和模型配置，帮助你从日常任务逐步组织到跨对话、跨角色和多阶段项目。
+Work Charter 是面向 Codex 的项目协作 Skill。它根据成果、真实约束、
+审查需要和你的参与方式，协助选择“直接完成 / Direct”“分工完成 / Team”
+或“分阶段推进 / Phased”。已有已批准约定在其 owner 修改前继续有效。
 
-它会根据项目的连续性、分工和验收需要推荐合适级别，说明收益与成本，由你确认采用。已有且仍适用的工作约定可以继续沿用。
+它先复用已知事实，仅在授权范围内查看必要信息；只问答案会改变
+工作安排或材料决定的问题。普通小任务不需要 Charter 或额外问卷。
 
-## 五档协作方案，覆盖不同工作需要
+## 三种工作方式
 
-| 级别 | 协作方式 | 默认角色 | 解决什么问题 |
-|---|---|---|---|
-| L0：直接执行 | 按当前任务要求完成工作，不建立 Charter | 主负责人 | 保持日常任务简洁 |
-| L1：任务约定 | 在当前对话中明确目标、边界和完成标准 | 主负责人，可按需加入审阅者 | 让本次工作有清晰约定 |
-| L2：持续接续 | 增加可持久保存的工作记录与恢复入口 | 主负责人，可按需加入审阅者 | 换对话后仍能接上已有工作 |
-| L3：独立分工 | 分开规划、执行与技术审阅 | Planner、Executor、Reviewer | 让实现与评估有明确分工 |
-| L4：项目统筹 | 在 L3 基础上增加跨阶段的项目管理 | Orchestrator、Planner、Executor、Reviewer | 协调项目方向、阶段目标和整体验收 |
+| 工作方式 | 怎么做 | 适用情况 |
+|---|---|---|
+| **直接完成 / Direct** | 一位主负责人完成；仅按需要加入当前任务约定、持久恢复锚点或独立审查。 | 日常工作，也可处理需要针对性审查的小型高风险变更。 |
+| **分工完成 / Team** | Planner 负责约定与验收，Executor 实施；被请求或必需时，独立 Reviewer 检查实际产物。 | 实现与验收需要分开负责的工作。 |
+| **分阶段推进 / Phased** | Orchestrator 负责方向和阶段验收，下设阶段 Planner、Executor 和适用的 Reviewer。 | 有依赖关系、需要持续治理的多阶段工作。 |
 
-L1 的约定保留在当前对话中；需要可靠的跨对话恢复时，使用 L2 及以上方案。级别越高，需要维护的协作信息也越多，因此优先选择足够满足需要的一档。
+Direct 内部仍区分：普通任务（L0，无活跃 Charter）、当前任务约定
+（L1）和可发现的持久恢复（L2）。Team 对应 L3，Phased 对应 L4，
+用于保留既有合同和配置。旧合同不因名称变化自动迁移。组织越复杂，
+协调成本越高，应选择足以完成目标的方式。
 
 ## 默认分工，让每个角色知道自己负责什么
 
-- **Orchestrator｜项目统筹**：负责项目方向、阶段安排和项目层面的验收。
-- **Planner｜规划与验收**：明确阶段目标、工作边界和完成标准，评估执行结果。
-- **Executor｜执行与验证**：实现获准的工作，完成必要检查并交付结果。
-- **Reviewer｜独立技术审阅**：检查实现中的问题，提供可追溯的发现和依据。
+- **Direct 主负责人**：完成获准工作及其检查。
+- **Orchestrator（Phased）**：负责项目方向和阶段验收。
+- **Planner（Team 或 Phased）**：确定可执行约定并验收结果；Team 的 P 是最高负责人。
+- **Executor**：实施、自检、修复和交付获准工作。
+- **Reviewer**：依据适用 instructions、合同和真实证据，独立检查方向、计划或实现产物。原作者修复，同一有效 R 复审。
 
-L0–L2 的主负责人直接负责当前任务。角色方案本身不会自动创建任务或扩大操作权限。
+角色可以由持续 subagent、独立任务或混合承载，取决于权限、用户介入、
+连续性与结果可达性。职责分离不要求顶层任务；工作方式本身不会创建
+任务、扩大权限，也不保证硬隔离或跨父任务自动恢复。
 
 ## 默认模型配置与自定义
 
-作者基于多个实际代码仓库，围绕 Orchestrator、Planner、Executor、Reviewer 各自的分工构建了私有评测集。此前的配置基线参考了这些结果；v0.7.0 按用户决定调整模型和推理等级，不代表新增评测结论。
+包内按职责给出完整的 provider、模型和推理档位默认值。这是推荐，
+不构成性能最优、旧任务已换模型或实际运行效果的证据。
 
-这些默认值提供一个可直接起步的参考。使用者可以根据项目特点、可用模型、使用成本和实际表现，灵活调整各级别、各角色的模型与推理等级。
+获准创建新任务或角色时，可以用完整组合覆盖默认值；必须确认目标
+路线支持该模型与参数。
 
 用户自定义配置优先于包内默认。调整适用于之后按该配置创建的任务，已有任务保留原设置。
 
-| 适用范围 | 包内默认配置 |
+| 职责 | 包内默认配置 |
 |---|---|
-| L0 主负责人及独立触发的临时 Reviewer | Sol · xhigh |
-| L1–L2 主负责人及可选 Reviewer | Sol · xhigh |
-| L3–L4 Planner | Astra · high |
-| L4 Orchestrator | Astra · high |
-| L3–L4 Executor | Sol · xhigh |
-| L3–L4 Reviewer | Astra · medium |
+| Direct 主负责人；Team Planner；Phased Orchestrator | `gpt-6-astra` · `high` |
+| Phased Planner；Team/Phased Executor | `gpt-6-sol` · `xhigh` |
+| 实际启用的所有独立 Reviewer | `gpt-6-astra` · `medium` |
 
-这里的 Astra 指 `gpt-6-astra`、Sol 指 `gpt-6-sol`，`medium`、`high` 和 `xhigh` 表示推理投入设置。L0 的 Reviewer 配置只在其他独立规则授权该临时角色时提供模型值。
+重大规划取舍或困难实现判断，可以在获准投递时为 P 或 E 明确选择
+完整的 `gpt-6-astra`/`high` 组合。R 默认值仅在实际启用审查时
+使用。其他 provider 需使用其自身支持的参数，不机械套用 OpenAI
+推理档位名称。
 
 这些是包内预设，实际采用情况需要由任务创建流程核对；完整规则见[默认配置文件](skills/work-charter/assets/role-models.default.yaml)。
 
 ## 一个使用场景
 
-一个项目需要分几次对话完成，可以先评估是否采用 L2，保留关键决定、当前状态、验证依据和下一步。
+任务需要跨对话接续时，Direct 可以加入持久恢复锚点；实现与验收
+需要分开时考虑 Team；多个阶段需要共同方向时考虑 Phased。
 
-当项目需要独立规划与技术审阅时，再评估 L3 的分工成本；出现多个需要统一协调的阶段时，再考虑 L4。整个过程沿用已有有效决定，并对实质变化作出明确调整。
+独立 R 可按真实产物检查实现、可执行计划或总体方向。必需审查不能
+凭偏好关闭。沿用已有有效决定，在材料变化时先处理相应决定。
 
 ## 开始使用
 
 ```text
 $work-charter
 这个项目需要分几次对话完成。
-请从 L0–L4 中推荐合适的协作级别，
-说明默认角色、模型配置，以及收益和维护成本。
+请根据已知信息推荐 Direct、Team 或 Phased，
+说明成果、角色、审查、恢复、完整模型默认值和成本。
 ```
 
 已有工作约定时：
@@ -130,7 +143,7 @@ exact managed v0.4.0 副本的 default-reader access，并仅对该修复关闭
 `WC-INSTALL-POSTFLIGHT-F01`。该修复检查点的 package 仍为 managed v0.4.0，v0.4.1 未安装。之后的
 [v0.6.3 安装接受记录](docs/skills/work-charter/STATE.md#accepted-v063-user-installation)保留该历史副本证据；
 [历史 v0.6.5 状态](docs/skills/work-charter/STATE.md#current-v065-local-candidate)记录当时的更新；
-[当前状态](docs/skills/work-charter/STATE.md#v071-outcome-scoped-authority)承接 v0.7.1 候选。
+[当前状态](docs/skills/work-charter/STATE.md#v080-source-candidate)承接 v0.8.0 候选。
 v0.5.0 stable loaded-copy、role-delivery adherence、跨 provider 执行、cross-Harness、
 公开发布与广泛效能仍为 `UNKNOWN` 或需分别授权。
 
@@ -144,21 +157,21 @@ Package 默认数据位于
 | 角色 | Provider | Model | Reasoning effort |
 |---|---|---|---|
 | Orchestrator | OpenAI | `gpt-6-astra` | `high` |
-| Planner | OpenAI | `gpt-6-astra` | `high` |
+| Planner | OpenAI | `gpt-6-sol` | `xhigh` |
 | Executor | OpenAI | `gpt-6-sol` | `xhigh` |
 | Reviewer | OpenAI | `gpt-6-astra` | `medium` |
 
-已批准级别默认：L0-L2 与 Executor 使用 OpenAI Sol，Planner、Orchestrator
-及 L3-L4 Reviewer 使用 Astra：
+当前包内级别默认：Direct 对应 L0-L2，Team 对应 L3，Phased 对应 L4。
+用户配置和旧冻结合同保留各自值：
 
 | 级别 | 实际职责与 reasoning effort |
 |---|---|
-| L0 | primary、reviewer Sol `xhigh` |
-| L1/L2 | primary、reviewer Sol `xhigh` |
+| L0 | primary Astra `high`；reviewer Astra `medium` |
+| L1/L2 | primary Astra `high`；reviewer Astra `medium` |
 | L3 | planner Astra `high`；executor Sol `xhigh`；reviewer Astra `medium` |
-| L4 | orchestrator、planner Astra `high`；executor Sol `xhigh`；reviewer Astra `medium` |
+| L4 | orchestrator Astra `high`；planner、executor Sol `xhigh`；reviewer Astra `medium` |
 
-L0 reviewer 明确配置为 Sol/xhigh，仅供独立触发的临时角色使用。这些配置值不代表评测最优或已运行生效。
+L0 reviewer 明确配置为 Astra/medium，仅供独立触发的临时角色使用。这些配置值不代表评测最优或已运行生效。
 
 如需定制后续任务启动或角色投递，可把该文件复制到
 `~/.config/work-charter/role-models.yaml` 后编辑，或由已批准的 delivery contract 指定
@@ -177,7 +190,7 @@ R；`L3` 为 P/E/R；`L4` 为 O/P/E/R。配置项不会启用角色，`L0` 仍�
 创建前，边界展示 level、实际职责、provider/model/parameters、对象来源和文件来源，并核对
 native 支持。Codex OpenAI 把 `model` 映射到 native `model`，把
 `reasoning_effort` 映射到 `thinking`；不支持或含糊的数据 fail closed。文件变化不改变
-既有任务或角色。Package 只定义该接口；global/host task-start consumer 尚未迁移，source 和
+既有任务或角色。Package 只定义该接口；global/host task-start consumer 需另行验证适配，source 和
 fixture 不能证明本机已实际采用。Install、update、rollback、uninstall 均不修改外部 user
 文件。
 
@@ -231,8 +244,8 @@ python -B scripts/check_source_contract.py --json
 python -B scripts/check_repository.py --json
 ```
 
-对最终变更输入执行相应检查。SOURCE checker 分别核对静态合同条款、v0.7.1 的
-tree/digest 绑定和历史描述文件身份（包括 v0.7.0）；静态文案及身份检查不证明模型行为。
+对最终变更输入执行相应检查。SOURCE checker 分别核对静态合同条款、v0.8.0 的
+tree/digest 绑定和历史描述文件身份（包括 v0.7.1）；静态文案及身份检查不证明模型行为。
 当前结果见[验证记录](docs/skills/work-charter/VERIFICATION.md)。
 
 其他检查按改变的机制选择：安装器或权限变化覆盖相关生命周期场景，来源验证逻辑变化

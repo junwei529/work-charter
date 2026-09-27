@@ -4,10 +4,10 @@
 本机 managed installed copy 已按单独授权更新至 v0.9.1；arrangement-v1、模型 schema v2
 及以下历史发布证据保留原范围。
 
-最新正式发布版本为 [v0.8.0](STATE.md#v080-publication)。
-Direct、Team、Phased 的条件选择、按实际产物的独立审查和成对模型默认值
-由本版承接；[候选](STATE.md#v080-source-candidate)保留发布前快照，
-已发布 v0.7.1 的证据仍绑定其原包。
+最新正式发布版本为 [v0.9.1](STATE.md#v091-publication)。
+本版使用 arrangement-v1 合同与模型 schema v2，支持条件式迁移、授权内推进，
+并在能力支持时复用持续独立 Reviewer。
+[候选](../../../release/v0.9.1-candidate.json)保留发布前快照，历史发布证据仍绑定其原包。
 
 [English](README.md)
 

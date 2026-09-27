@@ -1,5 +1,45 @@
 # Work Charter Verification
 
+## v0.9.1 publication verification
+
+Publication R4 independently inspected the complete 21-path increment from
+`e86f5019ddd882521fbacac30633c073f03d05a6`, including both newly included
+candidate descriptors, schema compatibility, migration/progression/review
+semantics, necessary consumers, public privacy, Release notes and both profile
+README changes. It found no P0-P2 issue. V091-PUB-R4-01 (P3) identified a stale
+current SOURCE version in the Chinese README. The original writer changed
+only that version and its existing provenance mapping/constant; R5 closed the
+finding, retained the other coverage and returned PASS with no new finding.
+The R5 input SHA-256 is
+`4a047bf2a8381eca755a12dc0d1a803d2dc9be1d73f6a59caad204b668314d61`.
+
+SOURCE passed all 33 static clauses and its current/historical identity gates;
+repository validation passed 103 mapped files, and whitespace checks passed.
+After the narrow correction, affected repository/whitespace checks passed;
+unchanged SOURCE and installer mechanisms were not rerun. These are correctness
+and identity checks, not model or efficiency evaluation. Before commit, all
+104 index objects matched the reviewed files. Commit completed with exit 0,
+the expected parent and package tree, and a clean working tree.
+
+The atomic main/tag push completed with exit 0. Independent remote ref readback
+confirmed main, the annotated tag object and its peeled source commit. Release
+creation completed with exit 0; authenticated API readback verified id
+`397571842`, source target `7b396133f8410f6261e8bcadbd45d2c9ddb8d96b`,
+non-draft/non-prerelease/Latest state and exact body. Body SHA-256 is
+`a616fe26cb4142d47c2a1f1d617d29251fe1a0b0c763acb20bf4da2de11268d8`.
+The two profile README changes were committed together through the existing
+GitHub connector, advanced main without force, and both file contents plus
+the resulting head were read back against the reviewed candidate. Other profile
+sections were preserved.
+
+Subsequent records update current release navigation, Changelog, State and this
+verification section with the necessary existing map. They preserve all six
+package files, descriptor identities and the source tag. Their final diff gets
+a bounded independent review and repository/whitespace checks before a separate
+records commit. No installation, project migration, configuration rewrite,
+cross-task role dispatch, actual rollback or efficacy evaluation follows from
+publication. Runtime adoption and natural behavior remain UNKNOWN.
+
 ## v0.9.1 local verification
 
 Independent R1 passed the 18-path increment, affected consumer and guarded

@@ -5,11 +5,11 @@
 Current local source: **v0.9.1**, with complete conditional migration and continuing review; arrangement-v1 and model schema v2 are unchanged.
 See [current delivery state](docs/skills/work-charter/STATE.md#v091-local-source).
 
-Latest published release: **[v0.8.0](https://github.com/junwei529/work-charter/releases/tag/v0.8.0)**.
-[Verified publication](docs/skills/work-charter/STATE.md#v080-publication).
-The [v0.8.0 source candidate](release/v0.8.0-candidate.json) retains its
+Latest published release: **[v0.9.1](https://github.com/junwei529/work-charter/releases/tag/v0.9.1)**.
+[Verified publication](docs/skills/work-charter/STATE.md#v091-publication).
+The [v0.9.1 source candidate](release/v0.9.1-candidate.json) retains its
 pre-effect snapshot; local managed-copy and bounded global-consumer evidence
-is recorded in [State](docs/skills/work-charter/STATE.md#v080-source-candidate).
+is recorded in [State](docs/skills/work-charter/STATE.md#v091-local-source).
 
 Keep complex AI projects moving across handoffs—and through to delivery.
 

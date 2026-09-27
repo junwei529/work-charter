@@ -1,6 +1,8 @@
 # Changelog
 
-## v0.9.1 (locally installed; not published)
+## v0.9.1
+
+Includes the locally delivered v0.9.0 changes below; v0.9.0 was not separately published.
 
 - Use one conditional selection path for adoption, reassessment and migration;
   reuse applicable answers and expose remaining material decisions before closure.

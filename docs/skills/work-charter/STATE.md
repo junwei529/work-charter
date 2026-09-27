@@ -1,5 +1,33 @@
 # Work Charter State
 
+## v0.9.1 publication
+
+Status: **PUBLISHED_VERIFIED**, observed 2026-09-27 (Asia/Shanghai).
+The user authorized source publication, the formal Release and the matching
+GitHub profile update after local installation. The reviewed source commit is
+`7b396133f8410f6261e8bcadbd45d2c9ddb8d96b`, a direct child of
+`e86f5019ddd882521fbacac30633c073f03d05a6`. An atomic non-forced push
+fast-forwarded remote main and added annotated tag object
+`74ffd231ac2c29f85fda2c551cbc297a5128baf4` for `v0.9.1`; remote readback
+confirmed the tag peels to that source commit. Its six-file package tree is
+`39659168b5fb20899335dd0923c87b65d5a95e36`.
+
+The [GitHub Release](https://github.com/junwei529/work-charter/releases/tag/v0.9.1)
+is id `397571842`, non-draft, non-prerelease and Latest. API readback
+verified the exact source target and reviewed body. The source tag remains
+fixed; these subsequent publication records do not alter its package or the
+immutable pre-effect descriptors. The GitHub profile's two Work Charter
+descriptions were separately updated and read back after the Release existed.
+
+Independent publication R4 covered all 21 source paths and both public text
+surfaces. Its sole P3 finding, the current SOURCE version in the Chinese README,
+was repaired and closed by R5 before commit. Source and publication checks are
+recorded in [Verification](VERIFICATION.md#v091-publication-verification).
+Historical local-delivery sections below retain their checkpoint-specific
+authorization and state; they do not supersede this publication result.
+Existing projects and frozen deliveries were not migrated. Runtime loading,
+effective model identity, actual rollback and broad efficacy remain UNKNOWN.
+
 ## v0.9.1 local source
 
 Status: **LOCAL_DELIVERY_COMPLETE**, observed 2026-09-27.

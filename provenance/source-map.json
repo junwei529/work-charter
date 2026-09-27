@@ -47,7 +47,7 @@
       "destination": "CHANGELOG.md",
       "kind": "repository-native",
       "note": "Work Charter repository release notes through the v0.6.1 local candidate",
-      "target_sha256": "57410d54018ff43e977f3b5c0d27549cf10265444d62f79713ee47a0f556041b"
+      "target_sha256": "3554bd59f9e1e6c852e8d781063c6d33fa7846018ce3f88753663d3d3ed8ccc2"
     },
     {
       "destination": "LICENSE",
@@ -67,13 +67,13 @@
       "destination": "README.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "0bcfdc09313b374678ab4712dd5b0d5c7356320e24fff61adc106c6833ec0c27"
+      "target_sha256": "f66eafb0295f1e3e6e60c1328dfded004e9e8bd4d18cbaf47ffaa7a26cd0646d"
     },
     {
       "destination": "README.zh-CN.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "7f43c837ba24f0516377acf343fd33f82271f19122a7d612c8b725718aeb37c9"
+      "target_sha256": "fa7eea5d6b9f7acacc909c22a215d613da89182772f7d4f05513901a3481e72b"
     },
     {
       "destination": "docs/skills/work-charter/DESIGN.md",
@@ -85,25 +85,25 @@
       "destination": "docs/skills/work-charter/README.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "69430af58efdc4f374963b06fee322acd9cfc2bb2948e3bb2b693925188a9d37"
+      "target_sha256": "9711a0b0a00eb6629a67cd24b3e312a7a748b90f46b093455f90a4278284cd31"
     },
     {
       "destination": "docs/skills/work-charter/README.zh-CN.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "bd81f5ad0ccc6150e8c06629d6ed457b780b6609f3a925eb0225bde1a63be9fc"
+      "target_sha256": "f7f1ea57e0bc8898693419b1516e1c37c5fba623869a84f77900833ffea35244"
     },
     {
       "destination": "docs/skills/work-charter/STATE.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "43c05170d4886af95bc7145da923d2ad83b58c33825bcb46278bd5174e47cad1"
+      "target_sha256": "6610fe57d7db23375fbf138997fed7e0753ba4effd5208b32ca83de45e506a2f"
     },
     {
       "destination": "docs/skills/work-charter/VERIFICATION.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "548deb06f8d5b367721500fa8333582e113074be6e1f0578fe1471238c2580f4"
+      "target_sha256": "9ea7a480c27c0d2f37634a0c6471dc53efeb592a8b7af03fe6f394b30d844bfc"
     },
     {
       "destination": "evals/README.md",
@@ -703,8 +703,8 @@
           "source_path": "evals/check-fixtures.ps1"
         }
       ],
-      "target_normalized_sha256": "58eb12422872be557e4e5715eb34f5bc175db249adc86745c06a52308d9d0996",
-      "target_sha256": "58eb12422872be557e4e5715eb34f5bc175db249adc86745c06a52308d9d0996",
+      "target_normalized_sha256": "c7f981bfd11d1852de0ceebe06d0681d8ca9e022f29f67e608656ee956540052",
+      "target_sha256": "c7f981bfd11d1852de0ceebe06d0681d8ca9e022f29f67e608656ee956540052",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {

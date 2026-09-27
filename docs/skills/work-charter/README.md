@@ -5,11 +5,11 @@ conditional migration and continuing review. The separately authorized local
 managed installation is also v0.9.1. Arrangement-v1, model schema v2
 and historical release evidence retain their scopes.
 
-Latest published release is [v0.8.0](STATE.md#v080-publication).
-It presents Direct, Team, and Phased work with conditional selection, product-
-specific independent review and complete responsibility-based model defaults.
-The [candidate](STATE.md#v080-source-candidate) retains its pre-effect
-snapshot; published v0.7.1 evidence remains bound to its original package.
+Latest published release is [v0.9.1](STATE.md#v091-publication).
+It uses arrangement-v1 agreements and model schema v2, with conditional migration,
+authorized progression and a continuing independent Reviewer where supported.
+The [candidate](../../../release/v0.9.1-candidate.json) retains its pre-effect
+snapshot; historical release evidence remains bound to its original package.
 
 [简体中文](README.zh-CN.md)
 

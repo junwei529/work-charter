@@ -5,11 +5,11 @@
 当前本地源码：**v0.9.1**，完善条件式迁移与持续审查；arrangement-v1 和模型 schema v2 不变。
 [当前交付状态](docs/skills/work-charter/STATE.md#v091-local-source)。
 
-最新已发布正式版本：**[v0.8.0](https://github.com/junwei529/work-charter/releases/tag/v0.8.0)**。
-[发布核验记录](docs/skills/work-charter/STATE.md#v080-publication)。
-[v0.8.0 源码候选](release/v0.8.0-candidate.json)保留发布前快照；
+最新已发布正式版本：**[v0.9.1](https://github.com/junwei529/work-charter/releases/tag/v0.9.1)**。
+[发布核验记录](docs/skills/work-charter/STATE.md#v091-publication)。
+[v0.9.1 源码候选](release/v0.9.1-candidate.json)保留发布前快照；
 本地 MANAGED 安装及指定全局消费者的证据见
-[状态记录](docs/skills/work-charter/STATE.md#v080-source-candidate)。
+[状态记录](docs/skills/work-charter/STATE.md#v091-local-source)。
 
 让复杂的 AI 项目接得住，也交得出。
 

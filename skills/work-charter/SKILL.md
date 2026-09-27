@@ -15,7 +15,7 @@ authority.
 At task entry, use supplied context to check for an applicable Charter and
 material scope, authority, coordination, or recovery needs. When none applies
 and no assessment was requested, finish this check and continue ordinary
-authorized work directly (`L0` internally). Do not load references, inspect a
+authorized work directly. Do not load references, inspect a
 project, create a Charter or roles, or ask for confirmation merely to complete
 this check.
 A host may perform this small check before selecting the package; this Skill
@@ -28,7 +28,7 @@ report that limitation; preserve an unexposed path or revision as `UNKNOWN`.
 Catalog visibility, a summary, or manual rereading is not fresh loaded-copy proof.
 
 - **Applicable approved Charter:** reconcile the same workstream, revision,
-  authority and relevant live state, then reuse the approved Charter and level
+  authority and relevant live state, then reuse the approved Charter and its applicable contract
   without asking again. A small task or new Thread does not cancel that Charter.
 - **First assessment:** a direct invocation or assessment request recommends
   Direct, Team, or Phased work with its benefit and coordination cost. Begin
@@ -36,8 +36,11 @@ Catalog visibility, a summary, or manual rereading is not fresh loaded-copy proo
   discovery, and the user's autonomy or intervention preference. Ask only when
   an answer changes the arrangement or a protected decision. The user chooses
   whether to adopt a proposed Charter; assessment is not adoption.
-- **Manual reassessment:** start from the existing Charter and level, retain
-  valid authority, and compare the requested change with that baseline.
+- **Manual reassessment:** start from the existing Charter and arrangement, retain
+  valid authority, and compare the requested change with that baseline. First
+  assessment, reassessment and migration use the same conditional selection;
+  an old contract supplies reusable answers, not permission to skip relevant
+  decisions. Explain the current proposal before offering a different one.
 
 Before the next affected action, proactively reassess when new information
 materially changes outcome/scope, permissions or external effects, acceptance,
@@ -57,14 +60,19 @@ another Skill alone is not a reason to escalate or repeat an assessment.
 | **Team** | A Planner owns the executable contract and acceptance; an Executor implements with one writer; an independent Reviewer inspects actual work when requested or required. Separation and handoffs add cost. |
 | **Phased** | An Orchestrator owns direction and phase acceptance above phase-local Planner, Executor, and applicable Reviewer responsibilities. Use for consequential multi-phase governance with durable continuity. |
 
-For existing contracts and configuration, Direct maps to internal `L0` (no
-active Charter), `L1` (bounded current-task contract), or `L2` (discoverable
-durable recovery); Team maps to `L3`, and Phased to `L4`. Select the Direct
-variant from the actual agreement and continuity need, not a complexity score
-or a mandatory user questionnaire. Existing L0-L4 contracts keep their own
-approved terms and model combinations; this description does not migrate them.
-An adopted Charter applies only to its workstream. Independent review of Direct
-work does not create Planner/Executor roles or adopt a Charter.
+New contracts directly describe the arrangement, continuity, actual roles,
+review and authorized progression; they need no L0-L4 classification.
+Use `contract_format: arrangement-v1` in the existing agreed carrier, with
+current-task or durable continuity as needed. This contract marker, the Skill
+version and the model-configuration schema are separate identities. Ordinary
+work without an adopted Charter needs none of these records.
+
+Existing L0-L4 contracts keep their own approved terms and frozen combinations.
+L0 means no active Charter, L1 a current-task agreement, L2 durable Direct,
+L3 Team and L4 Phased in the compatibility path. A new package does not migrate
+them. At a stable node, use the bounded migration route below if reconsidering
+the agreement would help. Independent review of Direct work does not create
+Planner/Executor roles or adopt a Charter.
 
 ## Shared Boundaries
 
@@ -87,8 +95,9 @@ work does not create Planner/Executor roles or adopt a Charter.
   effects and real cost; ordinary unlisted methods within that scope need no
   separate approval. Explain the concrete risk before treating an inferred
   guardrail as necessary. Do not preserve rejected Agent inventions as new
-  requirements or infer permission for unlisted external effects. Use an existing canonical carrier; `L1` may use the task,
-  while `L2`-`L4` need a durable anchor with authorized writes.
+  requirements or infer permission for unlisted external effects. Use an existing canonical carrier: a current-task agreement may use the task;
+  durable continuity requires an authorized discoverable anchor. Team and Phased
+  keep a common recoverable control location. Legacy continuity duties still bind.
 - The implementer verifies and repairs the work it changed. It never acts as
   the independent Reviewer of its own work. An independent Reviewer
   inspects the stable change when requested, required by a gate, or warranted
@@ -124,20 +133,22 @@ unchanged material already loaded; do not read every other role's procedure.
 | --- | --- |
 | First assessment or adoption | Minimum Read And Reconciliation Order; First Adoption And Durability; Conditional Work Selection |
 | Approved continuation or material drift | Minimum Read And Reconciliation Order; Managed Workstream And Multiple Worktrees; Re-entry Routes |
-| Proposal, delegation or escalation | Contract And Proposal Changes; Delegated Decisions And Escalation |
+| Proposal, delegation or escalation | Contract And Proposal Changes; Delegated Decisions And Escalation; Authorized Progression |
+| Legacy contract reconsideration at a stable node | Stable-Node Migration; Conditional Work Selection; affected delegation/progression or review sections below |
 | Prompt or task delivery | Task And Role Prompt Construction; Authority, Delivery, Correction, And Evidence |
 | Evidence collection, delegated inspection, or completion claims | Task And Role Prompt Construction; Authority, Delivery, Correction, And Evidence |
-| Newly authorized model resolution | [Role-Model Configuration At Dispatch](references/coordination-and-recovery.md#role-model-configuration-at-dispatch); identify level and responsibility first, then read the complete section before reading configuration or dispatching |
-| Team/Phased review or writer handoff | Planner, Executor, And Reviewer; Authority, Delivery, Correction, And Evidence |
+| Newly authorized model resolution | [Role-Model Configuration At Dispatch](references/coordination-and-recovery.md#role-model-configuration-at-dispatch); identify arrangement, contract format and responsibility first, then read the complete section before reading configuration or dispatching |
+| Team/Phased review or writer handoff | Planner, Executor, And Reviewer; Review Input At Any Level; Authority, Delivery, Correction, And Evidence |
 | Direct review, a user permission gate, or evidence consumption | Authority, Delivery, Correction, And Evidence; [Review Input At Any Level](references/coordination-and-recovery.md#review-input-at-any-level) |
 | Context recovery or changed governing source | Context-Switch Recovery; Re-entry Routes; governing-source reload boundary in Authority, Delivery, Correction, And Evidence |
 
-For approved Phased work (`L4` internally), also read the shared entry and
+For approved Phased work, also read the shared entry and
 responsibility boundaries of
 [Standard O/P/E/R](references/standard-ope.md), then only your operating steps
 and required interactions. Leave the Standard reference unloaded for Direct/Team
 by default; a scoped transition assessment may read the needed sections.
 Do not skip shared permission, independent-review, writer or recovery boundaries.
+Phased does not itself activate a host-specific Standard workflow.
 
 Role-model configuration guides an already-authorized dispatcher; it neither
 creates roles nor changes existing tasks. Preserve frozen combinations and

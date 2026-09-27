@@ -8,15 +8,18 @@ roles can read at the same revision; do not copy authoritative files into each
 worktree. Remove unused prompts and keep pointers instead of copied content.
 
 - Managed workstream and exclusions: `<bounded line of work and what it does not cover>`
-- Work arrangement and responsibilities: `<Direct | Team | Phased, reason and real coordination cost; internal L1 | L2 | L3 | L4 only when useful for an applicable contract or configuration>`
+- Contract format: `arrangement-v1` for a newly approved contract; retain an old contract until its authorized migration
+- Work arrangement and responsibilities: `<Direct | Team | Phased; reason and real coordination cost>`
+- Continuity: `<current-task | durable, applicable existing anchor; Team/Phased need common recoverable control>`
 - Contract state: `<draft | proposed | approved | superseded>`
 - Run disposition: `<active | paused | closed>`
 - Canonical locator and revision: `<portable locator and comparable freshness marker>`
 - Standing-policy locator: `<if applicable; otherwise none>`
 - Intended workspace and writer: `<workspace/worktree and one-writer boundary>`
 - Role owners, carriers and review route: `<primary or actual O/P/E/R responsibilities; task/subagent/mixed carriers, reachable stable checkpoint and finding/disposition routes>`
-- Review product and timing: `<actual result, implementation plan or overall direction; required gate, applicable instructions/contract, input, Reviewer and assessor>`
-- Resolved execution metadata: `<for each newly resolved task/role: level,
+- Review product and timing: `<actual result, implementation plan or overall direction; required gate, applicable instructions/contract, input, original author and assessor>`
+- Reviewer continuity and carrier: `<one reliable continuing R for related products where supported; real reason for another R; exact request/return route across the selected carriers>`
+- Resolved execution metadata: `<for each newly resolved task/role: arrangement, contract format (legacy level only if applicable),
   actual responsibility, provider/model/parameters or host-selection
   pass-through, object source, file source, requested values, and observable
   runtime identity>`
@@ -42,6 +45,11 @@ worktree. Remove unused prompts and keep pointers instead of copied content.
   and guardrails remain intact>`
 - **Assumptions / Open Decisions:** `<uncertainty; identify only the material
   choices that require the user>`
+
+Before presenting this agreement as ready for adoption, distinguish confirmed
+and still-valid reused answers from recommendations and unresolved user choices.
+Explain actual roles/carriers, review products, acceptance and progression in
+one concise view; omit inapplicable branches instead of adding a questionnaire.
 
 Do not promote the Working Proposal into a hard requirement. When a proposed
 method is rejected, remove or replace it unless an independently justified
@@ -83,6 +91,17 @@ claims, identify the agreed inspection scope, actual coverage and
 remaining gaps. Treat graph results and acquisition counts as bounded
 coverage aids, not semantic proof.>
 
+## Authorized Progression
+
+<Name the approved work package, next items, dependency/acceptance transitions,
+aggregate cost/effect budget, intervention preference and exception stops.
+State whether first E-to-R review and same-scope original-author repair/same-R
+re-review are preauthorized; P receives the stable or exception result and
+retains acceptance. Distinguish permission from actual continuation capability.
+For cross-phase continuation, cite advance approval of the bounded phase set,
+outcomes, transition conditions and total limits; otherwise the next unapproved
+Phase remains a user gate. Preserve explicit old gates until amended.>
+
 ## Stop, Decision, And Recovery
 
 <State bounded recovery read order, next safe action, stop conditions, and
@@ -105,8 +124,10 @@ reply. Required dispositions still reach the dependent role; terminal ones need
 no acknowledgement. Complete the authorized package before stable review unless
 a material boundary intervenes. Name any preauthorized R-to-E same-scope repair
 and E-to-original-R re-review route, its stops and read-only review windows.
-Otherwise findings return to P. P receives the cumulative stable or exception
-result and returns its acceptance/correction/decision disposition to E. Record only formed verdicts
+Otherwise findings return to P; in Direct they return to the primary.
+Planning findings return to their original P or O author and designated approval
+route. For implementation, P receives the cumulative stable or exception result
+and returns its acceptance/correction/decision disposition to E. Record only formed verdicts
 within the authorized single-writer window; mechanical closeout does not recurse
 into acceptance of its records. Retain cumulative review history. Configuration
 choice does not enable a listed role or authorize delivery or action. Distinct

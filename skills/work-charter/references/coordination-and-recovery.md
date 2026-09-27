@@ -1,10 +1,10 @@
 # Coordination And Recovery
 
 Read the sections required by the entrypoint for the current assessment,
-approved level, responsibility, and next action. Package reading neither
+approved arrangement, contract format, responsibility, and next action. Package reading neither
 requires nor consumes target-project read approval. Reuse applicable Charter
 and bounded read authority before reconciliation; an authorized assessment
-needs no extra activation gate. Loading does not itself adopt a level or
+needs no extra activation gate. Loading does not itself adopt an arrangement or
 authorize project inspection, roles, or effects. Retain shared authority,
 writer, evidence, recovery, and handoff boundaries while reading operating
 details only for the work your role owns.
@@ -59,26 +59,37 @@ Use the shortest route:
 - existing project: declared rules, existing canonical owner, current
   workspace, then recommendation;
 - new project: user description, minimum declared entry point, then an
-  ordinary Direct (`L0`) or current-task Charter (`L1`) recommendation; propose
+  ordinary Direct or current-task Charter recommendation; propose
   durability only when recovery requires it; or
 - previously adopted workstream: known locator, applicability, live
   workspace/writer and named evidence, then resume under the valid Charter
-  and level; recommend a change only for manual reassessment or material drift.
+  and arrangement; recommend a change only for manual reassessment or material drift.
 
 First assessment considers Direct, Team, and Phased and leaves adoption to the
 user. Manual reassessment compares the proposed change with the existing
-contract and internal level; it does not restart first adoption. Small-task
+contract and its format; it does not restart first adoption. Small-task
 exclusions do not discard an
 applicable Charter. Use the re-entry precedence below for material changes;
 otherwise continue within existing authority without another activation gate.
 
-`L1` keeps one primary owner and its logical Charter locator in the reliable
-current task. It promises no cold recovery. `L2` adds one discoverable durable
-anchor for bounded cold re-entry; if no trustworthy anchor is available, do
-not claim `L2` readiness. Either level may use one bounded read-only Reviewer
-without creating Planner/Executor separation. The primary owner remains the
-writer, dispositions findings, verifies repairs, and delivers the result.
-Update durable state only at material checkpoints, not after every message.
+A current-task Direct agreement keeps one primary owner and its logical
+Charter locator in the reliable task; it promises no cold recovery. Durable
+continuity adds a discoverable anchor for bounded cold re-entry. Do not claim
+recoverability when that anchor is missing. Either may use a bounded read-only
+Reviewer without creating P/E separation. The primary remains the writer,
+dispositions findings, verifies repairs and delivers. Team and Phased need one
+common recoverable control location. Update durable state at material
+checkpoints, not after every message.
+
+Record `contract_format: arrangement-v1` for a newly approved agreement in its
+existing carrier. Together with arrangement and continuity, retain outcome,
+acceptance, authority and reserved decisions, actual owners/carriers, review
+products/routes, progression scope/transitions/stops and the recovery checkpoint.
+These are logical contents, not a mandatory YAML file or fixed document suite.
+The marker is independent of Skill release version and role-model schema.
+An absent marker requires reading the applicable agreement; it proves neither
+no Charter nor automatic legacy adoption. Do not invent a formal v1 schema for
+older Markdown. Ordinary non-Chartered work needs no contract marker.
 
 Prefer an existing project canonical owner that is discoverable, stable to
 address, uniquely authoritative, comparable by revision/freshness, and
@@ -89,8 +100,10 @@ after one failed path guess.
 
 ## Conditional Work Selection
 
-Reuse a known contract, confirmed preferences, and permitted facts before
-asking. Establish the outcome and completion evidence, existing plan or need
+Use this selection for first assessment, manual reassessment and stable-node
+migration. Reuse a known contract, confirmed preferences, and permitted facts
+before asking; check that each reused answer still applies to the proposed work.
+Establish the outcome and completion evidence, existing plan or need
 for exploration, and real constraints on data, production systems, external
 effects, compatibility, irreversibility, time or cost. When material facts are
 unknown, perform only authorized bounded discovery or propose a bounded read;
@@ -112,16 +125,21 @@ Recommend the least sufficient arrangement in ordinary language:
   risk. Do not add an Orchestrator merely to make the hierarchy symmetrical.
 - **Phased:** Orchestrator (O) is the highest owner for direction and phase
   acceptance; phase-local P owns Definition, E/R routing and target acceptance.
-  Use standing policy and durable continuity only when consequential multi-phase
-  work requires them.
+  Use a discoverable durable control location; a host-specific Standard
+  standing policy requires its own explicit adoption.
 
 Then branch only where a real choice remains. For an actual output, decide
 whether independent review covers the result, its implementation plan, or a
 real overall direction, and when the stable review input exists. Explain any
-mandatory review as a gate rather than an optional preference. For each actual
-responsibility, choose a continuing subagent, a separately addressable task,
+mandatory review as a gate rather than an optional preference. Distinguish the
+reviewed products, continuity of the Reviewer, and its carrier: several products
+do not imply several Reviewers, and independent review does not imply a new
+task. Apply Review Input At Any Level before choosing a carrier for R.
+For each actual responsibility, choose a continuing subagent, a separately addressable task,
 or a mix according to user intervention, reliable continuity, permission and
-result reachability. P can continue as O's subagent; E and R need independent
+result reachability. Explain material carrier alternatives by their effect on
+intervention, reuse, handoff and cost; do not turn a topology clarification into
+approval of a different carrier. P can continue as O's subagent; E and R need independent
 responsibility and a reachable return route, not necessarily top-level tasks.
 An ordinary carrier proposal is Direct in the primary task, Team with P in the
 main task and continuing E and applicable R subagents, or Phased with a long-lived O and
@@ -139,9 +157,106 @@ acceptance, actual owners/carriers and writer, review products and timing,
 ordinary autonomy and reserved decisions, permitted and excluded effects,
 material cost, recovery and return route. Ask only a question whose answer
 changes one of these; skip a branch with no applicable product or carrier
-choice. Recompute only an affected branch when an answer changes the proposal.
+choice. These conditional modules describe real agreements, not arbitrary
+toggles: mandatory review, authority and arrangement-intrinsic responsibilities
+cannot be disabled. Recompute only an affected branch when an answer changes
+the proposal.
+
+Before saying the choices are complete, show one concise arrangement the user
+can understand: who works, who reviews which products, who accepts, how far work
+continues and how results return. Distinguish confirmed or still-valid reused
+answers from recommendations and unresolved decisions. Account for applicable
+material branches; omit inapplicable ones without inventing a checklist or
+question quota. Ask only unresolved user-owned choices. A material decision
+may remain an explicit later gate in a planning-only agreement; it must not be
+presented as settled or grant dependent execution. When asked what a draft
+means, explain it first and label any alternative as a recommendation.
+
 Do not treat silence as approval. Keep an existing approved L0-L4 contract and
 frozen delivery combination until its owner authorizes a material change.
+
+## Stable-Node Migration
+
+During an authorized entry, recovery or material checkpoint, inspect only this
+workstream's applicable contract and live state. A stable node has a locatable
+product/checkpoint, preserved findings/failures/consumed limits, a known writer
+and in-flight request state, and a safe next action. It need not be a completed
+Phase or have zero open findings. Idle status alone is insufficient. Wait for
+a local writer handoff when necessary; keep the old contract if state cannot
+be handed over reliably.
+
+Offer reconsideration once when it has a concrete benefit. Run Conditional Work
+Selection against the old contract and current intent, reusing still-valid
+answers and asking only changed or material unknowns. Reuse is not a shortcut
+from an old level to a carrier/model patch. Read Delegated Decisions And
+Escalation and Authorized Progression for affected authority/continuation;
+read Review Input At Any Level for affected review/Reviewer choices. Present
+one migration delta covering
+arrangement, authority/progression, review/carriers/result route, models,
+effects and the exact switch checkpoint. Assessment is not adoption. The user
+may approve a sufficiently explicit assessment-and-conditional-adoption package
+in one decision; do not invent two mandatory approval rounds. Without adoption,
+continue valid old authority and do not nag again absent a material change or
+user request. Do not scan other projects or recreate roles to find upgrades.
+
+Legacy L2 normally starts as Direct with durable continuity; L4 starts as
+Phased with the existing O/P/E/R responsibilities. L1 starts as current-task
+Direct and L3 as Team; L0 ordinary work need not adopt a Charter at all. These
+are conservative starting points, not an automatic level conversion. Preserve
+the work subject, approvals, open findings, failures, consumed budgets, writer,
+checkpoint and complete frozen models. Retain an old gate unless its authorized
+amendment explicitly changes it. Project-contract migration and personal-model
+file conversion are separate effects; one grants no authority for the other.
+
+## Authorized Progression
+
+For a new agreement, propose continuous completion of the approved work package:
+execution/self-check -> required independent review -> original-author repair
+and the same valid R's re-review -> the designated owner's acceptance -> the
+next already-approved item. State the work limit, transition evidence, actual
+responsibilities/result route, remaining aggregate cost/effect budget and stops.
+Reuse known approval; choose more user intervention only where requested or
+needed for a concrete boundary. Autonomy and independent context are separate.
+This is a work agreement, not a background scheduler or a new approval form.
+
+P may preauthorize both the first E-to-R stable handoff and the same-scope
+R-to-original-E-to-same-R loop, with a clear input/coverage contract and writer
+relinquishment. Otherwise use the existing P-routed first review. P receives the
+complete stable or exception result and retains acceptance without repeating R's
+inspection. O/P planning findings return to their respective original author;
+R never repairs the product or adopts its contract. Direct's primary repairs,
+dispositions and delivers without claiming independent self-acceptance.
+
+An accepted checkpoint triggers the next item only when it is already within
+authority and its dependencies, review/recording requirements, writer and route
+are satisfied. P/O acceptance is not automatically another user approval. Keep
+material findings visible: an authorized risk disposition does not change R's
+technical conclusion or waive an unwaivable acceptance floor.
+
+Continuous cross-phase progression requires advance user approval of a bounded
+named phase set, outcomes and acceptance floors, transition conditions, total
+permission/effect/cost limits and the O/P delegation. Authorized P may settle
+later implementation details inside those bounds. An open-ended instruction to
+invent future phases is not this approval. Stop before an unapproved phase or
+failed transition condition. Existing next-phase user gates remain binding
+unless explicitly amended; Phased does not activate a host's Standard workflow.
+
+Stop only affected work for an out-of-bound change, exhausted real limit,
+explicit hard stop, repeated failure without a supported new repair path, a
+material scope/acceptance dispute, or incomparable authority/writer/evidence.
+Route it to the lowest owner already able to decide; continue independent
+authorized work. Do not invent fixed repair counts, per-file approvals or ACKs.
+Known one-shot, human-review and frozen evidence-consumption stops still bind.
+
+Actual continuation needs a capable approved carrier and reachable result route.
+Use supported subagent completion or the authorized task return route. Sending
+does not prove receipt, inspection or acceptance, and prose cannot guarantee a
+future wake-up. Preserve a delivery/terminal gap without duplicate consequential
+work; the existing owner handles the affected continuation or requests the
+missing capability/permission. No polling, repeated unchanged sends, terminal
+ACK, new automation or service follows from this section. Report completion,
+material exceptions and real user decisions; ordinary factual notices create no
+receipt gate. Preserve the next authorized action at recovery.
 
 ## Managed Workstream And Multiple Worktrees
 
@@ -167,8 +282,8 @@ findings.
 - Treat a root `WORK_CHARTER.md` as a candidate, never proof that every task is
   adopted.
 
-With multiple worktrees, `L3` and `L4` require one explicit control location
-that the Planner, Executor, Reviewer, and—at `L4`—Orchestrator can read at the
+With multiple worktrees, Team and Phased require one explicit control location
+that P, E, applicable R and, for Phased, O can read at the
 same revision. Do not copy an authoritative file into every worktree. If
 common readability, writer ownership, review independence, or finality cannot
 be proved, stop safely. Any commit, integration, or synchronization needed to
@@ -184,7 +299,7 @@ Apply this fixed precedence:
    hard boundaries, acceptance, permission, material effect, or carrier
    changes. Fresh user approval is required.
 3. **Change how work is coordinated** (`change coordination`) when the logical
-   contract remains stable but level, role, writer, workspace/worktree,
+   contract remains stable but arrangement, role, writer, workspace/worktree,
    delivery, or integration routing changes materially. Fresh user approval is
    required.
 4. **Continue the existing plan** (`resume`) when the Charter, workstream,
@@ -240,8 +355,9 @@ invalidated portion when it is authorized and necessary; neither data
 acquisition nor a successful extraction marks it as examined. Reuse
 admissible saved results instead of repeating collection solely because
 the context changed, and retain request consumption and failed or invalid
-attempts. Use the existing carrier: L1 may keep the bounded record in its
-task; L2-L4 use their authorized durable anchor. No separate reading
+attempts. Use the existing carrier: current-task Direct may keep the bounded record in
+its task; durable Direct, Team and Phased use their authorized durable anchor.
+Legacy contracts retain their own continuity duties. No separate reading
 ledger or new authority file is required.
 
 ## Contract And Proposal Changes
@@ -319,20 +435,22 @@ These are concise contract contents, not new documents or required forms.
 
 | Decision | Responsible owner and return condition |
 | --- | --- |
-| Ordinary implementation method, file choice, verification order, equivalent substitution and same-scope repair | E, or the L0-L2 primary, within authorized outcome, domain, environment, effects and cost; return to P or the primary owner when equivalence, authority or a protected boundary is unclear. |
+| Ordinary implementation method, file choice, verification order, equivalent substitution and same-scope repair | E, or the Direct primary, within authorized outcome, domain, environment, effects and cost; return to P or the primary owner when equivalence, authority or a protected boundary is unclear. |
 | Review finding, coverage and re-review judgment | Read-only R; resolve inspection questions and correct or withdraw a finding from evidence, preserving its history. R neither repairs nor accepts the target. |
 | In-phase sequencing, contract-preserving correction, finding disputes, recovery allocation and target acceptance | P within the approved delegation; escalate only a decision outside that delegation. P does not repeat technical review. |
-| Direction, cross-phase tradeoffs, Mandate interpretation and project-level acceptance | O within the user-approved project authority; do not bypass P to direct E/R. |
+| Direction, cross-phase tradeoffs, Mandate interpretation and project-level acceptance | O within the user-approved project authority; do not bypass P to direct phase execution or implementation review. O's own planning review follows Review Input At Any Level. |
 | Reserved outcome, acceptance floor, authority, aggregate cost or external-effect change; next unapproved phase | User, through the existing semantic owner; direct operation-local consent stays with the actual action task. |
 
-For L4, a user-approved Mandate may explicitly authorize P to finalize an
+For Phased, a user-approved Mandate may explicitly authorize P to finalize an
 in-bound Phase Definition and dispatch its specified E/R work. Record the
 delegating approval and P's conformance decision; this is delegated authority,
 not P self-granting execution. Without that authorization, or with unresolved
 material user choices, the Mandate remains planning-only and the Definition
 still needs user approval. Existing planning-only Mandates and frozen contracts
-do not acquire execution authority from this rule. A next phase remains a user
-decision. L0-L2 use their actual primary and necessary R, without adding O/P/E.
+do not acquire execution authority from this rule. A next unapproved phase
+remains a user decision; explicit bounded advance approval follows Authorized
+Progression below. Direct uses its actual primary and necessary R, without
+adding O/P/E.
 
 P may preauthorize the correction loop below in the approved delivery contract.
 For recovery, prefer an aggregate authorized cost/effect boundary with concrete
@@ -353,7 +471,7 @@ Reclassifying a failure or starting another task never resets them.
 
 Compose prompts from shared contract, actual responsibility, current task, and
 necessary model adaptation. These are logical inputs, not mandatory headings
-or copied instruction sets. An ordinary L0 host task can use this shape without
+or copied instruction sets. An ordinary host task can use this shape without
 selecting or activating Work Charter.
 
 - Shared contract: identify the authoritative outcome, scope, permissions,
@@ -381,10 +499,10 @@ every record.
 
 | Actual responsibility | Prompt addition |
 | --- | --- |
-| Direct primary (`L0`-`L2`) | Complete authorized implementation, required verification, and delivery; at L1/L2 retain the applicable record and disposition independently required Reviewer findings. Do not create P/E separation or claim independent self-acceptance. |
-| Phased Orchestrator (`L4`) | Frame project outcome, Mandate, phase direction, and Planner return route; assess project-level results without directing the Executor or repeating technical review. |
-| Team/Phased Planner (`L3`/`L4`) | Supply the executable contract, acceptance criteria, and E/R routes; exercise delegated in-phase choices, authorize the bounded correction route and accept stable results while remaining read-only on implementation and routing technical review to R. Team P is the highest owner. |
-| Team/Phased Executor (`L3`/`L4`) | Complete authorized work and required checks, preserve findings and evidence, and return the stable checkpoint to the Planner or use the preauthorized E/R correction route; do not expand scope or accept the result. |
+| Direct primary | Complete authorized implementation, required verification, and delivery; retain the agreed continuity record and disposition independently required Reviewer findings. Do not create P/E separation or claim independent self-acceptance. |
+| Phased Orchestrator | Frame project outcome, Mandate, phase direction, and Planner return route; assess project-level results without directing the Executor or repeating technical review. |
+| Team/Phased Planner | Supply the executable contract, acceptance criteria, and E/R routes; exercise delegated in-phase choices, authorize the bounded correction route and accept stable results while remaining read-only on implementation and routing technical review to R. Team P is the highest owner. |
+| Team/Phased Executor | Complete authorized work and required checks, preserve findings and evidence, and return the stable checkpoint to the Planner or use the preauthorized E/R correction route; do not expand scope or accept the result. |
 | Reviewer (when enabled) | Inspect the named direction, plan or implementation product and necessary semantic context read-only; return actionable findings, coverage, and unknowns through the approved route. Correct findings from evidence without repair, acceptance or self-granted authority. |
 
 Cold prompts provide sufficient authoritative pointers and hard boundaries to
@@ -442,158 +560,145 @@ attributable evidence. Editing a prompt does not authorize model evaluation.
 
 ## Role-Model Configuration At Dispatch
 
-Configuration changes affect only later, newly resolved tasks or deliveries.
-Preserve existing tasks and frozen combinations. `L0` remains no active Charter
-even when a host uses this configuration interface. The package does not prove
-that any host or global task-start consumer has integrated it. Installation
-lifecycle operations do not own or mutate the external user configuration.
+Apply only at an already-authorized new-task or role-delivery boundary. Identify
+the actual responsibility and arrangement first. New `arrangement-v1` contracts
+do not select a level. An old L0-L4 contract retains its exact level and lookup
+until approved migration; unknown contract identity stops affected dispatch.
+Model choices do not grant a role, review gate, permission or effect. Ordinary
+non-Chartered work may use Direct lookup through a separately applicable host
+consumer without adopting a Charter; legacy `L0` remains no active Charter.
 `agents/openai.yaml` is UI metadata, not a role-model selector.
 
-Apply this section only when the governing contract has authorized a new task
-or delivery and identified its actual responsibility and internal configuration
-level. For new work, Direct selects `l0`, `l1`, or `l2` from the actual contract
-and continuity need; Team uses `l3`, and Phased uses `l4`. This maps the public
-arrangement onto schema v1 without changing its shape. Existing approved
-L0-L4 contracts keep their exact level, user configuration and frozen delivery
-objects; never merge distinct L0/L1/L2 user overrides or pick one as the
-others' value. If the applicable level or a material user preference is
-unresolved, decide that boundary before delivery, not by silently falling
-through to another level.
-Configuration selects execution metadata for that start or delivery; it grants
-no task, role, action, read, write, Git, installation, provider, credential,
-network, or external-effect authority. A level describes coordination and
-governance, not task difficulty or a monotonic model-investment scale; never
-infer the level from a model name or the model from a level alone.
-
-First resolve the delivery inputs in this order:
+First resolve delivery inputs in this order:
 
 1. Preserve a complete provider/model/parameters combination already frozen
-   for this delivery. Do not reread configuration to replace it.
+   for this delivery. Do not reread configuration to replace it. A material
+   change to that freeze requires its own existing authority.
 2. Otherwise, use a complete combination explicitly confirmed for this new
-   task or role. This task-local value is contract input, not another YAML
-   source, and omitted `parameters` means no parameters.
-3. Otherwise, resolve from configuration using source priority first and
-   level-before-general priority within each source, as defined below.
+   task or role; omitted parameters means no parameters.
+3. Otherwise, select at most one override file: the contract's exact explicit
+   path, else `~/.config/work-charter/role-models.yaml` when it exists, else
+   only the package [default configuration](../assets/role-models.default.yaml).
+   Missing or unreadable input stops delivery when that input was selected.
+   Do not search project directories or alternate user paths.
 
-For step 3, select at most one override file. When the contract names an
-explicit configuration file, read exactly that file. Missing or unreadable
-input stops delivery; do not fall back and hide the failure. Otherwise read
-`~/.config/work-charter/role-models.yaml` when it exists. If neither exists,
-use only the package [default configuration](../assets/role-models.default.yaml).
-The selected explicit or user file supplies higher-priority complete objects;
-the package supplies fallback objects. Do not merge fields across them or
-introduce another directory source.
+Validate the complete selected file before using any entry, including unused
+roles; also validate the package when consulting it. Treat configuration as
+data only. No parser dependency, service, expression evaluation or interpolation
+is required by this instruction-time contract.
 
-The user path is outside Skill discovery and installation roots. Never search
-project directories or other user paths for alternatives. Install, update,
-rollback, and uninstall must not create, modify, move, or delete the user file.
+### Schema and complete objects
 
-The package default supplies four general compatibility fallback objects
-and L0-L4 level overrides; the YAML is the sole owner of exact current
-provider/model/parameter values. Its OpenAI capability policy puts the
-flagship default on Direct primary, Team P and Phased O, a mainline default on
-Phased P and E, and the same independent-review default on every enabled R.
-Major planning tradeoffs or difficult implementation judgments can justify a
-complete task-specific flagship recommendation for P or E. Present a default
-as the complete pair from the YAML, including effort, not a model name alone.
-This policy is not model-performance proof or authority to alter an existing
-task. Do not recommend a faster lower-cost model as the default merely from
-price. User-confirmed complete provider/model/parameters combinations can
-override the recommendation when the route supports them; do not transplant
-OpenAI effort names onto another provider.
-It has no general `primary`. Its explicit `l0.reviewer` object applies only to
-a separately authorized temporary Reviewer. Missing user entries may use
-package level defaults, including for primary owners. Accept configuration
-only in this bounded data shape:
+Schema v2 has integer `schema_version: 2` and only `roles`,
+`arrangement_overrides`, `legacy_level_overrides` as optional additional keys;
+At least one complete model object must exist in the configuration. A supplied
+mapping may otherwise be empty; `arrangement_overrides: {direct: {}}` alone is
+invalid because it contains no model object. `roles` allows only `primary`, `orchestrator`, `planner`, `executor`,
+`reviewer`. Arrangement maps contain role objects directly:
 
-- the top-level mapping has integer `schema_version: 1`, at least one of
-  `roles` or `level_overrides`, and no other field;
-- `roles`, when present, contains only `primary`, `orchestrator`, `planner`,
-  `executor`, and `reviewer`;
-- `level_overrides`, when present, contains only `l0`, `l1`, `l2`, `l3`, and
-  `l4`; each level may contain only the actual responsibilities in this matrix:
+| Arrangement | Allowed responsibilities |
+| --- | --- |
+| `direct` | `primary`, `reviewer` |
+| `team` | `planner`, `executor`, `reviewer` |
+| `phased` | `orchestrator`, `planner`, `executor`, `reviewer` |
 
-  | Level | Configurable actual responsibilities |
-  | --- | --- |
-  | `l0` | `primary`, `reviewer` |
-  | `l1` | `primary`, `reviewer` |
-  | `l2` | `primary`, `reviewer` |
-  | `l3` | `planner`, `executor`, `reviewer` |
-  | `l4` | `orchestrator`, `planner`, `executor`, `reviewer` |
+The optional `legacy_level_overrides` accepts only the old matrix below and is
+consulted only for an applicable old contract. It preserves distinct old values;
+it does not give new work an internal level. Do not add a matrix for every
+continuity, carrier or feature-module combination. Use an explicitly confirmed
+task object for a justified exception.
 
-- each supplied general or level-specific object has exactly nonempty
-  plain-string `provider` and `model`, plus optional mapping `parameters`; and
-- each parameter name and value must be explicitly supported by the selected
-  provider/model and the current native creation route.
+Schema v1 remains readable: integer `schema_version: 1`, at least one of
+`roles` or `level_overrides`, no other top-level field, and the same complete
+objects/general roles. Its historical empty role mappings still fall through.
+Both its `level_overrides` and v2's `legacy_level_overrides` use:
 
-Reject duplicate or unknown fields and roles, unknown schema versions, wrong
-types, ambiguous YAML, tags, anchors, aliases, merge keys, executable or
-instruction-like content, credentials, endpoints, commands, and environment
-interpolation. Treat the file as data only. Do not add a parser dependency,
-start a service, evaluate content, interpolate values, or silently discard an
-unsupported parameter.
+| Legacy level | Allowed responsibilities |
+| --- | --- |
+| `l0` | `primary`, `reviewer` |
+| `l1` | `primary`, `reviewer` |
+| `l2` | `primary`, `reviewer` |
+| `l3` | `planner`, `executor`, `reviewer` |
+| `l4` | `orchestrator`, `planner`, `executor`, `reviewer` |
 
-An explicit or user file may supply only the general roles and level-role
-combinations it changes. Every supplied object is a whole-object replacement:
-it must repeat `provider` and `model`, and omitted `parameters` means no
-parameters for that combination. Do not inherit parameters from a package
-object, another level, a previous model, or a different provider. Missing
-objects fall through to the next object in the lookup order; they do not
-invent values or merge parameters. The same rule applies to task-local
-explicit combinations unless the contract already froze the complete delivery.
+Every supplied object is a whole-object replacement: it must repeat `provider`
+and `model` as nonempty strings; its only optional field is mapping `parameters`.
+Omitted `parameters` means no parameters for that combination. Never inherit
+fields from another object, source or previous model. Reject duplicate or unknown
+keys, wrong types, unsupported schema values, tags, anchors, aliases, merge keys,
+instruction-like content, credentials, endpoints, commands and environment
+interpolation. Unsupported parameters stop delivery, not silent omission.
+Normalize host `main` to canonical `primary` at the boundary; `main` is not a
+second accepted YAML spelling. Configuration cannot enable a listed role.
 
-At the task-start or role-dispatch boundary, normalize a host label `main` to
-the canonical actual responsibility `primary`; do not accept both spellings as
-YAML keys. Validate the complete selected file before using any entry, so an
-unknown or invalid entry is not silently ignored merely because its role is not
-enabled. Validate the package defaults as well when consulting them. Then
-resolve the identified level and actual responsibility:
+### Lookup and legacy compatibility
 
-1. selected explicit or user file: `level_overrides.<level>.<responsibility>`;
-2. selected explicit or user file: `roles.<responsibility>`;
-3. package default: `level_overrides.<level>.<responsibility>`;
-4. package default: `roles.<responsibility>`; or
-5. only for `primary`, when neither source supplies an object, preserve the host's existing
-   selection by sending no provider, model, or parameter override. Record the
-   requested combination as `UNSPECIFIED`, the source as `host selection`, and
-   runtime identity as `UNKNOWN` unless the host exposes it. Never borrow the
-   `executor` or `planner` object for a primary owner.
+Keep source priority first: exhaust the selected explicit/user source before
+consulting package defaults. Within each source:
 
-Use the first present complete object; with no selected user file, start at
-the package level lookup. An explicit/user general object wins over a package
-level override, preserving legacy four-role user files. For example, a user
-general Executor configured as Sol/high still wins for L3 or L4 even though
-the package level default is Sol/xhigh. If that user file omits Executor,
-the applicable package level override wins before the package general fallback.
-The current package supplies every valid primary lookup, so host pass-through
-is a defensive compatibility rule rather than the current no-user-file result.
+| Source and contract | Object order |
+| --- | --- |
+| v2, new contract | `arrangement_overrides.<arrangement>.<responsibility>` then `roles.<responsibility>` |
+| v2, old contract | `legacy_level_overrides.<level>.<responsibility>` then arrangement object then general role |
+| v1, old contract | `level_overrides.<level>.<responsibility>` then general role |
+| v1, new Team/Phased | respectively `l3`/`l4` user candidate then general role; this is a read-only compatibility interpretation |
+| v1, new Direct | compare the effective candidates for `l0`, `l1`, `l2` in this source: each level object, otherwise general role, otherwise missing |
 
-The matrix defines which objects may be selected, not which roles are enabled.
-An `l0.reviewer`, `l1.reviewer`, or `l2.reviewer` entry never creates a Reviewer
-or activates a review gate. `L0` remains no active Charter; its local
-task-selection consumer may reuse this input contract without loading or
-activating Work Charter. Until a host or global task-start consumer actually
-implements the interface, package text and deterministic fixtures prove only
-the source contract, not local adoption or effective runtime delivery.
+For new Direct using v1, all three candidates must be structurally equal in
+provider/model/parameters, or all missing, before resolution can continue.
+Different objects or a present/missing mix require one consolidated user
+decision for the affected roles. Missing parameters and an empty parameters
+mapping both mean no parameters. Do not erase ambiguity with package fallback,
+choose a convenient level, or compare model names alone. Never merge distinct
+L0/L1/L2 user overrides. All missing moves to the next source. Old contracts
+continue their original exact level resolution. Legacy l0/l1/l2 imply Direct,
+l3 Team and l4 Phased only when interpreting that old contract/configuration.
 
-The authorized boundary resolves the named level and actual responsibility
-before creation, then shows the final level, responsibility, provider, model,
-parameters, object source, and configuration-file source. It verifies provider,
-model, parameter, account/actor, and target support through the intended native
-route. On a supported Codex OpenAI route, map `model` to the native `model`
-field and `parameters.reasoning_effort` to `thinking`; use another provider or
-parameter only when that exact route supports it. Stop rather than substitute
-a different route or value. Record requested delivery values separately from
-runtime-observed identity when the runtime does not expose the latter.
+Use the first present complete object; a user general object still outranks a
+package arrangement-specific object. Only for `primary`, when neither source
+supplies an object and no ambiguity remains, preserve the host selection by
+sending no override; requested combination is `UNSPECIFIED`, source is host
+selection, runtime identity is `UNKNOWN` unless exposed. Never borrow the
+`executor` or `planner` object for a primary owner. A required non-primary role
+without an object stops delivery. Current package defaults cover all permitted
+responsibilities. The YAML owns the complete current values; present a default
+including effort, not a model name alone.
 
-A later file edit affects only a later, newly resolved task or delivery. It does
-not change an existing primary task or role, a frozen delivery, or
-same-combination recovery. This contract is an instruction-time read, not a
-file watcher, background component, or general model gateway.
+Personal-file conversion is a separate authorized effect. Preserve general
+roles and copy every v1 level object unchanged into `legacy_level_overrides`;
+derive only unambiguous new arrangement objects. Ask for new Direct choices
+when old values differ; preserving the old keys alone does not establish the
+new default. Compare the effective old level/responsibility selections before
+and after conversion, including previously inherited general/package objects.
+A new arrangement object can shadow those old fallbacks even when every explicit
+old key was copied. Preserve affected old selections as complete compatibility
+objects in the approved conversion delta, or retain v1 and use task-local values
+for new work; never silently change the old selection. Do not rewrite a real
+user file during project adoption or install,
+update, rollback or uninstall. A migrated project can keep its complete frozen
+models without globally converting the user's file.
 
-## Planner, Executor, And Reviewer (`L3`)
+### Native delivery and evidence
 
-Use Team (`L3` internally) only after approval when independent contract
+Show arrangement, contract format (legacy level only when applicable), actual
+responsibility, provider/model/parameters, object/file source and requested
+values. Verify the intended native route supports the complete selection and
+the authorized actor/target. On a supported Codex OpenAI route, map `model` to
+the native `model` field and `parameters.reasoning_effort` to `thinking`.
+Stop rather than substitute a different route or value. Requested configuration,
+tool acceptance and runtime-observed identity are separate evidence.
+
+Configuration changes affect only later, newly resolved tasks or deliveries.
+Preserve existing tasks and frozen combinations. Installation lifecycle
+operations do not own or mutate the external user configuration. This contract
+does not prove that any host or global task-start consumer has integrated it.
+It is an instruction-time read, not a file watcher or general model gateway.
+
+<a id="planner-executor-and-reviewer-l3"></a>
+
+## Planner, Executor, And Reviewer
+
+Use Team only after approval when independent contract
 ownership or assessment materially protects implementation. The Planner owns
 the active Charter,
 clarification, review routing, correction direction, and target acceptance and
@@ -631,9 +736,11 @@ explicitly independent outcome; preserve any contract-required checkpoint.
 
 The normal review path is:
 
-1. E verifies the package and sends one review-ready Result Notice to P for
-   a stable checkpoint. P confirms contract scope, freezes the review input
-   and routes the first review to R.
+1. E verifies the package and relinquishes writing at a stable checkpoint.
+   If the approved contract preauthorizes a first E-to-R handoff with its
+   input/coverage boundary, E sends that review-ready Result Notice directly
+   to R; otherwise P confirms scope and routes the frozen first input to R.
+   P retains the contract and stable acceptance in either route.
 2. R inspects read-only and reports findings, coverage, exclusions and UNKNOWN.
    When the approved contract preauthorizes ordinary same-scope corrections,
    R sends actionable findings to the original E. E repairs and verifies,
@@ -657,7 +764,7 @@ Without preauthorization, findings return to P for correction disposition.
 Changing an existing explicit P-per-round contract requires its authorized
 amendment. P remains accountable for the route and stable acceptance even
 when no intermediate intervention is needed. Review windows remain read-only
-on the target and E is the sole repair writer. At L0-L2 the primary owner
+on the target and E is the sole repair writer. In Direct the primary owner
 performs repairs and dispositions R findings without claiming independent
 self-acceptance or creating P/E roles.
 
@@ -666,6 +773,39 @@ to the Reviewer. Return substantive clarification or re-review requests when
 needed; keep acceptance with P and deliver its disposition to E.
 
 ## Review Input At Any Level
+
+Prefer one reliable continuing Reviewer for related reviews in the same
+workstream, including actual O direction, P plans and E implementation when
+each needs review. Reuse an existing valid R before creating another; a change
+of author, product type or Phase alone does not require replacement. This is
+not a requirement to review every role or to keep one R indefinitely. Each
+review still identifies its actual product and baseline, scope, original author,
+result recipient and acceptance owner. Keep cumulative findings attached to
+their products and revisions; an earlier planning review is not implementation
+coverage. New evidence may overturn R's earlier judgment.
+
+Read-only responsibility alone does not establish independence. R may explain
+findings and suggest repairs without becoming the author. If R materially
+authors the product or owns the design decision under review, obtain another
+independent R for that affected surface. Material expertise/access boundaries
+or separately authorized parallel review can also justify another R; do not
+create standing O-R/P-R/E-R roles merely for symmetry. Preserve the active
+package's single review/writer boundaries and all prior findings.
+
+Choose a carrier that can actually sustain this continuity. Across independent
+O/P tasks, consider a separately addressable R task with authorized reachable
+request and return routes. Within one supported task tree, a continuing R
+subagent may suffice. Do not assume a child is addressable from another parent;
+if shared access is unavailable, explain the carrier or limited-R tradeoff
+before changing the agreement. A shared R handles one identified stable input
+at a time. O can request review of its own planning product; sharing that R
+does not let O bypass P to direct phase execution or implementation review.
+Retain frozen delivery settings and explicit existing routes until amended.
+
+Reuse reduces repeated briefing and can preserve relevant context. It does not
+prove cache hits, lower total cost, hard isolation or reliable cross-parent
+recovery. Do not add keep-alive traffic, polling, a new service or an efficacy
+study to justify continuity.
 
 Prefer the same reliable Reviewer
 for re-review after repair. Replace it only when its context is unreliable,
@@ -755,9 +895,11 @@ completed a turn or adopted the message. Keep dispatch, remote terminal, and
 delivery uncertainty distinct in reports. When an action-bearing delivery is
 uncertain, do not activate a competing writer or route.
 
-For L3/L4 correction, follow
+For Team/Phased correction, follow
 [Planner, Executor, And Reviewer](#planner-executor-and-reviewer-l3): P routes
-the first review; a preauthorized same-scope R-to-original-E-to-same-valid-R
+the first review unless the approved contract preauthorizes the first E-to-R
+stable handoff with its input/coverage and writer boundary. A preauthorized
+same-scope R-to-original-E-to-same-valid-R
 loop returns the stable or exception result to P for acceptance. Otherwise,
 findings return to P. E's return includes changes, deviations, checks, failures
 and residual risks. Use the checkpoint-bound dispositions defined below.

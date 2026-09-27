@@ -1,5 +1,24 @@
 # Provenance And Transformation Boundary
 
+## v0.9.1 local source
+
+The new descriptor binds the six-file package following the locally delivered
+v0.9.0 snapshot. Only four instruction/template files change inside the package;
+model defaults and UI metadata retain their bytes. The prior descriptor and
+published lineage remain immutable. Current navigation, the source check's
+candidate binding and the installer's self-test version follow v0.9.1; production
+installer behavior is unchanged. Source review, application, installation and
+publication are distinct evidence states in State and Verification.
+
+## v0.9.0 local source
+
+The new arrangement-v1 contract and model schema v2 follow the published v0.8.0
+baseline. The six-file package shape and production installer mechanism stay
+unchanged. Current package/doc/checker consumers receive current target hashes;
+source ancestry and historical candidates remain pinned. The v0.9.0 descriptor
+binds its own source snapshot, not publication or runtime efficacy. State and
+Verification record local delivery separately; no public release is authorized.
+
 ## v0.8.0 public release record
 
 The accepted public source commit is

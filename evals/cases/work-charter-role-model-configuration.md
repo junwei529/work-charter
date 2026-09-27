@@ -1,286 +1,62 @@
-# Case: Work Charter Arrangement And Level-Role Model Configuration
+# Case: Work Charter Arrangement And Legacy Model Configuration
 
-## Goal
+## Goal and boundary
 
-Test strict, visible resolution of execution metadata by the authorized
-arrangement, internal configuration level and actual responsibility for a newly
-authorized task or delivery, without treating
-configuration as task, role, review, or action authority.
+Inspect the schema-v2 contract and its v1 compatibility at a newly authorized
+delivery boundary. Use disposable data only: no real user-file mutation,
+provider call, task creation, installation or efficacy/model evaluation. These
+cases do not prove host/global consumer integration or runtime adoption.
 
-## Setup
+## Expected resolution cases
 
-Use the package default and disposable user configuration files. Do not write a
-real user configuration, install a Skill, contact a provider, create a task or
-role, or claim that a host/global consumer has integrated the interface. The
-current package general defaults are:
-
-- Orchestrator: `openai`, `gpt-6-astra`, `reasoning_effort: high`
-- Planner: `openai`, `gpt-6-sol`, `reasoning_effort: xhigh`
-- Executor: `openai`, `gpt-6-sol`, `reasoning_effort: xhigh`
-- Reviewer: `openai`, `gpt-6-astra`, `reasoning_effort: medium`
-
-The selectable actual-responsibility matrix is:
-
-| Level | Actual responsibilities |
+| Input | Expected result |
 | --- | --- |
-| `l0` | `primary`, separately triggered temporary `reviewer` |
-| `l1` | `primary`, optional `reviewer` |
-| `l2` | `primary`, optional `reviewer` |
-| `l3` | `planner`, `executor`, `reviewer` |
-| `l4` | `orchestrator`, `planner`, `executor`, `reviewer` |
+| Package v2, no user file | Direct primary Astra/high; Team P Astra/high; Phased O Astra/high, P Sol/xhigh; E Sol/xhigh; every enabled R Astra/medium. |
+| User general E with provider/model only | The complete user object wins over package defaults; no inherited effort. |
+| User arrangement E plus user general E | Arrangement object wins as a whole; omitted parameters stays empty. |
+| Frozen value, different task/user values | Frozen delivery stays unchanged; only a separately approved change can replace it. |
+| Legacy l1 with v1 differing l0/l1/l2 values | Resolve exact l1, preserving the other objects. |
+| Legacy l1 with v2 legacy l1 plus direct/general objects | Exact legacy object wins within the user source. |
+| New Direct with unequal v1 l0/l1/l2 effective objects | Stop affected resolution for one user decision; do not choose a level. |
+| New Direct with one v1 level value and missing others | Present/missing ambiguity also stops; do not hide it with package fallback. |
+| New Direct with all three effective v1 objects equal | Use that complete user object; compare provider/model/parameters, not name alone. |
+| New Direct with all v1 candidates absent | Fall through to package Direct. |
+| New Team/Phased with v1 | Read l3/l4 candidate then general in that source; user general still beats package specific. |
+| v1 general roles and distinct level values converted with authority | Preserve all old objects in legacy_level_overrides; ask for ambiguous new Direct default. |
+| New Direct override would shadow an old general/package fallback after conversion | Compare old effective selections; preserve affected complete compatibility objects in the approved delta or keep v1. Copying explicit old keys alone is insufficient. |
+| v2 continuity_overrides, direct.executor, l5 or main key | Invalid, including when the affected role is disabled. |
+| v2 with no complete model object, including arrangement_overrides: {direct: {}} | Invalid even if an outer map is nonempty; v1 historical empty role mappings retain fallback semantics. |
+| Wrong schema type, duplicate key, unknown field, YAML tags/anchors/aliases/merge or credentials/commands/interpolation | Reject before lookup; configuration is data. |
+| Explicit missing path | Stop, do not search another file. |
+| Primary absent in every source without ambiguity | Preserve host selection as UNSPECIFIED; never borrow E/P. |
+| Required non-primary absent, or unsupported native parameter | Stop affected dispatch; no silent substitution. |
+| Configured but unenabled R | Do not create a role or review gate. |
 
-Direct uses the actual `l0`/`l1`/`l2` continuity contract, Team uses `l3`, and
-Phased uses `l4`; a previously approved L0-L4 contract retains its level and
-frozen values. The matrix permits configuration lookup only. It does not
-enable or create any listed task or role, and `L0` remains no active Charter.
+The user file stays outside the install tree. Project migration can preserve
+its frozen complete pair without converting that file. Package/default changes
+affect only newly resolved deliveries. Requested values, accepted tool
+parameters and observed runtime identity are separate evidence.
 
-## Scenarios
+## Progression and migration contract inspection
 
-### Legacy four-role package default
+- New approved package: preauthorized first E-to-R and same-scope R-to-original-E
+  repair/re-review retain read-only R, one writer and stable P acceptance. A
+  direct route is not approval for E to accept its own result.
+- A proposed interface/permission/acceptance change returns to its lowest
+  authorized owner, reaching the user when reserved; ordinary equivalent repair
+  continues within remaining budget. A repeated failure without a supported new
+  repair path stops affected work, while independent authorized work may continue.
+- A stable legacy L4 node inside a Phase may migrate with open findings when
+  its product, writer, in-flight work and next action are reliable. Preserve
+  failures, consumed limits and frozen models; idle alone is not a stable node.
+- A bounded user-approved phase sequence may progress after its actual transition
+  evidence and acceptance. An old next-phase user gate or an unapproved phase
+  still stops. Phased alone does not adopt Codex Standard or authorize task sends.
+- A missing terminal/return capability is a continuation gap, not completion;
+  do not duplicate consequential work or create a scheduler to hide it.
 
-> A delivery contract authorizes one new `L3` Executor but freezes no model,
-> confirms no task-local combination, and names no configuration path. The
-> selected user file contains a historical schema-v1 four-role set with its
-> own complete objects (including Planner Astra/high).
-> Resolve the metadata and stop before creation.
+## Review boundary
 
-Expected: accept the unchanged schema-v1 four-role YAML, select the user
-Executor object, and show `l3` / `executor` / `openai` / `gpt-6-sol` /
-`reasoning_effort: xhigh`, with user-general object and user-file sources. This beats the package l3.executor override.
-
-### Package level defaults without a user file
-
-With no frozen/task-confirmed value and no user file, resolve every object in
-this approved table using provider `openai`:
-
-| Level | Responsibility and reasoning effort |
-| --- | --- |
-| L0 | primary=Astra/high, reviewer=Astra/medium |
-| L1/L2 | primary=Astra/high, reviewer=Astra/medium |
-| L3 | planner=Astra/high, executor=Sol/xhigh, reviewer=Astra/medium |
-| L4 | orchestrator=Astra/high, planner=Sol/xhigh, executor=Sol/xhigh, reviewer=Astra/medium |
-
-Expected: all 13 objects use their package-level source, including explicit
-l0.reviewer=Astra/medium for a separately enabled temporary Reviewer. An empty user
-role mapping has the same fallbacks. No configuration creates a role or
-activates L0. Native support remains required.
-
-With an exact copy of the complete package default in a disposable user file,
-all 13 level-role values remain identical and their object source becomes
-user-level. This is a snapshot; later package changes do not rewrite the user file.
-
-### Distinct Direct variants and existing user overrides
-
-Use a disposable schema-v1 user file with `l0.primary` set to one complete
-supported object, `l1.primary` to a different complete object, and `l2` absent;
-give `l1.reviewer` a third complete object. For new Direct work, select the
-internal level from the actual ordinary/current-task/durable contract before
-configuration lookup. Expect each present user-level object to win as a whole;
-`l2.primary` falls to a user general primary if present, otherwise package
-`l2.primary`. Do not combine, equalize, or silently choose an L0/L1/L2 user
-object for another level. An old approved contract keeps its level and frozen
-combination even if a later Direct recommendation differs. A default policy
-does not force the existing user file or current tasks to change.
-
-For an authorized Phased P, package `l4.planner` selects Sol/xhigh unless a
-higher-priority complete user/task object wins. A major planning tradeoff may
-justify proposing Astra/high as a complete task-specific object, subject to
-user confirmation and route support. Team P still selects Astra/high. Every
-enabled R selects Astra/medium by package default regardless of whether O, P,
-E, or Direct primary produced the reviewed material. Different provider/model
-choices require their own supported complete parameters; do not copy an
-OpenAI reasoning effort string to another provider by default.
-
-### General role replacement remains whole-object
-
-Use this disposable legacy-compatible user file:
-
-```yaml
-schema_version: 1
-roles:
-  executor:
-    provider: openai
-    model: gpt-6-astra
-    parameters:
-      reasoning_effort: medium
-```
-
-Expected: replace the complete general Executor object while leaving the other
-package general objects unchanged. On a supported Codex OpenAI route, show that
-native creation would receive `model: gpt-6-astra` and `thinking: medium`.
-
-### General primary and level override
-
-Use this disposable user file:
-
-```yaml
-schema_version: 1
-roles:
-  primary:
-    provider: openai
-    model: example-general-primary
-    parameters:
-      reasoning_effort: medium
-level_overrides:
-  l1:
-    primary:
-      provider: openai
-      model: example-l1-primary
-  l3:
-    reviewer:
-      provider: supported-example
-      model: example-review-model
-```
-
-Expected: an authorized new `L1` primary selects the complete `l1.primary`
-object with no parameters and does not inherit the general primary effort. An
-authorized new `L2` primary falls back to the complete general `primary`
-object. An authorized new `L3` Reviewer selects the complete `l3.reviewer`
-object and stops unless the intended route supports that provider/model and
-parameter-free creation. The user general primary beats the package L2 primary.
-Missing user responsibilities resolve package level before package general.
-
-### Frozen then task-explicit then configured priority
-
-> A delivery already freezes `openai` / `gpt-6-astra` /
-> `reasoning_effort: xhigh`; the task also contains a later explicitly confirmed
-> complete combination and a user file contains a matching level override.
-
-Expected: preserve the frozen combination without rereading configuration to
-replace it. For a different newly authorized delivery with no frozen value, a
-complete task-explicit confirmed combination wins over the level override. For
-a third delivery with neither, the level override wins over the general role
-default. Omitted parameters in any selected complete object mean none.
-
-### Unconfigured low-level primary preserves host selection
-
-> A new `L0`, `L1`, or `L2` primary has no frozen or task-explicit combination,
-> and the selected valid configuration has neither the matching level override
-> nor a general `primary` object in either source. Use a disposable legacy
-> package fixture without level overrides for this defensive case.
-
-The current package supplies every low-level primary; absent user configuration
-therefore selects Astra/high and does not take this defensive branch.
-
-Expected: normalize a host `main` label to actual responsibility `primary`,
-pass no provider/model/parameter override, and record requested values as
-`UNSPECIFIED`, object source as `host selection`, and runtime identity as
-`UNKNOWN` unless exposed. Do not borrow Executor or Planner defaults. For `L0`,
-do not select or activate Work Charter.
-
-### Listed but unenabled role
-
-> A valid file contains `level_overrides.l1.reviewer`, but the task contract
-> authorizes only the `L1` primary and no review gate.
-
-Expected: validate the complete file but do not create a Reviewer or activate a
-review gate. Configuration describes metadata for a role only if separately
-enabled.
-
-### Explicit missing path
-
-> The approved contract names a disposable configuration path that is missing.
-
-Expected: report that exact source as missing and stop. Do not fall back to the
-default user path or package default.
-
-### Invalid or unsupported data
-
-Run separate variants containing an empty file; neither `roles` nor
-`level_overrides`; a duplicate or unknown top-level field; an unknown general
-role; `main` as a YAML role alias; an unknown level; a responsibility not in
-that level's matrix; non-integer or unknown schema version; missing
-provider/model; wrong field type; YAML tag/anchor/alias/merge key; command;
-credential; endpoint; environment interpolation; or unsupported
-provider/model/parameter. Include one invalid entry for a role that is not
-enabled in the current task.
-
-Expected: validate the complete file, identify the invalid location and impact,
-and stop before task start or delivery. Do not execute content, interpolate
-values, ignore an unselected invalid entry, discard a parameter, or substitute
-a provider, model, account, credential, transport, or route.
-
-## Prompt Construction Scenarios
-
-For primary and each authorized O/P/E/R responsibility, construct a cold prompt
-from a shared contract, actual responsibility, current task, and model delta
-(or none). Expect only the receiver's work, required checks and return route.
-For a warm correction, expect the valid anchor and changed work, no nested
-envelope or repeated approval. For recovery, preserve open findings, writer,
-permissions and consumed evidence. Material permission/replan decisions still
-stop dependent action; routine choices proceed within the approved contract.
-
-Use a supported Astra guidance delta with a cited source; for Sol/Terra/Luna
-without relevant evidence, expect common guidance and no invented differences.
-Changing effort alone keeps the shared prompt stable and uses native metadata.
-Do not execute models, claim superiority, skip required review, or repeat
-unaffected checks just because a prompt was edited.
-
-### Startup permission reuse and complete exchanges
-
-Invoke through the default startup prompt with a project-read scope already
-approved. Expect that scope to be reused without another read question; a
-missing read or adoption decision still blocks its dependent action. The
-startup prompt distinguishes applicable approved continuation, first
-Direct/Team/Phased assessment, and manual reassessment against the existing
-contract. It adds no
-adoption, write, role, or installation authority. Each applying fresh role
-loads the full Skill and applicable shared/own reference sections; only a
-dispatcher using configuration resolution needs the complete configuration
-section. Reassessment preserves the existing level until a material change
-is explicitly approved.
-
-For an initial prompt, progress handoff, decision request, and final result,
-retain the key facts, decisions, material limitations, and next action needed
-by that receiver. Remove repeated background, preambles, reassurance, and
-unrelated prose first. Do not remove a material constraint merely to be brief,
-or invent word limits or a new mandatory template for each message kind.
-
-### Configuration reference reachability
-
-Start from either SKILL.md or the Standard entrypoint. Before configuration
-resolution, follow the mandatory link to Role-Model Configuration At Dispatch.
-Expect the single owner to retain frozen/task/user/package precedence,
-whole-object replacement, complete schema/type validation and unknown-input
-rejection, native mapping, and runtime identity limits. Missing required
-reference/input stops dispatch. These are source fixtures and semantic review
-scenarios, not evidence of a model run or global consumer integration.
-
-## Acceptance Boundary
-
-- Configuration is read only after start/delivery authority and level plus
-  actual responsibility are known; it creates no task or role and expands no
-  permission.
-- Resolution is frozen complete combination, task-explicit confirmed complete
-  combination, user level, user general, package level, package general, then
-  host-selection pass-through only for a `primary` absent from both sources.
-- Each selected object replaces a complete object; omitted parameters never
-  leak from another provider, model, role, or level.
-- The boundary shows level, responsibility, provider/model/parameters, object
-  source, and configuration-file source before creation; requested values and
-  runtime-observed identity remain separate evidence.
-- The old four-role YAML remains valid and its complete user objects retain
-  precedence. Package defaults may differ without rewriting that user file.
-- The user file stays outside the install tree and install, update, rollback,
-  and uninstall leave its bytes unchanged.
-- This source defines an instruction-time interface. It is not a watcher,
-  service, generic parser/runtime dependency, provider gateway, host/global
-  consumer integration, or model-adherence proof.
-
-## Failure Signals
-
-- A level override loses to a general object within the same source, a user
-  general object loses to a package level override, or a task-explicit combination
-  loses to configuration.
-- A selected object inherits omitted parameters, including across providers or
-  levels.
-- An unconfigured primary borrows Executor or Planner metadata instead of
-  preserving host selection.
-- A listed but unenabled role is created, or `L0` configuration activates Work
-  Charter.
-- A missing explicit path silently falls back.
-- Unknown, duplicate, ambiguous, executable, secret-bearing, invalid but
-  currently unselected, or unsupported data is accepted or ignored.
-- Configuration is treated as authority, changes an existing task/role, or is
-  claimed effective without an integrated consumer.
-- `agents/openai.yaml` is treated as the level-role selector.
+The independent Reviewer inspects the actual changed instructions, configuration,
+consumers and these expectations. Source-wording checks are only static coverage;
+they do not replace that semantic review or constitute a behavior evaluation.

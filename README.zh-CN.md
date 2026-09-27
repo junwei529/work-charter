@@ -2,7 +2,10 @@
 
 [English](README.md)
 
-最新正式版本：**[v0.8.0](https://github.com/junwei529/work-charter/releases/tag/v0.8.0)**。
+当前本地源码：**v0.9.1**，完善条件式迁移与持续审查；arrangement-v1 和模型 schema v2 不变。
+[当前交付状态](docs/skills/work-charter/STATE.md#v091-local-source)。
+
+最新已发布正式版本：**[v0.8.0](https://github.com/junwei529/work-charter/releases/tag/v0.8.0)**。
 [发布核验记录](docs/skills/work-charter/STATE.md#v080-publication)。
 [v0.8.0 源码候选](release/v0.8.0-candidate.json)保留发布前快照；
 本地 MANAGED 安装及指定全局消费者的证据见
@@ -25,12 +28,49 @@ Work Charter 是面向 Codex 的项目协作 Skill。它根据成果、真实约
 | **分工完成 / Team** | Planner 负责约定与验收，Executor 实施；被请求或必需时，独立 Reviewer 检查实际产物。 | 实现与验收需要分开负责的工作。 |
 | **分阶段推进 / Phased** | Orchestrator 负责方向和阶段验收，下设阶段 Planner、Executor 和适用的 Reviewer。 | 有依赖关系、需要持续治理的多阶段工作。 |
 
-Direct 内部仍区分：普通任务（L0，无活跃 Charter）、当前任务约定
-（L1）和可发现的持久恢复（L2）。Team 对应 L3，Phased 对应 L4，
-用于保留既有合同和配置。旧合同不因名称变化自动迁移。组织越复杂，
-协调成本越高，应选择足以完成目标的方式。
+新合同直接表达实际工作方式与条件约定，不必先选择等级编号。
+采用足够完成目标的组织形式，同时考虑角色和转交的成本。
+
+## 条件模块，形成一份工作约定
+
+首次启用、重新评估和迁移使用同一套条件选择。先确认旧答案仍适用，再复用；
+采用前用一份简明安排区分已确认/沿用、建议和未决事项，不设固定问卷。
+仅在影响选择时补问：
+
+- **连续性**：只在当前任务内继续，还是需要持久恢复锚点。
+- **独立审查**：哪些实际成果、计划或方向需要独立检查。
+- **自动推进**：已经批准的工作可以连续推进到什么边界。
+- **执行边界**：权限、工作区、数据、成本与外部效果的真实限制。
+
+这些可以称为功能模块，但不是任意开关；必需审查和权限边界不能关闭。
+同范围修复可预授权 R → 原作者 → 同一有效 R；P 接受稳定实现结果，
+规划产物保留其指定的定稿/批准路线。
+第一轮 E → R 也可明确预授权，减少纯中转。独立上下文与连续推进分别约定。
+
+连续推进覆盖实施、自检、审查、修复、接受及下一项已批准工作；跨阶段
+继续则需预先批准明确的阶段集合和转换条件。提示词不保证后台调度，
+实际接续仍依赖可用且获准的工具和结果路线。
+
+## 旧项目怎么采用
+
+在获准的进入、恢复或稳定工作节点，可以提出一次复评建议。稳定节点
+不必等整个 Phase 完成；成果、开放 findings、writer、在途工作和下一动作
+需要清楚且可交接。重新核对适用条件，不能只修改旧等级、模型或承载方式；
+复用有效答案，一次呈现迁移差异，由用户决定采用。
+原合同在此之前继续有效，失败记录、已用预算、冻结模型和真实门槛保留。
+
+L0–L4 留在兼容说明中，分别表示普通无 Charter、当前任务 Direct、
+持久 Direct、Team 和 Phased；新合同不再由这个序列定义。
+个人模型配置转换与项目迁移是不同效果，安装不会自动执行任何一种。
 
 ## 默认分工，让每个角色知道自己负责什么
+
+审查对象、R 的连续性、task/subagent 承载方式是不同选择。相关的方向、计划和
+实现审查优先复用一个可靠的持续 R；只有独立性、可靠性、专业/访问边界或另行
+获准的并行审查需要，才增加或更换 R。跨独立 O/P 任务时可以选择可独立寻址的
+R 任务；在同一受支持任务树内可以使用持续 R subagent。每次仍明确被审产物、
+原作者与接受方。R 以前审过某方案不等于编写过它；实质承担其编写或设计责任
+后则不能对相应产物自称独立审查。上下文复用不保证缓存命中或总成本下降。
 
 - **Direct 主负责人**：完成获准工作及其检查。
 - **Orchestrator（Phased）**：负责项目方向和阶段验收。
@@ -143,61 +183,35 @@ exact managed v0.4.0 副本的 default-reader access，并仅对该修复关闭
 `WC-INSTALL-POSTFLIGHT-F01`。该修复检查点的 package 仍为 managed v0.4.0，v0.4.1 未安装。之后的
 [v0.6.3 安装接受记录](docs/skills/work-charter/STATE.md#accepted-v063-user-installation)保留该历史副本证据；
 [历史 v0.6.5 状态](docs/skills/work-charter/STATE.md#current-v065-local-candidate)记录当时的更新；
-[当前状态](docs/skills/work-charter/STATE.md#v080-source-candidate)承接 v0.8.0 候选。
+[当前状态](docs/skills/work-charter/STATE.md#v091-local-source)承接 v0.9.1 源码与本机安装。
 v0.5.0 stable loaded-copy、role-delivery adherence、跨 provider 执行、cross-Harness、
 公开发布与广泛效能仍为 `UNKNOWN` 或需分别授权。
 
 ## Role-model 配置
 
-Package 默认数据位于
-[`skills/work-charter/assets/role-models.default.yaml`](skills/work-charter/assets/role-models.default.yaml)：
+[包内 YAML](skills/work-charter/assets/role-models.default.yaml)是完整默认值的唯一 owner。
+Schema v2 使用通用 `roles`、按 direct/team/phased 的 `arrangement_overrides`，
+以及只服务旧合同的可选 `legacy_level_overrides`。配置按实际职责选择，
+不为所有功能模块组合建立模型矩阵。Skill 版本、`contract_format: arrangement-v1`、
+模型 schema 和已冻结的投递组合分别记录。
 
-通用兼容回落（当前值）：
+沿用合同指定的 exact 文件，否则读取既有 `~/.config/work-charter/role-models.yaml`，
+都没有则使用包默认；不必创建个人文件来复制默认值。每个对象完整包含
+provider/model 和可选 parameters，省略 parameters 就是不传参数。
+优先级是冻结组合、任务已确认组合、用户来源、包来源；v2 同一来源内
+先工作方式、再通用职责，旧合同额外先查其 exact legacy level。
+用户通用对象仍优先于包内专用对象；主任务最终缺省可保持宿主选择，
+不能借用 P/E 的配置。
 
-| 角色 | Provider | Model | Reasoning effort |
-|---|---|---|---|
-| Orchestrator | OpenAI | `gpt-6-astra` | `high` |
-| Planner | OpenAI | `gpt-6-sol` | `xhigh` |
-| Executor | OpenAI | `gpt-6-sol` | `xhigh` |
-| Reviewer | OpenAI | `gpt-6-astra` | `medium` |
+v1 继续可读。新 Team/Phased 可解释旧 l3/l4；新 Direct 只有当 l0/l1/l2
+有效候选完整相等或全都缺省时才可无歧义继续。不同对象或有值/缺省混合
+需要明确决定，不能用包默认掩盖。另行获准转换文件时，完整保留每个旧
+level 对象，并对有歧义的新 Direct 默认作选择。
 
-当前包内级别默认：Direct 对应 L0-L2，Team 对应 L3，Phased 对应 L4。
-用户配置和旧冻结合同保留各自值：
-
-| 级别 | 实际职责与 reasoning effort |
-|---|---|
-| L0 | primary Astra `high`；reviewer Astra `medium` |
-| L1/L2 | primary Astra `high`；reviewer Astra `medium` |
-| L3 | planner Astra `high`；executor Sol `xhigh`；reviewer Astra `medium` |
-| L4 | orchestrator Astra `high`；planner、executor Sol `xhigh`；reviewer Astra `medium` |
-
-L0 reviewer 明确配置为 Astra/medium，仅供独立触发的临时角色使用。这些配置值不代表评测最优或已运行生效。
-
-如需定制后续任务启动或角色投递，可把该文件复制到
-`~/.config/work-charter/role-models.yaml` 后编辑，或由已批准的 delivery contract 指定
-另一个 exact 文件。Schema v1 继续接受旧四角色文件。Partial 文件可以新增通用
-`primary`、替换有差异的通用职责，并/或为 `l0` 到 `l4` 添加有限的
-`level_overrides`。每个对象都是 whole-object replacement，必须重写 `provider` 和
-`model`；省略 `parameters` 表示不传参数。缺失用户对象时回落到包内对象；没有用户文件也能采用包内级别默认。
-
-解析优先级为：已冻结的完整 delivery 组合；本次新任务/角色已明确确认的完整组合；用户级别对象；
-用户通用对象；包内级别对象；包内通用对象。用户通用配置优先于包内级别覆盖。宿主的 `main` 标签在查找前归一化为 `primary`。如果
-`L0`/`L1`/`L2` 的主负责人在两个来源中均无等级覆盖或通用 `primary`，派发边界不传 model override，
-保留宿主选择，不能借用 Planner 或 Executor 默认。
-
-可查找矩阵是：`L0` 为 primary 加按独立规则触发的临时 R；`L1`/`L2` 为 primary 加可选
-R；`L3` 为 P/E/R；`L4` 为 O/P/E/R。配置项不会启用角色，`L0` 仍不激活 Work Charter。
-创建前，边界展示 level、实际职责、provider/model/parameters、对象来源和文件来源，并核对
-native 支持。Codex OpenAI 把 `model` 映射到 native `model`，把
-`reasoning_effort` 映射到 `thinking`；不支持或含糊的数据 fail closed。文件变化不改变
-既有任务或角色。Package 只定义该接口；global/host task-start consumer 需另行验证适配，source 和
-fixture 不能证明本机已实际采用。Install、update、rollback、uninstall 均不修改外部 user
-文件。
-
-提示词按[共同合同、实际职责、本次任务与必要模型适配](skills/work-charter/references/coordination-and-recovery.md#task-and-role-prompt-construction)组织。
-已授权工作继续推进，保留材料决策与真实权限门；模型差异按需依据官方指导或可归属证据，
-effort 仍为运行参数。提示词与交接保留关键事实、决定、材料限制及下一步，
-优先删重复背景和无关内容，不用硬字数限制换取表面简短。全局迁移待相关 Skill 验收及获批适用副本切换后另行处理。
+投递前验证完整文件、路线能力及原生参数。配置不启用角色，也不证明
+实际运行身份；安装、更新、回退、卸载均不改个人文件或既有任务。
+精确矩阵、优先级、兼容和停止条件见
+[配置合同](skills/work-charter/references/coordination-and-recovery.md#role-model-configuration-at-dispatch)。
 
 ## 历史 v0.3.0 证据
 
@@ -244,12 +258,13 @@ python -B scripts/check_source_contract.py --json
 python -B scripts/check_repository.py --json
 ```
 
-对最终变更输入执行相应检查。SOURCE checker 分别核对静态合同条款、v0.8.0 的
+对最终变更输入执行相应检查。SOURCE checker 分别核对静态合同条款、v0.9.1 的
 tree/digest 绑定和历史描述文件身份（包括 v0.7.1）；静态文案及身份检查不证明模型行为。
 当前结果见[验证记录](docs/skills/work-charter/VERIFICATION.md)。
 
 其他检查按改变的机制选择：安装器或权限变化覆盖相关生命周期场景，来源验证逻辑变化
-覆盖相关对抗场景，选择与加载变化进行有界行为检查。普通文案或元数据变化本身不要求
+覆盖相关对抗场景，选择与加载合同变化核对正确性与兼容性；声称 fresh loading 时需相应运行证据，
+模型或效果评测须另有明确范围。普通文案或元数据变化本身不要求
 重跑完整 lifecycle 或 staged-index matrix。已有明确冻结 gate 保持原范围；v0.6.3 的
 完整 qualification 是历史证据，不作为后续修订的新运行报告。实际安装仍单独核对身份、
 权限与安装后状态。

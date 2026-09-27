@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 2
 roles:
   orchestrator:
     provider: openai
@@ -20,74 +20,16 @@ roles:
     model: gpt-6-astra
     parameters:
       reasoning_effort: medium
-level_overrides:
-  l0:
+arrangement_overrides:
+  direct:
     primary:
       provider: openai
       model: gpt-6-astra
       parameters:
         reasoning_effort: high
-    reviewer:
-      provider: openai
-      model: gpt-6-astra
-      parameters:
-        reasoning_effort: medium
-  l1:
-    primary:
-      provider: openai
-      model: gpt-6-astra
-      parameters:
-        reasoning_effort: high
-    reviewer:
-      provider: openai
-      model: gpt-6-astra
-      parameters:
-        reasoning_effort: medium
-  l2:
-    primary:
-      provider: openai
-      model: gpt-6-astra
-      parameters:
-        reasoning_effort: high
-    reviewer:
-      provider: openai
-      model: gpt-6-astra
-      parameters:
-        reasoning_effort: medium
-  l3:
+  team:
     planner:
       provider: openai
       model: gpt-6-astra
       parameters:
         reasoning_effort: high
-    executor:
-      provider: openai
-      model: gpt-6-sol
-      parameters:
-        reasoning_effort: xhigh
-    reviewer:
-      provider: openai
-      model: gpt-6-astra
-      parameters:
-        reasoning_effort: medium
-  l4:
-    orchestrator:
-      provider: openai
-      model: gpt-6-astra
-      parameters:
-        reasoning_effort: high
-    planner:
-      provider: openai
-      model: gpt-6-sol
-      parameters:
-        reasoning_effort: xhigh
-    executor:
-      provider: openai
-      model: gpt-6-sol
-      parameters:
-        reasoning_effort: xhigh
-    reviewer:
-      provider: openai
-      model: gpt-6-astra
-      parameters:
-        reasoning_effort: medium

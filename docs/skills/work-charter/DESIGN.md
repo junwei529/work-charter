@@ -1,5 +1,68 @@
 # Work Charter Design
 
+## v0.9.1 conditional migration and continuing review
+
+The shared entry routes migration through the same conditional decisions as
+first adoption and reassessment. Old contracts provide reusable answers, not a
+carrier/model-only migration shortcut. Closure distinguishes confirmed/reused
+answers, recommendations and unresolved material choices without a fixed form.
+Topology questions first receive an explanation of the draft; alternatives
+remain proposals rather than inferred user approval.
+
+Independent review selects actual products before continuity and carrier.
+Prefer a reliable continuing R across related O/P/E products; each request
+retains its original author, evidence, acceptance owner and cumulative findings.
+Prior review is not authorship; material authorship is an independence conflict.
+Across independent tasks, a separately addressable R is a carrier option, not
+assumed cross-parent child access. Specialized or otherwise justified additional
+review retains its own authorization and active-package boundaries. Reuse is
+not a cache-hit, cost, isolation or background-continuation guarantee.
+
+This revision preserves arrangement-v1, schema v2, the complete model pairs and
+frozen old contracts. The approved scope is source and necessary global consumer
+correction with focused checks and independent review. Installation and public
+effects require their own authority; no subsequent efficacy study is included.
+
+## v0.9.0 arrangement contracts
+
+New contracts use Direct/Team/Phased plus explicit conditional agreements;
+L0-L4 remain only for old contracts and model compatibility. The existing
+carrier records arrangement-v1 when adopted, alongside actual continuity,
+outcome/acceptance, permissions/reserved decisions, roles/carriers/review,
+progression bounds/transitions and recovery. This is separate from the Skill
+release version and role-model schema; ordinary work needs no Charter marker.
+Core duties and real boundaries are not optional feature toggles.
+
+The coordination reference owns schema v2 and all lookup semantics. The package
+uses general role objects plus Direct primary and Team P overrides, preserving
+v0.8.0 model/effort values without repeating the full matrix. Optional legacy
+keys preserve exact old levels. Frozen/task choices precede user and package
+sources; user general beats package specific and fields never merge. v1 stays
+readable; new Direct ambiguity is explicit rather than inferred from continuity.
+Personal file conversion is not part of installation or project migration.
+
+Migration is offered only at an authorized stable node for this workstream,
+not a background project scan. A node may retain open findings or sit inside a
+Phase if product/writer/in-flight work/next action are recoverable. Reuse old
+answers and approve one complete delta, retaining failures and consumed limits.
+
+Authorized progression covers execution, self-check, independent review,
+original-author repair, same-R re-review, acceptance and the next approved item.
+First E-to-R review may also be preauthorized. P retains stable acceptance and
+O project/phase disposition; neither repeats R. Only explicitly preapproved
+bounded phase sets may advance without another user turn. Carrier capability,
+receipt and authority are distinct; no workflow engine, service or new automation
+is introduced. Host-specific Standard still needs its own adoption.
+
+The approved local scope is source, necessary host/project consumers, independent
+review and managed installation. Model settings, business contracts and public
+effects retain their own authority. Correctness/compatibility/protected-boundary
+checks are required; subsequent model/efficacy studies, benchmarks, metric
+collection or monitoring jobs are not part of this delivery.
+
+The dated sections below describe their historical contracts, not the current
+selection algorithm. Current behavior is owned by the installable package.
+
 ## v0.8.0 work-arrangement design
 
 This source candidate provides three user-facing arrangements: Direct

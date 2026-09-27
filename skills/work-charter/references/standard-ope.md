@@ -1,12 +1,12 @@
-# Phased Standard Orchestrator/Planner/Executor/Reviewer (`L4`)
+# Phased Orchestrator/Planner/Executor/Reviewer
 
-Use Phased Standard O/P/E/R for consequential multi-phase project governance only when
-an applicable approved standing policy, active Charter, and discoverable
-durable control location support it. `L4` is internal configuration shorthand;
-Phased is the user-facing arrangement. Do not migrate an old L4 contract merely
-because this label changes.
+Use these shared role boundaries for approved Phased work with a discoverable
+durable control location. A host-specific Standard workflow and standing policy
+still require their own explicit adoption. New contracts use arrangement-v1;
+L4 remains legacy compatibility, not a prerequisite label for new work. Do not
+migrate an old contract or expand its gates merely because the package changes.
 
-A fresh L4 role loads the complete slim shared Skill body and this reference's shared entry,
+A fresh Phased role loads the complete slim shared Skill body and this reference's shared entry,
 responsibility, single-writer and permission boundaries, then its own operating
 steps and handoff interfaces. It does not load every other role's procedures
 or repeat adoption merely because it is a new Thread. Manual reassessment uses
@@ -16,7 +16,7 @@ user-owned. Valid continuity never implies automatic role creation.
 Initial persistent adoption and the first Standard standing policy are
 user-owned decisions. Later reuse must name the policy and exact bounded read
 scope being reused, remain visible to the user, and stay subordinate to
-Harness and project instructions. Policy or level selection does not authorize
+Harness and project instructions. Policy or arrangement selection does not authorize
 role delivery, writes, project-document or `AGENTS.md` changes, worktrees,
 Git, integration, installation, cleanup, publication, or external effects.
 
@@ -25,8 +25,8 @@ revision cannot be reconciled, or separate role delivery is unavailable or
 uncertain, propose the smallest transition and stop. Do not represent a
 one-agent fallback as Standard.
 
-Before each newly authorized Standard role delivery, identify `L4` and the
-actual responsibility, then read and apply
+Before each newly authorized Phased role delivery, identify the contract
+format, arrangement and actual responsibility, then read and apply
 [Role-Model Configuration At Dispatch](coordination-and-recovery.md#role-model-configuration-at-dispatch).
 That section is the sole owner of configuration resolution and validation;
 do not reconstruct a parallel lookup here. Preserve frozen combinations,
@@ -38,7 +38,7 @@ or changes an existing task.
 
 | Role | Owns | Does not do |
 |---|---|---|
-| Orchestrator | Project direction, phase order, mandates, project-level acceptance, and transitions | Implement work, direct the Executor or Reviewer, or repeat technical review |
+| Orchestrator | Project direction, phase order, mandates, project-level acceptance, and transitions | Implement work, bypass P to direct phase execution or implementation review, or repeat technical review |
 | Planner | Active Charter, execution boundaries, Executor and Reviewer routing, correction direction, and target acceptance | Implement, repair, or technically review the work under assessment |
 | Executor | Authorized implementation, self-check, repair, verification, evidence, and implementation documentation | Expand scope, select a new phase, serve as independent Reviewer of its own work, or approve its own result |
 | Reviewer | Read-only semantic inspection of a stable checkpoint, actionable findings, and explicit coverage limits | Modify the reviewed target, direct project scope, or decide target or phase acceptance |
@@ -48,7 +48,12 @@ only direction, cross-phase dependencies, material project risk and phase
 acceptance. The Planner owns in-phase decisions and stable acceptance; preauthorized
 ordinary repairs close through E and R without per-round Planner intervention. Keep one
 active lane, one repository writer, at most one Planner, at most one Executor,
-and one reliable Reviewer for the active package.
+and one reliable Reviewer for the active package. That R may continue across
+O/P/E products and related phases under Review Input At Any Level; product
+scope, original author and acceptance owner remain distinct on every request.
+Do not create one R per author. A shared carrier must support each approved
+request/result route; a child of one independent task is not assumed to be a
+child accessible from another.
 P may continue as O's subagent when context, permission, intervention and the
 result route remain reliable; E/R may likewise be continuing subagents or
 separately addressable tasks. Role separation alone does not require a top-level
@@ -74,7 +79,8 @@ in-bound Definition finalization and specified E/R delivery to P; otherwise
 the Definition remains a separate user gate. Missing material choices keep
 the Mandate planning-only. Existing approvals are not expanded retrospectively.
 See [Delegated Decisions And Escalation](coordination-and-recovery.md#delegated-decisions-and-escalation).
-This hierarchy applies only to approved Standard work; ordinary work remains flat.
+This hierarchy applies only to approved Phased work; ordinary work remains Direct.
+Host-specific Standard procedures apply only when explicitly adopted.
 
 Build role prompts from the
 [shared contract, actual responsibility, current task, and necessary model adaptation](coordination-and-recovery.md#task-and-role-prompt-construction).
@@ -120,10 +126,11 @@ answer once and never mirror it.
    outcome, domain, environment, effects and cost without another Definition or
    approval gate. Explicit dependencies, frozen evidence and protected effects
    still bind. It verifies the package, and
-   returns one review-ready Result Notice to the Planner for a named stable
-   checkpoint. It then stops polling and remains idle.
-5. The Planner confirms that checkpoint matches the contract, freezes the
-   review input and exclusions, and routes it to the Reviewer. R inspects the
+   relinquishes writing and returns one review-ready Result Notice through
+   the approved route for a named stable checkpoint, without polling.
+5. If the contract preauthorizes first E-to-R review, use that frozen input and
+   coverage route directly; otherwise P confirms scope and routes it to R.
+   R inspects the
    actual change, necessary semantic context, tests, documentation consumers,
    material untracked inputs and graph/generated limits without writing.
 6. Follow the approved correction route in
@@ -161,7 +168,12 @@ answer once and never mirror it.
    existing layer changes only through the user's contract decision.
 9. An unapproved phase or change beyond delegated outcome, permission, cost,
    effect, risk or acceptance authority returns to the user through its owner.
-   In-bound P choices do not automatically require O or user approval.
+   In-bound P choices do not automatically require O or user approval. An
+   explicitly preapproved bounded phase sequence may continue when its
+   transition conditions and total limits hold; retain existing next-phase
+   user gates unless explicitly amended. Use
+   [Authorized Progression](coordination-and-recovery.md#authorized-progression)
+   for the complete continuation and exception contract.
 
 Use durable state for cold or recovery entry and compact warm handoffs while
 role sessions remain reliable. Work Charter cannot guarantee role delivery,

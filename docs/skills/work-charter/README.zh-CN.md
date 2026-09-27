@@ -1,5 +1,9 @@
 # Work Charter
 
+当前本地源码为 [v0.9.1](STATE.md#v091-local-source)，统一条件式迁移与持续 R。
+本机 managed installed copy 已按单独授权更新至 v0.9.1；arrangement-v1、模型 schema v2
+及以下历史发布证据保留原范围。
+
 最新正式发布版本为 [v0.8.0](STATE.md#v080-publication)。
 Direct、Team、Phased 的条件选择、按实际产物的独立审查和成对模型默认值
 由本版承接；[候选](STATE.md#v080-source-candidate)保留发布前快照，
@@ -22,7 +26,7 @@ proportional coordination 约束有后果的 Codex 工作。
 需要时加载精简共同正文与相关细节，并对材料变化主动复评，不代替用户选级。
 已批准 Charter 的复用和共同审查、权限、恢复边界保留；
 参见[历史 v0.6.5 状态](STATE.md#current-v065-local-candidate)。
-当前源码和安装由[当前状态](STATE.md#v071-outcome-scoped-authority)承接。
+当前源码和安装由[当前状态](STATE.md#v091-local-source)承接。
 
 package 起源于源提交 `80910a8b2375a11be897e9660c4b00a06d00dd13`。不可变 `v0.5.0`
 source 证据绑定已接受 commit `8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`、十轮已完成

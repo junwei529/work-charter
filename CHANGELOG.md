@@ -1,5 +1,33 @@
 # Changelog
 
+## v0.9.1 (locally installed; not published)
+
+- Use one conditional selection path for adoption, reassessment and migration;
+  reuse applicable answers and expose remaining material decisions before closure.
+- Separate review products, Reviewer continuity and carriers. Prefer one reliable
+  R across related O/P/E products where actual request/result routes support it.
+- Preserve authorship independence, cumulative findings and acceptance owners;
+  clarify O's own planning review without bypassing P's implementation route.
+- Align the host's first-review wording with explicitly preauthorized E-to-R
+  delivery. Keep existing contracts, model schema/defaults and installer logic.
+- No automatic project migration, model change, efficacy evaluation or cache
+  guarantee follows from this revision.
+
+## v0.9.0 (local delivery; not published)
+
+- Use arrangement-v1 contracts for new Direct/Team/Phased agreements, with
+  conditional continuity, review, progression and real execution boundaries.
+- Keep legacy L0-L4 contracts intact and offer bounded migration at a stable
+  work node, preserving open findings, authority, budgets and frozen models.
+- Add model schema v2 with responsibility/arrangement objects and a legacy
+  compatibility namespace. Keep v1 interpretation and whole-object user
+  priority; require a decision for ambiguous new Direct values.
+- Cover execution through acceptance and the next approved item, including
+  preauthorized first review and same-scope repair loops. Bounded cross-phase
+  progress requires explicit advance approval; old gates do not disappear.
+- Preserve current model pairs, the six-file package and installer mechanism.
+  This revision has correctness/compatibility checks, not efficacy evaluations.
+
 ## v0.8.0
 
 - Present Direct, Team, and Phased as the three user-facing work arrangements;

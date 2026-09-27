@@ -1,5 +1,73 @@
 # Work Charter State
 
+## v0.9.1 local source
+
+Status: **LOCAL_DELIVERY_COMPLETE**, observed 2026-09-27.
+The user selected v0.9.1 and approved complete conditional migration, continuing
+R semantics and the necessary global-consumer correction. Independent R1 passed
+the bounded source/application-method review. Its observation exposed a missing
+second global replacement in preparation; the original writer supplied the
+approved narrow clause and the same R passed R2 with no new finding.
+
+The reviewed 18-file source increment and both clauses in the one global
+consumer were applied after complete baseline checks. Source bytes and the
+global result matched the review input; global owner/DACL were preserved.
+The four package instruction/template changes are bound to tree
+`39659168b5fb20899335dd0923c87b65d5a95e36`. The pre-review descriptor remains
+an immutable snapshot; subsequent mechanical records and mapping closeout do
+not change this package. The previous uncommitted v0.9.0 delivery is preserved,
+with no branch switch or commit. Source/global writers are closed at closeout.
+
+After source/global closeout, the user separately approved the local managed
+update from v0.9.0 to v0.9.1. The unchanged reviewed installer completed its
+dry-run and update with exit 0. All six installed files and the receipt match
+the reviewed package. Seven old files (package plus receipt) and the original
+DACL snapshot are retained as private rollback material; all 11 DACL records
+were preserved and the transaction root is empty. Default-tool manager status
+and independent manifest-based file readback passed. The personal model file
+and previously applied global consumer remain unchanged by installation.
+
+Installation and required record writers are closed at final closeout. Existing
+business contracts and frozen settings were not migrated; role dispatch, Git
+publication and automation were not performed. No efficacy study, cache
+experiment or monitoring job is included. Actual rollback was not exercised.
+Fresh loading, runtime identity, natural adherence and cache/cost benefit
+remain UNKNOWN. See [Verification](VERIFICATION.md#v091-local-verification).
+
+## v0.9.0 local delivery
+
+Status: **LOCAL_DELIVERY_COMPLETE**, observed 2026-09-27
+(Asia/Shanghai). The user selected v0.9.0 and approved arrangement contracts,
+model schema v2, stable-node migration support, bounded authorized progression,
+necessary local rule consumers, independent review and the managed-copy update.
+The source baseline remains records commit
+`e86f5019ddd882521fbacac30633c073f03d05a6` on the existing dedicated branch;
+this delivery is an uncommitted local change. The v0.8.0 published package and
+descriptors remain immutable history.
+
+Independent source/consumer R2 passed after four P2 findings were fixed.
+The existing manager completed the v0.8.0-to-v0.9.0 update from an exact reviewed
+snapshot. All six installed files match accepted source bytes at package tree
+`ad4c0f4d56c47e3037c25dc84fce9a9f14c177fc`; 11 DACL records and the four
+applied global consumers' security were preserved. Default non-escalated
+tool-route readback passed, the transaction root is empty, and seven old installation/receipt files
+are retained privately for recovery. This verifies local application, not an
+executed rollback. R3 confirmed installation/application evidence and found
+one P3 records wording issue (V090-R3-01). The same R passed its correction
+in R4, with no new finding. The local delivery is complete; source and
+installation writers are closed after the mechanical records and mapping closeout.
+The default tool-route readback does not establish access by another Windows
+account or token.
+
+Four necessary global consumers were updated. The usage-guidance reference and
+audit-project rules were checked and required no change. Personal model files,
+ordinary defaults, existing business contracts and role carriers are unchanged.
+Git commit, push, tag, Release, cross-task dispatch and automation were outside
+this delivery. No subsequent efficacy evaluation or monitoring job is planned.
+Fresh-task loading, runtime model identity and natural adherence remain UNKNOWN.
+Detailed evidence and retained failed attempts are in
+[Verification](VERIFICATION.md#v090-local-verification).
+
 ## v0.8.0 publication
 
 Status: **PUBLISHED_VERIFIED**, observed 2026-09-25 (Asia/Shanghai).

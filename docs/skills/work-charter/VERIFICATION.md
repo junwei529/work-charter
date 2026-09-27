@@ -1,5 +1,149 @@
 # Work Charter Verification
 
+## v0.9.1 local verification
+
+Independent R1 passed the 18-path increment, affected consumer and guarded
+application method, with no blocking source finding. R was requested as
+Astra/medium under the current complete personal reviewer object; this is not
+proof of runtime model identity. No callable review-agent method was available;
+R performed independent semantic review itself, not a native child/gate.
+R1 noted that the global candidate contained only the first-review change,
+although preparation described two. A missing replacement in the temporary
+preparation helper caused this discrepancy. The original writer added the
+approved own-planning/shared-R scope clarification before real application;
+the same R returned R2 PASS, with no new finding. R2 verified that the other
+104 candidate file identities were unchanged and did not rerun their checks.
+
+SOURCE passed 33/33 static clauses plus current v0.9.1 and historical descriptor
+identity checks. The candidate repository check passed with 103 mapped files;
+Skill metadata validation and source whitespace checking also passed. These
+are bounded deterministic and semantic-review evidence, not model execution.
+R2's review-input manifest SHA-256 is
+`42373c061487712665bfbf226c29742efeb4669715200905e6d2ab307cf097a8`.
+The unchanged six-file package tree after R2 is
+`39659168b5fb20899335dd0923c87b65d5a95e36`; package file-list SHA-256 is
+`3095abc1727ca15901185876ce012b0145c5f7deede636fa29511bdfb69dacb8`.
+
+The application completed with exit 0 after checking the locked R2 candidate,
+all real source baseline files, the global preimage and protected configuration.
+All 18 source targets and the global consumer were written and read back.
+The default tool route then confirmed the complete applied source/global bytes
+and unchanged installed/personal files. The global consumer's full owner/DACL
+descriptor matched before/after. These checks do not establish access by another
+Windows account/token or fresh task loading. Mechanical current-state and
+verification recording plus their required provenance mapping follow this
+reviewed application; they leave the package and historical descriptor bytes
+unchanged and receive the existing repository mapping/whitespace closeout checks.
+
+Two earlier temporary preparation attempts stopped on exact text-anchor checks
+(a newline assumption and a duplicated README link) without writing real source,
+global rules or the installed copy. The anchors were corrected and the failed
+evidence retained. The Reviewer also recovered an auxiliary decoding/output
+problem by explicitly reading UTF-8; no target write resulted. These are
+preparation/transport corrections, not product or installation failures.
+
+At source/global closeout, read-only manager status confirmed MANAGED v0.9.0
+and installed/personal bytes were unchanged. The user then separately approved
+the local managed update to v0.9.1. Its frozen input contained the six reviewed
+package files, the unchanged candidate descriptor and the reviewed installer.
+Seven old files (package plus receipt), the old descriptor and original DACL
+were retained in individually private rollback storage before update.
+
+Both manager dry-run and apply completed with exit 0 and empty stderr. The
+installed state is MANAGED v0.9.1 at the same reviewed package tree above;
+the manager-format package SHA-256 is
+`07a4c7579c985d8580387e1cbc48f315289975b6e62369b316c5fdf3fcfb2ec0`.
+This digest uses a different serialization from the SOURCE file-list digest.
+Postflight verified all six installed bytes, receipt version/tree, seven backup
+identities, all 11 original DACL records, an empty transaction root, and unchanged
+personal model/global-consumer files. These checks do not prove actual rollback.
+
+The first default-tool readback helper stopped with PermissionError while
+opening its private preflight evidence, before it could test installed files.
+The private backup protections were kept intact. The corrected read-only helper
+used the already reviewed manifest and confirmed all six installed files,
+receipt and unchanged personal/global files through the default tool route;
+manager status independently returned MANAGED v0.9.1. This was a verification
+helper source-access correction, not an installation or installed-access failure.
+These calls do not establish access by a different Windows account/token.
+
+Current installation records and navigation are updated separately from the
+immutable pre-review descriptor. Repository mapping and whitespace closeout
+checks cover those record changes. Existing project migration, actual rollback,
+Git publication, cross-task dispatch and automation were not performed. No model
+evaluation, comparative work package, cache experiment or monitoring job is
+included. Subsequent use, runtime identity, cache/cost benefit and efficacy remain
+UNKNOWN. R1/R2 and deterministic checks do not prove those states.
+
+## v0.9.0 local verification
+
+The first independent read-only review found V090-R1-01 through V090-R1-04
+(P2): an unconditional first-review relay, stale current navigation, ambiguous
+nested empty configuration and a host phrase that could bypass schema-v1 user
+configuration. The original writer corrected those surfaces. The same R's R2
+passed with all four findings FIXED and no new finding. The adjacent author
+check V090-E-01 preserves old effective fallback objects when a new arrangement
+override would otherwise shadow them; R2 found that correction sufficient.
+R was requested as Sol/xhigh from the existing complete user override; this
+request and the reported review result do not establish runtime model identity.
+
+The first SOURCE run failed an outdated first-review wording clause (32/33);
+the route and checker were aligned and a later pre-R1 run passed. After the R1
+corrections, SOURCE passed 33/33 static clauses with v0.9.0 candidate binding and
+historical identity checks. Repository mapping passed for 102 mapped files;
+the unchanged Skill metadata passed validation. R2 independently checked the
+103-file review identity (mapped files plus the map), exact package tree and
+the four consumer candidates. These are static and review evidence, not model
+execution. The records-only closeout preserves that package identity and
+uses the existing mapping and whitespace checks.
+
+Private rollback preparation initially stopped because its helper had not made
+every backup object individually private. The helper was corrected using
+existing installer primitives; the original installed copy was unchanged.
+Seven backup files and 11 original DACL records were retained. This was a
+preparation failure, not an installation failure or product-code repair;
+the failed attempt remains part of this delivery's local evidence.
+
+The four reviewed global consumer files were applied after exact baseline and
+security checks. Their resulting bytes and security match the reviewed inputs
+and original security records. The usage-guidance reference and audit-project
+rules were CHECKED_NO_CHANGE. The exact accepted package, candidate descriptor
+and unchanged installer mechanism were copied to a private frozen snapshot;
+this is a byte-bound snapshot, not a committed or technically immutable checkout.
+The only installer source change is the self-test expected version constant;
+production update behavior reuses its historical qualification.
+
+The existing manager's dry-run and actual update both exited 0, with empty
+stderr, using an explicit private same-volume transaction root. The actual
+result is MANAGED v0.9.0 at package tree
+`ad4c0f4d56c47e3037c25dc84fce9a9f14c177fc`.
+The source-contract file-list SHA-256 is
+`edcd98fc5ea344574c8f0d9db0e5cc4dbf0b59c780a83c37a81942b507279cd2`;
+the manager receipt uses its own serialization/digest and is not compared as
+the same digest format. Privileged postflight verified six package-file hashes,
+four consumer hashes, 11 preserved DACL records, unchanged consumer security,
+unchanged personal role configuration, seven intact backup files and an empty
+transaction root. Default non-escalated tool-route readback read and matched
+the six installed files, receipt version/tree and four consumers. This route is
+bound to the actual tool call without an escalation request, not the script's
+reader argument; access by another Windows account or token was not verified.
+Actual rollback was not run. R3 confirmed installation/application evidence and
+found V090-R3-01 (P3): ordinary-reader wording exceeded the proven route identity.
+The same R passed the precise tool-route wording in R4, with V090-R3-01
+FIXED and no new finding. V090-R1-01 through V090-R1-04 remain FIXED.
+The primary owner accepted this local delivery within its approved scope.
+Only mechanical result recording and mapping synchronization followed that
+review; source and installation writers are closed at completion.
+No installation or account test was repeated for this records correction.
+
+The candidate descriptor remains the pre-effect source snapshot; its pending
+fields are historical, not a current installation receipt. The installed package
+and original published descriptors are fixed across this records-only closeout.
+Git commit, push, tag and Release were not authorized. No efficacy evaluation,
+benchmark, comparative work package, metric collection or extra monitoring job
+is part of this delivery. Fresh-task loading, runtime model identity and natural
+adherence remain UNKNOWN; historical results below retain their original inputs.
+
 ## v0.8.0 publication verification
 
 The same independent Astra/medium R completed full source and global-consumer

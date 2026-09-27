@@ -2,7 +2,10 @@
 
 [简体中文](README.zh-CN.md)
 
-Latest release: **[v0.8.0](https://github.com/junwei529/work-charter/releases/tag/v0.8.0)**.
+Current local source: **v0.9.1**, with complete conditional migration and continuing review; arrangement-v1 and model schema v2 are unchanged.
+See [current delivery state](docs/skills/work-charter/STATE.md#v091-local-source).
+
+Latest published release: **[v0.8.0](https://github.com/junwei529/work-charter/releases/tag/v0.8.0)**.
 [Verified publication](docs/skills/work-charter/STATE.md#v080-publication).
 The [v0.8.0 source candidate](release/v0.8.0-candidate.json) retains its
 pre-effect snapshot; local managed-copy and bounded global-consumer evidence
@@ -27,14 +30,61 @@ tasks need no Charter or extra questionnaire.
 | **Team** | A Planner owns the agreement and acceptance; an Executor implements; an independent Reviewer checks the actual product when requested or required. | Work that benefits from separated implementation and assessment. |
 | **Phased** | An Orchestrator owns direction and phase acceptance above phase-local Planner, Executor and applicable Reviewer roles. | Consequential work across several dependent phases. |
 
-Direct retains three internal variants: ordinary task (L0, no active Charter),
-current-task agreement (L1), and discoverable durable recovery (L2). Team maps
-to L3 and Phased to L4 for existing configuration and contracts. These
-distinctions keep their original recovery duties; old agreements do not
-automatically migrate. More coordination costs more, so use the least sufficient
-arrangement.
+New agreements directly describe the work arrangement and the conditions that
+matter. You do not need to choose a level number. Use the least sufficient
+coordination; more roles and handoffs have real cost.
+
+## Conditional modules, one work agreement
+
+First adoption, reassessment and migration use the same conditional choices.
+Known answers are reused after checking that they still apply. Before adoption,
+one concise agreement distinguishes confirmed/reused choices, recommendations
+and unresolved decisions; it does not require a fixed questionnaire.
+Conditional questions settle:
+
+- **Continuity:** current-task context or a durable recovery anchor.
+- **Review:** which actual result, plan or direction needs independent inspection.
+- **Progression:** how far already-approved work continues without user intervention.
+- **Execution boundaries:** real permission, workspace, data, cost and effect limits.
+
+These are parts of one agreement, not arbitrary feature switches. Required review
+and authority boundaries cannot be disabled. An approved same-scope repair can
+go from R to the original author and back to the same valid R. P accepts stable
+implementation results; planning products retain their designated approval
+route. A preauthorized first E-to-R handoff also avoids routine relay.
+Independent context and continuous progress are separate choices.
+
+Continuous work covers execution, checks, review, repair, acceptance and the next
+already-approved item. Cross-phase progression needs advance approval of a
+bounded phase set and its transition conditions. A prompt cannot guarantee
+background scheduling or reliable delivery; use actual supported return routes.
+
+## Existing projects
+
+At an authorized entry, recovery or stable work node, the Skill can suggest
+reconsidering an old agreement. A stable node need not finish an entire Phase:
+the product, remaining findings, writer, in-flight work and next action must be
+clear enough to hand over. Reassess applicable choices rather than merely
+patching the old level, models or carriers; reuse valid answers and approve one
+complete migration delta. Existing contracts continue until that approval, with their findings,
+consumed budgets, frozen models and protected gates preserved.
+
+L0-L4 remain technical compatibility terms: ordinary/no Charter, current-task
+Direct, durable Direct, Team and Phased respectively. They are not the internal
+schema for new agreements. Personal model-file conversion is separate from
+project adoption; installation performs neither migration automatically.
 
 ## Clear responsibilities for each role
+
+Review products, Reviewer continuity and task/subagent carriers are separate
+choices. Prefer one reliable continuing R for related direction, plan and
+implementation reviews; use another only for a real independence, reliability,
+expertise, access or authorized parallel-review need. Across independent O/P
+tasks, an addressable R task may preserve continuity; within one supported task
+tree, a continuing R subagent may suffice. Each review still names its product,
+author and acceptance owner. Prior review is not authorship, but R must not
+independently review a product or design decision it materially authored.
+Context reuse is not a cache-hit or cost guarantee.
 
 - **Direct primary:** Completes authorized work and its checks.
 - **Orchestrator (Phased):** Owns project direction and phase acceptance.
@@ -172,75 +222,41 @@ default-reader access to the exact managed v0.4.0 copy and closed
 managed v0.4.0; v0.4.1 was not installed. The later
 [accepted v0.6.3 installation](docs/skills/work-charter/STATE.md#accepted-v063-user-installation)
 records that historical copy; [historical v0.6.5 state](docs/skills/work-charter/STATE.md#current-v065-local-candidate)
-records that update. [Current state](docs/skills/work-charter/STATE.md#v080-source-candidate)
-tracks the v0.8.0 candidate. Stable v0.5.0 loaded-copy behavior,
+records that update. [Current state](docs/skills/work-charter/STATE.md#v091-local-source)
+tracks the v0.9.1 source revision and separate installation state. Stable v0.5.0 loaded-copy behavior,
 role-delivery adherence, cross-provider execution, cross-Harness behavior,
 public release, and broad efficacy remain `UNKNOWN` or separately authorized.
 
 ## Role-model configuration
 
-The package defaults are owned by
-[`skills/work-charter/assets/role-models.default.yaml`](skills/work-charter/assets/role-models.default.yaml):
+The [package YAML](skills/work-charter/assets/role-models.default.yaml) is the
+single owner of complete default values. Model schema v2 has `roles`,
+`arrangement_overrides` for `direct`/`team`/`phased`, and optional
+`legacy_level_overrides` for unchanged old contracts. Arrangement maps select
+actual responsibilities; there is no model table for every feature combination.
+The Skill release version, `contract_format: arrangement-v1`, configuration
+schema and frozen delivery values are distinct identities.
 
-General compatibility fallbacks:
+Use the contract's exact explicit file, else the existing
+`~/.config/work-charter/role-models.yaml`, else package defaults. No user file is
+needed to consume defaults. Every object repeats provider/model and optional
+parameters; omitted parameters means none. Resolve frozen values, then confirmed
+task values, then the selected user source, then package defaults. Within a v2
+source use arrangement then general role, preceded by exact legacy level only
+for an old contract. User general values beat package-specific defaults. Missing
+primary values may preserve host selection; never borrow P or E values.
 
-| Role | Provider | Model | Reasoning effort |
-|---|---|---|---|
-| Orchestrator | OpenAI | `gpt-6-astra` | `high` |
-| Planner | OpenAI | `gpt-6-sol` | `xhigh` |
-| Executor | OpenAI | `gpt-6-sol` | `xhigh` |
-| Reviewer | OpenAI | `gpt-6-astra` | `medium` |
+Schema v1 remains readable. New Team/Phased can interpret its l3/l4 candidates;
+new Direct needs equal effective l0/l1/l2 candidates or all missing. Differing
+objects or a present/missing mix require a decision, not silent fallback. A
+separately authorized file conversion preserves every old level object in the
+compatibility section and asks for an ambiguous new Direct default.
 
-Current package level defaults map Direct to L0-L2, Team to L3, and Phased to
-L4. User configuration and frozen old contracts retain their own values:
-
-| Level | Responsibility and reasoning effort |
-|---|---|
-| L0 | primary Astra `high`; reviewer Astra `medium` |
-| L1/L2 | primary Astra `high`; reviewer Astra `medium` |
-| L3 | planner Astra `high`; executor Sol `xhigh`; reviewer Astra `medium` |
-| L4 | orchestrator Astra `high`; planner and executor Sol `xhigh`; reviewer Astra `medium` |
-
-L0 supplies an explicit Astra/medium Reviewer override for a separately triggered role.
-These configured choices are not evidence of optimality or runtime adoption.
-
-To customize later task starts or role deliveries, copy that file to
-`~/.config/work-charter/role-models.yaml` and edit it, or have an approved
-delivery contract name another exact file. Schema v1 still accepts the legacy
-four-role file. A partial file may add a general `primary`, replace changed
-general roles, and/or add bounded `level_overrides` for `l0` through `l4`.
-Every supplied object is a whole replacement and must repeat `provider` and
-`model`; omitted `parameters` means none. Missing user objects fall through to package objects. No user file is needed
-to consume package level defaults.
-
-Resolution is: an already frozen complete delivery combination; then a complete
-combination explicitly confirmed for the new task or role; then its applicable
-user level object; user general object; package level object; package general
-object. User general configuration beats package level defaults. A host `main`
-label normalizes to `primary`. If an `L0`/`L1`/`L2` primary has neither a level
-override nor a general `primary` in either source, the boundary sends no model override and
-preserves host selection—it never borrows Planner or Executor defaults.
-
-The valid lookup matrix is `L0` primary plus separately triggered temporary R;
-`L1`/`L2` primary plus optional R; `L3` P/E/R; and `L4` O/P/E/R. Entries do not
-enable roles, and `L0` still does not activate Work Charter. Before creation,
-the boundary shows level, actual responsibility, provider/model/parameters,
-object source, and file source and verifies native support. Codex OpenAI maps
-`model` to native `model` and `reasoning_effort` to `thinking`. Unsupported or
-ambiguous data fails closed. Existing tasks and roles do not change when the
-file changes. The package defines this interface; global and host task-start
-consumers require their own verified adaptation, so the source and fixtures are
-not proof of effective local delivery. Install, update, rollback, and uninstall never
-mutate the external user file.
-
-Prompts use the [shared contract, actual responsibility, current task, and
-necessary model adaptation](skills/work-charter/references/coordination-and-recovery.md#task-and-role-prompt-construction).
-Reuse valid authority for continuation, retain material gates, and adapt to an
-actual model only with relevant guidance or attributable evidence. Effort stays
-in runtime metadata. Each prompt and handoff retains the facts, decisions,
-material limits, and next action its receiver needs; remove repeated
-background and unrelated prose before essential information. Global migration follows separate Skill acceptance and
-an approved applicable-copy switch; it is not performed by this candidate.
+Validate the complete selected file, support and native parameters before
+dispatch. Configuration does not create a role or prove runtime identity. An
+install/update/rollback/uninstall never rewrites the user's external file or
+existing tasks. The [configuration contract](skills/work-charter/references/coordination-and-recovery.md#role-model-configuration-at-dispatch)
+owns the exact matrix, whole-object priority, v1 interpretation and stops.
 
 ## Historical v0.3.0 evidence
 
@@ -293,7 +309,7 @@ python -B scripts/check_repository.py --json
 ```
 
 Run the relevant checks against the final changed input. The SOURCE checker
-separates static contract clauses from the required v0.8.0 tree/digest binding
+separates static contract clauses from the required v0.9.1 tree/digest binding
 and preserves historical descriptor identities, including v0.7.1.
 Static wording and identity
 checks do not prove model behavior. See
@@ -301,8 +317,9 @@ checks do not prove model behavior. See
 
 Select additional checks for the mechanism changed: installer or permission
 changes require affected lifecycle cases; provenance validation changes
-require affected adversarial cases; selection/loading changes need a bounded
-behavior check. A text or metadata change alone does not require rerunning the
+require affected adversarial cases; selection/loading contract changes need focused correctness and compatibility
+inspection. A fresh-loading claim needs its own runtime evidence; model or
+efficacy evaluations require their separately agreed scope. A text or metadata change alone does not require rerunning the
 complete lifecycle or staged-index matrix. Existing explicit frozen gates
 retain their scope; the complete v0.6.3 qualification remains historical and
 is not reported as a fresh run for a later revision. Actual installation still requires its

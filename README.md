@@ -5,8 +5,8 @@
 Release source: **v0.9.2**, with explicit cross-turn continuation and a retained mixed-design recovery path; arrangement-v1 and model schema v2 are unchanged.
 See [publication state](docs/skills/work-charter/STATE.md#v092-publication).
 
-Latest published release: **[v0.9.1](https://github.com/junwei529/work-charter/releases/tag/v0.9.1)**.
-[Verified publication](docs/skills/work-charter/STATE.md#v091-publication).
+Latest published release: **[v0.9.2](https://github.com/junwei529/work-charter/releases/tag/v0.9.2)**.
+[Verified publication](docs/skills/work-charter/STATE.md#v092-publication).
 The [v0.9.2 source candidate](release/v0.9.2-candidate.json) retains its
 pre-effect snapshot; local review, managed-copy and bounded host-consumer status
 is recorded in [State](docs/skills/work-charter/STATE.md#v092-local-source).

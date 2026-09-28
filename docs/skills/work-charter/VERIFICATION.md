@@ -2,12 +2,33 @@
 
 ## v0.9.2 publication verification
 
-Publication reuses the accepted local SOURCE 33/33 and installation evidence
-below. The source package is unchanged; publication adds current navigation and
-Release notes, with independent review of the complete commit scope and public
-content. Final repository provenance and whitespace checks apply to this input.
-Remote ref and Release readback remain required before publication is reported.
-No scenario evaluation, lifecycle matrix or performance study is included.
+Publication R4 independently reviewed the complete 21-path source increment,
+necessary unchanged consumers, public privacy, Release notes and the application,
+commit and publication method: PASS, no new findings. Original F01/P2 and F02/P3
+remain closed. Review input SHA-256:
+`e9e6417f728e2bc8ff9141d3aef06c777501b0a2ea79e28217ec199a211c5cc2`.
+The package is unchanged, so accepted SOURCE 33/33, metadata and installation
+evidence below were reused. Publication repository validation passed 104 mapped
+files; whitespace checks passed. All 105 index entries matched reviewed bytes
+before commit; commit exited 0 with the expected parent, package and clean tree.
+
+The atomic non-forced main/tag push exited 0. Remote readback verified main,
+annotated tag object and peeled source commit. Release creation exited 0; API
+readback verified id `398301549`, source `75840c10ff9fd066e981b8947f5b01076bed124e`,
+non-draft/non-prerelease/Latest state and exact body. Body SHA-256:
+`b5473991852e0b32db1b10ebc97b722de801d6453f6538f50f754d6554eeae3f`.
+
+The initial sandboxed remote preflight could not open a network socket; no
+remote mutation occurred. The authorized network-capable read verified the same
+actor and repository before effects. Oversized lookup output was narrowed for
+material use; neither failure was treated as a product defect or erased.
+
+Subsequent publication records update current navigation and this evidence,
+with the existing provenance map. They receive bounded independent review and
+repository/whitespace checks before a separate records commit. The source tag,
+package and descriptors remain fixed. No installer rerun, scenario evaluation,
+lifecycle matrix, performance study or business-project action was performed.
+Runtime adoption and natural behavior remain UNKNOWN.
 
 ## v0.9.2 local verification
 

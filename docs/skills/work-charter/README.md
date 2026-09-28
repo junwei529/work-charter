@@ -5,7 +5,7 @@ cross-turn routes and retained mixed-design restoration conditions. Source,
 review and installation status are recorded there. Arrangement-v1, model schema
 v2 and historical publication evidence retain their scopes.
 
-Latest published release is [v0.9.1](STATE.md#v091-publication).
+Latest published release is [v0.9.2](STATE.md#v092-publication).
 It uses arrangement-v1 agreements and model schema v2, with conditional migration,
 authorized progression and a continuing independent Reviewer where supported.
 The [candidate](../../../release/v0.9.2-candidate.json) retains its pre-effect

@@ -5,8 +5,8 @@
 本次发布源码：**v0.9.2**，明确跨回合接续，保留混合模式恢复路径；arrangement-v1 和模型 schema v2 不变。
 [本次发布状态](docs/skills/work-charter/STATE.md#v092-publication)。
 
-最新已发布正式版本：**[v0.9.1](https://github.com/junwei529/work-charter/releases/tag/v0.9.1)**。
-[发布核验记录](docs/skills/work-charter/STATE.md#v091-publication)。
+最新已发布正式版本：**[v0.9.2](https://github.com/junwei529/work-charter/releases/tag/v0.9.2)**。
+[发布核验记录](docs/skills/work-charter/STATE.md#v092-publication)。
 [v0.9.2 源码候选](release/v0.9.2-candidate.json)保留实施前快照；
 本地审查、安装及指定全局消费者的状态见
 [状态记录](docs/skills/work-charter/STATE.md#v092-local-source)。

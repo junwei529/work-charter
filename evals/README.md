@@ -65,8 +65,9 @@ level-by-actual-role model resolution, and Standard O/P/E/R boundaries in this
 evaluation surface; it also binds the exact general compatibility fallbacks, approved level
 defaults, contract/role/task/model-delta prompt clauses, scoped startup
 authorization, complete expression, and required reference reachability.
-The current candidate is user-confirmed v0.8.0; all earlier descriptors through
-v0.7.1 remain fixed historical snapshots. Current binding and the retained
+The current candidate and authorized check scope are owned by
+[State](../docs/skills/work-charter/STATE.md); earlier descriptors remain fixed
+historical snapshots. Current binding and the retained
 historical descriptor pins are required; the earlier unversioned binding failure remains
 historical. The Planner/Executor and recovery cases specify acquisition versus
 actual inspection, bounded sampling, data permissions and recovery of inspection

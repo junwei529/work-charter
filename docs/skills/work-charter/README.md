@@ -1,14 +1,14 @@
 # Work Charter
 
-Current local source is [v0.9.1](STATE.md#v091-local-source), with unified
-conditional migration and continuing review. The separately authorized local
-managed installation is also v0.9.1. Arrangement-v1, model schema v2
-and historical release evidence retain their scopes.
+Release source is [v0.9.2](STATE.md#v092-publication), with explicit
+cross-turn routes and retained mixed-design restoration conditions. Source,
+review and installation status are recorded there. Arrangement-v1, model schema
+v2 and historical publication evidence retain their scopes.
 
 Latest published release is [v0.9.1](STATE.md#v091-publication).
 It uses arrangement-v1 agreements and model schema v2, with conditional migration,
 authorized progression and a continuing independent Reviewer where supported.
-The [candidate](../../../release/v0.9.1-candidate.json) retains its pre-effect
+The [candidate](../../../release/v0.9.2-candidate.json) retains its pre-effect
 snapshot; historical release evidence remains bound to its original package.
 
 [简体中文](README.zh-CN.md)
@@ -31,7 +31,7 @@ relevant details when needed, and reassesses material changes without adopting
 a level for the user. It preserves approved Charter reuse and shared review,
 authority and recovery boundaries; see
 [historical v0.6.5 state](STATE.md#current-v065-local-candidate).
-[Current state](STATE.md#v091-local-source) owns source and installation status.
+[Current state](STATE.md#v092-local-source) owns source and installation status.
 
 The package originated at source commit
 `80910a8b2375a11be897e9660c4b00a06d00dd13`. Immutable `v0.5.0` source evidence

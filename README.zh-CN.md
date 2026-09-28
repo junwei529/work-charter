@@ -2,14 +2,14 @@
 
 [English](README.md)
 
-当前本地源码：**v0.9.1**，完善条件式迁移与持续审查；arrangement-v1 和模型 schema v2 不变。
-[当前交付状态](docs/skills/work-charter/STATE.md#v091-local-source)。
+本次发布源码：**v0.9.2**，明确跨回合接续，保留混合模式恢复路径；arrangement-v1 和模型 schema v2 不变。
+[本次发布状态](docs/skills/work-charter/STATE.md#v092-publication)。
 
 最新已发布正式版本：**[v0.9.1](https://github.com/junwei529/work-charter/releases/tag/v0.9.1)**。
 [发布核验记录](docs/skills/work-charter/STATE.md#v091-publication)。
-[v0.9.1 源码候选](release/v0.9.1-candidate.json)保留发布前快照；
-本地 MANAGED 安装及指定全局消费者的证据见
-[状态记录](docs/skills/work-charter/STATE.md#v091-local-source)。
+[v0.9.2 源码候选](release/v0.9.2-candidate.json)保留实施前快照；
+本地审查、安装及指定全局消费者的状态见
+[状态记录](docs/skills/work-charter/STATE.md#v092-local-source)。
 
 让复杂的 AI 项目接得住，也交得出。
 
@@ -49,7 +49,8 @@ Work Charter 是面向 Codex 的项目协作 Skill。它根据成果、真实约
 
 连续推进覆盖实施、自检、审查、修复、接受及下一项已批准工作；跨阶段
 继续则需预先批准明确的阶段集合和转换条件。提示词不保证后台调度，
-实际接续仍依赖可用且获准的工具和结果路线。
+约定中应明确接收方、启动下一回合的路线及下一项获准动作。结果送达、启动、
+完成和接受分别判断；缺失交接只恢复交接，不重做已完成工作或增加轮询、ACK。
 
 ## 旧项目怎么采用
 
@@ -68,7 +69,8 @@ L0–L4 留在兼容说明中，分别表示普通无 Charter、当前任务 Dir
 审查对象、R 的连续性、task/subagent 承载方式是不同选择。相关的方向、计划和
 实现审查优先复用一个可靠的持续 R；只有独立性、可靠性、专业/访问边界或另行
 获准的并行审查需要，才增加或更换 R。跨独立 O/P 任务时可以选择可独立寻址的
-R 任务；在同一受支持任务树内可以使用持续 R subagent。每次仍明确被审产物、
+R 任务；当前父回合内可使用有界 R subagent，跨回合则还需可靠的父任务启动与恢复。
+每次仍明确被审产物、
 原作者与接受方。R 以前审过某方案不等于编写过它；实质承担其编写或设计责任
 后则不能对相应产物自称独立审查。上下文复用不保证缓存命中或总成本下降。
 
@@ -78,9 +80,13 @@ R 任务；在同一受支持任务树内可以使用持续 R subagent。每次�
 - **Executor**：实施、自检、修复和交付获准工作。
 - **Reviewer**：依据适用 instructions、合同和真实证据，独立检查方向、计划或实现产物。原作者修复，同一有效 R 复审。
 
-角色可以由持续 subagent、独立任务或混合承载，取决于权限、用户介入、
-连续性与结果可达性。职责分离不要求顶层任务；工作方式本身不会创建
-任务、扩大权限，也不保证硬隔离或跨父任务自动恢复。
+需要上游结束回合后继续的正式 Team/Phased 工作，通常采用可独立寻址的角色任务，
+并约定能够启动接收方下一回合的获准路线；仅有结果送达还不够。Direct 短审查和
+有界证据 subagent 仍可在父任务当前回合内使用。混合模式的设计继续保留；当前
+Codex 跨回合暂停及恢复条件见[设计说明](docs/skills/work-charter/DESIGN.md#temporarily-suspended-mixed-design-and-restoration-conditions)。
+宿主具备相应启动与恢复能力后仍需用户批准选择，不因新工具出现自动迁移。
+标题简短可辨识，完整身份和 checkpoint 留在约定中。工作方式本身不会创建任务、
+扩大权限，也不保证硬隔离或跨父恢复。
 
 ## 默认模型配置与自定义
 
@@ -183,7 +189,7 @@ exact managed v0.4.0 副本的 default-reader access，并仅对该修复关闭
 `WC-INSTALL-POSTFLIGHT-F01`。该修复检查点的 package 仍为 managed v0.4.0，v0.4.1 未安装。之后的
 [v0.6.3 安装接受记录](docs/skills/work-charter/STATE.md#accepted-v063-user-installation)保留该历史副本证据；
 [历史 v0.6.5 状态](docs/skills/work-charter/STATE.md#current-v065-local-candidate)记录当时的更新；
-[当前状态](docs/skills/work-charter/STATE.md#v091-local-source)承接 v0.9.1 源码与本机安装。
+[当前状态](docs/skills/work-charter/STATE.md#v092-local-source)承接 v0.9.2 源码与本机安装。
 v0.5.0 stable loaded-copy、role-delivery adherence、跨 provider 执行、cross-Harness、
 公开发布与广泛效能仍为 `UNKNOWN` 或需分别授权。
 
@@ -258,7 +264,7 @@ python -B scripts/check_source_contract.py --json
 python -B scripts/check_repository.py --json
 ```
 
-对最终变更输入执行相应检查。SOURCE checker 分别核对静态合同条款、v0.9.1 的
+对最终变更输入执行相应检查。SOURCE checker 分别核对静态合同条款、v0.9.2 的
 tree/digest 绑定和历史描述文件身份（包括 v0.7.1）；静态文案及身份检查不证明模型行为。
 当前结果见[验证记录](docs/skills/work-charter/VERIFICATION.md)。
 

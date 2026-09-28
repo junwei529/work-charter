@@ -2,14 +2,14 @@
 
 [简体中文](README.zh-CN.md)
 
-Current local source: **v0.9.1**, with complete conditional migration and continuing review; arrangement-v1 and model schema v2 are unchanged.
-See [current delivery state](docs/skills/work-charter/STATE.md#v091-local-source).
+Release source: **v0.9.2**, with explicit cross-turn continuation and a retained mixed-design recovery path; arrangement-v1 and model schema v2 are unchanged.
+See [publication state](docs/skills/work-charter/STATE.md#v092-publication).
 
 Latest published release: **[v0.9.1](https://github.com/junwei529/work-charter/releases/tag/v0.9.1)**.
 [Verified publication](docs/skills/work-charter/STATE.md#v091-publication).
-The [v0.9.1 source candidate](release/v0.9.1-candidate.json) retains its
-pre-effect snapshot; local managed-copy and bounded global-consumer evidence
-is recorded in [State](docs/skills/work-charter/STATE.md#v091-local-source).
+The [v0.9.2 source candidate](release/v0.9.2-candidate.json) retains its
+pre-effect snapshot; local review, managed-copy and bounded host-consumer status
+is recorded in [State](docs/skills/work-charter/STATE.md#v092-local-source).
 
 Keep complex AI projects moving across handoffs—and through to delivery.
 
@@ -57,7 +57,10 @@ Independent context and continuous progress are separate choices.
 Continuous work covers execution, checks, review, repair, acceptance and the next
 already-approved item. Cross-phase progression needs advance approval of a
 bounded phase set and its transition conditions. A prompt cannot guarantee
-background scheduling or reliable delivery; use actual supported return routes.
+background scheduling or reliable delivery. Name the recipient, supported
+next-turn route and next authorized action; message arrival, activation,
+completion and acceptance are separate. Recover a missing handoff without
+repeating completed work or adding polling/ACK loops.
 
 ## Existing projects
 
@@ -80,8 +83,9 @@ Review products, Reviewer continuity and task/subagent carriers are separate
 choices. Prefer one reliable continuing R for related direction, plan and
 implementation reviews; use another only for a real independence, reliability,
 expertise, access or authorized parallel-review need. Across independent O/P
-tasks, an addressable R task may preserve continuity; within one supported task
-tree, a continuing R subagent may suffice. Each review still names its product,
+tasks, an addressable R task can preserve continuity without depending on a
+different parent's active turn. A bounded R subagent can serve an active parent;
+cross-turn reuse also requires actual parent reactivation and recovery. Each review still names its product,
 author and acceptance owner. Prior review is not authorship, but R must not
 independently review a product or design decision it materially authored.
 Context reuse is not a cache-hit or cost guarantee.
@@ -92,10 +96,17 @@ Context reuse is not a cache-hit or cost guarantee.
 - **Executor:** Implements, checks, repairs, and delivers authorized work.
 - **Reviewer:** Independently inspects an actual direction, plan, or implementation product against applicable instructions, the agreement, and evidence. The original author corrects findings; the same valid Reviewer rechecks.
 
-Roles may use continuing subagents, separate tasks, or a mix where permission,
-user intervention, continuity, and return routes support them. Separate roles
-do not require separate top-level tasks. A work arrangement does not itself
-create tasks, expand permissions, or guarantee isolation or recovery.
+Formal Team/Phased work that must continue after an upstream turn ends normally
+uses independently addressable role tasks and an authorized route that starts
+the recipient's next turn. Result arrival alone is insufficient. Direct short
+review and bounded evidence subagents remain useful within an active parent.
+Mixed carriers remain a supported design where actual host reactivation and
+recovery fit; the current Codex cross-turn suspension and restoration conditions
+are retained in [Design](docs/skills/work-charter/DESIGN.md#temporarily-suspended-mixed-design-and-restoration-conditions).
+User-approved selection is still required; a new tool does not migrate work.
+Use short recognizable titles and retain full identities/checkpoints in the
+agreement. A work arrangement creates no tasks or permissions and guarantees
+neither isolation nor recovery.
 
 ## Default models and customization
 
@@ -222,8 +233,8 @@ default-reader access to the exact managed v0.4.0 copy and closed
 managed v0.4.0; v0.4.1 was not installed. The later
 [accepted v0.6.3 installation](docs/skills/work-charter/STATE.md#accepted-v063-user-installation)
 records that historical copy; [historical v0.6.5 state](docs/skills/work-charter/STATE.md#current-v065-local-candidate)
-records that update. [Current state](docs/skills/work-charter/STATE.md#v091-local-source)
-tracks the v0.9.1 source revision and separate installation state. Stable v0.5.0 loaded-copy behavior,
+records that update. [Current state](docs/skills/work-charter/STATE.md#v092-local-source)
+tracks the v0.9.2 source revision and separate installation state. Stable v0.5.0 loaded-copy behavior,
 role-delivery adherence, cross-provider execution, cross-Harness behavior,
 public release, and broad efficacy remain `UNKNOWN` or separately authorized.
 
@@ -309,7 +320,7 @@ python -B scripts/check_repository.py --json
 ```
 
 Run the relevant checks against the final changed input. The SOURCE checker
-separates static contract clauses from the required v0.9.1 tree/digest binding
+separates static contract clauses from the required v0.9.2 tree/digest binding
 and preserves historical descriptor identities, including v0.7.1.
 Static wording and identity
 checks do not prove model behavior. See

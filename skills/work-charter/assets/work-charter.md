@@ -16,7 +16,7 @@ worktree. Remove unused prompts and keep pointers instead of copied content.
 - Canonical locator and revision: `<portable locator and comparable freshness marker>`
 - Standing-policy locator: `<if applicable; otherwise none>`
 - Intended workspace and writer: `<workspace/worktree and one-writer boundary>`
-- Role owners, carriers and review route: `<primary or actual O/P/E/R responsibilities; task/subagent/mixed carriers, reachable stable checkpoint and finding/disposition routes>`
+- Role owners, carriers and review route: `<primary or actual O/P/E/R responsibilities; selected carriers, parent/recipient lifetime, next-turn activation where required, stable checkpoint and finding/disposition routes>`
 - Review product and timing: `<actual result, implementation plan or overall direction; required gate, applicable instructions/contract, input, original author and assessor>`
 - Reviewer continuity and carrier: `<one reliable continuing R for related products where supported; real reason for another R; exact request/return route across the selected carriers>`
 - Resolved execution metadata: `<for each newly resolved task/role: arrangement, contract format (legacy level only if applicable),
@@ -97,7 +97,9 @@ coverage aids, not semantic proof.>
 aggregate cost/effect budget, intervention preference and exception stops.
 State whether first E-to-R review and same-scope original-author repair/same-R
 re-review are preauthorized; P receives the stable or exception result and
-retains acceptance. Distinguish permission from actual continuation capability.
+retains acceptance. Name the exact recipient, supported next-turn activation
+route and next authorized action for each dependent handoff; distinguish
+permission, message arrival, activation, completion and acceptance.
 For cross-phase continuation, cite advance approval of the bounded phase set,
 outcomes, transition conditions and total limits; otherwise the next unapproved
 Phase remains a user gate. Preserve explicit old gates until amended.>
@@ -131,8 +133,12 @@ and returns its acceptance/correction/decision disposition to E. Record only for
 within the authorized single-writer window; mechanical closeout does not recurse
 into acceptance of its records. Retain cumulative review history. Configuration
 choice does not enable a listed role or authorize delivery or action. Distinct
-responsibilities may use continuing subagents or separate tasks only when
-permission, continuity, user intervention and result reachability fit.>
+responsibilities that outlive an upstream turn normally use separate addressable
+tasks with a supported next-turn route. Bounded subagents may return within an
+active parent turn. Cross-turn mixed carriers require actual host reactivation,
+addressing/recovery and approved selection; keep a suspended design in its
+existing design owner, not as a competing active default. Use short task labels;
+full identities and checkpoints remain in the contract.>
 
 ## Task Or Role Prompt
 

@@ -1,5 +1,44 @@
 # Work Charter Design
 
+## v0.9.2 carrier lifetime and continuation
+
+Formal asynchronous Team/Phased responsibilities normally use independently
+addressable tasks with authorized next-turn routes. Direct bounded review and
+evidence subagents remain useful within an active parent turn. Delivery,
+activation, completion and acceptance are distinct; the return contract names
+the recipient, next action, progression limit and exception stops. Existing
+E-to-R first review and original-author/same-R correction loops retain their
+authorization and acceptance boundaries. Carrier changes do not change models.
+Short recognizable task titles are a portable usability principle; exact host
+length limits belong to the user's host policy, not the package schema.
+
+### Temporarily suspended mixed design and restoration conditions
+
+The retained design has P supervising continuing E/R subagents, and optionally
+O supervising P, while a reliable R reviews related O/P/E products. In the
+reported Codex behavior, completion can reach a parent without starting a new
+turn after that parent ended its turn. Accordingly the host's cross-turn formal
+mixed default is suspended, not deleted. This is a dated host limitation, not
+a claim about every provider, host, or bounded subagent.
+
+To reconsider this design, establish that completion can start an ended parent's
+new turn, results remain associated with the correct role/subject/checkpoint,
+and the required E/R context, addressing and recovery sustain the correction
+loop. Official capability documentation and already available normal-use
+evidence may support that decision; no benchmark, monitoring job or dedicated
+efficacy study is required or authorized by this revision. Mere message delivery
+or a newly visible tool is insufficient. The owner proposes restoration and the
+user approves selection for affected work; no background reactivation, automatic
+migration or model change follows. Keep cumulative findings, consumed limits,
+writer state and frozen combinations at a declared switch checkpoint. The
+existing design owner retains this recovery route; no archive copy or new
+configuration toggle is needed.
+
+Arrangement-v1, model schema v2, package model/UI bytes and production installer
+behavior stay unchanged. Approved local scope covers source, necessary host
+rules, independent review and managed installation; Git publication, profile
+updates and business-project migrations remain separate decisions.
+
 ## v0.9.1 conditional migration and continuing review
 
 The shared entry routes migration through the same conditional decisions as

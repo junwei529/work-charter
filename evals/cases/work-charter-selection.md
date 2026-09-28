@@ -126,15 +126,22 @@ runtime adherence.
    Direct with the required targeted independent review and exact permission
    decision; unknown complexity alone does not trigger Team or Phased.
 4. A stable output needs P/E separation but the user wants one main conversation.
-   Recommend Team with P accountable and continuing E/R carriers only if
-   independence, permission and result return are reliable. If the user needs
-   direct long-term access to R, compare a separate R task or mixed route;
-   carrier choice does not create new responsibilities or waive a required R.
+   Keep P accountable and distinguish bounded work collected within its active
+   turn from formal work that must continue after that turn ends. Normally
+   propose separate E/R tasks for the latter, with an authorized next-turn route.
+   A mixed variant requires actual parent reactivation, addressing/recovery,
+   independence and permission, plus approved selection. A host-suspended route
+   is not an available automatic-progression option merely because results arrive.
+   Explain that limit even when the user prefers one conversation. Carrier choice
+   does not create new responsibilities or waive a required R.
 5. A consequential multi-phase contract needs direction and cold recovery.
    Recommend Phased, then discuss actual O/P/E/R carriers, reachable anchor,
-   phase review products and reserved decisions. P may be O's continuing
-   subagent; O cannot bypass P to direct phase E/R. An unavailable subagent
-   result route blocks only that delivery, not the old contract's history.
+   phase review products and reserved decisions. Normally use separate formal
+   cross-turn role tasks. Retain P-as-O-child as a mixed variant only when actual
+   parent reactivation, addressing/recovery and approved host selection permit
+   it; suspended host defaults need an approved restoration decision. O cannot
+   bypass P to direct phase E/R. A missing return or activation route blocks only
+   affected delivery, not bounded auxiliary subagents or the old contract's history.
 6. An existing L1 or L2 approved contract returns after a new public-mode
    description. Keep its exact level, authority, configuration and recovery
    duty. Do not migrate it from a label change or combine distinct L0/L1/L2

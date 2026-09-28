@@ -8,7 +8,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "skills" / "work-charter"
-CURRENT_CANDIDATE = ROOT / "release" / "v0.9.1-candidate.json"
+CURRENT_CANDIDATE = ROOT / "release" / "v0.9.2-candidate.json"
+V091_CANDIDATE = ROOT / "release" / "v0.9.1-candidate.json"
+V091_CANDIDATE_SHA256 = "630dc93a4fa8a52223dbedff469bd26f60a7a6d9c37e6b18a9dd40c463660f68"
+V091_PACKAGE_TREE = "39659168b5fb20899335dd0923c87b65d5a95e36"
 V090_CANDIDATE = ROOT / "release" / "v0.9.0-candidate.json"
 V090_CANDIDATE_SHA256 = "dba414a1b9af043656ef390a1e62973e2b02fdb7788b48a47c9a2bcea42a5249"
 V090_PACKAGE_TREE = "ad4c0f4d56c47e3037c25dc84fce9a9f14c177fc"
@@ -375,7 +378,7 @@ def main():
             "P receives the complete stable or exception result",
             "advance user approval of a bounded named phase set",
             "Existing next-phase user gates remain binding",
-            "Sending does not prove receipt, inspection or acceptance",
+            "Message arrival, recipient activation, completed work and acceptance are distinct evidence",
             "Do not invent fixed repair counts, per-file approvals or ACKs",
         ]),
         "selection.contract_format_independent": contains_all(skill, [
@@ -426,7 +429,7 @@ def main():
             "Reuse a known contract, confirmed preferences, and permitted facts",
             "unknown complexity alone does not justify the most elaborate arrangement",
             "mandatory review as a gate rather than an optional preference",
-            "An ordinary carrier proposal is Direct in the primary task",
+            "For Team or Phased roles that must continue after their upstream task ends its turn",
             "The final single work agreement states",
         ]),
         "authority.loading_and_assessment_do_not_expand_authority": contains_all(skill, [
@@ -688,7 +691,7 @@ def main():
             not isinstance(parsed_successor.get(field), dict)
             for field in ("package", "evidence_states", "lineage")
         ):
-            raise ValueError("v0.9.1 candidate requires object package, evidence_states, and lineage")
+            raise ValueError("v0.9.2 candidate requires object package, evidence_states, and lineage")
         successor = parsed_successor
     except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
         successor_error = str(error)
@@ -698,10 +701,13 @@ def main():
     checks["candidate.v090_historical_identity"] = (
         hashlib.sha256(V090_CANDIDATE.read_bytes()).hexdigest() == V090_CANDIDATE_SHA256
     )
-    checks["candidate.v091_identity"] = (
+    checks["candidate.v091_historical_identity"] = (
+        hashlib.sha256(V091_CANDIDATE.read_bytes()).hexdigest() == V091_CANDIDATE_SHA256
+    )
+    checks["candidate.v092_identity"] = (
         successor.get("schema") == "work-charter-local-release-candidate/v1"
         and successor.get("product") == "work-charter"
-        and successor.get("version") == "0.9.1"
+        and successor.get("version") == "0.9.2"
         and successor.get("public_identity") == "junwei529/work-charter"
         and successor.get("candidate_state") == "PENDING_INDEPENDENT_REVIEW"
         and successor.get("human_release_notes_review") == "PENDING"
@@ -710,9 +716,9 @@ def main():
         and successor.get("package", {}).get("files") == sorted(EXPECTED_FILES)
         and successor.get("package", {}).get("path") == "skills/work-charter"
         and successor.get("lineage") == {
-            "historical_package_tree": V090_PACKAGE_TREE,
-            "previous_candidate": "release/v0.9.0-candidate.json",
-            "source_commit": "e86f5019ddd882521fbacac30633c073f03d05a6",
+            "historical_package_tree": V091_PACKAGE_TREE,
+            "previous_candidate": "release/v0.9.1-candidate.json",
+            "source_commit": "92beef7fd9abab5e06082d4ec78b331e5e36f8c0",
         }
         and successor.get("evidence_states") == {
             "broad_product_efficacy": "UNKNOWN",
@@ -724,11 +730,11 @@ def main():
             "public_release": "NOT_AUTHORIZED",
             "role_delivery_runtime": "UNKNOWN",
             "source_contract": "REQUIRES_FRESH_DETERMINISTIC_CHECK",
-            "stable_installed_copy": "NOT_AUTHORIZED",
+            "stable_installed_copy": "AUTHORIZED_NOT_APPLIED",
         }
     )
     checks["candidate.current_package_binding"] = (
-        checks["candidate.v091_identity"]
+        checks["candidate.v092_identity"]
         and actual_package_tree is not None
         and current_package_sha256 is not None
         and successor.get("package", {}).get("tree") == actual_package_tree
@@ -1488,7 +1494,7 @@ def main():
         ),
         "result": "PASS" if not failures else "FAIL",
         "source_release_identity": (
-            "BOUND_TO_V091_CANDIDATE"
+            "BOUND_TO_V092_CANDIDATE"
             if current_package_bound
             else "UNBOUND_PENDING_SUCCESSOR_VERSION_AND_DESCRIPTOR"
         ),

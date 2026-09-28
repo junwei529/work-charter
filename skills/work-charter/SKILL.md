@@ -67,6 +67,12 @@ current-task or durable continuity as needed. This contract marker, the Skill
 version and the model-configuration schema are separate identities. Ordinary
 work without an adopted Charter needs none of these records.
 
+For formal work that must continue after an upstream turn ends, normally use
+separately addressable role tasks with a supported next-turn return route.
+Bounded subagents remain useful within an active parent turn. Cross-turn mixed
+carriers require actual host reactivation/recovery support and approved selection;
+see Conditional Work Selection and Authorized Progression below.
+
 Existing L0-L4 contracts keep their own approved terms and frozen combinations.
 L0 means no active Charter, L1 a current-task agreement, L2 durable Direct,
 L3 Team and L4 Phased in the compatibility path. A new package does not migrate

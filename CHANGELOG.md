@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.9.2
+
+- Choose formal asynchronous role carriers by actual next-turn capability;
+  normally use independently addressable tasks while preserving bounded subagents.
+- Keep the mixed design with explicit restoration conditions; host-specific
+  suspension does not remove it or disable every host's subagents.
+- Separate result arrival, recipient activation, completion and acceptance.
+  Preserve direct authorized repair loops and recover only missing handoffs.
+- Use short recognizable task labels, with exact limits in host policy.
+- Keep arrangement-v1, model schema/defaults, old contracts and installer logic;
+  no automatic migration, efficacy study or public effect follows.
+
 ## v0.9.1
 
 Includes the locally delivered v0.9.0 changes below; v0.9.0 was not separately published.

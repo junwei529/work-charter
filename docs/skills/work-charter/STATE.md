@@ -1,5 +1,54 @@
 # Work Charter State
 
+## v0.9.2 publication
+
+Status: **PUBLICATION_AUTHORIZED**, 2026-09-28.
+After the local delivery below, the user authorized source commit, push,
+annotated v0.9.2 tag and a formal GitHub Release. The target is
+`junwei529/work-charter`; the verified remote main baseline is
+`92beef7fd9abab5e06082d4ec78b331e5e36f8c0`. Publication is not yet claimed
+at this preparation checkpoint. The subsequent publication record will bind
+the source commit, tag and Release readback without moving the source tag.
+
+The local package and installation evidence below remain applicable. Existing
+contracts, frozen models and project migrations are unchanged; no further
+installation or efficacy evaluation is part of publication. Historical local
+authorization statements below describe their own checkpoints. The immutable
+candidate descriptor retains its pre-effect state.
+
+## v0.9.2 local source
+
+Status: **LOCAL_DELIVERY_COMPLETE**, 2026-09-28.
+The user approved v0.9.2 source, necessary host-rule changes, independent review
+and managed installation, including retaining the temporarily suspended mixed
+design and its restoration conditions. The unchanged Git baseline is
+`92beef7fd9abab5e06082d4ec78b331e5e36f8c0`; this delivery remains uncommitted.
+
+Independent R1 covered source, host consumers and the application method. F01
+(P2: scenario consumers omitted ended-parent activation) and F02 (P3: stale
+current-candidate navigation) were repaired by the original writer. The same R2
+closed both findings, found no new issue and reviewed the installation method.
+All 21 reviewed source paths and three host-rule paths were applied with exact
+content readback and existing owner/DACL preservation. Final records preserve
+that review history and the immutable pre-review descriptor.
+
+The six-file package tree is `452072a661cf91d49e3f14b9345c72f13b506759`.
+The authorized managed update completed with exit 0; the installed state is
+MANAGED v0.9.2. Six files match the reviewed package, all 11 permission records
+are preserved, and seven old files plus their permission snapshot remain as
+private recovery material. The transaction root is empty; ordinary-tool readback
+also passed. The personal model file was unchanged. See Verification for
+bounded check coverage and preparation failures.
+
+Source, host-rule and installation writers are closed at this local checkpoint.
+Existing project contracts, runtime roles and frozen model combinations were
+not migrated. No commit, push, tag, Release, profile change, role dispatch, bulk
+rename, business migration, efficacy evaluation or monitoring job occurred.
+Public release remains v0.9.1. New-task runtime loading, general cross-turn
+activation, actual rollback and broad efficacy remain UNKNOWN; no further
+verification project is scheduled. Mixed-mode restoration or project migration
+requires its own applicable user decision.
+
 ## v0.9.1 publication
 
 Status: **PUBLISHED_VERIFIED**, observed 2026-09-27 (Asia/Shanghai).

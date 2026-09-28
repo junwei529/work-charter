@@ -1,13 +1,12 @@
 # Work Charter
 
-当前本地源码为 [v0.9.1](STATE.md#v091-local-source)，统一条件式迁移与持续 R。
-本机 managed installed copy 已按单独授权更新至 v0.9.1；arrangement-v1、模型 schema v2
-及以下历史发布证据保留原范围。
+本次发布源码为 [v0.9.2](STATE.md#v092-publication)，明确跨回合接续，保留混合模式恢复条件。
+源码、审查与安装状态以该入口为准；arrangement-v1、模型 schema v2 和历史发布证据保持原范围。
 
 最新正式发布版本为 [v0.9.1](STATE.md#v091-publication)。
 本版使用 arrangement-v1 合同与模型 schema v2，支持条件式迁移、授权内推进，
 并在能力支持时复用持续独立 Reviewer。
-[候选](../../../release/v0.9.1-candidate.json)保留发布前快照，历史发布证据仍绑定其原包。
+[候选](../../../release/v0.9.2-candidate.json)保留发布前快照，历史发布证据仍绑定其原包。
 
 [English](README.md)
 

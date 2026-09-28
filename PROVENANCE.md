@@ -1,5 +1,14 @@
 # Provenance And Transformation Boundary
 
+## v0.9.2 local source
+
+The new six-file candidate follows the immutable v0.9.1 descriptor and package.
+Four instruction/template files change; model defaults, UI metadata, schema and
+production installer behavior retain their bytes. Current navigation and
+version-binding checks follow v0.9.2; historical descriptors and publication
+records remain pinned. Local source/application/installation evidence is owned
+by State and Verification, not inferred from candidate identity.
+
 ## v0.9.1 local source
 
 The new descriptor binds the six-file package following the locally delivered

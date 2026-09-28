@@ -135,21 +135,28 @@ mandatory review as a gate rather than an optional preference. Distinguish the
 reviewed products, continuity of the Reviewer, and its carrier: several products
 do not imply several Reviewers, and independent review does not imply a new
 task. Apply Review Input At Any Level before choosing a carrier for R.
-For each actual responsibility, choose a continuing subagent, a separately addressable task,
-or a mix according to user intervention, reliable continuity, permission and
-result reachability. Explain material carrier alternatives by their effect on
-intervention, reuse, handoff and cost; do not turn a topology clarification into
-approval of a different carrier. P can continue as O's subagent; E and R need independent
-responsibility and a reachable return route, not necessarily top-level tasks.
-An ordinary carrier proposal is Direct in the primary task, Team with P in the
-main task and continuing E and applicable R subagents, or Phased with a long-lived O and
-phase-local P/E/R carriers. Choose separate role tasks or a mix when direct
-intervention or cross-parent recovery warrants them.
-Subagents do not guarantee zero context cost, hard isolation or recovery across
-a different parent task. If a carrier cannot sustain the agreed responsibility,
-stop the affected delivery and choose an authorized route. Applicable host,
-project and approved delivery rules still govern the actual route; this Skill
-does not change them. Ask about cold
+Choose carriers by the required lifetime of the work, user intervention,
+permission and actual continuation capability. For Team or Phased roles that
+must continue after their upstream task ends its turn, normally propose
+separately addressable tasks: P/E/applicable R for Team, O/P/E/applicable R for
+Phased. Reuse a suitable existing role task instead of creating a duplicate.
+Direct stays in the primary task; a bounded independent review or evidence
+subagent can return while that primary turn is still active.
+Result delivery alone does not establish that an ended recipient can start a
+new turn. Apply Authorized Progression to every dependent handoff. A mixed or
+continuing-subagent arrangement is eligible for cross-turn work only when the
+host actually supports the required parent reactivation, addressing and recovery
+and the user approves that carrier choice. A host-specific suspension applies
+to the affected host/workflow, not to every host or bounded auxiliary subagent.
+Do not offer a suspended route as a working automation option or silently adopt
+it when a tool later appears. Explain material alternatives by intervention,
+reuse, handoff and cost; topology clarification does not approve a change.
+Subagents do not guarantee zero context cost, hard isolation or cross-parent
+recovery; separate tasks alone do not guarantee activation either. If a carrier
+cannot sustain its duty, stop affected delivery and use an authorized recovery
+route. Applicable host, project and approved delivery rules still govern it.
+Use short, recognizable task titles; keep full identity and checkpoint routing
+in the agreement rather than treating a title as an address. Ask about cold
 recovery or handoff only when it changes the required anchor or route.
 
 The final single work agreement states the arrangement and reason, outcome and
@@ -164,7 +171,8 @@ the proposal.
 
 Before saying the choices are complete, show one concise arrangement the user
 can understand: who works, who reviews which products, who accepts, how far work
-continues and how results return. Distinguish confirmed or still-valid reused
+continues, how results return and what starts the receiving owner's next action
+after its turn ends. Distinguish confirmed or still-valid reused
 answers from recommendations and unresolved decisions. Account for applicable
 material branches; omit inapplicable ones without inventing a checklist or
 question quota. Ask only unresolved user-owned choices. A material decision
@@ -207,6 +215,12 @@ the work subject, approvals, open findings, failures, consumed budgets, writer,
 checkpoint and complete frozen models. Retain an old gate unless its authorized
 amendment explicitly changes it. Project-contract migration and personal-model
 file conversion are separate effects; one grants no authority for the other.
+For a carrier change, retain completed E/R evidence and the next unprocessed
+handoff. Make the old/new active role boundary explicit before resuming so only
+one chain handles a checkpoint and only one E writes. Restore missing delivery
+or disposition, not already completed implementation or review. New role
+creation, future model resolution and preserved frozen combinations remain
+separate declared decisions; changing a carrier does not select new models.
 
 ## Authorized Progression
 
@@ -248,15 +262,24 @@ Route it to the lowest owner already able to decide; continue independent
 authorized work. Do not invent fixed repair counts, per-file approvals or ACKs.
 Known one-shot, human-review and frozen evidence-consumption stops still bind.
 
-Actual continuation needs a capable approved carrier and reachable result route.
-Use supported subagent completion or the authorized task return route. Sending
-does not prove receipt, inspection or acceptance, and prose cannot guarantee a
-future wake-up. Preserve a delivery/terminal gap without duplicate consequential
-work; the existing owner handles the affected continuation or requests the
-missing capability/permission. No polling, repeated unchanged sends, terminal
-ACK, new automation or service follows from this section. Report completion,
-material exceptions and real user decisions; ordinary factual notices create no
-receipt gate. Preserve the next authorized action at recovery.
+Actual continuation needs both authority and a capable carrier. In the existing
+Mandate, Definition or delivery agreement, name the approved work limit, exact
+recipient/result route, how its next turn starts, its next authorized action and
+exception stops. A decision-bearing handoff states the required disposition or
+action, not only "for information" while assuming execution will follow.
+Use supported subagent completion within an active parent turn, or an approved
+route that can initiate a recipient's later turn. Message arrival, recipient
+activation, completed work and acceptance are distinct evidence; sending does
+not prove them, and prose cannot guarantee a future wake-up. After a capable
+handoff the sender may end its turn; do not end a parent turn that still owns
+collection of bounded subagent results and assume an unsupported later wake-up.
+This is not authority for indefinite waiting or keeping a role busy to stay alive.
+Preserve a delivery/terminal gap without duplicate consequential work. The
+existing owner recovers only the missing handoff/disposition under its approved
+route or presents the missing capability/permission with the next safe action.
+No polling, repeated unchanged sends, terminal ACK, new automation or service
+follows from this section. Report completion, material exceptions and real user
+decisions; ordinary factual notices create no receipt gate.
 
 ## Managed Workstream And Multiple Worktrees
 
@@ -794,8 +817,9 @@ package's single review/writer boundaries and all prior findings.
 
 Choose a carrier that can actually sustain this continuity. Across independent
 O/P tasks, consider a separately addressable R task with authorized reachable
-request and return routes. Within one supported task tree, a continuing R
-subagent may suffice. Do not assume a child is addressable from another parent;
+request and return routes. Within an active parent turn, a bounded R subagent may suffice. A continuing R
+subagent across turns must also meet the host's reactivation and recovery
+conditions in Conditional Work Selection and Authorized Progression. Do not assume a child is addressable from another parent;
 if shared access is unavailable, explain the carrier or limited-R tradeoff
 before changing the agreement. A shared R handles one identified stable input
 at a time. O can request review of its own planning product; sharing that R

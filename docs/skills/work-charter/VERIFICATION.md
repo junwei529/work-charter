@@ -1,5 +1,67 @@
 # Work Charter Verification
 
+## v0.9.2 publication verification
+
+Publication reuses the accepted local SOURCE 33/33 and installation evidence
+below. The source package is unchanged; publication adds current navigation and
+Release notes, with independent review of the complete commit scope and public
+content. Final repository provenance and whitespace checks apply to this input.
+Remote ref and Release readback remain required before publication is reported.
+No scenario evaluation, lifecycle matrix or performance study is included.
+
+## v0.9.2 local verification
+
+The user-approved local delivery covers carrier lifetime/continuation, a retained
+mixed-design recovery path and short-title host consumers. SOURCE passed 33/33
+static clauses with the required v0.9.2 tree/digest binding and historical
+descriptor pins; repository verification passed with 104 mapped files. Skill
+metadata validation passed. These are static/content checks, not behavior proof.
+Package model defaults and UI metadata retain their bytes, arrangement-v1 and
+model schema v2 are unchanged, and production installation code is unchanged;
+only the existing installer's self-test source-version binding follows v0.9.2.
+
+Independent R1 read the complete candidate diff and necessary unchanged
+consumers, including Git review guidance and scenario specifications. F01 (P2)
+found that the selection and P/E scenario carrier variants still omitted actual
+ended-parent activation. The repair retains the mixed variant while requiring
+reactivation, addressing/recovery, approved selection and applicable suspension.
+F02 (P3) found stale current-version text in the scenario index; it now links to
+State. The same R2 re-reviewed both fixes and the application/installation
+methods: PASS, no open findings. Its input covered 21 source paths and three
+host-rule paths. Scenario documents were aligned; no scenario evaluation ran.
+
+Package tree: `452072a661cf91d49e3f14b9345c72f13b506759`.
+SOURCE file-list SHA-256:
+`23c1c82927a3b768d980ccdb428aeed13dcd8d7b0881bd4a43347711141dc373`.
+The manager uses a different digest serialization; installed manager SHA-256:
+`377e7cb0f53fe878a5c92975a27ee55175d8a4bd0ca93a969935482bdbb474f8`.
+The application process ended with exit 0 and read back all 24 reviewed targets
+while preserving existing owner/DACL. The update dry-run and actual managed
+update also ended with exit 0. Installed state is MANAGED v0.9.2; 6/6 files,
+11 original permission records, seven retained prior files and an empty
+transaction root were verified. An ordinary-tool readback independently matched
+the applied source/global files and installed package. Personal model-file bytes
+were unchanged during installation. No rollback was exercised.
+
+Preparation evidence is retained: two exact-anchor failures stopped inside
+temporary candidates before any live source/global write; a first SOURCE check
+failed on two replaced wording anchors and the repository check on its mapping
+pin. Correcting the existing bindings closed those failures. A temporary reader
+initially rendered Chinese through a legacy stdout encoding; explicit UTF-8
+fixed transport without rewriting inputs. Oversized lookup outputs were narrowed
+before material use; the reviewer likewise supplemented one truncated read.
+An old private backup-directory listing was denied; it was not needed or retried,
+and the current manager/source supplied the necessary installation method.
+No-index whitespace checks returned the normal difference status without
+whitespace errors; host newline-conversion warnings were transport/context
+notices, not product failures. Native terminals were preserved.
+
+Later record-only closeout is mechanically checked against this evidence and
+does not change the package or reset findings. No lifecycle matrix, model/cache
+benchmark, efficacy study, monitoring job or business-project operation was run.
+Actual fresh loading, general cross-turn activation, rollback behavior and cost
+improvement remain UNKNOWN. Latest public release remains v0.9.1.
+
 ## v0.9.1 publication verification
 
 Publication R4 independently inspected the complete 21-path increment from

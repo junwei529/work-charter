@@ -78,11 +78,16 @@ Use separate snapshots, without changing the approved batching contract:
   instructions, actual diff, tests, consumers, protected boundaries and
   cumulative findings. R checks behavior and regression, while P handles
   acceptance. E may self-check and repair, but cannot act as independent R.
-- Put P in the main task and E/R in reliable continuing subagents for one
-  variant; use separately addressable tasks for another variant when the user
-  needs direct long-term intervention. Both need the same responsibility,
-  writer, independence and result-route proofs. Do not infer zero context
-  cost, hard isolation or cross-parent recovery from a subagent label.
+- Retain both carrier variants: P with E/R subagents, and separately addressable
+  formal role tasks. Distinguish results collected during P's active turn from
+  work requiring P to start another turn after ending the previous one. The
+  latter normally uses separate tasks with supported next-turn routes; a mixed
+  variant requires actual parent reactivation, addressing/recovery and approved
+  selection, including restoration of a suspended host route. Delivery alone
+  cannot qualify that variant. Both retain responsibility, writer, independence
+  and result-route checks. Do not infer zero context cost, hard isolation or
+  cross-parent recovery from a subagent label. This revision updates the scenario
+  specification; it does not authorize running an evaluation.
 - If an E-side implementation review finds an upstream Definition defect,
   route that issue to P. E does not silently rewrite permission or acceptance;
   an approved prior Definition does not exempt its material contradiction.

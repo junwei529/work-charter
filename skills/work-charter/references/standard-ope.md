@@ -54,10 +54,15 @@ scope, original author and acceptance owner remain distinct on every request.
 Do not create one R per author. A shared carrier must support each approved
 request/result route; a child of one independent task is not assumed to be a
 child accessible from another.
-P may continue as O's subagent when context, permission, intervention and the
-result route remain reliable; E/R may likewise be continuing subagents or
-separately addressable tasks. Role separation alone does not require a top-level
-task, and a subagent does not guarantee hard isolation or cross-parent recovery.
+For formal Phased work that outlives an upstream turn, normally keep O/P/E and
+applicable R separately addressable, with authorized routes that start the
+recipient's subsequent turn. Reuse suitable existing tasks. P-as-O-child or
+E/R-as-P-children remain possible mixed designs only when the host's parent
+reactivation, addressing and recovery support the agreed lifetime and the user
+approves the choice. Apply Conditional Work Selection and Authorized Progression;
+do not substitute message arrival for recipient activation. Bounded auxiliary
+subagents within active parent turns remain useful. Neither carrier proves hard
+isolation, and child continuity does not imply cross-parent recovery.
 
 The portable responsibility hierarchy is:
 

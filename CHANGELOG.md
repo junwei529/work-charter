@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.9.4 (local delivery; not published)
+## v0.9.4
 
 - Make user decisions understandable through outcomes, material tradeoffs and
   relevant evidence; keep technical verification with the responsible Agent.

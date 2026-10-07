@@ -2,14 +2,14 @@
 
 [English](README.md)
 
-当前本地源码：**v0.9.4**，明确用户决策、技术核实责任和授权内推进，不增加审批表单。
-[当前交付状态](docs/skills/work-charter/STATE.md#v094-local-source)。
+当前源码：**v0.9.4**，明确用户决策、技术核实责任和授权内推进，不增加审批表单。
+[当前交付状态](docs/skills/work-charter/STATE.md#v094-publication)。
 
-最新已发布正式版本：**[v0.9.2](https://github.com/junwei529/work-charter/releases/tag/v0.9.2)**。
-[发布核验记录](docs/skills/work-charter/STATE.md#v092-publication)。
+最新已发布正式版本：**[v0.9.4](https://github.com/junwei529/work-charter/releases/tag/v0.9.4)**。
+[发布核验记录](docs/skills/work-charter/STATE.md#v094-publication)。
 [v0.9.4 源码候选](release/v0.9.4-candidate.json)保留实施前快照；
 本地审查、安装及指定全局消费者的状态见
-[状态记录](docs/skills/work-charter/STATE.md#v094-local-source)。
+[状态记录](docs/skills/work-charter/STATE.md#v094-publication)。
 
 让复杂的 AI 项目接得住，也交得出。
 
@@ -189,7 +189,7 @@ exact managed v0.4.0 副本的 default-reader access，并仅对该修复关闭
 `WC-INSTALL-POSTFLIGHT-F01`。该修复检查点的 package 仍为 managed v0.4.0，v0.4.1 未安装。之后的
 [v0.6.3 安装接受记录](docs/skills/work-charter/STATE.md#accepted-v063-user-installation)保留该历史副本证据；
 [历史 v0.6.5 状态](docs/skills/work-charter/STATE.md#current-v065-local-candidate)记录当时的更新；
-[当前状态](docs/skills/work-charter/STATE.md#v094-local-source)承接 v0.9.4 源码与本机安装。
+[当前状态](docs/skills/work-charter/STATE.md#v094-publication)承接 v0.9.4 源码与本机安装。
 v0.5.0 stable loaded-copy、role-delivery adherence、跨 provider 执行、cross-Harness、
 公开发布与广泛效能仍为 `UNKNOWN` 或需分别授权。
 

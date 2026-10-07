@@ -1,5 +1,18 @@
 # Provenance And Transformation Boundary
 
+## v0.9.4 public release record
+
+The accepted public source commit is
+`81422221d0bfcd6ea8a18b668a03efa0195fa850`. Its six-file package tree is
+`1dc19eb9da2b257f2cf1aeac53775f107c2d119b`. Annotated tag object
+`25bd0857b24546f08b43af802e7c91bc6d7d8e3f` peels to that source commit.
+The formal non-draft, non-prerelease Latest Release at readback is
+[v0.9.4](https://github.com/junwei529/work-charter/releases/tag/v0.9.4).
+Remote refs, target and exact reviewed body received separate readback. The
+previous v0.9.3 default update is included in this release; no separate v0.9.3
+publication is claimed. This later records-only closeout preserves all package
+bytes, candidate snapshots and historical lineage.
+
 ## v0.9.4 local source
 
 The successor retains the immutable v0.9.3 descriptor and its six-file package

@@ -2,14 +2,14 @@
 
 [简体中文](README.zh-CN.md)
 
-Current local source: **v0.9.4**, clarifying user decisions, technical responsibility and authorized progression without extra approval forms.
-See [current delivery state](docs/skills/work-charter/STATE.md#v094-local-source).
+Current source: **v0.9.4**, clarifying user decisions, technical responsibility and authorized progression without extra approval forms.
+See [current delivery state](docs/skills/work-charter/STATE.md#v094-publication).
 
-Latest published release: **[v0.9.2](https://github.com/junwei529/work-charter/releases/tag/v0.9.2)**.
-[Verified publication](docs/skills/work-charter/STATE.md#v092-publication).
+Latest published release: **[v0.9.4](https://github.com/junwei529/work-charter/releases/tag/v0.9.4)**.
+[Verified publication](docs/skills/work-charter/STATE.md#v094-publication).
 The [v0.9.4 source candidate](release/v0.9.4-candidate.json) retains its
 pre-effect snapshot; local review, managed-copy and bounded host-consumer status
-is recorded in [State](docs/skills/work-charter/STATE.md#v094-local-source).
+is recorded in [State](docs/skills/work-charter/STATE.md#v094-publication).
 
 Keep complex AI projects moving across handoffs—and through to delivery.
 
@@ -233,7 +233,7 @@ default-reader access to the exact managed v0.4.0 copy and closed
 managed v0.4.0; v0.4.1 was not installed. The later
 [accepted v0.6.3 installation](docs/skills/work-charter/STATE.md#accepted-v063-user-installation)
 records that historical copy; [historical v0.6.5 state](docs/skills/work-charter/STATE.md#current-v065-local-candidate)
-records that update. [Current state](docs/skills/work-charter/STATE.md#v094-local-source)
+records that update. [Current state](docs/skills/work-charter/STATE.md#v094-publication)
 tracks the v0.9.4 source revision and separate installation state. Stable v0.5.0 loaded-copy behavior,
 role-delivery adherence, cross-provider execution, cross-Harness behavior,
 public release, and broad efficacy remain `UNKNOWN` or separately authorized.

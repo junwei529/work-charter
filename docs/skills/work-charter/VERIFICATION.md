@@ -1,5 +1,35 @@
 # Work Charter Verification
 
+## v0.9.4 publication verification
+
+Independent publication review covered the complete 18-path source increment,
+material unchanged consumers, public privacy, notes and commit/publication method:
+PASS with no material findings. Prior protected-boundary and preparation findings
+remain closed. Review input SHA-256:
+`32882041c04a118a81d74db656f6083ea833d8e8c6981ec42072f41965aa7760`.
+SOURCE 33/33, Skill metadata and local installation checks were reused for the
+unchanged six-file package; pre-publication repository verification passed 106
+mapped files and whitespace checks passed. Exact staged paths and blob identities
+matched the reviewed bytes before commit; commit exited 0 with the expected
+parent, package tree and clean worktree.
+
+The verified actor and target used GitHub CLI's credential route through a
+command-local Git helper, without persistent credential/configuration changes.
+Atomic non-forced main/tag push exited 0; remote readback verified main, annotated
+tag and peeled source. Release creation exited 0; API readback confirmed id
+`405401671`, source `81422221d0bfcd6ea8a18b668a03efa0195fa850`,
+non-draft/non-prerelease/Latest state and the exact reviewed body. Body SHA-256:
+`167f2564a352e606793eb2fad9ec1de65f2b8c26704b1b3419b011eeb527d818`.
+
+One temporary preflight assertion stripped the Git status-column whitespace and
+failed before networking or mutation. It was corrected with the original terminal
+retained, then the same read-only preflight completed. No product repair or
+permission expansion followed. This records-only increment updates canonical
+publication navigation and provenance without altering the tag, package or
+descriptors. Its focused repository and independent-review evidence is retained
+with the publication terminals. Runtime identity, loading and behavior remain
+UNKNOWN; no efficacy evaluation or project migration was performed.
+
 ## v0.9.4 user-decision verification
 
 Proposal R1 identified a missing acceptance/trust/material-risk boundary; the

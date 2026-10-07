@@ -1,5 +1,32 @@
 # Work Charter State
 
+## v0.9.4 publication
+
+Status: **PUBLISHED_VERIFIED**, observed 2026-10-07 (UTC).
+After local delivery, the user authorized publication to `junwei529/work-charter`.
+Independent publication review passed the complete 18-path source increment,
+including the previously local v0.9.3 model-default update, necessary consumers,
+public privacy, Release notes and the commit/publication method. The source commit
+`81422221d0bfcd6ea8a18b668a03efa0195fa850` follows
+`f43cbcc79664c295e441624d5f49175566ff856c`; its six-file package tree is
+`1dc19eb9da2b257f2cf1aeac53775f107c2d119b`. A non-forced atomic push
+advanced remote main and created annotated tag object
+`25bd0857b24546f08b43af802e7c91bc6d7d8e3f`. Readback confirmed the tag
+peels to the reviewed source commit.
+
+The [GitHub Release](https://github.com/junwei529/work-charter/releases/tag/v0.9.4) is id
+`405401671`, non-draft, non-prerelease and Latest at readback.
+Its exact source target and reviewed body were verified separately. Existing
+SOURCE 33/33, metadata, repository and installation evidence remains valid for
+the unchanged package. Models changed only by the previously approved v0.9.3
+default update; existing tasks and frozen combinations were not rewritten.
+
+This record-only closeout preserves the published tag, all six package files,
+immutable pre-effect descriptors and earlier local-delivery history. It adds no
+profile update, installation, host-rule change, migration, model execution,
+efficacy study or monitoring job. Runtime identity, fresh loading and general
+behavior remain UNKNOWN. Earlier local sections describe their own checkpoints.
+
 ## v0.9.4 local source
 
 Status: **LOCAL_DELIVERY_COMPLETE**, 2026-10-07.

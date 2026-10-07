@@ -1,9 +1,9 @@
 # Work Charter
 
-当前本地源码为 [v0.9.4](STATE.md#v094-local-source)，明确用户决策、技术核实责任和授权内推进，不增加审批表单。
+当前源码为 [v0.9.4](STATE.md#v094-publication)，明确用户决策、技术核实责任和授权内推进，不增加审批表单。
 源码、审查与安装状态以该入口为准；arrangement-v1、模型 schema v2 和历史发布证据保持原范围。
 
-最新正式发布版本为 [v0.9.2](STATE.md#v092-publication)。
+最新正式发布版本为 [v0.9.4](STATE.md#v094-publication)。
 本版使用 arrangement-v1 合同与模型 schema v2，支持条件式迁移、授权内推进，
 并在能力支持时复用持续独立 Reviewer。
 [候选](../../../release/v0.9.4-candidate.json)保留发布前快照，历史发布证据仍绑定其原包。

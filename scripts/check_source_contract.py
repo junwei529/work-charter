@@ -8,7 +8,13 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "skills" / "work-charter"
-CURRENT_CANDIDATE = ROOT / "release" / "v0.9.2-candidate.json"
+CURRENT_CANDIDATE = ROOT / "release" / "v0.9.4-candidate.json"
+V093_CANDIDATE = ROOT / "release" / "v0.9.3-candidate.json"
+V093_CANDIDATE_SHA256 = "6c54e443cb3caeb79cd7518eb5155b392cb56f180e1c30d2d61adf4892852d34"
+V093_PACKAGE_TREE = "6038baaff619e0c5f23345541ad57e058ef198ee"
+V092_CANDIDATE = ROOT / "release" / "v0.9.2-candidate.json"
+V092_CANDIDATE_SHA256 = "2a240398d15de81f0528b8d2edf0963a3db1af1c21c50aebd1ddd65b898d1792"
+V092_PACKAGE_TREE = "452072a661cf91d49e3f14b9345c72f13b506759"
 V091_CANDIDATE = ROOT / "release" / "v0.9.1-candidate.json"
 V091_CANDIDATE_SHA256 = "630dc93a4fa8a52223dbedff469bd26f60a7a6d9c37e6b18a9dd40c463660f68"
 V091_PACKAGE_TREE = "39659168b5fb20899335dd0923c87b65d5a95e36"
@@ -104,12 +110,12 @@ roles:
       reasoning_effort: high
   planner:
     provider: openai
-    model: gpt-6-sol
+    model: gpt-6.1-sol
     parameters:
       reasoning_effort: xhigh
   executor:
     provider: openai
-    model: gpt-6-sol
+    model: gpt-6.1-sol
     parameters:
       reasoning_effort: xhigh
   reviewer:
@@ -252,9 +258,11 @@ def main():
         ]) and "## Task Or Role Prompt" in charter_asset,
         "prompts.continuation_and_real_gates": contains_all(recovery, [
             "Complete authorized work through required checks and its result route",
-            "Silence never approves the dependent action",
-            "adoption, material replan, operation permission, independent review, and acceptance gates",
-            "Repeat verification only when its input changed, it failed, or an unresolved material concern requires it",
+            "Wait for the explicit answer before dependent action",
+            "without treating silence, a default selection, timeout or tool failure as consent",
+            "preserve applicable adoption, material replan, operation permission, independent review and acceptance boundaries",
+        ]) and contains_all(skill, [
+            "broaden or repeat it only for changed inputs, failures or unresolved material concerns",
         ]),
         "prompts.startup_and_complete_expression": (
             contains_all(ui_metadata, [
@@ -691,7 +699,7 @@ def main():
             not isinstance(parsed_successor.get(field), dict)
             for field in ("package", "evidence_states", "lineage")
         ):
-            raise ValueError("v0.9.2 candidate requires object package, evidence_states, and lineage")
+            raise ValueError("v0.9.4 candidate requires object package, evidence_states, and lineage")
         successor = parsed_successor
     except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
         successor_error = str(error)
@@ -701,13 +709,19 @@ def main():
     checks["candidate.v090_historical_identity"] = (
         hashlib.sha256(V090_CANDIDATE.read_bytes()).hexdigest() == V090_CANDIDATE_SHA256
     )
+    checks["candidate.v092_historical_identity"] = (
+        hashlib.sha256(V092_CANDIDATE.read_bytes()).hexdigest() == V092_CANDIDATE_SHA256
+    )
     checks["candidate.v091_historical_identity"] = (
         hashlib.sha256(V091_CANDIDATE.read_bytes()).hexdigest() == V091_CANDIDATE_SHA256
     )
-    checks["candidate.v092_identity"] = (
+    checks["candidate.v093_historical_identity"] = (
+        hashlib.sha256(V093_CANDIDATE.read_bytes()).hexdigest() == V093_CANDIDATE_SHA256
+    )
+    checks["candidate.v094_identity"] = (
         successor.get("schema") == "work-charter-local-release-candidate/v1"
         and successor.get("product") == "work-charter"
-        and successor.get("version") == "0.9.2"
+        and successor.get("version") == "0.9.4"
         and successor.get("public_identity") == "junwei529/work-charter"
         and successor.get("candidate_state") == "PENDING_INDEPENDENT_REVIEW"
         and successor.get("human_release_notes_review") == "PENDING"
@@ -716,9 +730,9 @@ def main():
         and successor.get("package", {}).get("files") == sorted(EXPECTED_FILES)
         and successor.get("package", {}).get("path") == "skills/work-charter"
         and successor.get("lineage") == {
-            "historical_package_tree": V091_PACKAGE_TREE,
-            "previous_candidate": "release/v0.9.1-candidate.json",
-            "source_commit": "92beef7fd9abab5e06082d4ec78b331e5e36f8c0",
+            "historical_package_tree": V093_PACKAGE_TREE,
+            "previous_candidate": "release/v0.9.3-candidate.json",
+            "source_commit": "f43cbcc79664c295e441624d5f49175566ff856c",
         }
         and successor.get("evidence_states") == {
             "broad_product_efficacy": "UNKNOWN",
@@ -734,7 +748,7 @@ def main():
         }
     )
     checks["candidate.current_package_binding"] = (
-        checks["candidate.v092_identity"]
+        checks["candidate.v094_identity"]
         and actual_package_tree is not None
         and current_package_sha256 is not None
         and successor.get("package", {}).get("tree") == actual_package_tree
@@ -1494,7 +1508,7 @@ def main():
         ),
         "result": "PASS" if not failures else "FAIL",
         "source_release_identity": (
-            "BOUND_TO_V092_CANDIDATE"
+            "BOUND_TO_V094_CANDIDATE"
             if current_package_bound
             else "UNBOUND_PENDING_SUCCESSOR_VERSION_AND_DESCRIPTOR"
         ),

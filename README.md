@@ -2,14 +2,14 @@
 
 [简体中文](README.zh-CN.md)
 
-Release source: **v0.9.2**, with explicit cross-turn continuation and a retained mixed-design recovery path; arrangement-v1 and model schema v2 are unchanged.
-See [publication state](docs/skills/work-charter/STATE.md#v092-publication).
+Current local source: **v0.9.4**, clarifying user decisions, technical responsibility and authorized progression without extra approval forms.
+See [current delivery state](docs/skills/work-charter/STATE.md#v094-local-source).
 
 Latest published release: **[v0.9.2](https://github.com/junwei529/work-charter/releases/tag/v0.9.2)**.
 [Verified publication](docs/skills/work-charter/STATE.md#v092-publication).
-The [v0.9.2 source candidate](release/v0.9.2-candidate.json) retains its
+The [v0.9.4 source candidate](release/v0.9.4-candidate.json) retains its
 pre-effect snapshot; local review, managed-copy and bounded host-consumer status
-is recorded in [State](docs/skills/work-charter/STATE.md#v092-local-source).
+is recorded in [State](docs/skills/work-charter/STATE.md#v094-local-source).
 
 Keep complex AI projects moving across handoffs—and through to delivery.
 
@@ -122,7 +122,7 @@ User configuration takes priority over package defaults. Changes apply to tasks 
 | Responsibility | Package default |
 |---|---|
 | Direct primary; Team Planner; Phased Orchestrator | `gpt-6-astra` · `high` |
-| Phased Planner; Team/Phased Executor | `gpt-6-sol` · `xhigh` |
+| Phased Planner; Team/Phased Executor | `gpt-6.1-sol` · `xhigh` |
 | Any enabled independent Reviewer | `gpt-6-astra` · `medium` |
 
 For a major planning tradeoff or difficult implementation judgment, an
@@ -233,8 +233,8 @@ default-reader access to the exact managed v0.4.0 copy and closed
 managed v0.4.0; v0.4.1 was not installed. The later
 [accepted v0.6.3 installation](docs/skills/work-charter/STATE.md#accepted-v063-user-installation)
 records that historical copy; [historical v0.6.5 state](docs/skills/work-charter/STATE.md#current-v065-local-candidate)
-records that update. [Current state](docs/skills/work-charter/STATE.md#v092-local-source)
-tracks the v0.9.2 source revision and separate installation state. Stable v0.5.0 loaded-copy behavior,
+records that update. [Current state](docs/skills/work-charter/STATE.md#v094-local-source)
+tracks the v0.9.4 source revision and separate installation state. Stable v0.5.0 loaded-copy behavior,
 role-delivery adherence, cross-provider execution, cross-Harness behavior,
 public release, and broad efficacy remain `UNKNOWN` or separately authorized.
 
@@ -320,7 +320,7 @@ python -B scripts/check_repository.py --json
 ```
 
 Run the relevant checks against the final changed input. The SOURCE checker
-separates static contract clauses from the required v0.9.2 tree/digest binding
+separates static contract clauses from the required v0.9.4 tree/digest binding
 and preserves historical descriptor identities, including v0.7.1.
 Static wording and identity
 checks do not prove model behavior. See

@@ -385,14 +385,52 @@ ledger or new authority file is required.
 
 ## Contract And Proposal Changes
 
-Keep four layers explicit when a Charter or Phase proposal is being formed or
-revised:
+Complete authorized technical verification, implementation and same-scope
+repair under the existing responsibilities. For a change to outcome, scope,
+acceptance, permission, cost, external effect, trust boundary or material
+risk, first check the governing contract and route it to the lowest owner
+already authorized to decide. Ask the user only for a user-reserved choice,
+a decision beyond existing authority or an explicit user approval gate.
+Real safety, permission, frozen-evidence and stop conditions still bind;
+neither a method change nor risk acceptance bypasses them.
+
+A user decision must stand on its own: explain the intended outcome and
+recognizable object, why a decision is needed, material impacts and
+comparable tradeoffs, the recommendation and relevant verified facts or
+uncertainty, and what approval allows next. Include only technical details
+that affect the choice or materially bind the authorized action. Add
+acceptance and delegation for plans, material effects and boundaries for
+operation permissions, or the delta and known/unknown prior effects for
+changes and recovery when relevant. These are conditional contents, not
+required headings, forms or additional gates. A simple decision can be
+brief; explain unfamiliar terms or give a representative example only
+when needed to understand the choice.
+
+The responsible Agent verifies authorized technical prerequisites, exact
+actor/target bindings and action capability. Do not ask the user to
+certify internal Session identifiers, connector capability or technical
+test conclusions. If only the user can supply a material fact, choose an
+account or complete an access step, request that information or give
+clear visible steps; distinguish cooperation from permission. A missing
+material identity or capability stops the affected action.
+
+Keep a pending user decision visible in the main user-facing response
+when yielding, including the question, material scope and actual reason.
+An earlier interactive question may be restated as the same decision;
+this is not a second approval. Do not leave the question only in a
+transient progress message, tool output or document link. Wait for the
+explicit answer before dependent action; independent authorized work
+may continue. Use a supported presentation route without treating
+silence, a default selection, timeout or tool failure as consent.
 
 Express authorization by the intended outcome, functional domain, environment,
 permitted effects, and real aggregate cost. Name sensitive or production
 targets, frozen evidence, managed paths, required interface and migration
 identity, consumer ordering, and non-repeatable effects when they matter.
 Approval of a general route does not authorize an unlisted external effect.
+
+Keep four layers explicit when a Charter or Phase proposal is being formed
+or revised:
 
 - **Confirmed Contract** records only user-confirmed outcomes, acceptance, and
   exclusions. Changing it requires the applicable material user decision.
@@ -547,14 +585,10 @@ and unrelated content. Brevity must not hide a constraint, unresolved decision,
 or evidence needed to act. Apply this throughout the exchange, not only to the
 final result; use no fixed word limit or extra mandatory message templates.
 
-Complete authorized work through required checks and its result route. Ask only
-for a missing material decision or permission; resolve routine choices within
-the existing contract. Make a required decision concrete with independent
-authorized work first. Silence never approves the dependent action. Preserve
-adoption, material replan, operation permission, independent review,
-and acceptance gates. Remove duplicate warnings and arbitrary step counts, not
-those boundaries. Repeat verification only when its input changed, it failed,
-or an unresolved material concern requires it; complete all required checks.
+Complete authorized work through required checks and its result route. Use
+[Contract And Proposal Changes](#contract-and-proposal-changes) for user decisions.
+Prompts and handoffs add no approval gate; preserve applicable adoption, material
+replan, operation permission, independent review and acceptance boundaries.
 
 ### Model Adaptation On Demand
 
@@ -1004,7 +1038,11 @@ parallel version, reinterpret the answer, claim a second approval, or create a
 fresh decision merely because the carrier task changed. Transfer ownership
 only when authority or reliable context changes, and preserve the predecessor
 locator. A materially changed question supersedes the old revision and returns
-to the user once through the new owner.
+to the user once through the new owner. Partial or conditional approval applies
+only to the scope and conditions actually approved. A refusal or withdrawal
+stops the affected authority; it does not authorize rollback or compensation.
+Clarify only a genuinely ambiguous affected portion, without re-asking the
+whole approved package or creating another approval ledger.
 
 Reuse valid authorization across role, task, Session, or Harness carriers only
 while the authorized action, subject, actor class, effect, and material risk
@@ -1013,8 +1051,13 @@ neither does an upstream approval bypass a direct permission gate imposed by
 the environment that will perform the operation. When that environment
 requires direct consent, the action or permission-gate task becomes the
 semantic owner of the operation-local permission question: it presents the
-complete actor, target, action, effect, recovery, and exclusion boundary to the
-user and receives the answer directly before acting. An upper role may supply
+recognizable actor/provider/account, material target, requested action and
+effects, with recovery and exclusion boundaries when material, and receives
+the answer directly before acting. The action owner verifies exact technical
+bindings; show their identifiers when they distinguish a material object or
+authority, or the actual permission route requires them. Proportionate
+presentation does not replace a required identity or direct-consent check.
+An upper role may supply
 the governing contract and authority anchor, but its relay, delegation, status
 report, or interpretation is not the required direct answer.
 

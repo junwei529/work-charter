@@ -128,6 +128,10 @@ Planner/Executor roles or adopt a Charter.
   distinction between permission and execution. An operation-local permission
   gate belongs to the action task; a relay cannot replace required direct
   consent. A read-only Reviewer or evidence collector never solicits write authority.
+  Keep technical verification with the responsible Agent; present the user
+  with understandable outcomes, material tradeoffs and the decision basis.
+  Use [Contract And Proposal Changes](references/coordination-and-recovery.md#contract-and-proposal-changes)
+  for complete user decisions and proportionate permission questions.
 
 ## Read The Relevant Detail
 

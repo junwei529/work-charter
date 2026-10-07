@@ -7,12 +7,12 @@ roles:
       reasoning_effort: high
   planner:
     provider: openai
-    model: gpt-6-sol
+    model: gpt-6.1-sol
     parameters:
       reasoning_effort: xhigh
   executor:
     provider: openai
-    model: gpt-6-sol
+    model: gpt-6.1-sol
     parameters:
       reasoning_effort: xhigh
   reviewer:

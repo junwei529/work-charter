@@ -1,5 +1,75 @@
 # Work Charter Verification
 
+## v0.9.4 user-decision verification
+
+Proposal R1 identified a missing acceptance/trust/material-risk boundary; the
+original author repaired it and the same R2 closed it. Independent actual-diff
+R3 passed the source increment, two host-rule consumers and application/install
+methods with no new material findings. It independently bound the six-file package
+tree to `1dc19eb9da2b257f2cf1aeac53775f107c2d119b` and checked before/after bytes.
+Required SOURCE checks passed 33/33, repository provenance passed 106 mapped
+files and Skill metadata validation passed. One SOURCE failure was an old phrase
+locator after paragraph consolidation; the existing assertion was aligned with
+the new canonical location without removing the protected requirement. Models,
+schema, template, Standard and installer production behavior retain their bytes.
+
+Both global consumers were applied in place and matched the reviewed input;
+two existing owner/DACL records were preserved. Installation dry-run exited 0.
+The first apply was refused before package writes because the newly created empty
+transaction root inherited an untrusted-writer grant. Readback confirmed all seven
+old files, 11 permission records and the personal configuration unchanged. The
+same R approved narrowing only that task-created empty root's DACL with the
+existing manager function, preserving owner and object identity. Its prepared
+apply then exited 0; the refusal was retained rather than replayed blindly.
+
+Default-tool readback confirmed MANAGED v0.9.4, 6/6 installed files equal to the
+reviewed source, all 11 permission records preserved, both host consumers equal
+to their reviewed input, seven old files and their original receipt/tree retained,
+an empty transaction directory and unchanged personal configuration. A temporary
+verification assertion incorrectly requested managed status for a relocated,
+destination-bound backup; it was corrected to verify original receipt binding,
+file hashes and tree without rerunning installation. Complete native terminals,
+failure evidence, recovery and readback are retained privately.
+
+Record-only closeout preserves all six package files, the immutable candidate
+descriptor and prior history, while refreshing the existing source map. These
+checks establish static and local application evidence, not model execution,
+fresh runtime loading or efficacy. No lifecycle matrix, behavior evaluation,
+project migration, profile update, commit or public effect was performed.
+Actual runtime identity, fresh loading and general behavior remain UNKNOWN.
+
+## v0.9.3 model update verification
+
+[Official GPT-6.1 Sol documentation](https://developers.openai.com/api/docs/models/gpt-6.1-sol)
+supports the exact model ID `gpt-6.1-sol` and xhigh. Local Codex metadata also
+lists that pair; capability metadata does not prove a running role's identity.
+The selected personal schema-v2 file was fully validated before projection.
+The update changed exactly ten model strings; parameters, provider, selectors,
+complete-object precedence and all other objects stayed equal. Existing tasks
+and frozen deliveries were not edited.
+
+Independent R1 covered the full 14-path source increment, personal delta and
+application/installation methods. R093-01/P3 identified an old current-state
+link in README; the original author repaired it and its existing mapping.
+The same R2 closed the finding with no new findings. Its one GBK diff-read
+decode failure was retained and corrected by a complete UTF-8 read.
+Final review input SHA-256:
+`d2a4510c3bbaa81b36bd986b10ccc44fb2f529536772951781577adce5d19169`.
+Affected SOURCE static clauses and the v0.9.3 package identity gate passed;
+repository verification passed 105 mapped files and whitespace checks passed.
+The immutable v0.9.2 descriptor remained bound to its original package.
+
+Actual source/personal application readback passed with original file
+owner/DACL preserved. Managed update dry-run and apply exited 0. Six installed
+files match the reviewed source, 11 permission records are preserved, seven
+prior files were retained and the transaction directory is empty. The installer
+did not change the already updated external user file. Default-tool readback
+is recorded privately alongside complete native terminals. No live rollback,
+installer lifecycle matrix, performance study or project migration was run.
+Actual runtime identity, fresh loading and efficacy remain UNKNOWN. Record-only
+closeout preserves all package and descriptor bytes and refreshes their existing
+source map; it does not broaden any result claim.
+
 ## v0.9.2 publication verification
 
 Publication R4 independently reviewed the complete 21-path source increment,

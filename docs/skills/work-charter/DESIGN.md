@@ -1,5 +1,22 @@
 # Work Charter Design
 
+## v0.9.4 user decisions and technical responsibility
+
+The package carries its own user-decision semantics: understandable outcomes,
+material tradeoffs and evidence, technical verification by the responsible Agent,
+and conditional details only when they affect a decision. User cooperation is
+distinct from permission. A main user-facing response retains a pending question;
+an earlier interactive question remains the same decision, not another approval.
+
+Acceptance, trust and material-risk changes are routed to the lowest already
+authorized owner; only user-reserved or out-of-authority decisions and explicit
+user gates return to the user. Partial approval and withdrawal act on their real
+scope and do not grant rollback. Existing safety, review, direct-consent and
+frozen stops remain. No mandatory form, ledger, extra role or new approval gate is
+introduced. The global base applies to ordinary tasks independently, while host
+tool/final mechanics stay outside the public package. Models, schema and old
+contracts retain their existing identities; no business migration is automatic.
+
 ## v0.9.2 carrier lifetime and continuation
 
 Formal asynchronous Team/Phased responsibilities normally use independently

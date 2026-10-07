@@ -1,5 +1,26 @@
 # Changelog
 
+## v0.9.4 (local delivery; not published)
+
+- Make user decisions understandable through outcomes, material tradeoffs and
+  relevant evidence; keep technical verification with the responsible Agent.
+- Preserve acceptance, trust and material-risk boundaries while routing decisions
+  to the lowest authorized owner; routine repair adds no user approval gate.
+- Clarify conditional approval, user cooperation and direct operation permission
+  without fixed forms or another approval ledger.
+- Keep the six-file package independent of private host rules. Host changes are
+  separate authorized consumers; models, schema, frozen contracts and installer
+  production behavior remain unchanged. No efficacy study or public effect follows.
+
+## v0.9.3 (local delivery; not published)
+
+- Replace the package's `gpt-6-sol/xhigh` Planner and Executor objects with
+  `gpt-6.1-sol/xhigh`. Keep whole-object precedence, schema and other roles.
+- User-file changes are separate from installation and affect only newly
+  resolved deliveries; existing tasks and frozen combinations retain their contracts.
+- This model-only revision includes static identity/compatibility checks,
+  without a performance evaluation or automatic project migration.
+
 ## v0.9.2
 
 - Choose formal asynchronous role carriers by actual next-turn capability;

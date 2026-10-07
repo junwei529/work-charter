@@ -1,5 +1,64 @@
 # Work Charter State
 
+## v0.9.4 local source
+
+Status: **LOCAL_DELIVERY_COMPLETE**, 2026-10-07.
+The user explicitly approved v0.9.4 source changes, two host-rule consumers,
+independent review, focused static verification and managed-copy update. User
+decisions now present outcomes, material choices and evidence; responsible Agents
+retain technical verification and authorized repair. Changes to acceptance, trust
+and material risk route first to the lowest already authorized owner. General
+task rules apply with or without Charter adoption, without creating Charter roles
+or gates. The package adds no approval form, ledger or role.
+
+Proposal R2 closed the protected-boundary omission; actual-diff and application
+method R3 passed. SOURCE 33/33, metadata validation and repository provenance
+checks passed. Both host consumers matched reviewed bytes with their existing
+owner/DACL preserved. Managed v0.9.4 is bound to the six-file package tree
+`1dc19eb9da2b257f2cf1aeac53775f107c2d119b`; 6/6 installed files match source,
+11 permission records are preserved, seven prior files remain in private recovery
+material and the transaction directory is empty. A pre-write permission refusal
+was diagnosed, independently reviewed and corrected only on the new empty
+transaction root; the prepared installation then exited 0. Personal model
+configuration remained unchanged.
+
+The source preserves the uncommitted v0.9.3 baseline and remains uncommitted.
+The authorized source, host and installation work is closed at this local
+checkpoint. Package models, schemas, frozen contracts, existing tasks and installer
+production logic were not changed. This work did not publish, update a profile,
+migrate projects or run an efficacy evaluation. Historical descriptors remain
+immutable pre-effect snapshots; actual results are owned here and in VERIFICATION.
+Runtime model identity, fresh task loading and general behavior remain UNKNOWN.
+
+## v0.9.3 local source
+
+Status: **LOCAL_DELIVERY_COMPLETE**, 2026-09-30.
+The user requested the Sol model update and explicitly confirmed v0.9.3 with
+source, personal Work Charter configuration and managed-copy update scope.
+The package's two GPT-6 Sol Planner/Executor objects now use
+`gpt-6.1-sol/xhigh`. The authorized personal-file update changed ten matching
+model entries, including compatibility selectors, while preserving complete
+objects, all efforts and other role values. It was separate from installation.
+
+Independent R1 found one P3 stale current-state link, repaired by the original
+writer and closed by the same R2. Its other source/personal and application/update
+coverage remained valid. SOURCE checks and repository provenance passed; application readback
+and existing file permissions were verified. The six-file package tree is
+`6038baaff619e0c5f23345541ad57e058ef198ee`. Managed v0.9.2 to v0.9.3 dry-run
+and apply both exited 0; 6/6 files match source, all 11 permission records are
+preserved, seven old files remain in private recovery material and the
+transaction root is empty. Installation left the updated personal file intact.
+
+Only the package model-default file changed inside the six-file Skill;
+schema v2, arrangement-v1, UI metadata, instructions and production installer
+behavior retain their bytes. Historical descriptors and publication records
+remain immutable. Source/configuration/installation writers are closed at
+this local checkpoint; source changes remain uncommitted. Public release remains
+v0.9.2. Existing tasks and frozen combinations were not rewritten. Newly resolved
+deliveries read the updated defaults under the existing selection contract.
+Actual running model identity, fresh task loading and performance remain UNKNOWN.
+No performance evaluation, project migration or public effect was performed.
+
 ## v0.9.2 publication
 
 Status: **PUBLISHED_VERIFIED**, observed 2026-09-28 (Asia/Shanghai).

@@ -1,5 +1,23 @@
 # Provenance And Transformation Boundary
 
+## v0.9.4 local source
+
+The successor retains the immutable v0.9.3 descriptor and its six-file package
+lineage. Only the shared entry and coordination reference change inside the
+package. Model defaults, UI metadata, template, Standard reference, schema and
+production installer behavior retain their bytes. Current navigation and
+version-binding checks follow v0.9.4. Private host consumers are not package
+dependencies. Application and managed-copy evidence belong to State and
+Verification; source identity does not establish runtime adoption or efficacy.
+
+## v0.9.3 local source
+
+The successor retains the six-file package and immutable v0.9.2 lineage.
+Only package model-default bytes change from GPT-6 Sol to GPT-6.1 Sol;
+schema, UI metadata, instructions and production installer behavior retain
+their bytes. Version-binding checks and current navigation follow v0.9.3.
+Actual application and installation evidence is owned by State and Verification.
+
 ## v0.9.2 local source
 
 The new six-file candidate follows the immutable v0.9.1 descriptor and package.

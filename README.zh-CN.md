@@ -2,14 +2,14 @@
 
 [English](README.md)
 
-本次发布源码：**v0.9.2**，明确跨回合接续，保留混合模式恢复路径；arrangement-v1 和模型 schema v2 不变。
-[本次发布状态](docs/skills/work-charter/STATE.md#v092-publication)。
+当前本地源码：**v0.9.4**，明确用户决策、技术核实责任和授权内推进，不增加审批表单。
+[当前交付状态](docs/skills/work-charter/STATE.md#v094-local-source)。
 
 最新已发布正式版本：**[v0.9.2](https://github.com/junwei529/work-charter/releases/tag/v0.9.2)**。
 [发布核验记录](docs/skills/work-charter/STATE.md#v092-publication)。
-[v0.9.2 源码候选](release/v0.9.2-candidate.json)保留实施前快照；
+[v0.9.4 源码候选](release/v0.9.4-candidate.json)保留实施前快照；
 本地审查、安装及指定全局消费者的状态见
-[状态记录](docs/skills/work-charter/STATE.md#v092-local-source)。
+[状态记录](docs/skills/work-charter/STATE.md#v094-local-source)。
 
 让复杂的 AI 项目接得住，也交得出。
 
@@ -101,7 +101,7 @@ Codex 跨回合暂停及恢复条件见[设计说明](docs/skills/work-charter/D
 | 职责 | 包内默认配置 |
 |---|---|
 | Direct 主负责人；Team Planner；Phased Orchestrator | `gpt-6-astra` · `high` |
-| Phased Planner；Team/Phased Executor | `gpt-6-sol` · `xhigh` |
+| Phased Planner；Team/Phased Executor | `gpt-6.1-sol` · `xhigh` |
 | 实际启用的所有独立 Reviewer | `gpt-6-astra` · `medium` |
 
 重大规划取舍或困难实现判断，可以在获准投递时为 P 或 E 明确选择
@@ -189,7 +189,7 @@ exact managed v0.4.0 副本的 default-reader access，并仅对该修复关闭
 `WC-INSTALL-POSTFLIGHT-F01`。该修复检查点的 package 仍为 managed v0.4.0，v0.4.1 未安装。之后的
 [v0.6.3 安装接受记录](docs/skills/work-charter/STATE.md#accepted-v063-user-installation)保留该历史副本证据；
 [历史 v0.6.5 状态](docs/skills/work-charter/STATE.md#current-v065-local-candidate)记录当时的更新；
-[当前状态](docs/skills/work-charter/STATE.md#v092-local-source)承接 v0.9.2 源码与本机安装。
+[当前状态](docs/skills/work-charter/STATE.md#v094-local-source)承接 v0.9.4 源码与本机安装。
 v0.5.0 stable loaded-copy、role-delivery adherence、跨 provider 执行、cross-Harness、
 公开发布与广泛效能仍为 `UNKNOWN` 或需分别授权。
 
@@ -264,7 +264,7 @@ python -B scripts/check_source_contract.py --json
 python -B scripts/check_repository.py --json
 ```
 
-对最终变更输入执行相应检查。SOURCE checker 分别核对静态合同条款、v0.9.2 的
+对最终变更输入执行相应检查。SOURCE checker 分别核对静态合同条款、v0.9.4 的
 tree/digest 绑定和历史描述文件身份（包括 v0.7.1）；静态文案及身份检查不证明模型行为。
 当前结果见[验证记录](docs/skills/work-charter/VERIFICATION.md)。
 

@@ -1,14 +1,14 @@
 # Work Charter
 
-Release source is [v0.9.2](STATE.md#v092-publication), with explicit
-cross-turn routes and retained mixed-design restoration conditions. Source,
+Current local source is [v0.9.4](STATE.md#v094-local-source), clarifying user
+decisions, technical responsibility and authorized progression without extra forms. Source,
 review and installation status are recorded there. Arrangement-v1, model schema
 v2 and historical publication evidence retain their scopes.
 
 Latest published release is [v0.9.2](STATE.md#v092-publication).
 It uses arrangement-v1 agreements and model schema v2, with conditional migration,
 authorized progression and a continuing independent Reviewer where supported.
-The [candidate](../../../release/v0.9.2-candidate.json) retains its pre-effect
+The [candidate](../../../release/v0.9.4-candidate.json) retains its pre-effect
 snapshot; historical release evidence remains bound to its original package.
 
 [简体中文](README.zh-CN.md)

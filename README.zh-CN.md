@@ -2,14 +2,14 @@
 
 [English](README.md)
 
-当前源码：**v0.9.4**，明确用户决策、技术核实责任和授权内推进，不增加审批表单。
-[当前交付状态](docs/skills/work-charter/STATE.md#v094-publication)。
+当前源码：**v0.9.5**，将可用成果优先、比例验证与非阻断待办完整放在独立安装包中。
+[当前交付状态](docs/skills/work-charter/STATE.md#v095-local-source)。
 
 最新已发布正式版本：**[v0.9.4](https://github.com/junwei529/work-charter/releases/tag/v0.9.4)**。
 [发布核验记录](docs/skills/work-charter/STATE.md#v094-publication)。
-[v0.9.4 源码候选](release/v0.9.4-candidate.json)保留实施前快照；
-本地审查、安装及指定全局消费者的状态见
-[状态记录](docs/skills/work-charter/STATE.md#v094-publication)。
+[v0.9.5 源码候选](release/v0.9.5-candidate.json)保留实施前快照；
+本地审查、安装及指定消费者的状态见
+[状态记录](docs/skills/work-charter/STATE.md#v095-local-source)。
 
 让复杂的 AI 项目接得住，也交得出。
 

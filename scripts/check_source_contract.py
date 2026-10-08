@@ -8,7 +8,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "skills" / "work-charter"
-CURRENT_CANDIDATE = ROOT / "release" / "v0.9.4-candidate.json"
+CURRENT_CANDIDATE = ROOT / "release" / "v0.9.5-candidate.json"
+V094_CANDIDATE = ROOT / "release" / "v0.9.4-candidate.json"
+V094_CANDIDATE_SHA256 = "115e23a49013b118585963bf5cf2d866db86e501e4ada1e37e13ec1bc8b28b36"
+V094_PACKAGE_TREE = "1dc19eb9da2b257f2cf1aeac53775f107c2d119b"
 V093_CANDIDATE = ROOT / "release" / "v0.9.3-candidate.json"
 V093_CANDIDATE_SHA256 = "6c54e443cb3caeb79cd7518eb5155b392cb56f180e1c30d2d61adf4892852d34"
 V093_PACKAGE_TREE = "6038baaff619e0c5f23345541ad57e058ef198ee"
@@ -261,8 +264,8 @@ def main():
             "Wait for the explicit answer before dependent action",
             "without treating silence, a default selection, timeout or tool failure as consent",
             "preserve applicable adoption, material replan, operation permission, independent review and acceptance boundaries",
-        ]) and contains_all(skill, [
-            "broaden or repeat it only for changed inputs, failures or unresolved material concerns",
+        ]) and contains_all(recovery, [
+            "Broaden or repeat verification only for changed inputs, relevant failures or unresolved concrete risks",
         ]),
         "prompts.startup_and_complete_expression": (
             contains_all(ui_metadata, [
@@ -699,7 +702,7 @@ def main():
             not isinstance(parsed_successor.get(field), dict)
             for field in ("package", "evidence_states", "lineage")
         ):
-            raise ValueError("v0.9.4 candidate requires object package, evidence_states, and lineage")
+            raise ValueError("v0.9.5 candidate requires object package, evidence_states, and lineage")
         successor = parsed_successor
     except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
         successor_error = str(error)
@@ -718,10 +721,13 @@ def main():
     checks["candidate.v093_historical_identity"] = (
         hashlib.sha256(V093_CANDIDATE.read_bytes()).hexdigest() == V093_CANDIDATE_SHA256
     )
-    checks["candidate.v094_identity"] = (
+    checks["candidate.v094_historical_identity"] = (
+        hashlib.sha256(V094_CANDIDATE.read_bytes()).hexdigest() == V094_CANDIDATE_SHA256
+    )
+    checks["candidate.v095_identity"] = (
         successor.get("schema") == "work-charter-local-release-candidate/v1"
         and successor.get("product") == "work-charter"
-        and successor.get("version") == "0.9.4"
+        and successor.get("version") == "0.9.5"
         and successor.get("public_identity") == "junwei529/work-charter"
         and successor.get("candidate_state") == "PENDING_INDEPENDENT_REVIEW"
         and successor.get("human_release_notes_review") == "PENDING"
@@ -730,9 +736,9 @@ def main():
         and successor.get("package", {}).get("files") == sorted(EXPECTED_FILES)
         and successor.get("package", {}).get("path") == "skills/work-charter"
         and successor.get("lineage") == {
-            "historical_package_tree": V093_PACKAGE_TREE,
-            "previous_candidate": "release/v0.9.3-candidate.json",
-            "source_commit": "f43cbcc79664c295e441624d5f49175566ff856c",
+            "historical_package_tree": V094_PACKAGE_TREE,
+            "previous_candidate": "release/v0.9.4-candidate.json",
+            "source_commit": "81422221d0bfcd6ea8a18b668a03efa0195fa850",
         }
         and successor.get("evidence_states") == {
             "broad_product_efficacy": "UNKNOWN",
@@ -748,7 +754,7 @@ def main():
         }
     )
     checks["candidate.current_package_binding"] = (
-        checks["candidate.v094_identity"]
+        checks["candidate.v095_identity"]
         and actual_package_tree is not None
         and current_package_sha256 is not None
         and successor.get("package", {}).get("tree") == actual_package_tree
@@ -1508,7 +1514,7 @@ def main():
         ),
         "result": "PASS" if not failures else "FAIL",
         "source_release_identity": (
-            "BOUND_TO_V094_CANDIDATE"
+            "BOUND_TO_V095_CANDIDATE"
             if current_package_bound
             else "UNBOUND_PENDING_SUCCESSOR_VERSION_AND_DESCRIPTOR"
         ),

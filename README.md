@@ -2,14 +2,15 @@
 
 [简体中文](README.zh-CN.md)
 
-Current source: **v0.9.4**, clarifying user decisions, technical responsibility and authorized progression without extra approval forms.
-See [current delivery state](docs/skills/work-charter/STATE.md#v094-publication).
+Current source: **v0.9.5**, prioritizing usable outcomes, proportionate verification
+and non-blocking follow-ups in the self-contained package.
+See [current delivery state](docs/skills/work-charter/STATE.md#v095-local-source).
 
 Latest published release: **[v0.9.4](https://github.com/junwei529/work-charter/releases/tag/v0.9.4)**.
 [Verified publication](docs/skills/work-charter/STATE.md#v094-publication).
-The [v0.9.4 source candidate](release/v0.9.4-candidate.json) retains its
-pre-effect snapshot; local review, managed-copy and bounded host-consumer status
-is recorded in [State](docs/skills/work-charter/STATE.md#v094-publication).
+The [v0.9.5 source candidate](release/v0.9.5-candidate.json) retains its
+pre-effect snapshot; local review, managed-copy and bounded consumer status
+is recorded in [State](docs/skills/work-charter/STATE.md#v095-local-source).
 
 Keep complex AI projects moving across handoffs—and through to delivery.
 

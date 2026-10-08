@@ -113,9 +113,14 @@ Planner/Executor roles or adopt a Charter.
   designated assessor decides whether outcome and evidence
   satisfy the contract. Tests and review output are not acceptance; without a
   separate assessor, the primary owner's disposition is not independent acceptance.
-- Complete authorized work through its required checks and handoff. Choose
-  verification for the changed behavior and real risk; broaden or repeat it
-  only for changed inputs, failures or unresolved material concerns. Preserve
+- Prioritize making the main workflow needed for the agreed outcome usable.
+  Complete applicable checks and handoff, then improve through actual use.
+  Defer non-blocking edge cases and extra tests; recording or reviewing them
+  does not make them delivery requirements. Verification and coordination serve
+  the agreed outcome and applicable protections. Once those are satisfied,
+  deliver rather than keep expanding the work. Use [Contract And Proposal
+  Changes](references/coordination-and-recovery.md#contract-and-proposal-changes)
+  for test timing, review disposition and deferred work. Preserve
   producer-before-consumer order and raw terminal evidence. Do not rerun
   scarce, consequential or unauthorized work to replace a missing result.
 - Resolve problems at the lowest already-authorized responsibility. P may

@@ -1,5 +1,38 @@
 # Work Charter Verification
 
+## v0.9.5 outcome-first verification
+
+The source increment was independently reviewed against actual HEAD
+`413a2318d2279713d5e15605cdc0171d679d8470`. An initial review-baseline citation
+used the published v0.9.4 source commit; this was corrected before acceptance.
+The published package lineage in the candidate remains valid and unchanged.
+
+- SOURCE: 33/33 passed. The first run exposed a stale wording/location assertion
+  for proportionate verification after the guidance moved to the coordination
+  reference. Updating that existing assertion resolved the failure; it remains
+  a historical failed run, not a package runtime defect.
+- Skill metadata: valid. Repository provenance: 107 mapped files passed;
+  whitespace check passed. These checks establish their stated source scope.
+- Independent review: prior planning R1/R2 closed on the implemented wording.
+  R3 found stale current-source links in two documentation navigation pages;
+  corrected to v0.9.5 while retaining published v0.9.4, then re-reviewed PASS.
+  Standalone package completeness, external rule consumers and the existing
+  update method were included. No new roles, approval gates or test matrix.
+- Installation: dry-run passed, then the existing manager returned exit 0,
+  APPLY / MANAGED v0.9.5, with destination permissions preserved. Separate
+  ordinary-reader status returned MANAGED v0.9.5. Six installed files matched
+  source byte for byte; five behavioral rule targets matched reviewed bytes;
+  the explicit private transaction root was empty after completion.
+
+The installed package tree is `55d8daaa3d3b26358b0192d57dc5403593bed85a`.
+The descriptor is an immutable pre-effect snapshot; actual delivery evidence
+is recorded here and in State. Only two package text files changed. Models,
+schema, template and Standard retain their bytes. Production installer logic
+is unchanged; its self-test source-version constant follows the new candidate.
+Historical installer lifecycle qualification was not rerun or relabeled.
+No business runtime, actual rollback or model efficacy test was performed.
+Runtime loading, natural adherence and improved delivery speed remain UNKNOWN.
+
 ## v0.9.4 publication verification
 
 Independent publication review covered the complete 18-path source increment,

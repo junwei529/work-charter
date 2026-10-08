@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.9.5 (local source; not published)
+
+- Prioritize a usable main workflow and deliver once the agreed outcome and
+  applicable requirements are met; improve through actual use.
+- Let implementers choose test timing and group related edits. Broad checks
+  follow change impact or explicit requirements, not every small edit.
+- Keep speculative edge cases, extra tests and review suggestions non-blocking
+  unless they affect the outcome or applicable protections. Recording, severity,
+  handoff and recovery do not promote suggestions into delivery requirements.
+- Keep the full guidance inside the installable package. No new tracking system,
+  review form, role, model setting or installer behavior is introduced.
+
 ## v0.9.4
 
 - Make user decisions understandable through outcomes, material tradeoffs and

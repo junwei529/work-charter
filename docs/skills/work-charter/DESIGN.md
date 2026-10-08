@@ -1,5 +1,23 @@
 # Work Charter Design
 
+## v0.9.5 outcome-first delivery
+
+The public package owns the complete portable guidance for prioritizing a usable
+main workflow, choosing test timing, disposing review suggestions and deferring
+non-blocking work. SKILL.md carries the short shared rule; Contract And Proposal
+Changes owns its details. Users need no private host rules to apply it.
+
+Progress follows the agreed outcome. Checks, coordination and findings serve
+that outcome and applicable protections, rather than becoming separate goals.
+Implementers may group related edits and choose test timing. Useful deferred
+items reuse an existing backlog or a short delivery note; no new carrier is
+required. The agreed requirements and existing protections still apply.
+
+Host defaults remain short for ordinary simple tasks. Project consumers may
+replace conflicting local defaults within explicit authorization. These consumers
+are not package prerequisites. Models, schemas, roles, template structure,
+existing contracts and production installer behavior remain unchanged.
+
 ## v0.9.4 user decisions and technical responsibility
 
 The package carries its own user-decision semantics: understandable outcomes,

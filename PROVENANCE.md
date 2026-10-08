@@ -1,5 +1,18 @@
 # Provenance And Transformation Boundary
 
+## v0.9.5 local source
+
+The actual source review baseline is
+`413a2318d2279713d5e15605cdc0171d679d8470`; the package retains published v0.9.4 lineage at
+`81422221d0bfcd6ea8a18b668a03efa0195fa850`. Only the shared entry and coordination
+reference change inside the six-file package. The new candidate records its own
+package identity and preserves the v0.9.4 descriptor and source lineage.
+
+Current documentation, SOURCE/version bindings and the source map follow the
+new bytes. Host/project consumers are separate authorized changes, not package
+dependencies. Review, installation and behavioral evidence are recorded in
+State and Verification; the candidate alone does not establish those results.
+
 ## v0.9.4 public release record
 
 The accepted public source commit is

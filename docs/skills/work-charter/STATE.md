@@ -1,5 +1,36 @@
 # Work Charter State
 
+## v0.9.5 local source
+
+Status: **LOCAL_DELIVERY_COMPLETE**, 2026-10-08.
+The user approved the outcome-first source changes, bounded host/project rule
+consumers and managed-copy update, and explicitly selected v0.9.5.
+The actual review baseline is `413a2318d2279713d5e15605cdc0171d679d8470`;
+published package lineage remains v0.9.4 commit
+`81422221d0bfcd6ea8a18b668a03efa0195fa850`.
+
+Only SKILL.md and the coordination reference change inside the six-file package.
+The package independently carries the full delivery guidance; host rules retain
+light defaults, and one project consumer replaces rigid reading/test defaults.
+Related documentation and version/provenance bindings follow the change.
+Models, schemas, roles, template layout and installer production behavior remain
+unchanged.
+
+Independent actual-diff review passed after correcting stale current-source
+navigation. SOURCE 33/33, Skill metadata, repository provenance and whitespace
+checks passed. The existing installer returned APPLY / MANAGED v0.9.5 with
+previous destination permissions preserved. A separate ordinary-reader status
+call confirmed MANAGED v0.9.5, all six installed files matched source, the five
+reviewed rule files matched, and the transaction root was empty.
+See [Verification](VERIFICATION.md#v095-outcome-first-verification) for evidence
+and limitations. The candidate retains its pre-effect snapshot.
+
+Changes are uncommitted; latest published release remains v0.9.4. No Git commit,
+push, tag, Release or business runtime was performed. Runtime adoption and
+behavioral improvement remain UNKNOWN; observe subsequent ordinary tasks rather
+than add a model-evaluation suite. Historical records and descriptors remain
+unchanged.
+
 ## v0.9.4 publication
 
 Status: **PUBLISHED_VERIFIED**, observed 2026-10-07 (UTC).

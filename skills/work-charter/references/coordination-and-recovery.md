@@ -454,6 +454,20 @@ promise, or general implementation approval alone proves none of these.
 Explicit user and project requirements retain their authority under the
 existing contract; do not require the user to justify them again.
 
+Progress means moving toward the agreed outcome. Evidence, findings,
+documentation, coordination and blocker removal count when they help achieve
+that outcome or satisfy an applicable protection. Prioritize a usable main
+workflow over speculative completeness. Once the agreed outcome and applicable
+requirements are met, deliver; more imaginable improvements do not extend the
+task.
+
+Choose checks that directly inform the changed behavior and the agreed outcome.
+The implementer may group related edits before a focused check; neither
+test-first development nor checking after every edit is the default. Run broad
+checks when the change impact or an explicit applicable requirement calls for
+them. Broaden or repeat verification only for changed inputs, relevant failures
+or unresolved concrete risks. Report what was verified and any material gap.
+
 If auxiliary repair or coordination keeps expanding, the current primary
 owner or Planner determines the minimum sufficient user-visible outcome and
 compares the remaining coordination, implementation, verification, and
@@ -464,8 +478,18 @@ this assessment adds no role, required form, or approval gate. Preserve real
 defects, evidence, explicit requirements, and applicable verification while
 replacing a proposal.
 
-Do not promote an Agent-proposed method into a user requirement merely because
-it appeared in an earlier plan, prompt, handoff, or generally approved plan.
+Anticipated edge cases, extra tests and review suggestions remain proposals
+until their effect on the agreed outcome or an applicable protection makes them
+necessary, or an authorized owner adopts them. Recording, handing off,
+recovering or assigning severity to an item does not promote it into a delivery
+requirement. Keep useful deferred items in the existing backlog without
+blocking the current work or requiring a separate justification for every
+deferral. Planning, implementation and review prioritize completing the agreed
+outcome; review is not a request to exhaust hypothetical concerns. If the
+project has no backlog, briefly list useful follow-ups in the delivery note; no
+new file or tracking system is required.
+
+Do not promote Agent-proposed methods into user requirements.
 An ordinary file list, sequence without a real dependency, chosen tool or
 check arrangement, per-message relay or acknowledgement, and Agent-set
 per-repair limit are Working Proposal unless a user or project explicitly

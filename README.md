@@ -4,13 +4,13 @@
 
 Current source: **v0.9.5**, prioritizing usable outcomes, proportionate verification
 and non-blocking follow-ups in the self-contained package.
-See [current delivery state](docs/skills/work-charter/STATE.md#v095-local-source).
+See [current delivery state](docs/skills/work-charter/STATE.md#v095-publication).
 
-Latest published release: **[v0.9.4](https://github.com/junwei529/work-charter/releases/tag/v0.9.4)**.
-[Verified publication](docs/skills/work-charter/STATE.md#v094-publication).
+Latest published release: **[v0.9.5](https://github.com/junwei529/work-charter/releases/tag/v0.9.5)**.
+[Verified publication](docs/skills/work-charter/STATE.md#v095-publication).
 The [v0.9.5 source candidate](release/v0.9.5-candidate.json) retains its
 pre-effect snapshot; local review, managed-copy and bounded consumer status
-is recorded in [State](docs/skills/work-charter/STATE.md#v095-local-source).
+is recorded in [State](docs/skills/work-charter/STATE.md#v095-publication).
 
 Keep complex AI projects moving across handoffs—and through to delivery.
 

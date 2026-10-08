@@ -1,15 +1,15 @@
 # Work Charter
 
-Current source is [v0.9.5](STATE.md#v095-local-source), prioritizing a usable
+Current source is [v0.9.5](STATE.md#v095-publication), prioritizing a usable
 main workflow, proportionate verification and improvement through actual use.
 The [current candidate](../../../release/v0.9.5-candidate.json) identifies the
 package; source, review and installation results are recorded in State.
 Arrangement-v1, model schema v2 and historical evidence retain their scopes.
 
-Latest published release is [v0.9.4](STATE.md#v094-publication).
+Latest published release is [v0.9.5](STATE.md#v095-publication).
 It uses arrangement-v1 agreements and model schema v2, with conditional migration,
 authorized progression and a continuing independent Reviewer where supported.
-The [published v0.9.4 candidate](../../../release/v0.9.4-candidate.json) retains its pre-effect
+The [published v0.9.5 candidate](../../../release/v0.9.5-candidate.json) retains its pre-effect
 snapshot; historical release evidence remains bound to its original package.
 
 [简体中文](README.zh-CN.md)

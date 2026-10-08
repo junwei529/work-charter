@@ -1,5 +1,24 @@
 # Work Charter Verification
 
+## v0.9.5 publication verification
+
+Independent publication review accepted the existing 16-path increment and
+reviewed release notes; prior R1/R2/R3 remain closed. Existing SOURCE 33/33,
+metadata and managed-install readback were reused because package inputs did not
+change. The repository provenance check covers final record bytes separately.
+
+The GitHub CLI actor and repository permission check confirmed the intended
+owner and push capability. One read-only metadata request returned EOF; the
+same-route retry succeeded before any external mutation.
+Commit `3c351faee3ee08b47591d0772f9281fea5f9f944` and annotated tag `v0.9.5` were pushed
+atomically without force. Remote main and tag readback matched. GitHub Release
+`406431486` matched the exact target and reviewed body and was confirmed
+non-draft, non-prerelease and Latest. No uncertain publication was retried.
+
+Only publication records/navigation and their provenance bindings change after
+the source tag. Package, candidate, installation and historical evidence remain
+unchanged. Runtime loading and efficacy are not established by this release.
+
 ## v0.9.5 outcome-first verification
 
 The source increment was independently reviewed against actual HEAD

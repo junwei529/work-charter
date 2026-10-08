@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.9.5 (local source; not published)
+## v0.9.5
 
 - Prioritize a usable main workflow and deliver once the agreed outcome and
   applicable requirements are met; improve through actual use.

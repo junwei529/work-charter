@@ -1,5 +1,29 @@
 # Work Charter State
 
+## v0.9.5 publication
+
+Status: **PUBLISHED_VERIFIED**, 2026-10-08.
+Following local delivery, the user authorized publication to
+`junwei529/work-charter`. Independent publication review passed the complete
+16-path source increment, release notes, public privacy and publication method.
+Source commit `3c351faee3ee08b47591d0772f9281fea5f9f944` follows
+`413a2318d2279713d5e15605cdc0171d679d8470` and contains package tree
+`55d8daaa3d3b26358b0192d57dc5403593bed85a`.
+A non-forced atomic push advanced main and created annotated tag object
+`7de56b7eda294d6f8dd5bed5484b67e381adf7e6`. Remote readback confirmed the tag resolves to
+the source commit.
+
+The [GitHub Release](https://github.com/junwei529/work-charter/releases/tag/v0.9.5) is id `406431486`,
+published at `2026-10-08T05:03:45Z`, non-draft, non-prerelease and Latest at readback.
+The source target and exact reviewed release body were verified.
+Existing source, metadata, repository and local installation evidence is retained;
+this publication does not reinstall the package or evaluate model behavior.
+
+This record-only closeout updates current navigation and publication facts while
+preserving the tag, package bytes, pre-effect candidate and earlier local history.
+Runtime adoption and natural improvement remain UNKNOWN. There is no remaining
+publication action; subsequent ordinary use can provide behavioral evidence.
+
 ## v0.9.5 local source
 
 Status: **LOCAL_DELIVERY_COMPLETE**, 2026-10-08.

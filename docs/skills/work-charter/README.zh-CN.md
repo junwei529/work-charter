@@ -1,13 +1,13 @@
 # Work Charter
 
-当前源码为 [v0.9.5](STATE.md#v095-local-source)，优先跑通主要流程，按需验证，再通过实际使用改进。
+当前源码为 [v0.9.5](STATE.md#v095-publication)，优先跑通主要流程，按需验证，再通过实际使用改进。
 [当前候选](../../../release/v0.9.5-candidate.json)标识包身份；源码、审查与安装结果以 State 为准。
 arrangement-v1、模型 schema v2 和历史证据保持原范围。
 
-最新正式发布版本为 [v0.9.4](STATE.md#v094-publication)。
+最新正式发布版本为 [v0.9.5](STATE.md#v095-publication)。
 本版使用 arrangement-v1 合同与模型 schema v2，支持条件式迁移、授权内推进，
 并在能力支持时复用持续独立 Reviewer。
-[已发布 v0.9.4 候选](../../../release/v0.9.4-candidate.json)保留发布前快照，历史发布证据仍绑定其原包。
+[已发布 v0.9.5 候选](../../../release/v0.9.5-candidate.json)保留发布前快照，历史发布证据仍绑定其原包。
 
 [English](README.md)
 
@@ -26,7 +26,7 @@ proportional coordination 约束有后果的 Codex 工作。
 需要时加载精简共同正文与相关细节，并对材料变化主动复评，不代替用户选级。
 已批准 Charter 的复用和共同审查、权限、恢复边界保留；
 参见[历史 v0.6.5 状态](STATE.md#current-v065-local-candidate)。
-当前源码和安装由[当前状态](STATE.md#v095-local-source)承接。
+当前源码和安装由[当前状态](STATE.md#v095-publication)承接。
 
 package 起源于源提交 `80910a8b2375a11be897e9660c4b00a06d00dd13`。不可变 `v0.5.0`
 source 证据绑定已接受 commit `8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`、十轮已完成

@@ -4,14 +4,12 @@
 
 Current source: **v0.9.6**, preserving outcomes, evidence and replaceable
 methods across handoffs, with proportionate real-world verification and optional
-collaboration. See [current source state](docs/skills/work-charter/STATE.md#v096-local-source).
+collaboration. See [current source state](docs/skills/work-charter/STATE.md#v096-publication).
 
-Latest published release: **[v0.9.5](https://github.com/junwei529/work-charter/releases/tag/v0.9.5)**.
-[Verified publication](docs/skills/work-charter/STATE.md#v095-publication).
-The [v0.9.6 source candidate](release/v0.9.6-candidate.json) is an unpublished
-pre-effect snapshot. Review and delivery status is recorded in
-[State](docs/skills/work-charter/STATE.md#v096-local-source); installation and
-publication are separate actions.
+Latest published release: **[v0.9.6](https://github.com/junwei529/work-charter/releases/tag/v0.9.6)**.
+[Verified publication](docs/skills/work-charter/STATE.md#v096-publication).
+The [v0.9.6 source candidate](release/v0.9.6-candidate.json) retains its pre-effect snapshot. Installation and publication results are in
+[State](docs/skills/work-charter/STATE.md#v096-publication).
 
 Keep complex AI projects moving across handoffs—and through to delivery.
 

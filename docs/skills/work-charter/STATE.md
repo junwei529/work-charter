@@ -1,5 +1,27 @@
 # Work Charter State
 
+## v0.9.6 publication
+
+Status: **PUBLISHED_VERIFIED**, 2026-10-09.
+After source delivery, the user authorized managed installation and publication.
+Independent publication review passed the 18-path source increment, release notes,
+privacy scope and execution method. Source commit `abc166cab4c0de1262c1d088d3ac734dddcd3a16`
+follows `4db878040283d3688f0a6b3933d42df090d46f41` and binds package tree
+`bcf263e0384248680a3bee9efdfcb5052b69c9cd`. Annotated tag object
+`dc1072ee8233051114ea8c55d636ca270bbb1217` resolves to that source commit.
+
+The existing manager completed APPLY / MANAGED v0.9.6 with prior destination
+permissions preserved. A separate ordinary-reader status call confirmed MANAGED;
+all six installed files matched source, and the transaction directory was empty.
+Personal model configuration was not changed.
+
+A non-forced atomic push advanced main and created the tag. The formal
+[v0.9.6 Release](https://github.com/junwei529/work-charter/releases/tag/v0.9.6)
+is id `407517232`, published at `2026-10-09T04:45:51Z`, non-draft,
+non-prerelease and Latest at readback. Exact tag target and release body matched.
+These record-only updates preserve the tag, package and pre-effect descriptor.
+No publication action remains; runtime adoption and natural benefit remain UNKNOWN.
+
 ## v0.9.6 local source
 
 Status: **SOURCE_AND_HOST_RULES_COMPLETE**, 2026-10-09.

@@ -1,5 +1,15 @@
 # Provenance And Transformation Boundary
 
+## v0.9.6 publication
+
+Published source commit: `abc166cab4c0de1262c1d088d3ac734dddcd3a16`.
+Annotated tag `v0.9.6` resolves to that commit and package tree
+`bcf263e0384248680a3bee9efdfcb5052b69c9cd`.
+[Release](https://github.com/junwei529/work-charter/releases/tag/v0.9.6) id: `407517232`.
+State and Verification record managed installation and publication; the candidate
+retains its pre-effect snapshot. Record-only closeout preserves package bytes,
+source tag, historical descriptors and original source lineage.
+
 ## v0.9.6 local source
 
 The source review baseline is `4db878040283d3688f0a6b3933d42df090d46f41`.

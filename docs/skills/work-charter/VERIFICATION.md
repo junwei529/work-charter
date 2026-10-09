@@ -1,5 +1,28 @@
 # Work Charter Verification
 
+## v0.9.6 publication verification
+
+Independent publication review passed the unchanged product and bounded release
+preparation. Existing SOURCE 33/33 and metadata evidence were reused; repository
+provenance and whitespace checks passed the release input. The original routing
+finding is closed, and earlier source-check repair history remains below.
+
+Before effects, the selected CLI route confirmed the intended GitHub actor,
+repository and push permission. Remote main matched the reviewed baseline;
+neither a version tag nor a Release existed. Exact source paths were committed,
+then parent, package tree and clean worktree were verified.
+
+The installer dry-run passed, followed by exit 0 APPLY / MANAGED v0.9.6 with
+PRESERVED_FROM_PREVIOUS_DESTINATION. Ordinary-reader status also returned MANAGED
+v0.9.6. All six installed files matched source; the explicit transaction root was
+empty. No independent installer lifecycle suite or model evaluation was rerun.
+
+Non-forced atomic push, tag resolution, Release creation, body readback and Latest
+identity all succeeded. State records the public source, tag and Release IDs.
+The candidate remains its pre-effect snapshot; post-release documentation has
+its own repository/whitespace checks and does not move the source tag. Installation
+and publication do not establish existing-task adoption or broad efficacy.
+
 ## v0.9.6 source verification
 
 The approved plan and actual source/host-rule differences received separate

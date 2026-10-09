@@ -3,13 +3,12 @@
 [English](README.md)
 
 当前源码：**v0.9.6**，交接保留真实目标、依据和方法调整权，按实际用途验证并选择必要协作。
-[当前源码状态](docs/skills/work-charter/STATE.md#v096-local-source)。
+[当前源码状态](docs/skills/work-charter/STATE.md#v096-publication)。
 
-最新已发布正式版本：**[v0.9.5](https://github.com/junwei529/work-charter/releases/tag/v0.9.5)**。
-[发布核验记录](docs/skills/work-charter/STATE.md#v095-publication)。
-[v0.9.6 源码候选](release/v0.9.6-candidate.json)是尚未发布的实施前快照；
-审查与交付状态见[状态记录](docs/skills/work-charter/STATE.md#v096-local-source)。
-安装和发布是独立动作。
+最新已发布正式版本：**[v0.9.6](https://github.com/junwei529/work-charter/releases/tag/v0.9.6)**。
+[发布核验记录](docs/skills/work-charter/STATE.md#v096-publication)。
+[v0.9.6 源码候选](release/v0.9.6-candidate.json)保留实施前快照；
+安装与发布核验见[状态记录](docs/skills/work-charter/STATE.md#v096-publication)。
 
 让复杂的 AI 项目接得住，也交得出。
 

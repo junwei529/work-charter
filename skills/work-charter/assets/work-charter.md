@@ -54,8 +54,9 @@ one concise view; omit inapplicable branches instead of adding a questionnaire.
 Do not promote the Working Proposal into a hard requirement. When a proposed
 method is rejected, remove or replace it unless an independently justified
 durable boundary remains.
-An approved general route does not fix every ordinary implementation step or
-authorize an unlisted external effect. Keep explicit one-shot, human-review,
+Overall approval does not fix proposed tools, steps, test arrangements or
+counts unless the user explicitly fixes them; it does not authorize an
+unlisted external effect. Keep explicit one-shot, human-review,
 frozen-evidence and consumed-limit boundaries.
 
 If auxiliary work keeps expanding, the current primary owner or Planner
@@ -65,7 +66,8 @@ minimum sufficient user-visible result in view; tool promises add no user goal.
 
 ## Outcome And Non-Goals
 
-<State the observable result and adjacent work that remains excluded.>
+<State the observable result in its intended use and environment; distinguish
+a prototype from production requirements and adjacent excluded work.>
 
 ## Scope And Hard Boundaries
 
@@ -119,7 +121,10 @@ across compaction, deliberate rotation and successor Sessions.>
 
 ## Coordination
 
-<State the least sufficient responsibility separation and applicable standing
+<Choose an endpoint that can finish the work with proportionate handoff cost;
+keep tightly coupled running and repair together. Record applicable delegation
+authority and reconcile active work before a collaborator exits.
+State the least sufficient responsibility separation and applicable standing
 policy without copying it. Name the assessor and action recipient for material
 decisions; factual, evidence and mechanical-recording notices need no acceptance
 reply. Required dispositions still reach the dependent role; terminal ones need
@@ -145,7 +150,11 @@ full identities and checkpoints remain in the contract.>
 <Optional prompt scaffold, not a second authoritative contract. Shared
 contract: locator/revision and material boundaries. Actual responsibility:
 primary or the authorized O/P/E/R role. Current task: deliverable, inputs,
-required checks, stop conditions, and return route. For evidence-only
+necessary checks with their basis, stop conditions, and return route. Carry
+the user's goal and relevant original sources, supported existing conclusions,
+current proposals and the receiver's method-adjustment authority. These are
+information needs, not mandatory headings or a requirement to reread everything.
+For evidence-only
 work, include the bounded question, allowed source/data scope and actual
 coverage/gaps required in the result. Necessary model adaptation:
 supported delta and source, or none. Cold prompts supply missing context;

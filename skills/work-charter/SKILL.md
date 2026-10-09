@@ -97,7 +97,9 @@ Planner/Executor roles or adopt a Charter.
   coverage; apply the evidence-scope contract in
   [Authority, Delivery, Correction, And Evidence](references/coordination-and-recovery.md#authority-delivery-correction-and-evidence).
 - Protect user-confirmed outcomes and real guardrails; keep Agent-proposed
-  methods replaceable. Scope authorization by outcome, domain, environment,
+  methods replaceable across planning, execution and review. Handoffs preserve
+  the user outcome, the basis of real constraints, existing evidence and the
+  receiver's room to change methods. Scope authorization by outcome, domain, environment,
   effects and real cost; ordinary unlisted methods within that scope need no
   separate approval. Explain the concrete risk before treating an inferred
   guardrail as necessary. Do not preserve rejected Agent inventions as new
@@ -114,7 +116,9 @@ Planner/Executor roles or adopt a Charter.
   satisfy the contract. Tests and review output are not acceptance; without a
   separate assessor, the primary owner's disposition is not independent acceptance.
 - Prioritize making the main workflow needed for the agreed outcome usable.
-  Complete applicable checks and handoff, then improve through actual use.
+  For a prototype, prioritize its real inputs and intended environment;
+  production work retains its own agreed requirements. Complete applicable
+  checks and handoff, then improve through actual use.
   Defer non-blocking edge cases and extra tests; recording or reviewing them
   does not make them delivery requirements. Verification and coordination serve
   the agreed outcome and applicable protections. Once those are satisfied,
@@ -150,6 +154,7 @@ unchanged material already loaded; do not read every other role's procedure.
 | Approved continuation or material drift | Minimum Read And Reconciliation Order; Managed Workstream And Multiple Worktrees; Re-entry Routes |
 | Proposal, delegation or escalation | Contract And Proposal Changes; Delegated Decisions And Escalation; Authorized Progression |
 | Legacy contract reconsideration at a stable node | Stable-Node Migration; Conditional Work Selection; affected delegation/progression or review sections below |
+| Work allocation, optional collaborator selection or exit | [Work Allocation And Optional Collaborators](references/coordination-and-recovery.md#work-allocation-and-optional-collaborators) |
 | Prompt or task delivery | Task And Role Prompt Construction; Authority, Delivery, Correction, And Evidence |
 | Evidence collection, delegated inspection, or completion claims | Task And Role Prompt Construction; Authority, Delivery, Correction, And Evidence |
 | Newly authorized model resolution | [Role-Model Configuration At Dispatch](references/coordination-and-recovery.md#role-model-configuration-at-dispatch); identify arrangement, contract format and responsibility first, then read the complete section before reading configuration or dispatching |

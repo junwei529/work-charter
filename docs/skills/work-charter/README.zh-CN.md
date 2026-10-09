@@ -1,7 +1,7 @@
 # Work Charter
 
-当前源码为 [v0.9.5](STATE.md#v095-publication)，优先跑通主要流程，按需验证，再通过实际使用改进。
-[当前候选](../../../release/v0.9.5-candidate.json)标识包身份；源码、审查与安装结果以 State 为准。
+当前源码为 [v0.9.6](STATE.md#v096-local-source)，交接保留真实目标、依据和方法调整权，按实际用途验证并选择协作。
+[当前候选](../../../release/v0.9.6-candidate.json)标识尚未发布的包；审查与实际交付结果以 State 为准。
 arrangement-v1、模型 schema v2 和历史证据保持原范围。
 
 最新正式发布版本为 [v0.9.5](STATE.md#v095-publication)。

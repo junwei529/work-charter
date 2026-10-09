@@ -1,5 +1,30 @@
 # Work Charter Verification
 
+## v0.9.6 source verification
+
+The approved plan and actual source/host-rule differences received separate
+independent semantic review. Actual-diff review found one P2 routing gap:
+the new optional-collaboration section was absent from the shared entry's
+section-read table. Adding its direct package-relative link closed the finding;
+the same Reviewer re-reviewed the delta and returned PASS. Four host-rule
+consumers were covered separately; no business-project migration was claimed.
+
+- SOURCE: 33/33 passed against the final package. Current result identity is
+  BOUND_TO_V096_CANDIDATE; an initially stale result label was corrected.
+- Skill metadata and whitespace: passed. No metadata fields changed in repair.
+- Repository provenance: 108 mapped files passed. The initial run reported a
+  source mapping mismatch after the version change; updating the existing
+  expected binding resolved it without changing checker behavior. Final
+  record-only bytes receive the required repository/whitespace checks.
+- Reviewed package tree: `bcf263e0384248680a3bee9efdfcb5052b69c9cd`.
+
+The candidate remains an immutable pre-effect snapshot. Model defaults, UI
+metadata, schemas and installer production behavior retain their prior scope.
+No new synthetic matrix, installer lifecycle run, model evaluation or business
+test was performed. No installation, commit, push or release was authorized or
+performed in this increment. Runtime loading, natural adherence and efficacy
+remain UNKNOWN; observe normal future work rather than manufacture proof.
+
 ## v0.9.5 publication verification
 
 Independent publication review accepted the existing 16-path increment and

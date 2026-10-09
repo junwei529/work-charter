@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.9.6 — 2026-10-09
+
+- Preserve the user's goal, constraint sources, existing evidence and downstream
+  method-adjustment authority across planning, execution and review handoffs.
+- Prioritize real prototype outcomes; explain necessary checks without per-test
+  approvals, invented quotas or non-blocking uncertainty gates.
+- Choose optional collaboration by independent completion and handoff cost;
+  keep tightly coupled execution together and reconcile in-flight work on exit.
+- Keep the public package independent of personal defaults and named services.
+  Model defaults, schemas and installer production behavior are unchanged.
+
 ## v0.9.5
 
 - Prioritize a usable main workflow and deliver once the agreed outcome and

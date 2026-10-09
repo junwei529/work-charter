@@ -1,5 +1,16 @@
 # Provenance And Transformation Boundary
 
+## v0.9.6 local source
+
+The source review baseline is `4db878040283d3688f0a6b3933d42df090d46f41`.
+Published package lineage remains v0.9.5 source commit
+`3c351faee3ee08b47591d0772f9281fea5f9f944` and package tree
+`55d8daaa3d3b26358b0192d57dc5403593bed85a`. The immutable v0.9.5 candidate is retained.
+The successor changes four instruction/template files with matching current
+navigation and identity bindings. Host-specific consumers are not package
+dependencies. State and Verification own actual review/delivery evidence;
+the candidate records an unpublished pre-effect snapshot.
+
 ## v0.9.5 publication
 
 Published source commit: `3c351faee3ee08b47591d0772f9281fea5f9f944`.

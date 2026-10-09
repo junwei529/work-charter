@@ -1,5 +1,21 @@
 # Work Charter Design
 
+## v0.9.6 outcome-preserving handoffs
+
+The standalone package owns the complete distinction between confirmed outcomes,
+necessary protections and replaceable proposals, including downstream adjustment
+authority. Overall plan approval does not freeze incidental methods. Personal-use
+prototypes prioritize real inputs and intended environments; production tasks keep
+their agreed requirements. Explain necessary checks without per-test permission
+ceremony; avoid invented call, page or review caps and non-blocking unknown gates.
+
+Handoffs retain original purpose, relevant source pointers and supported evidence.
+Unread material is not evidence that a route was never established. Optional
+collaboration is selected by independent completion and total handoff cost;
+withdrawal reconciles affected in-flight work without a retirement workflow.
+Host preferences and named collaborator routing remain outside the public package.
+No model, schema, role, installer or external-service dependency changes.
+
 ## v0.9.5 outcome-first delivery
 
 The public package owns the complete portable guidance for prioritizing a usable

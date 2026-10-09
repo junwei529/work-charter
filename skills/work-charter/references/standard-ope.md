@@ -78,6 +78,12 @@ Reviewer -> Executor preauthorized same-scope findings; otherwise Planner
 Reviewer -> Planner stable findings and coverage limits
 ```
 
+Every role carries forward the user outcome, the basis of fixed constraints,
+existing evidence and replaceable proposals using
+[Task And Role Prompt Construction](coordination-and-recovery.md#task-and-role-prompt-construction).
+P may adjust O's in-phase methods and E may adjust P's implementation methods
+within delegated authority; a role handoff does not freeze those proposals.
+
 Executor-internal steps or slices are not separate Definitions, roles, or
 approval gates. The user approves the Mandate. It may explicitly delegate
 in-bound Definition finalization and specified E/R delivery to P; otherwise

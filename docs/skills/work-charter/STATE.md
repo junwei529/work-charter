@@ -1,5 +1,24 @@
 # Work Charter State
 
+## v0.9.6 local source
+
+Status: **SOURCE_AND_HOST_RULES_COMPLETE**, 2026-10-09.
+The user approved the outcome/handoff/optional-collaboration source revision and
+selected v0.9.6. Review baseline: `4db878040283d3688f0a6b3933d42df090d46f41`.
+Four package instruction/template files change; model defaults and UI metadata
+retain their bytes. Authorized host-rule consumers are separate from this
+self-contained package and are not public dependencies.
+
+Source/version/provenance records follow the new candidate. No commit, installation,
+push or publication is included. The last verified installed and published
+version is v0.9.5; this change does not install or publish v0.9.6. Existing task
+adoption and behavioral improvement are not established.
+Independent actual-diff review passed after closing a missing package routing
+link. SOURCE 33/33, metadata, repository provenance and whitespace checks passed.
+The descriptor retains its pre-effect snapshot; actual evidence is in
+[Verification](VERIFICATION.md#v096-source-verification). Source work is complete;
+there is no remaining authorized installation or publication action.
+
 ## v0.9.5 publication
 
 Status: **PUBLISHED_VERIFIED**, 2026-10-08.

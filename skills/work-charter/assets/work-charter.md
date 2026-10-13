@@ -17,7 +17,7 @@ worktree. Remove unused prompts and keep pointers instead of copied content.
 - Canonical locator and revision: `<portable locator and comparable freshness marker>`
 - Standing-policy locator: `<if applicable; otherwise none>`
 - Intended workspace and writer: `<workspace/worktree and one-writer boundary>`
-- Role owners, carriers and review route: `<primary or actual O/P/E/R responsibilities; selected carriers, parent/recipient lifetime, next-turn activation where required, stable checkpoint and finding/disposition routes>`
+- Role owners, carriers and review route: `<Deliverer (D / primary) or actual O/P/E/R responsibilities; selected carriers, parent/recipient lifetime, next-turn activation where required, stable checkpoint and finding/disposition routes>`
 - Review product and timing: `<actual result, implementation plan or overall direction; required gate, applicable instructions/contract, input, original author and assessor>`
 - Reviewer continuity and carrier: `<one reliable continuing R for related products where supported; real reason for another R; exact request/return route across the selected carriers>`
 - Resolved execution metadata: `<for each newly resolved task/role: arrangement, contract format (legacy level only if applicable),
@@ -150,7 +150,7 @@ full identities and checkpoints remain in the contract.>
 
 <Optional prompt scaffold, not a second authoritative contract. Shared
 contract: locator/revision and material boundaries. Actual responsibility:
-primary or the authorized O/P/E/R role. Current task: deliverable, inputs,
+Deliverer (D, configuration responsibility primary) or the authorized O/P/E/R role. Current task: deliverable, inputs,
 necessary checks with their basis, stop conditions, and return route. Carry
 the user's goal and relevant original sources, supported existing conclusions,
 current proposals and the receiver's method-adjustment authority. These are

@@ -1,5 +1,14 @@
 # Provenance And Transformation Boundary
 
+## v0.10.1 local source
+
+Review baseline: `8ea7a01c2c8e68664a33064127bef06a9b5d9eb6`.
+The candidate retains v0.10.0 published package lineage at commit
+`78044cd1ffda37fa7d0e9dab1245f7e27ecee62f`, package tree
+`47759c90ec5bb5d085d008bd53a331d2cf4ce59d`. The old descriptor stays immutable.
+Only naming and its documentation/identity bindings change. Default models,
+UI metadata, contract/configuration schemas and installer behavior remain intact.
+
 ## v0.10.0 publication
 
 Published source commit: `78044cd1ffda37fa7d0e9dab1245f7e27ecee62f`.

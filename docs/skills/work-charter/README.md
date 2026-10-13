@@ -1,6 +1,10 @@
 # Work Charter
 
-Current source and latest published release are [v0.10.0](STATE.md#v0100-publication):
+Current source candidate is [v0.10.1](STATE.md#v0101-local-source), naming the
+end-to-end role Deliverer (D) while retaining `primary` and all existing duties.
+The [candidate](../../../release/v0.10.1-candidate.json) is not installed or published.
+
+Latest installed and published release is [v0.10.0](STATE.md#v0100-publication):
 end-to-end delivery, goal-level O and bounded workstreams, with Team only when
 justified. Managed installation and publication are verified. New agreements use
 arrangement-v2; old contracts and schema v2 model objects remain compatible.

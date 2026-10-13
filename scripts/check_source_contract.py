@@ -8,7 +8,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "skills" / "work-charter"
-CURRENT_CANDIDATE = ROOT / "release" / "v0.10.0-candidate.json"
+CURRENT_CANDIDATE = ROOT / "release" / "v0.10.1-candidate.json"
+V0100_CANDIDATE = ROOT / "release" / "v0.10.0-candidate.json"
+V0100_CANDIDATE_SHA256 = "21837753850ddfa018cb0ee202d873f6f8680d6a8de54cbba216b8f21985c474"
+V0100_PACKAGE_TREE = "47759c90ec5bb5d085d008bd53a331d2cf4ce59d"
 V096_CANDIDATE = ROOT / "release" / "v0.9.6-candidate.json"
 V096_CANDIDATE_SHA256 = "f947a3a8fc930c948a919b21e5c1d26e5c32f2dc9d1b91b2fbdc26b3be22ed94"
 V096_PACKAGE_TREE = "bcf263e0384248680a3bee9efdfcb5052b69c9cd"
@@ -261,7 +264,7 @@ def main():
     checks = {
         "prompts.contract_role_task_layers": contains_all(recovery, [
             "shared contract, actual responsibility, current task, and necessary model adaptation",
-            "| Direct primary", "| Phased Orchestrator",
+            "| Deliverer (D / `primary`)", "| Phased Orchestrator",
             "| Planner in selected Team or unchanged older split contracts", "| Executor in selected Team or unchanged older split contracts", "| Reviewer (when enabled)",
             "Cold prompts", "Warm continuations", "Recovery restores",
         ]) and "## Task Or Role Prompt" in charter_asset,
@@ -708,7 +711,7 @@ def main():
             not isinstance(parsed_successor.get(field), dict)
             for field in ("package", "evidence_states", "lineage")
         ):
-            raise ValueError("v0.10.0 candidate requires object package, evidence_states, and lineage")
+            raise ValueError("v0.10.1 candidate requires object package, evidence_states, and lineage")
         successor = parsed_successor
     except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
         successor_error = str(error)
@@ -730,16 +733,19 @@ def main():
     checks["candidate.v094_historical_identity"] = (
         hashlib.sha256(V094_CANDIDATE.read_bytes()).hexdigest() == V094_CANDIDATE_SHA256
     )
+    checks["candidate.v0100_historical_identity"] = (
+        hashlib.sha256(V0100_CANDIDATE.read_bytes()).hexdigest() == V0100_CANDIDATE_SHA256
+    )
     checks["candidate.v096_historical_identity"] = (
         hashlib.sha256(V096_CANDIDATE.read_bytes()).hexdigest() == V096_CANDIDATE_SHA256
     )
     checks["candidate.v095_historical_identity"] = (
         hashlib.sha256(V095_CANDIDATE.read_bytes()).hexdigest() == V095_CANDIDATE_SHA256
     )
-    checks["candidate.v0100_identity"] = (
+    checks["candidate.v0101_identity"] = (
         successor.get("schema") == "work-charter-local-release-candidate/v1"
         and successor.get("product") == "work-charter"
-        and successor.get("version") == "0.10.0"
+        and successor.get("version") == "0.10.1"
         and successor.get("public_identity") == "junwei529/work-charter"
         and successor.get("candidate_state") == "PENDING_INDEPENDENT_REVIEW"
         and successor.get("human_release_notes_review") == "PENDING"
@@ -748,9 +754,9 @@ def main():
         and successor.get("package", {}).get("files") == sorted(EXPECTED_FILES)
         and successor.get("package", {}).get("path") == "skills/work-charter"
         and successor.get("lineage") == {
-            "historical_package_tree": V096_PACKAGE_TREE,
-            "previous_candidate": "release/v0.9.6-candidate.json",
-            "source_commit": "abc166cab4c0de1262c1d088d3ac734dddcd3a16",
+            "historical_package_tree": V0100_PACKAGE_TREE,
+            "previous_candidate": "release/v0.10.0-candidate.json",
+            "source_commit": "78044cd1ffda37fa7d0e9dab1245f7e27ecee62f",
         }
         and successor.get("evidence_states") == {
             "broad_product_efficacy": "UNKNOWN",
@@ -766,7 +772,7 @@ def main():
         }
     )
     checks["candidate.current_package_binding"] = (
-        checks["candidate.v0100_identity"]
+        checks["candidate.v0101_identity"]
         and actual_package_tree is not None
         and current_package_sha256 is not None
         and successor.get("package", {}).get("tree") == actual_package_tree
@@ -1526,7 +1532,7 @@ def main():
         ),
         "result": "PASS" if not failures else "FAIL",
         "source_release_identity": (
-            "BOUND_TO_V0100_CANDIDATE"
+            "BOUND_TO_V0101_CANDIDATE"
             if current_package_bound
             else "UNBOUND_PENDING_SUCCESSOR_VERSION_AND_DESCRIPTOR"
         ),

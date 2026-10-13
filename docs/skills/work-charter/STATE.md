@@ -1,5 +1,19 @@
 # Work Charter State
 
+## v0.10.1 local source
+
+Status: **SOURCE_COMPLETE**, 2026-10-13. The user approved Deliverer (D) as the
+public name and selected v0.10.1. Source baseline is
+`8ea7a01c2c8e68664a33064127bef06a9b5d9eb6`.
+The four instruction/template files and bilingual navigation name the existing
+primary role; configuration, contract format, duties and permission boundaries
+are unchanged. Actual naming diff was self-checked; SOURCE 33/33, metadata and
+repository provenance checks passed. Package tree:
+`a22f25a3bc08efdb0877a7748b01be9dfde0e7e3`. Final record-only provenance and
+whitespace checks complete source closeout. No commit,
+installation, publication, global-rule change or business migration is included.
+The last verified installed/published version remains v0.10.0.
+
 ## v0.10.0 publication
 
 Status: **PUBLISHED_VERIFIED**, 2026-10-13. After source delivery the user

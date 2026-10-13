@@ -54,9 +54,15 @@ another Skill alone is not a reason to escalate or repeat an assessment.
 
 ## Least Sufficient Work Arrangement
 
+**Deliverer (D)** is the public name of the end-to-end delivery owner, previously
+described as Direct primary. Its configuration responsibility remains `primary`.
+Use Deliverer in role descriptions and task prompts; use `primary` in model
+configuration and selectors. This naming change creates no role or permission,
+requires no contract migration by itself, and does not rename existing tasks.
+
 | Arrangement | When useful and added cost |
 | --- | --- |
-| **Direct** | One primary delivery owner carries clarification, exploration, planning, implementation, verification, repair and delivery. Suitable for short or sustained work; add continuity and independent review only as needed. |
+| **Direct** | One Deliverer (D, `primary`) carries clarification, exploration, planning, implementation, verification, repair and delivery. Suitable for short or sustained work; add continuity and independent review only as needed. |
 | **Team** | An exceptional separation: P owns the executable contract, coordination and acceptance; E implements and verifies. Use only when that separate responsibility materially helps. Multiple contributors alone do not require P. |
 | **Phased** | O owns final goals, priorities, cross-workstream tradeoffs and agreed outcome acceptance. Each workstream defaults to Direct with necessary independent R; select Team locally only for a concrete benefit. |
 

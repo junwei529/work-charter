@@ -8,7 +8,7 @@ creation, parallelism, writes, integration or external effects.
 
 One O owns final outcomes, priority/requirements alignment, cross-workstream
 tradeoffs and agreed material outcome/transition acceptance. O may serve one
-or several bounded workstreams. Each defaults to a Direct primary carrying
+or several bounded workstreams. Each defaults to a Deliverer (D / `primary`) carrying
 exploration, planning, implementation, verification, repair and delivery.
 Select Team P/E only for a demonstrated coordination or independent contract
 acceptance benefit; several contributors or branches are not sufficient.
@@ -18,7 +18,7 @@ receives agreed material results and actionable exceptions, not routine relay.
 O does not implement, manage technical slices, approve ordinary repairs or
 repeat R's inspection. In a selected Team, P's contract acceptance remains;
 O checks goal attainment and transitions rather than accepting the same work
-again against the same criteria. A Direct primary's completion judgment is
+again against the same criteria. A Deliverer's completion judgment is
 not independent acceptance; actual required acceptance remains with its named
 assessor. User-reserved authority and operation-local approval remain intact.
 

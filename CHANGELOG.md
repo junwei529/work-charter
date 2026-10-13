@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.10.1 — 2026-10-13 (source candidate)
+
+- Name the end-to-end delivery role Deliverer (D), retaining the `primary`
+  configuration identifier and existing responsibilities.
+- Align role prompts, templates and bilingual navigation without changing
+  arrangement-v2, model defaults, authority, review or acceptance.
+
 ## v0.10.0 — 2026-10-13
 
 - Make end-to-end Direct delivery the default, including within Phased.

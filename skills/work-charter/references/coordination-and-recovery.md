@@ -115,7 +115,7 @@ or answer facts that authorized inspection can establish.
 
 Recommend the least sufficient arrangement in ordinary language:
 
-- **Direct:** one primary delivery owner carries requirements clarification,
+- **Direct:** one Deliverer (D, configuration responsibility `primary`) carries requirements clarification,
   exploration, planning, implementation, real execution, verification, repairs,
   necessary documentation and delivery. Sustained or high-risk work may remain
   Direct with suitable continuity and targeted independent R.
@@ -192,7 +192,7 @@ frozen delivery combination until its owner authorizes a material change.
 
 ## End-to-End Delivery And Parallel Workstreams
 
-For arrangement-v2, the primary owns a complete bounded outcome, including
+For arrangement-v2, the Deliverer (D / `primary`) owns a complete bounded outcome, including
 route exploration and planning rather than only prescribed implementation.
 Use confirmed outcomes, real constraints, existing evidence, permitted effects,
 completion evidence and any required assessor/checkpoint to begin. Technical
@@ -702,7 +702,7 @@ every record.
 
 | Actual responsibility | Prompt addition |
 | --- | --- |
-| Direct primary, standalone or in Phased | Complete authorized clarification, exploration, planning, implementation, required verification, and delivery; retain the agreed continuity record and disposition independently required Reviewer findings. Do not create P/E separation or claim independent self-acceptance. |
+| Deliverer (D / `primary`), standalone or in Phased | Complete authorized clarification, exploration, planning, implementation, required verification, and delivery; retain the agreed continuity record and disposition independently required Reviewer findings. Do not create P/E separation or claim independent self-acceptance. |
 | Phased Orchestrator | Frame project outcome, Mandate, priorities and the actual workstream-owner return route; assess agreed material outcomes and transitions without directing technical slices or repeating review. Retain P routing only for selected Team or unchanged older split contracts. |
 | Planner in selected Team or unchanged older split contracts | Supply the executable contract, acceptance criteria, and E/R routes; exercise delegated in-phase choices, authorize the bounded correction route and accept stable results while remaining read-only on implementation and routing technical review to R. Team P is the highest owner. |
 | Executor in selected Team or unchanged older split contracts | Complete authorized work and required checks, preserve findings and evidence, and return the stable checkpoint to the Planner or use the preauthorized E/R correction route; do not expand scope or accept the result. |
@@ -760,7 +760,8 @@ attributable evidence. Editing a prompt does not authorize model evaluation.
 ## Role-Model Configuration At Dispatch
 
 Apply only at an already-authorized new-task or role-delivery boundary. Identify
-the actual responsibility and configuration selector first. New `arrangement-v2`
+the actual responsibility and configuration selector first. Deliverer/D is a
+public role label for `primary`, not a new YAML key or configuration selector. New `arrangement-v2`
 contracts do not select a level. Existing `arrangement-v1` contracts do not select a level
 either and retain their original arrangement lookup. An old L0-L4 contract retains its exact level and lookup
 until approved migration; unknown contract identity stops affected dispatch.
@@ -791,7 +792,7 @@ For arrangement-v2, separate the outer arrangement from the model lookup:
 
 | Actual responsibility | Configuration selector |
 | --- | --- |
-| Standalone or Phased Direct workstream primary and its R | `direct.primary` / `direct.reviewer` |
+| Standalone or Phased Direct Deliverer (`primary`) and its R | `direct.primary` / `direct.reviewer` |
 | Standalone or Phased selected Team P, E and its R | `team.planner` / `team.executor` / `team.reviewer` |
 | Phased O and R reviewing O's planning product | `phased.orchestrator` / `phased.reviewer` |
 

@@ -1,5 +1,18 @@
 # Work Charter Verification
 
+## v0.10.1 naming verification
+
+SOURCE 33/33 and all identity/history bindings passed; Skill metadata and
+repository provenance passed with 110 mapped entries. The actual four-file
+package diff was self-checked for Deliverer/D-to-primary consistency and
+unchanged configuration, contract, authority and old-contract semantics. Model
+defaults and UI metadata retain their bytes. The v0.10.0 descriptor remains
+immutable. Final record bytes receive the required provenance/whitespace checks.
+This low-impact display-name change is self-checked, not independently accepted;
+any later commit still requires its applicable independent review. No installer lifecycle,
+business test or model evaluation is needed for unchanged mechanisms. Installation
+and publication are separate effects; earlier v0.10.0 evidence retains its scope.
+
 ## v0.10.0 publication verification
 
 Independent publication review passed the final 19-path source increment,

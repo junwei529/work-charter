@@ -2,8 +2,10 @@
 
 [English](README.md)
 
-当前源码：**v0.10.0**，默认由端到端负责人交付，按需增加 O、独立 R，
+当前源码：**v0.10.1**（命名修订候选），默认由端到端负责人交付，按需增加 O、独立 R，
 仅在有具体收益时拆分 P/E；支持边界明确的并行工作线。
+端到端角色统一称为 **Deliverer（D）／交付负责人**，配置标识仍为 `primary`。
+[当前源码状态](docs/skills/work-charter/STATE.md#v0101-local-source)及[候选](release/v0.10.1-candidate.json)与下方已发布版本分别记录。
 
 最新正式发布版本：**[v0.10.0](https://github.com/junwei529/work-charter/releases/tag/v0.10.0)**。
 [安装与发布核验记录](docs/skills/work-charter/STATE.md#v0100-publication)。
@@ -23,7 +25,7 @@ Work Charter 是面向 Codex 的项目协作 Skill。它根据成果、真实约
 
 | 工作方式 | 怎么做 | 适用情况 |
 |---|---|---|
-| **直接完成 / Direct** | 一位主负责人完成；仅按需要加入当前任务约定、持久恢复锚点或独立审查。 | 短期或持续工作；风险可以通过针对性的独立审查处理。 |
+| **直接完成 / Direct** | 一位 Deliverer（D／交付负责人，配置标识 `primary`）完成；仅按需要加入当前任务约定、持久恢复锚点或独立审查。 | 短期或持续工作；风险可以通过针对性的独立审查处理。 |
 | **分工完成 / Team** | Planner 负责约定与验收，Executor 实施；被请求或必需时，独立 Reviewer 检查实际产物。 | 独立合同接受或专门协调确有收益；不由协作者数量决定。 |
 | **分阶段推进 / Phased** | O 负责目标、优先级和约定成果接受；各工作线默认 Direct 加必要 R，有具体收益才选择 Team。 | 有依赖关系、需要持续治理的多阶段工作。 |
 
@@ -77,7 +79,7 @@ R 任务；当前父回合内可使用有界 R subagent，跨回合则还需可�
 原作者与接受方。R 以前审过某方案不等于编写过它；实质承担其编写或设计责任
 后则不能对相应产物自称独立审查。上下文复用不保证缓存命中或总成本下降。
 
-- **Direct 交付负责人**：贯穿澄清、探索、规划、实现、修复、验证和交付，也可承担 Phased 内工作线。
+- **Deliverer（D）／交付负责人**：贯穿澄清、探索、规划、实现、修复、验证和交付，也可承担 Phased 内工作线。
 - **Orchestrator（Phased）**：负责项目方向和阶段验收。
 - **Planner（明确选定的 Team，可位于 Phased 内）**：确定可执行约定并验收结果；Team 的 P 是最高负责人。
 - **Executor**：实施、自检、修复和交付获准工作。
@@ -103,7 +105,7 @@ Codex 跨回合暂停及恢复条件见[设计说明](docs/skills/work-charter/D
 
 | 职责 | 包内默认配置 |
 |---|---|
-| 独立或 Phased 内 Direct 负责人；选定 Team Planner；Phased Orchestrator | `gpt-6-astra` · `high` |
+| 独立或 Phased 内 Deliverer；选定 Team Planner；Phased Orchestrator | `gpt-6-astra` · `high` |
 | 选定 Team Executor；旧 arrangement-v1 Phased Planner/Executor | `gpt-6.1-sol` · `xhigh` |
 | 实际启用的所有独立 Reviewer | `gpt-6-astra` · `medium` |
 

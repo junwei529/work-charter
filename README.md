@@ -2,8 +2,11 @@
 
 [简体中文](README.zh-CN.md)
 
-Current source: **v0.10.0**, end-to-end delivery with optional goal-level O,
+Current source: **v0.10.1** (naming candidate), end-to-end delivery with optional goal-level O,
 justified P/E separation and explicitly bounded parallel workstreams.
+The end-to-end role is named **Deliverer (D)**; its configuration key remains
+`primary`. See [current source state](docs/skills/work-charter/STATE.md#v0101-local-source)
+and the [source candidate](release/v0.10.1-candidate.json).
 
 Latest published release: **[v0.10.0](https://github.com/junwei529/work-charter/releases/tag/v0.10.0)**.
 [Verified installation and publication](docs/skills/work-charter/STATE.md#v0100-publication).
@@ -26,7 +29,7 @@ tasks need no Charter or extra questionnaire.
 
 | Arrangement | How it works | When it helps |
 |---|---|---|
-| **Direct** | One primary owner completes the work; add a current-task agreement, durable recovery anchor, or independent review only when needed. | Short or sustained delivery, including risk that needs targeted independent review. |
+| **Direct** | One Deliverer (D / `primary`) completes the work; add a current-task agreement, durable recovery anchor, or independent review only when needed. | Short or sustained delivery, including risk that needs targeted independent review. |
 | **Team** | A Planner owns the agreement and acceptance; an Executor implements; an independent Reviewer checks the actual product when requested or required. | A demonstrated need for independent contract acceptance or dedicated coordination; contributor count alone is insufficient. |
 | **Phased** | O owns goals, priorities and agreed outcome acceptance; each workstream defaults to Direct plus necessary R, with Team only where justified. | Consequential work across several dependent phases. |
 
@@ -96,7 +99,7 @@ author and acceptance owner. Prior review is not authorship, but R must not
 independently review a product or design decision it materially authored.
 Context reuse is not a cache-hit or cost guarantee.
 
-- **Direct primary:** Owns clarification, exploration, planning, implementation, repair, verification and delivery, including inside Phased.
+- **Deliverer (D / `primary`):** Owns clarification, exploration, planning, implementation, repair, verification and delivery, including inside Phased.
 - **Orchestrator (Phased):** Owns project direction and phase acceptance.
 - **Planner (selected Team, standalone or inside Phased):** Defines an executable agreement and accepts results. Team's Planner is its highest owner.
 - **Executor:** Implements, checks, repairs, and delivers authorized work.
@@ -127,7 +130,7 @@ User configuration takes priority over package defaults. Changes apply to tasks 
 
 | Responsibility | Package default |
 |---|---|
-| Standalone/Phased Direct primary; selected Team Planner; Phased Orchestrator | `gpt-6-astra` · `high` |
+| Standalone/Phased Deliverer; selected Team Planner; Phased Orchestrator | `gpt-6-astra` · `high` |
 | Selected Team Executor; unchanged arrangement-v1 Phased Planner/Executor | `gpt-6.1-sol` · `xhigh` |
 | Any enabled independent Reviewer | `gpt-6-astra` · `medium` |
 

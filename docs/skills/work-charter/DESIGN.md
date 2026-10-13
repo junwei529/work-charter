@@ -1,5 +1,14 @@
 # Work Charter Design
 
+## v0.10.1 Deliverer naming
+
+Deliverer (D) names the existing end-to-end primary role; it is not a new
+responsibility, configuration key or selection layer. Model schema/defaults,
+arrangement-v2 and all authority, review, acceptance and progression duties stay
+unchanged. Technical references may still say primary where the actual selector
+matters. Existing tasks are not renamed and no migration is required solely for
+the display name. Planner/Executor remain selected Team and legacy roles.
+
 ## v0.10.0 end-to-end workstreams
 
 New arrangement-v2 separates goal coordination, delivery separation, review and

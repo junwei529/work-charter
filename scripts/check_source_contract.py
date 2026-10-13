@@ -8,7 +8,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "skills" / "work-charter"
-CURRENT_CANDIDATE = ROOT / "release" / "v0.9.6-candidate.json"
+CURRENT_CANDIDATE = ROOT / "release" / "v0.10.0-candidate.json"
+V096_CANDIDATE = ROOT / "release" / "v0.9.6-candidate.json"
+V096_CANDIDATE_SHA256 = "f947a3a8fc930c948a919b21e5c1d26e5c32f2dc9d1b91b2fbdc26b3be22ed94"
+V096_PACKAGE_TREE = "bcf263e0384248680a3bee9efdfcb5052b69c9cd"
 V095_CANDIDATE = ROOT / "release" / "v0.9.5-candidate.json"
 V095_CANDIDATE_SHA256 = "d09cf7bcd47ece3674f17e673aeddff718b7a30cf8f9c86bed9f5c71f05edb8a"
 V095_PACKAGE_TREE = "55d8daaa3d3b26358b0192d57dc5403593bed85a"
@@ -259,7 +262,7 @@ def main():
         "prompts.contract_role_task_layers": contains_all(recovery, [
             "shared contract, actual responsibility, current task, and necessary model adaptation",
             "| Direct primary", "| Phased Orchestrator",
-            "| Team/Phased Planner", "| Team/Phased Executor", "| Reviewer (when enabled)",
+            "| Planner in selected Team or unchanged older split contracts", "| Executor in selected Team or unchanged older split contracts", "| Reviewer (when enabled)",
             "Cold prompts", "Warm continuations", "Recovery restores",
         ]) and "## Task Or Role Prompt" in charter_asset,
         "prompts.continuation_and_real_gates": contains_all(recovery, [
@@ -375,7 +378,7 @@ def main():
             ],
         ),
         "role_models.arrangement_compatibility": contains_all(recovery, [
-            "New `arrangement-v1` contracts do not select a level",
+            "New `arrangement-v2` contracts do not select a level",
             "Never merge distinct L0/L1/L2 user overrides",
             "Different objects or a present/missing mix require one consolidated user decision",
             "Personal-file conversion is a separate authorized effect",
@@ -397,7 +400,7 @@ def main():
         ]),
         "selection.contract_format_independent": contains_all(skill, [
             "New contracts directly describe the arrangement",
-            "they need no L0-L4 classification", "contract_format: arrangement-v1",
+            "they need no L0-L4 classification", "contract_format: arrangement-v2",
         ]) and contains_all(charter_asset, ["## Authorized Progression", "Contract format"]),
 
         "selection.assessment_and_adoption_are_distinct": contains_all(
@@ -491,7 +494,7 @@ def main():
             ],
         ),
         "review.levels_and_responsibility_separation": contains_all(skill, [
-            'An independent review gate can still apply.',
+            'add continuity and independent review only as needed.',
             'Independent review of Direct',
             'does not create Planner/Executor roles or adopt a Charter.',
             'The implementer verifies and repairs the work it changed.',
@@ -705,7 +708,7 @@ def main():
             not isinstance(parsed_successor.get(field), dict)
             for field in ("package", "evidence_states", "lineage")
         ):
-            raise ValueError("v0.9.6 candidate requires object package, evidence_states, and lineage")
+            raise ValueError("v0.10.0 candidate requires object package, evidence_states, and lineage")
         successor = parsed_successor
     except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
         successor_error = str(error)
@@ -727,13 +730,16 @@ def main():
     checks["candidate.v094_historical_identity"] = (
         hashlib.sha256(V094_CANDIDATE.read_bytes()).hexdigest() == V094_CANDIDATE_SHA256
     )
+    checks["candidate.v096_historical_identity"] = (
+        hashlib.sha256(V096_CANDIDATE.read_bytes()).hexdigest() == V096_CANDIDATE_SHA256
+    )
     checks["candidate.v095_historical_identity"] = (
         hashlib.sha256(V095_CANDIDATE.read_bytes()).hexdigest() == V095_CANDIDATE_SHA256
     )
-    checks["candidate.v096_identity"] = (
+    checks["candidate.v0100_identity"] = (
         successor.get("schema") == "work-charter-local-release-candidate/v1"
         and successor.get("product") == "work-charter"
-        and successor.get("version") == "0.9.6"
+        and successor.get("version") == "0.10.0"
         and successor.get("public_identity") == "junwei529/work-charter"
         and successor.get("candidate_state") == "PENDING_INDEPENDENT_REVIEW"
         and successor.get("human_release_notes_review") == "PENDING"
@@ -742,9 +748,9 @@ def main():
         and successor.get("package", {}).get("files") == sorted(EXPECTED_FILES)
         and successor.get("package", {}).get("path") == "skills/work-charter"
         and successor.get("lineage") == {
-            "historical_package_tree": V095_PACKAGE_TREE,
-            "previous_candidate": "release/v0.9.5-candidate.json",
-            "source_commit": "3c351faee3ee08b47591d0772f9281fea5f9f944",
+            "historical_package_tree": V096_PACKAGE_TREE,
+            "previous_candidate": "release/v0.9.6-candidate.json",
+            "source_commit": "abc166cab4c0de1262c1d088d3ac734dddcd3a16",
         }
         and successor.get("evidence_states") == {
             "broad_product_efficacy": "UNKNOWN",
@@ -760,7 +766,7 @@ def main():
         }
     )
     checks["candidate.current_package_binding"] = (
-        checks["candidate.v096_identity"]
+        checks["candidate.v0100_identity"]
         and actual_package_tree is not None
         and current_package_sha256 is not None
         and successor.get("package", {}).get("tree") == actual_package_tree
@@ -1520,7 +1526,7 @@ def main():
         ),
         "result": "PASS" if not failures else "FAIL",
         "source_release_identity": (
-            "BOUND_TO_V096_CANDIDATE"
+            "BOUND_TO_V0100_CANDIDATE"
             if current_package_bound
             else "UNBOUND_PENDING_SUCCESSOR_VERSION_AND_DESCRIPTOR"
         ),

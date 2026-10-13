@@ -8,8 +8,9 @@ roles can read at the same revision; do not copy authoritative files into each
 worktree. Remove unused prompts and keep pointers instead of copied content.
 
 - Managed workstream and exclusions: `<bounded line of work and what it does not cover>`
-- Contract format: `arrangement-v1` for a newly approved contract; retain an old contract until its authorized migration
-- Work arrangement and responsibilities: `<Direct | Team | Phased; reason and real coordination cost>`
+- Contract format: `arrangement-v2` for a newly approved contract; retain an old contract until its authorized migration
+- Work arrangement and responsibilities: `<Direct by default; add Phased O for goal coordination; select Team P/E only where separation has a concrete benefit>`
+- Workstreams when applicable: `<bounded outcomes, Direct or justified Team for each, dependencies, overlapping/shared write surfaces, aggregate limits, integration owner and combined-result evidence; no new registry required>`
 - Continuity: `<current-task | durable, applicable existing anchor; Team/Phased need common recoverable control>`
 - Contract state: `<draft | proposed | approved | superseded>`
 - Run disposition: `<active | paused | closed>`
@@ -72,10 +73,10 @@ a prototype from production requirements and adjacent excluded work.>
 ## Scope And Hard Boundaries
 
 <State fixed outcomes, interfaces, acceptance floor and real guardrails;
-P's delegated in-phase choices and whether Definition finalization/dispatch
-is authorized; E's replaceable methods and same-scope correction authority;
-and the concrete exceptions that require P, O or the user. Planning-only
-authority remains explicit when execution has not been delegated.>
+the primary's exploration, planning, implementation and repair authority;
+selected Team P/E responsibilities only where applicable; and exceptions
+requiring O or the user. Identify actual acceptance nodes without freezing
+tactical methods. Planning-only authority remains explicit.>
 
 ## Authorization And Material Effects
 
@@ -97,9 +98,9 @@ coverage aids, not semantic proof.>
 
 <Name the approved work package, next items, dependency/acceptance transitions,
 aggregate cost/effect budget, intervention preference and exception stops.
-State whether first E-to-R review and same-scope original-author repair/same-R
-re-review are preauthorized; P receives the stable or exception result and
-retains acceptance. Name the exact recipient, supported next-turn activation
+State the primary-to-R or selected E-to-R review and original-author repair/
+same-R re-review route. Selected Team P retains target acceptance; otherwise
+no P gate is introduced. Name agreed O/user outcome acceptance and transitions. Name the exact recipient, supported next-turn activation
 route and next authorized action for each dependent handoff; distinguish
 permission, message arrival, activation, completion and acceptance.
 For cross-phase continuation, cite advance approval of the bounded phase set,
@@ -131,9 +132,9 @@ reply. Required dispositions still reach the dependent role; terminal ones need
 no acknowledgement. Complete the authorized package before stable review unless
 a material boundary intervenes. Name any preauthorized R-to-E same-scope repair
 and E-to-original-R re-review route, its stops and read-only review windows.
-Otherwise findings return to P; in Direct they return to the primary.
+Otherwise findings return to selected Team P; in Direct workstreams they return to the primary.
 Planning findings return to their original P or O author and designated approval
-route. For implementation, P receives the cumulative stable or exception result
+route. For selected Team implementation, P receives the cumulative stable or exception result
 and returns its acceptance/correction/decision disposition to E. Record only formed verdicts
 within the authorized single-writer window; mechanical closeout does not recurse
 into acceptance of its records. Retain cumulative review history. Configuration

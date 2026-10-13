@@ -2,9 +2,10 @@
 
 [简体中文](README.zh-CN.md)
 
-Current source: **v0.9.6**, preserving outcomes, evidence and replaceable
-methods across handoffs, with proportionate real-world verification and optional
-collaboration. See [current source state](docs/skills/work-charter/STATE.md#v096-publication).
+Current source: **v0.10.0**, end-to-end delivery with optional goal-level O,
+justified P/E separation and explicitly bounded parallel workstreams.
+See [current source state](docs/skills/work-charter/STATE.md#v0100-local-source).
+The [current candidate](release/v0.10.0-candidate.json) is source-only.
 
 Latest published release: **[v0.9.6](https://github.com/junwei529/work-charter/releases/tag/v0.9.6)**.
 [Verified publication](docs/skills/work-charter/STATE.md#v096-publication).
@@ -22,13 +23,13 @@ It reuses known facts, inspects only authorized scope, and asks only questions
 whose answers change the arrangement or a protected decision. Ordinary small
 tasks need no Charter or extra questionnaire.
 
-## Three ways to work
+## Delivery, goal coordination and optional separation
 
 | Arrangement | How it works | When it helps |
 |---|---|---|
-| **Direct** | One primary owner completes the work; add a current-task agreement, durable recovery anchor, or independent review only when needed. | Everyday work, including a small high-risk change needing targeted review. |
-| **Team** | A Planner owns the agreement and acceptance; an Executor implements; an independent Reviewer checks the actual product when requested or required. | Work that benefits from separated implementation and assessment. |
-| **Phased** | An Orchestrator owns direction and phase acceptance above phase-local Planner, Executor and applicable Reviewer roles. | Consequential work across several dependent phases. |
+| **Direct** | One primary owner completes the work; add a current-task agreement, durable recovery anchor, or independent review only when needed. | Short or sustained delivery, including risk that needs targeted independent review. |
+| **Team** | A Planner owns the agreement and acceptance; an Executor implements; an independent Reviewer checks the actual product when requested or required. | A demonstrated need for independent contract acceptance or dedicated coordination; contributor count alone is insufficient. |
+| **Phased** | O owns goals, priorities and agreed outcome acceptance; each workstream defaults to Direct plus necessary R, with Team only where justified. | Consequential work across several dependent phases. |
 
 New agreements directly describe the work arrangement and the conditions that
 matter. You do not need to choose a level number. Use the least sufficient
@@ -50,7 +51,7 @@ Conditional questions settle:
 These are parts of one agreement, not arbitrary feature switches. Required review
 and authority boundaries cannot be disabled. An approved same-scope repair can
 go from R to the original author and back to the same valid R. P accepts stable
-implementation results; planning products retain their designated approval
+implementation results only in selected Team or unchanged older contracts; planning products retain their designated approval
 route. A preauthorized first E-to-R handoff also avoids routine relay.
 Independent context and continuous progress are separate choices.
 
@@ -61,6 +62,12 @@ background scheduling or reliable delivery. Name the recipient, supported
 next-turn route and next authorized action; message arrival, activation,
 completion and acceptance are separate. Recover a missing handoff without
 repeating completed work or adding polling/ACK loops.
+
+A workstream is a bounded outcome, not a branch name. One O may coordinate
+several independently owned workstreams; parallelism needs explicit boundaries,
+one writer per overlapping surface and an integration owner where results join.
+Reuse R where reliable rather than creating one per branch. No new document suite
+or nested O follows from this structure.
 
 ## Existing projects
 
@@ -90,9 +97,9 @@ author and acceptance owner. Prior review is not authorship, but R must not
 independently review a product or design decision it materially authored.
 Context reuse is not a cache-hit or cost guarantee.
 
-- **Direct primary:** Completes authorized work and its checks.
+- **Direct primary:** Owns clarification, exploration, planning, implementation, repair, verification and delivery, including inside Phased.
 - **Orchestrator (Phased):** Owns project direction and phase acceptance.
-- **Planner (Team or Phased):** Defines an executable agreement and accepts results. Team's Planner is its highest owner.
+- **Planner (selected Team, standalone or inside Phased):** Defines an executable agreement and accepts results. Team's Planner is its highest owner.
 - **Executor:** Implements, checks, repairs, and delivers authorized work.
 - **Reviewer:** Independently inspects an actual direction, plan, or implementation product against applicable instructions, the agreement, and evidence. The original author corrects findings; the same valid Reviewer rechecks.
 
@@ -121,8 +128,8 @@ User configuration takes priority over package defaults. Changes apply to tasks 
 
 | Responsibility | Package default |
 |---|---|
-| Direct primary; Team Planner; Phased Orchestrator | `gpt-6-astra` · `high` |
-| Phased Planner; Team/Phased Executor | `gpt-6.1-sol` · `xhigh` |
+| Standalone/Phased Direct primary; selected Team Planner; Phased Orchestrator | `gpt-6-astra` · `high` |
+| Selected Team Executor; unchanged arrangement-v1 Phased Planner/Executor | `gpt-6.1-sol` · `xhigh` |
 | Any enabled independent Reviewer | `gpt-6-astra` · `medium` |
 
 For a major planning tradeoff or difficult implementation judgment, an
@@ -245,7 +252,7 @@ single owner of complete default values. Model schema v2 has `roles`,
 `arrangement_overrides` for `direct`/`team`/`phased`, and optional
 `legacy_level_overrides` for unchanged old contracts. Arrangement maps select
 actual responsibilities; there is no model table for every feature combination.
-The Skill release version, `contract_format: arrangement-v1`, configuration
+The Skill release version, `contract_format: arrangement-v2` (arrangement-v1 remains compatible), configuration
 schema and frozen delivery values are distinct identities.
 
 Use the contract's exact explicit file, else the existing

@@ -1,5 +1,39 @@
 # Work Charter Verification
 
+## v0.10.0 source verification
+
+Independent actual-diff review covered package instructions/templates, bilingual
+navigation, compatibility cases/check changes, candidate identity and three
+separate host-rule consumers. R1/P2 identified unqualified P routing in shared
+prompt/review/correction clauses. The original author scoped P to selected Team
+or unchanged older split contracts, made primary finding/repair routes explicit,
+and repaired adjacent O/P wording. The same R re-reviewed PASS, R1 closed, with
+no new blocking finding. The audit consumer's one-sentence actual-role update
+was included. Two semantic walkthroughs covered dual Direct workstreams sharing
+a database and unmigrated arrangement-v1 Phased recovery; these are instruction
+review, not runtime role execution or production proof.
+
+- SOURCE: 33/33 static clauses and all identity/history checks PASS, bound to
+  v0.10.0 package tree `47759c90ec5bb5d085d008bd53a331d2cf4ce59d`.
+- Skill metadata: PASS. The unchanged model-default and UI files were retained.
+- Repository provenance: PASS, 109 mapped entries; final record-only bytes and
+  whitespace receive the same required bounded checks.
+- The initial SOURCE run failed an old role-separation wording assertion; after
+  semantic repair another old prompt-role label assertion failed. Both existing
+  assertions now match the actual contract. An initial provenance mapping failed
+  because native target hashes were bound before updating them; corrected update
+  order resolved it. These failures are not runtime/product success evidence.
+- Three reviewed host-rule candidates were applied and exactly read back. Their
+  new Phased binding requires a supporting installed Skill and explicit contract
+  adoption; source-only delivery cannot change an existing project contract.
+
+The candidate descriptor retains its pre-effect pending snapshot; actual review
+and local delivery evidence live here and in State. Production installer behavior,
+model schema/default objects and old descriptors are unchanged. No installation,
+commit, publication, model evaluation, business tests or project migration was
+performed. Installed/task adoption, cost/cache benefit and natural efficacy remain
+UNKNOWN. No extra monitor or synthetic evaluation matrix was created.
+
 ## v0.9.6 publication verification
 
 Independent publication review passed the unchanged product and bounded release

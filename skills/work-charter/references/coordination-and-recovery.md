@@ -81,14 +81,15 @@ dispositions findings, verifies repairs and delivers. Team and Phased need one
 common recoverable control location. Update durable state at material
 checkpoints, not after every message.
 
-Record `contract_format: arrangement-v1` for a newly approved agreement in its
+Record `contract_format: arrangement-v2` for a newly approved agreement in its
 existing carrier. Together with arrangement and continuity, retain outcome,
 acceptance, authority and reserved decisions, actual owners/carriers, review
 products/routes, progression scope/transitions/stops and the recovery checkpoint.
 These are logical contents, not a mandatory YAML file or fixed document suite.
 The marker is independent of Skill release version and role-model schema.
 An absent marker requires reading the applicable agreement; it proves neither
-no Charter nor automatic legacy adoption. Do not invent a formal v1 schema for
+no Charter nor automatic legacy adoption. Existing arrangement-v1 contracts
+retain their approved topology and acceptance until explicit migration. Do not invent a formal v1 schema for
 older Markdown. Ordinary non-Chartered work needs no contract marker.
 
 Prefer an existing project canonical owner that is discoverable, stable to
@@ -114,19 +115,24 @@ or answer facts that authorized inspection can establish.
 
 Recommend the least sufficient arrangement in ordinary language:
 
-- **Direct:** one primary owner; an ordinary small task needs no Charter,
-  questionnaire or role. An agreed current-task contract and a durable recovery
-  anchor are different Direct variants when their actual continuity needs call
-  for them. A high-risk small change can stay Direct with targeted independent
-  review.
-- **Team:** Planner (P) is the highest accountable owner; Executor (E) owns
-  implementation and verification. Enable independent Reviewer (R) for the
-  actual product when requested, required by a gate, or justified by material
-  risk. Do not add an Orchestrator merely to make the hierarchy symmetrical.
-- **Phased:** Orchestrator (O) is the highest owner for direction and phase
-  acceptance; phase-local P owns Definition, E/R routing and target acceptance.
-  Use a discoverable durable control location; a host-specific Standard
-  standing policy requires its own explicit adoption.
+- **Direct:** one primary delivery owner carries requirements clarification,
+  exploration, planning, implementation, real execution, verification, repairs,
+  necessary documentation and delivery. Sustained or high-risk work may remain
+  Direct with suitable continuity and targeted independent R.
+- **Phased:** add O only for sustained goal/priority alignment, cross-workstream
+  dependencies and agreed outcome acceptance. One O can serve several bounded
+  workstreams. Each workstream selects Direct by default; Team is conditional.
+  Do not add a new O or full role hierarchy for each branch.
+- **Team:** split P/E only when independent contract ownership/acceptance or
+  sustained coordination has concrete value exceeding handoff cost. Several
+  contributors, branches or workstreams alone do not justify P. A primary may
+  coordinate bounded contributors while retaining end-to-end responsibility;
+  contributor delivery still needs its applicable authority.
+
+Goal coordination, delivery separation, parallelism and review are distinct
+choices within one agreement, not a ladder selected by size or duration.
+The Phased composition here applies to arrangement-v2. Arrangement-v1 and
+L0-L4 retain their approved role/acceptance hierarchy until authorized migration.
 
 Then branch only where a real choice remains. For an actual output, decide
 whether independent review covers the result, its implementation plan, or a
@@ -138,8 +144,9 @@ task. Apply Review Input At Any Level before choosing a carrier for R.
 Choose carriers by the required lifetime of the work, user intervention,
 permission and actual continuation capability. For Team or Phased roles that
 must continue after their upstream task ends its turn, normally propose
-separately addressable tasks: P/E/applicable R for Team, O/P/E/applicable R for
-Phased. Reuse a suitable existing role task instead of creating a duplicate.
+separately addressable tasks for the responsibilities actually selected:
+P/E/applicable R in Team; O and each workstream primary or selected Team in
+arrangement-v2 Phased, with applicable R. Older contracts retain their routes. Reuse a suitable existing role task instead of creating a duplicate.
 Direct stays in the primary task; a bounded independent review or evidence
 subagent can return while that primary turn is still active.
 Result delivery alone does not establish that an ended recipient can start a
@@ -183,6 +190,58 @@ means, explain it first and label any alternative as a recommendation.
 Do not treat silence as approval. Keep an existing approved L0-L4 contract and
 frozen delivery combination until its owner authorizes a material change.
 
+## End-to-End Delivery And Parallel Workstreams
+
+For arrangement-v2, the primary owns a complete bounded outcome, including
+route exploration and planning rather than only prescribed implementation.
+Use confirmed outcomes, real constraints, existing evidence, permitted effects,
+completion evidence and any required assessor/checkpoint to begin. Technical
+methods remain replaceable; no complete frozen tactical plan is required.
+The four proposal layers below remain a reasoning distinction, not another form.
+
+Complete the earliest authorized real main workflow after its necessary
+pre-action protections. Investigate actual failures, adjust in-scope methods,
+perform proportionate checks and required independent review, then deliver.
+Original authors repair their work and the same valid R re-reviews. No P is
+added to route review, interpret every finding or approve ordinary continuation.
+The primary dispositions findings and delivery readiness without claiming
+independent self-acceptance. Do not waive an acceptance floor or silently
+overrule R's technical conclusion; resolve evidence disputes with R and return
+reserved risk/scope decisions to their actual owner. In selected Team, P retains
+contract acceptance; in Direct, only the agreed external assessor checkpoints
+require acceptance. Outcome acceptance does not authorize additional effects.
+
+O owns final outcomes, requirements/priority alignment, cross-workstream tradeoffs
+and agreed material outcome/transition acceptance. It does not approve ordinary
+methods, tests or repair rounds. In-scope user requests to the primary stay
+there. O receives actionable exceptions and agreed material results, not copies
+of every workstream message. Technical owners coordinate necessary interfaces
+directly through authorized routes; only goal, priority or authority tradeoffs
+need O or the user. Factual updates stay at existing canonical owners unless a
+recipient needs them to act. A notice does not bypass required acceptance.
+
+Parallelism must be approved for bounded workstreams, dependencies, aggregate
+effects/cost and write surfaces. A branch name is not an isolation guarantee.
+Use separate checkouts/worktrees when concurrent repository writers need them;
+shared databases, services, configuration and authoritative records remain
+shared surfaces. Keep one active writer per overlapping write surface, serialize
+shared effects, and freeze the reviewed target during its review window. An
+unexplained overlapping change stops affected work and invalidates affected
+evidence. Existing single-lane contracts remain single-lane until amended.
+
+Where workstreams converge, name an existing delivery owner for integration,
+interface/conflict resolution and the necessary combined-result verification.
+Branch-local review does not prove the integrated outcome. Review material
+integration changes under the applicable gate; reuse unaffected evidence.
+Integration is a responsibility, not a mandatory new P or task. Repository,
+deployment and shared-state effects still need their own applicable authority.
+
+R independence, product coverage and carrier continuity are separate choices.
+Reuse a reliable R when practical; another R needs a real independence, access,
+expertise or authorized parallel-review reason, not one-per-branch symmetry.
+Keep context within meaningful work packages, recover at actual boundaries,
+and do not send keepalives or create monitoring to preserve cache residency.
+
 ## Stable-Node Migration
 
 During an authorized entry, recovery or material checkpoint, inspect only this
@@ -217,7 +276,7 @@ amendment explicitly changes it. Project-contract migration and personal-model
 file conversion are separate effects; one grants no authority for the other.
 For a carrier change, retain completed E/R evidence and the next unprocessed
 handoff. Make the old/new active role boundary explicit before resuming so only
-one chain handles a checkpoint and only one E writes. Restore missing delivery
+one chain handles a checkpoint and each overlapping write surface has one writer. Restore missing delivery
 or disposition, not already completed implementation or review. New role
 creation, future model resolution and preserved frozen combinations remain
 separate declared decisions; changing a carrier does not select new models.
@@ -233,7 +292,7 @@ Reuse known approval; choose more user intervention only where requested or
 needed for a concrete boundary. Autonomy and independent context are separate.
 This is a work agreement, not a background scheduler or a new approval form.
 
-P may preauthorize both the first E-to-R stable handoff and the same-scope
+In selected Team or an unchanged older split contract, P may preauthorize both the first E-to-R stable handoff and the same-scope
 R-to-original-E-to-same-R loop, with a clear input/coverage contract and writer
 relinquishment. Otherwise use the existing P-routed first review. P receives the
 complete stable or exception result and retains acceptance without repeating R's
@@ -243,13 +302,16 @@ dispositions and delivers without claiming independent self-acceptance.
 
 An accepted checkpoint triggers the next item only when it is already within
 authority and its dependencies, review/recording requirements, writer and route
-are satisfied. P/O acceptance is not automatically another user approval. Keep
+are satisfied. A required assessor disposition is not automatically another user approval.
+In arrangement-v2 Direct workstreams there is no P acceptance gate; O accepts
+only the agreed outcomes or transitions, not every technical slice. Keep
 material findings visible: an authorized risk disposition does not change R's
 technical conclusion or waive an unwaivable acceptance floor.
 
 Continuous cross-phase progression requires advance user approval of a bounded
 named phase set, outcomes and acceptance floors, transition conditions, total
-permission/effect/cost limits and the O/P delegation. Authorized P may settle
+permission/effect/cost limits and the actual owner delegation. The authorized
+primary or selected P may settle
 later implementation details inside those bounds. An open-ended instruction to
 invent future phases is not this approval. Stop before an unapproved phase or
 failed transition condition. Existing next-phase user gates remain binding
@@ -306,8 +368,9 @@ findings.
   adopted.
 
 With multiple worktrees, Team and Phased require one explicit control location
-that P, E, applicable R and, for Phased, O can read at the
-same revision. Do not copy an authoritative file into every worktree. If
+that the selected primary or P/E, applicable R and O can read at the
+same revision. Approved workstreams may have their own existing scoped owners;
+the common location points to them rather than duplicating their state. Do not copy an authoritative file into every worktree. If
 common readability, writer ownership, review independence, or finality cannot
 be proved, stop safely. Any commit, integration, or synchronization needed to
 expose the carrier remains separately authorized.
@@ -542,11 +605,11 @@ a method into a fixed contract. Return actual contract defects to their owner.
 | --- | --- |
 | Ordinary implementation method, file choice, verification order, equivalent substitution and same-scope repair | E, or the Direct primary, within authorized outcome, domain, environment, effects and cost; return to P or the primary owner when equivalence, authority or a protected boundary is unclear. |
 | Review finding, coverage and re-review judgment | Read-only R; resolve inspection questions and correct or withdraw a finding from evidence, preserving its history. R neither repairs nor accepts the target. |
-| In-phase sequencing, contract-preserving correction, finding disputes, recovery allocation and target acceptance | P within the approved delegation; escalate only a decision outside that delegation. P does not repeat technical review. |
-| Direction, cross-phase tradeoffs, Mandate interpretation and project-level acceptance | O within the user-approved project authority; do not bypass P to direct phase execution or implementation review. O's own planning review follows Review Input At Any Level. |
+| In-scope exploration, sequencing, methods, correction, finding disposition, recovery and delivery | Direct primary, including a Phased Direct workstream; no independent self-acceptance. Selected Team P retains contract decisions and target acceptance, while E implements. Neither repeats R inspection. |
+| Direction, cross-phase tradeoffs, Mandate interpretation and project-level acceptance | O within the user-approved project authority; do not micromanage execution or repeat implementation review; where Team P exists, retain its approved responsibility. O's own planning review follows Review Input At Any Level. |
 | Reserved outcome, acceptance floor, authority, aggregate cost or external-effect change; next unapproved phase | User, through the existing semantic owner; direct operation-local consent stays with the actual action task. |
 
-For Phased, a user-approved Mandate may explicitly authorize P to finalize an
+For selected Team or older split Phased contracts, a user-approved Mandate may explicitly authorize P to finalize an
 in-bound Phase Definition and dispatch its specified E/R work. Record the
 delegating approval and P's conformance decision; this is delegated authority,
 not P self-granting execution. Without that authorization, or with unresolved
@@ -557,15 +620,17 @@ remains a user decision; explicit bounded advance approval follows Authorized
 Progression below. Direct uses its actual primary and necessary R, without
 adding O/P/E.
 
-P may preauthorize the correction loop below in the approved delivery contract.
+The approved delivery contract may preauthorize the original-author/R correction
+loop. Selected Team P retains its contract duties; a Direct primary owns its
+in-scope recovery without routing it through P or O.
 For recovery, prefer an aggregate authorized cost/effect boundary with concrete
 stop conditions over Agent-invented per-command quotas. E may correct an
 in-scope, repeatable failure only when the prior terminal and side effects are
 known, a concrete delta addresses the failure, evidence remains usable, and
 the next action stays within authority and remaining budget. Unknown effects,
 permission conflict, exhausted limits, repeated failure without semantic
-progress, or a protected-boundary change stop the affected work. P handles
-in-bound recovery; only a decision beyond P goes to O or the user. Explicit
+progress, or a protected-boundary change stop the affected work. The primary, or P in selected Team, handles
+in-bound recovery; only a decision beyond that authority goes to O or the user. Explicit
 one-shot, human-review, scarce-evidence, timeout and frozen consumption limits
 still bind. A sensitive or production target, managed path, compatibility or
 migration identity, required producer-before-consumer order, independent R,
@@ -637,10 +702,10 @@ every record.
 
 | Actual responsibility | Prompt addition |
 | --- | --- |
-| Direct primary | Complete authorized implementation, required verification, and delivery; retain the agreed continuity record and disposition independently required Reviewer findings. Do not create P/E separation or claim independent self-acceptance. |
-| Phased Orchestrator | Frame project outcome, Mandate, phase direction, and Planner return route; assess project-level results without directing the Executor or repeating technical review. |
-| Team/Phased Planner | Supply the executable contract, acceptance criteria, and E/R routes; exercise delegated in-phase choices, authorize the bounded correction route and accept stable results while remaining read-only on implementation and routing technical review to R. Team P is the highest owner. |
-| Team/Phased Executor | Complete authorized work and required checks, preserve findings and evidence, and return the stable checkpoint to the Planner or use the preauthorized E/R correction route; do not expand scope or accept the result. |
+| Direct primary, standalone or in Phased | Complete authorized clarification, exploration, planning, implementation, required verification, and delivery; retain the agreed continuity record and disposition independently required Reviewer findings. Do not create P/E separation or claim independent self-acceptance. |
+| Phased Orchestrator | Frame project outcome, Mandate, priorities and the actual workstream-owner return route; assess agreed material outcomes and transitions without directing technical slices or repeating review. Retain P routing only for selected Team or unchanged older split contracts. |
+| Planner in selected Team or unchanged older split contracts | Supply the executable contract, acceptance criteria, and E/R routes; exercise delegated in-phase choices, authorize the bounded correction route and accept stable results while remaining read-only on implementation and routing technical review to R. Team P is the highest owner. |
+| Executor in selected Team or unchanged older split contracts | Complete authorized work and required checks, preserve findings and evidence, and return the stable checkpoint to the Planner or use the preauthorized E/R correction route; do not expand scope or accept the result. |
 | Reviewer (when enabled) | Inspect the named direction, plan or implementation product and necessary semantic context read-only; return actionable findings, coverage, and unknowns through the approved route. Correct findings from evidence without repair, acceptance or self-granted authority. |
 
 Cold prompts provide sufficient authoritative pointers and hard boundaries to
@@ -695,8 +760,9 @@ attributable evidence. Editing a prompt does not authorize model evaluation.
 ## Role-Model Configuration At Dispatch
 
 Apply only at an already-authorized new-task or role-delivery boundary. Identify
-the actual responsibility and arrangement first. New `arrangement-v1` contracts
-do not select a level. An old L0-L4 contract retains its exact level and lookup
+the actual responsibility and configuration selector first. New `arrangement-v2`
+contracts do not select a level. Existing `arrangement-v1` contracts do not select a level
+either and retain their original arrangement lookup. An old L0-L4 contract retains its exact level and lookup
 until approved migration; unknown contract identity stops affected dispatch.
 Model choices do not grant a role, review gate, permission or effect. Ordinary
 non-Chartered work may use Direct lookup through a separately applicable host
@@ -720,6 +786,25 @@ Validate the complete selected file before using any entry, including unused
 roles; also validate the package when consulting it. Treat configuration as
 data only. No parser dependency, service, expression evaluation or interpolation
 is required by this instruction-time contract.
+
+For arrangement-v2, separate the outer arrangement from the model lookup:
+
+| Actual responsibility | Configuration selector |
+| --- | --- |
+| Standalone or Phased Direct workstream primary and its R | `direct.primary` / `direct.reviewer` |
+| Standalone or Phased selected Team P, E and its R | `team.planner` / `team.executor` / `team.reviewer` |
+| Phased O and R reviewing O's planning product | `phased.orchestrator` / `phased.reviewer` |
+
+Apply the source priority and schema-specific lookup below using that selector.
+Do not invent `phased.primary`, borrow old P/E objects for the primary, or mutate
+the user's file. For schema v1, a Direct selector uses the existing l0/l1/l2
+ambiguity check, Team uses l3, and O/O-product R uses l4. Existing arrangement-v1
+Phased P/E/R keep their phased selector and v1 l4 interpretation. Their objects
+remain intact even when not selected by a new Direct workstream. Frozen full
+combinations still take precedence. Show the new responsibility, selector and
+complete resolved combination before an authorized new delivery; migration
+must explicitly preserve or resolve its models rather than silently inherit E.
+Schema v2 and package default objects are unchanged by this composition.
 
 ### Schema and complete objects
 
@@ -772,11 +857,11 @@ consulting package defaults. Within each source:
 
 | Source and contract | Object order |
 | --- | --- |
-| v2, new contract | `arrangement_overrides.<arrangement>.<responsibility>` then `roles.<responsibility>` |
+| v2, arrangement-v1 or v2 selector | `arrangement_overrides.<arrangement>.<responsibility>` then `roles.<responsibility>` |
 | v2, old contract | `legacy_level_overrides.<level>.<responsibility>` then arrangement object then general role |
 | v1, old contract | `level_overrides.<level>.<responsibility>` then general role |
-| v1, new Team/Phased | respectively `l3`/`l4` user candidate then general role; this is a read-only compatibility interpretation |
-| v1, new Direct | compare the effective candidates for `l0`, `l1`, `l2` in this source: each level object, otherwise general role, otherwise missing |
+| v1, Team/Phased selector | respectively `l3`/`l4` user candidate then general role; this is a read-only compatibility interpretation |
+| v1, Direct selector | compare the effective candidates for `l0`, `l1`, `l2` in this source: each level object, otherwise general role, otherwise missing |
 
 For new Direct using v1, all three candidates must be structurally equal in
 provider/model/parameters, or all missing, before resolution can continue.
@@ -832,6 +917,7 @@ It is an instruction-time read, not a file watcher or general model gateway.
 
 ## Planner, Executor, And Reviewer
 
+This section applies only to selected Team and unchanged older split contracts.
 Use Team only after approval when independent contract
 ownership or assessment materially protects implementation. The Planner owns
 the active Charter,
@@ -844,7 +930,8 @@ the reviewed target.
 
 Keep at most one Planner, one Executor, one Reviewer for the active package,
 one active execution lane, and one repository writer. P is Team's highest
-owner; Phased adds O above P for project direction. A responsibility can run in
+owner; arrangement-v2 Phased adds O above the selected workstream owner,
+which is normally a Direct primary. Old split Phased retains O above P. A responsibility can run in
 a continuing subagent or a separately addressable task if its authority,
 context, independence, intervention and result route are reliable. Distinct
 responsibility does not require a top-level task; a subagent does not establish
@@ -934,7 +1021,7 @@ conditions in Conditional Work Selection and Authorized Progression. Do not assu
 if shared access is unavailable, explain the carrier or limited-R tradeoff
 before changing the agreement. A shared R handles one identified stable input
 at a time. O can request review of its own planning product; sharing that R
-does not let O bypass P to direct phase execution or implementation review.
+does not let O bypass an actual Team P or take over workstream methods or implementation review.
 Retain frozen delivery settings and explicit existing routes until amended.
 
 Reuse reduces repeated briefing and can preserve relevant context. It does not
@@ -968,14 +1055,14 @@ unrelated role history by default.
 
 | Reviewed product | Review emphasis |
 | --- | --- |
-| O's direction or Mandate | Outcome, alternatives and tradeoffs, cross-phase dependencies, real guardrails and coordination cost. O may request independent review of its own planning product; this does not let O bypass P to command phase E/R. |
+| O's direction or Mandate | Outcome, alternatives and tradeoffs, cross-phase dependencies, real guardrails and coordination cost. O may request independent review of its own planning product; this does not let O bypass an actual Team P or command workstream methods or implementation review. |
 | P's Definition or execution plan | Executable scope and acceptance, sufficient authorization, E/R route, and whether ordinary files, order or repair rounds were incorrectly frozen. |
 | E's implementation or Direct primary's result | Behavior, regression, verification evidence, consumers, and protected interfaces, data, permission or decision boundaries. |
 
 A Direct primary can obtain independent planning review without inventing P or
 O. The original author corrects a same-scope finding and the same valid R
 re-reviews the changed and cumulative surface; R neither repairs nor accepts.
-For Team/Phased implementation, preserve an explicitly preauthorized
+For selected Team or unchanged older split-contract implementation, preserve an explicitly preauthorized
 R-to-original-E-to-same-R route and P's stable acceptance. Planning findings
 return to the planning author and its designated assessor; they cannot grant
 execution, phase acceptance or external-effect permission. An upstream
@@ -1030,14 +1117,17 @@ completed a turn or adopted the message. Keep dispatch, remote terminal, and
 delivery uncertainty distinct in reports. When an action-bearing delivery is
 uncertain, do not activate a competing writer or route.
 
-For Team/Phased correction, follow
+For selected Team or unchanged older split-contract correction, follow
 [Planner, Executor, And Reviewer](#planner-executor-and-reviewer-l3): P routes
 the first review unless the approved contract preauthorizes the first E-to-R
 stable handoff with its input/coverage and writer boundary. A preauthorized
 same-scope R-to-original-E-to-same-valid-R
 loop returns the stable or exception result to P for acceptance. Otherwise,
 findings return to P. E's return includes changes, deviations, checks, failures
-and residual risks. Use the checkpoint-bound dispositions defined below.
+and residual risks. For Direct workstreams, findings return to the primary for
+repair and disposition, with the same valid R re-reviewing; no P route or P
+acceptance is introduced. Only agreed outcome or transition checkpoints go to
+the designated assessor. Use the checkpoint-bound dispositions defined below.
 Bind review and correction history to the same logical
 Charter subject and material contract/acceptance revision, and bind each
 finding and verdict to the stable checkpoint it assessed. Task, Session, root,

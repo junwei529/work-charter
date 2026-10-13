@@ -1,5 +1,17 @@
 # Provenance And Transformation Boundary
 
+## v0.10.0 local source
+
+Source-review baseline is `ca967fade3449323886994fbea8812443478679a`.
+The candidate retains published v0.9.6 package lineage at source commit
+`abc166cab4c0de1262c1d088d3ac734dddcd3a16`, tree
+`bcf263e0384248680a3bee9efdfcb5052b69c9cd`; its descriptor remains immutable.
+Four package instruction/template files change, with current navigation,
+focused compatibility cases, SOURCE/version and provenance bindings.
+Model schema/default objects, UI metadata and production installer behavior
+retain their bytes or behavior. Private host bindings are not package inputs
+or dependencies. State and Verification record actual delivery evidence.
+
 ## v0.9.6 publication
 
 Published source commit: `abc166cab4c0de1262c1d088d3ac734dddcd3a16`.

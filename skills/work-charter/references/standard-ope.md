@@ -1,8 +1,62 @@
-# Phased Orchestrator/Planner/Executor/Reviewer
+# Phased Goal Coordination And Workstream Delivery
+
+Read the shared Skill entry, then the section for the applicable contract.
+Phased does not activate a host-specific Standard workflow or authorize role
+creation, parallelism, writes, integration or external effects.
+
+## Arrangement-v2 Responsibilities
+
+One O owns final outcomes, priority/requirements alignment, cross-workstream
+tradeoffs and agreed material outcome/transition acceptance. O may serve one
+or several bounded workstreams. Each defaults to a Direct primary carrying
+exploration, planning, implementation, verification, repair and delivery.
+Select Team P/E only for a demonstrated coordination or independent contract
+acceptance benefit; several contributors or branches are not sufficient.
+
+The primary owns in-scope methods and necessary technical coordination. O
+receives agreed material results and actionable exceptions, not routine relay.
+O does not implement, manage technical slices, approve ordinary repairs or
+repeat R's inspection. In a selected Team, P's contract acceptance remains;
+O checks goal attainment and transitions rather than accepting the same work
+again against the same criteria. A Direct primary's completion judgment is
+not independent acceptance; actual required acceptance remains with its named
+assessor. User-reserved authority and operation-local approval remain intact.
+
+The normal workstream path is outcome/bounds -> primary exploration and delivery
+-> required R -> original-author repair and same valid R -> agreed outcome
+acceptance when required -> next already-authorized work. Preparatory protection
+or planning review occurs before the relevant risky action when required.
+Internal steps have no automatic O/P acceptance gate. In Team, use the selected
+P/E review and acceptance path in Coordination And Recovery.
+
+Use [End-to-End Delivery And Parallel Workstreams](coordination-and-recovery.md#end-to-end-delivery-and-parallel-workstreams)
+for parallel scope, one writer per overlapping surface, shared-state ownership,
+integration ownership and review coverage. Do not equate branches with isolation
+or create nested O roles. Use the existing shared control location and scoped
+workstream pointers, not authoritative copies in every checkout.
+
+For newly authorized role delivery, identify the outer arrangement, selected
+workstream arrangement and actual responsibility, then read and apply
+[Role-Model Configuration At Dispatch](coordination-and-recovery.md#role-model-configuration-at-dispatch).
+Preserve frozen combinations and user overrides; require native support.
+Configuration never authorizes delivery or action, enables a role, or changes an existing task.
+Use the supported lifetime/result route for the actual selected roles; bounded
+R can return to an active parent, while ended recipients need an authorized
+next-turn route. No carrier guarantees hard isolation, activation or caching.
+
+## Arrangement-v1 And L4 Compatibility
+
+The following prior operating path applies only to unchanged arrangement-v1
+or L4 contracts. It is not the default for arrangement-v2. Adoption/migration
+requires the approved checkpoint and preserves failed evidence, consumed limits,
+pending results, existing acceptance and frozen models. Do not run both old and
+new role chains for the same checkpoint.
+
+### Prior Phased Orchestrator/Planner/Executor/Reviewer
 
 Use these shared role boundaries for approved Phased work with a discoverable
 durable control location. A host-specific Standard workflow and standing policy
-still require their own explicit adoption. New contracts use arrangement-v1;
+still require their own explicit adoption. The compatibility path below applies to arrangement-v1;
 L4 remains legacy compatibility, not a prerequisite label for new work. Do not
 migrate an old contract or expand its gates merely because the package changes.
 

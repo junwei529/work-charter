@@ -1,8 +1,9 @@
 # Work Charter
 
-当前源码为 [v0.9.6](STATE.md#v096-publication)，交接保留真实目标、依据和方法调整权，按实际用途验证并选择协作。
-[当前候选](../../../release/v0.9.6-candidate.json)标识发布包；安装与发布核验结果以 State 为准。
-arrangement-v1、模型 schema v2 和历史证据保持原范围。
+当前源码为 [v0.10.0](STATE.md#v0100-local-source)：端到端交付、目标层 O、
+边界明确的工作线，Team 仅按具体收益选择。
+[当前候选](../../../release/v0.10.0-candidate.json)仅为源码；新合同使用 arrangement-v2，
+旧合同兼容及模型 schema v2 保留，不代表已安装或发布。
 
 最新正式发布版本为 [v0.9.6](STATE.md#v096-publication)。
 本版使用 arrangement-v1 合同与模型 schema v2，支持条件式迁移、授权内推进，

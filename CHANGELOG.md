@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.10.0 — 2026-10-13 (source candidate)
+
+- Make end-to-end Direct delivery the default, including within Phased.
+- Add O for goal coordination; split P/E only for concrete coordination or independent acceptance needs.
+- Define explicitly authorized parallel workstreams, shared write surfaces and integration ownership without per-branch role duplication.
+- Introduce arrangement-v2 while preserving arrangement-v1/L0-L4 contracts, schema v2 model defaults and source-priority/ambiguity rules.
+- Reuse outcome-first delivery, independent review and bounded progression; installation and project migration remain separate.
+
 ## v0.9.6 — 2026-10-09
 
 - Preserve the user's goal, constraint sources, existing evidence and downstream

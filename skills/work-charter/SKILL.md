@@ -1,6 +1,6 @@
 ---
 name: work-charter
-description: Choose proportionate Direct, Team, or Phased work and continue an applicable approved Charter. Use for assessment, reassessment, or material scope, authority, coordination, or recovery changes. Ordinary stable work needs no Charter ceremony.
+description: Choose end-to-end Direct delivery, goal-level Phased coordination, or justified Team separation and continue an applicable approved Charter. Use for assessment, reassessment, or material scope, authority, coordination, or recovery changes. Ordinary stable work needs no Charter ceremony.
 ---
 
 # Work Charter
@@ -56,13 +56,13 @@ another Skill alone is not a reason to escalate or repeat an assessment.
 
 | Arrangement | When useful and added cost |
 | --- | --- |
-| **Direct** | One primary owner completes the work. Use ordinary task context, an agreed current-task contract, or a durable anchor only as recovery requires. An independent review gate can still apply. |
-| **Team** | A Planner owns the executable contract and acceptance; an Executor implements with one writer; an independent Reviewer inspects actual work when requested or required. Separation and handoffs add cost. |
-| **Phased** | An Orchestrator owns direction and phase acceptance above phase-local Planner, Executor, and applicable Reviewer responsibilities. Use for consequential multi-phase governance with durable continuity. |
+| **Direct** | One primary delivery owner carries clarification, exploration, planning, implementation, verification, repair and delivery. Suitable for short or sustained work; add continuity and independent review only as needed. |
+| **Team** | An exceptional separation: P owns the executable contract, coordination and acceptance; E implements and verifies. Use only when that separate responsibility materially helps. Multiple contributors alone do not require P. |
+| **Phased** | O owns final goals, priorities, cross-workstream tradeoffs and agreed outcome acceptance. Each workstream defaults to Direct with necessary independent R; select Team locally only for a concrete benefit. |
 
 New contracts directly describe the arrangement, continuity, actual roles,
 review and authorized progression; they need no L0-L4 classification.
-Use `contract_format: arrangement-v1` in the existing agreed carrier, with
+Use `contract_format: arrangement-v2` in the existing agreed carrier, with
 current-task or durable continuity as needed. This contract marker, the Skill
 version and the model-configuration schema are separate identities. Ordinary
 work without an adopted Charter needs none of these records.
@@ -74,6 +74,9 @@ carriers require actual host reactivation/recovery support and approved selectio
 see Conditional Work Selection and Authorized Progression below.
 
 Existing L0-L4 contracts keep their own approved terms and frozen combinations.
+Existing `arrangement-v1` also retains its P/E split, acceptance and routing;
+new package text does not reinterpret it. Parallel work and migration need
+explicit scope and handover, not merely another branch or task.
 L0 means no active Charter, L1 a current-task agreement, L2 durable Direct,
 L3 Team and L4 Phased in the compatibility path. A new package does not migrate
 them. At a stable node, use the bounded migration route below if reconsidering
@@ -86,7 +89,7 @@ Planner/Executor roles or adopt a Charter.
   authorized bounded read without a new activation or read question. An
   explicit no-read instruction remains binding; unknown or unavailable
   evidence does not authorize a broader search or a different route.
-- Keep one accountable writer, the exact workspace and dirty ownership, and
+- Keep one accountable writer per overlapping write surface, the exact workspace and dirty ownership, and
   evidence tied to its subject, revision and invalidation condition. Stop the
   affected action when authority, writer, scope or evidence is incomparable.
   A new task, level, attempt or context never resets approval, failure,
@@ -128,9 +131,10 @@ Planner/Executor roles or adopt a Charter.
   producer-before-consumer order and raw terminal evidence. Do not rerun
   scarce, consequential or unauthorized work to replace a missing result.
 - Resolve problems at the lowest already-authorized responsibility. P may
-  exercise explicit in-phase delegation; E repairs and R independently reviews.
-  A preauthorized same-scope E/R loop needs no per-round P approval; P accepts
-  the stable result. Retain user-reserved and frozen boundaries. See
+  exercise explicit in-phase delegation in Team or an unchanged older contract.
+  Otherwise the primary owns methods, repair, finding disposition and delivery;
+  R independently reviews. A preauthorized same-scope author/R loop needs no
+  per-round O or P approval; P accepts stable results only where P is selected. Retain user-reserved and frozen boundaries. See
   [Delegated Decisions And Escalation](references/coordination-and-recovery.md#delegated-decisions-and-escalation).
 - Give each material user decision one owner. Reuse valid approval; preserve
   the complete question/answer linkage, authorized scope and target, and the
@@ -153,6 +157,7 @@ unchanged material already loaded; do not read every other role's procedure.
 | First assessment or adoption | Minimum Read And Reconciliation Order; First Adoption And Durability; Conditional Work Selection |
 | Approved continuation or material drift | Minimum Read And Reconciliation Order; Managed Workstream And Multiple Worktrees; Re-entry Routes |
 | Proposal, delegation or escalation | Contract And Proposal Changes; Delegated Decisions And Escalation; Authorized Progression |
+| End-to-end delivery, several workstreams or integration | [End-to-End Delivery And Parallel Workstreams](references/coordination-and-recovery.md#end-to-end-delivery-and-parallel-workstreams) |
 | Legacy contract reconsideration at a stable node | Stable-Node Migration; Conditional Work Selection; affected delegation/progression or review sections below |
 | Work allocation, optional collaborator selection or exit | [Work Allocation And Optional Collaborators](references/coordination-and-recovery.md#work-allocation-and-optional-collaborators) |
 | Prompt or task delivery | Task And Role Prompt Construction; Authority, Delivery, Correction, And Evidence |

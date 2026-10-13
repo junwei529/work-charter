@@ -1,5 +1,26 @@
 # Work Charter State
 
+## v0.10.0 local source
+
+Status: **SOURCE_AND_HOST_RULES_COMPLETE**, 2026-10-13. Version and source/necessary
+host-rule scope are approved. This increment used one source author from clean baseline
+`ca967fade3449323886994fbea8812443478679a`.
+
+The candidate introduces arrangement-v2 end-to-end workstreams, optional O,
+justified Team separation, bounded parallelism/integration and compatible model
+selectors. Existing outcome-first principles, old contracts, six-file package
+shape, model schema/default objects and installer lifecycle behavior remain.
+Three necessary host-rule consumers and one audit role-identification sentence
+were independently reviewed and applied with exact-byte readback. They are
+separate from this public package. Independent actual-diff review found one P2
+shared-routing conflict; the author repaired it and the same R re-reviewed PASS.
+SOURCE 33/33, metadata and provenance checks pass; final record-only provenance
+and whitespace checks complete closeout. Reviewed package tree:
+`47759c90ec5bb5d085d008bd53a331d2cf4ce59d`. No source or host-rule work remains.
+No installation, commit, push, release or business-project migration is included.
+The last verified installed/published package remains v0.9.6; runtime adoption
+and natural effects of this candidate remain UNKNOWN.
+
 ## v0.9.6 publication
 
 Status: **PUBLISHED_VERIFIED**, 2026-10-09.

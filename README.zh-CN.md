@@ -2,8 +2,10 @@
 
 [English](README.md)
 
-当前源码：**v0.9.6**，交接保留真实目标、依据和方法调整权，按实际用途验证并选择必要协作。
-[当前源码状态](docs/skills/work-charter/STATE.md#v096-publication)。
+当前源码：**v0.10.0**，默认由端到端负责人交付，按需增加 O、独立 R，
+仅在有具体收益时拆分 P/E；支持边界明确的并行工作线。
+[当前源码状态](docs/skills/work-charter/STATE.md#v0100-local-source)，
+[当前候选](release/v0.10.0-candidate.json)尚未安装或发布。
 
 最新已发布正式版本：**[v0.9.6](https://github.com/junwei529/work-charter/releases/tag/v0.9.6)**。
 [发布核验记录](docs/skills/work-charter/STATE.md#v096-publication)。
@@ -19,13 +21,13 @@ Work Charter 是面向 Codex 的项目协作 Skill。它根据成果、真实约
 它先复用已知事实，仅在授权范围内查看必要信息；只问答案会改变
 工作安排或材料决定的问题。普通小任务不需要 Charter 或额外问卷。
 
-## 三种工作方式
+## 交付、目标协调与可选职责分离
 
 | 工作方式 | 怎么做 | 适用情况 |
 |---|---|---|
-| **直接完成 / Direct** | 一位主负责人完成；仅按需要加入当前任务约定、持久恢复锚点或独立审查。 | 日常工作，也可处理需要针对性审查的小型高风险变更。 |
-| **分工完成 / Team** | Planner 负责约定与验收，Executor 实施；被请求或必需时，独立 Reviewer 检查实际产物。 | 实现与验收需要分开负责的工作。 |
-| **分阶段推进 / Phased** | Orchestrator 负责方向和阶段验收，下设阶段 Planner、Executor 和适用的 Reviewer。 | 有依赖关系、需要持续治理的多阶段工作。 |
+| **直接完成 / Direct** | 一位主负责人完成；仅按需要加入当前任务约定、持久恢复锚点或独立审查。 | 短期或持续工作；风险可以通过针对性的独立审查处理。 |
+| **分工完成 / Team** | Planner 负责约定与验收，Executor 实施；被请求或必需时，独立 Reviewer 检查实际产物。 | 独立合同接受或专门协调确有收益；不由协作者数量决定。 |
+| **分阶段推进 / Phased** | O 负责目标、优先级和约定成果接受；各工作线默认 Direct 加必要 R，有具体收益才选择 Team。 | 有依赖关系、需要持续治理的多阶段工作。 |
 
 新合同直接表达实际工作方式与条件约定，不必先选择等级编号。
 采用足够完成目标的组织形式，同时考虑角色和转交的成本。
@@ -42,7 +44,7 @@ Work Charter 是面向 Codex 的项目协作 Skill。它根据成果、真实约
 - **执行边界**：权限、工作区、数据、成本与外部效果的真实限制。
 
 这些可以称为功能模块，但不是任意开关；必需审查和权限边界不能关闭。
-同范围修复可预授权 R → 原作者 → 同一有效 R；P 接受稳定实现结果，
+同范围修复可预授权 R → 原作者 → 同一有效 R；仅选定 Team 或原有分离合同的 P 接受稳定实现结果，
 规划产物保留其指定的定稿/批准路线。
 第一轮 E → R 也可明确预授权，减少纯中转。独立上下文与连续推进分别约定。
 
@@ -50,6 +52,10 @@ Work Charter 是面向 Codex 的项目协作 Skill。它根据成果、真实约
 继续则需预先批准明确的阶段集合和转换条件。提示词不保证后台调度，
 约定中应明确接收方、启动下一回合的路线及下一项获准动作。结果送达、启动、
 完成和接受分别判断；缺失交接只恢复交接，不重做已完成工作或增加轮询、ACK。
+
+工作线以成果定义，不按 branch 数量创建角色。一位 O 可以管理多条工作线；
+并行需要明确依赖、共享写入范围和汇合时的集成负责人。同一共享写入面仍保持
+单 writer，R 按实际需要复用，不要求每条 branch 固定一套 R 或新增文档。
 
 ## 旧项目怎么采用
 
@@ -73,9 +79,9 @@ R 任务；当前父回合内可使用有界 R subagent，跨回合则还需可�
 原作者与接受方。R 以前审过某方案不等于编写过它；实质承担其编写或设计责任
 后则不能对相应产物自称独立审查。上下文复用不保证缓存命中或总成本下降。
 
-- **Direct 主负责人**：完成获准工作及其检查。
+- **Direct 交付负责人**：贯穿澄清、探索、规划、实现、修复、验证和交付，也可承担 Phased 内工作线。
 - **Orchestrator（Phased）**：负责项目方向和阶段验收。
-- **Planner（Team 或 Phased）**：确定可执行约定并验收结果；Team 的 P 是最高负责人。
+- **Planner（明确选定的 Team，可位于 Phased 内）**：确定可执行约定并验收结果；Team 的 P 是最高负责人。
 - **Executor**：实施、自检、修复和交付获准工作。
 - **Reviewer**：依据适用 instructions、合同和真实证据，独立检查方向、计划或实现产物。原作者修复，同一有效 R 复审。
 
@@ -99,8 +105,8 @@ Codex 跨回合暂停及恢复条件见[设计说明](docs/skills/work-charter/D
 
 | 职责 | 包内默认配置 |
 |---|---|
-| Direct 主负责人；Team Planner；Phased Orchestrator | `gpt-6-astra` · `high` |
-| Phased Planner；Team/Phased Executor | `gpt-6.1-sol` · `xhigh` |
+| 独立或 Phased 内 Direct 负责人；选定 Team Planner；Phased Orchestrator | `gpt-6-astra` · `high` |
+| 选定 Team Executor；旧 arrangement-v1 Phased Planner/Executor | `gpt-6.1-sol` · `xhigh` |
 | 实际启用的所有独立 Reviewer | `gpt-6-astra` · `medium` |
 
 重大规划取舍或困难实现判断，可以在获准投递时为 P 或 E 明确选择
@@ -197,7 +203,7 @@ v0.5.0 stable loaded-copy、role-delivery adherence、跨 provider 执行、cros
 [包内 YAML](skills/work-charter/assets/role-models.default.yaml)是完整默认值的唯一 owner。
 Schema v2 使用通用 `roles`、按 direct/team/phased 的 `arrangement_overrides`，
 以及只服务旧合同的可选 `legacy_level_overrides`。配置按实际职责选择，
-不为所有功能模块组合建立模型矩阵。Skill 版本、`contract_format: arrangement-v1`、
+不为所有功能模块组合建立模型矩阵。Skill 版本、`contract_format: arrangement-v2`（兼容旧 arrangement-v1）、
 模型 schema 和已冻结的投递组合分别记录。
 
 沿用合同指定的 exact 文件，否则读取既有 `~/.config/work-charter/role-models.yaml`，

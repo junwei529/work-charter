@@ -11,7 +11,7 @@ cases do not prove host/global consumer integration or runtime adoption.
 
 | Input | Expected result |
 | --- | --- |
-| Package v2, no user file | Direct primary Astra/high; Team P Astra/high; Phased O Astra/high, P Sol/xhigh; E Sol/xhigh; every enabled R Astra/medium. |
+| Arrangement-v1 package v2, no user file | Direct primary Astra/high; Team P Astra/high; Phased O Astra/high, P Sol/xhigh; E Sol/xhigh; every enabled R Astra/medium. |
 | User general E with provider/model only | The complete user object wins over package defaults; no inherited effort. |
 | User arrangement E plus user general E | Arrangement object wins as a whole; omitted parameters stays empty. |
 | Frozen value, different task/user values | Frozen delivery stays unchanged; only a separately approved change can replace it. |
@@ -60,3 +60,20 @@ parameters and observed runtime identity are separate evidence.
 The independent Reviewer inspects the actual changed instructions, configuration,
 consumers and these expectations. Source-wording checks are only static coverage;
 they do not replace that semantic review or constitute a behavior evaluation.
+
+## Arrangement-v2 composed workstreams
+
+These are focused instruction-resolution cases, not model execution or mutation
+of a real personal configuration. Preserve older rows as arrangement-v1/legacy
+cases; source clauses alone do not prove runtime dispatch.
+
+| Input | Required resolution |
+| --- | --- |
+| One O, two Direct workstreams, package v2 and no user file | O uses phased.orchestrator; each primary and workstream R use direct selectors. Defaults stay Astra/high and Astra/medium respectively; no phased.primary key and no P are created. |
+| Phased with one Direct and one explicitly selected Team | Resolve the first primary with direct; second P/E/R with team; O/planning R with phased. Team P defaults to Astra/high, E Sol/xhigh. Do not use old phased.planner defaults for the new Team selector. |
+| New Phased Direct primary, selected schema-v1 user file with unequal l0/l1/l2 primary objects and an l4 executor | Preserve the Direct ambiguity stop before package fallback. Do not borrow l4 executor or treat O's presence as an l4 primary selector. |
+| Existing arrangement-v1 Phased or L4 with frozen combinations | Preserve original phased/l4 selection and frozen values until an authorized migration explicitly resolves the new responsibilities. |
+
+For behavioral review, also check that two branches do not grant parallel writes
+to a shared service/database, and that accepted workstream results require their
+authorized integration owner and combined-result evidence before a final claim.

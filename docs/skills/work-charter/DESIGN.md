@@ -1,5 +1,32 @@
 # Work Charter Design
 
+## v0.10.0 end-to-end workstreams
+
+New arrangement-v2 separates goal coordination, delivery separation, review and
+parallelism. Direct primary owns exploration through delivery; Phased adds O
+above one or more workstreams, normally Direct. Team remains an explicit option
+for independent contract acceptance or sustained coordination, not an agent-count
+upgrade. O receives material outcomes and actionable exceptions. Technical owners
+coordinate in-scope interfaces directly; an existing delivery owner handles
+integration and necessary combined-result verification where workstreams join.
+
+Parallel authorization binds workstreams, dependencies, aggregate limits and
+overlapping write surfaces. One writer remains on each shared surface; branch
+names do not prove isolation. Existing single-lane contracts do not acquire
+parallel authority. Required independent review, reserved decisions, explicit
+stops and consumed limits remain. Outcome-first v0.9.5/v0.9.6 principles are reused.
+
+Arrangement-v1 and L0-L4 preserve their role topology, acceptance and frozen
+models until approved stable-node migration. The contract marker changes while
+model schema v2/default bytes remain unchanged: workstream Direct and Team use
+their local configuration selectors; O and its planning R use phased. Existing
+v1 configuration ambiguity and source-priority rules remain. This avoids a new
+role/configuration matrix and does not rewrite personal overrides or old tasks.
+
+No package dependency on private host rules is introduced. Host bindings may
+follow only when the new installed contract is explicitly adopted. Source,
+installation, publication and business-contract migration are separate effects.
+
 ## v0.9.6 outcome-preserving handoffs
 
 The standalone package owns the complete distinction between confirmed outcomes,

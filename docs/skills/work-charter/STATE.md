@@ -1,5 +1,27 @@
 # Work Charter State
 
+## v0.10.1 installation and push
+
+Status: **INSTALLED_AND_PUSHED**, 2026-10-13. The user explicitly authorized
+installation, commit and push after naming-source completion. Independent actual-
+diff review passed all 18 paths with no findings. Source commit
+`62ed0cc7ffb6abf3ecfa154712ca30965b62fc4b` has parent
+`8ea7a01c2c8e68664a33064127bef06a9b5d9eb6` and package tree
+`a22f25a3bc08efdb0877a7748b01be9dfde0e7e3`.
+
+The existing manager completed dry-run and APPLY / MANAGED v0.10.1 with previous
+destination permissions preserved. Ordinary-reader status and all six exact file
+comparisons passed; the explicit transaction root was empty. The new empty root
+was isolated with the existing manager method before apply. Personal model
+configuration and project contracts were not changed.
+
+Non-force push and remote main readback matched the source commit. One earlier
+read-only Git preflight had a TLS handshake failure; the same-route retry passed
+without changing transport or security settings. Subsequent record-only closeout
+does not change the installed package or pre-effect candidate. No v0.10.1 tag or
+GitHub Release was requested or created; v0.10.0 remains the last verified formal
+release. Installation/task adoption and business migration remain separate.
+
 ## v0.10.1 local source
 
 Status: **SOURCE_COMPLETE**, 2026-10-13. The user approved Deliverer (D) as the

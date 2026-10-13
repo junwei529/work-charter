@@ -1,5 +1,13 @@
 # Provenance And Transformation Boundary
 
+## v0.10.1 installed and pushed source
+
+Source commit `62ed0cc7ffb6abf3ecfa154712ca30965b62fc4b` binds package tree
+`a22f25a3bc08efdb0877a7748b01be9dfde0e7e3` and the unchanged pre-effect candidate.
+State and Verification record the authorized managed installation and main push.
+No v0.10.1 tag or GitHub Release was created. These record updates preserve package
+bytes, candidate identity, old tags and all historical provenance.
+
 ## v0.10.1 local source
 
 Review baseline: `8ea7a01c2c8e68664a33064127bef06a9b5d9eb6`.

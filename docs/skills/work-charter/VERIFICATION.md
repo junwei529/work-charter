@@ -1,5 +1,27 @@
 # Work Charter Verification
 
+## v0.10.1 installation and push verification
+
+Independent commit review covered 17 tracked changes plus the new candidate,
+confirmed the display-name-only role delta and unchanged configuration/authority,
+and returned PASS with no findings. Prior SOURCE 33/33, metadata, repository
+110-entry and whitespace checks were reused for the unchanged source input.
+The exact 18 paths were committed; parent, package tree and clean state matched.
+
+Read-only CLI checks verified the intended actor, repository and push permission.
+A Git remote preflight failed its TLS handshake; same-route read-only retry
+confirmed the baseline, with no effects or security-setting change. Installer
+dry-run and apply returned exit 0. The explicit same-volume transaction root was
+new, empty and privately isolated before apply using the existing helper.
+Apply returned MANAGED v0.10.1 and PRESERVED_FROM_PREVIOUS_DESTINATION; ordinary
+status, six installed-file comparisons and transaction-empty checks passed.
+Non-force push succeeded. An API readback returned EOF; a read-only check through the original Git remote then matched the source commit.
+
+Record-only documentation closeout receives its own independent review and
+provenance/whitespace checks. The package, candidate and historical tags remain
+unchanged. No new GitHub Release, model evaluation, installer lifecycle test,
+personal configuration change or business-contract migration was performed.
+
 ## v0.10.1 naming verification
 
 SOURCE 33/33 and all identity/history bindings passed; Skill metadata and

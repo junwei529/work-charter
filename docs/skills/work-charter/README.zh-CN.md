@@ -1,10 +1,10 @@
 # Work Charter
 
-当前源码候选为 [v0.10.1](STATE.md#v0101-local-source)，端到端角色统一称为
+当前源码与受管安装为 [v0.10.1](STATE.md#v0101-installation-and-push)，端到端角色统一称为
 Deliverer（D）／交付负责人，保留 `primary` 及既有职责。
-[候选](../../../release/v0.10.1-candidate.json)尚未安装或发布。
+[候选](../../../release/v0.10.1-candidate.json)保留实施前快照，源码已推送，本轮未创建 v0.10.1 GitHub Release。
 
-最新安装及正式发布版本为 [v0.10.0](STATE.md#v0100-publication)：端到端交付、
+最新正式 Release 为 [v0.10.0](STATE.md#v0100-publication)：端到端交付、
 目标层 O、边界明确的工作线，Team 仅按具体收益选择。托管安装和发布已核验。
 新合同使用 arrangement-v2；旧合同兼容及模型 schema v2 保留，项目采用不自动迁移。
 [已发布候选](../../../release/v0.10.0-candidate.json)保留发布前快照；历史证据仍绑定原包。

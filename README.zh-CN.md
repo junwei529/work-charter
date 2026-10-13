@@ -2,10 +2,10 @@
 
 [English](README.md)
 
-当前源码：**v0.10.1**（命名修订候选），默认由端到端负责人交付，按需增加 O、独立 R，
+当前源码与受管安装：**v0.10.1**，默认由端到端负责人交付，按需增加 O、独立 R，
 仅在有具体收益时拆分 P/E；支持边界明确的并行工作线。
 端到端角色统一称为 **Deliverer（D）／交付负责人**，配置标识仍为 `primary`。
-[当前源码状态](docs/skills/work-charter/STATE.md#v0101-local-source)及[候选](release/v0.10.1-candidate.json)与下方已发布版本分别记录。
+[安装与推送记录](docs/skills/work-charter/STATE.md#v0101-installation-and-push)及[实施前候选](release/v0.10.1-candidate.json)与下方正式 Release 分别记录；本轮未创建 v0.10.1 Release。
 
 最新正式发布版本：**[v0.10.0](https://github.com/junwei529/work-charter/releases/tag/v0.10.0)**。
 [安装与发布核验记录](docs/skills/work-charter/STATE.md#v0100-publication)。

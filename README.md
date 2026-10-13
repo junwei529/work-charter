@@ -2,11 +2,11 @@
 
 [简体中文](README.zh-CN.md)
 
-Current source: **v0.10.1** (naming candidate), end-to-end delivery with optional goal-level O,
+Current source and managed installation: **v0.10.1**, end-to-end delivery with optional goal-level O,
 justified P/E separation and explicitly bounded parallel workstreams.
 The end-to-end role is named **Deliverer (D)**; its configuration key remains
-`primary`. See [current source state](docs/skills/work-charter/STATE.md#v0101-local-source)
-and the [source candidate](release/v0.10.1-candidate.json).
+`primary`. See [installation and push state](docs/skills/work-charter/STATE.md#v0101-installation-and-push)
+and the [pre-effect source candidate](release/v0.10.1-candidate.json). No v0.10.1 GitHub Release has been created.
 
 Latest published release: **[v0.10.0](https://github.com/junwei529/work-charter/releases/tag/v0.10.0)**.
 [Verified installation and publication](docs/skills/work-charter/STATE.md#v0100-publication).

@@ -1,16 +1,11 @@
 # Work Charter
 
-Current source is [v0.10.0](STATE.md#v0100-local-source): end-to-end delivery,
-goal-level O and explicitly bounded workstreams, with Team only when justified.
-The [current candidate](../../../release/v0.10.0-candidate.json) is source-only.
-New contracts use arrangement-v2; old contracts and schema v2 model objects
-retain their compatibility. Installation/publication are not implied.
-
-Latest published release is [v0.9.6](STATE.md#v096-publication).
-It uses arrangement-v1 agreements and model schema v2, with conditional migration,
-authorized progression and a continuing independent Reviewer where supported.
-The [published v0.9.6 candidate](../../../release/v0.9.6-candidate.json) retains its pre-effect
-snapshot; historical release evidence remains bound to its original package.
+Current source and latest published release are [v0.10.0](STATE.md#v0100-publication):
+end-to-end delivery, goal-level O and bounded workstreams, with Team only when
+justified. Managed installation and publication are verified. New agreements use
+arrangement-v2; old contracts and schema v2 model objects remain compatible.
+Project adoption is not automatic. The [published candidate](../../../release/v0.10.0-candidate.json)
+retains its pre-effect snapshot; historical evidence stays bound to its original package.
 
 [简体中文](README.zh-CN.md)
 

@@ -4,13 +4,12 @@
 
 Current source: **v0.10.0**, end-to-end delivery with optional goal-level O,
 justified P/E separation and explicitly bounded parallel workstreams.
-See [current source state](docs/skills/work-charter/STATE.md#v0100-local-source).
-The [current candidate](release/v0.10.0-candidate.json) is source-only.
 
-Latest published release: **[v0.9.6](https://github.com/junwei529/work-charter/releases/tag/v0.9.6)**.
-[Verified publication](docs/skills/work-charter/STATE.md#v096-publication).
-The [v0.9.6 source candidate](release/v0.9.6-candidate.json) retains its pre-effect snapshot. Installation and publication results are in
-[State](docs/skills/work-charter/STATE.md#v096-publication).
+Latest published release: **[v0.10.0](https://github.com/junwei529/work-charter/releases/tag/v0.10.0)**.
+[Verified installation and publication](docs/skills/work-charter/STATE.md#v0100-publication).
+The [source candidate](release/v0.10.0-candidate.json) retains its pre-effect
+snapshot; actual delivery evidence is in State and Verification. Existing
+project contracts require their own authorized migration.
 
 Keep complex AI projects moving across handoffs—and through to delivery.
 

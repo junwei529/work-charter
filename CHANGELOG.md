@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.10.0 — 2026-10-13 (source candidate)
+## v0.10.0 — 2026-10-13
 
 - Make end-to-end Direct delivery the default, including within Phased.
 - Add O for goal coordination; split P/E only for concrete coordination or independent acceptance needs.

@@ -4,13 +4,11 @@
 
 当前源码：**v0.10.0**，默认由端到端负责人交付，按需增加 O、独立 R，
 仅在有具体收益时拆分 P/E；支持边界明确的并行工作线。
-[当前源码状态](docs/skills/work-charter/STATE.md#v0100-local-source)，
-[当前候选](release/v0.10.0-candidate.json)尚未安装或发布。
 
-最新已发布正式版本：**[v0.9.6](https://github.com/junwei529/work-charter/releases/tag/v0.9.6)**。
-[发布核验记录](docs/skills/work-charter/STATE.md#v096-publication)。
-[v0.9.6 源码候选](release/v0.9.6-candidate.json)保留实施前快照；
-安装与发布核验见[状态记录](docs/skills/work-charter/STATE.md#v096-publication)。
+最新正式发布版本：**[v0.10.0](https://github.com/junwei529/work-charter/releases/tag/v0.10.0)**。
+[安装与发布核验记录](docs/skills/work-charter/STATE.md#v0100-publication)。
+[源码候选](release/v0.10.0-candidate.json)保留实施前快照，实际交付证据以
+State 和 Verification 为准。已有项目合同仍须单独授权迁移。
 
 让复杂的 AI 项目接得住，也交得出。
 

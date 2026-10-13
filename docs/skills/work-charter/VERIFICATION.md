@@ -1,5 +1,39 @@
 # Work Charter Verification
 
+## v0.10.0 publication verification
+
+Independent publication review passed the final 19-path source increment,
+including the untracked candidate, prior record changes, privacy scope, release
+notes and operation plan. The source package and prior SOURCE 33/33/metadata
+checks were unchanged; repository provenance and whitespace checks passed.
+R1/P2 from source review stayed closed with no new blocking findings.
+
+Read-only CLI checks established the intended actor, repository and push
+permission. Remote main matched the source baseline; exact tag and Release
+preflight found no existing v0.10.0. The exact 19 paths were committed, and
+parent, package tree and clean worktree were verified before installation.
+
+Installer dry-run passed. First apply failed its trusted-writer preflight on the
+new empty transaction root, before target mutation; ordinary status still showed
+MANAGED v0.9.6. Native ACL inspection isolated the inherited temporary-directory
+write grants. The existing isolation helper hardened only that new root, then
+validated it. The retry returned exit 0 APPLY / MANAGED v0.10.0 and
+PRESERVED_FROM_PREVIOUS_DESTINATION. An ordinary-reader status returned the same
+version/tree, all six installed files matched committed source, and the explicit
+transaction root was empty. No installer code, user configuration or destination
+policy change was used to bypass the guard.
+
+Non-force atomic push returned success; readback matched main, annotated tag and
+peeled source commit. Release creation returned success, and subsequent API
+reads verified reviewed notes, tag target, formal status and Latest identity.
+State records the exact commit, tag, Release id and publication time. Subsequent
+documentation closeout has separate actual-diff review and provenance/whitespace
+checks, preserving the source tag, candidate and package bytes.
+
+No full installer lifecycle, model evaluation or business test was rerun. No
+project contract migration was performed. Install/publication do not prove task
+loading, automatic adoption, cache savings or broad behavior improvement.
+
 ## v0.10.0 source verification
 
 Independent actual-diff review covered package instructions/templates, bilingual

@@ -1,5 +1,33 @@
 # Work Charter State
 
+## v0.10.0 publication
+
+Status: **PUBLISHED_VERIFIED**, 2026-10-13. After source delivery the user
+explicitly authorized installation, push and release. Independent publication
+review passed all 19 source paths, the exact release notes and effect plan;
+the earlier shared-routing finding R1 remains closed.
+
+Source commit `78044cd1ffda37fa7d0e9dab1245f7e27ecee62f` has parent
+`ca967fade3449323886994fbea8812443478679a` and package tree
+`47759c90ec5bb5d085d008bd53a331d2cf4ce59d`. Annotated tag object
+`80b66d98433b20849783f355fdc40e817afb7490` resolves to that source commit.
+The existing manager completed APPLY / MANAGED v0.10.0 with original destination
+permissions preserved; an ordinary-reader status and all six file comparisons
+passed. The explicit transaction directory was empty after completion. The first
+apply had stopped before destination mutation because the newly created empty
+transaction root inherited untrusted write access. Isolating only that new root
+with the existing manager's method resolved the preparation error; destination
+policy and installer behavior were not relaxed. Personal model configuration
+was not changed.
+
+Main and the tag were pushed atomically without force through the verified
+actor. The formal [v0.10.0 Release](https://github.com/junwei529/work-charter/releases/tag/v0.10.0),
+id `411248986`, was published at `2026-10-13T03:57:28Z`; readback confirmed exact
+reviewed notes, tag/commit, non-draft, non-prerelease and Latest. These subsequent
+record-only changes retain the source tag, package and pre-effect descriptor.
+No installation or release action remains. Existing project contracts were not
+migrated; runtime adoption and natural cost/cache benefit remain UNKNOWN.
+
 ## v0.10.0 local source
 
 Status: **SOURCE_AND_HOST_RULES_COMPLETE**, 2026-10-13. Version and source/necessary

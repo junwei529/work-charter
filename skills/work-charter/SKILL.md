@@ -163,14 +163,14 @@ unchanged material already loaded; do not read every other role's procedure.
 | First assessment or adoption | Minimum Read And Reconciliation Order; First Adoption And Durability; Conditional Work Selection |
 | Approved continuation or material drift | Minimum Read And Reconciliation Order; Managed Workstream And Multiple Worktrees; Re-entry Routes |
 | Proposal, delegation or escalation | Contract And Proposal Changes; Delegated Decisions And Escalation; Authorized Progression |
-| End-to-end delivery, several workstreams or integration | [End-to-End Delivery And Parallel Workstreams](references/coordination-and-recovery.md#end-to-end-delivery-and-parallel-workstreams) |
+| Solution exploration, proactive research, end-to-end delivery, several workstreams or integration | [End-to-End Delivery And Parallel Workstreams](references/coordination-and-recovery.md#end-to-end-delivery-and-parallel-workstreams) |
 | Legacy contract reconsideration at a stable node | Stable-Node Migration; Conditional Work Selection; affected delegation/progression or review sections below |
 | Work allocation, optional collaborator selection or exit | [Work Allocation And Optional Collaborators](references/coordination-and-recovery.md#work-allocation-and-optional-collaborators) |
 | Prompt or task delivery | Task And Role Prompt Construction; Authority, Delivery, Correction, And Evidence |
 | Evidence collection, delegated inspection, or completion claims | Task And Role Prompt Construction; Authority, Delivery, Correction, And Evidence |
 | Newly authorized model resolution | [Role-Model Configuration At Dispatch](references/coordination-and-recovery.md#role-model-configuration-at-dispatch); identify arrangement, contract format and responsibility first, then read the complete section before reading configuration or dispatching |
 | Team/Phased review or writer handoff | Planner, Executor, And Reviewer; Review Input At Any Level; Authority, Delivery, Correction, And Evidence |
-| Direct review, a user permission gate, or evidence consumption | Authority, Delivery, Correction, And Evidence; [Review Input At Any Level](references/coordination-and-recovery.md#review-input-at-any-level) |
+| Material feedback, Direct review, a user permission gate, or evidence consumption | Authority, Delivery, Correction, And Evidence; Contract And Proposal Changes; [Review Input At Any Level](references/coordination-and-recovery.md#review-input-at-any-level) |
 | Context recovery or changed governing source | Context-Switch Recovery; Re-entry Routes; governing-source reload boundary in Authority, Delivery, Correction, And Evidence |
 
 For approved Phased work, also read the shared entry and

@@ -2,15 +2,9 @@
 
 [English](README.md)
 
-当前源码与受管安装：**v0.10.1**，默认由端到端负责人交付，按需增加 O、独立 R，
-仅在有具体收益时拆分 P/E；支持边界明确的并行工作线。
-端到端角色统一称为 **Deliverer（D）／交付负责人**，配置标识仍为 `primary`。
-[安装与推送记录](docs/skills/work-charter/STATE.md#v0101-installation-and-push)及[实施前候选](release/v0.10.1-candidate.json)与下方正式 Release 分别记录；本轮未创建 v0.10.1 Release。
-
-最新正式发布版本：**[v0.10.0](https://github.com/junwei529/work-charter/releases/tag/v0.10.0)**。
-[安装与发布核验记录](docs/skills/work-charter/STATE.md#v0100-publication)。
-[源码候选](release/v0.10.0-candidate.json)保留实施前快照，实际交付证据以
-State 和 Verification 为准。已有项目合同仍须单独授权迁移。
+当前源码候选为 **v0.10.2**：明确主动方案检索的角色边界、材料反馈整合与 finding 必要性判断。
+独立审查、安装与发布进度见[当前状态](docs/skills/work-charter/STATE.md#v0102-source-and-delivery)。
+最后记录的受管安装为 v0.10.1，正式发布为 v0.10.0；既有合同不会自动迁移。
 
 让复杂的 AI 项目接得住，也交得出。
 

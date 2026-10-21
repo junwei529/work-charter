@@ -167,3 +167,17 @@ review appears as a requirement, never an optional switch.
   Thread, or applies small-task exclusions to a manual assessment request.
 - Automatically invokes a peer Skill or selects this Skill merely for either
   near-neighbor task.
+
+## v0.10.2 solution-research ownership
+
+These are scenario specifications, not executed model results. In an O+D+R
+assignment with an unresolved architecture choice, O initiates bounded public
+research; D can establish the concrete limitation without opening a competing
+architecture study. In standalone D or D+R, D researches the choice directly.
+P follows the actual authorized exploration assignment; Team without O must
+not wait for an absent O. E/R can look up an SDK parameter or a defect's factual
+basis without acquiring solution-choice authority. Direct reuse and mechanism
+analogy are both valid research results. An unavailable source leaves the
+affected claim unresolved while independent work continues. Public-only access
+does not permit private project text in search queries. A frozen different
+contract retains its own role allocation until amended.

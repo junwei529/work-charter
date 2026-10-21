@@ -1,5 +1,17 @@
 # Provenance And Transformation Boundary
 
+## v0.10.2 local source
+
+Review baseline: `8cec8d57a3f422a7f408e5056dc7f95086165bde`.
+The candidate follows the v0.10.1 source commit
+`62ed0cc7ffb6abf3ecfa154712ca30965b62fc4b` and package tree
+`a22f25a3bc08efdb0877a7748b01be9dfde0e7e3`; its descriptor remains immutable.
+Three package instruction files change, with focused scenario specifications,
+current documentation and package/provenance bindings. The six-file package,
+model defaults, UI metadata and production installer behavior are unchanged.
+Host-specific changes are separate consumers, not public package dependencies.
+State and Verification own actual review, installation and publication evidence.
+
 ## v0.10.1 installed and pushed source
 
 Source commit `62ed0cc7ffb6abf3ecfa154712ca30965b62fc4b` binds package tree

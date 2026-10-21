@@ -1,5 +1,21 @@
 # Work Charter State
 
+## v0.10.2 source and delivery
+
+Status: **READY_FOR_INDEPENDENT_REVIEW**, 2026-10-21. The user selected v0.10.2 and authorized
+source, necessary host-rule/documentation updates and independent review,
+followed by managed installation, commits and publication after review passes.
+Baseline: `8cec8d57a3f422a7f408e5056dc7f95086165bde`.
+The source and four authorized host-rule changes are complete. The source
+author freezes the reviewed target for independent read-only review. Existing package shape, role
+models, contract/configuration schemas and installer production behavior remain.
+
+The three changes are role-scoped proactive research, material feedback
+integration and finding necessity. Historical candidates and earlier failures
+remain unchanged. Installation, commits and public release are pending; the
+last recorded managed installation is v0.10.1 and formal release is v0.10.0.
+Runtime adoption, natural behavior and efficacy remain unverified.
+
 ## v0.10.1 installation and push
 
 Status: **INSTALLED_AND_PUSHED**, 2026-10-13. The user explicitly authorized

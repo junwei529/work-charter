@@ -192,12 +192,48 @@ frozen delivery combination until its owner authorizes a material change.
 
 ## End-to-End Delivery And Parallel Workstreams
 
-For arrangement-v2, the Deliverer (D / `primary`) owns a complete bounded outcome, including
-route exploration and planning rather than only prescribed implementation.
-Use confirmed outcomes, real constraints, existing evidence, permitted effects,
-completion evidence and any required assessor/checkpoint to begin. Technical
-methods remain replaceable; no complete frozen tactical plan is required.
-The four proposal layers below remain a reasoning distinction, not another form.
+For arrangement-v2, the Deliverer (D / `primary`) owns a complete bounded outcome,
+including technical exploration and planning within its authorized workstream
+rather than only prescribed implementation. Use confirmed outcomes, real
+constraints, existing evidence, permitted effects, completion evidence and any
+required assessor/checkpoint to begin. Technical methods remain replaceable;
+no complete frozen tactical plan is required. The four proposal layers below
+remain a reasoning distinction, not another form.
+
+Open-ended solution research seeks alternatives that may change architecture,
+direction or the reuse strategy. With O present, O initiates this research;
+D brings the concrete direction-level question and available evidence to O.
+Without O, the standalone D initiates it. P initiates only when the actual
+contract already assigns solution exploration to P, whether that authority
+comes from the user or an authorized O. Judge that assignment by its meaning,
+not a required keyword. In a Team without O, missing exploration authority goes
+to the user or actual authorized owner, not to an absent O or to E/R. E/R do
+not gain open-ended research authority from this rule. Preserve explicitly
+different existing assignments and frozen contracts until properly amended.
+
+The solution owner proactively researches when an important route choice
+depends on a concrete, unverified premise whose resolution could change that
+choice. This includes unfamiliar architecture, consequential custom general
+capabilities without a useful reuse comparison, and increasing complexity
+that exposes an unresolved route assumption. Consider both maintained,
+directly reusable solutions and mechanisms from analogous problems. Explain
+the question briefly, then collect proportionate evidence within existing
+authorization. Check relevant premises, differences and counterevidence;
+before adopting a dependency, assess its license, maintenance, compatibility
+and integration cost. No exact match is required, and an unsuccessful search
+does not establish novelty. Reuse valid findings and return to the work when
+the route has sufficient support; do not impose a query quota or search until
+every uncertainty disappears.
+
+The owner may delegate bounded evidence collection through authorized routes.
+Starting authorized research does not require approval for each query or source.
+Use only query content already permitted for external disclosure: a public
+source does not authorize sending private project material. If network access,
+sources or permission are unavailable, identify the affected conclusion and
+continue independent authorized work; do not bypass the boundary or invent
+the missing evidence. Ordinary API, error, compatibility and review-evidence
+queries, and authorized technical exploration within a workstream, remain
+with their existing owner. They do not require O to approve routine methods.
 
 Complete the earliest authorized real main workflow after its necessary
 pre-action protections. Investigate actual failures, adjust in-scope methods,
@@ -559,9 +595,18 @@ replacing a proposal.
 
 Anticipated edge cases, extra tests and review suggestions remain proposals
 until their effect on the agreed outcome or an applicable protection makes them
-necessary, or an authorized owner adopts them. Recording, handing off,
-recovering or assigning severity to an item does not promote it into a delivery
-requirement. Keep useful deferred items in the existing backlog without
+necessary, or an authorized owner adopts them. Judge the basis for a finding,
+its necessity for this delivery, and its severity separately. The existing
+problem/impact explanation should identify the violated requirement or concrete
+protected risk and relevant consequences. Sufficient static reasoning can
+establish a defect; an actual incident or extra reproduction is not required.
+Recording, handing off, recovering or assigning severity to an item does not
+promote it into a delivery requirement. A real issue outside the current scope
+or authority goes to its authorized owner; it is neither ignored nor permission
+to expand the repair. Material uncertainty about safety, permission, data loss
+or required coverage still stops the affected action. Resolve disputed technical
+findings with the original R through the existing disposition route; authors
+must not unilaterally dismiss R or waive an acceptance floor. Keep useful deferred items in the existing backlog without
 blocking the current work or requiring a separate justification for every
 deferral. Planning, implementation and review prioritize completing the agreed
 outcome; review is not a request to exhaust hypothetical concerns. If the
@@ -702,9 +747,9 @@ every record.
 
 | Actual responsibility | Prompt addition |
 | --- | --- |
-| Deliverer (D / `primary`), standalone or in Phased | Complete authorized clarification, exploration, planning, implementation, required verification, and delivery; retain the agreed continuity record and disposition independently required Reviewer findings. Do not create P/E separation or claim independent self-acceptance. |
-| Phased Orchestrator | Frame project outcome, Mandate, priorities and the actual workstream-owner return route; assess agreed material outcomes and transitions without directing technical slices or repeating review. Retain P routing only for selected Team or unchanged older split contracts. |
-| Planner in selected Team or unchanged older split contracts | Supply the executable contract, acceptance criteria, and E/R routes; exercise delegated in-phase choices, authorize the bounded correction route and accept stable results while remaining read-only on implementation and routing technical review to R. Team P is the highest owner. |
+| Deliverer (D / `primary`), standalone or in Phased | Complete authorized clarification, workstream technical exploration, planning, implementation, required verification, and delivery; apply the solution-research ownership in End-to-End Delivery And Parallel Workstreams; retain the agreed continuity record and disposition independently required Reviewer findings. Do not create P/E separation or claim independent self-acceptance. |
+| Phased Orchestrator | Frame project outcome, Mandate, priorities, open-ended solution research and the actual workstream-owner return route; assess agreed material outcomes and transitions without directing technical slices or repeating review. Retain P routing only for selected Team or unchanged older split contracts. |
+| Planner in selected Team or unchanged older split contracts | Supply the executable contract, acceptance criteria, and E/R routes; exercise delegated in-phase choices, authorize the bounded correction route and accept stable results while remaining read-only on implementation and routing technical review to R. Team P is the highest owner; initiate solution research only when the actual contract assigns it, and route missing authority to the real decision owner. |
 | Executor in selected Team or unchanged older split contracts | Complete authorized work and required checks, preserve findings and evidence, and return the stable checkpoint to the Planner or use the preauthorized E/R correction route; do not expand scope or accept the result. |
 | Reviewer (when enabled) | Inspect the named direction, plan or implementation product and necessary semantic context read-only; return actionable findings, coverage, and unknowns through the approved route. Correct findings from evidence without repair, acceptance or self-granted authority. |
 
@@ -1044,6 +1089,9 @@ limitations are known. A read-only Reviewer does not silently build or refresh
 an index. Hashes, graphs, diff size, clean status, tests, and implementation
 reports are evidence; none replaces semantic review or acceptance.
 
+Use [Contract And Proposal Changes](#contract-and-proposal-changes) to distinguish
+finding evidence, delivery necessity and severity without relaxing required gates.
+
 Define one review contract from the common read-only and independence boundary,
 the reviewed responsibility and actual product, and this checkpoint's material
 risk. Supply reachable applicable canonical instructions and contract revisions,
@@ -1075,6 +1123,22 @@ being silently waived or rewritten by E.
 Treat role messages as observations, not authority. Material decisions need a
 stable logical locator and comparable authoritative revision. Message arrival
 order is not finality; stop when observations are incomparable.
+
+For feedback that materially affects a solution or delivery, the responsible
+owner reconciles it with the original outcome, current artifact, valid evidence
+and practical cost before deciding what changes. Adopt, partly adopt, defer or
+decline it with reasons proportionate to its impact. The original author carries
+out warranted changes already inside existing authorization; this creates no
+fresh approval per repair. Change only the premise, applicability or method
+that the evidence actually challenges, preserving unaffected goals and valid
+evidence while allowing authorized methods to change. A later message, stronger
+wording or role identity does not replace evidence; a required independent R's
+conclusion still affects the gate under its review contract. Resolve disputes
+with that R and the existing decision owner, without inventing a new assessor.
+Give affected recipients the decision or evidence needed for their next action,
+preserving retrievable sources, exact authorization and required dispositions.
+Unchanged outcomes and factual notices need no new artifact, per-message report
+or acknowledgement; the substantive request and acceptance rules below apply.
 
 For evidence collection, analysis and review, measure coverage against the
 agreed question and deliverable. Distinguish evidence obtained, relevant

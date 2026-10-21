@@ -1,15 +1,13 @@
 # Work Charter
 
-Current source and managed installation are [v0.10.1](STATE.md#v0101-installation-and-push), naming the
-end-to-end role Deliverer (D) while retaining `primary` and all existing duties.
-The [candidate](../../../release/v0.10.1-candidate.json) retains its pre-effect snapshot. Source is pushed; no v0.10.1 GitHub Release was created.
-
-Latest formal release is [v0.10.0](STATE.md#v0100-publication):
-end-to-end delivery, goal-level O and bounded workstreams, with Team only when
-justified. Managed installation and publication are verified. New agreements use
-arrangement-v2; old contracts and schema v2 model objects remain compatible.
-Project adoption is not automatic. The [published candidate](../../../release/v0.10.0-candidate.json)
-retains its pre-effect snapshot; historical evidence stays bound to its original package.
+Current source candidate is [v0.10.2](STATE.md#v0102-source-and-delivery),
+covering role-scoped proactive research, material feedback integration and
+finding necessity. The [candidate](../../../release/v0.10.2-candidate.json)
+retains its pre-effect snapshot; independent review and delivery effects are pending.
+The last verified managed installation is [v0.10.1](STATE.md#v0101-installation-and-push),
+and the last formal release is [v0.10.0](STATE.md#v0100-publication).
+Package shape, configuration schemas and existing contracts remain unchanged;
+project adoption is not automatic. Historical evidence stays bound to its original package.
 
 [简体中文](README.zh-CN.md)
 
@@ -31,7 +29,7 @@ relevant details when needed, and reassesses material changes without adopting
 a level for the user. It preserves approved Charter reuse and shared review,
 authority and recovery boundaries; see
 [historical v0.6.5 state](STATE.md#current-v065-local-candidate).
-[Current state](STATE.md#v092-local-source) owns source and installation status.
+[Current state](STATE.md#v0102-source-and-delivery) owns source and installation status.
 
 The package originated at source commit
 `80910a8b2375a11be897e9660c4b00a06d00dd13`. Immutable `v0.5.0` source evidence

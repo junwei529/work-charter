@@ -292,3 +292,17 @@ permission. Preserve cumulative findings, verified new input and single-writer
 review windows. P receives the stable result and alone accepts it. A disputed
 finding, unknown effect, exhausted real limit or material risk returns to P;
 R cannot write the fix or waive acceptance, and E cannot declare its own review.
+
+## v0.10.2 material feedback and findings
+
+These are scenario specifications, not executed model results. A reviewer
+questions one architecture premise: the solution owner checks that premise and
+its consequences, preserving unaffected goals and evidence rather than dropping
+the whole outcome. Existing authority covers an ordinary warranted repair;
+factual notices require no new report. A justified decision not to change the
+artifact is valid, but a required R gate cannot be dismissed by the author.
+A statically reachable overwrite risk can require repair before an incident.
+A speculative scale enhancement is not a delivery requirement merely because
+it is labeled P1. Material permission or required-coverage uncertainty still
+stops the affected action. A real out-of-scope defect goes to its authorized
+owner, without automatic repair authority or a newly invented assessor.

@@ -9,7 +9,10 @@ creation, parallelism, writes, integration or external effects.
 One O owns final outcomes, priority/requirements alignment, cross-workstream
 tradeoffs and agreed material outcome/transition acceptance. O may serve one
 or several bounded workstreams. Each defaults to a Deliverer (D / `primary`) carrying
-exploration, planning, implementation, verification, repair and delivery.
+technical exploration within the authorized workstream, planning, implementation,
+verification, repair and delivery. Open-ended solution research follows the
+ownership in [End-to-End Delivery And Parallel Workstreams](coordination-and-recovery.md#end-to-end-delivery-and-parallel-workstreams):
+O initiates it in Phased; this does not transfer ordinary technical choices to O.
 Select Team P/E only for a demonstrated coordination or independent contract
 acceptance benefit; several contributors or branches are not sufficient.
 
@@ -22,7 +25,7 @@ again against the same criteria. A Deliverer's completion judgment is
 not independent acceptance; actual required acceptance remains with its named
 assessor. User-reserved authority and operation-local approval remain intact.
 
-The normal workstream path is outcome/bounds -> primary exploration and delivery
+The normal workstream path is outcome/bounds -> primary authorized workstream planning and delivery
 -> required R -> original-author repair and same valid R -> agreed outcome
 acceptance when required -> next already-authorized work. Preparatory protection
 or planning review occurs before the relevant risky action when required.

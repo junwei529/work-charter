@@ -1,5 +1,32 @@
 # Work Charter Verification
 
+## v0.10.2 source and delivery verification
+
+Baseline: `8cec8d57a3f422a7f408e5056dc7f95086165bde`.
+
+- SOURCE: 33/33 static clauses passed; candidate and historical identity checks
+  passed for v0.10.2. The initial output label still named v0.10.1; it was
+  corrected and the exact v0.10.2 label was verified on rerun.
+- Skill metadata validation passed. Repository provenance passed for 111 mapped
+  files after refreshing the mapping pin. The first repository check reported
+  `provenance source mapping mismatch`; that failed result is retained.
+- Git whitespace validation passed. Ordinary sandbox Git reads initially could
+  not enter the approved source directory; the authorized execution route then
+  verified the clean baseline without changing trust or network configuration.
+- Independent actual-diff review covered the source, four host-rule differences,
+  scenario specifications, candidate, release notes and necessary consumers.
+  WC-R1-001/P2 found stale current-version blocks in the two documentation entry
+  pages. The original author synchronized those blocks and current-state links;
+  the same reviewer will re-review the repair. No other actionable finding was
+  reported; package tree and candidate identity were independently verified.
+
+The existing scenario specifications cover public standalone use, host coexistence,
+O/D/P research responsibility, ordinary factual queries, material feedback and
+protected finding disposition. Scenario text is not a model run. Installation,
+commits and public readback are authorized after review and remain pending.
+Unchanged installer lifecycle mechanisms were not rerun as a new matrix.
+Historical evidence is retained below.
+
 ## v0.10.1 installation and push verification
 
 Independent commit review covered 17 tracked changes plus the new candidate,

@@ -1,5 +1,27 @@
 # Work Charter Design
 
+## v0.10.2 research ownership and material judgment
+
+The public coordination reference owns complete role-scoped proactive research,
+material feedback integration and finding-necessity semantics. The shared entry,
+role table and Phased reference expose those rules without duplicating them.
+With O, open-ended solution research belongs to O; without O, standalone D owns
+it. P uses its actual exploration assignment, including in Team without O.
+E/R retain ordinary factual queries, not new solution-research authority.
+Technical planning inside an authorized workstream remains with its owner.
+
+Material feedback can be adopted, partly adopted, deferred or declined. Existing
+authorization covers ordinary warranted repairs; evidence challenges only its
+actual premise or method, rather than automatically shrinking the original goal.
+Formal R still governs its required gate. Finding validity, delivery necessity
+and priority remain distinct; static reasoning and material UNKNOWN retain
+their proper consequences. No new role, approval form or message registry is added.
+
+Host-specific global defaults choose one research owner, then the host selects
+an evidence route. Public users need no personal rules, named evidence model or
+host API. Existing explicit assignments and frozen contracts are not migrated.
+This is a behavior-text revision, not evidence of runtime adoption or efficacy.
+
 ## v0.10.1 Deliverer naming
 
 Deliverer (D) names the existing end-to-end primary role; it is not a new

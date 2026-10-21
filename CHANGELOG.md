@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.10.2 — 2026-10-21
+
+- Assign proactive solution research to O in Phased, standalone D without O,
+  and P only within its actual exploration assignment. Preserve ordinary
+  technical queries and explicitly different existing contracts.
+- Compare directly reusable solutions and analogous mechanisms when a
+  consequential route depends on a concrete unverified premise.
+- Integrate material feedback against the original goal, evidence and cost;
+  preserve existing repair authority and required independent review.
+- Distinguish finding evidence, delivery necessity and severity without
+  relaxing protected risks, required coverage or acceptance.
+- Keep the public package self-contained. Host routing, models, configuration
+  schemas and installer production behavior retain their separate contracts.
+
 ## v0.10.1 — 2026-10-13 (source candidate)
 
 - Name the end-to-end delivery role Deliverer (D), retaining the `primary`

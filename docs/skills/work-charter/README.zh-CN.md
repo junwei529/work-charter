@@ -1,13 +1,11 @@
 # Work Charter
 
-当前源码与受管安装为 [v0.10.1](STATE.md#v0101-installation-and-push)，端到端角色统一称为
-Deliverer（D）／交付负责人，保留 `primary` 及既有职责。
-[候选](../../../release/v0.10.1-candidate.json)保留实施前快照，源码已推送，本轮未创建 v0.10.1 GitHub Release。
-
-最新正式 Release 为 [v0.10.0](STATE.md#v0100-publication)：端到端交付、
-目标层 O、边界明确的工作线，Team 仅按具体收益选择。托管安装和发布已核验。
-新合同使用 arrangement-v2；旧合同兼容及模型 schema v2 保留，项目采用不自动迁移。
-[已发布候选](../../../release/v0.10.0-candidate.json)保留发布前快照；历史证据仍绑定原包。
+当前源码候选为 [v0.10.2](STATE.md#v0102-source-and-delivery)，覆盖按角色启动的
+主动检索、材料反馈整合与 finding 必要性判断。
+[候选](../../../release/v0.10.2-candidate.json)保留实施前快照；独立审查和交付效果尚待完成。
+最近核验的受管安装为 [v0.10.1](STATE.md#v0101-installation-and-push)，
+最近正式 Release 为 [v0.10.0](STATE.md#v0100-publication)。
+包结构、配置 schema 和既有合同保持不变，项目采用不自动迁移；历史证据仍绑定原包。
 
 [English](README.md)
 
@@ -26,7 +24,7 @@ proportional coordination 约束有后果的 Codex 工作。
 需要时加载精简共同正文与相关细节，并对材料变化主动复评，不代替用户选级。
 已批准 Charter 的复用和共同审查、权限、恢复边界保留；
 参见[历史 v0.6.5 状态](STATE.md#current-v065-local-candidate)。
-当前源码和安装由[当前状态](STATE.md#v095-publication)承接。
+当前源码和安装由[当前状态](STATE.md#v0102-source-and-delivery)承接。
 
 package 起源于源提交 `80910a8b2375a11be897e9660c4b00a06d00dd13`。不可变 `v0.5.0`
 source 证据绑定已接受 commit `8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`、十轮已完成

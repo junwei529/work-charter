@@ -2,17 +2,12 @@
 
 [简体中文](README.zh-CN.md)
 
-Current source and managed installation: **v0.10.1**, end-to-end delivery with optional goal-level O,
-justified P/E separation and explicitly bounded parallel workstreams.
-The end-to-end role is named **Deliverer (D)**; its configuration key remains
-`primary`. See [installation and push state](docs/skills/work-charter/STATE.md#v0101-installation-and-push)
-and the [pre-effect source candidate](release/v0.10.1-candidate.json). No v0.10.1 GitHub Release has been created.
-
-Latest published release: **[v0.10.0](https://github.com/junwei529/work-charter/releases/tag/v0.10.0)**.
-[Verified installation and publication](docs/skills/work-charter/STATE.md#v0100-publication).
-The [source candidate](release/v0.10.0-candidate.json) retains its pre-effect
-snapshot; actual delivery evidence is in State and Verification. Existing
-project contracts require their own authorized migration.
+Current source candidate: **v0.10.2**, with role-scoped proactive research,
+material feedback integration and finding-necessity guidance. Independent review,
+installation and publication progress are recorded in
+[State](docs/skills/work-charter/STATE.md#v0102-source-and-delivery).
+The last recorded managed installation is v0.10.1; the last formal release is
+v0.10.0. Existing contracts do not automatically migrate.
 
 Keep complex AI projects moving across handoffs—and through to delivery.
 

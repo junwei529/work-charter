@@ -1,11 +1,10 @@
 # Work Charter
 
-Current source candidate is [v0.10.2](STATE.md#v0102-source-and-delivery),
+Current release and managed installation are [v0.10.2](STATE.md#v0102-source-and-delivery),
 covering role-scoped proactive research, material feedback integration and
-finding necessity. The [candidate](../../../release/v0.10.2-candidate.json)
-retains its pre-effect snapshot; independent review and delivery effects are pending.
-The last verified managed installation is [v0.10.1](STATE.md#v0101-installation-and-push),
-and the last formal release is [v0.10.0](STATE.md#v0100-publication).
+finding necessity. Independent review, installation and publication are verified.
+The [candidate](../../../release/v0.10.2-candidate.json) retains its pre-effect
+snapshot; State and Verification record completed effects.
 Package shape, configuration schemas and existing contracts remain unchanged;
 project adoption is not automatic. Historical evidence stays bound to its original package.
 

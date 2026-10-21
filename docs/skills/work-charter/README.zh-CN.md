@@ -1,10 +1,8 @@
 # Work Charter
 
-当前源码候选为 [v0.10.2](STATE.md#v0102-source-and-delivery)，覆盖按角色启动的
-主动检索、材料反馈整合与 finding 必要性判断。
-[候选](../../../release/v0.10.2-candidate.json)保留实施前快照；独立审查和交付效果尚待完成。
-最近核验的受管安装为 [v0.10.1](STATE.md#v0101-installation-and-push)，
-最近正式 Release 为 [v0.10.0](STATE.md#v0100-publication)。
+当前正式发布与受管安装为 [v0.10.2](STATE.md#v0102-source-and-delivery)，覆盖按角色启动的
+主动检索、材料反馈整合与 finding 必要性判断；独立审查、安装和发布均已核验。
+[候选](../../../release/v0.10.2-candidate.json)保留实施前快照，已完成效果由 State 和 Verification 承接。
 包结构、配置 schema 和既有合同保持不变，项目采用不自动迁移；历史证据仍绑定原包。
 
 [English](README.md)

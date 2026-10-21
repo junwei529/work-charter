@@ -2,19 +2,34 @@
 
 ## v0.10.2 source and delivery
 
-Status: **READY_FOR_INDEPENDENT_REVIEW**, 2026-10-21. The user selected v0.10.2 and authorized
-source, necessary host-rule/documentation updates and independent review,
-followed by managed installation, commits and publication after review passes.
-Baseline: `8cec8d57a3f422a7f408e5056dc7f95086165bde`.
-The source and four authorized host-rule changes are complete. The source
-author freezes the reviewed target for independent read-only review. Existing package shape, role
-models, contract/configuration schemas and installer production behavior remain.
+Status: **PUBLISHED_VERIFIED**, 2026-10-21. The user selected v0.10.2 and authorized
+source, four necessary host-rule updates, documentation and independent review,
+followed by managed installation, commits and publication. Independent actual-
+diff review covered 23 source/host paths and necessary consumers. WC-R1-001/P2
+identified stale documentation entry blocks; the original author repaired them
+and the same reviewer closed the finding with PASS and no new findings.
 
-The three changes are role-scoped proactive research, material feedback
-integration and finding necessity. Historical candidates and earlier failures
-remain unchanged. Installation, commits and public release are pending; the
-last recorded managed installation is v0.10.1 and formal release is v0.10.0.
-Runtime adoption, natural behavior and efficacy remain unverified.
+Source commit `c3b26d6909c512d9b1e7d654b4549ca0f7dec453` has parent
+`8cec8d57a3f422a7f408e5056dc7f95086165bde` and package tree
+`d2e00d1321ffdfbe24ea6f6690cb5049c5431d0b`. The exact 19 public paths were committed;
+the four host rules remain separate consumers. Annotated tag object
+`8ebbb577cb64b0d816869749af36ff4233bb31d5` resolves to that source commit.
+
+The existing manager completed dry-run and APPLY / MANAGED v0.10.2 from the
+fixed clean source commit, preserving previous destination permissions.
+Ordinary-reader status and all six exact file comparisons passed; the explicit
+same-volume private transaction root was empty. Package shape, role models,
+configuration schemas and installer production behavior remain unchanged.
+
+Main and the tag were pushed atomically without force through the verified
+repository actor. API readback matched the source commit and annotated tag target.
+The formal [v0.10.2 Release](https://github.com/junwei529/work-charter/releases/tag/v0.10.2)
+has id `419206762`, publication time `2026-10-21T05:57:14Z` and verified
+Latest status; its notes match the independently reviewed text.
+
+Subsequent record-only closeout preserves the source tag, package and immutable
+pre-effect candidate. Existing business contracts and personal model configuration
+were not changed. Runtime adoption, natural behavior and efficacy remain unverified.
 
 ## v0.10.1 installation and push
 

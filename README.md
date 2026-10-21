@@ -2,12 +2,11 @@
 
 [简体中文](README.zh-CN.md)
 
-Current source candidate: **v0.10.2**, with role-scoped proactive research,
-material feedback integration and finding-necessity guidance. Independent review,
-installation and publication progress are recorded in
+Current release and managed installation: **v0.10.2**, with role-scoped proactive
+research, material feedback integration and finding-necessity guidance.
+Review, installation and publication evidence is recorded in
 [State](docs/skills/work-charter/STATE.md#v0102-source-and-delivery).
-The last recorded managed installation is v0.10.1; the last formal release is
-v0.10.0. Existing contracts do not automatically migrate.
+Existing contracts do not automatically migrate.
 
 Keep complex AI projects moving across handoffs—and through to delivery.
 

@@ -13,19 +13,32 @@ Baseline: `8cec8d57a3f422a7f408e5056dc7f95086165bde`.
 - Git whitespace validation passed. Ordinary sandbox Git reads initially could
   not enter the approved source directory; the authorized execution route then
   verified the clean baseline without changing trust or network configuration.
-- Independent actual-diff review covered the source, four host-rule differences,
-  scenario specifications, candidate, release notes and necessary consumers.
-  WC-R1-001/P2 found stale current-version blocks in the two documentation entry
-  pages. The original author synchronized those blocks and current-state links;
-  the same reviewer will re-review the repair. No other actionable finding was
-  reported; package tree and candidate identity were independently verified.
+- Independent actual-diff review covered 23 source/host paths, scenario
+  specifications, candidate, release notes and necessary consumers. WC-R1-001/P2
+  found stale current-version blocks in the two documentation entry pages.
+  The original author repaired those blocks and current-state links; the same
+  reviewer re-reviewed PASS, closed the finding and found no new issue.
+  Final review input had no drift; package identity was independently verified.
 
-The existing scenario specifications cover public standalone use, host coexistence,
-O/D/P research responsibility, ordinary factual queries, material feedback and
-protected finding disposition. Scenario text is not a model run. Installation,
-commits and public readback are authorized after review and remain pending.
-Unchanged installer lifecycle mechanisms were not rerun as a new matrix.
-Historical evidence is retained below.
+The exact 19 public paths were committed. Parent, clean worktree and package
+tree matched before installation. The manager's dry-run and apply returned
+exit 0, MANAGED v0.10.2 and PRESERVED_FROM_PREVIOUS_DESTINATION. The task-specific
+transaction root was made private using the existing manager before apply.
+Ordinary-reader status, six installed-file comparisons and transaction-empty
+checks passed. The reviewed host-rule bytes remained unchanged.
+
+Actor, target repository and push capability were verified through the selected
+routes. Non-force atomic main/tag push completed. Release creation completed;
+API reads verified formal status, Latest, exact reviewed notes, source commit
+and annotated tag target. State records the immutable identities and timestamp.
+Record-only closeout uses independent actual-diff review and the required
+provenance/whitespace checks; it does not change package or candidate bytes.
+
+Scenario specifications cover public standalone use, host coexistence, O/D/P
+research responsibility, ordinary factual queries, material feedback and protected
+finding disposition. Scenario text is not a model run. No new full installer
+lifecycle matrix, model evaluation or business run was performed. Natural
+adoption and effectiveness remain UNKNOWN. Historical evidence is retained below.
 
 ## v0.10.1 installation and push verification
 

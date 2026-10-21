@@ -2,9 +2,9 @@
 
 [English](README.md)
 
-当前源码候选为 **v0.10.2**：明确主动方案检索的角色边界、材料反馈整合与 finding 必要性判断。
-独立审查、安装与发布进度见[当前状态](docs/skills/work-charter/STATE.md#v0102-source-and-delivery)。
-最后记录的受管安装为 v0.10.1，正式发布为 v0.10.0；既有合同不会自动迁移。
+当前正式发布与受管安装为 **v0.10.2**：明确主动方案检索的角色边界、材料反馈整合与 finding 必要性判断。
+独立审查、安装与发布证据见[当前状态](docs/skills/work-charter/STATE.md#v0102-source-and-delivery)。
+既有合同不会自动迁移。
 
 让复杂的 AI 项目接得住，也交得出。
 

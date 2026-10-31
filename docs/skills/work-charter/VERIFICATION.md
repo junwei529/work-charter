@@ -2,18 +2,28 @@
 
 ## v0.10.3 early route judgment verification
 
-Baseline: `9f4c9d4be1b0ac1134467f62ad7626d4b56fe3ec`.
-Initial SOURCE 33/33 and repository provenance (112 paths) passed. The initial
-SOURCE output label still named v0.10.2; only that label was corrected, preserving
-the original result. Final changed-input recheck and independent actual-diff
-review remain required; no live installation or runtime result is inferred.
+Baseline: 9f4c9d4be1b0ac1134467f62ad7626d4b56fe3ec.
+Final SOURCE 33/33 and repository provenance (112 paths) passed. The initial
+SOURCE output label still named v0.10.2; only that label was corrected and the
+changed-input check passed with the v0.10.3 identity. The earlier result remains
+retained. Independent actual-diff review covered the 17 source paths and three
+host-rule consumers with VALID/PASS/0OPEN; all 20 files still matched the
+reviewed candidate before source commit and local installation.
+
 Review cases: existing transfer capability versus repeated privileged file
 commands; ordinary repair without an O gate; new material cost before investment;
 legacy P/E routing without O bypass; factual completion with remaining authorized
 work; and compact recovery retaining real permission and UNKNOWN boundaries.
 These are semantic review scenarios, not model runs or business acceptance.
-Installer mechanisms are unchanged; only actual managed-update identity and
-permission postflight are needed, not the full historical lifecycle matrix.
+
+The original managed installer completed dry-run and apply, followed by MANAGED
+status for v0.10.3 and tree 62b7fc0e61415d1d812cada28ff73882c592c122.
+The apply and status results agree on installed digest
+87279a5be55a30bb41b0ae55b7e06bd158c438dcbc1a442c1db0259bb510290f.
+All six source/installed files matched, destination permissions were preserved,
+and no transaction contents remained. Installer behavior is unchanged, so the
+full historical lifecycle matrix was not repeated. Public publication and
+natural task-adherence effectiveness were not tested or claimed.
 
 ## v0.10.2 source and delivery verification
 

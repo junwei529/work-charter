@@ -2,16 +2,24 @@
 
 ## v0.10.3 early route judgment
 
-Status: **SOURCE_CHECKED_PENDING_REVIEW**, 2026-10-31. Authorized scope covers
-the source rule correction and managed local update, with necessary independent
-review and proportional verification. Baseline is
-`9f4c9d4be1b0ac1134467f62ad7626d4b56fe3ec`; existing work is preserved.
-No public push, tag or release is included. The latest published release and
-currently installed package remain v0.10.2 until actual update evidence is recorded.
-Changes affect three package instruction files and necessary current consumers;
-model defaults, package shape, installer behavior and existing project authority
-remain unchanged. The candidate is an immutable pre-effect record. Natural
-adherence and effectiveness remain unverified; no unrelated task is paused.
+Status: **LOCAL_INSTALLED_VERIFIED**, 2026-10-31. The user authorized the source
+rule correction and managed local update. Independent actual-diff review passed
+with no open findings. Source commit
+1c642d05fc4ad3110ef87bbd43bd44a08cd6e98b has parent
+9f4c9d4be1b0ac1134467f62ad7626d4b56fe3ec.
+
+The managed local installation reports v0.10.3 and package tree
+62b7fc0e61415d1d812cada28ff73882c592c122. All six installed files match source;
+previous destination permissions were preserved, and the transaction root is
+empty. The latest published release remains v0.10.2. No public push, tag or
+release was performed or authorized in this change.
+
+Changes affect three package instruction files and necessary current consumers.
+Model defaults, package shape, installer behavior and existing project authority
+remain unchanged. The candidate remains an immutable pre-effect record.
+Natural adherence and effectiveness remain unverified; installation does not
+prove that every active task has reloaded the rules. Unrelated authorized work
+continues without waiting for this rule update.
 
 ## v0.10.2 source and delivery
 

@@ -1,12 +1,11 @@
 # Work Charter
 
-Current release and managed installation are [v0.10.2](STATE.md#v0102-source-and-delivery),
-covering role-scoped proactive research, material feedback integration and
-finding necessity. Independent review, installation and publication are verified.
-The [candidate](../../../release/v0.10.2-candidate.json) retains its pre-effect
-snapshot; State and Verification record completed effects.
-Package shape, configuration schemas and existing contracts remain unchanged;
-project adoption is not automatic. Historical evidence stays bound to its original package.
+The current local [v0.10.3 revision](STATE.md#v0103-early-route-judgment)
+moves material route judgment before implementation without adding step gates.
+The latest published release remains v0.10.2. The
+[candidate](../../../release/v0.10.3-candidate.json) is a pre-effect snapshot;
+State and Verification own actual review and managed-installation evidence.
+Package shape, model configuration and existing contracts remain unchanged.
 
 [简体中文](README.zh-CN.md)
 

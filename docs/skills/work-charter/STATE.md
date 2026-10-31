@@ -1,5 +1,18 @@
 # Work Charter State
 
+## v0.10.3 early route judgment
+
+Status: **SOURCE_CHECKED_PENDING_REVIEW**, 2026-10-31. Authorized scope covers
+the source rule correction and managed local update, with necessary independent
+review and proportional verification. Baseline is
+`9f4c9d4be1b0ac1134467f62ad7626d4b56fe3ec`; existing work is preserved.
+No public push, tag or release is included. The latest published release and
+currently installed package remain v0.10.2 until actual update evidence is recorded.
+Changes affect three package instruction files and necessary current consumers;
+model defaults, package shape, installer behavior and existing project authority
+remain unchanged. The candidate is an immutable pre-effect record. Natural
+adherence and effectiveness remain unverified; no unrelated task is paused.
+
 ## v0.10.2 source and delivery
 
 Status: **PUBLISHED_VERIFIED**, 2026-10-21. The user selected v0.10.2 and authorized

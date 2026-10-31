@@ -1,5 +1,18 @@
 # Work Charter Design
 
+## v0.10.3 early route judgment
+
+End-to-End Delivery owns the portable reuse and total-cost comparison, including
+transport, deployment and recovery. The shared entry and role reference route
+to it. Important goal/cross-workstream/cost choices reach their existing owner
+before implementation investment or when new evidence appears; ordinary methods
+remain delegated. Final acceptance still requires actual outcome evidence.
+Authorized Progression distinguishes a factual notice from a finished package
+or a genuine decision-bearing handoff. Context recovery leads with a compact
+current snapshot while retaining historical evidence at its original location.
+No additional role, mandatory planning review, per-step approval, schema,
+monitoring service or host-specific dependency is introduced.
+
 ## v0.10.2 research ownership and material judgment
 
 The public coordination reference owns complete role-scoped proactive research,

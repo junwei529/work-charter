@@ -1,5 +1,20 @@
 # Work Charter Verification
 
+## v0.10.3 early route judgment verification
+
+Baseline: `9f4c9d4be1b0ac1134467f62ad7626d4b56fe3ec`.
+Initial SOURCE 33/33 and repository provenance (112 paths) passed. The initial
+SOURCE output label still named v0.10.2; only that label was corrected, preserving
+the original result. Final changed-input recheck and independent actual-diff
+review remain required; no live installation or runtime result is inferred.
+Review cases: existing transfer capability versus repeated privileged file
+commands; ordinary repair without an O gate; new material cost before investment;
+legacy P/E routing without O bypass; factual completion with remaining authorized
+work; and compact recovery retaining real permission and UNKNOWN boundaries.
+These are semantic review scenarios, not model runs or business acceptance.
+Installer mechanisms are unchanged; only actual managed-update identity and
+permission postflight are needed, not the full historical lifecycle matrix.
+
 ## v0.10.2 source and delivery verification
 
 Baseline: `8cec8d57a3f422a7f408e5056dc7f95086165bde`.

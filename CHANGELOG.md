@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.10.3 — 2026-10-31 (local revision, unpublished)
+
+- Compare existing transfer, deployment and recovery capabilities before
+  investing in material routes; reassess disproportionate total delivery cost.
+- Move important O tradeoffs before affected implementation while keeping
+  ordinary choices with their technical owner and final acceptance outcome-based.
+- Clarify continued work after factual notices and compact current recovery
+  snapshots, without new roles, step approvals, document suites or polling.
+- Preserve actual permission, review, legacy contracts and consumed evidence;
+  package shape, models and installer behavior remain unchanged.
+
 ## v0.10.2 — 2026-10-21
 
 - Assign proactive solution research to O in Phased, standalone D without O,

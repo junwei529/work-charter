@@ -1,9 +1,9 @@
 # Work Charter
 
-当前正式发布与受管安装为 [v0.10.2](STATE.md#v0102-source-and-delivery)，覆盖按角色启动的
-主动检索、材料反馈整合与 finding 必要性判断；独立审查、安装和发布均已核验。
-[候选](../../../release/v0.10.2-candidate.json)保留实施前快照，已完成效果由 State 和 Verification 承接。
-包结构、配置 schema 和既有合同保持不变，项目采用不自动迁移；历史证据仍绑定原包。
+当前本地[v0.10.3修订](STATE.md#v0103-early-route-judgment)把重要路线判断前移，
+不增加逐步审批。最新正式发布仍为v0.10.2。
+[候选](../../../release/v0.10.3-candidate.json)保留实施前快照，实际审查与受管安装证据由State和Verification承接。
+包结构、模型配置与既有合同保持不变。
 
 [English](README.md)
 

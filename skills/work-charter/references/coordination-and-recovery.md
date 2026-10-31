@@ -200,6 +200,22 @@ required assessor/checkpoint to begin. Technical methods remain replaceable;
 no complete frozen tactical plan is required. The four proposal layers below
 remain a reasoning distinction, not another form.
 
+Before investing in a material implementation route, use the existing plan or
+checkpoint to explain the outcome, available reusable capability, concrete gap,
+selected method and material cost. Reuse includes transfer, deployment,
+operations and recovery, not only business code. Checking known capabilities is
+ordinary technical planning; it does not require a new research assignment or
+routine O approval. Compare total discovery, implementation, verification,
+coordination, execution, recovery and maintenance cost, not only changed lines.
+Reconsider when new evidence exposes duplicated capability, a new maintained
+mechanism, disproportionate calls or recovery steps, cross-workstream tradeoffs,
+or an old tool constraint distorting the outcome. Raise only material choices
+outside the technical owner's delegated discretion to the existing decision
+owner before the affected implementation investment, or when first discovered.
+Independent authorized work continues. No fixed call threshold, extra form,
+planning-review round or step-by-step approval follows. Sunk work and valid
+component checks are reusable evidence, not reasons to freeze a replaceable route.
+
 Open-ended solution research seeks alternatives that may change architecture,
 direction or the reuse strategy. With O present, O initiates this research;
 D brings the concrete direction-level question and available evidence to O.
@@ -248,8 +264,11 @@ contract acceptance; in Direct, only the agreed external assessor checkpoints
 require acceptance. Outcome acceptance does not authorize additional effects.
 
 O owns final outcomes, requirements/priority alignment, cross-workstream tradeoffs
-and agreed material outcome/transition acceptance. It does not approve ordinary
-methods, tests or repair rounds. In-scope user requests to the primary stay
+and agreed material outcome/transition acceptance. Handle material direction,
+cross-workstream or overall-cost choices before the affected implementation,
+or when new evidence first exposes them; final acceptance checks actual outcomes
+and cannot replace this earlier judgment. O does not approve ordinary methods,
+tests or repair rounds. In-scope user requests to the primary stay
 there. O receives actionable exceptions and agreed material results, not copies
 of every workstream message. Technical owners coordinate necessary interfaces
 directly through authorized routes; only goal, priority or authority tradeoffs
@@ -377,7 +396,11 @@ existing owner recovers only the missing handoff/disposition under its approved
 route or presents the missing capability/permission with the next safe action.
 No polling, repeated unchanged sends, terminal ACK, new automation or service
 follows from this section. Report completion, material exceptions and real user
-decisions; ordinary factual notices create no receipt gate.
+decisions; ordinary factual notices create no receipt gate. Completing an
+internal checkpoint or sending a factual notice does not complete the authorized
+work package. Continue independent authorized work; if the next action genuinely
+depends on a recipient, identify that decision or result and the supported return
+route. Do not relabel a needed disposition as "no ACK" and assume continuation.
 
 ## Managed Workstream And Multiple Worktrees
 
@@ -456,10 +479,13 @@ path was disabled. None of these mechanisms creates a new work subject or
 resets approvals, findings, correction history, permissions, stop conditions,
 or consumed evidence when the material contract and checkpoint are unchanged.
 
-Before a foreseeable switch, preserve the smallest sufficient checkpoint in
-the existing authoritative carrier: Charter locator and revision, role and
-writer, workspace, reviewed input, open findings, evidence and invalidation
-condition, any required returned disposition, and next authorized action or concrete blocker and return route. Preserve an
+Before a foreseeable switch, preserve the smallest sufficient current snapshot
+at the top of the existing authoritative carrier: intended outcome, actual
+result, real constraints, replaceable method and next authorized action or
+concrete blocker/return owner. Retain Charter revision, role/writer, workspace,
+reviewed input, open findings, evidence/invalidation and required dispositions
+through reliable locators; preserve their history without copying the full
+execution log into the active snapshot. Preserve an
 unfinished delegated request and its authority even when the latest visible
 message contains no new request. Before
 the next affected action after the switch, reconcile the current contract and

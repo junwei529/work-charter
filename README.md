@@ -2,10 +2,10 @@
 
 [简体中文](README.zh-CN.md)
 
-Current release and managed installation: **v0.10.2**, with role-scoped proactive
-research, material feedback integration and finding-necessity guidance.
-Review, installation and publication evidence is recorded in
-[State](docs/skills/work-charter/STATE.md#v0102-source-and-delivery).
+Current local revision: **v0.10.3**, moving material route judgment before
+implementation while preserving ordinary delivery autonomy. The latest published
+release remains **v0.10.2**. Source, review and managed-installation status are
+recorded in [State](docs/skills/work-charter/STATE.md#v0103-early-route-judgment).
 Existing contracts do not automatically migrate.
 
 Keep complex AI projects moving across handoffs—and through to delivery.

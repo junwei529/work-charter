@@ -16,8 +16,12 @@ O initiates it in Phased; this does not transfer ordinary technical choices to O
 Select Team P/E only for a demonstrated coordination or independent contract
 acceptance benefit; several contributors or branches are not sufficient.
 
-The primary owns in-scope methods and necessary technical coordination. O
-receives agreed material results and actionable exceptions, not routine relay.
+The primary owns in-scope methods and necessary technical coordination. Apply
+the material-route comparison in End-to-End Delivery before implementation
+investment. O handles important direction, cross-workstream and overall-cost
+choices then, or when new evidence exposes them; it does not wait for final
+acceptance to notice an unsuitable route. Ordinary choices remain with the
+primary and independent authorized work continues. O receives agreed material results and actionable exceptions, not routine relay.
 O does not implement, manage technical slices, approve ordinary repairs or
 repeat R's inspection. In a selected Team, P's contract acceptance remains;
 O checks goal attainment and transitions rather than accepting the same work
@@ -100,9 +104,11 @@ or changes an existing task.
 | Executor | Authorized implementation, self-check, repair, verification, evidence, and implementation documentation | Expand scope, select a new phase, serve as independent Reviewer of its own work, or approve its own result |
 | Reviewer | Read-only semantic inspection of a stable checkpoint, actionable findings, and explicit coverage limits | Modify the reviewed target, direct project scope, or decide target or phase acceptance |
 
-The Orchestrator normally remains dormant during phase execution, handling
-only direction, cross-phase dependencies, material project risk and phase
-acceptance. The Planner owns in-phase decisions and stable acceptance; preauthorized
+The Orchestrator stays out of ordinary phase implementation. The Planner brings
+direction, cross-phase, material project-risk or overall-cost choices to O before
+the affected investment, or when new evidence exposes them, within the existing
+contract and decision authority. Do not defer these choices to phase acceptance
+or bypass P to direct E/R. The Planner owns in-phase decisions and stable acceptance; preauthorized
 ordinary repairs close through E and R without per-round Planner intervention. Keep one
 active lane, one repository writer, at most one Planner, at most one Executor,
 and one reliable Reviewer for the active package. That R may continue across

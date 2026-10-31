@@ -2,8 +2,8 @@
 
 [English](README.md)
 
-当前正式发布与受管安装为 **v0.10.2**：明确主动方案检索的角色边界、材料反馈整合与 finding 必要性判断。
-独立审查、安装与发布证据见[当前状态](docs/skills/work-charter/STATE.md#v0102-source-and-delivery)。
+当前本地修订为 **v0.10.3**：把重要路线判断前移到实现投入之前，保留普通交付自主权。
+最新正式发布仍为 **v0.10.2**；源码、审查和受管安装状态见[当前状态](docs/skills/work-charter/STATE.md#v0103-early-route-judgment)。
 既有合同不会自动迁移。
 
 让复杂的 AI 项目接得住，也交得出。

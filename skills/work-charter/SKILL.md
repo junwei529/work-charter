@@ -112,7 +112,11 @@ Planner/Executor roles or adopt a Charter.
   effects and real cost; ordinary unlisted methods within that scope need no
   separate approval. Explain the concrete risk before treating an inferred
   guardrail as necessary. Do not preserve rejected Agent inventions as new
-  requirements or infer permission for unlisted external effects. Use an existing canonical carrier: a current-task agreement may use the task;
+  requirements or infer permission for unlisted external effects. Assess material
+  routes before implementation investment, using the existing owners and
+  [End-to-End Delivery](references/coordination-and-recovery.md#end-to-end-delivery-and-parallel-workstreams);
+  do not defer those choices to final acceptance or create a per-step approval.
+  Use an existing canonical carrier: a current-task agreement may use the task;
   durable continuity requires an authorized discoverable anchor. Team and Phased
   keep a common recoverable control location. Legacy continuity duties still bind.
 - The implementer verifies and repairs the work it changed. It never acts as

@@ -1,5 +1,15 @@
 # Provenance And Transformation Boundary
 
+## v0.10.3 local source
+
+Review baseline: `9f4c9d4be1b0ac1134467f62ad7626d4b56fe3ec`.
+The previous v0.10.2 descriptor and package lineage remain immutable. This
+authorized local revision changes route-judgment and continuation instructions,
+with necessary documentation and version/provenance bindings. No public release
+is claimed. The six-file package, model defaults and installer production
+behavior remain unchanged; host/project rules are separate consumers.
+State and Verification own actual source, review and installation results.
+
 ## v0.10.2 local source
 
 Review baseline: `8cec8d57a3f422a7f408e5056dc7f95086165bde`.

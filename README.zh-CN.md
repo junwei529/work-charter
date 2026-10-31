@@ -188,7 +188,7 @@ exact managed v0.4.0 副本的 default-reader access，并仅对该修复关闭
 `WC-INSTALL-POSTFLIGHT-F01`。该修复检查点的 package 仍为 managed v0.4.0，v0.4.1 未安装。之后的
 [v0.6.3 安装接受记录](docs/skills/work-charter/STATE.md#accepted-v063-user-installation)保留该历史副本证据；
 [历史 v0.6.5 状态](docs/skills/work-charter/STATE.md#current-v065-local-candidate)记录当时的更新；
-[当前状态](docs/skills/work-charter/STATE.md#v094-publication)承接 v0.9.4 源码与本机安装。
+[当前状态](docs/skills/work-charter/STATE.md#v0102-source-and-delivery)记录 v0.10.2 源码、受管安装与发布证据。
 v0.5.0 stable loaded-copy、role-delivery adherence、跨 provider 执行、cross-Harness、
 公开发布与广泛效能仍为 `UNKNOWN` 或需分别授权。
 
@@ -263,7 +263,7 @@ python -B scripts/check_source_contract.py --json
 python -B scripts/check_repository.py --json
 ```
 
-对最终变更输入执行相应检查。SOURCE checker 分别核对静态合同条款、v0.9.4 的
+对最终变更输入执行相应检查。SOURCE checker 分别核对静态合同条款、当前 v0.10.2 的
 tree/digest 绑定和历史描述文件身份（包括 v0.7.1）；静态文案及身份检查不证明模型行为。
 当前结果见[验证记录](docs/skills/work-charter/VERIFICATION.md)。
 

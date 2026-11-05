@@ -105,20 +105,17 @@ Planner/Executor roles or adopt a Charter.
   content was examined. Retain material selection, truncation and missing
   coverage; apply the evidence-scope contract in
   [Authority, Delivery, Correction, And Evidence](references/coordination-and-recovery.md#authority-delivery-correction-and-evidence).
-- Protect user-confirmed outcomes and real guardrails; keep Agent-proposed
-  methods replaceable across planning, execution and review. Handoffs preserve
-  the user outcome, the basis of real constraints, existing evidence and the
-  receiver's room to change methods. Scope authorization by outcome, domain, environment,
-  effects and real cost; ordinary unlisted methods within that scope need no
-  separate approval. Explain the concrete risk before treating an inferred
-  guardrail as necessary. Do not preserve rejected Agent inventions as new
-  requirements or infer permission for unlisted external effects. Assess material
-  routes before implementation investment, using the existing owners and
-  [End-to-End Delivery](references/coordination-and-recovery.md#end-to-end-delivery-and-parallel-workstreams);
-  do not defer those choices to final acceptance or create a per-step approval.
-  Use an existing canonical carrier: a current-task agreement may use the task;
-  durable continuity requires an authorized discoverable anchor. Team and Phased
-  keep a common recoverable control location. Legacy continuity duties still bind.
+- Protect confirmed outcomes and real constraints while keeping working methods
+  replaceable. Scope authority by outcome, domain, environment, effects and cost;
+  recording or approving a plan does not freeze its incidental methods.
+  [Contract And Proposal Changes](references/coordination-and-recovery.md#contract-and-proposal-changes)
+  owns constraint applicability, risk-proportionate evidence and user decisions.
+  [End-to-End Delivery](references/coordination-and-recovery.md#end-to-end-delivery-and-parallel-workstreams)
+  owns useful delivery, total-cost choices and recovery; use it before material
+  investment without a per-step approval. Use an existing canonical carrier;
+  durable Team/Phased work needs a common recoverable control location, and
+  legacy continuity duties remain binding.
+
 - The implementer verifies and repairs the work it changed. It never acts as
   the independent Reviewer of its own work. An independent Reviewer
   inspects the stable change when requested, required by a gate, or warranted
@@ -128,18 +125,15 @@ Planner/Executor roles or adopt a Charter.
   designated assessor decides whether outcome and evidence
   satisfy the contract. Tests and review output are not acceptance; without a
   separate assessor, the primary owner's disposition is not independent acceptance.
-- Prioritize making the main workflow needed for the agreed outcome usable.
-  For a prototype, prioritize its real inputs and intended environment;
-  production work retains its own agreed requirements. Complete applicable
-  checks and handoff, then improve through actual use.
-  Defer non-blocking edge cases and extra tests; recording or reviewing them
-  does not make them delivery requirements. Verification and coordination serve
-  the agreed outcome and applicable protections. Once those are satisfied,
-  deliver rather than keep expanding the work. Use [Contract And Proposal
-  Changes](references/coordination-and-recovery.md#contract-and-proposal-changes)
-  for test timing, review disposition and deferred work. Preserve
-  producer-before-consumer order and raw terminal evidence. Do not rerun
-  scarce, consequential or unauthorized work to replace a missing result.
+- Complete the earliest useful main workflow within the agreed acceptance floor,
+  then finish remaining agreed outcomes. A partial milestone does not close the
+  whole contract. Verification, coordination and recovery serve those outcomes;
+  deferred enhancements do not become requirements merely through review.
+  Use Contract And Proposal Changes for sufficient checks and findings, and
+  [Work Allocation](references/coordination-and-recovery.md#work-allocation-and-optional-collaborators)
+  for the cost of separation. Preserve producer-before-consumer order, actual
+  terminal evidence and explicit scarce/non-repeatable effect boundaries.
+
 - Resolve problems at the lowest already-authorized responsibility. P may
   exercise explicit in-phase delegation in Team or an unchanged older contract.
   Otherwise the primary owns methods, repair, finding disposition and delivery;

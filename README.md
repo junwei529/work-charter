@@ -2,10 +2,10 @@
 
 [简体中文](README.zh-CN.md)
 
-Current local revision: **v0.10.3**, moving material route judgment before
-implementation while preserving ordinary delivery autonomy. The latest published
+Current local revision: **v0.10.4**, consolidating outcome-led delivery,
+risk-proportionate recovery and evidence reuse within existing authority. The latest published
 release remains **v0.10.2**. Source, review and managed-installation status are
-recorded in [State](docs/skills/work-charter/STATE.md#v0103-early-route-judgment).
+recorded in [State](docs/skills/work-charter/STATE.md#v0104-outcome-led-recovery).
 Existing contracts do not automatically migrate.
 
 Keep complex AI projects moving across handoffs—and through to delivery.

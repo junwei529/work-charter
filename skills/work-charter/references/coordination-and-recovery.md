@@ -193,12 +193,14 @@ frozen delivery combination until its owner authorizes a material change.
 ## End-to-End Delivery And Parallel Workstreams
 
 For arrangement-v2, the Deliverer (D / `primary`) owns a complete bounded outcome,
-including technical exploration and planning within its authorized workstream
-rather than only prescribed implementation. Use confirmed outcomes, real
-constraints, existing evidence, permitted effects, completion evidence and any
-required assessor/checkpoint to begin. Technical methods remain replaceable;
-no complete frozen tactical plan is required. The four proposal layers below
-remain a reasoning distinction, not another form.
+including technical exploration, recovery and delivery within its authorized
+workstream. In the existing agreement distinguish the final user outcome, the
+earliest useful complete result and the acceptance floor that neither may
+sacrifice. Intermediate delivery does not close remaining agreed outcomes.
+Use real constraints, reusable evidence, permitted effects and any required
+assessor/checkpoint to begin. An implementation-ready plan explains how work
+can proceed; it does not freeze methods when their premises change. The four
+proposal layers below are a reasoning distinction, not another form.
 
 Before investing in a material implementation route, use the existing plan or
 checkpoint to explain the outcome, available reusable capability, concrete gap,
@@ -206,15 +208,19 @@ selected method and material cost. Reuse includes transfer, deployment,
 operations and recovery, not only business code. Checking known capabilities is
 ordinary technical planning; it does not require a new research assignment or
 routine O approval. Compare total discovery, implementation, verification,
-coordination, execution, recovery and maintenance cost, not only changed lines.
+coordination, execution, recovery and maintenance cost, including waiting,
+user attention and loss of business value. Compare remaining cost from the
+current position; sunk effort matters only where it can still be reused.
 Reconsider when new evidence exposes duplicated capability, a new maintained
 mechanism, disproportionate calls or recovery steps, cross-workstream tradeoffs,
 or an old tool constraint distorting the outcome. Raise only material choices
 outside the technical owner's delegated discretion to the existing decision
 owner before the affected implementation investment, or when first discovered.
 Independent authorized work continues. No fixed call threshold, extra form,
-planning-review round or step-by-step approval follows. Sunk work and valid
-component checks are reusable evidence, not reasons to freeze a replaceable route.
+planning-review round or step-by-step approval follows. Time sensitivity calls
+for reassessing priority and data fitness, not an Agent-invented hard deadline.
+Do not silently cancel a requested outcome or relabel historical facts as
+current; apply existing authority to any change of purpose.
 
 Open-ended solution research seeks alternatives that may change architecture,
 direction or the reuse strategy. With O present, O initiates this research;
@@ -247,9 +253,10 @@ Use only query content already permitted for external disclosure: a public
 source does not authorize sending private project material. If network access,
 sources or permission are unavailable, identify the affected conclusion and
 continue independent authorized work; do not bypass the boundary or invent
-the missing evidence. Ordinary API, error, compatibility and review-evidence
-queries, and authorized technical exploration within a workstream, remain
-with their existing owner. They do not require O to approve routine methods.
+the missing evidence. Ordinary API, error, compatibility and review-evidence queries, including
+comparison and replacement of methods inside an authorized workstream, remain
+with their existing owner. O's research ownership does not reserve these choices
+or require O to approve routine methods.
 
 Complete the earliest authorized real main workflow after its necessary
 pre-action protections. Investigate actual failures, adjust in-scope methods,
@@ -554,33 +561,45 @@ targets, frozen evidence, managed paths, required interface and migration
 identity, consumer ordering, and non-repeatable effects when they matter.
 Approval of a general route does not authorize an unlisted external effect.
 
-Keep four layers explicit when a Charter or Phase proposal is being formed
-or revised:
+Keep four layers explicit when forming or revising the existing agreement:
 
-- **Confirmed Contract** records only user-confirmed outcomes, acceptance, and
-  exclusions. Changing it requires the applicable material user decision.
-- **Necessary Guardrails** records safety, permission, reversibility, trust,
-  irreversible-effect, and authoritative project-rule constraints. Identify
-  the source or protected risk. Changing or removing a material guardrail
-  returns to the user.
-- **Working Proposal** records the Agent's current route, tools, sequence,
-  implementation, and verification. It may change locally when the Confirmed
-  Contract, Necessary Guardrails, interfaces, risk, permissions, external
-  effects, acceptance, workspace, and integration policy remain unchanged.
-- **Assumptions / Open Decisions** records uncertainty. Return only choices
-  that can materially change the first two layers or another protected
-  boundary.
+- **Confirmed Contract** records user-confirmed outcomes, acceptance and
+  exclusions, including any method the user explicitly fixed. Material changes
+  follow the existing user-decision boundary.
+- **Necessary Guardrails** records actual safety, permission, reversibility,
+  trust and authoritative constraints. Identify the source or protected risk,
+  affected subject and applicability or reassessment condition where material.
+  Changing the protected outcome or a reserved risk boundary returns to its
+  authorized decision owner; replacing an equivalent mechanism within the
+  existing boundary stays with the technical owner.
+- **Working Proposal** records current route, tools, order, implementation and
+  checks. An upstream Agent's instruction, a hash or plan approval alone does
+  not freeze them. Replace obsolete methods without changing the contract,
+  protected interfaces, authority, acceptance or actual effects.
+- **Assumptions / Open Decisions** records uncertainty; escalate only choices
+  that affect a protected boundary or exceed delegated authority.
 
 For a guardrail derived by the Agent, distinguish the protected outcome from
 the chosen mechanism and its strength. Identify the concrete failure and its
-consequence, the strength needed to address it, and why simpler existing
-methods do not suffice. The Necessary Guardrail label, a documented tool
-promise, or general implementation approval alone proves none of these.
-Explicit user and project requirements retain their authority under the
-existing contract; do not require the user to justify them again. Approval of
-an overall plan does not freeze its tools, steps, test arrangements or counts
-unless the user explicitly fixes them. Necessary capability boundaries name
-what must work for the agreed outcome, not every uncertainty about a tool.
+consequence, actual exposure, reversibility and affected scope, and why simpler
+existing methods do not suffice. Use the accepted operating/threat model;
+do not silently require protection against a different hypothetical adversary.
+New evidence of a real threat still requires appropriate action. Explicit
+user/project requirements need no new justification from the user.
+Evidence is sufficient when it addresses the material failure paths that could
+change the next decision and meets required verification. More imaginable
+uncertainties are not automatic gates; material safety, permission, data-loss
+and required-coverage uncertainty still restrict the affected action. No risk
+scorecard or separate constraint register is required.
+
+Preserve historical failures, approvals and consumed limits separately from
+current applicability. An explicit one-shot or frozen limit still binds its
+subject until validly amended; do not import it into unrelated future work,
+rename the same subject to escape it, or automatically extend expired authority.
+Retire an Agent's temporary mechanism when its premise no longer applies,
+preserving the protection and history. Trace genuinely ambiguous constraints at
+their existing source; stop only the dependent action if a material ambiguity
+cannot be resolved. No per-parameter registration or fresh approval follows.
 
 Progress means moving toward the agreed outcome. Evidence, findings,
 documentation, coordination and blocker removal count when they help achieve
@@ -609,15 +628,9 @@ checks when the change impact or an explicit applicable requirement calls for
 them. Broaden or repeat verification only for changed inputs, relevant failures
 or unresolved concrete risks. Report what was verified and any material gap.
 
-If auxiliary repair or coordination keeps expanding, the current primary
-owner or Planner determines the minimum sufficient user-visible outcome and
-compares the remaining coordination, implementation, verification, and
-maintenance cost with simpler viable routes to the same protected outcome.
-Sunk effort and findings about a tool's own promises do not turn that tool
-into a new user goal. Reuse these four layers and the existing decision owner;
-this assessment adds no role, required form, or approval gate. Preserve real
-defects, evidence, explicit requirements, and applicable verification while
-replacing a proposal.
+When auxiliary work keeps expanding, apply End-to-End Delivery's remaining-
+cost comparison at the existing owner. Tool promises do not become user goals.
+Reuse the four layers above without another role, form or approval gate.
 
 Anticipated edge cases, extra tests and review suggestions remain proposals
 until their effect on the agreed outcome or an applicable protection makes them
@@ -639,27 +652,12 @@ outcome; review is not a request to exhaust hypothetical concerns. If the
 project has no backlog, briefly list useful follow-ups in the delivery note; no
 new file or tracking system is required.
 
-Do not promote Agent-proposed methods into user requirements.
-An ordinary file list, sequence without a real dependency, chosen tool or
-check arrangement, per-message relay or acknowledgement, and Agent-set
-per-repair limit are Working Proposal unless a user or project explicitly
-fixes them or a concrete protected risk requires them. Within authorized
-outcomes and effects, E may choose ordinary implementation details that were
-not enumerated in the approval. Preserve the protection target while choosing
-the least sufficient mechanism and strength; do not treat a mechanism's own
-promise as the reason to keep it.
-An explicitly adopted hard stop or frozen consumption limit remains binding
-until its authorized owner changes it; do not retroactively call it a proposal. A contract-preserving
-Working Proposal change needs no Charter or Definition revision, renewed
-approval, or unrelated durable-document churn. Remove or replace a rejected
-Agent invention; record it as a durable non-goal only when an independently
-justified product, safety, scope, or trust boundary remains.
-
-When equivalence is unclear, or the change affects an outcome, acceptance,
-permission, trust boundary, irreversible effect, authoritative rule, risk,
-external effect, workspace, or integration policy, stop and route the
-material decision through the existing owner. Do not use proposal flexibility
-to weaken a guardrail or expand authority.
+Use the four layers above to disposition method changes. A contract-preserving
+Working Proposal change needs no Charter/Definition revision or unrelated
+document churn. An explicitly adopted hard stop or frozen consumption limit
+remains binding until its authorized owner changes it. Where equivalence or a
+material boundary remains unclear, route that difference through the existing
+owner; do not unilaterally waive a required R finding or acceptance floor.
 
 ## Delegated Decisions And Escalation
 
@@ -694,16 +692,27 @@ adding O/P/E.
 The approved delivery contract may preauthorize the original-author/R correction
 loop. Selected Team P retains its contract duties; a Direct primary owns its
 in-scope recovery without routing it through P or O.
-For recovery, prefer an aggregate authorized cost/effect boundary with concrete
-stop conditions over Agent-invented per-command quotas. E may correct an
-in-scope, repeatable failure only when the prior terminal and side effects are
-known, a concrete delta addresses the failure, evidence remains usable, and
-the next action stays within authority and remaining budget. Unknown effects,
-permission conflict, exhausted limits, repeated failure without semantic
-progress, or a protected-boundary change stop the affected work. The primary, or P in selected Team, handles
-in-bound recovery; only a decision beyond that authority goes to O or the user. Explicit
-one-shot, human-review, scarce-evidence, timeout and frozen consumption limits
-still bind. A sensitive or production target, managed path, compatibility or
+For each failure, the technical owner makes a lightweight disposition: repair
+a local defect, recheck changed facts, replace an invalid route, reconcile an
+unknown effect, or return a real reserved decision. This is internal reasoning,
+not a mandatory report or O approval. Distinguish an unknown cause from an
+unknown effect; restrict only actions that depend on the unresolved risk.
+Use the aggregate authorized cost/effect boundary, not invented per-command
+quotas. Reads may use approved retry/backoff; idempotent writes need their real
+identity/state guarantees; unknown non-repeatable writes or sends require
+reconciliation before a potentially duplicating action. Reclassification does
+not erase explicit no-replay, one-shot, scarce-evidence, timeout or spent limits.
+Stop a failed automatic loop when no supported change makes another attempt
+useful; the owner still evaluates authorized alternatives and independent work.
+The primary, or P in selected Team, handles in-bound recovery. Only a decision
+beyond that authority goes to O or the user.
+
+For concrete recurring needs, ordinary retry, expiry, reconciliation, reconnect
+and fault reporting belong in the product's normal operation where appropriate.
+Agents diagnose exceptions and repair within scope; users decide reserved
+outcomes and material effects. Reuse existing mechanisms first. A one-off event
+does not justify a maintained recovery platform, and this principle grants no
+new implementation or runtime authority. A sensitive or production target, managed path, compatibility or
 migration identity, required producer-before-consumer order, independent R,
 or reserved acceptance cannot be relaxed as an ordinary method choice.
 Reclassifying a failure or starting another task never resets them.
@@ -713,7 +722,11 @@ Reclassifying a failure or starting another task never resets them.
 Keep tightly coupled observation, editing, running and repair with the endpoint
 that can complete that loop. Delegate a complete independent outcome when its
 capabilities, quality or parallel progress justify preparation, clarification
-and integration cost. Local files can be supplied once for independent work;
+and integration cost. Role availability alone does not justify a relay chain;
+keep one accountable delivery owner while retaining required independent R.
+Use stable review units with independent delivery or management value, not a
+round per file and not an obligatory wait for the whole project. Local files
+can be supplied once for independent work;
 remote repository access alone does not establish a usable runtime. Check only
 conditions material to this assignment and reuse still-valid environment evidence.
 
@@ -1230,8 +1243,15 @@ successor or split keeps a predecessor pointer and the applicable history.
 When a material governing source changes, reconcile the current rules and
 contract before the next action that depends on them. Recover only the affected
 part and stop that action if authority, revision or evidence conflicts cannot
-be resolved. Do not broadcast a reload to idle roles. Work Charter owns this
-understanding and recovery boundary; the Harness or an explicit special
+be resolved. Do not broadcast a reload to idle roles. Update the existing authoritative
+owner and applicable installed copies, replacing superseded clauses rather
+than stacking corrections. Carry only the relevant change at the next affected
+work node; no acknowledgement or per-command reread is required. Distinguish
+source change, installed-copy consistency and observed behavior. Use relevant
+real cases to judge whether decisions and delivery improved. If not, diagnose
+rule ambiguity, missing task context, copy drift, execution error or tool limits
+before adding guidance. This needs no new monitoring system or test quota.
+Work Charter owns this understanding and recovery boundary; the Harness or an explicit special
 contract owns loading proof and any required fresh-run mechanism. Manual
 rereading, hashes or a new task alone do not prove a freshly loaded instruction
 chain. Existing frozen fresh-run qualifications, stop conditions, failures and

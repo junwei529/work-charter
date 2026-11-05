@@ -1,5 +1,22 @@
 # Work Charter State
 
+## v0.10.4 outcome-led recovery
+
+Status: **LOCAL_INSTALLED_VERIFIED**, 2026-11-05. The authorized source and
+host-rule consolidation passed independent review with no open findings after
+repairing one conflicting read-retry clause. The reviewed baseline is 960f957.
+Five host consumers were applied and read back exactly; all six installed
+package files match the reviewed source. Managed status is v0.10.4, package tree
+2f634eb2cbe86e7c1fcc4a1a83a1b8e4477e5383. Previous destination permissions
+were preserved and the transaction directory is empty.
+
+The latest published release remains v0.10.2; no public push, tag or release
+was performed. Package shape, model defaults and installer production behavior
+are unchanged. Downstream delivery/review owners were notified to reconcile at
+their next relevant work node, without interruption or acknowledgement.
+Actual instruction loading and natural behavioral improvement remain unverified;
+ongoing authorized project work continues. The candidate is a pre-effect record.
+
 ## v0.10.3 early route judgment
 
 Status: **LOCAL_INSTALLED_VERIFIED**, 2026-10-31. The user authorized the source

@@ -8,7 +8,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "skills" / "work-charter"
-CURRENT_CANDIDATE = ROOT / "release" / "v0.10.3-candidate.json"
+CURRENT_CANDIDATE = ROOT / "release" / "v0.10.4-candidate.json"
+V0103_CANDIDATE = ROOT / "release" / "v0.10.3-candidate.json"
+V0103_CANDIDATE_SHA256 = "26765de6623a6efb6d6d5d105a5a62c2f2d35796f2e7ee4488c04020fee6fe18"
+V0103_PACKAGE_TREE = "62b7fc0e61415d1d812cada28ff73882c592c122"
 V0102_CANDIDATE = ROOT / "release" / "v0.10.2-candidate.json"
 V0102_CANDIDATE_SHA256 = "a5e56485cbbd35988b283ab1c0d4792b3a66adc7d8a01514cd8fc82ce72f4d23"
 V0102_PACKAGE_TREE = "d2e00d1321ffdfbe24ea6f6690cb5049c5431d0b"
@@ -717,7 +720,7 @@ def main():
             not isinstance(parsed_successor.get(field), dict)
             for field in ("package", "evidence_states", "lineage")
         ):
-            raise ValueError("v0.10.3 candidate requires object package, evidence_states, and lineage")
+            raise ValueError("v0.10.4 candidate requires object package, evidence_states, and lineage")
         successor = parsed_successor
     except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
         successor_error = str(error)
@@ -754,10 +757,13 @@ def main():
     checks["candidate.v0102_historical_identity"] = (
         hashlib.sha256(V0102_CANDIDATE.read_bytes()).hexdigest() == V0102_CANDIDATE_SHA256
     )
-    checks["candidate.v0103_identity"] = (
+    checks["candidate.v0103_historical_identity"] = (
+        hashlib.sha256(V0103_CANDIDATE.read_bytes()).hexdigest() == V0103_CANDIDATE_SHA256
+    )
+    checks["candidate.v0104_identity"] = (
         successor.get("schema") == "work-charter-local-release-candidate/v1"
         and successor.get("product") == "work-charter"
-        and successor.get("version") == "0.10.3"
+        and successor.get("version") == "0.10.4"
         and successor.get("public_identity") == "junwei529/work-charter"
         and successor.get("candidate_state") == "PENDING_INDEPENDENT_REVIEW"
         and successor.get("human_release_notes_review") == "PENDING"
@@ -766,9 +772,9 @@ def main():
         and successor.get("package", {}).get("files") == sorted(EXPECTED_FILES)
         and successor.get("package", {}).get("path") == "skills/work-charter"
         and successor.get("lineage") == {
-            "historical_package_tree": V0102_PACKAGE_TREE,
-            "previous_candidate": "release/v0.10.2-candidate.json",
-            "source_commit": "9f4c9d4be1b0ac1134467f62ad7626d4b56fe3ec",
+            "historical_package_tree": V0103_PACKAGE_TREE,
+            "previous_candidate": "release/v0.10.3-candidate.json",
+            "source_commit": "960f95784e3fed3d4a7081c0388a925d20b486eb",
         }
         and successor.get("evidence_states") == {
             "broad_product_efficacy": "UNKNOWN",
@@ -784,7 +790,7 @@ def main():
         }
     )
     checks["candidate.current_package_binding"] = (
-        checks["candidate.v0103_identity"]
+        checks["candidate.v0104_identity"]
         and actual_package_tree is not None
         and current_package_sha256 is not None
         and successor.get("package", {}).get("tree") == actual_package_tree
@@ -1544,7 +1550,7 @@ def main():
         ),
         "result": "PASS" if not failures else "FAIL",
         "source_release_identity": (
-            "BOUND_TO_V0103_CANDIDATE"
+            "BOUND_TO_V0104_CANDIDATE"
             if current_package_bound
             else "UNBOUND_PENDING_SUCCESSOR_VERSION_AND_DESCRIPTOR"
         ),

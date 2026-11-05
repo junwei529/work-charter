@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.10.4 outcome-led recovery
+
+- Consolidate outcome, risk, constraint applicability and method autonomy.
+- Keep normal recovery with the product where warranted and avoid role relays.
+- Review stable outcomes with reusable evidence and affected-consumer coverage.
+- Distinguish source/install updates from actual behavior; preserve user and
+  environment boundaries without new approval or document suites.
+
 ## v0.10.3 — 2026-10-31 (local revision, unpublished)
 
 - Compare existing transfer, deployment and recovery capabilities before

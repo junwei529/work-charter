@@ -16,18 +16,15 @@ O initiates it in Phased; this does not transfer ordinary technical choices to O
 Select Team P/E only for a demonstrated coordination or independent contract
 acceptance benefit; several contributors or branches are not sufficient.
 
-The primary owns in-scope methods and necessary technical coordination. Apply
-the material-route comparison in End-to-End Delivery before implementation
-investment. O handles important direction, cross-workstream and overall-cost
-choices then, or when new evidence exposes them; it does not wait for final
-acceptance to notice an unsuitable route. Ordinary choices remain with the
-primary and independent authorized work continues. O receives agreed material results and actionable exceptions, not routine relay.
-O does not implement, manage technical slices, approve ordinary repairs or
-repeat R's inspection. In a selected Team, P's contract acceptance remains;
-O checks goal attainment and transitions rather than accepting the same work
-again against the same criteria. A Deliverer's completion judgment is
-not independent acceptance; actual required acceptance remains with its named
-assessor. User-reserved authority and operation-local approval remain intact.
+The primary owns the workstream's methods, normal recovery and delivery. Use
+End-to-End Delivery for earliest useful outcomes, remaining total cost and
+material route changes, and Work Allocation for the value of role separation.
+O handles important direction, priorities and cross-workstream tradeoffs before
+investment or when new evidence appears, then accepts agreed actual outcomes.
+It does not approve ordinary repairs, duplicate R inspection or turn every
+result into a continuation gate. R judges the actual product, material risk
+and consumers; it may identify unnecessary gates, not adopt new requirements.
+Selected Team P and user-reserved decisions retain their existing authority.
 
 The normal workstream path is outcome/bounds -> primary authorized workstream planning and delivery
 -> required R -> original-author repair and same valid R -> agreed outcome

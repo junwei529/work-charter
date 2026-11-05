@@ -47,7 +47,7 @@
       "destination": "CHANGELOG.md",
       "kind": "repository-native",
       "note": "Work Charter repository release notes through the v0.6.1 local candidate",
-      "target_sha256": "01950d598047d389f9cc254cf0b42154c3211931523b7b3d3aa50df9287f3e22"
+      "target_sha256": "63fefd92ce075584217e0f1a24831c8968561f9b065e8a6fa538f3c343e67220"
     },
     {
       "destination": "LICENSE",
@@ -61,49 +61,49 @@
       "destination": "PROVENANCE.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "4b47b1297c1b988fb27e04f63a66be32af08ee846eb1340c150c08d40af8c440"
+      "target_sha256": "8fd491546ae0205c325db0497a758bff900bd328050bbff11c6392130f1c89b8"
     },
     {
       "destination": "README.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "0ad4f58fdc2d54181bd548756f341ce1320b8ca9e2160c58def0ce925186e01b"
+      "target_sha256": "c7c018bccaf5c3f30c78c95c213cabb0dbc5116811522f800642d451fa88a14b"
     },
     {
       "destination": "README.zh-CN.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "1251b27bcfd065d670adeccd488a69dfbc55561d31bafb43bbf6e8232d0078f5"
+      "target_sha256": "5c7b3c7dcf8e5e7a298ca7268466b8b2c83a4a43ca5b442d5031f064b0158c6d"
     },
     {
       "destination": "docs/skills/work-charter/DESIGN.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "aa1c18095c675a8938d427ddedf990dd4404ece376b8c370aa90cc7c01401e73"
+      "target_sha256": "74ec064d3a8cf14818c0a8a7679e43654e57a0bf3897f18d7c1930d79307574d"
     },
     {
       "destination": "docs/skills/work-charter/README.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "08b4e115bf08608e1a7c00561847d12f749a58d12ab5c8b8d58d10e711bd0274"
+      "target_sha256": "524003377059d58f69da22afd5abe4d57df858b7b8334f55abf87dcca8e2fca6"
     },
     {
       "destination": "docs/skills/work-charter/README.zh-CN.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "fc42e01646fa6b3aaafda5302fe5d3f307f348baeb5173521a05e59c5417e348"
+      "target_sha256": "97194ecd18b35df2067f96f0414220fb809cdec407f2e35faa7c551bf3e0fe6d"
     },
     {
       "destination": "docs/skills/work-charter/STATE.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "48988e2afe2acb2c3313d97316659320559f643415ff77c90b5437f80f8eb0fa"
+      "target_sha256": "da150dfecab11d8cc32b4bd1eb8077b6986a5e217641d319d94e842085d6a579"
     },
     {
       "destination": "docs/skills/work-charter/VERIFICATION.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "57534c9e65cc167bd25a5fa01138e64b87631347e681ac8abfd4998d75944da1"
+      "target_sha256": "bcf02769b1d64c0ed0d695bb6e8b60626a583a700602bcded3de69bf663aada9"
     },
     {
       "destination": "evals/README.md",
@@ -574,6 +574,12 @@
       "target_sha256": "26765de6623a6efb6d6d5d105a5a62c2f2d35796f2e7ee4488c04020fee6fe18"
     },
     {
+      "destination": "release/v0.10.4-candidate.json",
+      "kind": "repository-native",
+      "note": "Work Charter v0.10.4 pre-effect local governance consolidation",
+      "target_sha256": "92cfd26f75cebd02a3c7c30a6043aed50c2ea0f1d2dffd52e99d755f3f1ac8c4"
+    },
+    {
       "destination": "release/v0.3.0-candidate.json",
       "kind": "repository-native",
       "note": "Independent local release candidate descriptor",
@@ -757,27 +763,27 @@
           "source_path": "evals/check-fixtures.ps1"
         }
       ],
-      "target_normalized_sha256": "27f2db4f1db129c1ec4cf150c21f7ff6972d2de5008e6650a8c88dc6fd5f863d",
-      "target_sha256": "27f2db4f1db129c1ec4cf150c21f7ff6972d2de5008e6650a8c88dc6fd5f863d",
+      "target_normalized_sha256": "4a31eca255b8523645a03fd23193d7869509e5beab4381c65a8f870d92a0935a",
+      "target_sha256": "4a31eca255b8523645a03fd23193d7869509e5beab4381c65a8f870d92a0935a",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
       "destination": "scripts/check_source_contract.py",
       "kind": "repository-native",
       "note": "Work Charter v0.6.2 current candidate and historical SOURCE contract checker",
-      "target_sha256": "c6639b8ed3e76ee794bb504fe24e39c4eb650285fb592ba006128b33ba9986d7"
+      "target_sha256": "abd92d166ae46759ab67fedcd1429e8f4cad0b3f752c8f69141cda518b1cfe82"
     },
     {
       "destination": "scripts/manage_install.py",
       "kind": "repository-native",
       "note": "Origin-aware product-specific install lifecycle tool",
-      "target_sha256": "94cd11d7be9c9cfabc6a48a667a14243a557e98a5f7a85ec635e713ec0afbad7"
+      "target_sha256": "2748207cef642d1f35850d25aecc02753b6e8540152d21d8ad9aeb2f4744ecef"
     },
     {
       "destination": "skills/work-charter/SKILL.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.2 minimal guardrail necessity and auxiliary cost guidance",
-      "target_sha256": "39dd9efb4e91fb654da408e102b179742786b480fe7ebfeb4dfda078c989c4cc"
+      "target_sha256": "c21dfe373eb138441bc3dd1c81c0f9cc518f3e3453fa6e21c4c4cc3e49ba0edc"
     },
     {
       "destination": "skills/work-charter/agents/openai.yaml",
@@ -804,19 +810,19 @@
       "destination": "skills/work-charter/assets/work-charter.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.2 minimal guardrail necessity and auxiliary cost guidance",
-      "target_sha256": "06b1533037897ee0e88124fa7fd82620f0abefca99bc1cef5377e27c54ad9238"
+      "target_sha256": "0814a7cf9ff64aac297dee27444902d8b69f598120551155d5e00b4380237466"
     },
     {
       "destination": "skills/work-charter/references/coordination-and-recovery.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.2 minimal guardrail necessity and auxiliary cost guidance",
-      "target_sha256": "bedae9fa08882a62274e6d9def8e3967943fc37e902258b4576913afdcae079a"
+      "target_sha256": "c672f323f69a00292fea7775b1d2bba7edbe4725009b112e423ba71d77f9bf94"
     },
     {
       "destination": "skills/work-charter/references/standard-ope.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate package semantics",
-      "target_sha256": "3c76e5a19bafd9a357999bbca07ebd812b8651f0df2f8874d57770a835a62005"
+      "target_sha256": "0845acb40b02d424270cd6351a3e296bd747c892fb56ae66cb9c0a0334eda93c"
     }
   ],
   "manifest_provenance": [

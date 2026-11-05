@@ -1,5 +1,18 @@
 # Work Charter Design
 
+## v0.10.4 outcome-led recovery
+
+The existing contract, delivery, review and recovery sections now share one
+outcome-led decision model. Distinguish final and near-term useful delivery,
+actual risk/protection from its mechanism, and historical evidence from current
+constraint applicability. Recovery is an ordinary product responsibility when
+there is a concrete recurring need. D retains in-scope route choices; O handles
+material cross-workstream tradeoffs; R checks necessity and actual consumers.
+Instruction replacement and relevant next-action calibration avoid duplicated
+rules, forms, approvals and role relays. Portable semantics stay in the Skill;
+host-specific execution and installation stay with the host. No runtime, model,
+installer-mechanism or existing business-authority change is introduced.
+
 ## v0.10.3 early route judgment
 
 End-to-End Delivery owns the portable reuse and total-cost comparison, including

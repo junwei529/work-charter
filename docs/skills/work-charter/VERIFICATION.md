@@ -1,5 +1,28 @@
 # Work Charter Verification
 
+## v0.10.4 outcome-led recovery
+
+SOURCE 33/33, Skill metadata, repository provenance/links (113 mapped paths)
+and whitespace checks passed. Independent semantic review covered all 23 changed
+source/host paths and material unchanged consumers. One finding exposed an old
+host restriction conflicting with authorized read backoff; the original author
+aligned the failure, progress and recovery clauses, and the same R closed it.
+Final reviewed source and host inputs had no drift. Six semantic scenarios
+covered route replacement, existing transport, partial inputs, scoped read
+recovery versus unknown sends, an exhausted explicit limit and rule calibration.
+These are review judgments, not business runs or a model efficacy experiment.
+
+An initial pre-review update dry-run was denied before process creation by the
+approval environment; no installation occurred. After review PASS, the existing
+manager completed the authorized APPLY update. Ordinary-reader status reports
+MANAGED v0.10.4, tree 2f634eb2cbe86e7c1fcc4a1a83a1b8e4477e5383 and installed
+digest 169b1aabd0da0b7d285fd7e40b7b75a564c3ac35d94336c16135902c9acc8588.
+All six source/installed files and five host candidates match, previous
+destination permissions were preserved, and the transaction root is empty.
+The production installer is unchanged, so the historical lifecycle matrix was
+not repeated. Public publication, actual downstream loading and natural
+behavioral effectiveness are not claimed.
+
 ## v0.10.3 early route judgment verification
 
 Baseline: 9f4c9d4be1b0ac1134467f62ad7626d4b56fe3ec.

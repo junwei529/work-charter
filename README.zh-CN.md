@@ -2,8 +2,8 @@
 
 [English](README.md)
 
-当前本地修订为 **v0.10.3**：把重要路线判断前移到实现投入之前，保留普通交付自主权。
-最新正式发布仍为 **v0.10.2**；源码、审查和受管安装状态见[当前状态](docs/skills/work-charter/STATE.md#v0103-early-route-judgment)。
+当前本地修订为 **v0.10.4**：合并目标驱动交付、适度恢复与证据复用，保留已有权限边界。
+最新正式发布仍为 **v0.10.2**；源码、审查和受管安装状态见[当前状态](docs/skills/work-charter/STATE.md#v0104-outcome-led-recovery)。
 既有合同不会自动迁移。
 
 让复杂的 AI 项目接得住，也交得出。

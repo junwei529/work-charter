@@ -1,5 +1,13 @@
 # Provenance And Transformation Boundary
 
+## v0.10.4 outcome-led recovery
+
+Review baseline: `960f957`. The previous descriptor and package lineage remain
+immutable. This local instruction consolidation changes the existing package
+and necessary current consumers, with a new version descriptor. It introduces
+no public release, new package file, model selection or installer mechanism.
+State and Verification own review, commit and managed-install outcomes.
+
 ## v0.10.3 local source
 
 Review baseline: `9f4c9d4be1b0ac1134467f62ad7626d4b56fe3ec`.

@@ -1,8 +1,8 @@
 # Work Charter
 
-当前本地[v0.10.3修订](STATE.md#v0103-early-route-judgment)把重要路线判断前移，
+当前本地[v0.10.4修订](STATE.md#v0104-outcome-led-recovery)合并目标驱动交付与恢复，
 不增加逐步审批。最新正式发布仍为v0.10.2。
-[候选](../../../release/v0.10.3-candidate.json)保留实施前快照，实际审查与受管安装证据由State和Verification承接。
+[候选](../../../release/v0.10.4-candidate.json)保留实施前快照，实际审查与受管安装证据由State和Verification承接。
 包结构、模型配置与既有合同保持不变。
 
 [English](README.md)

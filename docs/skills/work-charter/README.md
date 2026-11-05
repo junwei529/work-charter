@@ -1,9 +1,9 @@
 # Work Charter
 
-The current local [v0.10.3 revision](STATE.md#v0103-early-route-judgment)
-moves material route judgment before implementation without adding step gates.
+The current local [v0.10.4 revision](STATE.md#v0104-outcome-led-recovery)
+consolidates outcome-led delivery and recovery without adding step gates.
 The latest published release remains v0.10.2. The
-[candidate](../../../release/v0.10.3-candidate.json) is a pre-effect snapshot;
+[candidate](../../../release/v0.10.4-candidate.json) is a pre-effect snapshot;
 State and Verification own actual review and managed-installation evidence.
 Package shape, model configuration and existing contracts remain unchanged.
 

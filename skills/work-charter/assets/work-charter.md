@@ -34,41 +34,30 @@ worktree. Remove unused prompts and keep pointers instead of copied content.
 
 ## Proposal Layers
 
-- **Confirmed Contract:** `<user-confirmed outcomes, functional domain,
-  environment, permitted effects, real cost, acceptance, and exclusions>`
-- **Necessary Guardrails:** `<safety, permission, reversibility, trust,
-  irreversible-effect, and authoritative project-rule constraints; name the
-  source or protected risk; for Agent-derived guards, give the concrete
-  failure/consequence, needed strength, and why simpler existing methods do
-  not suffice; explicit user/project requirements need no new justification>`
-- **Working Proposal:** `<current Agent-proposed route, ordinary file list,
-  tools, sequence, implementation, and verification; replaceable while contract
-  and guardrails remain intact>`
-- **Assumptions / Open Decisions:** `<uncertainty; identify only the material
-  choices that require the user>`
+Use the four layers in [Contract And Proposal Changes](../references/coordination-and-recovery.md#contract-and-proposal-changes):
+
+- **Confirmed Contract:** `<final outcome, earliest useful complete result,
+  acceptance floor, domain/environment, authorized effects/cost and exclusions>`
+- **Necessary Guardrails:** `<source/protected risk, actual exposure and material
+  applicability; distinguish the protected outcome from replaceable mechanisms>`
+- **Working Proposal:** `<current methods and checks; replaceable within the
+  contract, with dependencies and reasons only where they constrain the choice>`
+- **Assumptions / Open Decisions:** `<material uncertainty and its real owner>`
 
 Before presenting this agreement as ready for adoption, distinguish confirmed
 and still-valid reused answers from recommendations and unresolved user choices.
 Explain actual roles/carriers, review products, acceptance and progression in
 one concise view; omit inapplicable branches instead of adding a questionnaire.
 
-Do not promote the Working Proposal into a hard requirement. When a proposed
-method is rejected, remove or replace it unless an independently justified
-durable boundary remains.
-Overall approval does not fix proposed tools, steps, test arrangements or
-counts unless the user explicitly fixes them; it does not authorize an
-unlisted external effect. Keep explicit one-shot, human-review,
-frozen-evidence and consumed-limit boundaries.
-
-If auxiliary work keeps expanding, the current primary owner or Planner
-compares simpler routes to the same protected outcome against remaining
-coordination, implementation, verification, and maintenance cost. Keep the
-minimum sufficient user-visible result in view; tool promises add no user goal.
+Use the referenced four-layer rules for method changes, constraint retirement
+and retained historical limits. End-to-End Delivery owns total-cost and timely
+value judgments; this carrier adds no approval or required field suite.
 
 ## Outcome And Non-Goals
 
-<State the observable result in its intended use and environment; distinguish
-a prototype from production requirements and adjacent excluded work.>
+<State the final observable result and current useful delivery in their intended
+use/environment, remaining outcomes and non-negotiable acceptance. Explain a
+material priority or time sensitivity without inventing a delivery hard stop.>
 
 ## Scope And Hard Boundaries
 

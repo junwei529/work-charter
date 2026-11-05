@@ -236,8 +236,8 @@ default-reader access to the exact managed v0.4.0 copy and closed
 managed v0.4.0; v0.4.1 was not installed. The later
 [accepted v0.6.3 installation](docs/skills/work-charter/STATE.md#accepted-v063-user-installation)
 records that historical copy; [historical v0.6.5 state](docs/skills/work-charter/STATE.md#current-v065-local-candidate)
-records that update. [Current state](docs/skills/work-charter/STATE.md#v094-publication)
-tracks the v0.9.4 source revision and separate installation state. Stable v0.5.0 loaded-copy behavior,
+records that update. [Current state](docs/skills/work-charter/STATE.md#v0104-outcome-led-recovery)
+tracks v0.10.4 source, review and managed-installation evidence. Stable v0.5.0 loaded-copy behavior,
 role-delivery adherence, cross-provider execution, cross-Harness behavior,
 public release, and broad efficacy remain `UNKNOWN` or separately authorized.
 
@@ -323,7 +323,7 @@ python -B scripts/check_repository.py --json
 ```
 
 Run the relevant checks against the final changed input. The SOURCE checker
-separates static contract clauses from the required v0.9.4 tree/digest binding
+separates static contract clauses from the current v0.10.4 package tree/digest binding
 and preserves historical descriptor identities, including v0.7.1.
 Static wording and identity
 checks do not prove model behavior. See

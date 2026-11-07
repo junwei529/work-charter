@@ -8,7 +8,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "skills" / "work-charter"
-CURRENT_CANDIDATE = ROOT / "release" / "v0.10.4-candidate.json"
+CURRENT_CANDIDATE = ROOT / "release" / "v0.11.0-candidate.json"
+V0104_CANDIDATE = ROOT / "release" / "v0.10.4-candidate.json"
+V0104_CANDIDATE_SHA256 = "92cfd26f75cebd02a3c7c30a6043aed50c2ea0f1d2dffd52e99d755f3f1ac8c4"
+V0104_PACKAGE_TREE = "2f634eb2cbe86e7c1fcc4a1a83a1b8e4477e5383"
 V0103_CANDIDATE = ROOT / "release" / "v0.10.3-candidate.json"
 V0103_CANDIDATE_SHA256 = "26765de6623a6efb6d6d5d105a5a62c2f2d35796f2e7ee4488c04020fee6fe18"
 V0103_PACKAGE_TREE = "62b7fc0e61415d1d812cada28ff73882c592c122"
@@ -270,318 +273,25 @@ def main():
         role_model_case = ""
         role_model_case_error = str(error)
 
+    # These are structural/source checks, not a proof of model behavior.
+    # Semantic authority/progression changes require independent review and cases.
     checks = {
-        "prompts.contract_role_task_layers": contains_all(recovery, [
-            "shared contract, actual responsibility, current task, and necessary model adaptation",
-            "| Deliverer (D / `primary`)", "| Phased Orchestrator",
-            "| Planner in selected Team or unchanged older split contracts", "| Executor in selected Team or unchanged older split contracts", "| Reviewer (when enabled)",
-            "Cold prompts", "Warm continuations", "Recovery restores",
-        ]) and "## Task Or Role Prompt" in charter_asset,
-        "prompts.continuation_and_real_gates": contains_all(recovery, [
-            "Complete authorized work through required checks and its result route",
-            "Wait for the explicit answer before dependent action",
-            "without treating silence, a default selection, timeout or tool failure as consent",
-            "preserve applicable adoption, material replan, operation permission, independent review and acceptance boundaries",
-        ]) and contains_all(recovery, [
-            "Broaden or repeat verification only for changed inputs, relevant failures or unresolved concrete risks",
-        ]),
-        "prompts.startup_and_complete_expression": (
-            contains_all(ui_metadata, [
-                "Use $work-charter",
-                "continue an applicable approved Charter",
-                "ask only for missing decisions that change the arrangement, authority, review, or recovery",
-            ])
-            and "then ask before inspecting project details" not in ui_metadata
-            and contains_all(recovery, [
-                "every prompt and handoff proportionate and complete",
-                "receiver's next decision or action",
-                "Preserve key facts, decisions, material limitations, and the next step",
-                "First remove repeated background, preambles, reassurance, and unrelated content",
-                "not only to the final result",
-                "no fixed word limit or extra mandatory message templates",
-            ])
-        ),
-        "prompts.model_delta_and_effort": contains_all(recovery, [
-            "actual selected Astra, Sol, Terra, or Luna model",
-            "Record the source and supported delta",
-            "package requires no other Skill or private reference path",
-            "Reasoning effort is a supported runtime parameter and evaluation variable",
-            "Editing a prompt does not authorize model evaluation",
-        ]),
         "package.exact_six_file_shape": actual_files == EXPECTED_FILES,
         "role_models.default_exact": role_models == EXPECTED_DEFAULT_ROLE_MODELS,
-        "role_models.entrypoint_routing": (
-            (
-            "references/coordination-and-recovery.md#role-model-configuration-at-dispatch" in skill
-            and "coordination-and-recovery.md#role-model-configuration-at-dispatch" in standard
-            and "## Role-Model Configuration At Dispatch" in recovery
-            and contains_all(skill, ["identify arrangement, contract format and responsibility first", "read the complete section before reading configuration or dispatching"])
-            and "then read and apply" in " ".join(standard.split())
-        )
-        ),
-        "role_models.priority_and_replacement": contains_all(recovery, [
-            "Preserve a complete provider/model/parameters combination already frozen",
-            "Otherwise, use a complete combination explicitly confirmed for this new task or role",
-            "exhaust the selected explicit/user source before consulting package defaults",
-            "user general object still outranks a package arrangement-specific object",
-            "Only for `primary`, when neither source supplies an object",
-            "Never borrow the `executor` or `planner` object for a primary owner",
-            "Missing or unreadable input stops delivery",
-            "Every supplied object is a whole-object replacement",
-            "it must repeat `provider` and `model`",
-            "Omitted `parameters` means no parameters for that combination",
-        ]),
-        "role_models.schema_matrix_and_native_mapping": contains_all(recovery, [
-            "Schema v2 has integer `schema_version: 2`",
-            "`arrangement_overrides`, `legacy_level_overrides`",
-            "At least one complete model object must exist in the configuration",
-            "`arrangement_overrides: {direct: {}}` alone is invalid",
-            "| `direct` | `primary`, `reviewer` |",
-            "| `team` | `planner`, `executor`, `reviewer` |",
-            "| `phased` | `orchestrator`, `planner`, `executor`, `reviewer` |",
-            "Schema v1 remains readable",
-            "| `l0` | `primary`, `reviewer` |",
-            "| `l1` | `primary`, `reviewer` |",
-            "| `l2` | `primary`, `reviewer` |",
-            "| `l3` | `planner`, `executor`, `reviewer` |",
-            "| `l4` | `orchestrator`, `planner`, `executor`, `reviewer` |",
-            "Validate the complete selected file before using any entry",
-            "tags, anchors, aliases, merge keys",
-            "map `model` to the native `model` field",
-            "`parameters.reasoning_effort` to `thinking`",
-            "Stop rather than substitute a different route or value.",
-        ]),
-
-        "role_models.authority_lifecycle_and_existing_roles": (
-            (contains_all(skill, [
-            'Role-model configuration guides an already-authorized dispatcher',
-            'it neither creates roles nor changes existing tasks',
-            'Preserve frozen combinations and external user configuration.',
-        ])
-            and contains_all(recovery, [
-            'Configuration changes affect only later, newly resolved tasks or deliveries.',
-            '`L0` remains no active Charter',
-            'does not prove that any host or global task-start consumer has integrated it',
-            'Installation lifecycle operations do not own or mutate the external user configuration.',
-        ])
-            and contains_all(standard, [
-            'Preserve frozen combinations',
-            'require native support',
-            'Configuration never authorizes delivery or action, enables a role, or changes an existing task.',
-        ]))
-        ),
-        "role_models.compatibility_inspection_cases": contains_all(role_model_case, [
-            "no real user-file mutation", "no", "efficacy/model evaluation",
-            "Frozen value, different task/user values",
-            "New Direct with unequal v1 l0/l1/l2 effective objects",
-            "New Direct with one v1 level value and missing others",
-            "v2 continuity_overrides, direct.executor, l5 or main key",
-            "The user file stays outside the install tree",
-            "host/global consumer integration",
-        ]),
-
-        "role_models.carrier_evidence_boundary": contains_all(
-            charter_asset,
-            [
-                "Resolved execution metadata",
-                "arrangement, contract format (legacy level only if applicable), actual responsibility, provider/model/parameters or host-selection pass-through",
-                "object source, file source, requested values",
-                "Configuration choice does not enable a listed role or authorize delivery or action.",
-            ],
-        ),
-        "role_models.arrangement_compatibility": contains_all(recovery, [
-            "New `arrangement-v2` contracts do not select a level",
-            "Never merge distinct L0/L1/L2 user overrides",
-            "Different objects or a present/missing mix require one consolidated user decision",
-            "Personal-file conversion is a separate authorized effect",
-            "including effort, not a model name alone.",
-        ]),
-        "recovery.stable_node_migration": contains_all(recovery, [
-            "## Stable-Node Migration", "Idle status alone is insufficient",
-            "It need not be a completed Phase or have zero open findings",
-            "Assessment is not adoption", "consumed budgets",
-            "Project-contract migration and personal-model file conversion are separate effects",
-        ]),
-        "authority.bounded_progression": contains_all(recovery, [
-            "## Authorized Progression", "first E-to-R stable handoff",
-            "P receives the complete stable or exception result",
-            "advance user approval of a bounded named phase set",
-            "Existing next-phase user gates remain binding",
-            "Message arrival, recipient activation, completed work and acceptance are distinct evidence",
-            "Do not invent fixed repair counts, per-file approvals or ACKs",
-        ]),
-        "selection.contract_format_independent": contains_all(skill, [
-            "New contracts directly describe the arrangement",
-            "they need no L0-L4 classification", "contract_format: arrangement-v2",
-        ]) and contains_all(charter_asset, ["## Authorized Progression", "Contract format"]),
-
-        "selection.assessment_and_adoption_are_distinct": contains_all(
-            skill,
-            [
-                "Load the full Skill first",
-                "First assessment",
-                "recommends",
-                "Direct, Team, or Phased work",
-                "assessment is not adoption.",
-                "L0 means no active Charter",
-            ],
-        ),
-        "selection.applicable_charter_precedes_new_adoption": contains_all(skill, [
-            'reuse the approved Charter and its applicable contract without asking again',
-            'A small task or new Thread does not cancel that Charter.',
-            'Manual reassessment',
-            'start from the existing Charter and arrangement',
-            "Material coordination, permission, or contract changes require the",
-        ]),
-        "selection.references_follow_role_and_level": contains_all(skill, [
-            'this shared entry is the required body',
-            'Read only what supports the current decision or action',
-            "do not read every other role's procedure",
-            'Leave the Standard reference unloaded for Direct/Team',
-            'Do not skip shared permission, independent-review, writer or recovery boundaries.',
-        ]),
-        "selection.lightweight_entry_and_material_reassessment": contains_all(skill, [
-            "At task entry, use supplied context",
-            "continue ordinary",
-            "authorized work directly",
-            "Do not load references, inspect a project, create a Charter or roles",
-            "Before the next affected action, proactively reassess",
-            "do not silently adopt or upgrade it",
-            "Continue independent work already covered by authority.",
-        ]),
-        "selection.conditional_work_arrangement": contains_all(skill, [
-            "## Least Sufficient Work Arrangement",
-            "**Direct**", "**Team**", "**Phased**",
-            "Existing L0-L4 contracts keep their own",
-        ]) and contains_all(recovery, [
-            "## Conditional Work Selection",
-            "Reuse a known contract, confirmed preferences, and permitted facts",
-            "unknown complexity alone does not justify the most elaborate arrangement",
-            "mandatory review as a gate rather than an optional preference",
-            "For Team or Phased roles that must continue after their upstream task ends its turn",
-            "The final single work agreement states",
-        ]),
-        "authority.loading_and_assessment_do_not_expand_authority": contains_all(skill, [
-            'Package loading never expands project-read or action authority.',
-            'Reuse an authorized bounded read without a new activation or read question.',
-            'An explicit no-read instruction remains binding',
-            'Loading this package grants no Git, installation, global configuration, publication, provider or other external effect.',
-        ]),
-        "authority.direct_operation_permission_gate": (
-            (contains_all(skill, [
-            'Give each material user decision one owner. Reuse valid approval',
-            'complete question/answer linkage, authorized scope and target',
-            'An operation-local permission gate belongs to the action task',
-            'a relay cannot replace required direct consent',
-            'A read-only Reviewer or evidence collector never solicits write authority.',
-        ])
-            and contains_all(recovery, [
-            'Reuse valid authorization across role, task, Session, or Harness carriers',
-            'the action or permission-gate task becomes the semantic owner of the operation-local permission question',
-            'its relay, delegation, status report, or interpretation is not the required direct answer',
-            'does not transfer higher-level decisions',
-        ])
-            and contains_all(standard, [
-            'the execution environment requires the action task to obtain operation-local permission directly',
-            'a Planner relay or status report is not a substitute',
-            'This does not transfer contract or scope ownership',
-            'The Reviewer reports technical unknowns and findings rather than asking for write authority.',
-        ]))
-        ),
-        "recovery.fixed_route_precedence": contains_all(
-            recovery,
-            [
-                "Stop safely",
-                "Revise the work contract",
-                "Change how work is coordinated",
-                "Continue the existing plan",
-            ],
-        ),
-        "recovery.writer_and_evidence_binding": contains_all(
-            recovery,
-            [
-                "Keep at most one Planner, one Executor, one Reviewer for the active package, one active execution lane, and one repository writer.",
-                "Bind material evidence to its mutable subject, revision, and invalidation condition.",
-                "silence is never acceptance",
-            ],
-        ),
-        "review.levels_and_responsibility_separation": contains_all(skill, [
-            'add continuity and independent review only as needed.',
-            'Independent review of Direct',
-            'does not create Planner/Executor roles or adopt a Charter.',
-            'The implementer verifies and repairs the work it changed.',
-            'An independent Reviewer inspects the stable change',
-            'The designated assessor decides whether outcome and evidence',
-        ]),
-        "review.same_reviewer_and_input_limits": contains_all(recovery, [
-            'Prefer the same reliable Reviewer for re-review after repair.',
-            'Replacement retains the cumulative findings, authority, and evidence-consumption history.',
-            'Give the Reviewer the actual change and baseline, necessary surrounding source, tests, documentation consumers, material untracked inputs',
-            'A read-only Reviewer does not silently build or refresh an index.',
-            'none replaces semantic review or acceptance.',
-        ]),
-        "review.role_product_and_carrier": contains_all(recovery, [
-            "the reviewed responsibility and actual product",
-            "reachable applicable canonical instructions and contract revisions",
-            "| O's direction or Mandate |",
-            "| P's Definition or execution plan |",
-            "| E's implementation or Direct primary's result |",
-            "The original author corrects a same-scope finding",
-            "a subagent does not establish",
-        ]) and contains_all(standard, [
-            "Orchestrator -> independent review of its own planning product when enabled",
-            "serve as independent Reviewer of its own work",
-        ]),
-        "review.unknown_context_and_callback_boundaries": contains_all(recovery, [
-            'When a finding or result is `UNKNOWN`',
-            'Distinguish a summary or compaction inside one run',
-            'Send at most one current Result Notice per route for one checkpoint.',
-            'A corrected stable review input or other material handoff creates a new checkpoint and one new Notice',
-        ]),
-        "standard.role_separation_and_hierarchy": contains_all(
-            standard,
-            [
-                "Orchestrator -> Phase Mandate",
-                "Planner -> Phase Definition",
-                "Planner -> Executor execution tranche or work package",
-                "Executor -> internal steps or slices",
-                "Planner -> Reviewer stable review checkpoint",
-                "Reviewer -> Planner stable findings and coverage limits",
-                "Keep one active lane, one repository writer, at most one Planner, at most one Executor, and one reliable Reviewer for the active package.",
-            ],
-        ),
-        "standard.callback_and_recording_boundary": contains_all(
-            standard,
-            [
-                "returns one review-ready Result Notice through the approved route for a named stable checkpoint",
-                "If the contract preauthorizes first E-to-R review",
-                "otherwise P confirms scope and routes it to R",
-                "the same reliable Reviewer re-reviews the affected and cumulative material surface",
-                "returns exactly one checkpoint-bound",
-                "the authorized writer records and verifies the verdict",
-                "Return a disposition for a required decision to the role that acts on it",
-            ],
-        ),
-        "review.decision_closure_not_message_receipts": contains_all(recovery, [
-            "For a material result requiring acceptance or permission to continue",
-            "Pure factual, evidence or mechanical-recording completion notices do not automatically create an acceptance checkpoint or a reply obligation.",
-            "never rename a material decision as a notice to bypass approval",
-            "Using the Reviewer's report does not require an `ACCEPTED` or no-action reply to the Reviewer.",
-            "ordinary internal repairs and individual checks are not separate acceptance checkpoints.",
-        ]),
-        "review.formed_verdict_and_recording_endpoint": contains_all(recovery, [
-            "the execution writer has relinquished the workspace",
-            "The Executor never prewrites a future Planner or Orchestrator verdict.",
-            "Mechanical persistence of a formed verdict is not a new technical acceptance package.",
-            "Independent Git review requirements still apply",
-            "Define the closeout endpoint in the disposition",
-        ]),
-        "recovery.next_affected_action_and_loading_owner": contains_all(recovery, [
-            "before the next action that depends on them",
-            "Do not broadcast a reload to idle roles.",
-            "the Harness or an explicit special contract owns loading proof and any required fresh-run mechanism.",
-            "Existing frozen fresh-run qualifications, stop conditions, failures and consumed evidence remain binding",
-        ]),
+        "entry.outcome_path": contains_all(skill, ["## Start With The Outcome", "## Least Sufficient Work Arrangement", "## Shared Protections And Method Autonomy"]),
+        "entry.scope_and_optional_policy": contains_all(skill, ["An explicit assessment or discussion request remains assessment or discussion", "Model presets are optional", "A chosen but invalid configuration is not an absent policy"]),
+        "authority.single_owner": contains_all(recovery, ["## Contract And Proposal Changes", "### Conflicting Rules And Reserved Decisions", "### Human Decisions"]),
+        "delivery.required_sections": contains_all(recovery, ["## End-to-End Delivery And Parallel Workstreams", "## Authorized Progression", "### Failures And Recovery", "### Allocation And Shared State"]),
+        "communication.two_views": contains_all(recovery, ["## Task And Role Prompt Construction", "### Meaning Before Labels", "| Decision/authority |", "| Delivery evidence |"]),
+        "review.coverage_and_disagreement": contains_all(recovery, ["## Review Input At Any Level", "### Disagreement And Acceptance", "Unchanged source does not prove old validation still applies"]),
+        "recovery.current_contract": contains_all(recovery, ["## Context-Switch Recovery", "### Rule Changes And Legacy Agreements", "### User Changes, Pause And Withdrawal", "### Maintenance, Reasons And Loading", "### Evidence Scope And Integrity"]),
+        "model.optional_not_invalid_fallback": contains_all(recovery, ["Policy not selected is different from selected but missing, invalid or unsupported input", "This is an optional policy", "Existing agreements that already selected it retain that choice"]),
+        "model.compatibility": contains_all(recovery, ["Schema v2 has integer `schema_version: 2`", "Schema v1 remains readable", "Every supplied object is a whole-object replacement", "Never merge distinct L0/L1/L2 user overrides", "Personal-file conversion is a separate authorized effect"]),
+        "model.host_mapping_not_core": "to `thinking`" not in recovery,
+        "legacy.scoped": contains_all(standard, ["## Arrangement-v1 And L4 Compatibility", "### Responsibilities", "### Operating Path", "### Legacy Levels"]) and "\n## Responsibilities" not in standard,
+        "template.outcome_first": contains_all(charter_asset, ["## Outcome And Acceptance", "## Optional Contract Metadata", "## Task Or Role Prompt"]) and charter_asset.find("## Outcome And Acceptance") < charter_asset.find("## Optional Contract Metadata"),
+        "metadata.invocation": "Use $work-charter" in ui_metadata and "allow_implicit_invocation: true" in ui_metadata,
+        "cases.compatibility_retained": contains_all(role_model_case, ["no real user-file mutation", "New Direct with unequal v1 l0/l1/l2 effective objects", "The user file stays outside the install tree"]),
     }
 
     current_candidate_error = None
@@ -720,7 +430,7 @@ def main():
             not isinstance(parsed_successor.get(field), dict)
             for field in ("package", "evidence_states", "lineage")
         ):
-            raise ValueError("v0.10.4 candidate requires object package, evidence_states, and lineage")
+            raise ValueError("v0.11.0 candidate requires object package, evidence_states, and lineage")
         successor = parsed_successor
     except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
         successor_error = str(error)
@@ -760,10 +470,11 @@ def main():
     checks["candidate.v0103_historical_identity"] = (
         hashlib.sha256(V0103_CANDIDATE.read_bytes()).hexdigest() == V0103_CANDIDATE_SHA256
     )
-    checks["candidate.v0104_identity"] = (
+    checks["candidate.v0104_historical_identity"] = hashlib.sha256(V0104_CANDIDATE.read_bytes()).hexdigest() == V0104_CANDIDATE_SHA256
+    checks["candidate.v0110_identity"] = (
         successor.get("schema") == "work-charter-local-release-candidate/v1"
         and successor.get("product") == "work-charter"
-        and successor.get("version") == "0.10.4"
+        and successor.get("version") == "0.11.0"
         and successor.get("public_identity") == "junwei529/work-charter"
         and successor.get("candidate_state") == "PENDING_INDEPENDENT_REVIEW"
         and successor.get("human_release_notes_review") == "PENDING"
@@ -772,9 +483,9 @@ def main():
         and successor.get("package", {}).get("files") == sorted(EXPECTED_FILES)
         and successor.get("package", {}).get("path") == "skills/work-charter"
         and successor.get("lineage") == {
-            "historical_package_tree": V0103_PACKAGE_TREE,
-            "previous_candidate": "release/v0.10.3-candidate.json",
-            "source_commit": "960f95784e3fed3d4a7081c0388a925d20b486eb",
+            "historical_package_tree": V0104_PACKAGE_TREE,
+            "previous_candidate": "release/v0.10.4-candidate.json",
+            "source_commit": "8c520a4f860e055586257eb3e50e5450ac69c866",
         }
         and successor.get("evidence_states") == {
             "broad_product_efficacy": "UNKNOWN",
@@ -790,7 +501,7 @@ def main():
         }
     )
     checks["candidate.current_package_binding"] = (
-        checks["candidate.v0104_identity"]
+        checks["candidate.v0110_identity"]
         and actual_package_tree is not None
         and current_package_sha256 is not None
         and successor.get("package", {}).get("tree") == actual_package_tree
@@ -1521,6 +1232,8 @@ def main():
     if public_evidence_error:
         failures.append(f"public_release_evidence.unreadable: {public_evidence_error}")
     static_clause_prefixes = (
+        "entry.", "delivery.", "communication.", "model.", "legacy.",
+        "template.", "metadata.", "cases.",
         "authority.",
         "recovery.",
         "review.",
@@ -1550,7 +1263,7 @@ def main():
         ),
         "result": "PASS" if not failures else "FAIL",
         "source_release_identity": (
-            "BOUND_TO_V0104_CANDIDATE"
+            "BOUND_TO_V0110_CANDIDATE"
             if current_package_bound
             else "UNBOUND_PENDING_SUCCESSOR_VERSION_AND_DESCRIPTOR"
         ),

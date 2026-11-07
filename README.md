@@ -2,15 +2,15 @@
 
 [简体中文](README.zh-CN.md)
 
-Current local revision: **v0.10.4**, consolidating outcome-led delivery,
-risk-proportionate recovery and evidence reuse within existing authority. The latest published
-release remains **v0.10.2**. Source, review and managed-installation status are
-recorded in [State](docs/skills/work-charter/STATE.md#v0104-outcome-led-recovery).
-Existing contracts do not automatically migrate.
+Current local revision: **v0.11.0**, a portable workflow/host-boundary
+reorganization. See [State](docs/skills/work-charter/STATE.md#v0110-current-work)
+for actual review and installation evidence. The last verified published release
+is v0.10.2; this revision has not been published. Existing selected model policies
+and explicit project gates are preserved.
 
 Keep complex AI projects moving across handoffs—and through to delivery.
 
-Work Charter is a project collaboration Skill for Codex. It helps you choose
+Work Charter is a portable collaboration Skill distributed in Codex Skill format. Its common workflow needs no private global rules or host-specific task API; actual cross-host integration must still be verified. It helps you choose
 Direct, Team, or Phased work according to the result, real constraints, review
 needs, and how you want to participate. An existing approved agreement remains
 in force until its owner changes it.
@@ -52,8 +52,7 @@ route. A preauthorized first E-to-R handoff also avoids routine relay.
 Independent context and continuous progress are separate choices.
 
 Continuous work covers execution, checks, review, repair, acceptance and the next
-already-approved item. Cross-phase progression needs advance approval of a
-bounded phase set and its transition conditions. A prompt cannot guarantee
+already-approved item. Internal phase names do not create permission gates. Continue the approved outcome within its real boundaries; preserve explicit next-phase gates and seek authority for new outcomes or effects. A prompt cannot guarantee
 background scheduling or reliable delivery. Name the recipient, supported
 next-turn route and next authorized action; message arrival, activation,
 completion and acceptance are separate. Recover a missing handoff without
@@ -113,7 +112,7 @@ neither isolation nor recovery.
 
 ## Default models and customization
 
-The package supplies complete provider, model, and reasoning-effort defaults.
+Role-model configuration is optional unless the user, agreement or explicit host policy selects it. Without a selected policy or explicit combination, use permitted host selection. A selected but missing/invalid configuration is not an absent policy. Existing selected policies remain selected. The package supplies complete provider, model, and reasoning-effort presets.
 They are recommendations by responsibility, not a claim of superior measured
 performance or proof that an existing task has changed.
 
@@ -153,7 +152,7 @@ dependent action.
 $work-charter
 This project will take several conversations to complete.
 Recommend Direct, Team, or Phased work from what is already known.
-Explain the outcome, roles, review, recovery, complete model defaults, and cost.
+Explain the outcome, needed responsibilities, review, recovery and cost. Resolve model policy only if selected or explicitly required.
 ```
 
 If a working agreement is already in place:
@@ -168,7 +167,9 @@ Check the current state, then proceed with the next authorized action.
 <details>
 <summary>Technical reference, installation and recovery, version history, and historical evidence</summary>
 
-Bounds consequential Codex work by outcome, authority, evidence, recovery,
+Historical version-specific details below retain their original scope; the current workflow is in the installed package.
+
+Bounds consequential work by outcome, authority, evidence, recovery,
 independent review, and proportional coordination.
 
 This repository is the independent product repository for `work-charter`. Its

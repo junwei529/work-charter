@@ -1,18 +1,20 @@
 # Work Charter
 
-当前本地[v0.10.4修订](STATE.md#v0104-outcome-led-recovery)合并目标驱动交付与恢复，
-不增加逐步审批。最新正式发布仍为v0.10.2。
-[候选](../../../release/v0.10.4-candidate.json)保留实施前快照，实际审查与受管安装证据由State和Verification承接。
-包结构、模型配置与既有合同保持不变。
+当前本地[v0.11.0修订](STATE.md#v0110-current-work)重组公开通用流程与宿主职责，
+不增加逐步审批。最后核实的公开版本仍为v0.10.2。
+[候选](../../../release/v0.11.0-candidate.json)保留实施前快照，实际审查与受管安装证据由State和Verification承接。
+新使用默认不要求模型策略；明确选择后按该策略执行。旧合同已选策略、完整模型值、冻结组合及真实边界保留。
 
 [English](README.md)
 
 Work Charter 以 outcome、authority、evidence、recovery、independent review 与
-proportional coordination 约束有后果的 Codex 工作。
+proportional coordination 约束有后果的工作。
 
 规范产品包位于 [`skills/work-charter/`](../../../skills/work-charter/)。[设计](DESIGN.md)
 说明产品边界，[状态](STATE.md)说明当前独立仓库生命周期，[验证](VERIFICATION.md)
 记录证据和限制。
+
+## 历史证据
 
 [尚未发布的 v0.6.7 证据范围候选](STATE.md#unreleased-evidence-scope-revision)单独绑定包身份，
 变更后的源码不能沿用 v0.6.6 的资格证据。
@@ -22,7 +24,7 @@ proportional coordination 约束有后果的 Codex 工作。
 需要时加载精简共同正文与相关细节，并对材料变化主动复评，不代替用户选级。
 已批准 Charter 的复用和共同审查、权限、恢复边界保留；
 参见[历史 v0.6.5 状态](STATE.md#current-v065-local-candidate)。
-当前源码和安装由[当前状态](STATE.md#v0102-source-and-delivery)承接。
+当前源码和安装由[当前状态](STATE.md#v0110-current-work)承接。
 
 package 起源于源提交 `80910a8b2375a11be897e9660c4b00a06d00dd13`。不可变 `v0.5.0`
 source 证据绑定已接受 commit `8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`、十轮已完成

@@ -1,5 +1,38 @@
 # Work Charter Verification
 
+## v0.11.0 current work
+
+Local delivery checked on 2026-11-07. Deterministic SOURCE passed the current
+package identity, preserved historical bindings, exact model presets and 15
+structural clauses. Repository mapping/link checks passed for 114 mapped files;
+Skill metadata validation passed. These are source evidence, not behavior proof.
+
+Independent semantic review first found two P2 consumer conflicts: retained host
+Team routing imposed an extra Planner handoff, and two documentation navigation
+entries still presented an old revision as current. It also found one nonblocking
+P3 template-check false positive. All three were corrected and closed by the same
+reviewer using the affected delta and unchanged-consumer context; other valid
+coverage was reused. The template check's actual expression now rejects a missing
+required heading or reversed heading order, while accepting the actual template.
+Earlier check failures remain recorded; a later pass does not erase them.
+
+A separate cold reader reasoned through seven decision scenarios: ordinary
+Direct work, equivalent methods versus new disclosure, repeatable reads versus
+uncertain sends, selected versus absent model policy, changed runtime inputs,
+withdrawn authority/late results/unsupported wake-up, and non-Charter minimum
+protection. No material ambiguity was found within that scenario set. This was
+text-based reasoning, not a hard-isolated empty-global environment, alternate
+Harness execution, production run or broad efficacy study.
+
+The existing managed updater completed the v0.10.4 to v0.11.0 local update with
+explicit source/current tree bindings and a private same-volume transaction.
+Managed status was read back; six installed files match source, seven actual
+host files match reviewed candidates, the personal model policy is unchanged,
+and the transaction directory is empty. Installer production behavior did not
+change, so unrelated lifecycle/adversarial suites were not repeated. Publication
+and long-term behavior remain unproved by this delivery. Historical verification
+sections below retain their dated scope and do not add current gates.
+
 ## v0.10.4 outcome-led recovery
 
 SOURCE 33/33, Skill metadata, repository provenance/links (113 mapped paths)
@@ -1532,9 +1565,11 @@ sentinel proves that a link entry is rejected before its target blob is read or
 copied; the result identifies whether the current host also created a real
 disposable symlink or used the deterministic index-link-mode branch.
 
-## Focused check
+## Historical v0.6.2 focused check
 
-Run the deterministic SOURCE contract check:
+The following describes the historical v0.6.2 scope, not a current full-lifecycle requirement. Current check selection follows the current entry and repository AGENTS.
+
+Historical command:
 
 ```powershell
 python -B scripts/check_source_contract.py --json

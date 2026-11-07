@@ -1,197 +1,112 @@
 ---
 name: work-charter
-description: Choose end-to-end Direct delivery, goal-level Phased coordination, or justified Team separation and continue an applicable approved Charter. Use for assessment, reassessment, or material scope, authority, coordination, or recovery changes. Ordinary stable work needs no Charter ceremony.
+description: Carry an authorized outcome through planning, delivery, review, correction and handoff. Use to assess or continue Direct, Team or Phased work when coordination or recovery matters; keep ordinary work lightweight.
 ---
 
 # Work Charter
 
-Keep the contract smaller than the work it protects. Work Charter is advisory:
-it can recommend and stop its own work, but cannot lock writers, reroute other
-tasks, or enforce permissions. A work arrangement adds coordination cost, not
-authority.
+Keep the agreement smaller than the work it protects. Work Charter provides
+portable working guidance, not permissions, a scheduler or technical isolation.
+It works without personal global rules or another Skill. Follow actual higher
+priority instructions, the user's authority and the host's enforced boundaries.
 
-## Lightweight Entry And Material Changes
+<a id="lightweight-entry-and-material-changes"></a>
+## Start With The Outcome
 
-At task entry, use supplied context to check for an applicable Charter and
-material scope, authority, coordination, or recovery needs. When none applies
-and no assessment was requested, finish this check and continue ordinary
-authorized work directly. Do not load references, inspect a
-project, create a Charter or roles, or ask for confirmation merely to complete
-this check.
-A host may perform this small check before selecting the package; this Skill
-does not prove that every host has integrated such an entry.
+Use the supplied goal, scope, acceptance and existing authority. Reuse an
+applicable approved agreement; a new task or a smaller step does not cancel it.
+An explicit assessment or discussion request remains assessment or discussion.
+Using this Skill does not itself authorize implementation, roles or external effects.
 
-Load the full Skill first when applying its assessment or adopted contract:
-this shared entry is the required body, and detail is loaded by the routes
-below. Loading is not adoption or action authority. If the body cannot load,
-report that limitation; preserve an unexposed path or revision as `UNKNOWN`.
-Catalog visibility, a summary, or manual rereading is not fresh loaded-copy proof.
+For authorized delivery, the ordinary path is:
 
-- **Applicable approved Charter:** reconcile the same workstream, revision,
-  authority and relevant live state, then reuse the approved Charter and its applicable contract
-  without asking again. A small task or new Thread does not cancel that Charter.
-- **First assessment:** a direct invocation or assessment request recommends
-  Direct, Team, or Phased work with its benefit and coordination cost. Begin
-  with known goals, completion evidence, real constraints, authorized bounded
-  discovery, and the user's autonomy or intervention preference. Ask only when
-  an answer changes the arrangement or a protected decision. The user chooses
-  whether to adopt a proposed Charter; assessment is not adoption.
-- **Manual reassessment:** start from the existing Charter and arrangement, retain
-  valid authority, and compare the requested change with that baseline. First
-  assessment, reassessment and migration use the same conditional selection;
-  an old contract supplies reusable answers, not permission to skip relevant
-  decisions. Explain the current proposal before offering a different one.
+1. Establish the intended result, earliest useful complete delivery, acceptance
+   floor and actual permission, data, effect and cost boundaries.
+2. The delivery owner chooses a sufficient route, reuses existing capabilities,
+   implements, verifies and repairs within that scope.
+3. Obtain independent review where requested, required or justified by a material
+   security, permission, data-loss, interface or core-decision boundary. The
+   original author repairs; review the affected change and reuse valid evidence.
+4. Assess the actual outcome at agreed acceptance points. Continue remaining
+   authorized work or deliver when the agreement is satisfied.
 
-Before the next affected action, proactively reassess when new information
-materially changes outcome/scope, permissions or external effects, acceptance,
-writer or role boundaries, durable recovery, or cross-phase dependencies.
-Recommend retaining or changing the arrangement; do not silently adopt or
-upgrade it. Material coordination, permission, or contract changes require the
-user's decision before dependent work. Continue independent work already
-covered by authority.
-Duration, file count, one failure, model choice, context growth, or use of
-another Skill alone is not a reason to escalate or repeat an assessment.
+Do not turn internal steps, a changed hash, a method replacement or routine
+repair into a new approval. Stop the affected action for a real permission,
+effect, writer, evidence or acceptance problem; continue independent authorized
+work. A missing implementation detail is not a missing user decision.
 
 ## Least Sufficient Work Arrangement
 
-**Deliverer (D)** is the public name of the end-to-end delivery owner, previously
-described as Direct primary. Its configuration responsibility remains `primary`.
-Use Deliverer in role descriptions and task prompts; use `primary` in model
-configuration and selectors. This naming change creates no role or permission,
-requires no contract migration by itself, and does not rename existing tasks.
-
-| Arrangement | When useful and added cost |
+| Arrangement | Responsibility |
 | --- | --- |
-| **Direct** | One Deliverer (D, `primary`) carries clarification, exploration, planning, implementation, verification, repair and delivery. Suitable for short or sustained work; add continuity and independent review only as needed. |
-| **Team** | An exceptional separation: P owns the executable contract, coordination and acceptance; E implements and verifies. Use only when that separate responsibility materially helps. Multiple contributors alone do not require P. |
-| **Phased** | O owns final goals, priorities, cross-workstream tradeoffs and agreed outcome acceptance. Each workstream defaults to Direct with necessary independent R; select Team locally only for a concrete benefit. |
+| **Direct** | One Deliverer (D, configuration responsibility `primary`) owns clarification, exploration, planning, implementation, verification, repair and delivery. Add continuity and independent R as needed. |
+| **Phased** | O owns goals, priorities, cross-workstream tradeoffs and agreed outcome acceptance. Each workstream defaults to Direct. |
+| **Team** | Select P/E separation only for a concrete coordination or independent contract-acceptance benefit. P owns the contract and acceptance; E implements and verifies; R reviews independently when required. |
 
-New contracts directly describe the arrangement, continuity, actual roles,
-review and authorized progression; they need no L0-L4 classification.
-Use `contract_format: arrangement-v2` in the existing agreed carrier, with
-current-task or durable continuity as needed. This contract marker, the Skill
-version and the model-configuration schema are separate identities. Ordinary
-work without an adopted Charter needs none of these records.
+Contributor count, duration and branch count do not determine the arrangement.
+Do not create roles, files or a questionnaire merely to use Direct. Reuse a
+suitable current-task agreement or existing durable owner. Recommend material
+coordination changes with their benefit and cost; adopt them only within the
+user's authority. Existing explicit planning-only and role-creation gates remain.
+New formal agreements may record `contract_format: arrangement-v2` in their
+existing carrier; ordinary work needs no marker or level classification.
 
-For formal work that must continue after an upstream turn ends, normally use
-separately addressable role tasks with a supported next-turn return route.
-Bounded subagents remain useful within an active parent turn. Cross-turn mixed
-carriers require actual host reactivation/recovery support and approved selection;
-see Conditional Work Selection and Authorized Progression below.
+## Shared Protections And Method Autonomy
 
-Existing L0-L4 contracts keep their own approved terms and frozen combinations.
-Existing `arrangement-v1` also retains its P/E split, acceptance and routing;
-new package text does not reinterpret it. Parallel work and migration need
-explicit scope and handover, not merely another branch or task.
-L0 means no active Charter, L1 a current-task agreement, L2 durable Direct,
-L3 Team and L4 Phased in the compatibility path. A new package does not migrate
-them. At a stable node, use the bounded migration route below if reconsidering
-the agreement would help. Independent review of Direct work does not create
-Planner/Executor roles or adopt a Charter.
+Approval normally binds outcomes, scope, acceptance, permitted effects and
+material commitments, including methods the user actually fixed. It does not
+automatically freeze incidental tools, steps, estimates or proof mechanisms.
+Read [Contract And Proposal Changes](references/coordination-and-recovery.md#contract-and-proposal-changes)
+for authority interpretation, conflicts and user decisions.
 
-## Shared Boundaries
+- Keep one accountable writer per overlapping surface and preserve unrelated
+  work. Required independent R never authors the product it independently reviews.
+- Distinguish facts, inferences and unknowns; source tests, deployment and actual
+  workflow acceptance prove different things. Bind material evidence to its
+  subject and relevant invalidation conditions.
+- Preserve history and genuine user/environment limits without making every
+  old Agent method a permanent constraint. Never rename a subject to replay an
+  uncertain non-repeatable effect or reset consumed authority.
+- Keep secrets and sensitive material within authorized collection, retention
+  and disclosure scope. A role label, tool connection or message grants no new access.
+- Ask one understandable question only for a real reserved or uncovered decision.
+  The actual action task obtains any operation-local consent required by its host;
+  relaying approval cannot bypass that gate. Technical binding checks remain with
+  the responsible Agent. Silence and tool failure are not consent.
+- A usable first result does not erase remaining agreed outcomes. Reconsider an
+  invalid route before further investment; compare remaining total cost, including
+  delay, user attention, coordination and maintenance.
 
-- Package loading never expands project-read or action authority. Reuse an
-  authorized bounded read without a new activation or read question. An
-  explicit no-read instruction remains binding; unknown or unavailable
-  evidence does not authorize a broader search or a different route.
-- Keep one accountable writer per overlapping write surface, the exact workspace and dirty ownership, and
-  evidence tied to its subject, revision and invalidation condition. Stop the
-  affected action when authority, writer, scope or evidence is incomparable.
-  A new task, level, attempt or context never resets approval, failure,
-  findings, stop conditions or consumed evidence.
-- Match evidence and completion claims to the agreed inspection scope.
-  Obtaining or traversing records does not establish that their relevant
-  content was examined. Retain material selection, truncation and missing
-  coverage; apply the evidence-scope contract in
-  [Authority, Delivery, Correction, And Evidence](references/coordination-and-recovery.md#authority-delivery-correction-and-evidence).
-- Protect confirmed outcomes and real constraints while keeping working methods
-  replaceable. Scope authority by outcome, domain, environment, effects and cost;
-  recording or approving a plan does not freeze its incidental methods.
-  [Contract And Proposal Changes](references/coordination-and-recovery.md#contract-and-proposal-changes)
-  owns constraint applicability, risk-proportionate evidence and user decisions.
-  [End-to-End Delivery](references/coordination-and-recovery.md#end-to-end-delivery-and-parallel-workstreams)
-  owns useful delivery, total-cost choices and recovery; use it before material
-  investment without a per-step approval. Use an existing canonical carrier;
-  durable Team/Phased work needs a common recoverable control location, and
-  legacy continuity duties remain binding.
+## Read Only The Relevant Detail
 
-- The implementer verifies and repairs the work it changed. It never acts as
-  the independent Reviewer of its own work. An independent Reviewer
-  inspects the stable change when requested, required by a gate, or warranted
-  by a material security, permission, data-loss, interface or core-decision
-  boundary. Review can cover an actual direction, plan, or implementation
-  product; use its applicable instructions, contract and real evidence. The
-  designated assessor decides whether outcome and evidence
-  satisfy the contract. Tests and review output are not acceptance; without a
-  separate assessor, the primary owner's disposition is not independent acceptance.
-- Complete the earliest useful main workflow within the agreed acceptance floor,
-  then finish remaining agreed outcomes. A partial milestone does not close the
-  whole contract. Verification, coordination and recovery serve those outcomes;
-  deferred enhancements do not become requirements merely through review.
-  Use Contract And Proposal Changes for sufficient checks and findings, and
-  [Work Allocation](references/coordination-and-recovery.md#work-allocation-and-optional-collaborators)
-  for the cost of separation. Preserve producer-before-consumer order, actual
-  terminal evidence and explicit scarce/non-repeatable effect boundaries.
+This body is the shared entry. Load only the detail needed for the next decision;
+full package reading is appropriate for a full audit, not every action.
+The [coordination reference](references/coordination-and-recovery.md) contains the
+complete portable detail; its sections below are selected by the actual task.
 
-- Resolve problems at the lowest already-authorized responsibility. P may
-  exercise explicit in-phase delegation in Team or an unchanged older contract.
-  Otherwise the primary owns methods, repair, finding disposition and delivery;
-  R independently reviews. A preauthorized same-scope author/R loop needs no
-  per-round O or P approval; P accepts stable results only where P is selected. Retain user-reserved and frozen boundaries. See
-  [Delegated Decisions And Escalation](references/coordination-and-recovery.md#delegated-decisions-and-escalation).
-- Give each material user decision one owner. Reuse valid approval; preserve
-  the complete question/answer linkage, authorized scope and target, and the
-  distinction between permission and execution. An operation-local permission
-  gate belongs to the action task; a relay cannot replace required direct
-  consent. A read-only Reviewer or evidence collector never solicits write authority.
-  Keep technical verification with the responsible Agent; present the user
-  with understandable outcomes, material tradeoffs and the decision basis.
-  Use [Contract And Proposal Changes](references/coordination-and-recovery.md#contract-and-proposal-changes)
-  for complete user decisions and proportionate permission questions.
-
-## Read The Relevant Detail
-
-Use [Coordination And Recovery](references/coordination-and-recovery.md) by
-section. Read only what supports the current decision or action, reusing
-unchanged material already loaded; do not read every other role's procedure.
-
-| Current need | Required section |
+| Need | Owner within this package |
 | --- | --- |
-| First assessment or adoption | Minimum Read And Reconciliation Order; First Adoption And Durability; Conditional Work Selection |
-| Approved continuation or material drift | Minimum Read And Reconciliation Order; Managed Workstream And Multiple Worktrees; Re-entry Routes |
-| Proposal, delegation or escalation | Contract And Proposal Changes; Delegated Decisions And Escalation; Authorized Progression |
-| Solution exploration, proactive research, end-to-end delivery, several workstreams or integration | [End-to-End Delivery And Parallel Workstreams](references/coordination-and-recovery.md#end-to-end-delivery-and-parallel-workstreams) |
-| Legacy contract reconsideration at a stable node | Stable-Node Migration; Conditional Work Selection; affected delegation/progression or review sections below |
-| Work allocation, optional collaborator selection or exit | [Work Allocation And Optional Collaborators](references/coordination-and-recovery.md#work-allocation-and-optional-collaborators) |
-| Prompt or task delivery | Task And Role Prompt Construction; Authority, Delivery, Correction, And Evidence |
-| Evidence collection, delegated inspection, or completion claims | Task And Role Prompt Construction; Authority, Delivery, Correction, And Evidence |
-| Newly authorized model resolution | [Role-Model Configuration At Dispatch](references/coordination-and-recovery.md#role-model-configuration-at-dispatch); identify arrangement, contract format and responsibility first, then read the complete section before reading configuration or dispatching |
-| Team/Phased review or writer handoff | Planner, Executor, And Reviewer; Review Input At Any Level; Authority, Delivery, Correction, And Evidence |
-| Material feedback, Direct review, a user permission gate, or evidence consumption | Authority, Delivery, Correction, And Evidence; Contract And Proposal Changes; [Review Input At Any Level](references/coordination-and-recovery.md#review-input-at-any-level) |
-| Context recovery or changed governing source | Context-Switch Recovery; Re-entry Routes; governing-source reload boundary in Authority, Delivery, Correction, And Evidence |
+| Scope, authority, fixed versus adjustable content, conflicts, user decisions | [Contract And Proposal Changes](references/coordination-and-recovery.md#contract-and-proposal-changes) |
+| Route choice, research, allocation, failure disposition | [End-to-End Delivery](references/coordination-and-recovery.md#end-to-end-delivery-and-parallel-workstreams) |
+| Continuous work and real handoffs | [Authorized Progression](references/coordination-and-recovery.md#authorized-progression) |
+| Human versus internal communication, evidence labels, cold/warm prompts | [Task And Role Prompt Construction](references/coordination-and-recovery.md#task-and-role-prompt-construction) |
+| Independent review, disputes and acceptance | [Review Input At Any Level](references/coordination-and-recovery.md#review-input-at-any-level) |
+| Rules changing, user cancellation, recovery or legacy migration | [Context-Switch Recovery](references/coordination-and-recovery.md#context-switch-recovery) |
+| Phased or selected Team duties, or an existing v1/L0-L4 contract | [Phased And Compatibility](references/standard-ope.md) |
+| An explicitly selected role-model policy or already selected legacy policy | [Role-Model Configuration At Dispatch](references/coordination-and-recovery.md#role-model-configuration-at-dispatch) |
 
-For approved Phased work, also read the shared entry and
-responsibility boundaries of
-[Standard O/P/E/R](references/standard-ope.md), then only your operating steps
-and required interactions. Leave the Standard reference unloaded for Direct/Team
-by default; a scoped transition assessment may read the needed sections.
-Do not skip shared permission, independent-review, writer or recovery boundaries.
-Phased does not itself activate a host-specific Standard workflow.
+Model presets are optional; absent a selected policy or explicit combination,
+use the host's permitted selection. A chosen but invalid configuration is not
+an absent policy. Preserve existing selected policies and frozen combinations.
+No private path, named model or task API is required for the common workflow.
 
-Role-model configuration guides an already-authorized dispatcher; it neither
-creates roles nor changes existing tasks. Preserve frozen combinations and
-external user configuration. Loading this package grants no Git, installation,
-global configuration, publication, provider or other external effect.
+The host owns tool schemas, actual message/process terminals, loading mechanisms
+and enforced permissions. The project owns business requirements and current
+authority. Work Charter owns portable progression, handoff, correction and
+acceptance semantics; other Skills retain their own domains. Do not maintain a
+second full workflow in role prompts or host adapters.
 
-Close material decisions, not every message exchange. A result that needs
-acceptance or permission to continue requires the named assessor's explicit
-checkpoint-bound disposition, delivered to the role that acts on it. Factual,
-evidence and mechanical-recording notices do not by themselves require an
-acceptance reply; relabeling a decision as a notice never bypasses its gate.
-Complete the authorized work package, checks and implementation documentation
-before a stable review handoff, unless a material blocker or boundary intervenes.
-Keep decisions and their durable recording distinct, with one authorized writer
-and a defined closeout endpoint. Preserve findings and failures; do not poll,
-resend unchanged input or require a terminal acknowledgement. Recover only what
-the next affected action needs; idle roles need no broadcast reload.
+Record material decisions and reasons at the existing authorized owner. Use the
+[optional carrier](assets/work-charter.md) only when useful and authorized. Do not
+create a document suite. Updating or installing the package does not modify
+personal configuration, migrate project authority or prove behavioral improvement.

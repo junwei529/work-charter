@@ -1,7 +1,7 @@
 interface:
   display_name: "Work Charter"
-  short_description: "Recommend safe, proportional project coordination"
-  default_prompt: "Use $work-charter to continue an applicable approved Charter, or recommend Direct, Team, or Phased work when assessment is requested. Reuse known contracts and authorized reads; ask only for missing decisions that change the arrangement, authority, review, or recovery."
+  short_description: "Carry authorized outcomes through to delivery"
+  default_prompt: "Use $work-charter to continue the authorized outcome, reuse the applicable agreement, and resolve methods and handoffs within its real boundaries."
 
 policy:
   allow_implicit_invocation: true

@@ -1,21 +1,24 @@
 # Work Charter
 
-The current local [v0.10.4 revision](STATE.md#v0104-outcome-led-recovery)
-consolidates outcome-led delivery and recovery without adding step gates.
-The latest published release remains v0.10.2. The
-[candidate](../../../release/v0.10.4-candidate.json) is a pre-effect snapshot;
+The current local [v0.11.0 revision](STATE.md#v0110-current-work)
+reorganizes portable workflow and host responsibilities without adding step gates.
+The last verified published release remains v0.10.2. The
+[candidate](../../../release/v0.11.0-candidate.json) is a pre-effect snapshot;
 State and Verification own actual review and managed-installation evidence.
-Package shape, model configuration and existing contracts remain unchanged.
+Model policy is optional for new use unless explicitly selected. Existing selected
+policies, complete model values, frozen combinations and genuine limits remain.
 
 [简体中文](README.zh-CN.md)
 
-Bounds consequential Codex work by outcome, authority, evidence, recovery,
+Bounds consequential work by outcome, authority, evidence, recovery,
 independent review, and proportional coordination.
 
 The canonical package is [`skills/work-charter/`](../../../skills/work-charter/). See
 [Design](DESIGN.md) for the product boundary, [State](STATE.md) for the current
 standalone lifecycle, and [Verification](VERIFICATION.md) for evidence and
 limits.
+
+## Historical evidence
 
 The [unreleased v0.6.7 evidence-scope candidate](STATE.md#unreleased-evidence-scope-revision)
 has its own package binding; its changed bytes do not reuse v0.6.6 qualification.
@@ -27,7 +30,7 @@ relevant details when needed, and reassesses material changes without adopting
 a level for the user. It preserves approved Charter reuse and shared review,
 authority and recovery boundaries; see
 [historical v0.6.5 state](STATE.md#current-v065-local-candidate).
-[Current state](STATE.md#v0102-source-and-delivery) owns source and installation status.
+[Current state](STATE.md#v0110-current-work) owns source and installation status.
 
 The package originated at source commit
 `80910a8b2375a11be897e9660c4b00a06d00dd13`. Immutable `v0.5.0` source evidence

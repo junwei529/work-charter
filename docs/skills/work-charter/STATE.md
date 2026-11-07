@@ -1,5 +1,24 @@
 # Work Charter State
 
+## v0.11.0 current work
+
+Status: **SOURCE_REVIEWED / LOCALLY_INSTALLED**, 2026-11-07. The approved
+portable-workflow/host-boundary reorganization is complete locally. Independent
+semantic review closed all three findings on the corrected source and host
+consumers. The actual installed six-file package matches the reviewed source;
+seven host guidance consumers match their reviewed candidates. Personal model
+policy is unchanged. This does not migrate existing project contracts or prove
+their future behavior. The last verified published release remains v0.10.2;
+v0.11.0 has not been published.
+
+Package tree: `0eacebf6dae5c7e17de9206bc8c442d0bdec4895`.
+Package digest: `e46239928cee7eda70aca2d07ac20e4ba5c1468ee3d4242d9ef649e476da2855`.
+The immutable candidate descriptor remains the pre-effect identity. Source
+baseline was `8c520a4`; prior unpublished integration and historical evidence
+are retained. [Verification](VERIFICATION.md#v0110-current-work) owns actual
+coverage and limits. No production, broad efficacy or alternate-harness claim
+follows from local installation.
+
 ## v0.10.4 outcome-led recovery
 
 Status: **LOCAL_INSTALLED_VERIFIED**, 2026-11-05. The authorized source and

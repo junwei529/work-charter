@@ -1,262 +1,86 @@
 # Phased Goal Coordination And Workstream Delivery
 
-Read the shared Skill entry, then the section for the applicable contract.
-Phased does not activate a host-specific Standard workflow or authorize role
-creation, parallelism, writes, integration or external effects.
+Use this reference only for Phased, selected Team or an applicable legacy
+agreement. The shared entry and Coordination And Recovery own the common workflow.
+No arrangement grants effects or creates roles merely because it is described.
 
 ## Arrangement-v2 Responsibilities
 
-One O owns final outcomes, priority/requirements alignment, cross-workstream
-tradeoffs and agreed material outcome/transition acceptance. O may serve one
-or several bounded workstreams. Each defaults to a Deliverer (D / `primary`) carrying
-technical exploration within the authorized workstream, planning, implementation,
-verification, repair and delivery. Open-ended solution research follows the
-ownership in [End-to-End Delivery And Parallel Workstreams](coordination-and-recovery.md#end-to-end-delivery-and-parallel-workstreams):
-O initiates it in Phased; this does not transfer ordinary technical choices to O.
-Select Team P/E only for a demonstrated coordination or independent contract
-acceptance benefit; several contributors or branches are not sufficient.
+O owns final goals, priorities, cross-workstream tradeoffs and agreed outcome
+acceptance. Each workstream defaults to D carrying a complete bounded result.
+Select Team locally only when P/E separation has concrete value. Contributor or
+branch count does not require P or another O.
 
-The primary owns the workstream's methods, normal recovery and delivery. Use
-End-to-End Delivery for earliest useful outcomes, remaining total cost and
-material route changes, and Work Allocation for the value of role separation.
-O handles important direction, priorities and cross-workstream tradeoffs before
-investment or when new evidence appears, then accepts agreed actual outcomes.
-It does not approve ordinary repairs, duplicate R inspection or turn every
-result into a continuation gate. R judges the actual product, material risk
-and consumers; it may identify unnecessary gates, not adopt new requirements.
-Selected Team P and user-reserved decisions retain their existing authority.
+| Responsibility | Owns | Does not replace |
+| --- | --- | --- |
+| O | Goal/priority alignment, important cross-workstream and total-cost choices, agreed acceptance | D's ordinary methods or R's technical inspection |
+| D | Authorized exploration, planning, implementation, repair, verification and delivery | Independent review or user-reserved decisions |
+| P in selected Team | Workstream contract, coordination, finding disposition and stable acceptance | E's implementation or R's technical inspection |
+| E in selected Team | Authorized implementation, checks, repair and delivery | Scope authority or independent acceptance |
+| R | Read-only independent judgment on the actual product and material consumers | Implementation, contract adoption or outcome acceptance |
 
-The normal workstream path is outcome/bounds -> primary authorized workstream planning and delivery
--> required R -> original-author repair and same valid R -> agreed outcome
-acceptance when required -> next already-authorized work. Preparatory protection
-or planning review occurs before the relevant risky action when required.
-Internal steps have no automatic O/P acceptance gate. In Team, use the selected
-P/E review and acceptance path in Coordination And Recovery.
+O considers material direction changes before investment or when evidence appears,
+not only at final acceptance. D makes in-scope route choices and reports actionable
+exceptions and meaningful outcomes. Ordinary technical interfaces are coordinated
+directly within authority. Use [delivery and allocation](coordination-and-recovery.md#end-to-end-delivery-and-parallel-workstreams)
+for shared surfaces and integration; integration is an existing owner's duty,
+not a new mandatory role.
 
-Use [End-to-End Delivery And Parallel Workstreams](coordination-and-recovery.md#end-to-end-delivery-and-parallel-workstreams)
-for parallel scope, one writer per overlapping surface, shared-state ownership,
-integration ownership and review coverage. Do not equate branches with isolation
-or create nested O roles. Use the existing shared control location and scoped
-workstream pointers, not authoritative copies in every checkout.
+The ordinary path is authorized work -> required R -> original-author repair
+and same valid R -> agreed outcome acceptance -> next already-authorized work.
+Selected Team P retains stable acceptance. Direct introduces no P verdict. Apply
+[progression](coordination-and-recovery.md#authorized-progression) and
+[review](coordination-and-recovery.md#review-input-at-any-level) rather than a
+second loop here. Independent context and actual continuation capability are
+different; use the host's supported carrier, not a promise of future activation.
 
-For newly authorized role delivery, identify the outer arrangement, selected
-workstream arrangement and actual responsibility, then read and apply
-[Role-Model Configuration At Dispatch](coordination-and-recovery.md#role-model-configuration-at-dispatch).
-Preserve frozen combinations and user overrides; require native support.
-Configuration never authorizes delivery or action, enables a role, or changes an existing task.
-Use the supported lifetime/result route for the actual selected roles; bounded
-R can return to an active parent, while ended recipients need an authorized
-next-turn route. No carrier guarantees hard isolation, activation or caching.
+For a selected model policy, read [Role-Model Configuration At Dispatch](coordination-and-recovery.md#role-model-configuration-at-dispatch).
+Otherwise preserve the host's permitted selection and explicit task choices.
+Role, model policy, tool capability and permission remain distinct.
 
 ## Arrangement-v1 And L4 Compatibility
 
-The following prior operating path applies only to unchanged arrangement-v1
-or L4 contracts. It is not the default for arrangement-v2. Adoption/migration
-requires the approved checkpoint and preserves failed evidence, consumed limits,
-pending results, existing acceptance and frozen models. Do not run both old and
-new role chains for the same checkpoint.
+The following applies only to an unchanged v1/L4 split agreement. It is not the
+new Direct default. Preserve the actual agreed duties, gates, writer and history;
+use [rule changes and migration](coordination-and-recovery.md#context-switch-recovery)
+for an authorized change. Do not run old and new writer chains together.
 
-### Prior Phased Orchestrator/Planner/Executor/Reviewer
+### Responsibilities
 
-Use these shared role boundaries for approved Phased work with a discoverable
-durable control location. A host-specific Standard workflow and standing policy
-still require their own explicit adoption. The compatibility path below applies to arrangement-v1;
-L4 remains legacy compatibility, not a prerequisite label for new work. Do not
-migrate an old contract or expand its gates merely because the package changes.
+The old hierarchy is O -> Phase mandate -> P -> execution definition -> E,
+with independent R. O handles project direction and phase acceptance; P owns
+the phase contract and stable acceptance; E implements; R reviews read-only.
+O does not bypass the selected P to command implementation. That separation
+does not require O to wait until the end before addressing important direction
+or cost issues through P. Keep the old single-lane/one-writer boundary unless
+authorized parallelism actually changes it.
 
-A fresh Phased role loads the complete slim shared Skill body and this reference's shared entry,
-responsibility, single-writer and permission boundaries, then its own operating
-steps and handoff interfaces. It does not load every other role's procedures
-or repeat adoption merely because it is a new Thread. Manual reassessment uses
-the current Charter and policy as its baseline; material changes remain
-user-owned. Valid continuity never implies automatic role creation.
+### Operating Path
 
-Initial persistent adoption and the first Standard standing policy are
-user-owned decisions. Later reuse must name the policy and exact bounded read
-scope being reused, remain visible to the user, and stay subordinate to
-Harness and project instructions. Policy or arrangement selection does not authorize
-role delivery, writes, project-document or `AGENTS.md` changes, worktrees,
-Git, integration, installation, cleanup, publication, or external effects.
+Recover the actual approved mandate/definition, workspace, writer and checkpoint.
+Explicit planning-only mandates do not authorize implementation. Where the user
+delegated in-bound finalization and delivery, P can exercise it without another
+per-step approval. Otherwise preserve the old user gate. User approval of internal
+method descriptions alone does not make them permanently fixed requirements.
 
-If governing instructions require fresh selection, the control location or
-revision cannot be reconciled, or separate role delivery is unavailable or
-uncertain, propose the smallest transition and stop. Do not represent a
-one-agent fallback as Standard.
+E completes the authorized package and stabilizes review input. Use the agreed
+first-review and correction route: direct E/R when covered, otherwise P-routed
+as explicitly required by that old agreement. Original E repairs, the same valid
+R re-reviews material changes, and P receives the stable or exception result.
+P checks contract fit and coverage without redoing R's technical review, returns
+its disposition to E and records it through the authorized writer. O receives
+agreed phase outcomes through P. Factual recording closes without ACK recursion.
 
-Before each newly authorized Phased role delivery, identify the contract
-format, arrangement and actual responsibility, then read and apply
-[Role-Model Configuration At Dispatch](coordination-and-recovery.md#role-model-configuration-at-dispatch).
-That section is the sole owner of configuration resolution and validation;
-do not reconstruct a parallel lookup here. Preserve frozen combinations,
-require native support, and keep requested values separate from runtime
-identity. Configuration never authorizes delivery or action, enables a role,
-or changes an existing task.
+Retain old next-phase approval conditions unless validly amended. Continue
+already-approved outcomes through permitted internal sequencing; a new internal
+name grants no extra effects and creates no automatic new permission. Technical
+disputes, user questions, pause propagation and direct operation consent follow
+the common contract; this section does not invent a second rule set.
 
-## Responsibilities
+### Legacy Levels
 
-| Role | Owns | Does not do |
-|---|---|---|
-| Orchestrator | Project direction, phase order, mandates, project-level acceptance, and transitions | Implement work, bypass P to direct phase execution or implementation review, or repeat technical review |
-| Planner | Active Charter, execution boundaries, Executor and Reviewer routing, correction direction, and target acceptance | Implement, repair, or technically review the work under assessment |
-| Executor | Authorized implementation, self-check, repair, verification, evidence, and implementation documentation | Expand scope, select a new phase, serve as independent Reviewer of its own work, or approve its own result |
-| Reviewer | Read-only semantic inspection of a stable checkpoint, actionable findings, and explicit coverage limits | Modify the reviewed target, direct project scope, or decide target or phase acceptance |
-
-The Orchestrator stays out of ordinary phase implementation. The Planner brings
-direction, cross-phase, material project-risk or overall-cost choices to O before
-the affected investment, or when new evidence exposes them, within the existing
-contract and decision authority. Do not defer these choices to phase acceptance
-or bypass P to direct E/R. The Planner owns in-phase decisions and stable acceptance; preauthorized
-ordinary repairs close through E and R without per-round Planner intervention. Keep one
-active lane, one repository writer, at most one Planner, at most one Executor,
-and one reliable Reviewer for the active package. That R may continue across
-O/P/E products and related phases under Review Input At Any Level; product
-scope, original author and acceptance owner remain distinct on every request.
-Do not create one R per author. A shared carrier must support each approved
-request/result route; a child of one independent task is not assumed to be a
-child accessible from another.
-For formal Phased work that outlives an upstream turn, normally keep O/P/E and
-applicable R separately addressable, with authorized routes that start the
-recipient's subsequent turn. Reuse suitable existing tasks. P-as-O-child or
-E/R-as-P-children remain possible mixed designs only when the host's parent
-reactivation, addressing and recovery support the agreed lifetime and the user
-approves the choice. Apply Conditional Work Selection and Authorized Progression;
-do not substitute message arrival for recipient activation. Bounded auxiliary
-subagents within active parent turns remain useful. Neither carrier proves hard
-isolation, and child continuity does not imply cross-parent recovery.
-
-The portable responsibility hierarchy is:
-
-```text
-Orchestrator -> Phase Mandate
-Orchestrator -> independent review of its own planning product when enabled;
-Reviewer -> Orchestrator planning findings, not phase E/R direction
-Planner -> Phase Definition
-Planner -> Executor execution tranche or work package
-Executor -> internal steps or slices
-Planner -> Reviewer stable review checkpoint
-Reviewer -> Executor preauthorized same-scope findings; otherwise Planner
-Reviewer -> Planner stable findings and coverage limits
-```
-
-Every role carries forward the user outcome, the basis of fixed constraints,
-existing evidence and replaceable proposals using
-[Task And Role Prompt Construction](coordination-and-recovery.md#task-and-role-prompt-construction).
-P may adjust O's in-phase methods and E may adjust P's implementation methods
-within delegated authority; a role handoff does not freeze those proposals.
-
-Executor-internal steps or slices are not separate Definitions, roles, or
-approval gates. The user approves the Mandate. It may explicitly delegate
-in-bound Definition finalization and specified E/R delivery to P; otherwise
-the Definition remains a separate user gate. Missing material choices keep
-the Mandate planning-only. Existing approvals are not expanded retrospectively.
-See [Delegated Decisions And Escalation](coordination-and-recovery.md#delegated-decisions-and-escalation).
-This hierarchy applies only to approved Phased work; ordinary work remains Direct.
-Host-specific Standard procedures apply only when explicitly adopted.
-
-Build role prompts from the
-[shared contract, actual responsibility, current task, and necessary model adaptation](coordination-and-recovery.md#task-and-role-prompt-construction).
-Include only the receiver's authorized responsibilities and current work.
-Warm continuations reuse a valid contract and send the delta without another
-prompt approval or role for an internal step. Model and effort selection never
-changes O/P/E/R permissions, independent review, or acceptance boundaries.
-
-Reviewer findings are independent inspection evidence, while Planner and Orchestrator
-assessments are role verdicts rather than extra user confirmation gates. The
-Orchestrator owns questions about project
-direction, cross-phase risk, the next phase, or a Mandate. The Planner owns
-questions about the active Phase contract, workspace, acceptance, and residual
-risk. The Executor reports a permission blocker to the Planner unless the
-execution environment requires the action task to obtain operation-local
-permission directly. In that case the action task presents the complete
-permission question and receives the answer itself; a Planner relay or status
-report is not a substitute. This does not transfer contract or scope ownership,
-and a changed Phase boundary still returns to the Planner. The Reviewer reports
-technical unknowns and findings rather than asking for write authority. A
-separately governed specialist likewise owns only a directly required
-operation-local permission question. Non-owners relay an exact question or
-answer once and never mirror it.
-
-## Operating Path
-
-1. Reconcile the one authoritative control location, its standing-policy and
-   Charter revisions, managed workstream, workspace/writer boundary, and named
-   evidence using [Coordination And Recovery](coordination-and-recovery.md).
-2. The Orchestrator bounds project direction and the current phase outcome.
-   When requested or required for a real direction/Mandate product, route a
-   stable independent planning review with its applicable instructions,
-   contract and evidence. O corrects its own planning product and the same
-   valid R re-reviews; review neither adopts the Mandate nor gives O a route
-   around P to phase E/R.
-3. The Planner makes the active Charter implementation-ready and identifies
-   authorized execution tranches or work packages, writer, evidence, and stop
-   conditions.
-4. The Executor continuously completes that work, necessary checks and
-   implementation documentation. Preparation, individual checks and ordinary
-   repairs do not create acceptance checkpoints. It may organize internal steps
-   or slices and choose ordinary files, tools and check order within the approved
-   outcome, domain, environment, effects and cost without another Definition or
-   approval gate. Explicit dependencies, frozen evidence and protected effects
-   still bind. It verifies the package, and
-   relinquishes writing and returns one review-ready Result Notice through
-   the approved route for a named stable checkpoint, without polling.
-5. If the contract preauthorizes first E-to-R review, use that frozen input and
-   coverage route directly; otherwise P confirms scope and routes it to R.
-   R inspects the
-   actual change, necessary semantic context, tests, documentation consumers,
-   material untracked inputs and graph/generated limits without writing.
-6. Follow the approved correction route in
-   [Planner, Executor, And Reviewer](coordination-and-recovery.md#planner-executor-and-reviewer-l3).
-   Preauthorized ordinary same-scope findings go from R to the original E;
-   E repairs and verifies, and the same reliable Reviewer re-reviews the
-   affected and cumulative material surface. No per-round P approval is needed.
-   Without preauthorization, or for disputes, nonconvergence, uncertain
-   authority or material risk, return to P. At convergence or an exception,
-   P checks independence, coverage and contract fit without repeating technical
-   review, then returns exactly one checkpoint-bound `ACCEPTED`,
-   `CORRECTION_REQUIRED`, or `DECISION_REQUIRED` disposition to E. Acceptance
-   stays with P; R never repairs or accepts. Terminal dispositions need no ACK.
-   Reviewer replacement requires a material reliability, independence or
-   contract reason and never resets cumulative history.
-
-7. Keep the formed verdict and its recording state separate. With governance
-   write authority, the Planner records its verdict after assessment and the
-   Executor's writer relinquishment. If only the Executor may write, include
-   that mechanical record update and its checks in the disposition or closeout.
-   Before another session relies on durable acceptance, the authorized writer
-   records and verifies the verdict and evidence pointer in the canonical owner;
-   otherwise report recording as pending. The Executor never prewrites a future
-   verdict. Fix record errors as records, returning to the relevant gate only
-   for changes to contract, risk or acceptance meaning. Git review still applies.
-8. The Planner returns its phase-level Result Notice to the Orchestrator. The
-   Orchestrator assesses project direction and transition without duplicating
-   implementation review, then returns exactly one checkpoint-bound
-   disposition to the Planner. It never contacts the Executor directly.
-   Record and verify that assessment through the same authorized writer rule
-   before another session or phase transition relies on its durable state.
-   Define the final records, checks, remaining authorized actions and writer
-   state; a factual recording-complete notice does not start another acceptance
-   loop. Cross-project status receipt alone adds no acceptance layer; an explicit
-   existing layer changes only through the user's contract decision.
-9. An unapproved phase or change beyond delegated outcome, permission, cost,
-   effect, risk or acceptance authority returns to the user through its owner.
-   In-bound P choices do not automatically require O or user approval. An
-   explicitly preapproved bounded phase sequence may continue when its
-   transition conditions and total limits hold; retain existing next-phase
-   user gates unless explicitly amended. Use
-   [Authorized Progression](coordination-and-recovery.md#authorized-progression)
-   for the complete continuation and exception contract.
-
-Use durable state for cold or recovery entry and compact warm handoffs while
-role sessions remain reliable. Work Charter cannot guarantee role delivery,
-writer locking, message finality, graph completeness, or compliance. Treat
-`UNKNOWN` as an evidence question first: inspect raw terminal evidence and
-nearby counterexamples already within scope, then escalate only if the missing
-fact requires broader authority or changes a protected boundary. Report
-capability degradation honestly and stop for material control, delivery,
-writer, review-input, or evidence ambiguity. Return a disposition for a required
-decision to the role that acts on it; factual and evidence notices need no pure
-acceptance receipt. Do not relabel a decision to bypass its gate. Never poll,
-mirror the result or require acknowledgement. Recover current rules only before
-the next affected work; idle roles are not broadcast-woken by text changes.
-Harness loading proof and explicit frozen fresh-run contracts retain their
-separate requirements under the shared recovery boundary.
+L0 means no adopted Charter; L1 current-task Direct; L2 durable Direct; L3 Team;
+L4 split Phased. These are compatibility interpretations, not levels required
+for new work. Model-file v1/v2 compatibility is a separate optional policy.
+Preserve frozen objects and selected legacy policies; installing the package
+does not migrate contracts, user configuration or active tasks.

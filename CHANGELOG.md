@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.11.0 portable workflow ownership
+
+The approved reorganization makes the installable Skill the complete owner of
+portable progression, handoff, correction and acceptance. Host consumers retain
+their own tool/permission mechanics and an ordinary-task minimum when the Skill
+is absent. Outcome approval does not freeze incidental methods or erase genuine
+limits. New and legacy paths, human/internal views and rule migration are explicit.
+
+The reason is recurring conflict between broad method autonomy and narrower
+re-entry/progression clauses. The change consolidates those clauses rather than
+adding another approval layer. Alternatives rejected: merely append a slogan,
+remove real protections, or copy private host operations into the public package.
+Role-model policy becomes optional unless already selected; complete-object
+compatibility and existing personal/frozen choices remain intact. No model values,
+installer production mechanism, business authority or public release are changed.
+
 ## v0.10.4 outcome-led recovery
 
 - Consolidate outcome, risk, constraint applicability and method autonomy.

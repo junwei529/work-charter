@@ -2,6 +2,25 @@
 
 [English](README.md)
 
+当前本地修订：**v0.11.0**。完整通用流程归公开Skill，宿主负责实际工具和权限机制。实际审查/安装状态见[State](docs/skills/work-charter/STATE.md#v0110-current-work)；最后核实的公开版本为v0.10.2，本修订尚未发布。
+
+普通Direct由一位D负责目标澄清、方案、实现、验证、修复和交付；需要目标协调时加O，有明确收益才拆P/E。用户授权目标与范围，未明确固定的普通方法可在真实权限、效果、成本和验收底线内调整。内部步骤和版本变化不自动新增审批。
+
+无需本人的全局规则、个人模型文件或指定Thread API。模型策略仅在用户、合同或明确宿主政策选择时启用；未选时使用合法宿主设置，已选择但缺失/无效不能静默回退。旧合同已选策略、完整对象及冻结组合保留。
+
+面向用户说明成果、影响与真实选择；内部交接给准确输入、证据、责任和下一动作。两者共享同一授权与事实。旧合同兼容按需读取，安装不迁移项目、改个人配置或证明运行有效。
+
+使用示例：`用 $work-charter 继续已有授权目标，核对当前状态，按最简充分路径推进；只有真正未决的权限或范围变化才问我。`
+
+[完整用法与安装](README.md) · [设计与理由](docs/skills/work-charter/DESIGN.md) · [验证](docs/skills/work-charter/VERIFICATION.md)
+
+<details>
+<summary>形成时保留的历史中文说明</summary>
+
+# Work Charter
+
+[English](README.md)
+
 当前本地修订为 **v0.10.4**：合并目标驱动交付、适度恢复与证据复用，保留已有权限边界。
 最新正式发布仍为 **v0.10.2**；源码、审查和受管安装状态见[当前状态](docs/skills/work-charter/STATE.md#v0104-outcome-led-recovery)。
 既有合同不会自动迁移。
@@ -350,5 +369,7 @@ repair 是两份不同证据；该修复使副本在之后的已接受更新前�
 ### 后续更新与回滚的信任输入
 
 工具内置的信任映射只授权 v0.3.0 package tree。后续不可变 Release 必须在候选 checkout 之外独立发布经人工复核的 package-tree 身份。更新或回滚到工具未内置的版本时，使用 `--trusted-target-package-tree <git-tree-sha1>` 提供该外部信任锚；若当前已安装版本也不在内置映射中，再对 update、rollback、status 和 uninstall 使用 `--trusted-current-package-tree <git-tree-sha1>` 提供此前独立保留的身份。不得从待安装 source tree 自身复制这两个信任值；后续版本的公开 Release 与跨版本 lifecycle 证据在分别建立前仍为 `UNKNOWN`。
+
+</details>
 
 </details>

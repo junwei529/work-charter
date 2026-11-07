@@ -1,153 +1,75 @@
-# Work Charter: <Name>
+# Work Agreement: <Name>
 
-Use this optional durable carrier only when no suitable existing canonical
-owner exists. It is never auto-created and its presence is not adoption proof.
-For one authoritative checkout, root `WORK_CHARTER.md` is a possible fallback.
-With multiple worktrees, record one explicit control location all required
-roles can read at the same revision; do not copy authoritative files into each
-worktree. Remove unused prompts and keep pointers instead of copied content.
+Optional carrier: use an existing authorized owner first. Remove inapplicable
+parts. These are information needs, not a required form or additional approval.
+Presence of this file does not prove adoption or any action authority.
 
-- Managed workstream and exclusions: `<bounded line of work and what it does not cover>`
-- Contract format: `arrangement-v2` for a newly approved contract; retain an old contract until its authorized migration
-- Work arrangement and responsibilities: `<Direct by default; add Phased O for goal coordination; select Team P/E only where separation has a concrete benefit>`
-- Workstreams when applicable: `<bounded outcomes, Direct or justified Team for each, dependencies, overlapping/shared write surfaces, aggregate limits, integration owner and combined-result evidence; no new registry required>`
-- Continuity: `<current-task | durable, applicable existing anchor; Team/Phased need common recoverable control>`
-- Contract state: `<draft | proposed | approved | superseded>`
-- Run disposition: `<active | paused | closed>`
-- Canonical locator and revision: `<portable locator and comparable freshness marker>`
-- Standing-policy locator: `<if applicable; otherwise none>`
-- Intended workspace and writer: `<workspace/worktree and one-writer boundary>`
-- Role owners, carriers and review route: `<Deliverer (D / primary) or actual O/P/E/R responsibilities; selected carriers, parent/recipient lifetime, next-turn activation where required, stable checkpoint and finding/disposition routes>`
-- Review product and timing: `<actual result, implementation plan or overall direction; required gate, applicable instructions/contract, input, original author and assessor>`
-- Reviewer continuity and carrier: `<one reliable continuing R for related products where supported; real reason for another R; exact request/return route across the selected carriers>`
-- Resolved execution metadata: `<for each newly resolved task/role: arrangement, contract format (legacy level only if applicable),
-  actual responsibility, provider/model/parameters or host-selection
-  pass-through, object source, file source, requested values, and observable
-  runtime identity>`
-- Last material checkpoint and evidence: `<pointer, subject/revision, invalidation condition>`
-- Reviewed input and coverage: `<baseline, actual change, semantic context, tests, docs, untracked inputs, graph/generated limits>`
-- Findings and correction history: `<cumulative findings, dispositions, repairs, Reviewer continuity or replacement reason>`
-- Last material result and decision: `<checkpoint, named assessor and action recipient; returned verdict or awaiting verdict only when a decision is required; factual notice otherwise>`
-- Decision recording and closeout: `<formed verdict, canonical recording state, authorized writer window, required final records/checks and endpoint>`
-- Next approved action or pending decision: `<bounded action and its authority, or decision locator and semantic owner>`
-- Reconfirmation and return conditions: `<material change, stop, and return route>`
+## Outcome And Acceptance
 
-## Proposal Layers
+<Final observable user result, earliest useful complete delivery, remaining
+outcomes and acceptance floor in the intended environment. State material
+priorities and time sensitivity without inventing a hard deadline.>
 
-Use the four layers in [Contract And Proposal Changes](../references/coordination-and-recovery.md#contract-and-proposal-changes):
+## Scope, Authority And Reserved Decisions
 
-- **Confirmed Contract:** `<final outcome, earliest useful complete result,
-  acceptance floor, domain/environment, authorized effects/cost and exclusions>`
-- **Necessary Guardrails:** `<source/protected risk, actual exposure and material
-  applicability; distinguish the protected outcome from replaceable mechanisms>`
-- **Working Proposal:** `<current methods and checks; replaceable within the
-  contract, with dependencies and reasons only where they constrain the choice>`
-- **Assumptions / Open Decisions:** `<material uncertainty and its real owner>`
+<Already approved scope, actual effects/data/cost and recognizable targets;
+user-fixed requirements and other real protections with their source or reason;
+what remains reserved or planning-only. Distinguish confirmed from proposed.>
 
-Before presenting this agreement as ready for adoption, distinguish confirmed
-and still-valid reused answers from recommendations and unresolved user choices.
-Explain actual roles/carriers, review products, acceptance and progression in
-one concise view; omit inapplicable branches instead of adding a questionnaire.
+## Current State And Adjustable Proposal
 
-Use the referenced four-layer rules for method changes, constraint retirement
-and retained historical limits. End-to-End Delivery owns total-cost and timely
-value judgments; this carrier adds no approval or required field suite.
+<Observed state and supported evidence, relevant unknowns, reusable capability,
+selected route and why. Tools, order and ordinary repair are adjustable within
+the agreement; explain dependencies that genuinely constrain the method.>
 
-## Outcome And Non-Goals
+Use [the four layers](../references/coordination-and-recovery.md#contract-and-proposal-changes)
+when useful: Confirmed Contract, Necessary Guardrails, Working Proposal,
+Assumptions / Open Decisions. Recording a method does not freeze it. Keep important
+rejected alternatives and reconsideration reasons in the existing decision record.
 
-<State the final observable result and current useful delivery in their intended
-use/environment, remaining outcomes and non-negotiable acceptance. Explain a
-material priority or time sensitivity without inventing a delivery hard stop.>
+## Responsibilities And Handoffs
 
-## Scope And Hard Boundaries
+<D by default; O for goal coordination or P/E only where justified; necessary
+independent R and actual acceptance owner. Writer boundaries, dependencies and
+integration responsibility for parallel work. Use actual supported carriers.>
 
-<State fixed outcomes, interfaces, acceptance floor and real guardrails;
-the primary's exploration, planning, implementation and repair authority;
-selected Team P/E responsibilities only where applicable; and exceptions
-requiring O or the user. Identify actual acceptance nodes without freezing
-tactical methods. Planning-only authority remains explicit.>
-
-## Authorization And Material Effects
-
-<State which reads, writes, role delivery, Git operations, installation,
-external effects, costs, or sensitive-data actions are authorized or
-prohibited.>
-
-## Acceptance Evidence
-
-<State checks, evidence pointers, mutable subjects and invalidation
-conditions, how hidden or external results are observed, verification
-owner, Reviewer and review input when required, assessor, recording owner,
-and independently acceptable checkpoints if any. For material evidence
-claims, identify the agreed inspection scope, actual coverage and
-remaining gaps. Treat graph results and acquisition counts as bounded
-coverage aids, not semantic proof.>
+Internal handoffs identify the requested action/result, goal, accurate input,
+authority source, material protections, adjustable methods and return route.
+Cold entry supplies sufficient sources, warm entry the delta, recovery current
+state and unfinished work. Human decisions present outcomes/impacts/choices rather
+than an internal packet. Facts need no ACK; requests need substantive results;
+only agreed acceptance nodes require a disposition.
 
 ## Authorized Progression
 
-<Name the approved work package, next items, dependency/acceptance transitions,
-aggregate cost/effect budget, intervention preference and exception stops.
-State the primary-to-R or selected E-to-R review and original-author repair/
-same-R re-review route. Selected Team P retains target acceptance; otherwise
-no P gate is introduced. Name agreed O/user outcome acceptance and transitions. Name the exact recipient, supported next-turn activation
-route and next authorized action for each dependent handoff; distinguish
-permission, message arrival, activation, completion and acceptance.
-For cross-phase continuation, cite advance approval of the bounded phase set,
-outcomes, transition conditions and total limits; otherwise the next unapproved
-Phase remains a user gate. Preserve explicit old gates until amended.>
+<Remaining approved outcomes and dependencies, necessary review/acceptance nodes,
+aggregate actual limits and exception stops. Continue ordinary implementation,
+verification and same-scope repair without per-step approvals. Preserve explicit
+old gates; internal phases are not new permission units.>
 
-## Stop, Decision, And Recovery
+## Evidence And Recovery
 
-<State bounded recovery read order, next safe action, stop conditions, and
-return route. Name one semantic owner for each pending user decision.
-Include incomparable authority, a missing required disposition, pending
-recording that blocks reliance on durable state, evidence drift, writer
-conflict, and the next affected recovery action. For ongoing evidence
-work, retain usable source locators, obtained versus examined material,
-and remaining gaps. Do not wake idle roles for text changes or claim
-fresh loading from rereading, hashes or a new task alone. Preserve explicit
-fresh-run contracts, approvals, findings, stops and consumed evidence
-across compaction, deliberate rotation and successor Sessions.>
+<Latest material checkpoint and evidence locators; actual source/runtime coverage,
+material inputs/invalidation conditions, cumulative findings and relevant failures;
+in-flight effects, writer/dirty ownership, next safe action and real blocker owner.>
 
-## Coordination
+Keep current state separate from history. On a changed instruction identify its
+replacement scope and notify only affected recipients. Preserve unknown effects
+and consumed limits; no relabeling to replay. Formed acceptance and durable
+recording are separate facts; specify the minimal closeout and writer state.
 
-<Choose an endpoint that can finish the work with proportionate handoff cost;
-keep tightly coupled running and repair together. Record applicable delegation
-authority and reconcile active work before a collaborator exits.
-State the least sufficient responsibility separation and applicable standing
-policy without copying it. Name the assessor and action recipient for material
-decisions; factual, evidence and mechanical-recording notices need no acceptance
-reply. Required dispositions still reach the dependent role; terminal ones need
-no acknowledgement. Complete the authorized package before stable review unless
-a material boundary intervenes. Name any preauthorized R-to-E same-scope repair
-and E-to-original-R re-review route, its stops and read-only review windows.
-Otherwise findings return to selected Team P; in Direct workstreams they return to the primary.
-Planning findings return to their original P or O author and designated approval
-route. For selected Team implementation, P receives the cumulative stable or exception result
-and returns its acceptance/correction/decision disposition to E. Record only formed verdicts
-within the authorized single-writer window; mechanical closeout does not recurse
-into acceptance of its records. Retain cumulative review history. Configuration
-choice does not enable a listed role or authorize delivery or action. Distinct
-responsibilities that outlive an upstream turn normally use separate addressable
-tasks with a supported next-turn route. Bounded subagents may return within an
-active parent turn. Cross-turn mixed carriers require actual host reactivation,
-addressing/recovery and approved selection; keep a suspended design in its
-existing design owner, not as a competing active default. Use short task labels;
-full identities and checkpoints remain in the contract.>
+## Optional Contract Metadata
+
+<Only when needed: contract_format arrangement-v2 for new formal agreements;
+actual existing format for legacy; approved/proposed status and active/paused
+work disposition; canonical locator/revision and standing policy.>
+
+<Only when a model policy is selected: actual responsibility/selector, complete
+provider/model/parameters and source, requested versus observed identity. Otherwise
+use host selection without inventing a configuration. No metadata enables a role.>
 
 ## Task Or Role Prompt
 
-<Optional prompt scaffold, not a second authoritative contract. Shared
-contract: locator/revision and material boundaries. Actual responsibility:
-Deliverer (D, configuration responsibility primary) or the authorized O/P/E/R role. Current task: deliverable, inputs,
-necessary checks with their basis, stop conditions, and return route. Carry
-the user's goal and relevant original sources, supported existing conclusions,
-current proposals and the receiver's method-adjustment authority. These are
-information needs, not mandatory headings or a requirement to reread everything.
-For evidence-only
-work, include the bounded question, allowed source/data scope and actual
-coverage/gaps required in the result. Necessary model adaptation:
-supported delta and source, or none. Cold prompts supply missing context;
-warm prompts carry only changed facts and the valid anchor; recovery
-preserves findings, permission history and material inspection progress.
-Keep effort in native runtime parameters.>
+<A short current request referencing this agreement, actual responsibility,
+deliverable, necessary input/evidence, autonomy, stops and return route. It is
+not a second authoritative contract. No copied history or fixed label suite.>

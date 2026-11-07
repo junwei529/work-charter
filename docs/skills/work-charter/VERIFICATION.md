@@ -29,8 +29,18 @@ explicit source/current tree bindings and a private same-volume transaction.
 Managed status was read back; six installed files match source, seven actual
 host files match reviewed candidates, the personal model policy is unchanged,
 and the transaction directory is empty. Installer production behavior did not
-change, so unrelated lifecycle/adversarial suites were not repeated. Publication
-and long-term behavior remain unproved by this delivery. Historical verification
+change, so unrelated lifecycle/adversarial suites were not repeated. Long-term behavior remains unproved by this delivery.
+
+Publication was separately authorized and completed on 2026-11-07. The original
+repository's main branch advanced by a non-force atomic push to reviewed commit
+`6532588a41e4d4ce50483884a35d614e7e6f5bc3`; annotated tag `v0.11.0`
+resolves to that commit. Git and GitHub API readback agreed. Release `437489155`
+is [published](https://github.com/junwei529/work-charter/releases/tag/v0.11.0), non-draft, non-prerelease and
+was read back as Latest; the release body matched the submitted notes. Actual
+push and Release creation exited successfully. Initial restricted-environment
+access/network failures and the prior failed v0.10.4 publication remain historical
+evidence; they are not erased by this success. This is publication evidence,
+not proof of automatic adoption or runtime effectiveness. Historical verification
 sections below retain their dated scope and do not add current gates.
 
 ## v0.10.4 outcome-led recovery

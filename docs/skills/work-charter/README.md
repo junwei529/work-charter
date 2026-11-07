@@ -2,7 +2,7 @@
 
 The current local [v0.11.0 revision](STATE.md#v0110-current-work)
 reorganizes portable workflow and host responsibilities without adding step gates.
-The last verified published release remains v0.10.2. The
+The current published release is [v0.11.0](https://github.com/junwei529/work-charter/releases/tag/v0.11.0), verified on 2026-11-07. The
 [candidate](../../../release/v0.11.0-candidate.json) is a pre-effect snapshot;
 State and Verification own actual review and managed-installation evidence.
 Model policy is optional for new use unless explicitly selected. Existing selected

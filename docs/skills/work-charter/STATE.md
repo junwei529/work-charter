@@ -8,8 +8,13 @@ semantic review closed all three findings on the corrected source and host
 consumers. The actual installed six-file package matches the reviewed source;
 seven host guidance consumers match their reviewed candidates. Personal model
 policy is unchanged. This does not migrate existing project contracts or prove
-their future behavior. The last verified published release remains v0.10.2;
-v0.11.0 has not been published.
+their future behavior. The current published release is
+[v0.11.0](https://github.com/junwei529/work-charter/releases/tag/v0.11.0), verified on 2026-11-07.
+The annotated tag resolves to reviewed commit
+`6532588a41e4d4ce50483884a35d614e7e6f5bc3`; Release `437489155` is
+non-draft, non-prerelease and was read back as Latest. This post-publication
+record does not move the tag or change the installable package. The released
+commit's pre-effect status statements retain their original dated context.
 
 Package tree: `0eacebf6dae5c7e17de9206bc8c442d0bdec4895`.
 Package digest: `e46239928cee7eda70aca2d07ac20e4ba5c1468ee3d4242d9ef649e476da2855`.

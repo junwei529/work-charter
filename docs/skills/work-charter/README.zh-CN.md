@@ -1,7 +1,7 @@
 # Work Charter
 
 当前本地[v0.11.0修订](STATE.md#v0110-current-work)重组公开通用流程与宿主职责，
-不增加逐步审批。最后核实的公开版本仍为v0.10.2。
+不增加逐步审批。当前正式发布为[v0.11.0](https://github.com/junwei529/work-charter/releases/tag/v0.11.0)，已于2026-11-07读回确认。
 [候选](../../../release/v0.11.0-candidate.json)保留实施前快照，实际审查与受管安装证据由State和Verification承接。
 新使用默认不要求模型策略；明确选择后按该策略执行。旧合同已选策略、完整模型值、冻结组合及真实边界保留。
 

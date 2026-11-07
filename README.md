@@ -4,8 +4,8 @@
 
 Current local revision: **v0.11.0**, a portable workflow/host-boundary
 reorganization. See [State](docs/skills/work-charter/STATE.md#v0110-current-work)
-for actual review and installation evidence. The last verified published release
-is v0.10.2; this revision has not been published. Existing selected model policies
+for actual review and installation evidence. The current published release
+is [v0.11.0](https://github.com/junwei529/work-charter/releases/tag/v0.11.0), verified on 2026-11-07. Existing selected model policies
 and explicit project gates are preserved.
 
 Keep complex AI projects moving across handoffs—and through to delivery.

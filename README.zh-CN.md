@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-当前本地修订：**v0.11.0**。完整通用流程归公开Skill，宿主负责实际工具和权限机制。实际审查/安装状态见[State](docs/skills/work-charter/STATE.md#v0110-current-work)；最后核实的公开版本为v0.10.2，本修订尚未发布。
+当前本地修订：**v0.11.0**。完整通用流程归公开Skill，宿主负责实际工具和权限机制。实际审查/安装状态见[State](docs/skills/work-charter/STATE.md#v0110-current-work)；当前正式发布为[v0.11.0](https://github.com/junwei529/work-charter/releases/tag/v0.11.0)，已于2026-11-07读回确认。
 
 普通Direct由一位D负责目标澄清、方案、实现、验证、修复和交付；需要目标协调时加O，有明确收益才拆P/E。用户授权目标与范围，未明确固定的普通方法可在真实权限、效果、成本和验收底线内调整。内部步骤和版本变化不自动新增审批。
 

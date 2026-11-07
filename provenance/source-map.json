@@ -67,13 +67,13 @@
       "destination": "README.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "32c1e22515c50637d59894e40f12d9c6a388c07889febee045fc68f096577822"
+      "target_sha256": "cfe2e38ce820e292066ca4bc1304dc3fad9d9eb0bde45df38f27f625504d9c1d"
     },
     {
       "destination": "README.zh-CN.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "9e4f4ced633186ea462b6fd27ac1595b075255c76348c726247fbe130ecec68d"
+      "target_sha256": "17f9a17000033b60d45b5abb2bed46e830c45fefd2705cad3729608bf1476d62"
     },
     {
       "destination": "docs/skills/work-charter/DESIGN.md",
@@ -85,25 +85,25 @@
       "destination": "docs/skills/work-charter/README.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "d45a2486e8a11480c6d2b186d36950ae3666ed8cbe4f32cd6d5452619d2219d2"
+      "target_sha256": "474d68124d2f3d2b633738d150e9cb3d149ef91913a60aaf14071a7fa6e7ecf5"
     },
     {
       "destination": "docs/skills/work-charter/README.zh-CN.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "755f6e69fde44d4d71306a0c0bd2ce089ba0255b7a76c2fb4270e5cf3a0feac9"
+      "target_sha256": "9698e5cee1b3eae71c315107590841c9ac04e438e139e034ba15303c4fa24426"
     },
     {
       "destination": "docs/skills/work-charter/STATE.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "728921da0499c316b1f4a9caeb90e65a480a9d08c94848576eef1187db70efa5"
+      "target_sha256": "108f1fe08ca6ba35804fb891c52d444365827ab9a6f92705b631f039c1f75093"
     },
     {
       "destination": "docs/skills/work-charter/VERIFICATION.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "a11c1f5f6a96d8046f228dc2a317eb65e64b1245ac196bffa90baa0a5c6f2e29"
+      "target_sha256": "f18ff0960df9b34f2422e83f5557423e8143612f6640ed778a483c64b3145d3e"
     },
     {
       "destination": "evals/README.md",
@@ -769,8 +769,8 @@
           "source_path": "evals/check-fixtures.ps1"
         }
       ],
-      "target_normalized_sha256": "79aea7e905f0234aa5ca9f2dbed999adf18322b69402e25bbd94ada6e2d97cef",
-      "target_sha256": "79aea7e905f0234aa5ca9f2dbed999adf18322b69402e25bbd94ada6e2d97cef",
+      "target_normalized_sha256": "4da7d84096cca6d0852cb02a6a016b18a21ff21e94101b6b8e99b110a3355890",
+      "target_sha256": "4da7d84096cca6d0852cb02a6a016b18a21ff21e94101b6b8e99b110a3355890",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {

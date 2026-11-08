@@ -1,5 +1,14 @@
 # Provenance And Transformation Boundary
 
+## Project knowledge cooperation source follow-up
+
+The v0.11.1 candidate binds the revised shared entry and coordination reference.
+The v0.11.0 descriptor is retained and hash-pinned as history. Package shape, model
+presets and installer mechanism are unchanged. The added candidate is repository-native;
+changed target hashes and the mapping pin are refreshed without changing prior
+source identities or claiming publication/installation.
+
+
 ## v0.11.0 portable workflow ownership
 
 The approved reorganization makes the installable Skill the complete owner of

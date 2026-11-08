@@ -2,11 +2,8 @@
 
 [简体中文](README.zh-CN.md)
 
-Current local revision: **v0.11.0**, a portable workflow/host-boundary
-reorganization. See [State](docs/skills/work-charter/STATE.md#v0110-current-work)
-for actual review and installation evidence. The current published release
-is [v0.11.0](https://github.com/junwei529/work-charter/releases/tag/v0.11.0), verified on 2026-11-07. Existing selected model policies
-and explicit project gates are preserved.
+**[Latest release](https://github.com/junwei529/work-charter/releases/latest)**
+· [Source and verification status](docs/skills/work-charter/STATE.md#v0111-source-follow-up)
 
 Keep complex AI projects moving across handoffs—and through to delivery.
 
@@ -63,6 +60,16 @@ several independently owned workstreams; parallelism needs explicit boundaries,
 one writer per overlapping surface and an integration owner where results join.
 Reuse R where reliable rather than creating one per branch. No new document suite
 or nested O follows from this structure.
+
+## Optional project knowledge cooperation
+
+The working source adds an optional responsibility map for knowledge maintenance;
+see [current source state](docs/skills/work-charter/STATE.md#v0111-source-follow-up).
+D/E normally completes the execution-knowledge loop, P/O handles its actual contract
+or cross-workstream responsibilities, and R independently inspects relevant impact.
+Project Docs may supply knowledge methods when available and needed. Either Skill
+works alone. New or substantively changed standing project rules need the user's
+confirmation; ordinary document maintenance does not gain a new approval step.
 
 ## Existing projects
 

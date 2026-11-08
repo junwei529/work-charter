@@ -2,7 +2,8 @@
 
 [English](README.md)
 
-当前本地修订：**v0.11.0**。完整通用流程归公开Skill，宿主负责实际工具和权限机制。实际审查/安装状态见[State](docs/skills/work-charter/STATE.md#v0110-current-work)；当前正式发布为[v0.11.0](https://github.com/junwei529/work-charter/releases/tag/v0.11.0)，已于2026-11-07读回确认。
+**[最新发布](https://github.com/junwei529/work-charter/releases/latest)**
+· [源码与验证状态](docs/skills/work-charter/STATE.md#v0111-source-follow-up)
 
 普通Direct由一位D负责目标澄清、方案、实现、验证、修复和交付；需要目标协调时加O，有明确收益才拆P/E。用户授权目标与范围，未明确固定的普通方法可在真实权限、效果、成本和验收底线内调整。内部步骤和版本变化不自动新增审批。
 
@@ -11,6 +12,11 @@
 面向用户说明成果、影响与真实选择；内部交接给准确输入、证据、责任和下一动作。两者共享同一授权与事实。旧合同兼容按需读取，安装不迁移项目、改个人配置或证明运行有效。
 
 使用示例：`用 $work-charter 继续已有授权目标，核对当前状态，按最简充分路径推进；只有真正未决的权限或范围变化才问我。`
+
+当前源码增加了可选的项目知识协作：[源码状态](docs/skills/work-charter/STATE.md#v0111-source-follow-up)。
+D/E 负责执行经验闭环，P/O 沿既有职责处理合同或跨工作线事项，R 独立检查相关影响。
+需要且可用时配合 Project Docs，两者都可单独使用。新增、实质修改或废止项目规则须用户确认，
+一般文档维护不增加逐项审批。
 
 [完整用法与安装](README.md) · [设计与理由](docs/skills/work-charter/DESIGN.md) · [验证](docs/skills/work-charter/VERIFICATION.md)
 

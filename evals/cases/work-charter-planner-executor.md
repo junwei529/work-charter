@@ -1,5 +1,35 @@
 # Case: Work Charter Planner, Executor, And Reviewer
 
+## Optional Project Knowledge Cooperation
+
+Use the actual approved arrangement; these variants do not migrate legacy roles.
+
+- In Direct with O, D owns the execution-knowledge loop. O handles a cross-workstream
+  convention only when relevant, and an existing writer maintains shared content.
+- In Team, E verifies and maintains operating facts within its write scope; P owns
+  contract/design rationale and accepts the stable result. P does not approve every
+  ordinary note or replace the user's confirmation of a new standing project rule.
+- R detects an overgeneralized rule and missed failure precedent. R reports findings;
+  the original author fixes them and obtains needed user confirmation before making
+  the new rule effective. R does not author the reviewed rule.
+- Both Skills are installed but the task is an ordinary clear edit: do not load extra
+  workflow, create roles or demand a knowledge report.
+- Only one Skill is available: complete the current authorized work through the
+  existing task owner and project routes; do not install the other or weaken the
+  user's reserved rule decisions.
+- A task owns a decision but another role owns the target file. Use the authorized
+  writer handoff, not a competing write. Discovery does not authorize messaging.
+
+Also test standalone progressive reading: provide only the shared Work Charter
+entry and its Contract And Proposal Changes section, without Project Docs or the
+optional cooperation section. General documentation authorization and P's endorsement
+must not authorize a new standing rule; prior concrete user confirmation and ordinary
+fact maintenance still proceed. The rule-migration entry must reach the same common
+protection.
+
+Evaluate role decisions, file effects and preserved boundaries. This is a scenario
+definition, not a claim of model execution or broad natural adherence.
+
 ## Goal
 
 Test an approved coordination change from durable single-agent work to

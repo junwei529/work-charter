@@ -1,5 +1,18 @@
 # Work Charter Design
 
+## Project knowledge cooperation follow-up
+
+The optional coordination section owns D/E/P/O/R responsibilities for knowledge
+reuse and maintenance. Project Docs owns retention and placement methods. Both
+Skills remain independent; activation depends on actual task needs, an applicable
+arrangement and peer availability, not installation alone. No new roles, loading
+service, model policy or agreement migration is introduced.
+
+The user reserves confirmation of new, materially changed or retired project rules.
+Ordinary documentation stays within existing authority; prior user confirmation is
+reused. Role-level acceptance is not a substitute. Semantic method details stay in
+Project Docs, with a minimum protection retained for standalone Charter use.
+
 ## v0.11.0 portable workflow ownership
 
 The approved reorganization makes the installable Skill the complete owner of

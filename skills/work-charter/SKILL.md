@@ -59,6 +59,11 @@ automatically freeze incidental tools, steps, estimates or proof mechanisms.
 Read [Contract And Proposal Changes](references/coordination-and-recovery.md#contract-and-proposal-changes)
 for authority interpretation, conflicts and user decisions.
 
+- Standing project-rule changes are user-reserved: apply
+  [Project Rule Decisions](references/coordination-and-recovery.md#project-rule-decisions)
+  before a new, materially changed or retired rule becomes effective. Ordinary
+  document maintenance and faithful recording of prior user confirmation continue
+  within existing authority.
 - Keep one accountable writer per overlapping surface and preserve unrelated
   work. Required independent R never authors the product it independently reviews.
 - Distinguish facts, inferences and unknowns; source tests, deployment and actual
@@ -89,6 +94,7 @@ complete portable detail; its sections below are selected by the actual task.
 | Scope, authority, fixed versus adjustable content, conflicts, user decisions | [Contract And Proposal Changes](references/coordination-and-recovery.md#contract-and-proposal-changes) |
 | Route choice, research, allocation, failure disposition | [End-to-End Delivery](references/coordination-and-recovery.md#end-to-end-delivery-and-parallel-workstreams) |
 | Continuous work and real handoffs | [Authorized Progression](references/coordination-and-recovery.md#authorized-progression) |
+| Knowledge-maintenance role responsibilities and optional Project Docs use | [Project Knowledge Cooperation](references/coordination-and-recovery.md#optional-project-knowledge-cooperation) |
 | Human versus internal communication, evidence labels, cold/warm prompts | [Task And Role Prompt Construction](references/coordination-and-recovery.md#task-and-role-prompt-construction) |
 | Independent review, disputes and acceptance | [Review Input At Any Level](references/coordination-and-recovery.md#review-input-at-any-level) |
 | Rules changing, user cancellation, recovery or legacy migration | [Context-Switch Recovery](references/coordination-and-recovery.md#context-switch-recovery) |

@@ -70,6 +70,22 @@ create a gate. Retiring a temporary mechanism preserves its valid protection and
 history. Explicit one-shot, no-replay, pause and spent limits keep their actual
 subject and scope; they neither spread to unrelated work nor reset under a new name.
 
+### Project Rule Decisions
+
+Creating, materially changing, relaxing or retiring a standing project rule is a
+user-reserved decision. The user must confirm the concrete rule change and scope
+before it becomes effective, regardless of whether it is written in AGENTS, README,
+a runbook or another owner. General maintenance authority and an O/P/R disposition
+do not substitute for this confirmation.
+
+Faithfully recording the same already user-confirmed rule or making a
+meaning-preserving wording/pointer repair needs no repeated decision. Ordinary facts,
+verified procedures and evidence remain maintainable within task authority. Keep
+unconfirmed rule proposals outside active instructions and continue independent
+work. An incidental method choice for the current task is not automatically a new
+standing rule. Project Docs, when used, owns the detailed knowledge-placement method;
+this protection does not depend on that Skill being available.
+
 ### Conflicting Rules And Reserved Decisions
 
 First check whether statements govern the same subject, phase and effect. Apply
@@ -182,6 +198,43 @@ Unexplained changes stop affected writing and invalidate affected evidence.
 Name an existing integration owner where workstreams converge. Branch-local checks
 do not prove the combined result; inspect material integration and reuse unaffected
 evidence. Keep common state at one reliable owner, not copies per worktree.
+
+## Optional Project Knowledge Cooperation
+
+Use this section when the task already has an applicable Work Charter arrangement
+and knowledge reuse or maintenance needs attention. Project Docs, when available,
+owns retention, placement and document-update methods; Work Charter owns the actual
+role responsibilities, handoff, review and acceptance. Availability alone selects
+neither Skill nor arrangement. Locate a peer through the current catalog and load
+only the relevant guidance. No detector service, dependency installation or fixed
+cross-package path is required.
+
+| Actual role | Knowledge responsibility |
+|---|---|
+| Direct D | Own the complete workstream loop: consult existing methods, check conditions, gather evidence, distill useful learning, maintain the proper owner/entry and verify material reuse |
+| Team E | Perform that loop for execution methods, technical conditions and failure precedents within the delegated write surface; refer contract or user-reserved rule changes to their decision owner |
+| Team P | Reuse prior knowledge in planning; own its contract/design rationale; assess necessary knowledge maintenance at acceptance without approving each ordinary note |
+| Phased O | Address cross-workstream lessons, priorities, shared conventions and ownership conflicts; assign an existing writer for shared knowledge rather than collecting every log |
+| Independent R | Consult relevant rules/precedents and inspect affected evidence, generalization and discovery paths; return findings to the author without writing the reviewed knowledge |
+
+Every role consults knowledge needed for its own decisions. D/E normally keeps the
+tightly coupled observe/verify/maintain loop together. Decision responsibility does
+not itself grant file-write ownership: use the existing authorized writer and
+handoff route. Keep current Direct, Team, Phased and legacy roles; do not create
+P/O, appoint a learning agent or migrate an agreement merely to maintain knowledge.
+
+Apply the shared [Project Rule Decisions](#project-rule-decisions) protection in
+all arrangements, including standalone use. O/P/R retain their actual responsibilities
+without replacing the user's reserved confirmation. Project Docs supplies the
+knowledge-placement method when needed and available.
+
+When a peer is missing or unnecessary, continue through the current task owner and
+valid project routes. Work Charter still requires the necessary documentation and
+user-reserved decisions; Project Docs can be used without adopting Work Charter.
+No extra review gate, per-note report, full-history scan or message permission
+follows. Use existing material checkpoints to catch omissions and existing required
+review to inspect relevant knowledge impact. Evidence of saving, discoverability
+and observed reuse remains distinct.
 
 ## Authorized Progression
 
@@ -350,7 +403,9 @@ consequential work just to reconstruct an uncertain output.
 
 ### Rule Changes And Legacy Agreements
 
-Classify the delta, not merely the changed filename:
+Classify the delta, not merely the changed filename. Standing project-rule changes
+first follow [Project Rule Decisions](#project-rule-decisions); the decision-owner
+and method rules below do not delegate that user-reserved confirmation:
 
 - Clarification/deduplication without new scope, responsibility, effects or
   acceptance can be reconciled at the next relevant node.

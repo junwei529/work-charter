@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.11.1 project knowledge cooperation
+
+- Add an optional role mapping for reusable project knowledge while preserving standalone use.
+- Preserve user confirmation of new, materially changed or retired project rules; ordinary documentation maintenance remains within existing task authority.
+
+
 ## v0.11.0 portable workflow ownership
 
 The approved reorganization makes the installable Skill the complete owner of

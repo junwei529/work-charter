@@ -1,5 +1,13 @@
 # Work Charter State
 
+## v0.11.1 source follow-up
+
+The v0.11.1 source adds optional project-knowledge cooperation and a common
+user-confirmation rule for standing project rules. Independent review closed
+RC-01 and RC-02 and source checks passed. [Verification](VERIFICATION.md#v0111-source-follow-up)
+records the evidence for this source. The [GitHub Release](https://github.com/junwei529/work-charter/releases/tag/v0.11.1)
+records public availability. The candidate descriptor preserves its pre-effect snapshot.
+
 ## v0.11.0 current work
 
 Status: **SOURCE_REVIEWED / LOCALLY_INSTALLED**, 2026-11-07. The approved
@@ -8,8 +16,8 @@ semantic review closed all three findings on the corrected source and host
 consumers. The actual installed six-file package matches the reviewed source;
 seven host guidance consumers match their reviewed candidates. Personal model
 policy is unchanged. This does not migrate existing project contracts or prove
-their future behavior. The current published release is
-[v0.11.0](https://github.com/junwei529/work-charter/releases/tag/v0.11.0), verified on 2026-11-07.
+their future behavior. [v0.11.0](https://github.com/junwei529/work-charter/releases/tag/v0.11.0)
+was verified as published on 2026-11-07.
 The annotated tag resolves to reviewed commit
 `6532588a41e4d4ce50483884a35d614e7e6f5bc3`; Release `437489155` is
 non-draft, non-prerelease and was read back as Latest. This post-publication

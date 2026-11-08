@@ -1,7 +1,10 @@
 # Work Charter
 
-当前本地[v0.11.0修订](STATE.md#v0110-current-work)重组公开通用流程与宿主职责，
-不增加逐步审批。当前正式发布为[v0.11.0](https://github.com/junwei529/work-charter/releases/tag/v0.11.0)，已于2026-11-07读回确认。
+当前[v0.11.1源码补充](STATE.md#v0111-source-follow-up)加入可选知识协作和共同的用户规则确认保护。
+[候选](../../../release/v0.11.1-candidate.json)记录应用前的源码身份。
+
+[v0.11.0修订](STATE.md#v0110-current-work)重组公开通用流程与宿主职责。
+[v0.11.0发布](https://github.com/junwei529/work-charter/releases/tag/v0.11.0)于2026-11-07读回确认。
 [候选](../../../release/v0.11.0-candidate.json)保留实施前快照，实际审查与受管安装证据由State和Verification承接。
 新使用默认不要求模型策略；明确选择后按该策略执行。旧合同已选策略、完整模型值、冻结组合及真实边界保留。
 
@@ -24,7 +27,8 @@ proportional coordination 约束有后果的工作。
 需要时加载精简共同正文与相关细节，并对材料变化主动复评，不代替用户选级。
 已批准 Charter 的复用和共同审查、权限、恢复边界保留；
 参见[历史 v0.6.5 状态](STATE.md#current-v065-local-candidate)。
-当前源码和安装由[当前状态](STATE.md#v0110-current-work)承接。
+[当前源码](STATE.md#v0111-source-follow-up)与
+[v0.11.0安装、发布证据](STATE.md#v0110-current-work)分别记录。
 
 package 起源于源提交 `80910a8b2375a11be897e9660c4b00a06d00dd13`。不可变 `v0.5.0`
 source 证据绑定已接受 commit `8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`、十轮已完成

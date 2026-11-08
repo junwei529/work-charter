@@ -1,8 +1,12 @@
 # Work Charter
 
-The current local [v0.11.0 revision](STATE.md#v0110-current-work)
+The current [v0.11.1 source follow-up](STATE.md#v0111-source-follow-up) adds optional
+knowledge cooperation and a shared user-confirmation protection. Its
+[candidate](../../../release/v0.11.1-candidate.json) records the pre-effect source identity.
+
+The [v0.11.0 revision](STATE.md#v0110-current-work)
 reorganizes portable workflow and host responsibilities without adding step gates.
-The current published release is [v0.11.0](https://github.com/junwei529/work-charter/releases/tag/v0.11.0), verified on 2026-11-07. The
+[v0.11.0 publication](https://github.com/junwei529/work-charter/releases/tag/v0.11.0) was verified on 2026-11-07. The
 [candidate](../../../release/v0.11.0-candidate.json) is a pre-effect snapshot;
 State and Verification own actual review and managed-installation evidence.
 Model policy is optional for new use unless explicitly selected. Existing selected
@@ -30,7 +34,8 @@ relevant details when needed, and reassesses material changes without adopting
 a level for the user. It preserves approved Charter reuse and shared review,
 authority and recovery boundaries; see
 [historical v0.6.5 state](STATE.md#current-v065-local-candidate).
-[Current state](STATE.md#v0110-current-work) owns source and installation status.
+[Current source](STATE.md#v0111-source-follow-up) and
+[v0.11.0 installation/publication evidence](STATE.md#v0110-current-work) are separate.
 
 The package originated at source commit
 `80910a8b2375a11be897e9660c4b00a06d00dd13`. Immutable `v0.5.0` source evidence

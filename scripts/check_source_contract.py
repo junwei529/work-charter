@@ -8,7 +8,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "skills" / "work-charter"
-CURRENT_CANDIDATE = ROOT / "release" / "v0.11.0-candidate.json"
+CURRENT_CANDIDATE = ROOT / "release" / "v0.11.1-candidate.json"
+V0110_CANDIDATE = ROOT / "release" / "v0.11.0-candidate.json"
+V0110_CANDIDATE_SHA256 = "a8a1271c268becfe67fb49f892b9ce0b2efb88bca924679b4a4d3ae4f3a800b3"
+V0110_PACKAGE_TREE = "0eacebf6dae5c7e17de9206bc8c442d0bdec4895"
 V0104_CANDIDATE = ROOT / "release" / "v0.10.4-candidate.json"
 V0104_CANDIDATE_SHA256 = "92cfd26f75cebd02a3c7c30a6043aed50c2ea0f1d2dffd52e99d755f3f1ac8c4"
 V0104_PACKAGE_TREE = "2f634eb2cbe86e7c1fcc4a1a83a1b8e4477e5383"
@@ -430,7 +433,7 @@ def main():
             not isinstance(parsed_successor.get(field), dict)
             for field in ("package", "evidence_states", "lineage")
         ):
-            raise ValueError("v0.11.0 candidate requires object package, evidence_states, and lineage")
+            raise ValueError("v0.11.1 candidate requires object package, evidence_states, and lineage")
         successor = parsed_successor
     except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
         successor_error = str(error)
@@ -471,10 +474,11 @@ def main():
         hashlib.sha256(V0103_CANDIDATE.read_bytes()).hexdigest() == V0103_CANDIDATE_SHA256
     )
     checks["candidate.v0104_historical_identity"] = hashlib.sha256(V0104_CANDIDATE.read_bytes()).hexdigest() == V0104_CANDIDATE_SHA256
-    checks["candidate.v0110_identity"] = (
+    checks["candidate.v0110_historical_identity"] = hashlib.sha256(V0110_CANDIDATE.read_bytes()).hexdigest() == V0110_CANDIDATE_SHA256
+    checks["candidate.v0111_identity"] = (
         successor.get("schema") == "work-charter-local-release-candidate/v1"
         and successor.get("product") == "work-charter"
-        and successor.get("version") == "0.11.0"
+        and successor.get("version") == "0.11.1"
         and successor.get("public_identity") == "junwei529/work-charter"
         and successor.get("candidate_state") == "PENDING_INDEPENDENT_REVIEW"
         and successor.get("human_release_notes_review") == "PENDING"
@@ -483,9 +487,9 @@ def main():
         and successor.get("package", {}).get("files") == sorted(EXPECTED_FILES)
         and successor.get("package", {}).get("path") == "skills/work-charter"
         and successor.get("lineage") == {
-            "historical_package_tree": V0104_PACKAGE_TREE,
-            "previous_candidate": "release/v0.10.4-candidate.json",
-            "source_commit": "8c520a4f860e055586257eb3e50e5450ac69c866",
+            "historical_package_tree": V0110_PACKAGE_TREE,
+            "previous_candidate": "release/v0.11.0-candidate.json",
+            "source_commit": "3db69025e723afe6a4eeb05da8672cb65e5be478",
         }
         and successor.get("evidence_states") == {
             "broad_product_efficacy": "UNKNOWN",
@@ -494,14 +498,14 @@ def main():
             "independent_review": "PENDING",
             "local_release_ready": "AUTHORIZED_PENDING_VERIFICATION",
             "planner_acceptance": "NOT_APPLICABLE",
-            "public_release": "NOT_AUTHORIZED",
+            "public_release": "NOT_PERFORMED",
             "role_delivery_runtime": "UNKNOWN",
             "source_contract": "REQUIRES_FRESH_DETERMINISTIC_CHECK",
-            "stable_installed_copy": "AUTHORIZED_PENDING_EXECUTION",
+            "stable_installed_copy": "NOT_PERFORMED",
         }
     )
     checks["candidate.current_package_binding"] = (
-        checks["candidate.v0110_identity"]
+        checks["candidate.v0111_identity"]
         and actual_package_tree is not None
         and current_package_sha256 is not None
         and successor.get("package", {}).get("tree") == actual_package_tree
@@ -1263,7 +1267,7 @@ def main():
         ),
         "result": "PASS" if not failures else "FAIL",
         "source_release_identity": (
-            "BOUND_TO_V0110_CANDIDATE"
+            "BOUND_TO_V0111_CANDIDATE"
             if current_package_bound
             else "UNBOUND_PENDING_SUCCESSOR_VERSION_AND_DESCRIPTOR"
         ),

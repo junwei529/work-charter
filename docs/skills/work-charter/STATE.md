@@ -1,1303 +1,182 @@
 # Work Charter State
 
-## v0.11.1 source follow-up
-
-The v0.11.1 source adds optional project-knowledge cooperation and a common
-user-confirmation rule for standing project rules. Independent review closed
-RC-01 and RC-02 and source checks passed. [Verification](VERIFICATION.md#v0111-source-follow-up)
-records the evidence for this source. The [GitHub Release](https://github.com/junwei529/work-charter/releases/tag/v0.11.1)
-records public availability. The candidate descriptor preserves its pre-effect snapshot.
-
-## v0.11.0 current work
-
-Status: **SOURCE_REVIEWED / LOCALLY_INSTALLED**, 2026-11-07. The approved
-portable-workflow/host-boundary reorganization is complete locally. Independent
-semantic review closed all three findings on the corrected source and host
-consumers. The actual installed six-file package matches the reviewed source;
-seven host guidance consumers match their reviewed candidates. Personal model
-policy is unchanged. This does not migrate existing project contracts or prove
-their future behavior. [v0.11.0](https://github.com/junwei529/work-charter/releases/tag/v0.11.0)
-was verified as published on 2026-11-07.
-The annotated tag resolves to reviewed commit
-`6532588a41e4d4ce50483884a35d614e7e6f5bc3`; Release `437489155` is
-non-draft, non-prerelease and was read back as Latest. This post-publication
-record does not move the tag or change the installable package. The released
-commit's pre-effect status statements retain their original dated context.
-
-Package tree: `0eacebf6dae5c7e17de9206bc8c442d0bdec4895`.
-Package digest: `e46239928cee7eda70aca2d07ac20e4ba5c1468ee3d4242d9ef649e476da2855`.
-The immutable candidate descriptor remains the pre-effect identity. Source
-baseline was `8c520a4`; prior unpublished integration and historical evidence
-are retained. [Verification](VERIFICATION.md#v0110-current-work) owns actual
-coverage and limits. No production, broad efficacy or alternate-harness claim
-follows from local installation.
-
-## v0.10.4 outcome-led recovery
-
-Status: **LOCAL_INSTALLED_VERIFIED**, 2026-11-05. The authorized source and
-host-rule consolidation passed independent review with no open findings after
-repairing one conflicting read-retry clause. The reviewed baseline is 960f957.
-Five host consumers were applied and read back exactly; all six installed
-package files match the reviewed source. Managed status is v0.10.4, package tree
-2f634eb2cbe86e7c1fcc4a1a83a1b8e4477e5383. Previous destination permissions
-were preserved and the transaction directory is empty.
-
-The latest published release remains v0.10.2; no public push, tag or release
-was performed. Package shape, model defaults and installer production behavior
-are unchanged. Downstream delivery/review owners were notified to reconcile at
-their next relevant work node, without interruption or acknowledgement.
-Actual instruction loading and natural behavioral improvement remain unverified;
-ongoing authorized project work continues. The candidate is a pre-effect record.
-
-## v0.10.3 early route judgment
-
-Status: **LOCAL_INSTALLED_VERIFIED**, 2026-10-31. The user authorized the source
-rule correction and managed local update. Independent actual-diff review passed
-with no open findings. Source commit
-1c642d05fc4ad3110ef87bbd43bd44a08cd6e98b has parent
-9f4c9d4be1b0ac1134467f62ad7626d4b56fe3ec.
-
-The managed local installation reports v0.10.3 and package tree
-62b7fc0e61415d1d812cada28ff73882c592c122. All six installed files match source;
-previous destination permissions were preserved, and the transaction root is
-empty. The latest published release remains v0.10.2. No public push, tag or
-release was performed or authorized in this change.
-
-Changes affect three package instruction files and necessary current consumers.
-Model defaults, package shape, installer behavior and existing project authority
-remain unchanged. The candidate remains an immutable pre-effect record.
-Natural adherence and effectiveness remain unverified; installation does not
-prove that every active task has reloaded the rules. Unrelated authorized work
-continues without waiting for this rule update.
-
-## v0.10.2 source and delivery
-
-Status: **PUBLISHED_VERIFIED**, 2026-10-21. The user selected v0.10.2 and authorized
-source, four necessary host-rule updates, documentation and independent review,
-followed by managed installation, commits and publication. Independent actual-
-diff review covered 23 source/host paths and necessary consumers. WC-R1-001/P2
-identified stale documentation entry blocks; the original author repaired them
-and the same reviewer closed the finding with PASS and no new findings.
-
-Source commit `c3b26d6909c512d9b1e7d654b4549ca0f7dec453` has parent
-`8cec8d57a3f422a7f408e5056dc7f95086165bde` and package tree
-`d2e00d1321ffdfbe24ea6f6690cb5049c5431d0b`. The exact 19 public paths were committed;
-the four host rules remain separate consumers. Annotated tag object
-`8ebbb577cb64b0d816869749af36ff4233bb31d5` resolves to that source commit.
-
-The existing manager completed dry-run and APPLY / MANAGED v0.10.2 from the
-fixed clean source commit, preserving previous destination permissions.
-Ordinary-reader status and all six exact file comparisons passed; the explicit
-same-volume private transaction root was empty. Package shape, role models,
-configuration schemas and installer production behavior remain unchanged.
-
-Main and the tag were pushed atomically without force through the verified
-repository actor. API readback matched the source commit and annotated tag target.
-The formal [v0.10.2 Release](https://github.com/junwei529/work-charter/releases/tag/v0.10.2)
-has id `419206762`, publication time `2026-10-21T05:57:14Z` and verified
-Latest status; its notes match the independently reviewed text.
-
-Subsequent record-only closeout preserves the source tag, package and immutable
-pre-effect candidate. Existing business contracts and personal model configuration
-were not changed. Runtime adoption, natural behavior and efficacy remain unverified.
-
-## v0.10.1 installation and push
-
-Status: **INSTALLED_AND_PUSHED**, 2026-10-13. The user explicitly authorized
-installation, commit and push after naming-source completion. Independent actual-
-diff review passed all 18 paths with no findings. Source commit
-`62ed0cc7ffb6abf3ecfa154712ca30965b62fc4b` has parent
-`8ea7a01c2c8e68664a33064127bef06a9b5d9eb6` and package tree
-`a22f25a3bc08efdb0877a7748b01be9dfde0e7e3`.
-
-The existing manager completed dry-run and APPLY / MANAGED v0.10.1 with previous
-destination permissions preserved. Ordinary-reader status and all six exact file
-comparisons passed; the explicit transaction root was empty. The new empty root
-was isolated with the existing manager method before apply. Personal model
-configuration and project contracts were not changed.
-
-Non-force push and remote main readback matched the source commit. One earlier
-read-only Git preflight had a TLS handshake failure; the same-route retry passed
-without changing transport or security settings. Subsequent record-only closeout
-does not change the installed package or pre-effect candidate. No v0.10.1 tag or
-GitHub Release was requested or created; v0.10.0 remains the last verified formal
-release. Installation/task adoption and business migration remain separate.
-
-## v0.10.1 local source
-
-Status: **SOURCE_COMPLETE**, 2026-10-13. The user approved Deliverer (D) as the
-public name and selected v0.10.1. Source baseline is
-`8ea7a01c2c8e68664a33064127bef06a9b5d9eb6`.
-The four instruction/template files and bilingual navigation name the existing
-primary role; configuration, contract format, duties and permission boundaries
-are unchanged. Actual naming diff was self-checked; SOURCE 33/33, metadata and
-repository provenance checks passed. Package tree:
-`a22f25a3bc08efdb0877a7748b01be9dfde0e7e3`. Final record-only provenance and
-whitespace checks complete source closeout. No commit,
-installation, publication, global-rule change or business migration is included.
-The last verified installed/published version remains v0.10.0.
-
-## v0.10.0 publication
-
-Status: **PUBLISHED_VERIFIED**, 2026-10-13. After source delivery the user
-explicitly authorized installation, push and release. Independent publication
-review passed all 19 source paths, the exact release notes and effect plan;
-the earlier shared-routing finding R1 remains closed.
-
-Source commit `78044cd1ffda37fa7d0e9dab1245f7e27ecee62f` has parent
-`ca967fade3449323886994fbea8812443478679a` and package tree
-`47759c90ec5bb5d085d008bd53a331d2cf4ce59d`. Annotated tag object
-`80b66d98433b20849783f355fdc40e817afb7490` resolves to that source commit.
-The existing manager completed APPLY / MANAGED v0.10.0 with original destination
-permissions preserved; an ordinary-reader status and all six file comparisons
-passed. The explicit transaction directory was empty after completion. The first
-apply had stopped before destination mutation because the newly created empty
-transaction root inherited untrusted write access. Isolating only that new root
-with the existing manager's method resolved the preparation error; destination
-policy and installer behavior were not relaxed. Personal model configuration
-was not changed.
-
-Main and the tag were pushed atomically without force through the verified
-actor. The formal [v0.10.0 Release](https://github.com/junwei529/work-charter/releases/tag/v0.10.0),
-id `411248986`, was published at `2026-10-13T03:57:28Z`; readback confirmed exact
-reviewed notes, tag/commit, non-draft, non-prerelease and Latest. These subsequent
-record-only changes retain the source tag, package and pre-effect descriptor.
-No installation or release action remains. Existing project contracts were not
-migrated; runtime adoption and natural cost/cache benefit remain UNKNOWN.
-
-## v0.10.0 local source
-
-Status: **SOURCE_AND_HOST_RULES_COMPLETE**, 2026-10-13. Version and source/necessary
-host-rule scope are approved. This increment used one source author from clean baseline
-`ca967fade3449323886994fbea8812443478679a`.
-
-The candidate introduces arrangement-v2 end-to-end workstreams, optional O,
-justified Team separation, bounded parallelism/integration and compatible model
-selectors. Existing outcome-first principles, old contracts, six-file package
-shape, model schema/default objects and installer lifecycle behavior remain.
-Three necessary host-rule consumers and one audit role-identification sentence
-were independently reviewed and applied with exact-byte readback. They are
-separate from this public package. Independent actual-diff review found one P2
-shared-routing conflict; the author repaired it and the same R re-reviewed PASS.
-SOURCE 33/33, metadata and provenance checks pass; final record-only provenance
-and whitespace checks complete closeout. Reviewed package tree:
-`47759c90ec5bb5d085d008bd53a331d2cf4ce59d`. No source or host-rule work remains.
-No installation, commit, push, release or business-project migration is included.
-The last verified installed/published package remains v0.9.6; runtime adoption
-and natural effects of this candidate remain UNKNOWN.
-
-## v0.9.6 publication
-
-Status: **PUBLISHED_VERIFIED**, 2026-10-09.
-After source delivery, the user authorized managed installation and publication.
-Independent publication review passed the 18-path source increment, release notes,
-privacy scope and execution method. Source commit `abc166cab4c0de1262c1d088d3ac734dddcd3a16`
-follows `4db878040283d3688f0a6b3933d42df090d46f41` and binds package tree
-`bcf263e0384248680a3bee9efdfcb5052b69c9cd`. Annotated tag object
-`dc1072ee8233051114ea8c55d636ca270bbb1217` resolves to that source commit.
-
-The existing manager completed APPLY / MANAGED v0.9.6 with prior destination
-permissions preserved. A separate ordinary-reader status call confirmed MANAGED;
-all six installed files matched source, and the transaction directory was empty.
-Personal model configuration was not changed.
-
-A non-forced atomic push advanced main and created the tag. The formal
-[v0.9.6 Release](https://github.com/junwei529/work-charter/releases/tag/v0.9.6)
-is id `407517232`, published at `2026-10-09T04:45:51Z`, non-draft,
-non-prerelease and Latest at readback. Exact tag target and release body matched.
-These record-only updates preserve the tag, package and pre-effect descriptor.
-No publication action remains; runtime adoption and natural benefit remain UNKNOWN.
-
-## v0.9.6 local source
-
-Status: **SOURCE_AND_HOST_RULES_COMPLETE**, 2026-10-09.
-The user approved the outcome/handoff/optional-collaboration source revision and
-selected v0.9.6. Review baseline: `4db878040283d3688f0a6b3933d42df090d46f41`.
-Four package instruction/template files change; model defaults and UI metadata
-retain their bytes. Authorized host-rule consumers are separate from this
-self-contained package and are not public dependencies.
-
-Source/version/provenance records follow the new candidate. No commit, installation,
-push or publication is included. The last verified installed and published
-version is v0.9.5; this change does not install or publish v0.9.6. Existing task
-adoption and behavioral improvement are not established.
-Independent actual-diff review passed after closing a missing package routing
-link. SOURCE 33/33, metadata, repository provenance and whitespace checks passed.
-The descriptor retains its pre-effect snapshot; actual evidence is in
-[Verification](VERIFICATION.md#v096-source-verification). Source work is complete;
-there is no remaining authorized installation or publication action.
-
-## v0.9.5 publication
-
-Status: **PUBLISHED_VERIFIED**, 2026-10-08.
-Following local delivery, the user authorized publication to
-`junwei529/work-charter`. Independent publication review passed the complete
-16-path source increment, release notes, public privacy and publication method.
-Source commit `3c351faee3ee08b47591d0772f9281fea5f9f944` follows
-`413a2318d2279713d5e15605cdc0171d679d8470` and contains package tree
-`55d8daaa3d3b26358b0192d57dc5403593bed85a`.
-A non-forced atomic push advanced main and created annotated tag object
-`7de56b7eda294d6f8dd5bed5484b67e381adf7e6`. Remote readback confirmed the tag resolves to
-the source commit.
-
-The [GitHub Release](https://github.com/junwei529/work-charter/releases/tag/v0.9.5) is id `406431486`,
-published at `2026-10-08T05:03:45Z`, non-draft, non-prerelease and Latest at readback.
-The source target and exact reviewed release body were verified.
-Existing source, metadata, repository and local installation evidence is retained;
-this publication does not reinstall the package or evaluate model behavior.
-
-This record-only closeout updates current navigation and publication facts while
-preserving the tag, package bytes, pre-effect candidate and earlier local history.
-Runtime adoption and natural improvement remain UNKNOWN. There is no remaining
-publication action; subsequent ordinary use can provide behavioral evidence.
-
-## v0.9.5 local source
-
-Status: **LOCAL_DELIVERY_COMPLETE**, 2026-10-08.
-The user approved the outcome-first source changes, bounded host/project rule
-consumers and managed-copy update, and explicitly selected v0.9.5.
-The actual review baseline is `413a2318d2279713d5e15605cdc0171d679d8470`;
-published package lineage remains v0.9.4 commit
-`81422221d0bfcd6ea8a18b668a03efa0195fa850`.
-
-Only SKILL.md and the coordination reference change inside the six-file package.
-The package independently carries the full delivery guidance; host rules retain
-light defaults, and one project consumer replaces rigid reading/test defaults.
-Related documentation and version/provenance bindings follow the change.
-Models, schemas, roles, template layout and installer production behavior remain
-unchanged.
-
-Independent actual-diff review passed after correcting stale current-source
-navigation. SOURCE 33/33, Skill metadata, repository provenance and whitespace
-checks passed. The existing installer returned APPLY / MANAGED v0.9.5 with
-previous destination permissions preserved. A separate ordinary-reader status
-call confirmed MANAGED v0.9.5, all six installed files matched source, the five
-reviewed rule files matched, and the transaction root was empty.
-See [Verification](VERIFICATION.md#v095-outcome-first-verification) for evidence
-and limitations. The candidate retains its pre-effect snapshot.
-
-Changes are uncommitted; latest published release remains v0.9.4. No Git commit,
-push, tag, Release or business runtime was performed. Runtime adoption and
-behavioral improvement remain UNKNOWN; observe subsequent ordinary tasks rather
-than add a model-evaluation suite. Historical records and descriptors remain
-unchanged.
-
-## v0.9.4 publication
-
-Status: **PUBLISHED_VERIFIED**, observed 2026-10-07 (UTC).
-After local delivery, the user authorized publication to `junwei529/work-charter`.
-Independent publication review passed the complete 18-path source increment,
-including the previously local v0.9.3 model-default update, necessary consumers,
-public privacy, Release notes and the commit/publication method. The source commit
-`81422221d0bfcd6ea8a18b668a03efa0195fa850` follows
-`f43cbcc79664c295e441624d5f49175566ff856c`; its six-file package tree is
-`1dc19eb9da2b257f2cf1aeac53775f107c2d119b`. A non-forced atomic push
-advanced remote main and created annotated tag object
-`25bd0857b24546f08b43af802e7c91bc6d7d8e3f`. Readback confirmed the tag
-peels to the reviewed source commit.
-
-The [GitHub Release](https://github.com/junwei529/work-charter/releases/tag/v0.9.4) is id
-`405401671`, non-draft, non-prerelease and Latest at readback.
-Its exact source target and reviewed body were verified separately. Existing
-SOURCE 33/33, metadata, repository and installation evidence remains valid for
-the unchanged package. Models changed only by the previously approved v0.9.3
-default update; existing tasks and frozen combinations were not rewritten.
-
-This record-only closeout preserves the published tag, all six package files,
-immutable pre-effect descriptors and earlier local-delivery history. It adds no
-profile update, installation, host-rule change, migration, model execution,
-efficacy study or monitoring job. Runtime identity, fresh loading and general
-behavior remain UNKNOWN. Earlier local sections describe their own checkpoints.
-
-## v0.9.4 local source
-
-Status: **LOCAL_DELIVERY_COMPLETE**, 2026-10-07.
-The user explicitly approved v0.9.4 source changes, two host-rule consumers,
-independent review, focused static verification and managed-copy update. User
-decisions now present outcomes, material choices and evidence; responsible Agents
-retain technical verification and authorized repair. Changes to acceptance, trust
-and material risk route first to the lowest already authorized owner. General
-task rules apply with or without Charter adoption, without creating Charter roles
-or gates. The package adds no approval form, ledger or role.
-
-Proposal R2 closed the protected-boundary omission; actual-diff and application
-method R3 passed. SOURCE 33/33, metadata validation and repository provenance
-checks passed. Both host consumers matched reviewed bytes with their existing
-owner/DACL preserved. Managed v0.9.4 is bound to the six-file package tree
-`1dc19eb9da2b257f2cf1aeac53775f107c2d119b`; 6/6 installed files match source,
-11 permission records are preserved, seven prior files remain in private recovery
-material and the transaction directory is empty. A pre-write permission refusal
-was diagnosed, independently reviewed and corrected only on the new empty
-transaction root; the prepared installation then exited 0. Personal model
-configuration remained unchanged.
-
-The source preserves the uncommitted v0.9.3 baseline and remains uncommitted.
-The authorized source, host and installation work is closed at this local
-checkpoint. Package models, schemas, frozen contracts, existing tasks and installer
-production logic were not changed. This work did not publish, update a profile,
-migrate projects or run an efficacy evaluation. Historical descriptors remain
-immutable pre-effect snapshots; actual results are owned here and in VERIFICATION.
-Runtime model identity, fresh task loading and general behavior remain UNKNOWN.
-
-## v0.9.3 local source
-
-Status: **LOCAL_DELIVERY_COMPLETE**, 2026-09-30.
-The user requested the Sol model update and explicitly confirmed v0.9.3 with
-source, personal Work Charter configuration and managed-copy update scope.
-The package's two GPT-6 Sol Planner/Executor objects now use
-`gpt-6.1-sol/xhigh`. The authorized personal-file update changed ten matching
-model entries, including compatibility selectors, while preserving complete
-objects, all efforts and other role values. It was separate from installation.
-
-Independent R1 found one P3 stale current-state link, repaired by the original
-writer and closed by the same R2. Its other source/personal and application/update
-coverage remained valid. SOURCE checks and repository provenance passed; application readback
-and existing file permissions were verified. The six-file package tree is
-`6038baaff619e0c5f23345541ad57e058ef198ee`. Managed v0.9.2 to v0.9.3 dry-run
-and apply both exited 0; 6/6 files match source, all 11 permission records are
-preserved, seven old files remain in private recovery material and the
-transaction root is empty. Installation left the updated personal file intact.
-
-Only the package model-default file changed inside the six-file Skill;
-schema v2, arrangement-v1, UI metadata, instructions and production installer
-behavior retain their bytes. Historical descriptors and publication records
-remain immutable. Source/configuration/installation writers are closed at
-this local checkpoint; source changes remain uncommitted. Public release remains
-v0.9.2. Existing tasks and frozen combinations were not rewritten. Newly resolved
-deliveries read the updated defaults under the existing selection contract.
-Actual running model identity, fresh task loading and performance remain UNKNOWN.
-No performance evaluation, project migration or public effect was performed.
-
-## v0.9.2 publication
-
-Status: **PUBLISHED_VERIFIED**, observed 2026-09-28 (Asia/Shanghai).
-After local delivery, the user authorized publication to `junwei529/work-charter`.
-Reviewed source commit `75840c10ff9fd066e981b8947f5b01076bed124e` directly follows
-`92beef7fd9abab5e06082d4ec78b331e5e36f8c0`. An atomic non-forced push advanced remote main
-and created annotated tag object `4b6aa2ecca57a4e672da6756ec7265fdc7c15cc1`.
-Remote readback confirmed `v0.9.2` peels to that source commit and package tree
-`452072a661cf91d49e3f14b9345c72f13b506759`.
-
-The [GitHub Release](https://github.com/junwei529/work-charter/releases/tag/v0.9.2) is id
-`398301549`, non-draft, non-prerelease and Latest. API readback verified
-its source target and exact reviewed body. Publication R4 passed the complete
-21-path source increment, necessary consumers, public content and publication
-method with no new findings; prior F01/P2 and F02/P3 remain closed.
-
-This later record-only update preserves the source tag, all six package files
-and immutable pre-effect descriptors. Local installation evidence remains valid.
-Historical local sections describe their own authorization checkpoints, not the
-current publication result. Existing projects and frozen deliveries were not
-migrated. No profile update, new installation, model change, efficacy study or
-monitoring job followed. Runtime loading, general cross-turn activation,
-actual rollback and broad efficacy remain UNKNOWN.
-
-## v0.9.2 local source
-
-Status: **LOCAL_DELIVERY_COMPLETE**, 2026-09-28.
-The user approved v0.9.2 source, necessary host-rule changes, independent review
-and managed installation, including retaining the temporarily suspended mixed
-design and its restoration conditions. The unchanged Git baseline is
-`92beef7fd9abab5e06082d4ec78b331e5e36f8c0`; this delivery remains uncommitted.
-
-Independent R1 covered source, host consumers and the application method. F01
-(P2: scenario consumers omitted ended-parent activation) and F02 (P3: stale
-current-candidate navigation) were repaired by the original writer. The same R2
-closed both findings, found no new issue and reviewed the installation method.
-All 21 reviewed source paths and three host-rule paths were applied with exact
-content readback and existing owner/DACL preservation. Final records preserve
-that review history and the immutable pre-review descriptor.
-
-The six-file package tree is `452072a661cf91d49e3f14b9345c72f13b506759`.
-The authorized managed update completed with exit 0; the installed state is
-MANAGED v0.9.2. Six files match the reviewed package, all 11 permission records
-are preserved, and seven old files plus their permission snapshot remain as
-private recovery material. The transaction root is empty; ordinary-tool readback
-also passed. The personal model file was unchanged. See Verification for
-bounded check coverage and preparation failures.
-
-Source, host-rule and installation writers are closed at this local checkpoint.
-Existing project contracts, runtime roles and frozen model combinations were
-not migrated. No commit, push, tag, Release, profile change, role dispatch, bulk
-rename, business migration, efficacy evaluation or monitoring job occurred.
-Public release remains v0.9.1. New-task runtime loading, general cross-turn
-activation, actual rollback and broad efficacy remain UNKNOWN; no further
-verification project is scheduled. Mixed-mode restoration or project migration
-requires its own applicable user decision.
-
-## v0.9.1 publication
-
-Status: **PUBLISHED_VERIFIED**, observed 2026-09-27 (Asia/Shanghai).
-The user authorized source publication, the formal Release and the matching
-GitHub profile update after local installation. The reviewed source commit is
-`7b396133f8410f6261e8bcadbd45d2c9ddb8d96b`, a direct child of
-`e86f5019ddd882521fbacac30633c073f03d05a6`. An atomic non-forced push
-fast-forwarded remote main and added annotated tag object
-`74ffd231ac2c29f85fda2c551cbc297a5128baf4` for `v0.9.1`; remote readback
-confirmed the tag peels to that source commit. Its six-file package tree is
-`39659168b5fb20899335dd0923c87b65d5a95e36`.
-
-The [GitHub Release](https://github.com/junwei529/work-charter/releases/tag/v0.9.1)
-is id `397571842`, non-draft, non-prerelease and Latest. API readback
-verified the exact source target and reviewed body. The source tag remains
-fixed; these subsequent publication records do not alter its package or the
-immutable pre-effect descriptors. The GitHub profile's two Work Charter
-descriptions were separately updated and read back after the Release existed.
-
-Independent publication R4 covered all 21 source paths and both public text
-surfaces. Its sole P3 finding, the current SOURCE version in the Chinese README,
-was repaired and closed by R5 before commit. Source and publication checks are
-recorded in [Verification](VERIFICATION.md#v091-publication-verification).
-Historical local-delivery sections below retain their checkpoint-specific
-authorization and state; they do not supersede this publication result.
-Existing projects and frozen deliveries were not migrated. Runtime loading,
-effective model identity, actual rollback and broad efficacy remain UNKNOWN.
-
-## v0.9.1 local source
-
-Status: **LOCAL_DELIVERY_COMPLETE**, observed 2026-09-27.
-The user selected v0.9.1 and approved complete conditional migration, continuing
-R semantics and the necessary global-consumer correction. Independent R1 passed
-the bounded source/application-method review. Its observation exposed a missing
-second global replacement in preparation; the original writer supplied the
-approved narrow clause and the same R passed R2 with no new finding.
-
-The reviewed 18-file source increment and both clauses in the one global
-consumer were applied after complete baseline checks. Source bytes and the
-global result matched the review input; global owner/DACL were preserved.
-The four package instruction/template changes are bound to tree
-`39659168b5fb20899335dd0923c87b65d5a95e36`. The pre-review descriptor remains
-an immutable snapshot; subsequent mechanical records and mapping closeout do
-not change this package. The previous uncommitted v0.9.0 delivery is preserved,
-with no branch switch or commit. Source/global writers are closed at closeout.
-
-After source/global closeout, the user separately approved the local managed
-update from v0.9.0 to v0.9.1. The unchanged reviewed installer completed its
-dry-run and update with exit 0. All six installed files and the receipt match
-the reviewed package. Seven old files (package plus receipt) and the original
-DACL snapshot are retained as private rollback material; all 11 DACL records
-were preserved and the transaction root is empty. Default-tool manager status
-and independent manifest-based file readback passed. The personal model file
-and previously applied global consumer remain unchanged by installation.
-
-Installation and required record writers are closed at final closeout. Existing
-business contracts and frozen settings were not migrated; role dispatch, Git
-publication and automation were not performed. No efficacy study, cache
-experiment or monitoring job is included. Actual rollback was not exercised.
-Fresh loading, runtime identity, natural adherence and cache/cost benefit
-remain UNKNOWN. See [Verification](VERIFICATION.md#v091-local-verification).
-
-## v0.9.0 local delivery
-
-Status: **LOCAL_DELIVERY_COMPLETE**, observed 2026-09-27
-(Asia/Shanghai). The user selected v0.9.0 and approved arrangement contracts,
-model schema v2, stable-node migration support, bounded authorized progression,
-necessary local rule consumers, independent review and the managed-copy update.
-The source baseline remains records commit
-`e86f5019ddd882521fbacac30633c073f03d05a6` on the existing dedicated branch;
-this delivery is an uncommitted local change. The v0.8.0 published package and
-descriptors remain immutable history.
-
-Independent source/consumer R2 passed after four P2 findings were fixed.
-The existing manager completed the v0.8.0-to-v0.9.0 update from an exact reviewed
-snapshot. All six installed files match accepted source bytes at package tree
-`ad4c0f4d56c47e3037c25dc84fce9a9f14c177fc`; 11 DACL records and the four
-applied global consumers' security were preserved. Default non-escalated
-tool-route readback passed, the transaction root is empty, and seven old installation/receipt files
-are retained privately for recovery. This verifies local application, not an
-executed rollback. R3 confirmed installation/application evidence and found
-one P3 records wording issue (V090-R3-01). The same R passed its correction
-in R4, with no new finding. The local delivery is complete; source and
-installation writers are closed after the mechanical records and mapping closeout.
-The default tool-route readback does not establish access by another Windows
-account or token.
-
-Four necessary global consumers were updated. The usage-guidance reference and
-audit-project rules were checked and required no change. Personal model files,
-ordinary defaults, existing business contracts and role carriers are unchanged.
-Git commit, push, tag, Release, cross-task dispatch and automation were outside
-this delivery. No subsequent efficacy evaluation or monitoring job is planned.
-Fresh-task loading, runtime model identity and natural adherence remain UNKNOWN.
-Detailed evidence and retained failed attempts are in
-[Verification](VERIFICATION.md#v090-local-verification).
-
-## v0.8.0 publication
-
-Status: **PUBLISHED_VERIFIED**, observed 2026-09-25 (Asia/Shanghai).
-The independently reviewed source commit is
-`287ffbf62d4a11bae11957de9407e1bc7f97b82d`, a direct child of the
-previous remote main `712594687920540dfe7618d47401885c785167a4`.
-Its six-file package tree equals the accepted candidate
-`ca62f3b449a08799d4ce3dbbeb3fe2455472b271`. An atomic push
-fast-forwarded remote main and added annotated `v0.8.0` tag object
-`534696f1f86d460509c4a86fbe34f74c24e8785b`; remote readback showed
-the tag peels to the source commit.
-
-The [GitHub Release](https://github.com/junwei529/work-charter/releases/tag/v0.8.0)
-is id `395875288`, non-draft, non-prerelease and Latest. API readback
-verified its target is the exact source commit and its body exactly matches
-the independently reviewed text. The source tag does not include this later
-records-only closeout; the package tree and tag remain fixed. The local
-MANAGED v0.8.0 and four specified consumers were separately verified before
-publication as recorded below. Fresh-task loading, effective runtime model
-metadata and natural adherence remain UNKNOWN.
-
-## v0.8.0 source candidate
-
-Prepublication status: **SOURCE_REVIEWED_LOCAL_APPLIED_PUBLICATION_PENDING**,
-v0.8.0 selected.
-The sole source writer prepared the Direct/Team/Phased interface, conditional
-selection, responsibility-based R input, task/subagent carrier choices and
-complete model/effort defaults in the existing six-file package and scenarios.
-This version does not migrate old approved Charter contracts. The published
-v0.7.1 source, tag, Release and findings retain their recorded identities.
-Its deferred P3 Standard section-link finding is fixed in the new v0.8.0
-source without changing the v0.7.1 package.
-
-Internal L0/L1/L2 distinctions remain separate Direct contracts; L3 maps to
-Team and L4 to Phased. Existing schema-v1 per-level user overrides are not
-rewritten or merged. New package defaults express the confirmed
-responsibility-based pairs. Deterministic source/repository checks passed.
-Independent R1 found one P2 in the proposed global correction route; the
-writer fixed it in the bounded consumer patch, and the same R returned PASS
-in R2 with no open blocking findings. The existing manager then updated the
-local copy to MANAGED v0.8.0. All six installed package files match source
-bytes, 11 DACL records match the pre-update snapshot, a complete private
-v0.7.1 copy is retained, and the transaction directory has no live entries.
-Four exact global/host consumers were separately applied from the reviewed
-patch after baseline hash checks; their resulting bytes and DACLs were
-verified. These observations do not prove fresh-task loading, effective model
-metadata or natural behavior. The user has also authorized public GitHub
-publication; commit, tag, push and Release remain pending their own checks
-and readback. Existing v0.7.1 release history below is frozen historical
-evidence.
-
-Candidate package tree: `ca62f3b449a08799d4ce3dbbeb3fe2455472b271`.
-Package SHA-256:
-`6f28071bc1be25029ef005ecf33590858a54f7b03d933ecc7d9055f664fad59d`.
-The source-contract check passed 30/30 static clauses, v0.8.0 identity and
-retained historical pins at the reviewed source checkpoint. Repository mapping
-passed for 101 files before this local evidence update and must be refreshed
-for the final intended diff. The candidate descriptor is the pre-effect source
-snapshot; its pending fields are retained as history rather than rewritten
-as post-installation claims.
-
-## v0.7.1 publication
-
-Status: **PUBLISHED_VERIFIED**, observed 2026-09-24. The accepted cumulative
-v0.6.6–v0.7.1 source was committed as
-`a27e8058061c674278ab30c6cd14d544b1c130db` after independent full-diff
-review. Remote `main` fast-forwarded from the v0.6.5 source HEAD
-`1f9697a5f1c1fd9c454fdaa21952f63ab6eaa052` to that commit. The new
-annotated `v0.7.1` tag object is
-`27c50a323019a14882920f7e83c1ac32ec1edefb`; it peels to the same source
-commit. The [GitHub Release](https://github.com/junwei529/work-charter/releases/tag/v0.7.1)
-is id `395420133`, non-draft, non-prerelease and Latest; its target and body
-were read back against the reviewed source commit and release text. Prior
-v0.6.5 public objects and intermediate candidate identities remain intact.
-
-The published six-file package tree remains
-`8ea9baf2b52635b3bdc0e9984e0d823c8984cc58`, matching the separately
-verified local MANAGED v0.7.1 copy. The release does not re-run installation,
-change user configuration, or prove fresh-task loading, runtime adoption or
-natural efficacy. The release-input Reviewer reported no blocking finding;
-V071-PUB-R1-01 is a deferred P3 section-anchor issue in the accepted package.
-Changing it would alter this version's package identity and was not needed to
-read the procedure. Earlier V071-R1-01/R1-02 remain fixed, and global review
-history remains separately scoped. Publication evidence and records closeout
-are detailed in [Verification](VERIFICATION.md#v071-publication-verification).
-
-## v0.7.1 publication input checkpoint
-
-The user authorized a public v0.7.1 release of the accepted cumulative
-v0.6.6–v0.7.1 source after v0.6.5. At this preparation checkpoint, source
-commit, remote main update, annotated tag and GitHub Release are pending the
-final full-diff independent review and required checks. The package identity
-remains tree `8ea9baf2b52635b3bdc0e9984e0d823c8984cc58`; the local managed
-copy already matches that source. Intermediate candidates remain unpublished
-historical evidence. This authorization does not change the package, install,
-configuration, business projects or old review/failure records.
-
-## v0.7.1 outcome-scoped authority
-
-The user selected v0.7.1 for a bounded source and managed-local-copy update.
-One writer owns the current increment over the preserved v0.7.0 dirty working
-tree. The [candidate](../../../release/v0.7.1-candidate.json) binds the new
-six-file source package; historical candidates and failed or withdrawn review
-evidence retain their own identities. This revision clarifies outcome-scoped
-authorization and replaceable ordinary methods while preserving the v0.7.0
-delegation, E/R loop, P acceptance, model defaults and protected stops.
-
-The source contract passed 27/27 static clauses and the current v0.7.1 package
-identity gate; repository provenance passed with 100 mapped files. Independent
-R1 found two current documentation-consumer issues, both corrected by the
-original writer; the same R returned No findings in R2. The prior global
-G-R1-01/G-R1-02 corrections and withdrawn G-R2-01 keep their separate history.
-
-The existing manager updated the local target to MANAGED v0.7.1 with terminal
-exit 0. All six installed files match the reviewed source. Its original DACL
-snapshot matches the post-update snapshot, the complete v0.7.0 copy and
-rollback source remain in a private location outside Skill discovery, and the
-transaction directory is empty. Administrator and ordinary-reader postflight
-both passed. The installed package tree is
-`8ea9baf2b52635b3bdc0e9984e0d823c8984cc58`. The same independent R
-returned No findings in postflight R3 after directly checking the installed
-files, permissions, rollback inputs and final records. Source and installation
-writers are closed. No commit, staging, publication, global configuration or
-business-project effect was performed. Runtime loading and natural adherence
-remain UNKNOWN.
-
-## v070 delegation update
-
-The user-confirmed v0.7.0 source implements explicit delegation, bounded E/R
-correction and revised role-model defaults. Independent review R4 closed all
-prior findings with No findings; static source checks passed 27/27 and the
-repository check passed with 99 mapped files. The preserved v0.6.8 dirty
-baseline and all historical descriptors remain intact.
-
-The managed local copy was updated to v0.7.0 through the unchanged installer.
-The real update exited 0; all six installed files match the reviewed source,
-original permissions and the already-selected personal configuration were
-preserved, the verified v0.6.8 rollback copy remains available, and the
-transaction directory is empty. Both privileged and ordinary-reader postflight
-passed. Package tree: `9bc03ec6f1ac081b738da2ca316b18b22a356aea`.
-Source digest: `2c1e9202e1c25c7ccd0ae64ecdd08926c18cef319fc93859dcea2d5b74fd289d`.
-
-Independent postflight R5 returned No findings. Source and installation
-writers are closed; no source or installation action remains pending. No commit, tag, publication or
-business-project continuation was performed. Existing tasks, frozen model
-combinations, failed evidence and consumed limits remain intact. Runtime
-adoption and natural cost/quality effects remain UNKNOWN. Earlier sections
-retain dated history.
-
-## v0.6.8 Sol compatibility update
-
-The user selected v0.6.8 and authorized changing the general Executor fallback
-to `gpt-6-sol/high`, necessary source/check documentation, and the local managed
-update. All level-role Astra values and selection precedence remain unchanged.
-One current source writer owns this bounded increment over the preserved
-v0.6.7 working tree; prior dirty changes and frozen descriptors remain intact.
-
-The [candidate](../../../release/v0.6.8-candidate.json) binds the changed six-file
-package. The SOURCE check passed all 27 static clauses and the current/historical
-identity gates; the repository check passed for 98 mapped files. Independent
-read-only review completed with no findings, and the authorized managed update
-completed with exit 0. Administrator and ordinary-reader verification passed:
-all six installed files match source, original permissions and the separately
-updated personal configuration are preserved, and the transaction root is empty.
-The v0.6.7 rollback material remains retained outside discovery roots. The writer
-is closed; runtime loading and natural model adoption remain UNKNOWN. No commit, push, tag, public release or model evaluation is included.
-[Verification](VERIFICATION.md#v068-sol-compatibility-verification) records results.
-
-## Unreleased evidence-scope revision
-
-The v0.6.7 working revision clarifies evidence coverage and completion
-claims, bounded evidence delegation, and recovery of actual inspection
-progress. This is source maintenance with required verification,
-independent read-only review and same-scope correction. It does not
-reopen installation, publication, user configuration, global-rule changes
-or model evaluations. The accepted v0.6.6 source and local installation,
-and the published v0.6.5 release, retain their own evidence.
-[Verification](VERIFICATION.md#unreleased-evidence-scope-verification)
-records this candidate's checks and remaining limits.
-
-The [v0.6.7 candidate](../../../release/v0.6.7-candidate.json) binds the
-six-file package. Source maintenance and required checks are complete.
-Independent read-only v067-R1 reviewed the complete 20-path increment from
-the accepted v0.6.6 source and necessary semantic context with no findings.
-The primary owner completed bounded record closeout and relinquished the
-source writer. This is source delivery, not independent self-acceptance;
-the package creates no Planner acceptance layer. The candidate retains its
-pre-review snapshot. v0.6.7 remains uncommitted and unpublished; the separately
-authorized local installation is recorded below. Natural adherence and runtime
-effectiveness remain `UNKNOWN`.
-
-## v0.6.7 local installation
-
-The separately authorized managed update from v0.6.6 to v0.6.7 completed
-successfully after independent installation-input review v067-Install-R1
-reported no findings. The actual update, administrator postflight and
-ordinary-reader postflight all completed with exit 0. All six installed files
-match the delivered source; all 11 managed-node owners/DACLs, parent
-identity/policy and personal model configuration bytes/permissions are
-preserved. The complete private v0.6.6 rollback copy, its original receipt
-and permission snapshot remain retained outside discovery roots. Earlier
-recovery material is unchanged, and the transaction directory is empty.
-
-[Installation verification](VERIFICATION.md#v067-local-installation-verification)
-binds the installed identity and bounded checks. The primary owner completed
-the mechanical records and closed the writer; this does not add an independent
-acceptance layer. No Git staging, commit, push, tag or publication was performed.
-Fresh-task loading, existing-task reload, Harness/model adoption and natural
-effectiveness remain `UNKNOWN`.
-
-## Unreleased handoff revision
-
-The v0.6.6 source revised decision closure, continuous work-package execution,
-review-result routing, mechanical recording and recovery before the next
-affected action. This is authorized source work with independent read-only
-review; it does not reopen prior release or installation operations or adopt
-the old role workflow for this maintenance package.
-
-The user confirmed v0.6.6 for this revision. The
-[v0.6.6 candidate](../../../release/v0.6.6-candidate.json) binds these package
-bytes as a pre-review snapshot. The published v0.6.5 descriptor, tag, receipts
-and installation evidence stay fixed. Source changes, existing
-documentation/case/check synchronization and same-scope repairs are authorized;
-stage, commit, push, release, user configuration/ACL changes, global changes
-and model evaluations remain outside this package. Installation received the
-separate authorization recorded below. One source writer
-owns the working diff and relinquishes it during independent review and at
-handoff. [Verification](VERIFICATION.md#unreleased-handoff-verification) owns
-the current check limits and candidate qualification.
-
-## v0.6.6 accepted source and local installation
-
-The final v0.6.6 source checkpoint was accepted after independent review.
-R1 found no findings; R2 identified stale current-version documentation
-(HR-01), and the same Reviewer closed it in R3 with no new findings.
-The source diff remains uncommitted and the candidate remains its original
-pre-review snapshot.
-
-The separately authorized managed update from v0.6.5 to v0.6.6 completed
-successfully. Independent installation-input review found no findings.
-The actual update, administrator postflight and ordinary-reader postflight
-all completed with exit 0. All six installed files match the accepted package;
-all 11 managed-node owners/DACLs and the parent identity/policy are preserved.
-The personal model configuration and its permissions are unchanged.
-A complete private v0.6.5 copy, its receipt and the original permission snapshot
-remain retained outside discovery roots; earlier recovery material was not
-changed. The installation transaction finished without residue.
-
-[Installation verification](VERIFICATION.md#v066-local-installation-verification)
-records the exact package and receipt identities and the bounded preparation
-failures. This proves the managed installed copy and ordinary readability;
-fresh-task loading, Harness behavior and long-term efficacy remain `UNKNOWN`.
-No Git staging, commit, push, tag or publication was performed.
-
-## v0.6.5 publication
-
-Status: **PUBLISHED_VERIFIED**, observed `2026-09-14T03:16:51Z`.
-
-| Public identity | Verified value |
-| --- | --- |
-| Immutable source commit | `05dc4f395ef607b6ea0209514caa759d532a6bff` |
-| Annotated tag | `v0.6.5`; object `065c1809da592e90822e58e750ff863898710120`, peeled to the source commit above |
-| GitHub Release | [v0.6.5](https://github.com/junwei529/work-charter/releases/tag/v0.6.5), id `388128463`; non-draft, non-prerelease, Latest at publication |
-| Installable package tree | `d0df02a81471c2b9e157c9f6faebc65948cb4b54` |
-
-The authenticated repository owner, push capability, exact remote main and absent
-new tag were checked before publication. Main and the new annotated tag were
-pushed atomically, then the Release title, reviewed body, target commit and Latest
-state were read back. The old `v0.3.0` tag object remained unchanged.
-
-The default branch may advance with this records-only closeout or later changes;
-the immutable tag continues to identify the source commit above. Publication
-does not extend the earlier local installation, model, loading or efficacy
-evidence. Historical candidates, failures and recovery records retain their scope.
-
-## Current implementation
-
-Canonical editable source is the 6-file package under
-[`skills/work-charter/`](../../../skills/work-charter/). It originated from
-`80910a8b2375a11be897e9660c4b00a06d00dd13`; changed package, evaluation,
-documentation, and checker files carry their recorded transformations and are bound to their
-current hashes in the provenance manifest. Unchanged mapped material retains
-its exact or normalized migration provenance. The released baseline is
-v0.6.5, published as recorded above; the v0.7.1 working revision is described
-at the top of this file. The released version follows the frozen v0.6.4 source on
-accepted v0.6.3 closeout commit
-`ca1589140822a10d8e122bd36a860e5a2c673943`. Historical acceptance does not
-qualify the new package.
+Installed: reviewed v0.12.0 package; file hashes match the approved manifest.
+Loaded: a fresh read-only run confirmed global guidance and both installed Skills.
+Release: [v0.12.0](https://github.com/junwei529/work-charter/releases/tag/v0.12.0).
+
+## Current Candidate
+
+The installable source contains 8 files. See the
+[candidate descriptor](../../../release/v0.12.0-candidate.json) for its exact package identity.
+Core semantic assertions cover only the selected safeguards and positive/negative
+action scenarios. Mechanical checks validate source binding, file inventory and
+reachable references; they do not match legacy prose.
+[Current source](../../../skills/work-charter/SKILL.md) and
+[package provenance](../../../PROVENANCE.md) are the maintained owners.
+
+## Historical Evidence
+
+<a id="v0111-source-follow-up"></a>
+[v0.11.1 source follow-up](STATE.history-through-v0111.md#v0111-source-follow-up)
+
+<a id="v0110-current-work"></a>
+[v0.11.0 current work](STATE.history-through-v0111.md#v0110-current-work)
+
+<a id="v0104-outcome-led-recovery"></a>
+[v0.10.4 outcome-led recovery](STATE.history-through-v0111.md#v0104-outcome-led-recovery)
+
+<a id="v0103-early-route-judgment"></a>
+[v0.10.3 early route judgment](STATE.history-through-v0111.md#v0103-early-route-judgment)
+
+<a id="v0102-source-and-delivery"></a>
+[v0.10.2 source and delivery](STATE.history-through-v0111.md#v0102-source-and-delivery)
+
+<a id="v0101-installation-and-push"></a>
+[v0.10.1 installation and push](STATE.history-through-v0111.md#v0101-installation-and-push)
+
+<a id="v0101-local-source"></a>
+[v0.10.1 local source](STATE.history-through-v0111.md#v0101-local-source)
+
+<a id="v0100-publication"></a>
+[v0.10.0 publication](STATE.history-through-v0111.md#v0100-publication)
+
+<a id="v0100-local-source"></a>
+[v0.10.0 local source](STATE.history-through-v0111.md#v0100-local-source)
+
+<a id="v096-publication"></a>
+[v0.9.6 publication](STATE.history-through-v0111.md#v096-publication)
+
+<a id="v096-local-source"></a>
+[v0.9.6 local source](STATE.history-through-v0111.md#v096-local-source)
+
+<a id="v095-publication"></a>
+[v0.9.5 publication](STATE.history-through-v0111.md#v095-publication)
+
+<a id="v095-local-source"></a>
+[v0.9.5 local source](STATE.history-through-v0111.md#v095-local-source)
+
+<a id="v094-publication"></a>
+[v0.9.4 publication](STATE.history-through-v0111.md#v094-publication)
+
+<a id="v094-local-source"></a>
+[v0.9.4 local source](STATE.history-through-v0111.md#v094-local-source)
+
+<a id="v093-local-source"></a>
+[v0.9.3 local source](STATE.history-through-v0111.md#v093-local-source)
+
+<a id="v092-publication"></a>
+[v0.9.2 publication](STATE.history-through-v0111.md#v092-publication)
+
+<a id="v092-local-source"></a>
+[v0.9.2 local source](STATE.history-through-v0111.md#v092-local-source)
+
+<a id="v091-publication"></a>
+[v0.9.1 publication](STATE.history-through-v0111.md#v091-publication)
+
+<a id="v091-local-source"></a>
+[v0.9.1 local source](STATE.history-through-v0111.md#v091-local-source)
+
+<a id="v090-local-delivery"></a>
+[v0.9.0 local delivery](STATE.history-through-v0111.md#v090-local-delivery)
+
+<a id="v080-publication"></a>
+[v0.8.0 publication](STATE.history-through-v0111.md#v080-publication)
+
+<a id="v080-source-candidate"></a>
+[v0.8.0 source candidate](STATE.history-through-v0111.md#v080-source-candidate)
+
+<a id="v071-publication"></a>
+[v0.7.1 publication](STATE.history-through-v0111.md#v071-publication)
+
+<a id="v071-publication-input-checkpoint"></a>
+[v0.7.1 publication input checkpoint](STATE.history-through-v0111.md#v071-publication-input-checkpoint)
+
+<a id="v071-outcome-scoped-authority"></a>
+[v0.7.1 outcome-scoped authority](STATE.history-through-v0111.md#v071-outcome-scoped-authority)
+
+<a id="v070-delegation-update"></a>
+[v070 delegation update](STATE.history-through-v0111.md#v070-delegation-update)
+
+<a id="v068-sol-compatibility-update"></a>
+[v0.6.8 Sol compatibility update](STATE.history-through-v0111.md#v068-sol-compatibility-update)
+
+<a id="unreleased-evidence-scope-revision"></a>
+[Unreleased evidence-scope revision](STATE.history-through-v0111.md#unreleased-evidence-scope-revision)
+
+<a id="v067-local-installation"></a>
+[v0.6.7 local installation](STATE.history-through-v0111.md#v067-local-installation)
+
+<a id="unreleased-handoff-revision"></a>
+[Unreleased handoff revision](STATE.history-through-v0111.md#unreleased-handoff-revision)
+
+<a id="v066-accepted-source-and-local-installation"></a>
+[v0.6.6 accepted source and local installation](STATE.history-through-v0111.md#v066-accepted-source-and-local-installation)
+
+<a id="v065-publication"></a>
+[v0.6.5 publication](STATE.history-through-v0111.md#v065-publication)
+
+<a id="current-implementation"></a>
+[Current implementation](STATE.history-through-v0111.md#current-implementation)
+
+<a id="released-v065-source-and-local-installation"></a>
+[Released v0.6.5 source and local installation](STATE.history-through-v0111.md#released-v065-source-and-local-installation)
+
+<a id="historical-v064-local-candidate"></a>
+[Historical v0.6.4 local candidate](STATE.history-through-v0111.md#historical-v064-local-candidate)
+
+<a id="historical-v063-local-candidate"></a>
+[Historical v0.6.3 local candidate](STATE.history-through-v0111.md#historical-v063-local-candidate)
+
+<a id="accepted-v063-source-checkpoint"></a>
+[Accepted v0.6.3 source checkpoint](STATE.history-through-v0111.md#accepted-v063-source-checkpoint)
+
+<a id="accepted-v063-user-installation"></a>
+[Accepted v0.6.3 user installation](STATE.history-through-v0111.md#accepted-v063-user-installation)
+
+<a id="historical-v062-local-candidate"></a>
+[Historical v0.6.2 local candidate](STATE.history-through-v0111.md#historical-v062-local-candidate)
+
+<a id="accepted-v062-source-checkpoint"></a>
+[Accepted v0.6.2 source checkpoint](STATE.history-through-v0111.md#accepted-v062-source-checkpoint)
+
+<a id="accepted-v062-user-installation"></a>
+[Accepted v0.6.2 user installation](STATE.history-through-v0111.md#accepted-v062-user-installation)
+
+<a id="historical-v061-local-candidate"></a>
+[Historical v0.6.1 local candidate](STATE.history-through-v0111.md#historical-v061-local-candidate)
+
+<a id="accepted-installer-source-checkpoint"></a>
+[Accepted installer source checkpoint](STATE.history-through-v0111.md#accepted-installer-source-checkpoint)
+
+<a id="accepted-v060-source-checkpoint"></a>
+[Accepted v0.6.0 source checkpoint](STATE.history-through-v0111.md#accepted-v060-source-checkpoint)
+
+<a id="immutable-accepted-v050-source"></a>
+[Immutable accepted v0.5.0 source](STATE.history-through-v0111.md#immutable-accepted-v050-source)
+
+<a id="historical-v040-candidate-and-failed-installation"></a>
+[Historical v0.4.0 candidate and failed installation](STATE.history-through-v0111.md#historical-v040-candidate-and-failed-installation)
+
+<a id="historical-v030-release"></a>
+[Historical v0.3.0 release](STATE.history-through-v0111.md#historical-v030-release)
+
+<a id="repository-ownership"></a>
+[Repository ownership](STATE.history-through-v0111.md#repository-ownership)
+
+<a id="evidence-state"></a>
+[Evidence state](STATE.history-through-v0111.md#evidence-state)
+
+<a id="historical-v067-closeout"></a>
+[Historical v0.6.7 closeout](STATE.history-through-v0111.md#historical-v067-closeout)
+
+<a id="recovery-entry"></a>
+[Recovery entry](STATE.history-through-v0111.md#recovery-entry)
 
 <a id="current-v065-local-candidate"></a>
-
-## Released v0.6.5 source and local installation
-
-- Scope: approved level-role defaults and their bounded data/documentation consumers
-- Candidate: [v0.6.5 descriptor](../../../release/v0.6.5-candidate.json), a
-  pre-review snapshot; all prior candidates and failure evidence are preserved
-- Defaults: L0 primary/R and L1/L2 primary/R Astra medium; L3 Planner high;
-  L4 Orchestrator xhigh and Planner high; L3/L4 Executor/Reviewer remain medium
-- General compatibility fallbacks, schema, shared entry, role authorization and
-  production installer behavior are unchanged
-- Source: applied and verified; independent v065-R1 inspected all 18 changed
-  paths and the bounded apply helper with no findings. The primary owner
-  verified delivery; this is not independent Planner acceptance.
-- Approved user configuration: created as a complete copy of the new default;
-  both elevated and ordinary Codex readback confirmed identical bytes and all
-  13 level-role objects. The user file remains an independently owned snapshot.
-- Independent v065-R2 found no technical issue in the bounded two-path read-only
-  ACL correction. Its first execution was rejected before process creation;
-  after the user's explicit approval, the correction completed with exit 0.
-  Ordinary-reader verification passed. Parent permissions, original ACEs,
-  owners, inheritance controls and file contents were preserved; no write
-  permission was added. The prior denial remains retained evidence.
-- Qualification: [current verification](VERIFICATION.md#current-v065-qualification)
-- Historical v0.6.5 installation checkpoint: managed v0.6.5. After explicit installation
-  approval, a fresh v0.6.5 stage passed independent installation-input review
-  and the actual update plus ordinary-reader postflight completed with exit 0.
-  The full v0.6.3 rollback copy and unused v0.6.4 stage remain retained outside
-  discovery roots. The personal configuration and its permissions are unchanged.
-- Installation authority did not include publication; the separate current
-  publication authorization is recorded above
-- Model delivery, host reload and comparative performance remain `UNKNOWN`
+[Historical current-v065-local-candidate](STATE.history-through-v0111.md#current-v065-local-candidate)
 
 <a id="current-v064-local-candidate"></a>
-
-## Historical v0.6.4 local candidate
-
-- Scope: shorter shared entry, relevant reference loading, lightweight L0
-  checks and proactive material reassessment with user-owned level decisions
-- Candidate: [v0.6.4 descriptor](../../../release/v0.6.4-candidate.json), a
-  pre-review snapshot; schema 1 and the six-file package shape are retained
-- Changes preserve shared authority, independent review, writer and recovery
-  boundaries; default models, metadata, Charter asset and production installer
-  logic are unchanged
-- Repository guidance reads the relevant owner and verifies the changed
-  mechanism, retaining identity, provenance and explicit frozen gates
-- Qualification: [current verification](VERIFICATION.md#current-v064-qualification)
-- Source: applied and verified; independent R1 findings AR-01 and AR-02 were
-  corrected and closed by the same Reviewer in R2, with no remaining findings.
-  The primary owner verified delivery; this is not independent Planner acceptance.
-- Installation: stage prepared and independently checked in R3; actual update
-  awaits the explicit installation decision. Last installed copy remains v0.6.3.
-- Local global-entry and decision-routing updates were applied under their own
-  owner; this does not prove fresh-task loading of this new package.
-- Commit, push and release are outside this revision's authority
-- Actual host loading, model adherence and broad efficacy remain `UNKNOWN`
+[Historical current-v064-local-candidate](STATE.history-through-v0111.md#current-v064-local-candidate)
 
 <a id="current-v063-local-candidate"></a>
-
-## Historical v0.6.3 local candidate
-
-- Version: user-confirmed v0.6.3; schema 1 and six-file package shape retained
-- Changes: approved Charter/level reuse, first assessment versus manual
-  reassessment, bounded read reuse, and full Skill plus scoped reference reads
-- Candidate: [v0.6.3 descriptor](../../../release/v0.6.3-candidate.json),
-  immutable `PENDING_INDEPENDENT_REVIEW` snapshot; the
-  [source checkpoint](#accepted-v063-source-checkpoint) is independently accepted
-- Source qualification and limits: [Verification](VERIFICATION.md#current-v063-qualification)
-- Production installer, default models, schema and Charter asset unchanged;
-  only the installer's self-test version constant follows v0.6.3
-- Last accepted installed copy: managed v0.6.3; see the
-  [accepted user installation](#accepted-v063-user-installation)
-- Global changes and tagged release: not performed for this revision
-- Historical candidates, accepted checkpoints, failures, findings and consumed
-  operations remain preserved; they do not qualify this new input
-- Runtime adherence and actual fresh-Thread read behavior: `UNKNOWN`
-
-### Accepted v0.6.3 source checkpoint
-
-Native v0.6.3 review R1 inspected the complete 26-path difference and material
-unchanged context with no findings. Planner independently accepted the same
-94-file source input after checking package identity, SOURCE and repository
-checks, current-index adversarial evidence and the approved Windows lifecycle
-terminal result. Baseline is `6c14676ac07dd0244e43c13f23ae8a3c3df04789`;
-accepted staged diff SHA-256 is
-`d6054780de368a2902774d4a8327b91f493892b269e0be255d8664efe5490bec`,
-serialized by `git diff --cached --binary`. The indexed-content manifest
-SHA-256 is `a9689eaf6e7504e00b92e9520eb37a87121b08ebcf7de1fc66b5c1727d2519ca`.
-Package and qualification identities are in
-[Verification](VERIFICATION.md#current-v063-qualification).
-
-This checkpoint accepts SOURCE only. The immutable candidate retains its
-pre-review state, and prior failures and review history remain preserved.
-Subsequent acceptance-record synchronization left package, candidate and
-installer bytes unchanged. Matching final-input checks and native review R2
-passed with full coverage, unchanged input and no findings before local commit
-`d5a35c3a8e6baae5a2bf76d29fe16ee1c951aada`. Planner independently verified
-that commit and all 94 committed files. Both native reviews used the approved
-OpenAI / gpt-6-astra / medium configuration; neither produced a finding.
-
-### Accepted v0.6.3 user installation
-
-The existing managed user copy was updated from v0.6.2 using the fixed clean
-checkout of the accepted source commit above. The separately approved single
-Administrator update completed successfully. Planner independently accepted
-the installed six-file package, receipt, default-reader access and preservation
-of all original managed-path and parent permissions. Detailed identities,
-verification and recovery limits are in
-[Verification](VERIFICATION.md#accepted-v063-installation-verification).
-This installation does not establish fresh-task behavior or model adherence.
-
-## Historical v0.6.2 local candidate
-
-- Version: user-confirmed v0.6.2; schema 1 and six-file package shape retained
-- Changes: Agent-derived guardrails explain concrete failure/consequence,
-  needed protection strength, and why simpler existing methods are insufficient;
-  expanding auxiliary work prompts the primary owner or Planner to compare
-  remaining costs and simpler routes to the same protected user outcome
-- Explicit user/project requirements retain existing authority; no extra
-  role, form, or approval gate is added
-- Candidate: [v0.6.2 descriptor](../../../release/v0.6.2-candidate.json),
-  `PENDING_INDEPENDENT_REVIEW`; no committed-source receipt
-- Package identity and required qualification: [Verification](VERIFICATION.md#historical-v062-qualification)
-- Source acceptance: R17 found no new blocking or material findings; Planner
-  independently accepted the [frozen source checkpoint](#accepted-v062-source-checkpoint)
-- Production installer, default models, schema, and metadata are unchanged;
-  only the installer's self-test version constant follows v0.6.2
-- The unstarted v0.6.1 installation retry remains suspended
-- Accepted source commit: `21391c98197485494690050ce2a889745c10403c`
-- Last verified installed copy: managed v0.6.2;
-  [actual installation accepted](#accepted-v062-user-installation) by Planner
-- Global consumer migration: `NOT_PERFORMED`; runtime/efficacy: `UNKNOWN`
-- Existing candidate snapshots, R1-R17, findings, failures, and consumed
-  operations remain historical evidence; no count or approval is reset
-
-### Accepted v0.6.2 source checkpoint
-
-R17 reviewed the complete 18-path difference and material unchanged context;
-Planner independently verified the same 93-file index and working bytes and
-accepted both portable additions. Baseline commit is
-`38dd18cb65b4afd24ef2139dcc63a014de1c5ccf`; accepted staged diff SHA-256 is
-`47fd0803259cb27766a35f0e5c56e5c7425a6fae37de1ab7f679071b9b9dd717`, and
-indexed-content manifest SHA-256 is
-`adb9e1043ef2a542ac203de6701153bf8613424b73f418d56704b1cd8c88980e`.
-Package and qualification identities are in [Verification](VERIFICATION.md#historical-v062-qualification).
-This is independent technical review and frozen-source acceptance, not native
-review, installation, publication, or runtime efficacy. The candidate retains
-its immutable pre-review pending snapshot. Subsequent acceptance-record and
-mapping changes receive separate final-input checks without changing the
-accepted package or installer.
-
-### Accepted v0.6.2 user installation
-
-The managed user copy was updated from v0.4.0 using the existing production
-installer and immutable accepted source commit
-`21391c98197485494690050ce2a889745c10403c`. Planner independently verified
-the source, six installed files, receipt, default-reader access, and bounded
-permission preservation and accepted this exact installation. Detailed checks
-and limits are in [Verification](VERIFICATION.md#accepted-v062-installation-verification).
-Prior failed attempts remain historical evidence; this success does not imply
-loaded-copy behavior, consumer migration, model adherence, publication, or
-other lifecycle transitions.
-
-## Historical v0.6.1 local candidate
-
-- Version: v0.6.1; schema 1, six package files, approved default model/effort
-  objects and role/permission/review contracts unchanged
-- Changes: startup prompt reuses scoped authorization; prompts and handoffs
-  retain necessary facts, decisions, material limits, and next action;
-  configuration resolution has one required reference owner
-- Candidate: [v0.6.1 descriptor](../../../release/v0.6.1-candidate.json),
-  `PENDING_INDEPENDENT_REVIEW`; no committed-source receipt
-- Package identity and input-bound qualification: [Verification](VERIFICATION.md#historical-v061-qualification)
-- Current installer correction: `ACCEPTED_FROZEN_SOURCE_CHECKPOINT`; R16
-  confirmed R15-F01 fixed with no new blocking/material findings, followed by
-  Planner source acceptance; six-file package and candidate bytes unchanged
-- The earlier v0.6.1 source was accepted and committed. Its authorized managed
-  update stopped in fully inherited DACL preflight before target mutation.
-  The SOURCE correction and synchronized records were committed as
-  `38dd18cb65b4afd24ef2139dcc63a014de1c5ccf` and independently checked by the
-  Planner. The unstarted installation retry was suspended; neither installation
-  acceptance nor Git publication is established by that commit.
-- Global consumer migration: `NOT_PERFORMED`; runtime/efficacy: `UNKNOWN`
-- v0.6.0 descriptor and historical release objects remain byte-identical;
-  previous checks and R12 do not prove this new installer input
-
-The failed update and bounded diagnosis exposed a missing inheritance-parent
-context in the old private replica. The correction uses an empty context model
-and individually private real material, with a temporary private handoff before
-moving old objects. Partial ACL failure requires recovery even with zero moves.
-The supported permissions, owner/writer admission and recovery rules are owned
-by [Design](DESIGN.md#windows-permission-context-and-private-handoff); current
-SOURCE evidence requirements are owned by [Verification](VERIFICATION.md#historical-v061-qualification).
-At that historical checkpoint the installed copy remained managed v0.4.0. Prior failed evidence
-is retained and the SOURCE result does not establish a successful installation.
-
-### Accepted installer source checkpoint
-
-The accepted object is the complete 92-file index on baseline
-`74b477d856b540e437ecb267dddf617dea5aa2`, with a 10-path staged diff SHA-256
-`5eebc1eef646e180f37a64b5cdc52835594ea73a612494def86b7939d85fa7d5`.
-Installer SHA-256 is
-`e2c5d382144b120d9310fc0783b3fb0a7790866a6f6c1d1ff66a45010553c608`.
-R15 reviewed the correction; R16 verified the non-Windows mkdir compatibility
-fix and unchanged Windows branch. Planner independently matched the full index,
-working bytes and diff before acceptance. Subsequent record synchronization
-preserves that accepted installer/package identity and has its own final-index
-checks; it does not rewrite the accepted checkpoint or pending candidate snapshot.
-This acceptance addresses the reproduced inheritance defect within the existing
-contract; it does not make every installer guarantee necessary for every Skill
-installation. Native POSIX execution remains `UNKNOWN` / `NOT_PERFORMED`.
-
-## Accepted v0.6.0 source checkpoint
-
-- Source verdict: `ACCEPTED_FROZEN_SOURCE_CHECKPOINT`
-- Independent technical review: cumulative R12 completed, `No new findings`;
-  coverage was the complete 21-file source diff plus necessary unchanged
-  semantic context. Read-only input identity held before and after review.
-- Planner accepted the configuration capability, approved level defaults,
-  prompt method, and that complete frozen input; P-C1/P-C2 are closed.
-- Accepted baseline HEAD: `018ff69a26b70a3a490b57f3641b356739bb228f`
-- Accepted staged-diff SHA-256:
-  `237d7c0b0cf4318699c9e24d187e24843b76532700677ce9f343c7429da2b2bd`
-- Accepted candidate SHA-256:
-  `5890f3e7c73ed1d4046269a03b1385097a0596cca804a57e49a838d588aa96ff`
-- Package shape: unchanged 6 files
-- Configuration schema: backward-compatible `schema_version: 1` extension
-- Package general defaults: unchanged O/P/E/R compatibility objects and values
-- Package level defaults: 12 approved Astra objects in the canonical YAML
-- Prompt method: contract + actual responsibility + current task + supported
-  model delta; effort remains runtime metadata, model efficacy unverified
-- Added configuration objects: optional general `primary` plus bounded
-  `level_overrides` for the actual-responsibility matrix
-- Resolution: frozen delivery, task-explicit confirmed combination, user level,
-  user general, package level, package general, then host-selection
-  pass-through only for a `primary` absent from both sources
-- Actual-responsibility matrix: L0 primary plus separately triggered temporary
-  R; L1/L2 primary plus optional R; L3 P/E/R; L4 O/P/E/R
-- L0 activation: remains no active Charter
-- Existing tasks/roles and role enablement: unchanged by configuration
-- Package tree:
-  `12fe4c65683a82d9d60295160681247b812efa0b` and package SHA-256
-  `b73cf79466e8289fcb2d6eb441db91ce13def0cb2092e58bcbdfef14de08a50a`
-- Candidate descriptor: [`../../../release/v0.6.0-candidate.json`](../../../release/v0.6.0-candidate.json)
-- Current-input SOURCE, repository, staged adversarial, and lifecycle checks:
-  see [Verification](VERIFICATION.md)
-- Host/global task-start consumer integration: `NOT_PERFORMED`
-- Commit/native commit gate, local release readiness, installation, and
-  publication: not established or authorized by this source acceptance
-- Runtime delivery, loaded-copy behavior, and broad efficacy: `UNKNOWN`
-- Package version: v0.6.0; YAML schema version: 1 with optional field extensions
-
-The candidate remains its original `PENDING_INDEPENDENT_REVIEW` snapshot,
-including pending evidence fields. The later source acceptance above does not
-rewrite that snapshot or require a committed-source receipt. No v0.6.0 commit
-is claimed. Historical C5/C6, R1-R12, prior permission refusals, failed checks,
-findings, and consumed authority remain part of the same work history.
-
-The subsequent acceptance-record checkpoint also passed Planner verification.
-Its 11-file delta comprised nine existing documents and mechanical provenance/
-checker pins, with staged-diff SHA-256
-`b1d5f69d15cff09c06c2e178718f1ded2b57ec7b22b38c5cd72749c1c35724c7`.
-At that closeout, all six package files, candidate, historical release objects,
-installer, and SOURCE checker stayed byte-identical to the source checkpoint.
-Its own checks and acceptance remain distinct from later v0.6.1 work.
-
-This development source does not rewrite or inherit the accepted v0.5.0 source
-identity, review, or Planner acceptance below.
-
-## Immutable accepted v0.5.0 source
-
-- Version: `v0.5.0`
-- Candidate descriptor: [`../../../release/v0.5.0-candidate.json`](../../../release/v0.5.0-candidate.json)
-- Descriptor state: immutable `PENDING_INDEPENDENT_REVIEW` pre-review snapshot
-- Accepted source commit: `8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`
-- Source acceptance receipt:
-  [`../../../release/v0.5.0-local-release-receipt.json`](../../../release/v0.5.0-local-release-receipt.json)
-- Package lineage: accepted v0.4.1 C4 source
-  `59b4d91f46c2ac797c71c900e62dda87cf0cca60`
-- Deterministic SOURCE, repository, adversarial, and lifecycle evidence:
-  `VERIFIED` for the exact receipt-bound source checkpoint
-- Independent technical review: ten completed rounds; R9 P2
-  `WC-ROLE-CONFIG-R9-F01` fixed and closed by R10 with no new findings
-- Planner source and committed-source acceptance: `ACCEPTED`
-- Local source readiness: `VERIFIED`
-- v0.5.0 installation and publication: `NOT_PERFORMED` and `NOT_AUTHORIZED`
-- Actual v0.4.0 installed copy: remains managed v0.4.0 after the separately
-  accepted ACL-only access repair; v0.4.1 and v0.5.0 were not installed
-- `WC-INSTALL-POSTFLIGHT-F01`: closed only for that exact access repair
-- Runtime role delivery, cross-provider execution, stable loaded-copy behavior,
-  natural adherence, cross-Harness behavior, public release, and broad
-  efficacy: `UNKNOWN` or separately authorized
-
-The v0.5.0 candidate preserves the accepted v0.4.1 L0-L4 Reviewer, verification, acceptance,
-evidence-first `UNKNOWN`, context recovery, callback, and graph boundaries. It
-adds a strict role-model source hierarchy, whole-role replacement semantics,
-closed schema and capability validation, visible native mapping, and a package
-default for Orchestrator/Planner/Executor/Reviewer. Configuration never grants
-role or action authority and never mutates existing roles. On Windows, the
-lifecycle controller additionally supports exact allow-listed five-file and
-six-file package transitions by projecting changed path membership on a private
-replica while preserving every common descriptor. Unsupported path sets,
-control states, inheritance results, or readback fail before any target move.
-
-## Historical v0.4.0 candidate and failed installation
-
-- Immutable candidate: [`../../../release/v0.4.0-candidate.json`](../../../release/v0.4.0-candidate.json)
-- Accepted candidate commit: `30057490be21d869751854a51e9fafdfb535f206`
-- Local-release receipt: [`../../../release/v0.4.0-local-release-receipt.json`](../../../release/v0.4.0-local-release-receipt.json)
-- Receipt-bound independent review: five results through R5; two historical
-  source findings closed and R5 P2 fixed pending R6 at that checkpoint
-- Later R6 result and Planner source acceptance: `NO_FINDINGS` / `ACCEPTED`
-- Accepted correction commit: `df674c773de6f915627af541f0eb37221da9adef`
-- v0.3.0-to-v0.4.0 written bytes and elevated receipt/file postflight:
-  `VERIFIED`
-- Default sandbox reader access after original promotion: `FAILED`
-- First authorized ACL-only repair: stopped before target mutation because
-  `/restore` changed `D:P` to `D:PAI` and `D:` to `D:AI`
-- Accepted v0.4.1 C4 source correction:
-  `59b4d91f46c2ac797c71c900e62dda87cf0cca60`
-- Later exact ACL-only repair: `ACCEPTED`; the managed v0.4.0 copy became
-  default-readable and `WC-INSTALL-POSTFLIGHT-F01` closed for that repair
-- Installed package version after repair: `v0.4.0`
-
-The later control-state counterevidence does not erase R6 or its acceptance; it
-invalidated the prior mechanism for the first repair attempt. The accepted C4
-mechanism and later bounded repair preserved package bytes and version while
-changing only the exact target's ACL. That evidence does not install v0.4.1 or
-authorize another lifecycle action.
-
-## Historical v0.3.0 release
-
-- Version: `v0.3.0`
-- Public identity: `junwei529/work-charter`
-- Candidate descriptor: [`../../../release/v0.3.0-candidate.json`](../../../release/v0.3.0-candidate.json)
-- Candidate state: `LOCAL_RELEASE_READY=VERIFIED`
-- Accepted candidate C: `732e7efa6211d9aedeb133282ef28ce03f9bdfef`
-- Acceptance receipt: [`../../../release/v0.3.0-local-release-receipt.json`](../../../release/v0.3.0-local-release-receipt.json)
-- Release-note body: human review approved; immutable P's
-  [`../../../CHANGELOG.md`](../../../CHANGELOG.md) carrier retains its pre-effect
-  `PENDING` snapshot
-- Public repository: `https://github.com/junwei529/work-charter`
-- Public-source candidate: [`../../../release/v0.3.0-public-release-candidate.json`](../../../release/v0.3.0-public-release-candidate.json)
-- Immutable public commit P: `b655c1aa42acc8c68b70e87c4c228445c5182d8b`
-- Annotated tag: `v0.3.0`, fixed at P
-- Public release state: `VERIFIED`
-- Post-release evidence subject: [`../../../release/v0.3.0-public-release-evidence.json`](../../../release/v0.3.0-public-release-evidence.json), accepted as `B2-WC-PUBLIC-EVIDENCE-F-01` for exact F `4ba904808fe86e270ebd405db1866d41d1cc032e`
-
-The immutable candidate identity is the clean commit containing the descriptor.
-The descriptor deliberately does not contain its own commit hash and retains
-its original pending snapshot. The separate receipt binds exact C, its tree,
-the unchanged package tree, and the independent Planner acceptance without
-rewriting that candidate.
-
-## Repository ownership
-
-This repository owns its Git history, documentation, checks, and future version,
-evaluation, installation, and release decisions. It has no implicit dependency
-on another Skill repository and begins with no configured remote.
-
-## Evidence state
-
-The migration proves historical source identities for mapped files. The current
-manifest proves current target hashes, local link and publication-safety
-constraints, and provenance classification. The v0.5.0 receipt-bound
-deterministic qualification proves only that exact historical instruction text
-and four-role default. The current checker separately reports the development
-source's static selection/assessment/adoption, authority, coordination/recovery,
-review/acceptance, level-role resolution, Standard O/P/E/R, and unchanged
-default-data clauses, and requires exact current-package binding to v0.6.3.
-Neither result proves model adherence, host/global
-consumer integration, runtime delivery, technical correctness, or acceptance
-for the development source. R12 and Planner acceptance apply to the v0.6.0
-checkpoint recorded above; R14/R16 and later Planner checks qualify the
-accepted v0.6.1 source. R17 and Planner acceptance apply to the v0.6.2 frozen
-source checkpoint above; later effects retain their separate gates.
-The retained cases remain contract fixtures; they
-do not create fresh model, efficacy, release, or installed-copy evidence.
-
-Evidence states remain separate:
-
-- Current v0.6.3 SOURCE identity: provenance-bound working bytes and a matching
-  candidate descriptor. Input-bound deterministic results are recorded in
-  [Verification](VERIFICATION.md). The earlier v0.6.1 R13 state-record finding was
-  fixed and accepted after R14 before the prior source commit. The later
-  installer correction has the separate accepted checkpoint above; its record
-  synchronization is not an outstanding R13 source review.
-- Historical v0.6.0 source and acceptance records: accepted at the checkpoints
-  above. Its immutable descriptor retains the pre-review pending snapshot;
-  that snapshot does not reopen the accepted history or qualify v0.6.3.
-- Immutable v0.5.0 SOURCE identity and deterministic contract: `VERIFIED` for
-  accepted commit `8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d`.
-- Immutable v0.5.0 independent review and Planner acceptance: `VERIFIED` by the
-  separate source receipt; the candidate descriptor retains its immutable
-  pending snapshot.
-- Immutable v0.5.0 local source readiness: `VERIFIED`.
-- v0.5.0 installation and publication: `NOT_PERFORMED` and
-  `NOT_AUTHORIZED`.
-- v0.5.0 role-delivery runtime and cross-provider execution: `UNKNOWN`.
-- Historical v0.4.0 source-candidate acceptance: `VERIFIED` for the immutable
-  candidate and reviewed installer baseline; later control-state evidence and
-  the accepted C4 correction remain separate from that history.
-- Historical v0.4.0 original attempt: exact content and elevated receipt/five-
-  file postflight are `VERIFIED`, while default-reader access was `FAILED`.
-- Historical v0.4.0 exact ACL-only repair: `ACCEPTED`; the managed v0.4.0 copy
-  became default-readable and the exact access finding was closed. This did not
-  install v0.4.1 or authorize v0.5.0 effects.
-- Historical v0.3.0 `LOCAL_RELEASE_READY`: `VERIFIED` by the exact-C acceptance
-  receipt.
-- Historical v0.3.0 `PUBLIC_RELEASE`: `VERIFIED` for exact P, annotated tag,
-  and public Release.
-- Historical v0.3.0 same-version install/update/rollback/uninstall/restoration:
-  `VERIFIED`.
-- Historical v0.3.0 `STABLE_INSTALLED_COPY`: `VERIFIED` for the evidenced Codex
-  user installation at that checkpoint.
-- Historical v0.3.0 installed-copy behavior: `VERIFIED` for the retained witnesses
-  plus `B2-WC-SOLE-LOAD-02`, which observed exactly one catalog-visible managed
-  `work-charter`.
-- Retained predecessor bytes: preserved outside every Skill discovery root; the
-  exact recovery locator is controller-side only.
-- Broad product efficacy and untested selection/loading/negative contexts: `UNKNOWN`.
-
-The immutable public-source candidate preserves its pre-effect snapshot. The
-separate post-release evidence subject binds the later public and corrected
-installed-copy facts without rewriting P. The attempted v0.3.0-to-v0.4.0
-update verifies its written content and elevated postflight; its original
-access failure and the later accepted ACL-only repair remain separately
-attributed. Other cross-version transitions, cross-Harness behavior, untested
-contexts, and broad efficacy remain `UNKNOWN`.
-
-Lifecycle receipt validation is bounded to integrity and routing checks. It
-refuses unreceipted, malformed or mismatched-receipt, wrong-tree, modified,
-aliased, and drifted destinations, but does not prove cryptographic ownership
-against a same-privilege local actor able to forge the complete receipt.
-Repository-side lifecycle mutations now use a validated external, same-volume
-task transaction root outside all declared Skill discovery roots. Planned
-product operations supply it explicitly; legacy apply calls retain their prior
-shape through a visibly marked `AUTO_COMPATIBILITY` root with the same guards.
-The disposable self-test covers all four legacy apply forms, explicit-path
-install/update/rollback/uninstall, pre-mutation path and volume refusal,
-preservation when the initial backup move fails, and verified restoration after
-a later replacement failure. The historical v0.4.1 Windows-specific correction
-protects every random per-operation transaction directory for Owner Rights,
-SYSTEM, and Administrators. New installs inherit the destination-parent DACL;
-update/rollback/uninstall save the complete prior DACL tree and prove restore
-capability on a private replica before mutation. AI-bearing records use a
-single-record `/restore`; no-AI records use `SetFileSecurityW` without a child
-propagation transition. Records are applied shallow-to-deep. The replica and
-every promoted or recovered target are read back with the same bounded `/save`
-representation; record order and newline form are ignored, while path
-membership and exact DACL SDDL—including P, AI, AR and ACE order/content—must
-match. A preflight mismatch produces zero target moves. A later mismatch enters
-existing recovery and retains the original protected snapshot when recovery is
-incomplete. Moved backup/tombstone trees inherit the private transaction DACL;
-other platforms retain prior behavior. Historical five-file receipts and the
-legacy candidate descriptor and the current six-file descriptor are two exact
-allow-listed shapes. The legacy candidate may omit its redundant package
-digest only while its actual tree matches a separate trusted tree; the current
-shape requires the digest, and any supplied invalid or mismatched digest is
-rejected. A changed-shape Windows update/rollback projects policy on a private
-replica, preserves every
-common descriptor, requires new paths to be auto-inherited and unprotected,
-and exact-restores/readbacks the projected snapshot while retaining the
-original for recovery. Unknown/self-declared sets, unsafe receipt paths,
-missing/extra files, or identity mismatches fail closed. Lifecycle self-test
-also proves that a disposable external user configuration remains byte-identical.
-This correction creates a new six-file v0.5.0 source while leaving immutable
-v0.4.1/v0.4.0/v0.3.0 objects unchanged. Exact qualification, ten completed
-review rounds, and Planner acceptance are bound by the separate v0.5.0 receipt.
-
-## Historical v0.6.7 closeout
-
-At the v0.6.7 checkpoint, source maintenance and separately authorized local
-installation, required verification and independent installation-input review
-were complete with no open findings. Its writer closed and diff remained uncommitted;
-publication is not authorized. The accepted v0.6.6 source and its historical
-local installation retain their scope.
-Source qualification, installed-copy proof and publication remain separate
-evidence and authority boundaries.
-
-The [v0.6.5 publication](#v065-publication) is complete.
-No publication action remains. Verify current Git state before new work, retain
-prior installation and approval-failure evidence and recovery records, and keep
-fresh-task loading, runtime behavior and performance separately scoped.
-
-## Recovery entry
-
-Read the root [`AGENTS.md`](../../../AGENTS.md),
-[`PROVENANCE.md`](../../../PROVENANCE.md), [Design](DESIGN.md), this State, and
-[Verification](VERIFICATION.md). Verify Git status, current branch, package
-identity, and writer ownership before changing files.
+[Historical current-v063-local-candidate](STATE.history-through-v0111.md#current-v063-local-candidate)

@@ -18,8 +18,8 @@ ROOT = Path(__file__).resolve().parents[1]
 PRODUCT = 'work-charter'
 BASELINE = '80910a8b2375a11be897e9660c4b00a06d00dd13'
 EXPECTED_SOURCE_TREE = '2ec2574116a9b2c4e8ec9a1bb4cb2636cb6279af'
-EXPECTED_SOURCE_MAPPING_SHA256 = 'ad8b53312518199719466984f411dba613c942a803fec3d474c36a4e744ed80d'
-EXPECTED_PACKAGE_COUNT = 6
+EXPECTED_SOURCE_MAPPING_SHA256 = '7b40b57602297c1f50f5f04ae92d69b591faa227ba54461acc41629a2a2ef878'
+EXPECTED_PACKAGE_COUNT = 8
 EXPECTED_CASES = set(['cold-resume.md', 'small-task-stays-flat.md', 'work-charter-entry.md', 'work-charter-midstream.md', 'work-charter-planner-executor.md', 'work-charter-recovery-integrity.md', 'work-charter-role-model-configuration.md', 'work-charter-selection.md', 'work-charter-standard.md'])
 EXPECTED_FIXTURES = set(['cold-resume', 'small-task-stays-flat', 'work-charter-entry', 'work-charter-loop', 'work-charter-recovery-integrity', 'work-charter-standard'])
 EXCLUDED_PARTS = {
@@ -1430,6 +1430,31 @@ def check_links(relative: str, text: str, failures: list[str]) -> None:
             failures.append(f"{relative}: missing local link target: {target_path}")
 
 
+
+def reachable_package_markdown(package_root: Path, entry: Path) -> set[Path]:
+    """Follow local Markdown references so conditional files need one real route."""
+    pending = [entry]
+    visited: set[Path] = set()
+    root = package_root.resolve()
+    while pending:
+        path = pending.pop()
+        canonical = path.resolve()
+        if canonical in visited or not canonical.is_relative_to(root):
+            continue
+        if has_link_like_component(path) or not path.is_file():
+            continue
+        visited.add(canonical)
+        text = path.read_text(encoding="utf-8")
+        for match in LINK_PATTERN.finditer(text):
+            raw = match.group(1).split("#", 1)[0]
+            if not raw or "://" in raw:
+                continue
+            target = path.parent / unquote(raw)
+            if target.suffix.lower() == ".md":
+                pending.append(target)
+    return {path.resolve() for path in visited}
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--json", action="store_true")
@@ -1628,10 +1653,11 @@ def main() -> int:
     if skill_text and not re.match(r"\A---\n.*?\n---\n", skill_text, re.S):
         failures.append("SKILL.md frontmatter missing or malformed")
     references = package_root / "references"
+    reachable = reachable_package_markdown(package_root, skill_path)
     if references.exists():
         for reference in references.iterdir():
-            if reference.is_file() and f"](references/{reference.name})" not in skill_text:
-                failures.append(f"SKILL.md does not directly link references/{reference.name}")
+            if reference.is_file() and reference.resolve() not in reachable:
+                failures.append(f"reference has no reachable entry from SKILL.md: {reference.name}")
 
     result = {
         "product": PRODUCT,

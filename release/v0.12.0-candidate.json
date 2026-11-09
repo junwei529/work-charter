@@ -1,0 +1,33 @@
+{
+  "candidate_state": "INSTALLED_LOCAL_NOT_PUBLISHED",
+  "evidence_states": {
+    "installation": "VERIFIED_LOCAL_INSTALLATION",
+    "publication": "NOT_PERFORMED",
+    "semantic_review": "PASS_WITH_USER_RELAYED_INDEPENDENT_REASSESSMENT",
+    "source_checks": "PASS_SOURCE_ONLY"
+  },
+  "lineage": {
+    "previous_version": "0.11.1",
+    "source_commit": "14c346a7ff7e4fc7fe2300e2b431c3c8856fd9a2"
+  },
+  "package": {
+    "file_count": 8,
+    "files": [
+      "SKILL.md",
+      "agents/openai.yaml",
+      "assets/role-models.default.yaml",
+      "assets/work-charter.md",
+      "references/coordination-and-recovery.md",
+      "references/legacy-agreements.md",
+      "references/role-model-configuration.md",
+      "references/standard-ope.md"
+    ],
+    "path": "skills/work-charter",
+    "sha256": "95958e4b40198d491c8f20aa933ee272d1f9e68c70fc4650e79cd2126a4d0cb4",
+    "tree": "0c9ca5381f073b32e215f4249bec65b175e4bfb5"
+  },
+  "product": "work-charter",
+  "public_identity": "junwei529/work-charter",
+  "schema": "work-charter-local-release-candidate/v1",
+  "version": "0.12.0"
+}

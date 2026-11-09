@@ -1,6 +1,10 @@
 # Work Charter
 
-The current [v0.11.1 source follow-up](STATE.md#v0111-source-follow-up) adds optional
+Current source: v0.12.0. [State](STATE.md#current-candidate) links to the release; [verification](VERIFICATION.md#current-candidate) records source checks, local installation and fresh-run loading.
+
+## Retained Documentation
+
+The historical [v0.11.1 source follow-up](STATE.md#v0111-source-follow-up) adds optional
 knowledge cooperation and a shared user-confirmation protection. Its
 [candidate](../../../release/v0.11.1-candidate.json) records the pre-effect source identity.
 
@@ -34,7 +38,7 @@ relevant details when needed, and reassesses material changes without adopting
 a level for the user. It preserves approved Charter reuse and shared review,
 authority and recovery boundaries; see
 [historical v0.6.5 state](STATE.md#current-v065-local-candidate).
-[Current source](STATE.md#v0111-source-follow-up) and
+[Current source](STATE.md#current-candidate) and
 [v0.11.0 installation/publication evidence](STATE.md#v0110-current-work) are separate.
 
 The package originated at source commit
@@ -45,8 +49,8 @@ The prior v0.6.0 package added a backward-compatible level-by-actual-role
 configuration extension as the local
 [`v0.6.0` candidate](../../../release/v0.6.0-candidate.json).
 It does not inherit v0.5.0 acceptance. Installation, consumer integration, and
-runtime evidence remain separate. SOURCE qualification requires the current
-package tree and digest to match that descriptor; [Verification](VERIFICATION.md)
+runtime evidence remain separate. That historical SOURCE qualification matched the v0.6.0
+package tree and digest to its descriptor; [Verification](VERIFICATION.md)
 records the input-bound checks. R12 completed with no new findings and Planner
 accepted the uncommitted frozen source checkpoint; [State](STATE.md#accepted-v060-source-checkpoint)
 records the scope and identity. The descriptor remains its pre-review snapshot.

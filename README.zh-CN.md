@@ -1,9 +1,11 @@
 # Work Charter
 
+**v0.12.0** 精简当前入口和按需阅读的说明，按实际影响推进与审查。
+
 [English](README.md)
 
 **[最新发布](https://github.com/junwei529/work-charter/releases/latest)**
-· [源码与验证状态](docs/skills/work-charter/STATE.md#v0111-source-follow-up)
+· [当前状态](docs/skills/work-charter/STATE.md#current-candidate) · [验证范围](docs/skills/work-charter/VERIFICATION.md#current-candidate)
 
 普通Direct由一位D负责目标澄清、方案、实现、验证、修复和交付；需要目标协调时加O，有明确收益才拆P/E。用户授权目标与范围，未明确固定的普通方法可在真实权限、效果、成本和验收底线内调整。内部步骤和版本变化不自动新增审批。
 
@@ -13,7 +15,7 @@
 
 使用示例：`用 $work-charter 继续已有授权目标，核对当前状态，按最简充分路径推进；只有真正未决的权限或范围变化才问我。`
 
-当前源码增加了可选的项目知识协作：[源码状态](docs/skills/work-charter/STATE.md#v0111-source-follow-up)。
+当前源码增加了可选的项目知识协作：[源码状态](docs/skills/work-charter/STATE.md#current-candidate)。
 D/E 负责执行经验闭环，P/O 沿既有职责处理合同或跨工作线事项，R 独立检查相关影响。
 需要且可用时配合 Project Docs，两者都可单独使用。新增、实质修改或废止项目规则须用户确认，
 一般文档维护不增加逐项审批。

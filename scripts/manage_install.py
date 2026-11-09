@@ -22,12 +22,16 @@ LEGACY_PACKAGE_FILES = frozenset({
     "references/coordination-and-recovery.md",
     "references/standard-ope.md",
 })
-EXPECTED_FILES = LEGACY_PACKAGE_FILES | {"assets/role-models.default.yaml"}
-ALLOWED_PACKAGE_FILE_SETS = frozenset({LEGACY_PACKAGE_FILES, EXPECTED_FILES})
+V06_PACKAGE_FILES = LEGACY_PACKAGE_FILES | {"assets/role-models.default.yaml"}
+EXPECTED_FILES = V06_PACKAGE_FILES | {
+    "references/role-model-configuration.md",
+    "references/legacy-agreements.md",
+}
+ALLOWED_PACKAGE_FILE_SETS = frozenset({LEGACY_PACKAGE_FILES, V06_PACKAGE_FILES, EXPECTED_FILES})
 TRUSTED_PACKAGE_TREES = {
     "0.3.0": "0ac3cbb0f1fa8fa51d8f832c8127eabc9863ec9e",
 }
-SELF_TEST_SOURCE_VERSION = "0.11.0"
+SELF_TEST_SOURCE_VERSION = "0.12.0"
 
 
 class LifecycleError(RuntimeError):

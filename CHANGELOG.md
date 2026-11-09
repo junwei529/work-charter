@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.12.0
+
+- Keep current guidance compact and load legacy agreements and model configuration as needed.
+- Use impact-based review and source-bound scenarios for the core safeguards.
+- Keep current entries concise. Review unnecessary gates, disclaimers and duplicated protections.
+
 ## v0.11.1 project knowledge cooperation
 
 - Add an optional role mapping for reusable project knowledge while preserving standalone use.

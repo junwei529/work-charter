@@ -46,8 +46,8 @@
     {
       "destination": "CHANGELOG.md",
       "kind": "repository-native",
-      "note": "Work Charter repository release notes through the v0.6.1 local candidate",
-      "target_sha256": "c3acc5b447e24dda73e48bf2e0c858fcaddb97c55687d6e29fe8ea8a641474fc"
+      "note": "Work Charter current source candidate documentation through v0.12.0; historical evidence remains separately identified",
+      "target_sha256": "b2d5dbb4424f3b98d63eacb240a9c71bcdf443156de244ecf230029c50c0cec7"
     },
     {
       "destination": "LICENSE",
@@ -60,50 +60,68 @@
     {
       "destination": "PROVENANCE.md",
       "kind": "repository-native",
-      "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "1046147c69a99b77212334089ac6e20e3f52a67958d32892821178c93034b3bf"
+      "note": "Work Charter current source candidate documentation through v0.12.0; historical evidence remains separately identified",
+      "target_sha256": "092e41daf0a892c6cab6d6feb7572fbc5e05800a13a84f809a6212e6de063374"
     },
     {
       "destination": "README.md",
       "kind": "repository-native",
-      "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "816b8551da032e21d6d539280932db8d9ea4c6362417f2a30c5a5660625f272c"
+      "note": "Work Charter current source candidate documentation through v0.12.0; historical evidence remains separately identified",
+      "target_sha256": "114156fe19c73f90eea0d5fb2e10d146daabf82db82729957ed57ad9669456a5"
     },
     {
       "destination": "README.zh-CN.md",
       "kind": "repository-native",
-      "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "c95dc69fd23411ca6fdebbfac352f8b1225a5caf5f9330db448514265b495c67"
+      "note": "Work Charter current source candidate documentation through v0.12.0; historical evidence remains separately identified",
+      "target_sha256": "c924854819e9a605076656baa18eab85a317a6a87c895532af03d2d51fd74c78"
+    },
+    {
+      "destination": "archive/source-check-v0.11.1.py.txt",
+      "kind": "repository-native",
+      "note": "Current source candidate: compact rules, core semantic assessment or retained source evidence",
+      "target_sha256": "d56e1bc73be5ef4ddaf071c697fc1af6088006c93523f1007376eae2dd8f25cd"
     },
     {
       "destination": "docs/skills/work-charter/DESIGN.md",
       "kind": "repository-native",
-      "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "97ab413d37d6d7bb2dee6c1945d6c980c2347611eabc39a034df60a78662fb97"
+      "note": "Work Charter current source candidate documentation through v0.12.0; historical evidence remains separately identified",
+      "target_sha256": "b5d9d08acbeedfb0d5475d79374cd03e878fbfb63abe0c1d5cd7f6a6ef21b836"
     },
     {
       "destination": "docs/skills/work-charter/README.md",
       "kind": "repository-native",
-      "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "b8f780b8d878cb2f3a966ca460c7c9c2b55b4d732ca1dfda0f78f41d100ebb4a"
+      "note": "Work Charter current source candidate documentation through v0.12.0; historical evidence remains separately identified",
+      "target_sha256": "c8c278c19ec5f72cca50c63377adf80ff8ae0fbb67f6b85d95d0e32b48134f7c"
     },
     {
       "destination": "docs/skills/work-charter/README.zh-CN.md",
       "kind": "repository-native",
-      "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "da7e5352c8319480a9205c60588e3519f50cb08172256d37adb614c7c0e39bf0"
+      "note": "Work Charter current source candidate documentation through v0.12.0; historical evidence remains separately identified",
+      "target_sha256": "6901766f0e11e13084d09b57f8b4449de2207a3623d682c19f045118a492e858"
+    },
+    {
+      "destination": "docs/skills/work-charter/STATE.history-through-v0111.md",
+      "kind": "repository-native",
+      "note": "Current source candidate: compact rules, core semantic assessment or retained source evidence",
+      "target_sha256": "7e7eee9959e2f31e63ee64ce8532a6bd245ed702b0610eaeeb366ad84a1456fe"
     },
     {
       "destination": "docs/skills/work-charter/STATE.md",
       "kind": "repository-native",
-      "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "7e7eee9959e2f31e63ee64ce8532a6bd245ed702b0610eaeeb366ad84a1456fe"
+      "note": "Work Charter current source candidate documentation through v0.12.0; historical evidence remains separately identified",
+      "target_sha256": "6ce365528ca0c98250ef9782684aa8504e777f5794af1f940f0014c0be196ded"
+    },
+    {
+      "destination": "docs/skills/work-charter/VERIFICATION.history-through-v0111.md",
+      "kind": "repository-native",
+      "note": "Current source candidate: compact rules, core semantic assessment or retained source evidence",
+      "target_sha256": "08717cbcf493e4d90a8bc10875dbde562571607fc6a3b8c4d82e193e2504a69e"
     },
     {
       "destination": "docs/skills/work-charter/VERIFICATION.md",
       "kind": "repository-native",
-      "note": "Work Charter v0.6.1 prompt revision candidate documentation",
-      "target_sha256": "08717cbcf493e4d90a8bc10875dbde562571607fc6a3b8c4d82e193e2504a69e"
+      "note": "Work Charter current source candidate documentation through v0.12.0; historical evidence remains separately identified",
+      "target_sha256": "0208a1682eb93309c1af98dd31f6efd6a702249e018634c3d1983e05a14dede1"
     },
     {
       "destination": "evals/README.md",
@@ -172,6 +190,24 @@
       "kind": "repository-native",
       "note": "Work Charter v0.4.0 evaluation contract or fixture",
       "target_sha256": "d6dda66fd6888a2a50dc6e0dc299216fc1f611cccc893a95281cd8dac488eabc"
+    },
+    {
+      "destination": "evals/core-protections/README.md",
+      "kind": "repository-native",
+      "note": "Current source candidate: compact rules, core semantic assessment or retained source evidence",
+      "target_sha256": "2f204a13db11b4d3cdbb03dab1947f0db326a764c745c4a4757ede68dcf620da"
+    },
+    {
+      "destination": "evals/core-protections/spec.json",
+      "kind": "repository-native",
+      "note": "Current source candidate: compact rules, core semantic assessment or retained source evidence",
+      "target_sha256": "83d968bfeed7568bcd2772987d2eb147a0ae5de5730fe18fb9baef249b471e21"
+    },
+    {
+      "destination": "evals/core-protections/witness-charter.json",
+      "kind": "repository-native",
+      "note": "Current source candidate: compact rules, core semantic assessment or retained source evidence",
+      "target_sha256": "f5a573f56a77427a55bda79e25b930e3a548e80139788359dfc2e09d69f07742"
     },
     {
       "destination": "evals/fixtures/cold-resume/AGENTS.md",
@@ -550,6 +586,18 @@
       "target_sha256": "803520c3a7c313e3a8b89cd81873d7d17aa28274e1e65c9795131ceabb4a68b2"
     },
     {
+      "destination": "release/current.json",
+      "kind": "repository-native",
+      "note": "Current source candidate: compact rules, core semantic assessment or retained source evidence",
+      "target_sha256": "57d0871cf63509fc7b24c1ed7e22419510153a6a02749d9c264203a151ada259"
+    },
+    {
+      "destination": "release/historical-files.json",
+      "kind": "repository-native",
+      "note": "Current source candidate: compact rules, core semantic assessment or retained source evidence",
+      "target_sha256": "4238f3d942440d8958043c97e1b34ab6ae1aa6e557943a098973e84f31f46eb8"
+    },
+    {
       "destination": "release/v0.10.0-candidate.json",
       "kind": "repository-native",
       "note": "Work Charter v0.10.0 immutable pre-effect source candidate",
@@ -590,6 +638,12 @@
       "kind": "repository-native",
       "note": "Current project-knowledge cooperation candidate; retains the immutable v0.11.0 descriptor",
       "target_sha256": "4295b07c1ccd71833d94846929086e47b1086310114ec7c163f60ab367c19bff"
+    },
+    {
+      "destination": "release/v0.12.0-candidate.json",
+      "kind": "repository-native",
+      "note": "Current source candidate: compact rules, core semantic assessment or retained source evidence",
+      "target_sha256": "a636fb5e2407a07252da2f8e53f2c80db77b42a153014fda2794509e15b7c2d1"
     },
     {
       "destination": "release/v0.3.0-candidate.json",
@@ -775,27 +829,33 @@
           "source_path": "evals/check-fixtures.ps1"
         }
       ],
-      "target_normalized_sha256": "30e5ce648aca41c5b275833f255668b92be9fd3436125cacb4f6e67ed99df25e",
-      "target_sha256": "30e5ce648aca41c5b275833f255668b92be9fd3436125cacb4f6e67ed99df25e",
+      "target_normalized_sha256": "67b5f8dd661eadd47ae61b299107625866ac150901bdc9648bc23b1e2c9fad8d",
+      "target_sha256": "67b5f8dd661eadd47ae61b299107625866ac150901bdc9648bc23b1e2c9fad8d",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
       "destination": "scripts/check_source_contract.py",
       "kind": "repository-native",
       "note": "Work Charter v0.6.2 current candidate and historical SOURCE contract checker",
-      "target_sha256": "d56e1bc73be5ef4ddaf071c697fc1af6088006c93523f1007376eae2dd8f25cd"
+      "target_sha256": "64d198539b7872b681a561e3f79e47e771bb8c2af7d97394b853e2e2d72d6215"
     },
     {
       "destination": "scripts/manage_install.py",
       "kind": "repository-native",
       "note": "Origin-aware product-specific install lifecycle tool",
-      "target_sha256": "8b6122ea305a087d34a3450c916191a086fe40d7f794d7963d1d381b354eb53c"
+      "target_sha256": "6cff863773d8f03bf42394dc59fcba8ac1493c53a79b899892a00b46d9dd7a16"
+    },
+    {
+      "destination": "scripts/test_core_contract.py",
+      "kind": "repository-native",
+      "note": "Current source candidate: compact rules, core semantic assessment or retained source evidence",
+      "target_sha256": "7c322a7eadab462ec009d39e25e5d7578a50497b50364dcc5d4b21db3e87da50"
     },
     {
       "destination": "skills/work-charter/SKILL.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.2 minimal guardrail necessity and auxiliary cost guidance",
-      "target_sha256": "967a40307c3b8f2fc96c3bf64096d90631fd0cf0cec244fd37ab77f399b35772"
+      "target_sha256": "d0f7ecb88de83df8f2a7fae669399f9f268bef703834326e2f630574e93e1ce7"
     },
     {
       "destination": "skills/work-charter/agents/openai.yaml",
@@ -822,19 +882,31 @@
       "destination": "skills/work-charter/assets/work-charter.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.2 minimal guardrail necessity and auxiliary cost guidance",
-      "target_sha256": "40792efc75439f1dcfabb2f26c5e58a1ed69e5eb6cd68ff68684ce804c16e20b"
+      "target_sha256": "bd459b71ada731afa808870489e7e30de4f32fcc52de31430d88300b6aa12ad1"
     },
     {
       "destination": "skills/work-charter/references/coordination-and-recovery.md",
       "kind": "repository-native",
       "note": "Work Charter v0.6.2 minimal guardrail necessity and auxiliary cost guidance",
-      "target_sha256": "3c2414f080e77787714608ce7865275dda750a3d69ff3886a056bd59c03e568a"
+      "target_sha256": "9c60abd1d55ff2f155a444ca80b659abb4406fcdb7f62837aa7c2a2cd39fe9e2"
+    },
+    {
+      "destination": "skills/work-charter/references/legacy-agreements.md",
+      "kind": "repository-native",
+      "note": "Current source candidate: compact rules, core semantic assessment or retained source evidence",
+      "target_sha256": "e6474873184d9f6a9538835dc1305725611eab2ec56657cec03ffe62901025b6"
+    },
+    {
+      "destination": "skills/work-charter/references/role-model-configuration.md",
+      "kind": "repository-native",
+      "note": "Current source candidate: compact rules, core semantic assessment or retained source evidence",
+      "target_sha256": "6f8f1644fa8b5d1e02ba6ab4d94361fa2d34d40d895993110ea38124ec272249"
     },
     {
       "destination": "skills/work-charter/references/standard-ope.md",
       "kind": "repository-native",
-      "note": "Work Charter v0.6.1 prompt revision candidate package semantics",
-      "target_sha256": "c2b39a4e71988efdf71721697c038332a211e6207bb473ea879575f613986d0c"
+      "note": "Conditional Team and Phased responsibility contract, revised for the v0.12.0 source candidate",
+      "target_sha256": "58c88029a5561bd82821db407fe58d4b4261f2c551e9ed1e7efa7c1a0e3725c1"
     }
   ],
   "manifest_provenance": [

@@ -1,9 +1,11 @@
 # Work Charter
 
+**v0.12.0** keeps current guidance compact and decisions tied to actual effects.
+
 [简体中文](README.zh-CN.md)
 
 **[Latest release](https://github.com/junwei529/work-charter/releases/latest)**
-· [Source and verification status](docs/skills/work-charter/STATE.md#v0111-source-follow-up)
+· [Current state](docs/skills/work-charter/STATE.md#current-candidate) · [Verification](docs/skills/work-charter/VERIFICATION.md#current-candidate)
 
 Keep complex AI projects moving across handoffs—and through to delivery.
 
@@ -64,7 +66,7 @@ or nested O follows from this structure.
 ## Optional project knowledge cooperation
 
 The working source adds an optional responsibility map for knowledge maintenance;
-see [current source state](docs/skills/work-charter/STATE.md#v0111-source-follow-up).
+see [current source state](docs/skills/work-charter/STATE.md#current-candidate).
 D/E normally completes the execution-knowledge loop, P/O handles its actual contract
 or cross-workstream responsibilities, and R independently inspects relevant impact.
 Project Docs may supply knowledge methods when available and needed. Either Skill

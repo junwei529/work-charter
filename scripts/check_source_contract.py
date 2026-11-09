@@ -1,1299 +1,192 @@
 #!/usr/bin/env python3
+"""Check a small, source-bound semantic assessment, never legacy policy wording."""
+from __future__ import annotations
 import argparse
 import hashlib
+import importlib.util
 import json
-import stat
-from pathlib import Path
-
+import re
+import sys
+from pathlib import Path, PurePosixPath
 
 ROOT = Path(__file__).resolve().parents[1]
-PACKAGE = ROOT / "skills" / "work-charter"
-CURRENT_CANDIDATE = ROOT / "release" / "v0.11.1-candidate.json"
-V0110_CANDIDATE = ROOT / "release" / "v0.11.0-candidate.json"
-V0110_CANDIDATE_SHA256 = "a8a1271c268becfe67fb49f892b9ce0b2efb88bca924679b4a4d3ae4f3a800b3"
-V0110_PACKAGE_TREE = "0eacebf6dae5c7e17de9206bc8c442d0bdec4895"
-V0104_CANDIDATE = ROOT / "release" / "v0.10.4-candidate.json"
-V0104_CANDIDATE_SHA256 = "92cfd26f75cebd02a3c7c30a6043aed50c2ea0f1d2dffd52e99d755f3f1ac8c4"
-V0104_PACKAGE_TREE = "2f634eb2cbe86e7c1fcc4a1a83a1b8e4477e5383"
-V0103_CANDIDATE = ROOT / "release" / "v0.10.3-candidate.json"
-V0103_CANDIDATE_SHA256 = "26765de6623a6efb6d6d5d105a5a62c2f2d35796f2e7ee4488c04020fee6fe18"
-V0103_PACKAGE_TREE = "62b7fc0e61415d1d812cada28ff73882c592c122"
-V0102_CANDIDATE = ROOT / "release" / "v0.10.2-candidate.json"
-V0102_CANDIDATE_SHA256 = "a5e56485cbbd35988b283ab1c0d4792b3a66adc7d8a01514cd8fc82ce72f4d23"
-V0102_PACKAGE_TREE = "d2e00d1321ffdfbe24ea6f6690cb5049c5431d0b"
-V0101_CANDIDATE = ROOT / "release" / "v0.10.1-candidate.json"
-V0101_CANDIDATE_SHA256 = "a35f7c53cb5aab4744b1674a8627c4b55b9c2add50ccceff8ad4a241186d3b36"
-V0101_PACKAGE_TREE = "a22f25a3bc08efdb0877a7748b01be9dfde0e7e3"
-V0100_CANDIDATE = ROOT / "release" / "v0.10.0-candidate.json"
-V0100_CANDIDATE_SHA256 = "21837753850ddfa018cb0ee202d873f6f8680d6a8de54cbba216b8f21985c474"
-V0100_PACKAGE_TREE = "47759c90ec5bb5d085d008bd53a331d2cf4ce59d"
-V096_CANDIDATE = ROOT / "release" / "v0.9.6-candidate.json"
-V096_CANDIDATE_SHA256 = "f947a3a8fc930c948a919b21e5c1d26e5c32f2dc9d1b91b2fbdc26b3be22ed94"
-V096_PACKAGE_TREE = "bcf263e0384248680a3bee9efdfcb5052b69c9cd"
-V095_CANDIDATE = ROOT / "release" / "v0.9.5-candidate.json"
-V095_CANDIDATE_SHA256 = "d09cf7bcd47ece3674f17e673aeddff718b7a30cf8f9c86bed9f5c71f05edb8a"
-V095_PACKAGE_TREE = "55d8daaa3d3b26358b0192d57dc5403593bed85a"
-V094_CANDIDATE = ROOT / "release" / "v0.9.4-candidate.json"
-V094_CANDIDATE_SHA256 = "115e23a49013b118585963bf5cf2d866db86e501e4ada1e37e13ec1bc8b28b36"
-V094_PACKAGE_TREE = "1dc19eb9da2b257f2cf1aeac53775f107c2d119b"
-V093_CANDIDATE = ROOT / "release" / "v0.9.3-candidate.json"
-V093_CANDIDATE_SHA256 = "6c54e443cb3caeb79cd7518eb5155b392cb56f180e1c30d2d61adf4892852d34"
-V093_PACKAGE_TREE = "6038baaff619e0c5f23345541ad57e058ef198ee"
-V092_CANDIDATE = ROOT / "release" / "v0.9.2-candidate.json"
-V092_CANDIDATE_SHA256 = "2a240398d15de81f0528b8d2edf0963a3db1af1c21c50aebd1ddd65b898d1792"
-V092_PACKAGE_TREE = "452072a661cf91d49e3f14b9345c72f13b506759"
-V091_CANDIDATE = ROOT / "release" / "v0.9.1-candidate.json"
-V091_CANDIDATE_SHA256 = "630dc93a4fa8a52223dbedff469bd26f60a7a6d9c37e6b18a9dd40c463660f68"
-V091_PACKAGE_TREE = "39659168b5fb20899335dd0923c87b65d5a95e36"
-V090_CANDIDATE = ROOT / "release" / "v0.9.0-candidate.json"
-V090_CANDIDATE_SHA256 = "dba414a1b9af043656ef390a1e62973e2b02fdb7788b48a47c9a2bcea42a5249"
-V090_PACKAGE_TREE = "ad4c0f4d56c47e3037c25dc84fce9a9f14c177fc"
-V080_CANDIDATE = ROOT / "release" / "v0.8.0-candidate.json"
-V080_CANDIDATE_SHA256 = '5e4962e9b8333e60b4e45c96f0c3ed96a3c06e5fd7de202ba95c2c7d2f3d07c0'
-V080_PACKAGE_TREE = "ca62f3b449a08799d4ce3dbbeb3fe2455472b271"
-V071_CANDIDATE = ROOT / "release" / "v0.7.1-candidate.json"
-V071_CANDIDATE_SHA256 = "01215b53f9c8dc93460d63abb0cefdacc4ac77ba96c500a0078215f1804f62dc"
-V071_PACKAGE_TREE = "8ea9baf2b52635b3bdc0e9984e0d823c8984cc58"
-V070_CANDIDATE = ROOT / "release" / "v0.7.0-candidate.json"
-V070_CANDIDATE_SHA256 = "656f021a2af4b8af6683a32b60a9c6e08fa8f1e7bd44611ad7f23cc33ed235b7"
-V070_PACKAGE_TREE = "9bc03ec6f1ac081b738da2ca316b18b22a356aea"
-V068_CANDIDATE = ROOT / "release" / "v0.6.8-candidate.json"
-V068_CANDIDATE_SHA256 = "5477e80a235e77b09ca8afb93ff3dbe5bb880c17ca2786474f4e780d8ab1130d"
-V068_PACKAGE_TREE = "03b4053d61b6b55877c4fb1401c42bc34b1cc89c"
-V067_CANDIDATE = ROOT / "release" / "v0.6.7-candidate.json"
-V067_CANDIDATE_SHA256 = "1a8fb41f176038412b08aa57cac9b9e0f5bfcc0c5f122e0f78090e8a3695dbca"
-V067_PACKAGE_TREE = "b1171c73a4e4c243b982a701c4790d181524b6c2"
-V066_CANDIDATE = ROOT / "release" / "v0.6.6-candidate.json"
-V066_CANDIDATE_SHA256 = "d61c43225dc919486ff78d0edc8d85d3a45b04eceeb9e1fa5ce815983ae85660"
-V066_PACKAGE_TREE = "d5018129b990686515c91e40184ebf9e5abfc546"
-V065_CANDIDATE = ROOT / "release" / "v0.6.5-candidate.json"
-V065_CANDIDATE_SHA256 = "64596e7ae47ed9abcd4fe90b9fbfe042d6351ab0f57f0627edb45a9f6e7cb236"
-V065_PACKAGE_TREE = "d0df02a81471c2b9e157c9f6faebc65948cb4b54"
-V064_CANDIDATE = ROOT / "release" / "v0.6.4-candidate.json"
-V064_CANDIDATE_SHA256 = "fd561fd8b90441cb5bba8ee6f791d79b043cfee26d34e48e0152439642c7f27a"
-V064_PACKAGE_TREE = "a4974a1fa9b6f4f01437c4db17110db47bbf32b1"
-V063_CANDIDATE = ROOT / "release" / "v0.6.3-candidate.json"
-V063_CANDIDATE_SHA256 = "ee7cbe69cb7614f15c2611306c86539120b023b93d4f120de0f29d8c61737767"
-V063_PACKAGE_TREE = "40d454daa3dbf50421508860b0f4b5e4542d4052"
-V062_CANDIDATE = ROOT / "release" / "v0.6.2-candidate.json"
-V062_CANDIDATE_SHA256 = "9a379f98e384eb08b040bf776cd2cddc115dd27c124cd311e90a1d79466b6981"
-V062_PACKAGE_TREE = "d0f3148a17f5d6c7bcec22df214a19a8ec75a62d"
-V061_CANDIDATE = ROOT / "release" / "v0.6.1-candidate.json"
-V061_CANDIDATE_SHA256 = "e03b2a6781b0b156679568e08b9df114770de1ebec904f2bdf126491bf18ed1a"
-V061_PACKAGE_TREE = "08689a9706fa15dbe6889eec1572e7c8943c1f1c"
-V060_CANDIDATE = ROOT / "release" / "v0.6.0-candidate.json"
-V060_CANDIDATE_SHA256 = "5890f3e7c73ed1d4046269a03b1385097a0596cca804a57e49a838d588aa96ff"
-V060_PACKAGE_TREE = "12fe4c65683a82d9d60295160681247b812efa0b"
-V050_CANDIDATE = ROOT / "release" / "v0.5.0-candidate.json"
-V050_RECEIPT = ROOT / "release" / "v0.5.0-local-release-receipt.json"
-V041_CANDIDATE = ROOT / "release" / "v0.4.1-candidate.json"
-V040_CANDIDATE = ROOT / "release" / "v0.4.0-candidate.json"
-V040_RECEIPT = ROOT / "release" / "v0.4.0-local-release-receipt.json"
-HISTORICAL_CANDIDATE = ROOT / "release" / "v0.3.0-candidate.json"
-RECEIPT = ROOT / "release" / "v0.3.0-local-release-receipt.json"
-PUBLIC_RELEASE_CANDIDATE = ROOT / "release" / "v0.3.0-public-release-candidate.json"
-PUBLIC_RELEASE_EVIDENCE = ROOT / "release" / "v0.3.0-public-release-evidence.json"
-ROLE_MODEL_CASE = ROOT / "evals" / "cases" / "work-charter-role-model-configuration.md"
-V030_PACKAGE_TREE = "0ac3cbb0f1fa8fa51d8f832c8127eabc9863ec9e"
-V030_PACKAGE_SHA256 = "d445a3cd99c6d8f2ea2d9eee3be7c24781732617fedf08d4e9fd1b3d43ff88d1"
-V030_RELEASE_NOTES_SHA256 = "e37631f77e9dd9a450e618c56967017e49a7c05618baa0b7a2cb838ccd01f12b"
-V030_INSTALLED_PACKAGE_SHA256 = "7b67ea1f7073fa66ac91c36f3e39c735b54c04174e2fa3672068f8fa8948a5b2"
-V040_PACKAGE_TREE = "fd5ceb5cb0fbef4a1974b40b4da05800433d5511"
-V040_PACKAGE_SHA256 = "8ae542b9566415dfadd16108435735dc01406443dc84ee542fcf091ccec19076"
-V040_INSTALLED_PACKAGE_SHA256 = "814fc88c4dae4a823461dc7339b8a83542258919e8374f2b1c280fb9d77157c8"
-V040_PACKAGE_FILE_SHA256 = {
-    "SKILL.md": "be3cf6ff88d2d2ae72209119c83bf9f27e2ff4d5afa917fc44aac30ca87eb6f5",
-    "agents/openai.yaml": "f0032475e213d75ed17eb41c3424007ebc46c0ddb6739138c9908185beefdad6",
-    "assets/work-charter.md": "821e907a9db2888e164e2bb0793fed949206455b496fb71581b610641985234d",
-    "references/coordination-and-recovery.md": "a12a76e5c784e2ef1f54b1cbc5c8096ac64fabeccc947ff46cb97cc6969eda98",
-    "references/standard-ope.md": "62c3da90b662fc4e489abfc32873a5ab92966a6326dd0b16c58285f0933fe48f",
-}
-V050_COMMIT = "8bf9f130598fbf1b9170dd0c082e3e8fb78d6c0d"
-V050_TREE = "1985606f58d560cb21f06e85207eaae99c1f99d1"
-V050_CANDIDATE_SHA256 = "ab91fa3f8dea0deeaa0fea94d7f74dc20fd43a7983dac855351097e955ed547e"
-V050_PACKAGE_TREE = "413584a6a5968e60a2663ef7554181327180531f"
-V050_PACKAGE_SHA256 = "b15c479518101d522c3ba27f1b32c2406e4586115622ad8fbcd35a00a38e874a"
-V030_PACKAGE_FILE_SHA256 = {
-    "SKILL.md": "c750d51940456b110bc7ed4b7d490690f42ca8ee9b555c23c8fe3d4d056b4dba",
-    "agents/openai.yaml": "f0032475e213d75ed17eb41c3424007ebc46c0ddb6739138c9908185beefdad6",
-    "assets/work-charter.md": "ca2ec792c0b0bf978e79a7e51cb5afd9b675e79b0daf7d0dc81917f77bfc7fa1",
-    "references/coordination-and-recovery.md": "5565ef7d2db47847c570ae0ea0a0a307bc64c0ed8b61261d85177f4ef2da1f88",
-    "references/standard-ope.md": "10a4d5b9c9239ac2f79544155e09ea230d99e6ca80049cd01ea624f16a72fd67",
-}
-EXPECTED_FILES = {
-    "SKILL.md",
-    "agents/openai.yaml",
-    "assets/role-models.default.yaml",
-    "assets/work-charter.md",
-    "references/coordination-and-recovery.md",
-    "references/standard-ope.md",
-}
-EXPECTED_DEFAULT_ROLE_MODELS = """schema_version: 2
-roles:
-  orchestrator:
-    provider: openai
-    model: gpt-6-astra
-    parameters:
-      reasoning_effort: high
-  planner:
-    provider: openai
-    model: gpt-6.1-sol
-    parameters:
-      reasoning_effort: xhigh
-  executor:
-    provider: openai
-    model: gpt-6.1-sol
-    parameters:
-      reasoning_effort: xhigh
-  reviewer:
-    provider: openai
-    model: gpt-6-astra
-    parameters:
-      reasoning_effort: medium
-arrangement_overrides:
-  direct:
-    primary:
-      provider: openai
-      model: gpt-6-astra
-      parameters:
-        reasoning_effort: high
-  team:
-    planner:
-      provider: openai
-      model: gpt-6-astra
-      parameters:
-        reasoning_effort: high
-"""
+SPEC = ROOT / "evals/core-protections/spec.json"
+
+def digest(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+def object_pairs(pairs):
+    out = {}
+    for key, value in pairs:
+        if key in out:
+            raise ValueError("duplicate JSON key")
+        out[key] = value
+    return out
+
+def load_json(path):
+    return json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=object_pairs)
+
+def safe_file(root, relative):
+    rel = PurePosixPath(relative)
+    if (not isinstance(relative, str) or not relative or "\\" in relative or
+            ":" in relative or rel.is_absolute() or ".." in rel.parts or
+            rel.as_posix() != relative):
+        raise ValueError("unsafe relative input")
+    path = root.joinpath(*rel.parts)
+    for part in [path, *path.parents]:
+        if part.is_symlink() or bool(getattr(part.lstat(), "st_file_attributes", 0) & 1024):
+            raise ValueError("link-like input")
+    if not path.resolve().is_relative_to(root.resolve()) or not path.is_file():
+        raise ValueError("input outside root or missing")
+    return path
+
+def section(root, location):
+    text = safe_file(root, location["path"]).read_text(encoding="utf-8")
+    heading = location["heading"]
+    matches = list(re.finditer(r"(?m)^(#{1,6}) (.+)\r?$", text))
+    hits = [m for m in matches if m.group(2).strip() == heading]
+    if len(hits) != 1:
+        raise ValueError("clause location missing or ambiguous: " + heading)
+    hit = hits[0]
+    end = next((m.start() for m in matches if m.start() > hit.start()
+                and len(m.group(1)) <= len(hit.group(1))), len(text))
+    return " ".join(text[hit.start():end].split())
+
+def expected_cases(spec, component):
+    rules = spec.get("rules")
+    ids = {f"CP{i:02d}" for i in range(1, 18)}
+    if not isinstance(rules, list) or len(rules) != 17:
+        raise ValueError("exactly 17 core rules required")
+    if {r.get("id") for r in rules} != ids:
+        raise ValueError("core rule IDs missing or duplicated")
+    all_cases = set()
+    for rule in rules:
+        cases = rule.get("cases")
+        required = {rule["id"] + "-P", rule["id"] + "-N"}
+        if (not isinstance(cases, list) or len(cases) != 2 or
+                {c.get("id") for c in cases} != required):
+            raise ValueError("each core rule requires its unique P/N pair")
+        for case in cases:
+            if case["id"] in all_cases:
+                raise ValueError("duplicate global scenario ID")
+            all_cases.add(case["id"])
+            if not all(isinstance(case.get(k), str) and case[k].strip()
+                       for k in ["prompt", "expected"]):
+                raise ValueError("scenario requires a prompt and expected action")
+        required_components = {"host", "docs"} if rule["id"] == "CP16" else {"host", "charter"}
+        locations = rule.get("locations")
+        if not isinstance(locations, dict) or set(locations) != required_components:
+            raise ValueError("required component coverage missing")
+        if any(not isinstance(v, list) or not v for v in locations.values()):
+            raise ValueError("core rule has no clause location")
+    selected = [r for r in rules if component in r["locations"]]
+    if not selected:
+        raise ValueError("unknown or empty component")
+    return selected, {case["id"]: (rule, case) for rule in selected for case in rule["cases"]}
 
 
+def assess(spec, component, root, witness):
+    rules, expected = expected_cases(spec, component)
+    failures, pending = [], []
+    if witness.get("schema") != "core-semantic-assessment/v1" or witness.get("component") != component:
+        return {"result": "FAIL", "failures": ["assessment schema/component"], "pending": []}
+    if witness.get("spec_sha256") != digest(SPEC.read_bytes()):
+        pending.append("scenario specification changed; reassess affected scenarios")
+    answers = witness.get("answers")
+    if not isinstance(answers, list):
+        return {"result": "FAIL", "failures": ["answers must be a list"], "pending": []}
+    got = {}
+    for answer in answers:
+        if not isinstance(answer, dict) or answer.get("case_id") in got:
+            failures.append("invalid or duplicate answer")
+            continue
+        got[answer.get("case_id")] = answer
+    if set(got) != set(expected):
+        failures.append("scenario coverage mismatch")
+    checks = []
+    for case_id, (rule, case) in expected.items():
+        answer = got.get(case_id)
+        locations = rule["locations"][component]
+        bound = []
+        for location in locations:
+            content = section(root, location)
+            bound.append({"path": location["path"], "heading": location["heading"],
+                          "sha256": digest(content.encode("utf-8"))})
+        if not answer:
+            continue
+        if answer.get("clause_bindings") != bound:
+            pending.append(case_id + ": clause input changed; semantic reassessment required")
+        decision_ok = answer.get("decision") == case["expected"]
+        if not decision_ok:
+            failures.append(case_id + ": action contradicts the core scenario")
+        evidence = answer.get("evidence")
+        evidence_ok = False
+        if isinstance(evidence, dict) and isinstance(evidence.get("quote"), str):
+            for location in locations:
+                if evidence.get("path") == location["path"] and evidence.get("heading") == location["heading"]:
+                    quote = " ".join(evidence["quote"].split())
+                    evidence_ok = bool(quote) and quote in section(root, location)
+                    if evidence_ok:
+                        break
+        if not evidence_ok:
+            failures.append(case_id + ": missing source-grounded assessment evidence")
+        checks.append({"rule": rule["id"], "case": case_id, "locations": locations,
+                       "decision_matches": decision_ok, "evidence_locates": evidence_ok})
+    return {"result": "FAIL" if failures else ("REASSESS" if pending else "PASS"),
+            "assertions": len(rules), "scenarios": len(expected),
+            "checks": checks, "failures": failures, "pending": pending,
+            "scope": "Source-bound semantic assessment; no deployment or runtime-effect proof"}
 
-def package_digest(files):
-    records = []
-    for relative in sorted(files):
-        raw = (PACKAGE / relative).read_bytes()
-        records.append([relative, hashlib.sha256(raw).hexdigest()])
-    encoded = json.dumps(records, separators=(",", ":"), ensure_ascii=True).encode("ascii")
-    return hashlib.sha256(encoded).hexdigest()
-
-
-def git_object_hash(kind, data):
-    header = f"{kind} {len(data)}\0".encode("ascii")
-    return hashlib.sha1(header + data).hexdigest()
-
-
-def is_link_like(path):
-    if path.is_symlink():
-        return True
-    try:
-        attributes = getattr(path.lstat(), "st_file_attributes", 0)
-    except OSError:
-        return False
-    return bool(attributes & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0))
-
-
-def package_paths(root):
-    if is_link_like(root):
-        raise ValueError(f"package root is link-like: {root}")
-
-    paths = []
-    pending = [root]
-    while pending:
-        current = pending.pop()
-        for child in current.iterdir():
-            if is_link_like(child):
-                raise ValueError(f"package entry is link-like: {child}")
-            paths.append(child)
-            if child.is_dir():
-                pending.append(child)
-    return paths
-
-
-def git_tree_hash(directory):
-    if is_link_like(directory):
-        raise ValueError(f"package path is link-like: {directory}")
-    children = list(directory.iterdir())
-    children.sort(
-        key=lambda child: (child.name + ("/" if child.is_dir() else "")).encode("utf-8")
-    )
-    entries = []
-    for child in children:
-        if is_link_like(child):
-            raise ValueError(f"package entry is link-like: {child}")
-        if child.is_dir():
-            mode = b"40000"
-            digest = bytes.fromhex(git_tree_hash(child))
-        elif child.is_file():
-            mode = b"100644"
-            digest = bytes.fromhex(git_object_hash("blob", child.read_bytes()))
-        else:
-            raise ValueError(f"package contains an unsupported path: {child.name}")
-        entries.append(mode + b" " + child.name.encode("utf-8") + b"\0" + digest)
-    return git_object_hash("tree", b"".join(entries))
-
-
-def contains_all(text, fragments):
-    normalized_text = " ".join(text.split())
-    return all(" ".join(fragment.split()) in normalized_text for fragment in fragments)
-
+def package_identity():
+    # Reuse the already maintained package/path validator; no installation calls.
+    spec = importlib.util.spec_from_file_location("core_install_identity", ROOT / "scripts/manage_install.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    pointer = load_json(ROOT / "release/current.json")
+    metadata = module.candidate_metadata(ROOT, pointer["version"])
+    module.package_files(ROOT, metadata, metadata["package"]["tree"])
+    if pointer["candidate"] != "release/v" + pointer["version"] + "-candidate.json":
+        raise ValueError("candidate pointer mismatch")
+    historical = load_json(ROOT / "release/historical-files.json")
+    for relative, expected in historical["files"].items():
+        if digest(safe_file(ROOT, relative).read_bytes()) != expected:
+            raise ValueError("historical release changed: " + relative)
+    return {"version": pointer["version"], "file_count": metadata["package"]["file_count"],
+            "tree": metadata["package"]["tree"], "historical_files_checked": len(historical["files"])}
 
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--json", action="store_true")
+    parser.add_argument("--component", choices=["charter", "host", "docs"], default="charter")
+    parser.add_argument("--root", type=Path)
+    parser.add_argument("--witness", type=Path)
+    parser.add_argument("--prepare", action="store_true", help="Print scenario inputs without expected answers")
     args = parser.parse_args()
-
-    package_scan_error = None
-    try:
-        package_entries = package_paths(PACKAGE)
-    except (OSError, ValueError) as error:
-        package_entries = []
-        package_scan_error = str(error)
-    actual_files = {
-        path.relative_to(PACKAGE).as_posix()
-        for path in package_entries
-        if path.is_file()
-    }
-    texts = {}
-    package_read_failures = []
-    if package_scan_error is None:
-        for relative in EXPECTED_FILES:
-            path = PACKAGE / relative
-            if not path.is_file():
-                continue
-            try:
-                texts[relative] = path.read_text(encoding="utf-8")
-            except (OSError, UnicodeDecodeError) as error:
-                package_read_failures.append(f"package.unreadable.{relative}: {error}")
-    skill = texts.get("SKILL.md", "")
-    recovery = texts.get("references/coordination-and-recovery.md", "")
-    standard = texts.get("references/standard-ope.md", "")
-    role_models = texts.get("assets/role-models.default.yaml", "")
-    charter_asset = texts.get("assets/work-charter.md", "")
-    ui_metadata = texts.get("agents/openai.yaml", "")
-    role_model_case_error = None
-    try:
-        role_model_case = ROLE_MODEL_CASE.read_text(encoding="utf-8")
-    except (OSError, UnicodeDecodeError) as error:
-        role_model_case = ""
-        role_model_case_error = str(error)
-
-    # These are structural/source checks, not a proof of model behavior.
-    # Semantic authority/progression changes require independent review and cases.
-    checks = {
-        "package.exact_six_file_shape": actual_files == EXPECTED_FILES,
-        "role_models.default_exact": role_models == EXPECTED_DEFAULT_ROLE_MODELS,
-        "entry.outcome_path": contains_all(skill, ["## Start With The Outcome", "## Least Sufficient Work Arrangement", "## Shared Protections And Method Autonomy"]),
-        "entry.scope_and_optional_policy": contains_all(skill, ["An explicit assessment or discussion request remains assessment or discussion", "Model presets are optional", "A chosen but invalid configuration is not an absent policy"]),
-        "authority.single_owner": contains_all(recovery, ["## Contract And Proposal Changes", "### Conflicting Rules And Reserved Decisions", "### Human Decisions"]),
-        "delivery.required_sections": contains_all(recovery, ["## End-to-End Delivery And Parallel Workstreams", "## Authorized Progression", "### Failures And Recovery", "### Allocation And Shared State"]),
-        "communication.two_views": contains_all(recovery, ["## Task And Role Prompt Construction", "### Meaning Before Labels", "| Decision/authority |", "| Delivery evidence |"]),
-        "review.coverage_and_disagreement": contains_all(recovery, ["## Review Input At Any Level", "### Disagreement And Acceptance", "Unchanged source does not prove old validation still applies"]),
-        "recovery.current_contract": contains_all(recovery, ["## Context-Switch Recovery", "### Rule Changes And Legacy Agreements", "### User Changes, Pause And Withdrawal", "### Maintenance, Reasons And Loading", "### Evidence Scope And Integrity"]),
-        "model.optional_not_invalid_fallback": contains_all(recovery, ["Policy not selected is different from selected but missing, invalid or unsupported input", "This is an optional policy", "Existing agreements that already selected it retain that choice"]),
-        "model.compatibility": contains_all(recovery, ["Schema v2 has integer `schema_version: 2`", "Schema v1 remains readable", "Every supplied object is a whole-object replacement", "Never merge distinct L0/L1/L2 user overrides", "Personal-file conversion is a separate authorized effect"]),
-        "model.host_mapping_not_core": "to `thinking`" not in recovery,
-        "legacy.scoped": contains_all(standard, ["## Arrangement-v1 And L4 Compatibility", "### Responsibilities", "### Operating Path", "### Legacy Levels"]) and "\n## Responsibilities" not in standard,
-        "template.outcome_first": contains_all(charter_asset, ["## Outcome And Acceptance", "## Optional Contract Metadata", "## Task Or Role Prompt"]) and charter_asset.find("## Outcome And Acceptance") < charter_asset.find("## Optional Contract Metadata"),
-        "metadata.invocation": "Use $work-charter" in ui_metadata and "allow_implicit_invocation: true" in ui_metadata,
-        "cases.compatibility_retained": contains_all(role_model_case, ["no real user-file mutation", "New Direct with unequal v1 l0/l1/l2 effective objects", "The user file stays outside the install tree"]),
-    }
-
-    current_candidate_error = None
-    current_candidate = {}
-    current_package_sha256 = package_digest(actual_files) if actual_files == EXPECTED_FILES else None
-    package_identity_error = None
-    actual_package_tree = None
-    try:
-        actual_package_tree = git_tree_hash(PACKAGE)
-    except (OSError, ValueError) as error:
-        package_identity_error = str(error)
-    try:
-        current_candidate = json.loads(V050_CANDIDATE.read_text(encoding="utf-8"))
-        if not isinstance(current_candidate, dict) or not isinstance(
-            current_candidate.get("package"), dict
-        ):
-            raise ValueError("v0.5.0 candidate descriptor must be an object with an object package")
-    except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
-        current_candidate_error = str(error)
-    checks["candidate.v050_historical_identity"] = (
-        current_candidate.get("schema") == "work-charter-local-release-candidate/v1"
-        and current_candidate.get("product") == "work-charter"
-        and current_candidate.get("version") == "0.5.0"
-        and current_candidate.get("public_identity") == "junwei529/work-charter"
-        and current_candidate.get("candidate_state") == "PENDING_INDEPENDENT_REVIEW"
-        and current_candidate.get("package", {}).get("file_count") == 6
-        and current_candidate.get("package", {}).get("files") == sorted(EXPECTED_FILES)
-        and current_candidate.get("package", {}).get("path") == "skills/work-charter"
-        and current_candidate.get("package", {}).get("tree") == V050_PACKAGE_TREE
-        and current_candidate.get("package", {}).get("sha256") == V050_PACKAGE_SHA256
-        and current_candidate.get("evidence_states", {}).get("independent_review") == "PENDING"
-        and current_candidate.get("evidence_states", {}).get("planner_acceptance") == "PENDING"
-        and current_candidate.get("evidence_states", {}).get("local_release_ready")
-        == "PENDING_REVIEW_AND_PLANNER_ACCEPTANCE"
-        and current_candidate.get("evidence_states", {}).get("public_release") == "UNKNOWN"
-        and current_candidate.get("evidence_states", {}).get("stable_installed_copy") == "UNKNOWN"
-        and current_candidate.get("evidence_states", {}).get("cross_version_lifecycle")
-        == "REQUIRES_FRESH_QUALIFICATION"
-        and current_candidate.get("lineage")
-        == {
-            "historical_package_tree": "a2281edf51b624271cd5675ca02a7f4d5ae4acbb",
-            "previous_candidate": "release/v0.4.1-candidate.json",
-            "previous_local_release_receipt": "release/v0.4.0-local-release-receipt.json",
-            "source_commit": "59b4d91f46c2ac797c71c900e62dda87cf0cca60",
-        }
-        and current_candidate.get("human_release_notes_review") == "PENDING"
-    )
-    v060_candidate_error = None
-    try:
-        v060_candidate_bytes = V060_CANDIDATE.read_bytes()
-        checks["candidate.v060_historical_identity"] = (
-            hashlib.sha256(v060_candidate_bytes).hexdigest() == V060_CANDIDATE_SHA256
-        )
-    except OSError as error:
-        checks["candidate.v060_historical_identity"] = False
-        v060_candidate_error = str(error)
-
-    v062_candidate_error = None
-    try:
-        checks["candidate.v062_historical_identity"] = (
-            hashlib.sha256(V062_CANDIDATE.read_bytes()).hexdigest() == V062_CANDIDATE_SHA256
-        )
-    except OSError as error:
-        checks["candidate.v062_historical_identity"] = False
-        v062_candidate_error = str(error)
-
-    v061_candidate_error = None
-    try:
-        v061_candidate_bytes = V061_CANDIDATE.read_bytes()
-        checks["candidate.v061_historical_identity"] = (
-            hashlib.sha256(v061_candidate_bytes).hexdigest() == V061_CANDIDATE_SHA256
-        )
-    except OSError as error:
-        checks["candidate.v061_historical_identity"] = False
-        v061_candidate_error = str(error)
-
-    v063_candidate_error = None
-    try:
-        checks["candidate.v063_historical_identity"] = (
-            hashlib.sha256(V063_CANDIDATE.read_bytes()).hexdigest() == V063_CANDIDATE_SHA256
-        )
-    except OSError as error:
-        checks["candidate.v063_historical_identity"] = False
-        v063_candidate_error = str(error)
-
-    v066_candidate_error = None
-    try:
-        checks["candidate.v066_historical_identity"] = (
-            hashlib.sha256(V066_CANDIDATE.read_bytes()).hexdigest() == V066_CANDIDATE_SHA256
-        )
-    except OSError as error:
-        checks["candidate.v066_historical_identity"] = False
-        v066_candidate_error = str(error)
-
-    v065_candidate_error = None
-    try:
-        checks["candidate.v065_historical_identity"] = (
-            hashlib.sha256(V065_CANDIDATE.read_bytes()).hexdigest() == V065_CANDIDATE_SHA256
-        )
-    except OSError as error:
-        checks["candidate.v065_historical_identity"] = False
-        v065_candidate_error = str(error)
-
-    v064_candidate_error = None
-    try:
-        checks["candidate.v064_historical_identity"] = (
-            hashlib.sha256(V064_CANDIDATE.read_bytes()).hexdigest() == V064_CANDIDATE_SHA256
-        )
-    except OSError as error:
-        checks["candidate.v064_historical_identity"] = False
-        v064_candidate_error = str(error)
-
-    v067_candidate_error = None
-    try:
-        checks["candidate.v067_historical_identity"] = (
-            hashlib.sha256(V067_CANDIDATE.read_bytes()).hexdigest() == V067_CANDIDATE_SHA256
-        )
-    except OSError as error:
-        checks["candidate.v067_historical_identity"] = False
-        v067_candidate_error = str(error)
-
-    checks["candidate.v068_historical_identity"] = (
-        hashlib.sha256(V068_CANDIDATE.read_bytes()).hexdigest() == V068_CANDIDATE_SHA256
-    )
-    checks["candidate.v070_historical_identity"] = (
-        hashlib.sha256(V070_CANDIDATE.read_bytes()).hexdigest() == V070_CANDIDATE_SHA256
-    )
-    checks["candidate.v071_historical_identity"] = (
-        hashlib.sha256(V071_CANDIDATE.read_bytes()).hexdigest() == V071_CANDIDATE_SHA256
-    )
-    successor_error = None
-    successor = {}
-    try:
-        parsed_successor = json.loads(CURRENT_CANDIDATE.read_text(encoding="utf-8"))
-        if not isinstance(parsed_successor, dict) or any(
-            not isinstance(parsed_successor.get(field), dict)
-            for field in ("package", "evidence_states", "lineage")
-        ):
-            raise ValueError("v0.11.1 candidate requires object package, evidence_states, and lineage")
-        successor = parsed_successor
-    except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
-        successor_error = str(error)
-    checks["candidate.v080_historical_identity"] = (
-        hashlib.sha256(V080_CANDIDATE.read_bytes()).hexdigest() == V080_CANDIDATE_SHA256
-    )
-    checks["candidate.v090_historical_identity"] = (
-        hashlib.sha256(V090_CANDIDATE.read_bytes()).hexdigest() == V090_CANDIDATE_SHA256
-    )
-    checks["candidate.v092_historical_identity"] = (
-        hashlib.sha256(V092_CANDIDATE.read_bytes()).hexdigest() == V092_CANDIDATE_SHA256
-    )
-    checks["candidate.v091_historical_identity"] = (
-        hashlib.sha256(V091_CANDIDATE.read_bytes()).hexdigest() == V091_CANDIDATE_SHA256
-    )
-    checks["candidate.v093_historical_identity"] = (
-        hashlib.sha256(V093_CANDIDATE.read_bytes()).hexdigest() == V093_CANDIDATE_SHA256
-    )
-    checks["candidate.v094_historical_identity"] = (
-        hashlib.sha256(V094_CANDIDATE.read_bytes()).hexdigest() == V094_CANDIDATE_SHA256
-    )
-    checks["candidate.v0100_historical_identity"] = (
-        hashlib.sha256(V0100_CANDIDATE.read_bytes()).hexdigest() == V0100_CANDIDATE_SHA256
-    )
-    checks["candidate.v096_historical_identity"] = (
-        hashlib.sha256(V096_CANDIDATE.read_bytes()).hexdigest() == V096_CANDIDATE_SHA256
-    )
-    checks["candidate.v095_historical_identity"] = (
-        hashlib.sha256(V095_CANDIDATE.read_bytes()).hexdigest() == V095_CANDIDATE_SHA256
-    )
-    checks["candidate.v0101_historical_identity"] = (
-        hashlib.sha256(V0101_CANDIDATE.read_bytes()).hexdigest() == V0101_CANDIDATE_SHA256
-    )
-    checks["candidate.v0102_historical_identity"] = (
-        hashlib.sha256(V0102_CANDIDATE.read_bytes()).hexdigest() == V0102_CANDIDATE_SHA256
-    )
-    checks["candidate.v0103_historical_identity"] = (
-        hashlib.sha256(V0103_CANDIDATE.read_bytes()).hexdigest() == V0103_CANDIDATE_SHA256
-    )
-    checks["candidate.v0104_historical_identity"] = hashlib.sha256(V0104_CANDIDATE.read_bytes()).hexdigest() == V0104_CANDIDATE_SHA256
-    checks["candidate.v0110_historical_identity"] = hashlib.sha256(V0110_CANDIDATE.read_bytes()).hexdigest() == V0110_CANDIDATE_SHA256
-    checks["candidate.v0111_identity"] = (
-        successor.get("schema") == "work-charter-local-release-candidate/v1"
-        and successor.get("product") == "work-charter"
-        and successor.get("version") == "0.11.1"
-        and successor.get("public_identity") == "junwei529/work-charter"
-        and successor.get("candidate_state") == "PENDING_INDEPENDENT_REVIEW"
-        and successor.get("human_release_notes_review") == "PENDING"
-        and successor.get("release_notes") == "CHANGELOG.md"
-        and successor.get("package", {}).get("file_count") == 6
-        and successor.get("package", {}).get("files") == sorted(EXPECTED_FILES)
-        and successor.get("package", {}).get("path") == "skills/work-charter"
-        and successor.get("lineage") == {
-            "historical_package_tree": V0110_PACKAGE_TREE,
-            "previous_candidate": "release/v0.11.0-candidate.json",
-            "source_commit": "3db69025e723afe6a4eeb05da8672cb65e5be478",
-        }
-        and successor.get("evidence_states") == {
-            "broad_product_efficacy": "UNKNOWN",
-            "cross_provider_runtime": "UNKNOWN",
-            "cross_version_lifecycle": "NOT_RERUN_UNCHANGED_MECHANISM",
-            "independent_review": "PENDING",
-            "local_release_ready": "AUTHORIZED_PENDING_VERIFICATION",
-            "planner_acceptance": "NOT_APPLICABLE",
-            "public_release": "NOT_PERFORMED",
-            "role_delivery_runtime": "UNKNOWN",
-            "source_contract": "REQUIRES_FRESH_DETERMINISTIC_CHECK",
-            "stable_installed_copy": "NOT_PERFORMED",
-        }
-    )
-    checks["candidate.current_package_binding"] = (
-        checks["candidate.v0111_identity"]
-        and actual_package_tree is not None
-        and current_package_sha256 is not None
-        and successor.get("package", {}).get("tree") == actual_package_tree
-        and successor.get("package", {}).get("sha256") == current_package_sha256
-    )
-
-    v050_receipt_error = None
-    v050_receipt = {}
-    try:
-        parsed_v050_receipt = json.loads(V050_RECEIPT.read_text(encoding="utf-8"))
-        if not isinstance(parsed_v050_receipt, dict):
-            raise ValueError("v0.5.0 local source receipt must be an object")
-        for field in (
-            "authorization_boundaries",
-            "candidate",
-            "evidence_states",
-            "historical_runtime",
-            "independent_review",
-            "planner_acceptance",
-            "verification",
-        ):
-            if not isinstance(parsed_v050_receipt.get(field), dict):
-                raise ValueError(f"v0.5.0 local source receipt field {field!r} must be an object")
-        if not isinstance(parsed_v050_receipt["candidate"].get("package"), dict):
-            raise ValueError("v0.5.0 local source receipt package must be an object")
-        if not isinstance(parsed_v050_receipt["independent_review"].get("findings"), list):
-            raise ValueError("v0.5.0 local source receipt findings must be a list")
-        v050_receipt = parsed_v050_receipt
-    except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
-        v050_receipt_error = str(error)
-    checks["receipt.v050_source_readiness"] = (
-        v050_receipt.get("schema") == "work-charter-local-release-receipt/v1"
-        and v050_receipt.get("product") == "work-charter"
-        and v050_receipt.get("version") == "0.5.0"
-        and v050_receipt.get("candidate")
-        == {
-            "commit": V050_COMMIT,
-            "descriptor": "release/v0.5.0-candidate.json",
-            "descriptor_raw_sha256": V050_CANDIDATE_SHA256,
-            "package": {
-                "file_count": 6,
-                "files": sorted(EXPECTED_FILES),
-                "path": "skills/work-charter",
-                "sha256": V050_PACKAGE_SHA256,
-                "tree": V050_PACKAGE_TREE,
-            },
-            "tree": V050_TREE,
-        }
-        and v050_receipt.get("authorization_boundaries")
-        == {
-            "actual_installation": "NOT_AUTHORIZED",
-            "global_rule_migration": "NOT_AUTHORIZED",
-            "publication": "NOT_AUTHORIZED",
-            "remote_integration": "NOT_AUTHORIZED",
-            "user_role_model_configuration_write": "NOT_AUTHORIZED",
-        }
-        and v050_receipt.get("evidence_states")
-        == {
-            "actual_installation": "NOT_PERFORMED",
-            "broad_product_efficacy": "UNKNOWN",
-            "cross_harness_behavior": "UNKNOWN",
-            "cross_provider_runtime": "UNKNOWN",
-            "local_source_ready": "VERIFIED",
-            "natural_adherence": "UNKNOWN",
-            "public_release": "NOT_PERFORMED",
-            "role_delivery_runtime": "UNKNOWN",
-            "source_candidate_acceptance": "VERIFIED",
-            "stable_installed_copy_v050": "UNKNOWN",
-            "user_role_model_configuration": "NOT_READ_OR_WRITTEN",
-        }
-        and v050_receipt.get("historical_runtime")
-        == {
-            "installed_version": "0.4.0",
-            "v040_access_repair": "ACCEPTED_FOR_EXACT_ACL_ONLY_EFFECT",
-            "v041_installed": False,
-            "v050_installed": False,
-        }
-        and v050_receipt.get("independent_review")
-        == {
-            "completed_rounds": 10,
-            "final_result": "NO_NEW_FINDINGS",
-            "final_round": "WC-ROLE-CONFIG-SOURCE-V050-R10-RESULT-01",
-            "findings": [
-                {
-                    "disposition": "FALSE_POSITIVE_CLOSED",
-                    "id": "WC-SOURCE-R1-F01",
-                    "severity": "P1",
-                },
-                {
-                    "disposition": "FIXED_CLOSED",
-                    "id": "WC-SOURCE-R1-F02",
-                    "severity": "P2",
-                },
-                {
-                    "disposition": "FIXED_CLOSED",
-                    "id": "WC-INSTALL-ACCESS-P01",
-                    "severity": "P2",
-                },
-                {
-                    "disposition": "FIXED_CLOSED",
-                    "id": "WC-INSTALL-ACCESS-R5-F01",
-                    "parent_finding": "WC-INSTALL-ACCESS-P01",
-                    "severity": "P2",
-                },
-                {
-                    "disposition": "FIXED_CLOSED",
-                    "id": "WC-ROLE-CONFIG-R9-F01",
-                    "severity": "P2",
-                },
-            ],
-            "fresh_reviewer": {
-                "model": "gpt-6-astra",
-                "reasoning_effort": "high",
-                "rounds": [
-                    "WC-ROLE-CONFIG-SOURCE-V050-R9-RESULT-01",
-                    "WC-ROLE-CONFIG-SOURCE-V050-R10-RESULT-01",
-                ],
-            },
-            "historical_reviewer": {
-                "model": "gpt-5.6-terra",
-                "reasoning_effort": "high",
-                "rounds": 8,
-            },
-            "non_findings": {
-                "r7_acl_hypothesis": "UNCONFIRMED_NOT_A_FINDING",
-                "r8_result": "NO_CONFIRMED_DEFECT",
-            },
-        }
-        and v050_receipt.get("planner_acceptance")
-        == {
-            "commit": {
-                "checkpoint": "WC-ROLE-CONFIG-SOURCE-V050-COMMIT-01",
-                "disposition": "WC-ROLE-CONFIG-SOURCE-V050-COMMIT-DISPOSITION-01",
-                "verdict": "ACCEPTED_COMMITTED_SOURCE_V050",
-            },
-            "source": {
-                "checkpoint": "WC-ROLE-CONFIG-SOURCE-V050-ACCEPTED-COMMIT-HANDOFF-01",
-                "review_checkpoint": "WC-ROLE-CONFIG-SOURCE-V050-R10-RESULT-01",
-                "verdict": "ACCEPTED_SOURCE_V050",
-            },
-        }
-        and v050_receipt.get("verification")
-        == {
-            "adversarial_repository_matrix": {
-                "cases": 92,
-                "result": "PASS",
-                "subject": "RECEIPT_AND_CANONICAL_CONSUMERS",
-                "terminal_exit_code": 0,
-            },
-            "repository": {
-                "mapped_files": 89,
-                "result": "PASS",
-                "subject": "RECEIPT_AND_CANONICAL_CONSUMERS",
-                "terminal_exit_code": 0,
-            },
-            "source_contract": {
-                "checks": 26,
-                "result": "PASS",
-                "subject": "RECEIPT_AND_CANONICAL_CONSUMERS",
-                "terminal_exit_code": 0,
-            },
-            "windows_lifecycle": {
-                "default_token": "DACL_PREFLIGHT_PERMISSION_DENIED",
-                "disposition": "DISPOSABLE_SOURCE_QUALIFICATION_ONLY",
-                "elevated_token": "PASS",
-                "persistent_effect": False,
-                "subject": "ACCEPTED_SOURCE_COMMIT_C5",
-                "terminal_exit_code": 0,
-            },
-        }
-        and v050_receipt.get("human_release_notes_review") == "PENDING"
-    )
-
-    v041_candidate_error = None
-    v041_candidate = {}
-    try:
-        v041_candidate = json.loads(V041_CANDIDATE.read_text(encoding="utf-8"))
-        if not isinstance(v041_candidate, dict) or not isinstance(
-            v041_candidate.get("package"), dict
-        ):
-            raise ValueError("v0.4.1 candidate descriptor must be an object with an object package")
-    except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
-        v041_candidate_error = str(error)
-    checks["candidate.v041_historical_identity"] = (
-        v041_candidate.get("schema") == "work-charter-local-release-candidate/v1"
-        and v041_candidate.get("product") == "work-charter"
-        and v041_candidate.get("version") == "0.4.1"
-        and v041_candidate.get("public_identity") == "junwei529/work-charter"
-        and v041_candidate.get("candidate_state") == "PENDING_INDEPENDENT_REVIEW"
-        and v041_candidate.get("package")
-        == {
-            "file_count": 5,
-            "path": "skills/work-charter",
-            "sha256": "1fbffa78e7dfdc9509dc8a4b003da1c35b0b11151d09838ebe89d2be6e8bdaf1",
-            "tree": "a2281edf51b624271cd5675ca02a7f4d5ae4acbb",
-        }
-        and v041_candidate.get("lineage")
-        == {
-            "historical_package_tree": V040_PACKAGE_TREE,
-            "previous_candidate": "release/v0.4.0-candidate.json",
-            "previous_local_release_receipt": "release/v0.4.0-local-release-receipt.json",
-            "source_commit": "df674c773de6f915627af541f0eb37221da9adef",
-        }
-    )
-
-    v040_candidate_error = None
-    v040_candidate = {}
-    try:
-        v040_candidate = json.loads(V040_CANDIDATE.read_text(encoding="utf-8"))
-        if not isinstance(v040_candidate, dict) or not isinstance(
-            v040_candidate.get("package"), dict
-        ):
-            raise ValueError("v0.4.0 candidate descriptor must be an object with an object package")
-    except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
-        v040_candidate_error = str(error)
-    checks["candidate.v040_historical_identity"] = (
-        v040_candidate.get("schema") == "work-charter-local-release-candidate/v1"
-        and v040_candidate.get("product") == "work-charter"
-        and v040_candidate.get("version") == "0.4.0"
-        and v040_candidate.get("public_identity") == "junwei529/work-charter"
-        and v040_candidate.get("candidate_state") == "PENDING_INDEPENDENT_REVIEW"
-        and v040_candidate.get("package")
-        == {
-            "file_count": 5,
-            "path": "skills/work-charter",
-            "sha256": V040_PACKAGE_SHA256,
-            "tree": V040_PACKAGE_TREE,
-        }
-        and v040_candidate.get("human_release_notes_review") == "PENDING"
-    )
-
-    historical_candidate_error = None
-    historical_candidate = {}
-    try:
-        historical_candidate = json.loads(HISTORICAL_CANDIDATE.read_text(encoding="utf-8"))
-        if not isinstance(historical_candidate, dict) or not isinstance(
-            historical_candidate.get("package"), dict
-        ):
-            raise ValueError("historical candidate descriptor must be an object with an object package")
-    except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
-        historical_candidate_error = str(error)
-    checks["candidate.v030_historical_identity"] = (
-        historical_candidate.get("schema") == "work-charter-local-release-candidate/v1"
-        and historical_candidate.get("product") == "work-charter"
-        and historical_candidate.get("version") == "0.3.0"
-        and historical_candidate.get("public_identity") == "junwei529/work-charter"
-        and historical_candidate.get("candidate_state") == "PENDING_PLANNER_ACCEPTANCE"
-        and historical_candidate.get("package", {}).get("file_count") == 5
-        and historical_candidate.get("package", {}).get("path") == "skills/work-charter"
-        and historical_candidate.get("package", {}).get("tree") == V030_PACKAGE_TREE
-    )
-
-    receipt_error = None
-    receipt = {}
-    try:
-        parsed_receipt = json.loads(RECEIPT.read_text(encoding="utf-8"))
-        if not isinstance(parsed_receipt, dict):
-            raise ValueError("local release receipt must be an object")
-        for field in ("candidate", "planner_acceptance", "evidence_states", "source_forward_behavior"):
-            if not isinstance(parsed_receipt.get(field), dict):
-                raise ValueError(f"local release receipt field {field!r} must be an object")
-        receipt = parsed_receipt
-    except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
-        receipt = {}
-        receipt_error = str(error)
-    checks["receipt.identity_and_readiness"] = (
-        receipt.get("schema") == "work-charter-local-release-receipt/v1"
-        and receipt.get("product") == "work-charter"
-        and receipt.get("version") == "0.3.0"
-        and receipt.get("candidate", {}).get("commit")
-        == "732e7efa6211d9aedeb133282ef28ce03f9bdfef"
-        and receipt.get("candidate", {}).get("descriptor")
-        == "release/v0.3.0-candidate.json"
-        and receipt.get("candidate", {}).get("tree")
-        == "cc09ec16f85b05ed2287afd68ac6051dd800d287"
-        and receipt.get("candidate", {}).get("package_tree") == V030_PACKAGE_TREE
-        and receipt.get("planner_acceptance", {}).get("checkpoint")
-        == "B1-WC-CANDIDATE-C-01"
-        and receipt.get("planner_acceptance", {}).get("verdict") == "ACCEPTED"
-        and receipt.get("evidence_states", {}).get("local_release_ready") == "VERIFIED"
-        and receipt.get("evidence_states", {}).get("public_release") == "UNKNOWN"
-        and receipt.get("evidence_states", {}).get("stable_installed_copy") == "UNKNOWN"
-        and receipt.get("evidence_states", {}).get("persistent_lifecycle") == "UNKNOWN"
-        and receipt.get("evidence_states", {}).get("broad_product_efficacy") == "UNKNOWN"
-        and receipt.get("human_release_notes_review") == "PENDING"
-        and receipt.get("source_forward_behavior", {}).get("evidence_id") == "Q06"
-        and receipt.get("source_forward_behavior", {}).get("model") == "gpt-5.6-sol"
-        and receipt.get("source_forward_behavior", {}).get("reasoning_effort") == "high"
-        and receipt.get("source_forward_behavior", {}).get("result") == "ACCEPTED"
-        and receipt.get("source_forward_behavior", {}).get("scope")
-        == "fresh projectless read-only no-tool exact-SOURCE"
-        and receipt.get("source_forward_behavior", {}).get("package_tree") == V030_PACKAGE_TREE
-    )
-
-    current_receipt_error = None
-    current_receipt = {}
-    try:
-        parsed_current_receipt = json.loads(V040_RECEIPT.read_text(encoding="utf-8"))
-        if not isinstance(parsed_current_receipt, dict):
-            raise ValueError("current local release receipt must be an object")
-        for field in (
-            "candidate",
-            "evidence_states",
-            "independent_review",
-            "installation",
-            "installer",
-            "pending_source_correction",
-            "policy_preservation_finding",
-            "planner_acceptance",
-            "restore_verification_finding",
-            "runtime_finding",
-            "trust",
-        ):
-            if not isinstance(parsed_current_receipt.get(field), dict):
-                raise ValueError(f"current local release receipt field {field!r} must be an object")
-        if not isinstance(parsed_current_receipt["independent_review"].get("findings"), list):
-            raise ValueError("current local release receipt findings must be a list")
-        if not isinstance(parsed_current_receipt["installation"].get("transaction"), dict):
-            raise ValueError("current local release receipt transaction must be an object")
-        if not isinstance(
-            parsed_current_receipt["pending_source_correction"].get("actual_repair_route"),
-            dict,
-        ):
-            raise ValueError("current local release receipt repair route must be an object")
-        current_receipt = parsed_current_receipt
-    except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
-        current_receipt = {}
-        current_receipt_error = str(error)
-    checks["receipt.v040_identity_and_readiness"] = (
-        current_receipt.get("schema") == "work-charter-local-release-receipt/v1"
-        and current_receipt.get("product") == "work-charter"
-        and current_receipt.get("version") == "0.4.0"
-        and current_receipt.get("candidate")
-        == {
-            "commit": "30057490be21d869751854a51e9fafdfb535f206",
-            "descriptor": "release/v0.4.0-candidate.json",
-            "package_sha256": V040_PACKAGE_SHA256,
-            "package_tree": V040_PACKAGE_TREE,
-            "tree": "a746f2eb4dc54db71f6ebd627da5f184929c9428",
-        }
-        and current_receipt.get("installer")
-        == {
-            "commit": "08f72b404b1e127d6c461ac337a4e570c2c6800c",
-            "tree": "899f7ec700516a2feb3121e7062dbd5bdab37065",
-        }
-        and current_receipt.get("planner_acceptance")
-        == {
-            "access_correction": {
-                "checkpoint": "WC-INSTALL-ACCESS-REVIEW-READY-01",
-                "finding": "WC-INSTALL-ACCESS-P01",
-                "verdict": "CORRECTION_REQUIRED",
-            },
-            "dacl_readback_correction": {
-                "checkpoint": "WC-INSTALL-ACCESS-R5-RESULT-01",
-                "finding": "WC-INSTALL-ACCESS-R5-F01",
-                "verdict": "CORRECTION_REQUIRED",
-            },
-            "postflight": {
-                "checkpoint": "WC-SOURCE-INSTALL-AND-RECORDS-READY-01",
-                "finding": "WC-INSTALL-POSTFLIGHT-F01",
-                "verdict": "CORRECTION_REQUIRED",
-            },
-            "source": {"checkpoint": "SOURCE_CANDIDATE_03", "verdict": "ACCEPTED"},
-            "tool": {"checkpoint": "WC-INSTALL-ACCEPTANCE-02", "verdict": "ACCEPTED"},
-        }
-        and current_receipt.get("independent_review")
-        == {
-            "completed_rounds": 5,
-            "final_result": "CORRECTION_REQUIRED",
-            "final_round": "WC-INSTALL-ACCESS-R5-RESULT-01",
-            "findings": [
-                {
-                    "disposition": "FALSE_POSITIVE_CLOSED",
-                    "id": "WC-SOURCE-R1-F01",
-                    "severity": "P1",
-                },
-                {
-                    "disposition": "FIXED_CLOSED",
-                    "id": "WC-SOURCE-R1-F02",
-                    "severity": "P2",
-                },
-                {
-                    "disposition": "FIXED_PENDING_R6_REVIEW_AND_PLANNER_ACCEPTANCE",
-                    "id": "WC-INSTALL-ACCESS-R5-F01",
-                    "parent_finding": "WC-INSTALL-ACCESS-P01",
-                    "severity": "P2",
-                },
-            ],
-            "model": "gpt-5.6-terra",
-            "reasoning_effort": "high",
-        }
-        and current_receipt.get("installation", {}).get("action") == "update"
-        and current_receipt.get("installation", {}).get("from_version") == "0.3.0"
-        and current_receipt.get("installation", {}).get("result")
-        == "CONTENT_VERIFIED_DEFAULT_READER_FAILED"
-        and current_receipt.get("installation", {}).get("overall_acceptance")
-        == "NOT_ACCEPTED"
-        and current_receipt.get("installation", {}).get("default_reader")
-        == "ACCESS_DENIED"
-        and current_receipt.get("installation", {}).get("postflight_scope")
-        == "ELEVATED_CONTENT_AND_RECEIPT_ONLY"
-        and current_receipt.get("installation", {}).get("receipt_schema")
-        == "work-charter-install-receipt/v1"
-        and current_receipt.get("installation", {}).get("receipt_raw_sha256")
-        == "c562b4ecc71c0b1d96b4f1b6d7465e7057479cbca3aade7a738fc7121b9be338"
-        and current_receipt.get("installation", {}).get("package_sha256")
-        == V040_INSTALLED_PACKAGE_SHA256
-        and current_receipt.get("installation", {}).get("package_tree")
-        == V040_PACKAGE_TREE
-        and current_receipt.get("installation", {}).get("files")
-        == V040_PACKAGE_FILE_SHA256
-        and current_receipt.get("installation", {}).get("destination_class")
-        == "managed Codex user Skill installation"
-        and current_receipt.get("installation", {}).get("transaction")
-        == {
-            "cleanup": "REMOVED_EMPTY_TASK_ROOT",
-            "disposition": "EXTERNAL_CANONICAL_NON_REPARSE_SAME_VOLUME",
-            "mode": "EXPLICIT",
-        }
-        and current_receipt.get("trust")
-        == {
-            "record_sha256": "06ec69d391a33ac0e5c3cd0d4ee02d3b29b6c8d45f61f3907927496366845db8",
-            "target_package_tree": V040_PACKAGE_TREE,
-        }
-        and current_receipt.get("evidence_states")
-        == {
-            "broad_product_efficacy": "UNKNOWN",
-            "cross_harness_behavior": "UNKNOWN",
-            "cross_version_lifecycle": (
-                "CONTENT_AND_ELEVATED_POSTFLIGHT_VERIFIED_WITH_ACCESS_REGRESSION_OPEN"
-            ),
-            "local_release_ready": "BLOCKED_BY_INSTALLED_COPY_ACCESS_REGRESSION",
-            "managed_installation": "NOT_ACCEPTED_DEFAULT_READER_ACCESS_FAILED",
-            "natural_adherence": "UNKNOWN",
-            "public_release": "UNKNOWN",
-            "source_candidate_acceptance": "VERIFIED",
-            "stable_installed_copy": "FAILED_DEFAULT_READER_ACCESS",
-        }
-        and current_receipt.get("runtime_finding")
-        == {
-            "discovered_by": "PLANNER_POSTFLIGHT",
-            "id": "WC-INSTALL-POSTFLIGHT-F01",
-            "issue": (
-                "PROMOTED_DESTINATION_RETAINED_PRIVATE_TRANSACTION_ACL_AND_"
-                "DEFAULT_READER_ACCESS_WAS_DENIED"
-            ),
-            "review_history": (
-                "SEPARATE_FROM_FIVE_COMPLETED_REVIEW_RESULTS_AND_TWO_HISTORICAL_"
-                "SOURCE_FINDINGS"
-            ),
-            "status": "OPEN",
-        }
-        and current_receipt.get("restore_verification_finding")
-        == {
-            "discovered_by": "WC-INSTALL-ACCESS-R5-RESULT-01",
-            "id": "WC-INSTALL-ACCESS-R5-F01",
-            "issue": (
-                "RESTORE_SUCCESS_WAS_NOT_FOLLOWED_BY_TARGET_DACL_READBACK_"
-                "COMPARISON"
-            ),
-            "parent_finding": "WC-INSTALL-ACCESS-P01",
-            "severity": "P2",
-            "status": "FIXED_PENDING_R6_REVIEW_AND_PLANNER_ACCEPTANCE",
-        }
-        and current_receipt.get("policy_preservation_finding")
-        == {
-            "discovered_by": "PLANNER_AFTER_R4_NO_FINDINGS",
-            "id": "WC-INSTALL-ACCESS-P01",
-            "issue": (
-                "PARENT_RESET_DID_NOT_PRESERVE_EXISTING_EXPLICIT_OR_PROTECTED_"
-                "DACL_POLICY"
-            ),
-            "review_history": "R4_NO_FINDINGS_RETAINED_WITHOUT_PLANNER_ACCEPTANCE",
-            "severity": "P2",
-            "status": "OPEN",
-        }
-        and current_receipt.get("pending_source_correction")
-        == {
-            "actual_installed_copy_repair": "NOT_PERFORMED",
-            "actual_repair_route": {
-                "effect": (
-                    "ACL_ONLY_RESET_TO_VERIFIED_DESTINATION_PARENT_WITH_ROLLBACK_SNAPSHOT"
-                ),
-                "preconditions": [
-                    "REVIEWED_SOURCE_AND_PLANNER_ACCEPTANCE_AND_LOCAL_COMMIT_COMPLETE",
-                    "INSTALLED_V040_CONTENT_AND_RECEIPT_MATCH_INDEPENDENT_TRUST",
-                    "CURRENT_DACL_MATCHES_RECORDED_PRIVATE_TRANSACTION_POLICY",
-                    "DESTINATION_PARENT_DACL_MATCHES_SEPARATELY_VERIFIED_READER_POLICY",
-                ],
-                "state": "PROPOSED_NOT_EXECUTED",
-            },
-            "non_windows_behavior": "UNCHANGED_PLATFORM_DEFAULT",
-            "state": "PENDING_R6_INDEPENDENT_REVIEW_AND_PLANNER_ACCEPTANCE",
-            "windows_mechanism": (
-                "PRIVATE_TRANSACTION_RECOVERY_MATERIAL_AND_PREMUTATION_DACL_SNAPSHOT_"
-                "WITH_POSTRESTORE_SEMANTIC_READBACK_INSTALL_PARENT_INHERITANCE_AND_"
-                "UPDATE_ROLLBACK_UNINSTALL_RECOVERY_POLICY_PRESERVATION"
-            ),
-        }
-        and current_receipt.get("human_release_notes_review") == "PENDING"
-    )
-
-    public_candidate_error = None
-    public_candidate = {}
-    try:
-        parsed_public_candidate = json.loads(PUBLIC_RELEASE_CANDIDATE.read_text(encoding="utf-8"))
-        if not isinstance(parsed_public_candidate, dict):
-            raise ValueError("public release candidate must be an object")
-        for field in ("github_release", "lineage", "package", "public_repository"):
-            if not isinstance(parsed_public_candidate.get(field), dict):
-                raise ValueError(f"public release candidate field {field!r} must be an object")
-        public_candidate = parsed_public_candidate
-    except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
-        public_candidate = {}
-        public_candidate_error = str(error)
-    checks["public_release_candidate.identity"] = (
-        public_candidate.get("schema") == "work-charter-public-release-candidate/v1"
-        and "commit" not in public_candidate
-        and public_candidate.get("product") == "work-charter"
-        and public_candidate.get("version") == "0.3.0"
-        and public_candidate.get("public_release_state") == "PENDING_HUMAN_APPROVAL"
-        and public_candidate.get("human_release_notes_review") == "PENDING"
-        and public_candidate.get("release_title") == "Work Charter v0.3.0"
-        and public_candidate.get("release_notes") == "CHANGELOG.md"
-        and public_candidate.get("release_notes_sha256")
-        == V030_RELEASE_NOTES_SHA256
-        and public_candidate.get("tag") == "v0.3.0"
-        and public_candidate.get("tag_type") == "annotated"
-        and public_candidate.get("github_release")
-        == {"draft": False, "prerelease": False}
-        and public_candidate.get("lineage", {}).get("local_release_receipt")
-        == "release/v0.3.0-local-release-receipt.json"
-        and public_candidate.get("lineage", {}).get("local_release_receipt_commit")
-        == "193be0edcb95dac5b3ddfc95a935d06165ffa446"
-        and public_candidate.get("package", {}).get("path") == "skills/work-charter"
-        and public_candidate.get("package", {}).get("tree") == V030_PACKAGE_TREE
-        and public_candidate.get("package", {}).get("sha256")
-        == V030_PACKAGE_SHA256
-        and public_candidate.get("public_repository", {}).get("full_name")
-        == "junwei529/work-charter"
-        and public_candidate.get("public_repository", {}).get("url")
-        == "https://github.com/junwei529/work-charter"
-        and public_candidate.get("public_repository", {}).get("default_branch") == "main"
-        and public_candidate.get("public_repository", {}).get("visibility") == "public"
-    )
-
-    public_evidence_error = None
-    public_evidence = {}
-    try:
-        parsed_public_evidence = json.loads(PUBLIC_RELEASE_EVIDENCE.read_text(encoding="utf-8"))
-        if not isinstance(parsed_public_evidence, dict):
-            raise ValueError("public release evidence must be an object")
-        for field in (
-            "discovery_correction",
-            "evidence_states",
-            "github_release",
-            "installed_copy_behavior",
-            "planner_acceptance",
-            "persistent_lifecycle",
-            "public_source",
-            "tag",
-        ):
-            if not isinstance(parsed_public_evidence.get(field), dict):
-                raise ValueError(f"public release evidence field {field!r} must be an object")
-        if not isinstance(parsed_public_evidence["installed_copy_behavior"].get("evidence"), list):
-            raise ValueError("public release evidence witnesses must be a list")
-        if not isinstance(
-            parsed_public_evidence["installed_copy_behavior"].get("package_file_sha256"), dict
-        ):
-            raise ValueError("public release evidence package hashes must be an object")
-        if not isinstance(parsed_public_evidence["persistent_lifecycle"].get("operations"), list):
-            raise ValueError("public release evidence lifecycle operations must be a list")
-        public_evidence = parsed_public_evidence
-    except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
-        public_evidence = {}
-        public_evidence_error = str(error)
-    checks["public_release_evidence.identity"] = (
-        public_evidence.get("schema") == "work-charter-public-release-evidence/v1"
-        and public_evidence.get("product") == "work-charter"
-        and public_evidence.get("version") == "0.3.0"
-        and public_evidence.get("evidence_state") == "VERIFIED"
-        and public_evidence.get("planner_acceptance")
-        == {
-            "evidence_id": "B2-WC-PUBLIC-EVIDENCE-F-01",
-            "subject_commit": "4ba904808fe86e270ebd405db1866d41d1cc032e",
-            "subject_tree": "03307594f66dfb92e262b73546fc4ec0ddb6d720",
-            "verdict": "ACCEPTED",
-        }
-        and public_evidence.get("public_source", {}).get("commit")
-        == "b655c1aa42acc8c68b70e87c4c228445c5182d8b"
-        and public_evidence.get("public_source", {}).get("tree")
-        == "0b5166b402d98df041589d378a739a5fa9757ba5"
-        and public_evidence.get("public_source", {}).get("package_tree") == V030_PACKAGE_TREE
-        and public_evidence.get("public_source", {}).get("package_sha256")
-        == V030_PACKAGE_SHA256
-        and public_evidence.get("public_source", {}).get("repository")
-        == "junwei529/work-charter"
-        and public_evidence.get("tag", {}).get("name") == "v0.3.0"
-        and public_evidence.get("tag", {}).get("type") == "annotated"
-        and public_evidence.get("tag", {}).get("annotation") == "Work Charter v0.3.0"
-        and public_evidence.get("tag", {}).get("object")
-        == "81675840fe586e4f8960404210b1985d70ae4940"
-        and public_evidence.get("tag", {}).get("peeled_commit")
-        == "b655c1aa42acc8c68b70e87c4c228445c5182d8b"
-        and public_evidence.get("github_release", {}).get("id") == 378244052
-        and public_evidence.get("github_release", {}).get("title") == "Work Charter v0.3.0"
-        and public_evidence.get("github_release", {}).get("url")
-        == "https://github.com/junwei529/work-charter/releases/tag/v0.3.0"
-        and public_evidence.get("github_release", {}).get("draft") is False
-        and public_evidence.get("github_release", {}).get("prerelease") is False
-        and public_evidence.get("github_release", {}).get("body_normalized_lf_sha256")
-        == "4a02c5cce79f3aaee545eca1c7f0a2330563618782a7126946dfdf786b0bb7d8"
-        and public_evidence.get("persistent_lifecycle", {}).get("final_state") == "MANAGED"
-        and public_evidence.get("persistent_lifecycle", {}).get("source_identity")
-        == "junwei529/work-charter"
-        and public_evidence.get("persistent_lifecycle", {}).get("source_ref") == "v0.3.0"
-        and public_evidence.get("persistent_lifecycle", {}).get("version") == "0.3.0"
-        and public_evidence.get("persistent_lifecycle", {}).get("foreign_copy_refusal")
-        == "VERIFIED"
-        and public_evidence.get("persistent_lifecycle", {}).get("foreign_copy_retained") is True
-        and public_evidence.get("persistent_lifecycle", {}).get("foreign_copy_discovery_state")
-        == "PRESERVED_OUTSIDE_SKILL_DISCOVERY_ROOT"
-        and public_evidence.get("persistent_lifecycle", {}).get(
-            "managed_uninstall_target_is_sole_discoverable_copy"
-        )
-        is True
-        and public_evidence.get("persistent_lifecycle", {}).get("operations")
-        == [
-            "install",
-            "same-version update",
-            "same-version rollback",
-            "origin-aware uninstall",
-            "public-source restoration",
-        ]
-        and public_evidence.get("persistent_lifecycle", {}).get("final_package_sha256")
-        == V030_INSTALLED_PACKAGE_SHA256
-        and public_evidence.get("persistent_lifecycle", {}).get("final_package_tree")
-        == V030_PACKAGE_TREE
-        and public_evidence.get("installed_copy_behavior", {}).get("package_tree")
-        == V030_PACKAGE_TREE
-        and public_evidence.get("installed_copy_behavior", {}).get("evidence")
-        == [
-            {
-                "evidence_id": "B2-WC-LOAD-01",
-                "result": "ACCEPTED",
-                "scope": "fresh projectless read-only loaded-copy behavior",
-            },
-            {
-                "evidence_id": "B2-WC-RESTORE-01",
-                "result": "ACCEPTED",
-                "scope": "fresh projectless read-only restored-copy recovery behavior",
-            },
-            {
-                "evidence_id": "B2-WC-SOLE-LOAD-02",
-                "result": "ACCEPTED",
-                "scope": "fresh projectless sole-discovery loaded-copy behavior",
-            },
-        ]
-        and public_evidence.get("discovery_correction", {}).get("prior_discovery_ambiguity")
-        == "CORRECTED"
-        and public_evidence.get("discovery_correction", {}).get("retained_copy")
-        == "PRESERVED_OUTSIDE_SKILL_DISCOVERY_ROOT"
-        and public_evidence.get("discovery_correction", {}).get("recovery_locator")
-        == "CONTROLLER_SIDE_ONLY"
-        and public_evidence.get("discovery_correction", {}).get("current_same_name_catalog_count")
-        == 1
-        and public_evidence.get("discovery_correction", {}).get("current_witness")
-        == "B2-WC-SOLE-LOAD-02"
-        and public_evidence.get("discovery_correction", {}).get("historical_evidence_preserved")
-        == ["B2-WC-LOAD-01", "B2-WC-RESTORE-01"]
-        and public_evidence.get("discovery_correction", {}).get("supersedes_evidence_commit")
-        == "651d9decd9bb3b9532fa41eb55b2ceeffe19ccc0"
-        and public_evidence.get("installed_copy_behavior", {}).get("package_file_sha256")
-        == V030_PACKAGE_FILE_SHA256
-        and public_evidence.get("evidence_states", {}).get("public_release") == "VERIFIED"
-        and public_evidence.get("evidence_states", {}).get("stable_installed_copy")
-        == "VERIFIED"
-        and public_evidence.get("evidence_states", {}).get("sole_installed_copy_discovery")
-        == "VERIFIED"
-        and public_evidence.get("evidence_states", {}).get("cross_version_lifecycle")
-        == "UNKNOWN"
-        and public_evidence.get("evidence_states", {}).get("broad_product_efficacy")
-        == "UNKNOWN"
-    )
-
-    failures = [name for name, passed in checks.items() if not passed]
-    if package_scan_error:
-        failures.append(f"package.scan: {package_scan_error}")
-    failures.extend(package_read_failures)
-    if role_model_case_error:
-        failures.append(f"role_models.case_unreadable: {role_model_case_error}")
-    if current_candidate_error:
-        failures.append(f"candidate.v050_unreadable: {current_candidate_error}")
-    if successor_error:
-        failures.append(f"candidate.current_unreadable: {successor_error}")
-    if v067_candidate_error:
-        failures.append(f"candidate.v067_unreadable: {v067_candidate_error}")
-    if v066_candidate_error:
-        failures.append(f"candidate.v066_unreadable: {v066_candidate_error}")
-    if v065_candidate_error:
-        failures.append(f"candidate.v065_unreadable: {v065_candidate_error}")
-    if v064_candidate_error:
-        failures.append(f"candidate.v064_unreadable: {v064_candidate_error}")
-    if v063_candidate_error:
-        failures.append(f"candidate.v063_unreadable: {v063_candidate_error}")
-    if v062_candidate_error:
-        failures.append(f"candidate.v062_unreadable: {v062_candidate_error}")
-    if v061_candidate_error:
-        failures.append(f"candidate.v061_unreadable: {v061_candidate_error}")
-    if v060_candidate_error:
-        failures.append(f"candidate.v060_unreadable: {v060_candidate_error}")
-    if package_identity_error:
-        failures.append(f"package.identity: {package_identity_error}")
-    if v050_receipt_error:
-        failures.append(f"receipt.v050_unreadable: {v050_receipt_error}")
-    if v041_candidate_error:
-        failures.append(f"candidate.v041_unreadable: {v041_candidate_error}")
-    if v040_candidate_error:
-        failures.append(f"candidate.v040_unreadable: {v040_candidate_error}")
-    if historical_candidate_error:
-        failures.append(f"candidate.v030_unreadable: {historical_candidate_error}")
-    if receipt_error:
-        failures.append(f"receipt.unreadable: {receipt_error}")
-    if current_receipt_error:
-        failures.append(f"receipt.v040_unreadable: {current_receipt_error}")
-    if public_candidate_error:
-        failures.append(f"public_release_candidate.unreadable: {public_candidate_error}")
-    if public_evidence_error:
-        failures.append(f"public_release_evidence.unreadable: {public_evidence_error}")
-    static_clause_prefixes = (
-        "entry.", "delivery.", "communication.", "model.", "legacy.",
-        "template.", "metadata.", "cases.",
-        "authority.",
-        "recovery.",
-        "review.",
-        "prompts.",
-        "role_models.",
-        "selection.",
-        "standard.",
-    )
-    static_clause_checks = {
-        name: passed
-        for name, passed in checks.items()
-        if name.startswith(static_clause_prefixes)
-    }
-    current_package_bound = checks.get("candidate.current_package_binding", False)
-    result = {
-        "checks": checks,
-        "current_package_differs_from_v050": (
-            current_package_sha256 is not None
-            and current_package_sha256 != V050_PACKAGE_SHA256
-        ),
-        "current_package_tree": actual_package_tree,
-        "failures": failures,
-        "package_sha256": current_package_sha256,
-        "proof_class": "deterministic-source-contract",
-        "required_identity_gate": (
-            "SATISFIED" if current_package_bound else "BLOCKED_CURRENT_PACKAGE_UNBOUND"
-        ),
-        "result": "PASS" if not failures else "FAIL",
-        "source_release_identity": (
-            "BOUND_TO_V0111_CANDIDATE"
-            if current_package_bound
-            else "UNBOUND_PENDING_SUCCESSOR_VERSION_AND_DESCRIPTOR"
-        ),
-        "static_clause_checks_passed": sum(static_clause_checks.values()),
-        "static_clause_checks_total": len(static_clause_checks),
-        "static_clause_result": (
-            "PASS" if all(static_clause_checks.values()) else "FAIL"
-        ),
-        "scope_limits": [
-            "no model execution",
-            "no task or role creation or runtime identity proof",
-            "no host or global task-start consumer execution",
-            "no live user-configuration read",
-            "no live installed-copy recheck",
-            "no publication proof",
-            "no broad efficacy proof",
-        ],
-    }
-    if args.json:
-        print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+    root = args.root or ROOT
+    if args.component != "charter" and args.root is None:
+        parser.error("--root is required for an explicitly selected external component")
+    spec = load_json(SPEC)
+    rules, cases = expected_cases(spec, args.component)
+    if args.prepare:
+        prepared = []
+        for case_id, (rule, case) in cases.items():
+            prepared.append({"case_id": case_id, "prompt": case["prompt"],
+                             "locations": rule["locations"][args.component]})
+        print(json.dumps({"component": args.component, "cases": prepared}, ensure_ascii=False, indent=2))
+        return 0
+    witness_path = args.witness or ROOT / "evals/core-protections/witness-charter.json"
+    if not witness_path.exists():
+        result = {"result": "REASSESS", "failures": [], "pending": ["independent semantic assessment missing"]}
     else:
-        print(f"work-charter SOURCE contract: {result['result']}")
-        for failure in failures:
-            print(f"- {failure}")
-    return 0 if not failures else 1
-
+        try:
+            result = assess(spec, args.component, root, load_json(witness_path))
+            if args.component == "charter":
+                result["package_identity"] = package_identity()
+        except (OSError, ValueError, KeyError, TypeError) as error:
+            result = {"result": "FAIL", "failures": [str(error)], "pending": []}
+    print(json.dumps(result, ensure_ascii=False, indent=2) if args.json else
+          f"core protections: {result['result']}")
+    return {"PASS": 0, "FAIL": 1, "REASSESS": 2}[result["result"]]
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    sys.exit(main())
